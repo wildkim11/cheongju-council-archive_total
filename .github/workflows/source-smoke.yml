@@ -1,21 +1,22 @@
 name: Source smoke check
 
 on:
+  push:
+    branches:
+      - feature/archive-foundation
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  integrated-inventory:
+  official-root-probe:
     runs-on: macos-14
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Read official integrated-council inventory
-        run: python -u scripts/collect_integrated_minutes.py --mode inventory
-      - name: Show inventory report
-        run: cat reports/integrated-inventory.json
+      - name: Probe official generation root
+        run: python -u scripts/probe_official_source.py
