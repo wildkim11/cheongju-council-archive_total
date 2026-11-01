@@ -614,16 +614,203 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
     return report
 
 
+
+def _initial_shard_path(root: Path, term: int) -> Path:
+    return root / f"indexes/integrated/initial_term_{term}.json"
+
+
+def _initial_shard_complete(root: Path, live_rows: list[dict], shard_rows: list[dict]) -> bool:
+    if not shard_rows:
+        return False
+    live = {r["meeting_id"]: r for r in live_rows}
+    shard = {r["meeting_id"]: r for r in shard_rows}
+    if set(live) != set(shard):
+        return False
+    for meeting_id, row in live.items():
+        prior = shard[meeting_id]
+        for key in ("term", "date", "source_id", "publication_status", "official_url"):
+            if prior.get(key) != row.get(key):
+                return False
+        path = prior.get("path")
+        if not path or not (root / path).exists():
+            return False
+        if not prior.get("content_sha256"):
+            return False
+    return True
+
+
+def run_initial_term(term: int, root: Path = ROOT) -> dict:
+    """Populate one integrated-council term as a durable initial shard.
+
+    Initial population is intentionally checkpointed by term. A retry skips a
+    shard only when its exact live inventory and all archived body files still
+    match. Canonical meetings.json is not published until assemble_initial().
+    """
+    if term not in SUPPORTED_TERMS:
+        raise ValueError(f"Unsupported integrated term: {term}")
+
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    today = now.date().isoformat()
+    stamp = now.isoformat()
+    all_rows, inventory_qa = read_official_inventory(today)
+    live_rows = [r for r in all_rows if r["term"] == term]
+    live_rows.sort(key=lambda r: (r["date"], r["meeting_id"]))
+    if not live_rows:
+        raise ValueError(f"Empty official inventory for term {term}")
+
+    shard_path = _initial_shard_path(root, term)
+    old_shard = _load_rows(shard_path)
+    if _initial_shard_complete(root, live_rows, old_shard):
+        report = {
+            "checked_at": stamp,
+            "mode": "initial-term",
+            "term": term,
+            "status": "already_complete",
+            "listed": len(old_shard),
+            "published": sum(r["publication_status"] == "published" for r in old_shard),
+            "provisional": sum(r["publication_status"] == "provisional" for r in old_shard),
+            "bodies_checked": 0,
+            "inventory_qa": inventory_qa,
+        }
+        save_json(root / f"reports/integrated-initial-term-{term}.json", report)
+        return report
+
+    def download(row):
+        try:
+            return row, extract_minutes_body(fetch(row["official_url"]))
+        except Exception as error:
+            raise RuntimeError(f"Failed meeting {row['meeting_id']}") from error
+
+    downloaded = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        for row, body in pool.map(download, live_rows):
+            downloaded.append((row, body))
+
+    with tempfile.TemporaryDirectory(prefix=f"archive-integrated-term-{term}-") as tmp:
+        stage = Path(tmp)
+        output_rows = [
+            write_record(stage, row, body, stamp)
+            for row, body in downloaded
+        ]
+        output_rows.sort(key=lambda r: (r["date"], r["meeting_id"]))
+
+        if len(output_rows) != len(live_rows):
+            raise ValueError(f"Term {term} body count mismatch")
+        for row in output_rows:
+            path = row.get("path")
+            if not path or not (stage / path).exists():
+                raise ValueError(f"Term {term} staged body missing: {row['meeting_id']}")
+
+        save_json(stage / f"indexes/integrated/initial_term_{term}.json", output_rows)
+        report = {
+            "checked_at": stamp,
+            "mode": "initial-term",
+            "term": term,
+            "status": "populated",
+            "listed": len(output_rows),
+            "published": sum(r["publication_status"] == "published" for r in output_rows),
+            "provisional": sum(r["publication_status"] == "provisional" for r in output_rows),
+            "bodies_checked": len(downloaded),
+            "inventory_qa": inventory_qa,
+        }
+        save_json(stage / f"reports/integrated-initial-term-{term}.json", report)
+
+        for src in stage.rglob("*"):
+            if src.is_file():
+                dst = root / src.relative_to(stage)
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(src, dst)
+
+    return report
+
+
+def assemble_initial(root: Path = ROOT) -> dict:
+    """Assemble term shards into the canonical current meeting index.
+
+    The final assembly requires exact equality with a fresh official inventory.
+    If the source changes while terms are being populated, assembly fails rather
+    than silently mixing snapshots.
+    """
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    today = now.date().isoformat()
+    stamp = now.isoformat()
+    live_rows, inventory_qa = read_official_inventory(today)
+    live = {r["meeting_id"]: r for r in live_rows}
+
+    merged = []
+    by_term = {}
+    for term in SUPPORTED_TERMS:
+        rows = _load_rows(_initial_shard_path(root, term))
+        if not rows:
+            raise ValueError(f"Initial term shard missing: {term}")
+        by_term[str(term)] = len(rows)
+        merged.extend(rows)
+
+    shard = {r["meeting_id"]: r for r in merged}
+    if len(shard) != len(merged):
+        raise ValueError("Duplicate meeting_id across initial term shards")
+    if set(shard) != set(live):
+        missing = sorted(set(live) - set(shard))
+        extra = sorted(set(shard) - set(live))
+        raise ValueError(
+            "Initial shards do not match fresh official inventory; "
+            f"missing={missing[:20]} extra={extra[:20]}"
+        )
+
+    canonical = []
+    for meeting_id, live_row in live.items():
+        row = shard[meeting_id]
+        for key in ("term", "date", "source_id", "publication_status", "official_url"):
+            if row.get(key) != live_row.get(key):
+                raise ValueError(
+                    f"Initial shard stale for {meeting_id}: {key} "
+                    f"{row.get(key)!r} != {live_row.get(key)!r}"
+                )
+        path = row.get("path")
+        if not path or not (root / path).exists():
+            raise ValueError(f"Canonical meeting body missing: {meeting_id}")
+        canonical.append({**row, **live_row})
+
+    canonical.sort(key=lambda r: (r["date"], r["meeting_id"]))
+    save_json(root / "indexes/integrated/meetings.json", canonical)
+    history_path = root / "indexes/integrated/meeting_history.json"
+    if not history_path.exists():
+        save_json(history_path, [])
+
+    report = {
+        "checked_at": stamp,
+        "mode": "assemble-initial",
+        "listed": len(canonical),
+        "published": sum(r["publication_status"] == "published" for r in canonical),
+        "provisional": sum(r["publication_status"] == "provisional" for r in canonical),
+        "by_term": by_term,
+        "history_rows": len(_load_rows(history_path)),
+        "inventory_qa": inventory_qa,
+    }
+    save_json(root / "reports/integrated-sync.json", report)
+
+    import validate_archive
+    validate_archive.validate(root)
+    return report
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--mode",
-        choices=["inventory", "incremental", "full"],
+        choices=["inventory", "incremental", "full", "initial-term", "assemble-initial"],
         default="inventory",
     )
+    parser.add_argument("--term", type=int, choices=SUPPORTED_TERMS)
     args = parser.parse_args()
     if args.mode == "inventory":
         result = run_inventory_only()
+    elif args.mode == "initial-term":
+        if args.term is None:
+            parser.error("--term is required with --mode initial-term")
+        result = run_initial_term(args.term)
+    elif args.mode == "assemble-initial":
+        result = assemble_initial()
     else:
         result = run_sync(args.mode)
     print(json.dumps(result, ensure_ascii=False))
