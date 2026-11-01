@@ -13,4 +13,10 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 5
     steps:
-      - run: echo macos-runner-ok
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -u scripts/probe_official_source.py
