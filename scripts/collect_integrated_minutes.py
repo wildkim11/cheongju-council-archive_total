@@ -182,6 +182,128 @@ def inventory_by_term(today: str) -> list[dict]:
     return out
 
 
+def inventory_by_year(today: str) -> list[dict]:
+    """Read the official year tree for coverage cross-checking.
+
+    Year inventory rows intentionally do not receive a term here. Term assignment
+    comes only from the official generation/term inventory.
+    """
+    roots = _tree("Year", {"var10": "SvcMntsTreeYearGnrtn"})
+    current_year = int(today[:4])
+    selected = [
+        node for node in roots
+        if str(node.get("var01", "")).isdigit()
+        and 2014 <= int(node["var01"]) <= current_year
+    ]
+    if not selected:
+        raise ValueError("Empty official year roots")
+
+    out: list[dict] = []
+
+    def branch(node: dict, parent_text: str = "", depth: int = 0):
+        if depth > 8:
+            raise ValueError("Unexpected year-tree depth")
+        for child in _tree("Year", node):
+            title = (parent_text + " " + str(child.get("text", ""))).strip()
+            if child.get("var12"):
+                m = re.search(r"(20\d{2})\.(\d{2})\.(\d{2})", title)
+                if not m or not str(child["var12"]).isdigit():
+                    raise ValueError("Invalid year-inventory meeting metadata")
+                date = dt.date(*map(int, m.groups())).isoformat()
+                if date > today:
+                    continue
+                status = child.get("var09")
+                if status not in ("Y", "N"):
+                    raise ValueError("Unknown publication status")
+                committee_code = child.get("var02")
+                source_id = str(child["var12"])
+                out.append(
+                    {
+                        "source_id": source_id,
+                        "title": title,
+                        "date": date,
+                        "year": int(date[:4]),
+                        "committee_code": committee_code,
+                        "meeting_type": _meeting_type(title, committee_code),
+                        "publication_status": (
+                            "provisional" if status == "N" else "published"
+                        ),
+                        "official_url": (
+                            BASE
+                            + "/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn="
+                            + source_id
+                        ),
+                    }
+                )
+            else:
+                branch(child, title, depth + 1)
+
+    for root in selected:
+        branch(root, str(root.get("text", "")))
+
+    if not out:
+        raise ValueError("Empty official year inventory")
+    return out
+
+
+def merge_official_inventories(term_rows: list[dict], year_rows: list[dict]) -> tuple[list[dict], dict]:
+    """Cross-check both official inventories while keeping term inventory authoritative."""
+    term_map = {row["source_id"]: row for row in term_rows}
+    year_map = {row["source_id"]: row for row in year_rows}
+    if len(term_map) != len(term_rows):
+        raise ValueError("Duplicate source_id in official term inventory")
+    if len(year_map) != len(year_rows):
+        raise ValueError("Duplicate source_id in official year inventory")
+
+    shared = set(term_map) & set(year_map)
+    for source_id in shared:
+        a, b = term_map[source_id], year_map[source_id]
+        for key in ("date", "committee_code", "publication_status"):
+            if a.get(key) != b.get(key):
+                raise ValueError(
+                    f"Conflicting official inventories for {source_id}: {key}"
+                )
+
+    only_term = sorted(set(term_map) - set(year_map))
+    only_year = sorted(set(year_map) - set(term_map))
+
+    # A year-only row has no source-supported term assignment. Do not infer it.
+    if only_year:
+        raise ValueError(
+            "Year inventory contains rows absent from term inventory; "
+            "manual review required: " + ",".join(only_year[:50])
+        )
+
+    merged = []
+    for source_id, row in term_map.items():
+        merged.append(
+            {
+                **row,
+                "inventory_sources": (
+                    ["term", "year"] if source_id in year_map else ["term"]
+                ),
+            }
+        )
+    qa = {
+        "term_inventory_count": len(term_rows),
+        "year_inventory_count": len(year_rows),
+        "shared_count": len(shared),
+        "only_term": only_term,
+        "only_year": only_year,
+    }
+    return merged, qa
+
+
+def read_official_inventory(today: str) -> tuple[list[dict], dict]:
+    """Read both official trees concurrently and return cross-checked rows."""
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        term_future = pool.submit(inventory_by_term, today)
+        year_future = pool.submit(inventory_by_year, today)
+        term_rows = term_future.result()
+        year_rows = year_future.result()
+    return merge_official_inventories(term_rows, year_rows)
+
+
 class Plain(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -271,7 +393,7 @@ def write_record(root: Path, row: dict, body: str, now: str) -> dict:
 def run_inventory_only(root: Path = ROOT) -> dict:
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
     today = now.date().isoformat()
-    rows = inventory_by_term(today)
+    rows, inventory_qa = read_official_inventory(today)
     rows.sort(key=lambda r: (r["date"], r["meeting_id"]))
 
     counts = collections.Counter(str(r["term"]) for r in rows)
@@ -279,8 +401,10 @@ def run_inventory_only(root: Path = ROOT) -> dict:
         "checked_at": now.isoformat(),
         "council_scope": COUNCIL_SCOPE,
         "listed": len(rows),
+        "published": sum(r["publication_status"] == "published" for r in rows),
         "by_term": dict(counts),
         "provisional": sum(r["publication_status"] == "provisional" for r in rows),
+        "inventory_qa": inventory_qa,
     }
     save_json(root / "indexes/integrated/meeting_inventory.json", rows)
     save_json(root / "reports/integrated-inventory.json", report)
@@ -291,7 +415,7 @@ def run_full(root: Path = ROOT) -> dict:
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
     today = now.date().isoformat()
     stamp = now.isoformat()
-    rows = inventory_by_term(today)
+    rows, inventory_qa = read_official_inventory(today)
     rows.sort(key=lambda r: (r["date"], r["meeting_id"]))
 
     def download(row):
@@ -315,10 +439,14 @@ def run_full(root: Path = ROOT) -> dict:
         "checked_at": stamp,
         "council_scope": COUNCIL_SCOPE,
         "collected": len(output_rows),
+        "published": sum(
+            r["publication_status"] == "published" for r in output_rows
+        ),
         "by_term": dict(collections.Counter(str(r["term"]) for r in output_rows)),
         "provisional": sum(
             r["publication_status"] == "provisional" for r in output_rows
         ),
+        "inventory_qa": inventory_qa,
     }
     save_json(root / "reports/integrated-full.json", report)
     return report
