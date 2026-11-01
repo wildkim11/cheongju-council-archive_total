@@ -1,0 +1,65 @@
+name: One-time guarded source-backed bill proposer promotion
+
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/promote-verified-bill-rosters.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bill-proposer-promote-one-time
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source-backed proposer promotion tests
+        run: python -m unittest discover -s tests
+      - name: Guard Stage C source snapshot before promotion
+        run: python scripts/audit_stage_c.py --output reports/stage-c-pre-promotion-audit.json
+      - name: Promote only 17 evidence-complete bill rosters
+        run: python scripts/promote_verified_bill_rosters.py
+      - name: Validate canonical data and analyzer export after promotion
+        run: |
+          python scripts/validate_archive.py
+          python -m unittest discover -s tests
+          python scripts/audit_stage_c.py --output reports/stage-c-post-promotion-audit.json
+      - name: Upload source evidence and promotion QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bill-proposer-promotion-validation
+          path: |
+            reports/bill-minutes-proposer-evidence.json
+            reports/bill-minutes-promotion.json
+            reports/stage-c-pre-promotion-audit.json
+            reports/stage-c-post-promotion-audit.json
+          if-no-files-found: warn
+      - name: Publish validated source-backed bill data to dev branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive/bills/items.json archive/bills/proposer_memberships.json
+          git add reports/bill-data-audit.json reports/bill-proposer-identity-links.json
+          git add reports/bill-proposer-repair.json reports/bills.json
+          git add reports/bill-minutes-proposer-evidence.json reports/bill-minutes-promotion.json
+          git add exports/analyzer
+          if ! git diff --cached --quiet; then
+            git commit -m "data: source-verify 17 historical bill proposer rosters from official minutes"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
