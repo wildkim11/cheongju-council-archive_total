@@ -1,9 +1,6 @@
 name: Source smoke check
 
 on:
-  push:
-    branches:
-      - feature/archive-foundation
   workflow_dispatch:
 
 permissions:
