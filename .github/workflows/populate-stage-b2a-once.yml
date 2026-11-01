@@ -1,0 +1,51 @@
+name: One-time population stage B2a speeches questions
+
+on:
+  push:
+    branches:
+      - population-stage-b2a-trigger
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive-population-stage-b2a
+  cancel-in-progress: true
+
+jobs:
+  populate:
+    runs-on: macos-14
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test foundation before collection
+        run: python -m unittest discover -s tests
+      - name: Collect five-minute speeches
+        run: python -u scripts/collect_speeches_questions.py --kind five_minute
+      - name: Collect city questions
+        run: python -u scripts/collect_speeches_questions.py --kind city_question
+      - name: Collect written questions
+        run: python -u scripts/collect_written_questions.py
+      - name: Validate archive
+        run: |
+          python scripts/validate_archive.py
+          python -m unittest discover -s tests
+      - name: Build analyzer export
+        run: python scripts/export_analyzer.py
+      - name: Publish verified stage B2a data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive/activities reports exports/analyzer
+          if ! git diff --cached --quiet; then
+            git commit -m "data: populate archive stage B2a speeches questions"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
