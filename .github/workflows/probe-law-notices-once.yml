@@ -1,0 +1,33 @@
+name: One-time public law notice attachment investigation
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/probe-law-notices-once.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: public-law-notice-investigation
+  cancel-in-progress: true
+jobs:
+  probe:
+    runs-on: macos-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probe published official notice and one listed HWP original
+        run: python -u scripts/probe_official_law_notices.py
+      - name: Preserve isolated report and public attachment
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cheongju-bill-law-notice-source-evidence
+          path: |
+            reports/bill-law-notice-attachment-probe.json
+            reports/official-attachments-probe/
+          if-no-files-found: warn
