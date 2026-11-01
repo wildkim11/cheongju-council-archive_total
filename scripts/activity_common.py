@@ -7,6 +7,8 @@ from collect_current_members import fetch_text
 BASE="https://council.cheongju.go.kr"
 
 def visible_text(raw:str)->str:
+    raw=re.sub(r"<!--[\s\S]*?-->"," ",raw)
+    raw=raw.replace("-->"," ")
     raw=re.sub(r"<script\b[\s\S]*?</script>"," ",raw,flags=re.I)
     raw=re.sub(r"<style\b[\s\S]*?</style>"," ",raw,flags=re.I)
     raw=re.sub(r"<br\s*/?>","\n",raw,flags=re.I)
