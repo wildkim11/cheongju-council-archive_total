@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TemporalMembership",
+  "type": "object",
+  "required": [
+    "person_id",
+    "council_scope",
+    "term",
+    "membership_type",
+    "label",
+    "source_url"
+  ],
+  "properties": {
+    "person_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "council_scope": {
+      "enum": [
+        "cheongju_integrated",
+        "cheongju_old_city",
+        "cheongwon_old_county"
+      ]
+    },
+    "term": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "membership_type": {
+      "enum": [
+        "party",
+        "district",
+        "standing_committee",
+        "special_committee",
+        "research_group",
+        "council_office",
+        "committee_role"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "start_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "end_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "period_precision": {
+      "enum": [
+        "exact_date",
+        "date_range",
+        "term_half",
+        "term_only",
+        "unknown"
+      ]
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "checked_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
