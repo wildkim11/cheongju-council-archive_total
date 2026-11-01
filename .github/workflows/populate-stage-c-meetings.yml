@@ -1,0 +1,109 @@
+name: One-time population stage C meetings
+
+on:
+  push:
+    branches:
+      - population-stage-c-trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stage-c-meeting-population
+  cancel-in-progress: true
+
+jobs:
+  populate-meetings:
+    runs-on: macos-14
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate foundation before meeting population
+        run: |
+          python -m unittest discover -s tests
+          python scripts/validate_archive.py
+
+      - name: Require populated Stage A/B source facts
+        run: |
+          test -s archive/people/people.json
+          test -s archive/bills/items.json
+          test -s archive/activities/five_minute_speeches.json
+
+      - name: Populate term 1 meeting shard
+        run: python -u scripts/collect_integrated_minutes.py --mode initial-term --term 1
+      - name: Publish term 1 checkpoint
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add archive/meetings indexes/integrated/initial_term_1.json reports/integrated-initial-term-1.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: populate integrated meeting shard term 1"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+
+      - name: Populate term 2 meeting shard
+        run: python -u scripts/collect_integrated_minutes.py --mode initial-term --term 2
+      - name: Publish term 2 checkpoint
+        run: |
+          git add archive/meetings indexes/integrated/initial_term_2.json reports/integrated-initial-term-2.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: populate integrated meeting shard term 2"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+
+      - name: Populate term 3 meeting shard
+        run: python -u scripts/collect_integrated_minutes.py --mode initial-term --term 3
+      - name: Publish term 3 checkpoint
+        run: |
+          git add archive/meetings indexes/integrated/initial_term_3.json reports/integrated-initial-term-3.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: populate integrated meeting shard term 3"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+
+      - name: Populate term 4 meeting shard
+        run: python -u scripts/collect_integrated_minutes.py --mode initial-term --term 4
+      - name: Publish term 4 checkpoint
+        run: |
+          git add archive/meetings indexes/integrated/initial_term_4.json reports/integrated-initial-term-4.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: populate integrated meeting shard term 4"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+
+      - name: Assemble canonical meeting index
+        run: python -u scripts/collect_integrated_minutes.py --mode assemble-initial
+
+      - name: Final Stage C validation
+        run: |
+          python scripts/validate_archive.py
+          python -m unittest discover -s tests
+
+      - name: Build analyzer export with meetings
+        run: python scripts/export_analyzer.py
+
+      - name: Publish canonical Stage C meeting archive
+        run: |
+          git add archive/meetings indexes/integrated reports/integrated-sync.json exports/analyzer
+          if ! git diff --cached --quiet; then
+            git commit -m "data: assemble integrated meeting archive stage C"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
