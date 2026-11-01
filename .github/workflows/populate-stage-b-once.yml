@@ -1,6 +1,9 @@
 name: One-time population stage B
 
 on:
+  push:
+    branches:
+      - population-stage-b-trigger
   workflow_dispatch:
 
 permissions:
