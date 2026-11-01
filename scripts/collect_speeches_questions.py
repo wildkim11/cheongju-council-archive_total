@@ -27,7 +27,7 @@ CONFIG={
 def _detail_section(text:str,label:str)->str:
     s=section_after_label(text,label)
     cuts=[]
-    for pattern in (r"(?:^|\\n)\\s*목록\\s*(?:\\n|$)",r"\n\s*전체\s+\d+\s*,\s*\d+/\d+\s*페이지"):
+    for pattern in (r"(?:^|\n)\s*목록\s*(?:\n|$)",r"\n\s*전체\s+\d+\s*,\s*\d+/\d+\s*페이지"):
         m=re.search(pattern,s)
         if m: cuts.append(m.start())
     if cuts: s=s[:min(cuts)].strip()
