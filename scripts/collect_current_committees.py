@@ -63,9 +63,10 @@ def discover_committees(html:str)->list[dict]:
     return sorted(found.values(),key=lambda r:r["committee_name"])
 
 def committee_type(name:str)->str:
-    if "특별위원회" in name:
+    compact=re.sub(r"\s+","",name)
+    if "특별위원회" in compact:
         return "special_committee"
-    if "인사청문" in name:
+    if "인사청문" in compact:
         return "other_committee"
     return "standing_committee"
 
