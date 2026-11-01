@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: archive-population-stage-b2
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   populate:
@@ -33,6 +33,7 @@ jobs:
           test -s archive/people/history/cheongju_integrated_people.json
           test -s archive/committees/current_memberships.json
           test -s archive/research_groups/current_memberships.json
+
       - name: Collect official bills and resolutions
         run: python -u scripts/collect_bills.py
       - name: Link bill proposer names to term-scoped people
@@ -45,6 +46,25 @@ jobs:
         run: python -u scripts/collect_written_questions.py
       - name: Collect suggestions and resolutions
         run: python -u scripts/collect_board_activities.py --kind suggestion_resolution
+
+      - name: Validate stage B core
+        run: |
+          python scripts/validate_archive.py
+          python -m unittest discover -s tests
+      - name: Build analyzer export after stage B core
+        run: python scripts/export_analyzer.py
+      - name: Publish verified stage B core
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive reports exports
+          if ! git diff --cached --quiet; then
+            git commit -m "data: populate archive stage B core"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+
       - name: Collect official press releases
         run: python -u scripts/collect_board_activities.py --kind press
       - name: Collect debates
@@ -53,19 +73,19 @@ jobs:
         run: python -u scripts/collect_photo_activity.py
       - name: Rebuild identity candidates
         run: python -u scripts/build_identity_candidates.py
-      - name: Validate archive
+      - name: Validate stage B media
         run: |
           python scripts/validate_archive.py
           python -m unittest discover -s tests
-      - name: Build analyzer export
+      - name: Build final analyzer export for stage B
         run: python scripts/export_analyzer.py
-      - name: Publish verified stage B data
+      - name: Publish verified stage B media
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add archive reports exports
           if ! git diff --cached --quiet; then
-            git commit -m "data: populate archive stage B"
+            git commit -m "data: populate archive stage B media"
             git fetch origin feature/archive-foundation
             git rebase origin/feature/archive-foundation
             git push origin HEAD:feature/archive-foundation
