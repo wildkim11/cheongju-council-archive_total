@@ -1,2 +1,2 @@
 triggered_at: 2026-11-01
-purpose: run stage B after successful stage A population
+purpose: rerun stage B after bill TLS pacing and proposer-parser fixes
