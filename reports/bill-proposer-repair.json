@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-01T22:07:14.762109+09:00",
+  "checked_at": "2026-11-01T22:10:40.540657+09:00",
   "bill_records": 3394,
   "member_bills": 893,
   "nonmember_bills": 2501,
   "member_bills_with_names": 868,
   "member_bills_without_names": 25,
-  "nonmember_names_cleared": 2501,
+  "nonmember_names_cleared": 0,
   "representative_rows": 875,
   "co_proposer_rows": 10239,
   "unknown_proposer_type_rows": 0,
