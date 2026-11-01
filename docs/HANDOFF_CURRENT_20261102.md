@@ -1,0 +1,65 @@
+# 청주시의회 통합 아카이브 — 새 채팅 인수인계 (2026-11-02)
+
+## 0. 이 문서의 지위
+- 새 채팅에서 작업을 재개할 때 **GitHub 실제 데이터·코드·리포트와 대조한 인수인계 기준점**이다.
+- 조사 기준 시각: 2026-11-02 (KST). 시작 기준 개발 브랜치 commit: `6bebd763762629efa0e6a951da898082a0be2989` (`data: assemble integrated meeting archive stage C`).
+- 저장소: `wildkim11/cheongju-council-archive_total`
+- 작업 브랜치: `feature/archive-foundation` / 보존할 기본 브랜치: `main` (확인 당시 초기 커밋 `54e8cd0...`).
+- 다른 저장소 `wildkim11/cheongju-council-minutes`는 **건드리지 않는다**.
+- 본 아카이브는 공식 자료의 원본 사실·버전·출처 보존을 담당한다. 평가, 의원 순위, Q코드, 이벤트 분류, P1~P7 등 분석적 판단은 별도 의정분석기에서 처리한다.
+
+## 1. 필수 원칙
+1. 기존 수집물·원본·해시·출처 링크·이력·임시본을 삭제, 초기화, 덮어쓰기하지 않는다. 정식본으로 대체되는 임시본은 `superseded`로 보존한다.
+2. 회의록 상태값: `provisional`, `published`, `superseded`. 공식 회기·대수 목록이 대수 귀속의 기준이며 연도만으로 대수를 추정하지 않는다.
+3. 의원 신원은 대수별 공식 식별자와 증빙을 사용한다. 같은 이름만으로 서로 다른 대수·기관의 인물을 자동 병합하지 않는다. `identity_candidates`는 판단 후보이며 자동 승격하지 않는다.
+4. 현직 명부에 없다는 이유만으로 사퇴·교체 전 위원회 재임 이력을 삭제하지 않는다.
+5. 인물 사진은 공식 출처의 대표사진 1장 원칙. 대용량 PDF/HWP·첨부 및 포토의정 사진은 우선 링크·메타데이터만 저장한다.
+6. 정기 자동수집은 아직 비활성 상태. 검증 뒤 가동 여부 결정. 공식 서버 실수집에서는 macOS 러너가 검증되어 있으며 Ubuntu는 타임아웃 이력이 있다.
+
+## 2. 2026-11-02 실제 확인된 상태
+### Stage A: PASS
+- 분석기 export 최신 manifest 기준: 의원 원천 행 `people=435`, `tenures=435`, 위원회 상태 26, 위원회 소속 207, 연구단체 5, 연구단체 참여 65, 정당 소속 44, 지역구 소속 167.
+- 원래 Stage A 집계는 people/tenures 434였으나, **후속 Stage B/C export manifest는 435**다. 최신 지표를 기준으로 하며 증가 1건의 출처는 후속 QA에서 확인한다.
+
+### Stage B: PASS
+- 의안/결의 3,394건 (1대 1,098 / 2대 1,020 / 3대 1,141 / 4대 135).
+- 발의자 관계 11,158행, 동일 대수 정확 일치 11,158, unresolved 0, ambiguous 0.
+- 의원발의 893건 중 25건은 의안 상세의 발의자 명단이 부족해 **회의록 기반 fallback 검증 필요**. 이름을 추정해 채우지 않는다.
+- 5분발언 606, 시정질문 85, 서면질문 16, 건의·결의 게시판 72, 보도자료 914, 토론회 20, 포토의정 메타데이터 6,606.
+- 보도자료 1건은 본문 미노출 상태로 출처·제목·날짜만 보존. 포토의정 바이너리 일괄 미러링은 하지 않음.
+
+### Stage C: 회의록 초기 수집·정규 인덱스 생성 확인
+- 공식 대수 목록 2,339건: 통합 1대 663 / 2대 771 / 3대 855 / 4대 50.
+- `published=2,333`, `provisional=6`.
+- 개별 대수별 `bodies_checked` 합계 2,339; `archive/meetings/cheongju_integrated/term-*/`에 개별 MD 원문 파일이 있으며 `indexes/integrated/meetings.json`와 `exports/analyzer/meetings.jsonl` 생성됨.
+- Stage C 조립 리포트: `reports/integrated-sync.json`, `history_rows=0` (초기 집합).
+- 연도별 목록은 2,326건으로, 대수별 목록 2,339건보다 **13건 적음**. 대수 목록에만 있는 ID: 1212, 1573, 180, 1848, 1900, 2257, 2258, 2659, 2951, 3315, 3652, 508, 896. 이를 곧바로 수집 누락으로 간주하지 말고 각 공식 목록의 기준 차이를 검증한다.
+- CI의 본문 확인 완료는 ‘비어 있지 않고 정상 파싱됨’의 전수 인증과 구별한다. 후속 품질감사 필요.
+
+### 배포/운영
+- `feature/archive-foundation`에 Stage A/B/C 데이터가 저장되어 있음.
+- `main` 병합하지 않았고 정기 스케줄 가동하지 않음.
+- 저장소 크기는 GitHub 저장소 조회값 `size=98768`(KB 단위의 GitHub 보고값, 약 96.5 MiB)로 관측; 이 수치는 전체 Git 객체/실제 결제·용량 한도에 대한 결론이 아니다.
+
+## 3. 즉시 이어갈 작업 (우선순위)
+1. **Stage C 전수 검증 보고서**: 공식 2,339개 대수목록 ↔ 개별 `minutes-*.md` ↔ canonical index ↔ analyzer JSONL 간 ID·대수·공개상태·본문 길이·출처·해시를 1:1 대조한다. 중복 파일, 빈 본문, 파서 오류, 인덱스/파일 수 불일치, SHA-256 불일치, provisional/superseded 처리 등을 별도 원장으로 기록한다.
+2. 공식 연도별 목록과 대수별 목록의 차이 13건의 원인을 증빙 가능한 자료로 분류한다. 대수 귀속은 공식 대수별 목록 우선.
+3. 25건 의안 발의자 fallback 대조: 공식 회의록에서 발의자 목록이 실제로 확인되는 것만 링크하고 증빙 없는 동일이름 추론 금지.
+4. Stage A `435 vs 434`의 1건 증가 사유 추적. 정당·재임 이력의 시간 정합성 및 사퇴 전 상태 보존 점검.
+5. 검사 통과 후에만 **증분 수집·개정이력 추적·스케줄 가동** 설계 및 시험. 먼저 수동·격리 브랜치에서 테스트하며 기존 데이터와 `main`에 영향 없게 한다.
+6. source-only JSONL을 기존 의정분석기로 연결할 때 원본 아카이브에서 평가 지표를 생성하지 않는다.
+
+## 4. 읽을 파일 순서
+1. `docs/FOUNDATION_STATUS_20261101.md` — Stage A/B 및 소스별 검증 기록
+2. `reports/integrated-initial-term-{1,2,3,4}.json` — 회의록 원천 단계
+3. `reports/integrated-sync.json` — 회의록 초기 통합과 13건 목록 차이
+4. `indexes/integrated/meetings.json` + `archive/meetings/cheongju_integrated/` — 회의록 실제 자료
+5. `exports/analyzer/manifest.json` + `exports/analyzer/meetings.jsonl` — downstream export
+6. `reports/bill-proposer-repair.json` + `reports/bill-proposer-identity-links.json` — 25건 fallback 과제
+7. `.github/workflows/populate-stage-c-meetings.yml`, `scripts/collect_integrated_minutes.py`, `scripts/validate_archive.py` — 수집·검증 코드
+
+## 5. 상태 구분 주의
+- ‘파일 생성 확인’, ‘리포트 수치 확인’, ‘본문 전수 품질검증 PASS’, ‘자동수집 운영 시작’은 서로 다른 단계다.
+- **확인됨**: 개발 브랜치 원천·인덱스·export 존재 및 수치 일치, Stage C 데이터 publish 커밋.
+- **미확인/후속**: 파일 단위 전수 해시 검증, 본문 품질 QA 상세, 13건 공식 목록 차이 원인, 25건 발의자 보완, 증분수집 운영 인증.
+- 이 문서 작성만으로 자동수집이나 QA가 완료되었다고 주장하지 않는다.
