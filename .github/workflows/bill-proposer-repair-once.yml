@@ -1,0 +1,49 @@
+name: One-time bill proposer repair
+
+on:
+  push:
+    branches:
+      - bill-proposer-repair-trigger
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive-bill-proposer-repair
+  cancel-in-progress: true
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test repair logic
+        run: python -m unittest discover -s tests
+      - name: Repair proposer arrays offline
+        run: python scripts/repair_bill_proposer_rosters.py
+      - name: Rebuild proposer identity links
+        run: python scripts/link_bill_proposers.py
+      - name: Audit repaired bill data
+        run: python scripts/audit_bill_archive.py
+      - name: Validate archive
+        run: python scripts/validate_archive.py
+      - name: Rebuild analyzer export
+        run: python scripts/export_analyzer.py
+      - name: Publish repaired bill data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive/bills reports exports/analyzer
+          if ! git diff --cached --quiet; then
+            git commit -m "fix: repair populated bill proposer rosters"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
