@@ -1,0 +1,44 @@
+import sys,unittest
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
+import collect_integrated_historical_members as h
+
+class IntegratedHistoricalMemberTests(unittest.TestCase):
+    def test_hidden_field(self):
+        html='<input type="hidden" name="CSRFToken" value="abc123">'
+        self.assertEqual(h._hidden(html,"CSRFToken"),"abc123")
+
+    def test_parse_roster_and_exact_term(self):
+        html="""
+        <ul>
+          <li>
+            <a href="/memberHome/content/profile.html?f_code=2060">
+              <img src="/upload/member/a.jpg" alt="임은성 의원">
+              임은성 (2대:라 선거구 )
+            </a>
+          </li>
+          <li>한병수 (3대: ) 임기:2022. 7.1 ~ 2023. 2.2.</li>
+        </ul>
+        """
+        rows=h.parse_term_members(html,2)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]["name"],"임은성")
+        self.assertEqual(rows[0]["district"],"라 선거구")
+        self.assertEqual(rows[0]["official_profile_code"],"2060")
+
+        rows3=h.parse_term_members(html,3)
+        self.assertEqual(rows3[0]["start_date"],"2022-07-01")
+        self.assertEqual(rows3[0]["end_date"],"2023-02-02")
+
+    def test_official_code_connects_terms(self):
+        a={"term":1,"name":"홍길동","district":"가 선거구","portrait_source_url":None,"official_profile_code":"123"}
+        b={"term":2,"name":"홍길동","district":"나 선거구","portrait_source_url":None,"official_profile_code":"123"}
+        self.assertEqual(h.person_id(a),h.person_id(b))
+
+    def test_no_code_does_not_merge_same_name_across_terms(self):
+        a={"term":1,"name":"홍길동","district":"가 선거구","portrait_source_url":None,"official_profile_code":None}
+        b={"term":2,"name":"홍길동","district":"가 선거구","portrait_source_url":None,"official_profile_code":None}
+        self.assertNotEqual(h.person_id(a),h.person_id(b))
+
+if __name__=="__main__":
+    unittest.main()
