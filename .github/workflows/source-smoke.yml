@@ -1,16 +1,45 @@
 name: Source smoke check
 
 on:
-  push:
-    branches:
-      - feature/archive-foundation
   workflow_dispatch:
+    inputs:
+      probe:
+        description: 'manual live-source probe'
+        type: choice
+        default: bill-detail
+        options:
+          - bill-detail
+          - integrated-root
+          - historical-committee-discovery
 
 permissions:
   contents: read
 
 jobs:
+  bill-detail:
+    if: ${{ inputs.probe == 'bill-detail' }}
+    runs-on: macos-14
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -u scripts/probe_bill_source.py
+
+  integrated-root:
+    if: ${{ inputs.probe == 'integrated-root' }}
+    runs-on: macos-14
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -u scripts/probe_official_source.py
+
   historical-committee-discovery:
+    if: ${{ inputs.probe == 'historical-committee-discovery' }}
     runs-on: macos-14
     timeout-minutes: 10
     steps:
@@ -18,7 +47,4 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Discover historical committee source candidates
-        run: python -u scripts/discover_historical_committee_sources.py --max-pages 10
-      - name: Show report
-        run: cat reports/historical-committee-source-candidates.json
+      - run: python -u scripts/discover_historical_committee_sources.py --max-pages 10
