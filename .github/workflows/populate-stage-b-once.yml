@@ -29,9 +29,9 @@ jobs:
           test -s archive/people/history/cheongju_integrated_people.json
           test -s archive/committees/current_memberships.json
           test -s archive/research_groups/current_memberships.json
+          test -s archive/people/history/cheongju_integrated_term4_departed_people.json
+          test -s archive/people/history/cheongju_integrated_term4_departed_tenures.json
 
-      - name: Collect term-4 historical-only member delta
-        run: python -u scripts/collect_term4_departed_members.py
       - name: Validate person references before stage B
         run: python scripts/validate_archive.py
 
