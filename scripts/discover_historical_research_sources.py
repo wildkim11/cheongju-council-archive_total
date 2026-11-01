@@ -54,23 +54,16 @@ def discover(max_pages:int=30,root:Path=ROOT)->dict:
     pages_checked={}
     for family,base in (("notice",NOTICE),("research_report",REPORT)):
         pages_checked[family]=0
+        # Candidate-free pages do not imply the board has ended; composition
+        # notices may be many pages behind current notices. Scan the requested
+        # range completely and let the caller choose max_pages.
         for page in range(1,max_pages+1):
             sep="&" if "?" in base else "?"
             url=f"{base}{sep}page={page}"
-            html=fetch_text(url);pages_checked[family]+=1
-            rows=parse_candidates(html,base)
-            for row in rows:
+            html=fetch_text(url)
+            pages_checked[family]+=1
+            for row in parse_candidates(html,base):
                 found[(row["source_family"],row["fidx"])]=row
-            # Stop conservatively after two consecutive empty pages beyond page 2.
-            if page>2 and not rows:
-                next_html=fetch_text(f"{base}{sep}page={page+1}")
-                pages_checked[family]+=1
-                next_rows=parse_candidates(next_html,base)
-                for row in next_rows:
-                    found[(row["source_family"],row["fidx"])]=row
-                if not next_rows:
-                    break
-                page+=1
     rows=sorted(found.values(),key=lambda r:((r.get("year") or 0),r["source_family"],r["fidx"]))
     report={
         "checked_at":stamp,
