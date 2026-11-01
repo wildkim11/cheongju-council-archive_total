@@ -124,24 +124,36 @@ def parse_rosters(html:str)->list[dict]:
     return list(dedup.values())
 
 def _identity_map(term:int)->dict[str,str]:
+    """Resolve names against a term-scoped roster, not today's active roster.
+
+    For term 4, the official historical roster search is preferred because a
+    member may have resigned after participating in an earlier committee state.
+    The current roster is used only as a corroborating fallback.
+    """
     by_name={}
+
+    if term in HISTORICAL_TERMS or term==CURRENT_TERM:
+        session=Session()
+        historical_rows=parse_term_members(fetch_term_html(term,session),term)
+        for row in historical_rows:
+            name=row["name"]
+            pid=historical_person_id(row)
+            if name in by_name and by_name[name]!=pid:
+                raise ValueError(f"Ambiguous historical name in term {term}: {name}")
+            by_name[name]=pid
+
     if term==CURRENT_TERM:
         for row in parse_member_index(fetch_text(LIST_URL)):
-            if row["name"] in by_name:
-                raise ValueError(f"Duplicate current name: {row['name']}")
-            by_name[row["name"]]=stable_person_id(row["f_code"])
-        return by_name
+            name=row["name"]
+            current_pid=stable_person_id(row["f_code"])
+            # Current f_code is stronger for an active member, but do not erase
+            # historical-only members who have since left office.
+            by_name[name]=current_pid
 
-    if term not in HISTORICAL_TERMS:
-        raise ValueError(f"Unsupported integrated term identity scope: {term}")
-    session=Session()
-    for row in parse_term_members(fetch_term_html(term,session),term):
-        name=row["name"]
-        pid=historical_person_id(row)
-        if name in by_name and by_name[name]!=pid:
-            raise ValueError(f"Ambiguous historical name in term {term}: {name}")
-        by_name[name]=pid
+    if not by_name:
+        raise ValueError(f"No official term roster available for term {term}")
     return by_name
+
 
 def _source_period(source:dict,committee_name:str)->tuple[str|None,str|None,str]:
     periods=source.get("committee_periods") or {}
