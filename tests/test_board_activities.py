@@ -21,6 +21,28 @@ class BoardActivityTests(unittest.TestCase):
         self.assertEqual(out["date"],"2026-10-15")
         self.assertTrue(out["attachments"])
         self.assertIn("정책 기반",out["body_text"])
+        self.assertEqual(out["body_status"],"present")
+
+    def test_press_allows_missing_visible_body_but_marks_status(self):
+        html="""
+        <div>보도자료</div><h3>과거 보도자료</h3>
+        <div>청주시의회</div><div>2016-07-01</div><div>조회수 3</div>
+        <div>목록</div>
+        """
+        row={"source_id":"10117","official_url":"https://example/bodo.html?fidx=10117"}
+        out=c.parse_detail(html,row,c.CONFIG["press"])
+        self.assertIsNone(out["body_text"])
+        self.assertEqual(out["body_status"],"missing_visible_body")
+
+    def test_suggestion_still_requires_visible_body(self):
+        html="""
+        <div>건의/결의문</div><h3>시험 건의문</h3>
+        <div>청주시의회</div><div>2026-10-01</div><div>조회수 1</div>
+        <div>목록</div>
+        """
+        row={"source_id":"1","official_url":"https://example/suggestion.html?fidx=1"}
+        with self.assertRaises(ValueError):
+            c.parse_detail(html,row,c.CONFIG["suggestion_resolution"])
 
     def test_debate_allows_metadata_only(self):
         html="""
