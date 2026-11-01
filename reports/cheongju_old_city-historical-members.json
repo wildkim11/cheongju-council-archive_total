@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-11-01T21:21:42.828367+09:00",
+  "council_scope": "cheongju_old_city",
+  "terms": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "people_candidate_rows": 187,
+  "tenure_rows": 187,
+  "represented_area_rows": 187,
+  "by_term": {
+    "4": 36,
+    "5": 42,
+    "6": 28,
+    "7": 28,
+    "8": 26,
+    "9": 27
+  },
+  "identity_policy": "candidate_unmerged_until_evidence"
+}

@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-01T21:25:44.424018+09:00",
+  "promoted_sources": 3,
+  "committee_states": 16,
+  "membership_rows": 126,
+  "skipped_sources": [
+    {
+      "source_id": "committee-standing-t1-latter-20160705",
+      "source_status": "registered_needs_live_table_verification",
+      "reason": "not_promotable_full_roster"
+    },
+    {
+      "source_id": "committee-budget-t3-final-20250630",
+      "source_status": "registered_partial_text_needs_full_roster_source",
+      "reason": "not_promotable_full_roster"
+    }
+  ],
+  "by_term": {
+    "3": 9,
+    "4": 7
+  }
+}

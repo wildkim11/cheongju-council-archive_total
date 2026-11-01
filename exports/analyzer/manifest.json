@@ -1,0 +1,121 @@
+{
+  "schema": "cheongju-council-archive-analyzer-export/0.1",
+  "generated_at": "2026-11-01T21:25:58.181406+09:00",
+  "datasets": {
+    "people": {
+      "rows": 434,
+      "path": "exports/analyzer/people.jsonl",
+      "sha256": "80be0aaa6459d9b9699e5b331c77dda3190865647f9f429bb58271185ce6a37f"
+    },
+    "tenures": {
+      "rows": 434,
+      "path": "exports/analyzer/tenures.jsonl",
+      "sha256": "dd6021d6571abee9194c3caf72ed8ad593c1acf62c5cbfb932ca93068a1488ca"
+    },
+    "party_memberships": {
+      "rows": 44,
+      "path": "exports/analyzer/party_memberships.jsonl",
+      "sha256": "035f3d0419ebc7e8dc64ad470d9544f0f7dec8c1d87abc9ed90dce5274e2847b"
+    },
+    "district_memberships": {
+      "rows": 166,
+      "path": "exports/analyzer/district_memberships.jsonl",
+      "sha256": "ff7d6480b00015451436eaf447eeaeb44c53667cbc9d200698b9a099dce80a7a"
+    },
+    "represented_areas": {
+      "rows": 187,
+      "path": "exports/analyzer/represented_areas.jsonl",
+      "sha256": "eaae5962fa11b362707980ad13e7bf8c03941966030c6dcec2f21bc674bfdab7"
+    },
+    "committee_memberships": {
+      "rows": 207,
+      "path": "exports/analyzer/committee_memberships.jsonl",
+      "sha256": "4f9de60e38566c410ec3ac4ceb4b6b870923a797097aeaee95f346e8343d8159"
+    },
+    "committee_states": {
+      "rows": 26,
+      "path": "exports/analyzer/committee_states.jsonl",
+      "sha256": "36ebc52886ad8d90934a41fa1ffba57289c9ffcb482e109353abe0c93345519d"
+    },
+    "research_groups": {
+      "rows": 5,
+      "path": "exports/analyzer/research_groups.jsonl",
+      "sha256": "d8f1e2c9c88df02f1734c0c07ae013d12e1fdbca92e51fadf7ea5f98085073e0"
+    },
+    "research_group_memberships": {
+      "rows": 65,
+      "path": "exports/analyzer/research_group_memberships.jsonl",
+      "sha256": "548ab656ad4ebc317044fb1bfddc40184445f026eb3e449a4261c2c22e4caaa6"
+    },
+    "research_source_pages": {
+      "rows": 6,
+      "path": "exports/analyzer/research_source_pages.jsonl",
+      "sha256": "c7df23e2f97868d40cb4ea6b50c88ef69e5d7bb33cf1bb60074bf4371da695ce"
+    },
+    "research_attachments": {
+      "rows": 26,
+      "path": "exports/analyzer/research_attachments.jsonl",
+      "sha256": "463e48629b996493688793d67b34428b6bd750c4d2e7c6488f8109ba4cf954a3"
+    },
+    "five_minute_speeches": {
+      "rows": 0,
+      "path": "exports/analyzer/five_minute_speeches.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "city_questions": {
+      "rows": 0,
+      "path": "exports/analyzer/city_questions.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "written_questions": {
+      "rows": 0,
+      "path": "exports/analyzer/written_questions.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "suggestions_resolutions": {
+      "rows": 0,
+      "path": "exports/analyzer/suggestions_resolutions.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "press": {
+      "rows": 0,
+      "path": "exports/analyzer/press.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "debates": {
+      "rows": 0,
+      "path": "exports/analyzer/debates.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "photo_activity": {
+      "rows": 0,
+      "path": "exports/analyzer/photo_activity.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bills": {
+      "rows": 0,
+      "path": "exports/analyzer/bills.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bill_proposers": {
+      "rows": 0,
+      "path": "exports/analyzer/bill_proposers.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "meetings": {
+      "rows": 0,
+      "path": "exports/analyzer/meetings.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "identity_candidates": {
+      "rows": 115,
+      "path": "exports/analyzer/identity_candidates.jsonl",
+      "sha256": "328ec9fc19ad285ef5523c4a5823691f338a65adf46e5f52c2b69ab27e55f302"
+    }
+  },
+  "principles": {
+    "source_facts_only": true,
+    "analysis_judgments_included": false,
+    "identity_candidates_non_promoting": true
+  }
+}

@@ -1,0 +1,1442 @@
+[
+  {
+    "person_id": "person-candidate-d8d198056f3768a3",
+    "identity_status": "candidate_unmerged",
+    "name": "곽근완",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_01.jpg",
+      "local_path": "archive/people/portraits/person-candidate-d8d198056f3768a3.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "2a6482b841bc58fb71638525068889c8f850db4c9a3d3149df496385392bb919"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-e4a3cb30d4bcbdb6",
+    "identity_status": "candidate_unmerged",
+    "name": "권오직",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_02.jpg",
+      "local_path": "archive/people/portraits/person-candidate-e4a3cb30d4bcbdb6.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "437b4900b8cba292302688e1af4c1ee5a8fc69b37c9e8ccb1c9e8d5d0b107dff"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-b0ffd2d26c506a21",
+    "identity_status": "candidate_unmerged",
+    "name": "김병국",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_03.jpg",
+      "local_path": "archive/people/portraits/person-candidate-b0ffd2d26c506a21.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "c4d90e2d50057ad6b3f83ccff5eb2eecc0f1862d51f9b66306899c2b3197b979"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-950392201615712e",
+    "identity_status": "candidate_unmerged",
+    "name": "김신환",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_04.jpg",
+      "local_path": "archive/people/portraits/person-candidate-950392201615712e.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "0561516412608e60ee78b5c4b956722ac40bea673ddc5d635f170398343917ba"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-2467835af4d3dcaf",
+    "identity_status": "candidate_unmerged",
+    "name": "김용구",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_05.jpg",
+      "local_path": "archive/people/portraits/person-candidate-2467835af4d3dcaf.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "aa34c37efcf5e9f4d4f6fbb967a7f1e6834f0483245cc3022f88c6aeef8c46ad"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-1561f0bfab04c7ba",
+    "identity_status": "candidate_unmerged",
+    "name": "배금일",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_06.jpg",
+      "local_path": "archive/people/portraits/person-candidate-1561f0bfab04c7ba.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "60918d7a8427932cfde066578c92950515049e16eb65bc299e6ea9d9717b747a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-655853a4b4f5c4b5",
+    "identity_status": "candidate_unmerged",
+    "name": "신원식",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_07.jpg",
+      "local_path": "archive/people/portraits/person-candidate-655853a4b4f5c4b5.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "65d8e6cb66122b572f3f16f14ed8d3b6206cfffe61c76b0fd0f2936f8704e9be"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-9c74e82d40d20751",
+    "identity_status": "candidate_unmerged",
+    "name": "오성진",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_08.jpg",
+      "local_path": "archive/people/portraits/person-candidate-9c74e82d40d20751.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "2c0bcb3d94f1f7cafa83e799ccf38f16f4df7536d690442dc14d2b2acf842cc5"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-0ea4a9965afb22bb",
+    "identity_status": "candidate_unmerged",
+    "name": "유호봉",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_09.jpg",
+      "local_path": "archive/people/portraits/person-candidate-0ea4a9965afb22bb.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "62cfdaa6f9148bb0e39491d0a3da44ab9b07da532976f3a35142a287685d2573"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-36f0110a6d93ccb0",
+    "identity_status": "candidate_unmerged",
+    "name": "이상율",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_10.jpg",
+      "local_path": "archive/people/portraits/person-candidate-36f0110a6d93ccb0.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "13d9f7ef10202a6a883e1fa5f4ac01c770e8ce0ce43355af5c228295c2ab1bd7"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-1baabaaa1ad491bf",
+    "identity_status": "candidate_unmerged",
+    "name": "이수천",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_11.jpg",
+      "local_path": "archive/people/portraits/person-candidate-1baabaaa1ad491bf.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "4ead3374e30bcf56497b899e2acf64bd0315a9e5f0c44261b7d9e35efd1b6f91"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-63a2e9ffaa794467",
+    "identity_status": "candidate_unmerged",
+    "name": "이용오",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_12.jpg",
+      "local_path": "archive/people/portraits/person-candidate-63a2e9ffaa794467.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "078c2ebfc5b6d7f01f5d1f832913fdc7e1beb7b1e8419ce9f2acad7b784cad0a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-5ec7b34d3c725ec1",
+    "identity_status": "candidate_unmerged",
+    "name": "장원재",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_13.jpg",
+      "local_path": "archive/people/portraits/person-candidate-5ec7b34d3c725ec1.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "46aae636da947d5f15309a3876879c3f566b44543fd8863d68580c8ea0f01937"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-caf787019b2d7294",
+    "identity_status": "candidate_unmerged",
+    "name": "조영근",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_14.jpg",
+      "local_path": "archive/people/portraits/person-candidate-caf787019b2d7294.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "6fd118caf61a65815ae397e07027b61d9dabf1c514c246ff9d9d83c9196dc230"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-2cbb09685b46e7be",
+    "identity_status": "candidate_unmerged",
+    "name": "한창동",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_01_15.jpg",
+      "local_path": "archive/people/portraits/person-candidate-2cbb09685b46e7be.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "42ee6ff3a2d134e367df03de8ae78987fd4371fe31d73eec6c87bc119e5a17ab"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-b7c28c30ffd00ce3",
+    "identity_status": "candidate_unmerged",
+    "name": "곽근완",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_01.jpg",
+      "local_path": "archive/people/portraits/person-candidate-b7c28c30ffd00ce3.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "2a6482b841bc58fb71638525068889c8f850db4c9a3d3149df496385392bb919"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-69ac526c8146ae13",
+    "identity_status": "candidate_unmerged",
+    "name": "김병국",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_02.jpg",
+      "local_path": "archive/people/portraits/person-candidate-69ac526c8146ae13.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "c4d90e2d50057ad6b3f83ccff5eb2eecc0f1862d51f9b66306899c2b3197b979"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-58d26aa2526813aa",
+    "identity_status": "candidate_unmerged",
+    "name": "류장규",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_03.jpg",
+      "local_path": "archive/people/portraits/person-candidate-58d26aa2526813aa.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "fc0da403b28dc8e8c7c62c5488792e3faa761dd61e94eda531cc3c0c28ee91fd"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-0e7d5e8e5bc6f3ab",
+    "identity_status": "candidate_unmerged",
+    "name": "박종수",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_04.jpg",
+      "local_path": "archive/people/portraits/person-candidate-0e7d5e8e5bc6f3ab.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "81874c026629952671439ece3b63264baace9d9d04d360a84d42b41b84731b3b"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-bf6ea806a6128e3f",
+    "identity_status": "candidate_unmerged",
+    "name": "배금일",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_05.jpg",
+      "local_path": "archive/people/portraits/person-candidate-bf6ea806a6128e3f.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "60918d7a8427932cfde066578c92950515049e16eb65bc299e6ea9d9717b747a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-59625bc7cf4818f0",
+    "identity_status": "candidate_unmerged",
+    "name": "오해진",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_06.jpg",
+      "local_path": "archive/people/portraits/person-candidate-59625bc7cf4818f0.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "3c8308a48fb8e589a9f60e5778343ed98da50fa4f782176e80baf65a2459f77a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-eb0b595ef6a43236",
+    "identity_status": "candidate_unmerged",
+    "name": "윤해현",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_07.jpg",
+      "local_path": "archive/people/portraits/person-candidate-eb0b595ef6a43236.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "799203a9c2ebbe5bf68b024e136e9a3c33ae434d3c4f12a21156931d2f1b8568"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-42a32233fd7a8320",
+    "identity_status": "candidate_unmerged",
+    "name": "이성치",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_08.jpg",
+      "local_path": "archive/people/portraits/person-candidate-42a32233fd7a8320.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "8fe76c1b0078f318b225da1f50661e7567253e96e1fad0c5c079bd4091d71e29"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-20cc83514b4b2be3",
+    "identity_status": "candidate_unmerged",
+    "name": "장원재",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_09.jpg",
+      "local_path": "archive/people/portraits/person-candidate-20cc83514b4b2be3.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "46aae636da947d5f15309a3876879c3f566b44543fd8863d68580c8ea0f01937"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-d4e232ab20b62916",
+    "identity_status": "candidate_unmerged",
+    "name": "조방형",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_10.jpg",
+      "local_path": "archive/people/portraits/person-candidate-d4e232ab20b62916.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "5f15075636a05477a5b51169b243e54538b84989a7ab3a0cd8e53bb7c6eb8d20"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-a2624c1380d0d445",
+    "identity_status": "candidate_unmerged",
+    "name": "조영근",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_11.jpg",
+      "local_path": "archive/people/portraits/person-candidate-a2624c1380d0d445.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "6fd118caf61a65815ae397e07027b61d9dabf1c514c246ff9d9d83c9196dc230"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-a27916b7345cd4e6",
+    "identity_status": "candidate_unmerged",
+    "name": "최병찬",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_12.jpg",
+      "local_path": "archive/people/portraits/person-candidate-a27916b7345cd4e6.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "8fc0fd6fc5c4a2c183658101326b9dae07ad5184cd43f7689cb26b82a90dce80"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-47c0fe826e967382",
+    "identity_status": "candidate_unmerged",
+    "name": "한창동",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_13.jpg",
+      "local_path": "archive/people/portraits/person-candidate-47c0fe826e967382.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "42ee6ff3a2d134e367df03de8ae78987fd4371fe31d73eec6c87bc119e5a17ab"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-594ae4602a1586e7",
+    "identity_status": "candidate_unmerged",
+    "name": "황철성",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_02_14.jpg",
+      "local_path": "archive/people/portraits/person-candidate-594ae4602a1586e7.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "e12a4ee04e302b6546acc652259c5133e6462c92f6c3ddf3ba13c989b17d18f9"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-c237200393f2f94b",
+    "identity_status": "candidate_unmerged",
+    "name": "김경식",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_01.jpg",
+      "local_path": "archive/people/portraits/person-candidate-c237200393f2f94b.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "0869fb69edb762f033d00ec1c1aff5208adca4849865bb0ba3ed1c85afb18ddd"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-0cb5d4940f43f9f6",
+    "identity_status": "candidate_unmerged",
+    "name": "김문영",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_02.jpg",
+      "local_path": "archive/people/portraits/person-candidate-0cb5d4940f43f9f6.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "10576621e7c5509406bf02ea88fd1cc6f5ab64a342643f41d9647b7b382a4f6d"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-903137c4f9358652",
+    "identity_status": "candidate_unmerged",
+    "name": "김병국",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_03.jpg",
+      "local_path": "archive/people/portraits/person-candidate-903137c4f9358652.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "c4d90e2d50057ad6b3f83ccff5eb2eecc0f1862d51f9b66306899c2b3197b979"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-b0736eb3a6119bcf",
+    "identity_status": "candidate_unmerged",
+    "name": "김충회",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_04.jpg",
+      "local_path": "archive/people/portraits/person-candidate-b0736eb3a6119bcf.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "17f8c1af3d8ab4f2417bb0d3c714c9a4c421072864b67958268b55e261c2f093"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-3543af494e5ea14b",
+    "identity_status": "candidate_unmerged",
+    "name": "박윤순",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_05.jpg",
+      "local_path": "archive/people/portraits/person-candidate-3543af494e5ea14b.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "a4a1104d7d48c82f036286b3b87b81a211203cdc5b46e63cb20c47aefd76a33d"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-a41ab4b161bdd830",
+    "identity_status": "candidate_unmerged",
+    "name": "변장섭",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_06.jpg",
+      "local_path": "archive/people/portraits/person-candidate-a41ab4b161bdd830.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "28ee88ae5c8a8fc6ffd2b6f667eef45ad3edf4d24f7106a56b21f78e83d9ace0"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-3b7710e0427751d7",
+    "identity_status": "candidate_unmerged",
+    "name": "손갑민",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_07.jpg",
+      "local_path": "archive/people/portraits/person-candidate-3b7710e0427751d7.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "f4bc6dd13c320156e9866727029d95cdade4d21faef0feabfe458e51c3fccb7a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-082ba54f5375e6a0",
+    "identity_status": "candidate_unmerged",
+    "name": "오해진",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_08.jpg",
+      "local_path": "archive/people/portraits/person-candidate-082ba54f5375e6a0.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "3c8308a48fb8e589a9f60e5778343ed98da50fa4f782176e80baf65a2459f77a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-e57fa7e249673dec",
+    "identity_status": "candidate_unmerged",
+    "name": "유호봉",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_09.jpg",
+      "local_path": "archive/people/portraits/person-candidate-e57fa7e249673dec.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "62cfdaa6f9148bb0e39491d0a3da44ab9b07da532976f3a35142a287685d2573"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-a53d367fce817fd5",
+    "identity_status": "candidate_unmerged",
+    "name": "윤기운",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_10.jpg",
+      "local_path": "archive/people/portraits/person-candidate-a53d367fce817fd5.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "eabf8012494545b2b1c0369a5eb88df80a25853f005ff175b9852315ca8aab30"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-2968a69598c4a376",
+    "identity_status": "candidate_unmerged",
+    "name": "장원재",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_11.jpg",
+      "local_path": "archive/people/portraits/person-candidate-2968a69598c4a376.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "46aae636da947d5f15309a3876879c3f566b44543fd8863d68580c8ea0f01937"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-8b61c849fd81dac3",
+    "identity_status": "candidate_unmerged",
+    "name": "조방형",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_12.jpg",
+      "local_path": "archive/people/portraits/person-candidate-8b61c849fd81dac3.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "5f15075636a05477a5b51169b243e54538b84989a7ab3a0cd8e53bb7c6eb8d20"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-1fb628ba9e0eec76",
+    "identity_status": "candidate_unmerged",
+    "name": "한창동",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_13.jpg",
+      "local_path": "archive/people/portraits/person-candidate-1fb628ba9e0eec76.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "42ee6ff3a2d134e367df03de8ae78987fd4371fe31d73eec6c87bc119e5a17ab"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-26971d7849448f51",
+    "identity_status": "candidate_unmerged",
+    "name": "홍광표",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_03_14.jpg",
+      "local_path": "archive/people/portraits/person-candidate-26971d7849448f51.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "9bbc93a735e7186bda253bc6f84fe13715aa75a8d583134a8e55ea0eefcf4411"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-b41614086889af6a",
+    "identity_status": "candidate_unmerged",
+    "name": "김경수",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_01.jpg",
+      "local_path": "archive/people/portraits/person-candidate-b41614086889af6a.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "cb04289457672ea3870869d9c6144ba02fbbdb6d7274cf37d21966c2c8d376a8"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-b1920b63a3e745e8",
+    "identity_status": "candidate_unmerged",
+    "name": "김경식",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_02.jpg",
+      "local_path": "archive/people/portraits/person-candidate-b1920b63a3e745e8.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "0869fb69edb762f033d00ec1c1aff5208adca4849865bb0ba3ed1c85afb18ddd"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-04a32376648b1c7b",
+    "identity_status": "candidate_unmerged",
+    "name": "김광철",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_03.jpg",
+      "local_path": "archive/people/portraits/person-candidate-04a32376648b1c7b.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "433dad869bb032822d30def96daf7dbef23896bf5e92862f1cd277ca8fe8274a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-df9b60ec2bfbcdb6",
+    "identity_status": "candidate_unmerged",
+    "name": "김영권",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_04.jpg",
+      "local_path": "archive/people/portraits/person-candidate-df9b60ec2bfbcdb6.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "19f474e753d1648cc2e79ade61c4bf65d2f6f8dd19adc89ac3673495f8b4c2d1"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-5e7f64bf4cad7f99",
+    "identity_status": "candidate_unmerged",
+    "name": "도정선",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_05.jpg",
+      "local_path": "archive/people/portraits/person-candidate-5e7f64bf4cad7f99.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "894f154c58ffc786c6b5b385311ab58bebf155ba80c38e8faafb67e5536582bd"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-3d5e710f98dc3fee",
+    "identity_status": "candidate_unmerged",
+    "name": "박윤순",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_06.jpg",
+      "local_path": "archive/people/portraits/person-candidate-3d5e710f98dc3fee.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "a4a1104d7d48c82f036286b3b87b81a211203cdc5b46e63cb20c47aefd76a33d"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-0ed5ec60d6b5af76",
+    "identity_status": "candidate_unmerged",
+    "name": "박종수",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_07.jpg",
+      "local_path": "archive/people/portraits/person-candidate-0ed5ec60d6b5af76.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "81874c026629952671439ece3b63264baace9d9d04d360a84d42b41b84731b3b"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-300f26463f0e4a32",
+    "identity_status": "candidate_unmerged",
+    "name": "변장섭",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_08.jpg",
+      "local_path": "archive/people/portraits/person-candidate-300f26463f0e4a32.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "28ee88ae5c8a8fc6ffd2b6f667eef45ad3edf4d24f7106a56b21f78e83d9ace0"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-37e4a831279b6299",
+    "identity_status": "candidate_unmerged",
+    "name": "오해진",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_09.jpg",
+      "local_path": "archive/people/portraits/person-candidate-37e4a831279b6299.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "3c8308a48fb8e589a9f60e5778343ed98da50fa4f782176e80baf65a2459f77a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-826849e2476fc13a",
+    "identity_status": "candidate_unmerged",
+    "name": "유호봉",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_10.jpg",
+      "local_path": "archive/people/portraits/person-candidate-826849e2476fc13a.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "62cfdaa6f9148bb0e39491d0a3da44ab9b07da532976f3a35142a287685d2573"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-6fe73c3b8b995ec8",
+    "identity_status": "candidate_unmerged",
+    "name": "장상식",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_11.jpg",
+      "local_path": "archive/people/portraits/person-candidate-6fe73c3b8b995ec8.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "ecce02981901e9f5996c8d747c41a016f687188004f28387c7a8e8e6c83781db"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-0a926c72a1664108",
+    "identity_status": "candidate_unmerged",
+    "name": "조방형",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_12.jpg",
+      "local_path": "archive/people/portraits/person-candidate-0a926c72a1664108.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "5f15075636a05477a5b51169b243e54538b84989a7ab3a0cd8e53bb7c6eb8d20"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-f790338e8c1d21a1",
+    "identity_status": "candidate_unmerged",
+    "name": "한종설",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_13.jpg",
+      "local_path": "archive/people/portraits/person-candidate-f790338e8c1d21a1.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "745bd68a3a298573ba1d9e72e5fe17b80f0b619e2578021ddad27f6ca49e5112"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-6a91cebf27e75da9",
+    "identity_status": "candidate_unmerged",
+    "name": "홍광표",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_04_14.jpg",
+      "local_path": "archive/people/portraits/person-candidate-6a91cebf27e75da9.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "9bbc93a735e7186bda253bc6f84fe13715aa75a8d583134a8e55ea0eefcf4411"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member7.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-a8c9d547b101ada8",
+    "identity_status": "candidate_unmerged",
+    "name": "김경수",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_01.jpg",
+      "local_path": "archive/people/portraits/person-candidate-a8c9d547b101ada8.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "cb04289457672ea3870869d9c6144ba02fbbdb6d7274cf37d21966c2c8d376a8"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-3ec60d4200031cdc",
+    "identity_status": "candidate_unmerged",
+    "name": "김광철",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_02.jpg",
+      "local_path": "archive/people/portraits/person-candidate-3ec60d4200031cdc.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "433dad869bb032822d30def96daf7dbef23896bf5e92862f1cd277ca8fe8274a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-d27170f1c3526684",
+    "identity_status": "candidate_unmerged",
+    "name": "김영권",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_03.jpg",
+      "local_path": "archive/people/portraits/person-candidate-d27170f1c3526684.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "19f474e753d1648cc2e79ade61c4bf65d2f6f8dd19adc89ac3673495f8b4c2d1"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-923d1bebd2e6932c",
+    "identity_status": "candidate_unmerged",
+    "name": "김영숙",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_04.png",
+      "local_path": "archive/people/portraits/person-candidate-923d1bebd2e6932c.png",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "87266af90868d275d9afda6dd53168a84eba70b17f08f276f6c35171f97bc12d"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-62e38df78bdb858d",
+    "identity_status": "candidate_unmerged",
+    "name": "김충회",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_05.jpg",
+      "local_path": "archive/people/portraits/person-candidate-62e38df78bdb858d.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "17f8c1af3d8ab4f2417bb0d3c714c9a4c421072864b67958268b55e261c2f093"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-9daec005c7bcea68",
+    "identity_status": "candidate_unmerged",
+    "name": "노재민",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_06.jpg",
+      "local_path": "archive/people/portraits/person-candidate-9daec005c7bcea68.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "35fc5bb713106dd4db9c75048526a6cbef99101065485262df92a3f19c66f442"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-754e3eaf82fbc910",
+    "identity_status": "candidate_unmerged",
+    "name": "맹순자",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_07.jpg",
+      "local_path": "archive/people/portraits/person-candidate-754e3eaf82fbc910.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "6c0346aea7a62da603ec9b75858609870ffad91e36e28500f0c038770c89550a"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-33535e65197f7de4",
+    "identity_status": "candidate_unmerged",
+    "name": "민병기",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_08.jpg",
+      "local_path": "archive/people/portraits/person-candidate-33535e65197f7de4.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "2f2dfaa7d8f704f283efa4d16990704f82325ac98c50f4a6577490b2b78f11b4"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-eb0aacc9e2bdbf9e",
+    "identity_status": "candidate_unmerged",
+    "name": "변종윤",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_09.jpg",
+      "local_path": "archive/people/portraits/person-candidate-eb0aacc9e2bdbf9e.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "3e22c12bba7cb8860449b43712f390f92c19806445d60841f03e38cae6a97009"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-45dfa016fdd58e3c",
+    "identity_status": "candidate_unmerged",
+    "name": "오창영",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_10.jpg",
+      "local_path": "archive/people/portraits/person-candidate-45dfa016fdd58e3c.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "655556007e74acad9b7145c3d4280d6734eb20cec82b7e76bec0223dd6527e97"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-ea510f6072c37199",
+    "identity_status": "candidate_unmerged",
+    "name": "이명락",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_11.jpg",
+      "local_path": "archive/people/portraits/person-candidate-ea510f6072c37199.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "6b82e37162e10bc45011cef98ec6e6063e79fb0e3fbb5475befed78ca9882a98"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-43b82e2702e32f3f",
+    "identity_status": "candidate_unmerged",
+    "name": "하재성",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_05_12.jpg",
+      "local_path": "archive/people/portraits/person-candidate-43b82e2702e32f3f.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "b9074cc7ba3aa6eedbcd925ea33b4e8a9464a4154571c8e7c109dc56ffde6766"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-9db26f697804b43b",
+    "identity_status": "candidate_unmerged",
+    "name": "강전배",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_01.jpg",
+      "local_path": "archive/people/portraits/person-candidate-9db26f697804b43b.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "86817a6f7293859d8ffbc20f3ae79a8bc9a16c2df73c23b6382eb50faa4c6df8"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-aa6ca1b49966171e",
+    "identity_status": "candidate_unmerged",
+    "name": "맹순자",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_02.jpg",
+      "local_path": "archive/people/portraits/person-candidate-aa6ca1b49966171e.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "55161720f50ce4ccc88465dd3d1365d13a5a726d73d5c2514f903f55e82fed2b"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-13f309f6b0503752",
+    "identity_status": "candidate_unmerged",
+    "name": "박정희",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_03.jpg",
+      "local_path": "archive/people/portraits/person-candidate-13f309f6b0503752.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "e59fc0a6c640ab9337d4d4ffeeda8a34d7ddc669ebd0633ee1dbcd41c7e89f34"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-aadbc5468b95f3c1",
+    "identity_status": "candidate_unmerged",
+    "name": "신언식",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_04.jpg",
+      "local_path": "archive/people/portraits/person-candidate-aadbc5468b95f3c1.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "a4c771af05055b4f34633f0c5557068deb62e6f5f21e1ddb18fa0656fccf731d"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-eecfaa3a07ca60a6",
+    "identity_status": "candidate_unmerged",
+    "name": "안정숙",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_05.jpg",
+      "local_path": "archive/people/portraits/person-candidate-eecfaa3a07ca60a6.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "474b8167b21dc30e7cda4cdfc00a786b8cb62273dd30a454687209fadce64089"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-c52e368365088725",
+    "identity_status": "candidate_unmerged",
+    "name": "오준성",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_06.jpg",
+      "local_path": "archive/people/portraits/person-candidate-c52e368365088725.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "8b3c8b0756fe6582f36d9c75687ac713950ff656d3ad7b68d47f17c3a084e540"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-fbd860c7e03871be",
+    "identity_status": "candidate_unmerged",
+    "name": "이우호",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_07.jpg",
+      "local_path": "archive/people/portraits/person-candidate-fbd860c7e03871be.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "bab6b0befc92c5492e4190e40a2b564d4e58d8e13f51da6de50a14188e95b3fd"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-2b61017346ffbfd6",
+    "identity_status": "candidate_unmerged",
+    "name": "이의영",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_08.jpg",
+      "local_path": "archive/people/portraits/person-candidate-2b61017346ffbfd6.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "02a707e6e8b63d959732993c9b3619e1da9205fcdafe1b56be0b4d400c975842"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-32b2ebdf853687c2",
+    "identity_status": "candidate_unmerged",
+    "name": "이종성",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_09.jpg",
+      "local_path": "archive/people/portraits/person-candidate-32b2ebdf853687c2.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "70471244c07f442a7b7fee093d11d66853a6b19c3433d127b521aa81b7a14109"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-e0812044c302aff4",
+    "identity_status": "candidate_unmerged",
+    "name": "이종숙",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_10.jpg",
+      "local_path": "archive/people/portraits/person-candidate-e0812044c302aff4.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "69f9cd421b4f078bdebd1b98c77ec9bb8245df7dce3de4484519394334094eaf"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  },
+  {
+    "person_id": "person-candidate-c6cbf9cc340b9ace",
+    "identity_status": "candidate_unmerged",
+    "name": "하재성",
+    "aliases": [],
+    "official_profile_url": null,
+    "official_profile_code": null,
+    "portrait": {
+      "source_url": "https://council.cheongju.go.kr/images/oldgun/member_06_11.jpg",
+      "local_path": "archive/people/portraits/person-candidate-c6cbf9cc340b9ace.jpg",
+      "checked_at": "2026-11-01T21:24:11.889184+09:00",
+      "sha256": "500923795c7b65bee968b37cc3fc77b2b95c944ddd2ee230afe9fbaebef4dc63"
+    },
+    "source_detail": null,
+    "represented_area_label": null,
+    "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html",
+    "checked_at": "2026-11-01T21:24:11.889184+09:00"
+  }
+]

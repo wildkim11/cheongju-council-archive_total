@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-11-01T21:24:11.889184+09:00",
+  "council_scope": "cheongwon_old_county",
+  "terms": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "people_candidate_rows": 80,
+  "tenure_rows": 80,
+  "represented_area_rows": 0,
+  "by_term": {
+    "1": 15,
+    "2": 14,
+    "3": 14,
+    "4": 14,
+    "5": 12,
+    "6": 11
+  },
+  "identity_policy": "candidate_unmerged_until_evidence"
+}
