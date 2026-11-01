@@ -68,7 +68,8 @@
         "date_range",
         "term_half",
         "term_only",
-        "unknown"
+        "unknown",
+        "year_only"
       ]
     },
     "source_url": {
