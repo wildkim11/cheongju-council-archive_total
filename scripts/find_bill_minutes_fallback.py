@@ -93,7 +93,12 @@ def session_match(session, meeting_title):
     m = re.search(r"(\d+)\s*회", str(session or ""))
     if not m:
         return False
-    return re.search(r"제\s*0*" + str(int(m[1])) + r"\s*회", meeting_title or "") is not None
+    # Ignore the full term's range in the prefix, e.g. (제37회 ~ 제70회).
+    title = meeting_title or ""
+    if re.match(r"^제\s*\d+\s*대\s*의회\s*\(", title):
+        title = title.split(")", 1)[-1]
+    actual = re.search(r"제\s*0*(\d+)\s*회", title)
+    return bool(actual and int(actual[1]) == int(m[1]))
 
 def discover(root=ROOT):
     missing = json.loads((root/"reports/bill-data-audit.json").read_text(encoding="utf-8"))["member_bills_without_names"]
