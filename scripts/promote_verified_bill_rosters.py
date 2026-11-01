@@ -113,7 +113,16 @@ def main(root=ROOT):
     if link_report["proposer_rows"] != 11408 or link_report["unresolved"] or link_report["ambiguous_same_term"]:
         raise ValueError(f"linked relation gate failed: {link_report}")
     if audit_report["nonmember_bills_with_person_names"] != 0:
-        raise ValueError("institutional bills erroneously gained person names")
+        bad = [
+            {"internal_number": x["internal_number"],
+             "proposer_type": x.get("proposer_type"),
+             "proposer_type_list": x.get("proposer_type_list"),
+             "names": x.get("full_proposer_names")}
+            for x in new_items
+            if "의원" not in str(x.get("proposer_type") or x.get("proposer_type_list") or "")
+            and x.get("full_proposer_names")
+        ]
+        raise ValueError(f"institutional type QA: {len(bad)} exceptions, sample={bad[:10]}")
     bill_report_path = root / "reports/bills.json"
     bill_report = load(bill_report_path)
     bill_report.update({
