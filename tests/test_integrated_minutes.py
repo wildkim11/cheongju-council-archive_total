@@ -202,6 +202,76 @@ class IntegratedMinutesTests(unittest.TestCase):
             self.assertEqual(report["superseded"],{old_id:new_id})
 
 
+    def test_initial_shard_complete_requires_exact_inventory_and_body_files(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            row={
+                "meeting_id":"cheongju_integrated:minutes-10",
+                "legacy_minutes_id":"minutes-10",
+                "council_scope":"cheongju_integrated",
+                "term":1,
+                "title":"제1대 본회의",
+                "date":"2014-07-01",
+                "year":2014,
+                "committee_code":"C100",
+                "meeting_type":"plenary",
+                "publication_status":"published",
+                "official_url":c.BASE+"/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=10",
+                "source_id":"10",
+                "inventory_sources":["term","year"],
+                "path":"archive/meetings/cheongju_integrated/term-1/2014/minutes-10.md",
+                "content_sha256":"a"*64,
+            }
+            path=root/row["path"]
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text("# body\n",encoding="utf-8")
+            self.assertTrue(c._initial_shard_complete(root,[row],[row]))
+            changed=[{**row,"publication_status":"provisional"}]
+            self.assertFalse(c._initial_shard_complete(root,changed,[row]))
+
+    def test_assemble_initial_requires_exact_four_term_coverage(self):
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            live=[]
+            dates={1:"2015-01-01",2:"2019-01-01",3:"2023-01-01",4:"2026-07-01"}
+            for term in c.SUPPORTED_TERMS:
+                row={
+                    "meeting_id":f"cheongju_integrated:minutes-{term}",
+                    "legacy_minutes_id":f"minutes-{term}",
+                    "council_scope":"cheongju_integrated",
+                    "term":term,
+                    "title":f"제{term}대 본회의",
+                    "date":dates[term],
+                    "year":int(dates[term][:4]),
+                    "committee_code":"C100",
+                    "meeting_type":"plenary",
+                    "publication_status":"published",
+                    "official_url":c.BASE+f"/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn={term}",
+                    "source_id":str(term),
+                    "inventory_sources":["term","year"],
+                    "path":f"archive/meetings/cheongju_integrated/term-{term}/{dates[term][:4]}/minutes-{term}.md",
+                    "content_sha256":"b"*64,
+                    "sha256":"c"*64,
+                    "bytes":100,
+                    "first_seen_at":"2026-11-02T00:00:00+09:00",
+                    "last_checked_at":"2026-11-02T00:00:00+09:00",
+                    "supersedes":None,
+                    "superseded_by":None,
+                }
+                live.append(row)
+                p=root/row["path"]
+                p.parent.mkdir(parents=True,exist_ok=True)
+                p.write_text("# x\n",encoding="utf-8")
+                sp=c._initial_shard_path(root,term)
+                sp.parent.mkdir(parents=True,exist_ok=True)
+                sp.write_text(json.dumps([row],ensure_ascii=False),encoding="utf-8")
+            with patch.object(c,"read_official_inventory",return_value=(live,{"shared_count":4})):
+                report=c.assemble_initial(root)
+            self.assertEqual(report["listed"],4)
+            current=json.loads((root/"indexes/integrated/meetings.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(current),4)
+
     def test_write_record_has_scope_and_version_state(self):
         row = {
             "meeting_id": "cheongju_integrated:minutes-1",
