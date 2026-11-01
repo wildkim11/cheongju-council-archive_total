@@ -55,6 +55,51 @@ class IntegratedMinutesTests(unittest.TestCase):
         self.assertEqual([r["term"] for r in rows], [1, 2, 3, 4])
         self.assertTrue(all(r["council_scope"] == "cheongju_integrated" for r in rows))
 
+    def test_merge_official_inventories_uses_term_as_authority(self):
+        term = [{
+            "source_id": "10",
+            "meeting_id": "cheongju_integrated:minutes-10",
+            "legacy_minutes_id": "minutes-10",
+            "council_scope": "cheongju_integrated",
+            "term": 2,
+            "title": "제2대 본회의",
+            "date": "2020-01-01",
+            "year": 2020,
+            "committee_code": "C100",
+            "meeting_type": "plenary",
+            "publication_status": "published",
+            "official_url": c.BASE + "/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=10",
+        }]
+        year = [{
+            "source_id": "10",
+            "title": "2020년 본회의",
+            "date": "2020-01-01",
+            "year": 2020,
+            "committee_code": "C100",
+            "meeting_type": "plenary",
+            "publication_status": "published",
+            "official_url": c.BASE + "/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=10",
+        }]
+        rows, qa = c.merge_official_inventories(term, year)
+        self.assertEqual(rows[0]["term"], 2)
+        self.assertEqual(rows[0]["inventory_sources"], ["term", "year"])
+        self.assertEqual(qa["shared_count"], 1)
+
+    def test_year_only_inventory_refuses_term_inference(self):
+        term = []
+        year = [{
+            "source_id": "99",
+            "title": "회의",
+            "date": "2020-01-01",
+            "year": 2020,
+            "committee_code": "C100",
+            "meeting_type": "committee",
+            "publication_status": "published",
+            "official_url": c.BASE + "/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=99",
+        }]
+        with self.assertRaises(ValueError):
+            c.merge_official_inventories(term, year)
+
     def test_write_record_has_scope_and_version_state(self):
         row = {
             "meeting_id": "cheongju_integrated:minutes-1",
