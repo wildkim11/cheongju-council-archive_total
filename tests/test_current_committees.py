@@ -6,8 +6,13 @@ import collect_current_committees as c
 class CurrentCommitteeTests(unittest.TestCase):
     def test_discover_committees(self):
         html="""
-        <a href="/content/committee/coIntroduce_C306.html">경제문화위원회</a>
-        <a href="/content/committee/coIntroduce_G100.html">예산결산특별위원회</a>
+        <a href="/content/committee/coIntroduce_OLD.html">과거특별위원회</a>
+        <section class="mCmt">
+          <ul>
+            <li><a href="/content/committee/coIntroduce_C306.html">경제문화<span>위원회</span></a></li>
+            <li><a href="/content/committee/coIntroduce_G100.html">예산결산<span>특별위원회</span></a></li>
+          </ul>
+        </section>
         """
         rows=c.discover_committees(html)
         self.assertEqual({r["committee_code"] for r in rows},{"C306","G100"})
