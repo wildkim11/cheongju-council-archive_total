@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-02T07:52:39.926958+09:00",
+  "checked_at": "2026-11-02T08:40:23.891909+09:00",
   "bill_records": 3394,
   "by_term": {
     "1": 1098,
@@ -23,13 +23,13 @@
   },
   "member_proposed_bills": 893,
   "nonmember_bills": 2501,
-  "bills_with_any_full_proposer_names": 890,
+  "bills_with_any_full_proposer_names": 891,
   "nonmember_bills_with_person_names": 5,
-  "proposer_link_rows": 11408,
+  "proposer_link_rows": 11421,
   "link_status_counts": {
-    "resolved_exact_term": 11408
+    "resolved_exact_term": 11421
   },
-  "member_bill_link_rows": 11364,
+  "member_bill_link_rows": 11377,
   "nonmember_bill_link_rows": 44,
   "unresolved_top_tokens": [],
   "member_bills_without_names": [
@@ -56,18 +56,6 @@
       "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1458&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
       "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
       "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과"
-    },
-    {
-      "internal_number": "1960",
-      "term": 2,
-      "bill_number": "869",
-      "title": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안",
-      "session": "66회",
-      "proposal_date": "2021-10-08",
-      "processed_date": "2021-10-22",
-      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1960&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
-      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2021-10-22 처리일 2021-10-22 처리결과 수정가결",
-      "co_proposers_text": "위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2021-10-22 처리일 2021-10-22 처리결과 수정가결"
     },
     {
       "internal_number": "2083",

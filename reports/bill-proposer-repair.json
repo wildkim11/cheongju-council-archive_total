@@ -1,18 +1,20 @@
 {
-  "checked_at": "2026-11-02T07:52:39.579857+09:00",
+  "checked_at": "2026-11-02T08:40:23.594506+09:00",
   "bill_records": 3394,
   "member_bills": 893,
   "nonmember_bills": 2501,
-  "member_bills_with_names": 885,
-  "member_bills_without_names": 8,
+  "member_bills_with_names": 886,
+  "member_bills_without_names": 7,
   "nonmember_names_cleared": 0,
-  "representative_rows": 898,
-  "co_proposer_rows": 10568,
+  "representative_rows": 899,
+  "co_proposer_rows": 10580,
   "unknown_proposer_type_rows": 0,
   "unknown_proposer_type_examples": [],
   "acceptance": {
     "nonmember_person_names_zero": true
   },
   "minutes_verified_member_bills": 17,
-  "minutes_verified_proposer_rows": 250
+  "minutes_verified_proposer_rows": 250,
+  "minutes_verified_member_bills_total": 18,
+  "minutes_verified_proposer_rows_total": 263
 }

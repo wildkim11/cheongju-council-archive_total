@@ -66656,11 +66656,77 @@
     "committee": "농업정책위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2021-10-22 처리일 2021-10-22 처리결과 수정가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2021-10-22 처리일 2021-10-22 처리결과 수정가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "박노학"
+    ],
+    "co_proposers": [
+      "김기동",
+      "윤여일",
+      "최동식",
+      "김성택",
+      "정태훈",
+      "이우균",
+      "유광욱",
+      "박정희",
+      "김용규",
+      "박완희",
+      "김미자",
+      "김태수"
+    ],
+    "full_proposer_names": [
+      "박노학",
+      "김기동",
+      "윤여일",
+      "최동식",
+      "김성택",
+      "정태훈",
+      "이우균",
+      "유광욱",
+      "박정희",
+      "김용규",
+      "박완희",
+      "김미자",
+      "김태수"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2530",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2530",
+        "date": "2021-10-19",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2530.md",
+        "content_sha256": "892360f875934d529915d581a67d1b977d7599f41a2f315591bca316aaceb173",
+        "original_title_adjacent_evidence": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안(박노학 의원 대표발의)(박노학, 김기동, 윤여일, 최동식, 김성택, 정태훈, 이우균, 유광욱, 박정희, 김용규, 박완희, 김미자, 김태수 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2530",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2530",
+        "date": "2021-10-19",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2530.md",
+        "content_sha256": "892360f875934d529915d581a67d1b977d7599f41a2f315591bca316aaceb173",
+        "original_title_adjacent_evidence": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안(박노학 의원 대표발의)(박노학, 김기동, 윤여일, 최동식, 김성택, 정태훈, 이우균, 유광욱, 박정희, 김용규, 박완희, 김미자, 김태수 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2527",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2527",
+        "date": "2021-10-22",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2527.md",
+        "content_sha256": "7d7701ed52d0321c95d391ee2b34e0d96e54d0b14f916db5d454092a04042879",
+        "original_title_adjacent_evidence": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안(박노학 의원 대표발의)(박노학, 김기동, 윤여일, 최동식, 김성택, 정태훈, 이우균, 유광욱, 박정희, 김용규, 박완희, 김미자, 김태수 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2527",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2527",
+        "date": "2021-10-22",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2527.md",
+        "content_sha256": "7d7701ed52d0321c95d391ee2b34e0d96e54d0b14f916db5d454092a04042879",
+        "original_title_adjacent_evidence": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안(박노학 의원 대표발의)(박노학, 김기동, 윤여일, 최동식, 김성택, 정태훈, 이우균, 유광욱, 박정희, 김용규, 박완희, 김미자, 김태수 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T08:40:23.594506+09:00"
   },
   {
     "internal_number": "1961",

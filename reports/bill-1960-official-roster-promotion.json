@@ -1,0 +1,461 @@
+{
+  "checked_at": "2026-11-02T08:40:23.594506+09:00",
+  "status": "PASS",
+  "internal_number": "1960",
+  "official_bill_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1960&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+  "evidence_meeting_id": "cheongju_integrated:minutes-2530",
+  "evidence_meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2530",
+  "source_meeting_content_sha256": "892360f875934d529915d581a67d1b977d7599f41a2f315591bca316aaceb173",
+  "verbatim_title": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안",
+  "full_roster_evidence": [
+    {
+      "meeting_id": "cheongju_integrated:minutes-2530",
+      "meeting_date": "2021-10-19",
+      "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2530",
+      "source_path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2530.md",
+      "publication_status": "published",
+      "evidence_type": "complete_explicit_roster",
+      "representative": "박노학",
+      "all_names": [
+        "박노학",
+        "김기동",
+        "윤여일",
+        "최동식",
+        "김성택",
+        "정태훈",
+        "이우균",
+        "유광욱",
+        "박정희",
+        "김용규",
+        "박완희",
+        "김미자",
+        "김태수"
+      ],
+      "source_excerpt": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안(박노학 의원 대표발의)(박노학, 김기동, 윤여일, 최동식, 김성택, 정태훈, 이우균, 유광욱, 박정희, 김용규, 박완희, 김미자, 김태수 의원 발의)",
+      "identity_matches": [
+        {
+          "name": "박노학",
+          "person_ids": [
+            "person-candidate-b54ddd97d7b07ff0"
+          ]
+        },
+        {
+          "name": "김기동",
+          "person_ids": [
+            "person-candidate-e1ac63e16278aab0"
+          ]
+        },
+        {
+          "name": "윤여일",
+          "person_ids": [
+            "person-candidate-664b5d240afd63f6"
+          ]
+        },
+        {
+          "name": "최동식",
+          "person_ids": [
+            "person-candidate-192831cec583f40e"
+          ]
+        },
+        {
+          "name": "김성택",
+          "person_ids": [
+            "person-candidate-acce2e3876b54ebb"
+          ]
+        },
+        {
+          "name": "정태훈",
+          "person_ids": [
+            "person-candidate-1f5618fb88096aa2"
+          ]
+        },
+        {
+          "name": "이우균",
+          "person_ids": [
+            "person-candidate-345d564c8b68ff12"
+          ]
+        },
+        {
+          "name": "유광욱",
+          "person_ids": [
+            "person-candidate-ba223b86f7cba5b3"
+          ]
+        },
+        {
+          "name": "박정희",
+          "person_ids": [
+            "person-candidate-2a3c796c10839827"
+          ]
+        },
+        {
+          "name": "김용규",
+          "person_ids": [
+            "person-candidate-6a84a175d320c2d2"
+          ]
+        },
+        {
+          "name": "박완희",
+          "person_ids": [
+            "person-candidate-e103889b9bd9fa1e"
+          ]
+        },
+        {
+          "name": "김미자",
+          "person_ids": [
+            "person-candidate-88646630e4241546"
+          ]
+        },
+        {
+          "name": "김태수",
+          "person_ids": [
+            "person-candidate-751a8ee96020c6d2"
+          ]
+        }
+      ],
+      "every_name_unique_same_term": true
+    },
+    {
+      "meeting_id": "cheongju_integrated:minutes-2530",
+      "meeting_date": "2021-10-19",
+      "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2530",
+      "source_path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2530.md",
+      "publication_status": "published",
+      "evidence_type": "complete_explicit_roster",
+      "representative": "박노학",
+      "all_names": [
+        "박노학",
+        "김기동",
+        "윤여일",
+        "최동식",
+        "김성택",
+        "정태훈",
+        "이우균",
+        "유광욱",
+        "박정희",
+        "김용규",
+        "박완희",
+        "김미자",
+        "김태수"
+      ],
+      "source_excerpt": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안(박노학 의원 대표발의)(박노학, 김기동, 윤여일, 최동식, 김성택, 정태훈, 이우균, 유광욱, 박정희, 김용규, 박완희, 김미자, 김태수 의원 발의)",
+      "identity_matches": [
+        {
+          "name": "박노학",
+          "person_ids": [
+            "person-candidate-b54ddd97d7b07ff0"
+          ]
+        },
+        {
+          "name": "김기동",
+          "person_ids": [
+            "person-candidate-e1ac63e16278aab0"
+          ]
+        },
+        {
+          "name": "윤여일",
+          "person_ids": [
+            "person-candidate-664b5d240afd63f6"
+          ]
+        },
+        {
+          "name": "최동식",
+          "person_ids": [
+            "person-candidate-192831cec583f40e"
+          ]
+        },
+        {
+          "name": "김성택",
+          "person_ids": [
+            "person-candidate-acce2e3876b54ebb"
+          ]
+        },
+        {
+          "name": "정태훈",
+          "person_ids": [
+            "person-candidate-1f5618fb88096aa2"
+          ]
+        },
+        {
+          "name": "이우균",
+          "person_ids": [
+            "person-candidate-345d564c8b68ff12"
+          ]
+        },
+        {
+          "name": "유광욱",
+          "person_ids": [
+            "person-candidate-ba223b86f7cba5b3"
+          ]
+        },
+        {
+          "name": "박정희",
+          "person_ids": [
+            "person-candidate-2a3c796c10839827"
+          ]
+        },
+        {
+          "name": "김용규",
+          "person_ids": [
+            "person-candidate-6a84a175d320c2d2"
+          ]
+        },
+        {
+          "name": "박완희",
+          "person_ids": [
+            "person-candidate-e103889b9bd9fa1e"
+          ]
+        },
+        {
+          "name": "김미자",
+          "person_ids": [
+            "person-candidate-88646630e4241546"
+          ]
+        },
+        {
+          "name": "김태수",
+          "person_ids": [
+            "person-candidate-751a8ee96020c6d2"
+          ]
+        }
+      ],
+      "every_name_unique_same_term": true
+    },
+    {
+      "meeting_id": "cheongju_integrated:minutes-2527",
+      "meeting_date": "2021-10-22",
+      "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2527",
+      "source_path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2527.md",
+      "publication_status": "published",
+      "evidence_type": "complete_explicit_roster",
+      "representative": "박노학",
+      "all_names": [
+        "박노학",
+        "김기동",
+        "윤여일",
+        "최동식",
+        "김성택",
+        "정태훈",
+        "이우균",
+        "유광욱",
+        "박정희",
+        "김용규",
+        "박완희",
+        "김미자",
+        "김태수"
+      ],
+      "source_excerpt": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안(박노학 의원 대표발의)(박노학, 김기동, 윤여일, 최동식, 김성택, 정태훈, 이우균, 유광욱, 박정희, 김용규, 박완희, 김미자, 김태수 의원 발의)",
+      "identity_matches": [
+        {
+          "name": "박노학",
+          "person_ids": [
+            "person-candidate-b54ddd97d7b07ff0"
+          ]
+        },
+        {
+          "name": "김기동",
+          "person_ids": [
+            "person-candidate-e1ac63e16278aab0"
+          ]
+        },
+        {
+          "name": "윤여일",
+          "person_ids": [
+            "person-candidate-664b5d240afd63f6"
+          ]
+        },
+        {
+          "name": "최동식",
+          "person_ids": [
+            "person-candidate-192831cec583f40e"
+          ]
+        },
+        {
+          "name": "김성택",
+          "person_ids": [
+            "person-candidate-acce2e3876b54ebb"
+          ]
+        },
+        {
+          "name": "정태훈",
+          "person_ids": [
+            "person-candidate-1f5618fb88096aa2"
+          ]
+        },
+        {
+          "name": "이우균",
+          "person_ids": [
+            "person-candidate-345d564c8b68ff12"
+          ]
+        },
+        {
+          "name": "유광욱",
+          "person_ids": [
+            "person-candidate-ba223b86f7cba5b3"
+          ]
+        },
+        {
+          "name": "박정희",
+          "person_ids": [
+            "person-candidate-2a3c796c10839827"
+          ]
+        },
+        {
+          "name": "김용규",
+          "person_ids": [
+            "person-candidate-6a84a175d320c2d2"
+          ]
+        },
+        {
+          "name": "박완희",
+          "person_ids": [
+            "person-candidate-e103889b9bd9fa1e"
+          ]
+        },
+        {
+          "name": "김미자",
+          "person_ids": [
+            "person-candidate-88646630e4241546"
+          ]
+        },
+        {
+          "name": "김태수",
+          "person_ids": [
+            "person-candidate-751a8ee96020c6d2"
+          ]
+        }
+      ],
+      "every_name_unique_same_term": true
+    },
+    {
+      "meeting_id": "cheongju_integrated:minutes-2527",
+      "meeting_date": "2021-10-22",
+      "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2527",
+      "source_path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2527.md",
+      "publication_status": "published",
+      "evidence_type": "complete_explicit_roster",
+      "representative": "박노학",
+      "all_names": [
+        "박노학",
+        "김기동",
+        "윤여일",
+        "최동식",
+        "김성택",
+        "정태훈",
+        "이우균",
+        "유광욱",
+        "박정희",
+        "김용규",
+        "박완희",
+        "김미자",
+        "김태수"
+      ],
+      "source_excerpt": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안(박노학 의원 대표발의)(박노학, 김기동, 윤여일, 최동식, 김성택, 정태훈, 이우균, 유광욱, 박정희, 김용규, 박완희, 김미자, 김태수 의원 발의)",
+      "identity_matches": [
+        {
+          "name": "박노학",
+          "person_ids": [
+            "person-candidate-b54ddd97d7b07ff0"
+          ]
+        },
+        {
+          "name": "김기동",
+          "person_ids": [
+            "person-candidate-e1ac63e16278aab0"
+          ]
+        },
+        {
+          "name": "윤여일",
+          "person_ids": [
+            "person-candidate-664b5d240afd63f6"
+          ]
+        },
+        {
+          "name": "최동식",
+          "person_ids": [
+            "person-candidate-192831cec583f40e"
+          ]
+        },
+        {
+          "name": "김성택",
+          "person_ids": [
+            "person-candidate-acce2e3876b54ebb"
+          ]
+        },
+        {
+          "name": "정태훈",
+          "person_ids": [
+            "person-candidate-1f5618fb88096aa2"
+          ]
+        },
+        {
+          "name": "이우균",
+          "person_ids": [
+            "person-candidate-345d564c8b68ff12"
+          ]
+        },
+        {
+          "name": "유광욱",
+          "person_ids": [
+            "person-candidate-ba223b86f7cba5b3"
+          ]
+        },
+        {
+          "name": "박정희",
+          "person_ids": [
+            "person-candidate-2a3c796c10839827"
+          ]
+        },
+        {
+          "name": "김용규",
+          "person_ids": [
+            "person-candidate-6a84a175d320c2d2"
+          ]
+        },
+        {
+          "name": "박완희",
+          "person_ids": [
+            "person-candidate-e103889b9bd9fa1e"
+          ]
+        },
+        {
+          "name": "김미자",
+          "person_ids": [
+            "person-candidate-88646630e4241546"
+          ]
+        },
+        {
+          "name": "김태수",
+          "person_ids": [
+            "person-candidate-751a8ee96020c6d2"
+          ]
+        }
+      ],
+      "every_name_unique_same_term": true
+    }
+  ],
+  "representative": "박노학",
+  "all_proposers": [
+    "박노학",
+    "김기동",
+    "윤여일",
+    "최동식",
+    "김성택",
+    "정태훈",
+    "이우균",
+    "유광욱",
+    "박정희",
+    "김용규",
+    "박완희",
+    "김미자",
+    "김태수"
+  ],
+  "added_relationships": 13,
+  "total_person_relationships": 11421,
+  "remaining_missing_rosters": 7,
+  "anomalous_institutional_person_links_unchanged": 44,
+  "archive_validation": "PASS",
+  "meeting_integrity": "PASS",
+  "meeting_integrity_error_count": 0,
+  "analytical_judgments_in_archive": false,
+  "main_branch_modified": false
+}

@@ -1,0 +1,948 @@
+{
+  "checked_at": "2026-11-01T23:40:42.749473+00:00",
+  "scope": "offline read-only snapshot examination; official website and original attachments not re-fetched",
+  "bill_records": 3394,
+  "person_relationships": 11421,
+  "pending_member_bill_count": 7,
+  "bill_1960_promoted": true,
+  "institutional_bill_anomaly_count": 5,
+  "institutional_person_relationships": 44,
+  "member_bills": [
+    {
+      "internal_number": "1308",
+      "raw_bill_fields": {
+        "internal_number": "1308",
+        "bill_number": "221",
+        "term": 2,
+        "title": "청주시장 및 관계공무원 출석요구의 건",
+        "bill_type": "기타(안건)",
+        "proposer_type_list": "의원",
+        "proposer_type": "의원",
+        "session": "44회",
+        "proposal_date": "2019-06-12",
+        "processed_date_list": null,
+        "committee": "대표발의자",
+        "result_list": "기타",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1308&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=2&page=80",
+        "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "representative_proposers": [],
+        "co_proposers": [],
+        "full_proposer_names": []
+      },
+      "minutes_review_status": "representative_only_not_full_roster",
+      "representative_mentions": [
+        "이재길"
+      ],
+      "minutes_evidence": [
+        {
+          "meeting_id": "cheongju_integrated:minutes-1663",
+          "meeting_date": "2019-06-20",
+          "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1663",
+          "publication_status": "published",
+          "evidence_type": "representative_only",
+          "representative": "이재길",
+          "all_names": null,
+          "source_excerpt": "원 발의 의안으로 이재길 의원님이 대표 발의하신 청주시장 및 관계공무원 출석요구의 건",
+          "every_name_unique_same_term": true
+        }
+      ],
+      "existing_person_link_count": 0,
+      "conclusion": "NO_FULL_ROSTER_VERIFIED__NO_PERSONAL_RELATIONSHIP_PROMOTION"
+    },
+    {
+      "internal_number": "1458",
+      "raw_bill_fields": {
+        "internal_number": "1458",
+        "bill_number": "140",
+        "term": 2,
+        "title": "청주시장 및 관계공무원 출석요구의 건",
+        "bill_type": "기타(안건)",
+        "proposer_type_list": "의원",
+        "proposer_type": "의원",
+        "session": "40회",
+        "proposal_date": "2019-02-08",
+        "processed_date_list": null,
+        "committee": "대표발의자",
+        "result_list": "기타",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1458&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=2&page=89",
+        "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "representative_proposers": [],
+        "co_proposers": [],
+        "full_proposer_names": []
+      },
+      "minutes_review_status": "representative_only_not_full_roster",
+      "representative_mentions": [
+        "이재길"
+      ],
+      "minutes_evidence": [
+        {
+          "meeting_id": "cheongju_integrated:minutes-1563",
+          "meeting_date": "2019-02-18",
+          "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1563",
+          "publication_status": "published",
+          "evidence_type": "representative_only",
+          "representative": "이재길",
+          "all_names": null,
+          "source_excerpt": "원 발의 의안으로 이재길 의원님이 대표 발의하신 청주시장 및 관계공무원 출석요구의 건",
+          "every_name_unique_same_term": true
+        },
+        {
+          "meeting_id": "cheongju_integrated:minutes-1563",
+          "meeting_date": "2019-02-18",
+          "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1563",
+          "publication_status": "published",
+          "evidence_type": "representative_only",
+          "representative": "이재길",
+          "all_names": null,
+          "source_excerpt": "에 실음\n\n아울러 이재길 의원 외 여덟 분으로부터 발의된 청주시장 및 관계공무원 출석요구의 건",
+          "every_name_unique_same_term": true
+        }
+      ],
+      "existing_person_link_count": 0,
+      "conclusion": "NO_FULL_ROSTER_VERIFIED__NO_PERSONAL_RELATIONSHIP_PROMOTION"
+    },
+    {
+      "internal_number": "2083",
+      "raw_bill_fields": {
+        "internal_number": "2083",
+        "bill_number": "991",
+        "term": 2,
+        "title": "청주시장 및 관계공무원 출석 요구",
+        "bill_type": "기타(안건)",
+        "proposer_type_list": "의원",
+        "proposer_type": "의원",
+        "session": "70회",
+        "proposal_date": "2022-04-08",
+        "processed_date_list": null,
+        "committee": "대표발의자",
+        "result_list": "보류",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2083&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=2&page=3",
+        "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "representative_proposers": [],
+        "co_proposers": [],
+        "full_proposer_names": []
+      },
+      "minutes_review_status": "representative_only_not_full_roster",
+      "representative_mentions": [
+        "임정수"
+      ],
+      "minutes_evidence": [
+        {
+          "meeting_id": "cheongju_integrated:minutes-2724",
+          "meeting_date": "2022-04-18",
+          "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2724",
+          "publication_status": "published",
+          "evidence_type": "representative_only",
+          "representative": "임정수",
+          "all_names": null,
+          "source_excerpt": "에 실음\n\n아울러 임정수 의원 등 열 분으로부터 발의된 청주시장 및 관계공무원 출석 요구",
+          "every_name_unique_same_term": true
+        }
+      ],
+      "existing_person_link_count": 0,
+      "conclusion": "NO_FULL_ROSTER_VERIFIED__NO_PERSONAL_RELATIONSHIP_PROMOTION"
+    },
+    {
+      "internal_number": "2258",
+      "raw_bill_fields": {
+        "internal_number": "2258",
+        "bill_number": "181",
+        "term": 2,
+        "title": "청주시 한국아마추어무선연맹 청주시지부 활동 지원에 관한 조례안",
+        "bill_type": "조례안",
+        "proposer_type_list": "의원",
+        "proposer_type": "의원",
+        "session": "42회",
+        "proposal_date": "2019-04-12",
+        "processed_date_list": null,
+        "committee": "대표발의자",
+        "result_list": "철회",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2258&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=2&page=84",
+        "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "representative_proposers": [],
+        "co_proposers": [],
+        "full_proposer_names": []
+      },
+      "minutes_review_status": "representative_only_not_full_roster",
+      "representative_mentions": [
+        "김미자"
+      ],
+      "minutes_evidence": [
+        {
+          "meeting_id": "cheongju_integrated:minutes-1605",
+          "meeting_date": "2019-04-22",
+          "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1605",
+          "publication_status": "published",
+          "evidence_type": "representative_only",
+          "representative": "김미자",
+          "all_names": null,
+          "source_excerpt": "전부개정조례안｣, 김미자 의원님이 대표 발의하신 ｢청주시 한국아마추어무선연맹 청주시지부 활동 지원에 관한 조례안",
+          "every_name_unique_same_term": true
+        }
+      ],
+      "existing_person_link_count": 0,
+      "conclusion": "NO_FULL_ROSTER_VERIFIED__NO_PERSONAL_RELATIONSHIP_PROMOTION"
+    },
+    {
+      "internal_number": "2364",
+      "raw_bill_fields": {
+        "internal_number": "2364",
+        "bill_number": "218",
+        "term": 3,
+        "title": "청주시장 및 관계공무원 출석요구의 건",
+        "bill_type": "기타(안건)",
+        "proposer_type_list": "의원",
+        "proposer_type": "의원",
+        "session": "79회",
+        "proposal_date": "2023-05-12",
+        "processed_date_list": null,
+        "committee": "대표발의자",
+        "result_list": "기타",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2364&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=3&page=93",
+        "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과 기타",
+        "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과 기타",
+        "representative_proposers": [],
+        "co_proposers": [],
+        "full_proposer_names": []
+      },
+      "minutes_review_status": "representative_only_not_full_roster",
+      "representative_mentions": [
+        "임정수"
+      ],
+      "minutes_evidence": [
+        {
+          "meeting_id": "cheongju_integrated:minutes-3101",
+          "meeting_date": "2023-05-22",
+          "meeting_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3101",
+          "publication_status": "published",
+          "evidence_type": "representative_only",
+          "representative": "임정수",
+          "all_names": null,
+          "source_excerpt": "에 실음\n\n아울러 임정수 의원 등 열세 분의 의원으로부터 발의된 청주시장 및 관계공무원 출석요구의 건",
+          "every_name_unique_same_term": true
+        }
+      ],
+      "existing_person_link_count": 0,
+      "conclusion": "NO_FULL_ROSTER_VERIFIED__NO_PERSONAL_RELATIONSHIP_PROMOTION"
+    },
+    {
+      "internal_number": "2637",
+      "raw_bill_fields": {
+        "internal_number": "2637",
+        "bill_number": "489",
+        "term": 3,
+        "title": "청주시장 및 관계공무원 출석요구의 건",
+        "bill_type": "기타(안건)",
+        "proposer_type_list": "의원",
+        "proposer_type": "의원",
+        "session": "87회",
+        "proposal_date": "2024-06-12",
+        "processed_date_list": null,
+        "committee": "대표발의자",
+        "result_list": "기타",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2637&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=3&page=66",
+        "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "representative_proposers": [],
+        "co_proposers": [],
+        "full_proposer_names": []
+      },
+      "minutes_review_status": "no_explicit_proposer_evidence",
+      "representative_mentions": [],
+      "minutes_evidence": [],
+      "existing_person_link_count": 0,
+      "conclusion": "NO_FULL_ROSTER_VERIFIED__NO_PERSONAL_RELATIONSHIP_PROMOTION"
+    },
+    {
+      "internal_number": "3255",
+      "raw_bill_fields": {
+        "internal_number": "3255",
+        "bill_number": "1042",
+        "term": 3,
+        "title": "청주시 근로자종합복지관 운영 조례 일부개정조례안",
+        "bill_type": "조례안",
+        "proposer_type_list": "의원",
+        "proposer_type": "의원",
+        "session": "98회",
+        "proposal_date": "2025-11-12",
+        "processed_date_list": null,
+        "committee": "경제문화위원회",
+        "result_list": "철회",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3255&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=3&page=11",
+        "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+        "representative_proposers": [],
+        "co_proposers": [],
+        "full_proposer_names": []
+      },
+      "minutes_review_status": "no_explicit_proposer_evidence",
+      "representative_mentions": [],
+      "minutes_evidence": [],
+      "existing_person_link_count": 0,
+      "conclusion": "NO_FULL_ROSTER_VERIFIED__NO_PERSONAL_RELATIONSHIP_PROMOTION"
+    }
+  ],
+  "institutional_anomalies": [
+    {
+      "internal_number": "375",
+      "raw_bill_fields": {
+        "internal_number": "375",
+        "bill_number": "375",
+        "term": 1,
+        "title": "2014년도 행정사무감사 계획서 승인의 건",
+        "bill_type": "동의(승인)안",
+        "proposer_type_list": "위원장",
+        "proposer_type": "위원장",
+        "session": "2회",
+        "proposal_date": "2014-09-02",
+        "processed_date_list": "2014-09-05",
+        "committee": "의회운영위원회",
+        "result_list": "원안가결",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=375&np=1&daesu=1&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1098",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=1&page=73",
+        "representative_proposer_text": "김성택",
+        "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2014-09-05 처리일 2014-09-05 처리결과 원안가결",
+        "representative_proposers": [
+          "김성택"
+        ],
+        "co_proposers": [],
+        "full_proposer_names": [
+          "김성택"
+        ]
+      },
+      "relationships": [
+        {
+          "bill_number": "375",
+          "term": 1,
+          "person_name": "김성택",
+          "proposer_role": "representative",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-6f98e9a4d25a1706",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=375&np=1&daesu=1&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1098"
+        }
+      ],
+      "relationships_count": 1,
+      "relationship_names_equal_bill_roster": true,
+      "conclusion": "EXISTING_RELATIONSHIP_TYPE_CONFLICT__SOURCE_ROLE_UNVERIFIED"
+    },
+    {
+      "internal_number": "2177",
+      "raw_bill_fields": {
+        "internal_number": "2177",
+        "bill_number": "63",
+        "term": 3,
+        "title": "제73회 청주시의회(2022년도 제1차 정례회) 회기결정의 건",
+        "bill_type": "기타(안건)",
+        "proposer_type_list": "의장",
+        "proposer_type": "의장",
+        "session": "73회",
+        "proposal_date": "2022-10-04",
+        "processed_date_list": null,
+        "committee": "대표발의자 ???⵿, 김기동, 김기동, 김기동",
+        "result_list": "원안가결",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2177&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=3&page=108",
+        "representative_proposer_text": "???⵿, 김기동, 김기동, 김기동",
+        "co_proposers_text": "??????, ???Ͻ?, ???⵿, ?躴??, ?輺??, ?迵??, 김기동, 김기동, 김기동, 김병국, 김병국, 김병국, 김성택, 김성택, 김성택, 김영근, 김영근, 김영근, 김완식, 김완식, 김완식, 김은숙, 김은숙, 김은숙",
+        "representative_proposers": [
+          "김기동"
+        ],
+        "co_proposers": [
+          "김기동",
+          "김병국",
+          "김성택",
+          "김영근",
+          "김완식",
+          "김은숙"
+        ],
+        "full_proposer_names": [
+          "김기동",
+          "김병국",
+          "김성택",
+          "김영근",
+          "김완식",
+          "김은숙"
+        ]
+      },
+      "relationships": [
+        {
+          "bill_number": "63",
+          "term": 3,
+          "person_name": "김기동",
+          "proposer_role": "representative",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-9fe05c658843a4bd",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2177&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "63",
+          "term": 3,
+          "person_name": "김병국",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-ed903376d6a03cd4",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2177&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "63",
+          "term": 3,
+          "person_name": "김성택",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-08676de6f51786f6",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2177&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "63",
+          "term": 3,
+          "person_name": "김영근",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-6b7f52811951b088",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2177&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "63",
+          "term": 3,
+          "person_name": "김완식",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-baeb3316eaf1099f",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2177&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "63",
+          "term": 3,
+          "person_name": "김은숙",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-6eeed03eb64273ee",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2177&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        }
+      ],
+      "relationships_count": 6,
+      "relationship_names_equal_bill_roster": true,
+      "conclusion": "EXISTING_RELATIONSHIP_TYPE_CONFLICT__SOURCE_ROLE_UNVERIFIED"
+    },
+    {
+      "internal_number": "2180",
+      "raw_bill_fields": {
+        "internal_number": "2180",
+        "bill_number": "66",
+        "term": 3,
+        "title": "청주시 주민투표 조례 일부개정조례안",
+        "bill_type": "조례안",
+        "proposer_type_list": "시장",
+        "proposer_type": "시장",
+        "session": "73회",
+        "proposal_date": "2022-10-04",
+        "processed_date_list": "2022-10-21",
+        "committee": "대표발의자 ?迵??, 김기동, 김영근",
+        "result_list": "원안가결",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=3&page=108",
+        "representative_proposer_text": "?迵??, 김기동, 김영근",
+        "co_proposers_text": "??????, ?Ž?ȣ, ?Źμ?, ?ȼ???, ?̿???, ?̿Ϻ?, 김기동, 김병국, 김성택, 김영근, 김완식, 김은숙, 신민수, 신승호, 안성현, 유광욱, 이영신, 이완복",
+        "representative_proposers": [
+          "김기동",
+          "김영근"
+        ],
+        "co_proposers": [
+          "김기동",
+          "김병국",
+          "김성택",
+          "김영근",
+          "김완식",
+          "김은숙",
+          "신민수",
+          "신승호",
+          "안성현",
+          "유광욱",
+          "이영신",
+          "이완복"
+        ],
+        "full_proposer_names": [
+          "김기동",
+          "김영근",
+          "김병국",
+          "김성택",
+          "김완식",
+          "김은숙",
+          "신민수",
+          "신승호",
+          "안성현",
+          "유광욱",
+          "이영신",
+          "이완복"
+        ]
+      },
+      "relationships": [
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "김기동",
+          "proposer_role": "representative",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-9fe05c658843a4bd",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "김영근",
+          "proposer_role": "representative",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-6b7f52811951b088",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "김병국",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-ed903376d6a03cd4",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "김성택",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-08676de6f51786f6",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "김완식",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-baeb3316eaf1099f",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "김은숙",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-6eeed03eb64273ee",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "신민수",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-fa1786834901b318",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "신승호",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-245b3047053f30e7",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "안성현",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-30c96f64615ddb21",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "유광욱",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-aacb11ed8d2efa5f",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "이영신",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-33fae8b6191feac6",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "66",
+          "term": 3,
+          "person_name": "이완복",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-49ff7ffb63ef19ff",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2180&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        }
+      ],
+      "relationships_count": 12,
+      "relationship_names_equal_bill_roster": true,
+      "conclusion": "EXISTING_RELATIONSHIP_TYPE_CONFLICT__SOURCE_ROLE_UNVERIFIED"
+    },
+    {
+      "internal_number": "3265",
+      "raw_bill_fields": {
+        "internal_number": "3265",
+        "bill_number": "1052",
+        "term": 3,
+        "title": "2025년도 행정사무감사 결과보고서 채택의 건(의회운영)",
+        "bill_type": "기타(안건)",
+        "proposer_type_list": "위원장",
+        "proposer_type": "위원장",
+        "session": "98회",
+        "proposal_date": "2025-12-17",
+        "processed_date_list": "2025-12-19",
+        "committee": "의회운영위원회",
+        "result_list": "원안가결",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=3&page=10",
+        "representative_proposer_text": "김완식",
+        "co_proposers_text": "김기동, 김성택, 김완식, 남인범, 박근영, 박봉규, 송병호, 신승호, 유광욱, 이완복, 이인숙, 한동순",
+        "representative_proposers": [
+          "김완식"
+        ],
+        "co_proposers": [
+          "김기동",
+          "김성택",
+          "김완식",
+          "남인범",
+          "박근영",
+          "박봉규",
+          "송병호",
+          "신승호",
+          "유광욱",
+          "이완복",
+          "이인숙",
+          "한동순"
+        ],
+        "full_proposer_names": [
+          "김완식",
+          "김기동",
+          "김성택",
+          "남인범",
+          "박근영",
+          "박봉규",
+          "송병호",
+          "신승호",
+          "유광욱",
+          "이완복",
+          "이인숙",
+          "한동순"
+        ]
+      },
+      "relationships": [
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "김완식",
+          "proposer_role": "representative",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-baeb3316eaf1099f",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "김기동",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-9fe05c658843a4bd",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "김성택",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-08676de6f51786f6",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "남인범",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-2625ff2c9bae99dd",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "박근영",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-9bcb7898bf7ead60",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "박봉규",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-6030d9c5ff0ecfef",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "송병호",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-c861686ca5b0ec11",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "신승호",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-245b3047053f30e7",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "유광욱",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-aacb11ed8d2efa5f",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "이완복",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-49ff7ffb63ef19ff",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "이인숙",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-66e52ce2e993dc0d",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1052",
+          "term": 3,
+          "person_name": "한동순",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-05518d97fb95e06a",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3265&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        }
+      ],
+      "relationships_count": 12,
+      "relationship_names_equal_bill_roster": true,
+      "conclusion": "EXISTING_RELATIONSHIP_TYPE_CONFLICT__SOURCE_ROLE_UNVERIFIED"
+    },
+    {
+      "internal_number": "3266",
+      "raw_bill_fields": {
+        "internal_number": "3266",
+        "bill_number": "1053",
+        "term": 3,
+        "title": "2025년도 행정사무감사 결과보고서 채택의 건(행정안전)",
+        "bill_type": "기타(안건)",
+        "proposer_type_list": "위원장",
+        "proposer_type": "위원장",
+        "session": "98회",
+        "proposal_date": "2025-12-17",
+        "processed_date_list": "2025-12-19",
+        "committee": "행정안전위원회",
+        "result_list": "원안가결",
+        "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+        "list_source_url": "https://council.cheongju.go.kr/content/activity/billForProcessing.html?daesu=3&page=10",
+        "representative_proposer_text": "남연심",
+        "co_proposers_text": "김기동, 김성택, 김준석, 남연심, 남일현, 박근영, 송병호, 신승호, 유광욱, 이상조, 이인숙, 정영석, 한동순",
+        "representative_proposers": [
+          "남연심"
+        ],
+        "co_proposers": [
+          "김기동",
+          "김성택",
+          "김준석",
+          "남연심",
+          "남일현",
+          "박근영",
+          "송병호",
+          "신승호",
+          "유광욱",
+          "이상조",
+          "이인숙",
+          "정영석",
+          "한동순"
+        ],
+        "full_proposer_names": [
+          "남연심",
+          "김기동",
+          "김성택",
+          "김준석",
+          "남일현",
+          "박근영",
+          "송병호",
+          "신승호",
+          "유광욱",
+          "이상조",
+          "이인숙",
+          "정영석",
+          "한동순"
+        ]
+      },
+      "relationships": [
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "남연심",
+          "proposer_role": "representative",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-90110afcc7af425c",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "김기동",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-9fe05c658843a4bd",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "김성택",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-08676de6f51786f6",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "김준석",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-ce40e64ab2f1986e",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "남일현",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-94ba7b6fc57d77c6",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "박근영",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-9bcb7898bf7ead60",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "송병호",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-c861686ca5b0ec11",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "신승호",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-245b3047053f30e7",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "유광욱",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-aacb11ed8d2efa5f",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "이상조",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-12e49da1f8cd6b05",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "이인숙",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-66e52ce2e993dc0d",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "정영석",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-7f57525b4c523326",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        },
+        {
+          "bill_number": "1053",
+          "term": 3,
+          "person_name": "한동순",
+          "proposer_role": "co_proposer",
+          "resolution_status": "resolved_exact_term",
+          "person_id": "person-candidate-05518d97fb95e06a",
+          "source_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3266&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141"
+        }
+      ],
+      "relationships_count": 13,
+      "relationship_names_equal_bill_roster": true,
+      "conclusion": "EXISTING_RELATIONSHIP_TYPE_CONFLICT__SOURCE_ROLE_UNVERIFIED"
+    }
+  ],
+  "data_writes_to_canonical_archive": 0,
+  "classification_limit": "Original bill list type outranks presence of names in extracted detail. Meeting records name mention alone is not proposer-roster proof."
+}
