@@ -12,6 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 PERSON_SOURCES=[
     ("current",ROOT/"archive/people/people.json"),
     ("integrated_history",ROOT/"archive/people/history/cheongju_integrated_people.json"),
+    ("integrated_term4_departed",ROOT/"archive/people/history/cheongju_integrated_term4_departed_people.json"),
     ("old_city",ROOT/"archive/people/history/cheongju_old_city_people_candidates.json"),
     ("old_county",ROOT/"archive/people/history/cheongwon_old_county_people_candidates.json"),
 ]
