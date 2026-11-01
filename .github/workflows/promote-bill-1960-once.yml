@@ -1,10 +1,6 @@
 name: One-time official bill 1960 roster repair
+# One-time migration completed; no automatic reruns on future changes.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/promote-bill-1960-once.yml
   workflow_dispatch:
 permissions:
   contents: write
