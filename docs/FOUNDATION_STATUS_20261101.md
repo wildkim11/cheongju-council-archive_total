@@ -91,6 +91,59 @@ All 187 rows expose an official represented-area label on the static roster page
 
 The static roster pages do not expose represented-area labels in the member list.
 
+## Verified current committee rosters
+
+Live official-page verification:
+
+- committee pages: **10**
+- roster membership rows: **81**
+- unresolved current-member names: **0**
+
+Current homepage shortcut scope:
+- 7 standing committees
+- 2 special committees
+- 1 personnel-hearing committee
+
+The collector reads only the homepage `section.mCmt` current-committee shortcut block, not historical/side-menu committee links.
+
+Roster roles are taken from the official committee-page `span.name` values:
+- 위원장
+- 부위원장
+- 위원
+
+Committee display whitespace is normalized only for type classification. Source labels are retained.
+
+## Verified current research groups
+
+Live official active-table verification for 2026:
+
+- research groups: **5**
+- membership rows: **65**
+- representative rows: **5**
+- unresolved current-member names: **0**
+
+Current active table:
+- 청주시 강호축 미래전략 연구회 — 22
+- 도서관을 사랑하는 의원 모임 — 13
+- 미래 정책 연구 포럼 — 7
+- 청주공항 비상을 바라는 모임 — 12
+- 청주시의회 문화·예술 연구회 — 11
+
+The official HTML retains an older roster draft inside an HTML comment. It is ignored by the current-state collector. The commented draft remains a potential historical clue only and is not treated as current source truth.
+
+## Historical committee strategy
+
+Historical committee membership must come from dated official composition/recomposition records, not from backfilling current committee pages.
+
+Initial verified source families include:
+- standing-committee original composition records
+- standing-committee latter-half recomposition records
+- budget special committee composition records
+- ethics special committee composition records
+- later replacement / recomposition records where published
+
+Effective dates are stored only when explicitly supported. Roster changes and substitutions must create new effective-period records instead of rewriting earlier source states.
+
 ## Portrait policy
 
 One official profile/roster portrait per source person record is eligible for mirroring.
@@ -112,10 +165,9 @@ Unit-test CI may remain on Ubuntu because it does not contact the official sourc
 
 ## Next foundation gates
 
-1. current standing/special/other committee roster collector
-2. historical committee roster and effective-period strategy
-3. research-group roster collector
-4. bill/resolution source collectors and full proposer rosters
-5. source-candidate identity resolution layer
-6. archive-to-analyzer export
-7. only then initial full body/portrait population and scheduled incremental collection
+1. historical committee source registry and effective-period roster collector
+2. historical research-group source registry / roster collector
+3. bill/resolution source collectors and full proposer rosters
+4. source-candidate identity resolution layer
+5. archive-to-analyzer export
+6. only then initial full body/portrait population and scheduled incremental collection
