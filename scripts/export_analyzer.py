@@ -79,6 +79,27 @@ def export(root:Path=ROOT)->dict:
         "research_attachments":_merge(root,[
             "archive/research_groups/historical_attachments.json",
         ]),
+        "five_minute_speeches":_merge(root,[
+            "archive/activities/five_minute_speeches.json",
+        ]),
+        "city_questions":_merge(root,[
+            "archive/activities/city_questions.json",
+        ]),
+        "written_questions":_merge(root,[
+            "archive/activities/written_questions.json",
+        ]),
+        "suggestions_resolutions":_merge(root,[
+            "archive/activities/suggestions_resolutions.json",
+        ]),
+        "press":_merge(root,[
+            "archive/activities/press.json",
+        ]),
+        "debates":_merge(root,[
+            "archive/activities/debates.json",
+        ]),
+        "photo_activity":_merge(root,[
+            "archive/activities/photo_activity.json",
+        ]),
         "bills":_merge(root,[
             "archive/bills/items.json",
         ]),
