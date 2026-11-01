@@ -1,0 +1,24 @@
+name: Source smoke check
+
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integrated-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read official integrated-council inventory
+        run: python -u scripts/collect_integrated_minutes.py --mode inventory
+      - name: Show inventory report
+        run: cat reports/integrated-inventory.json
