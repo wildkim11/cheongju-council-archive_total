@@ -124,8 +124,18 @@ def displayed_term(html:str)->int|None:
 
 
 def _clean_name(value:str)->str|None:
-    # Historical pages commonly repeat names in image alt/text. Find a plausible Korean name.
-    tokens=re.findall(r"[가-힣]{2,5}",value)
+    # Historical pages commonly encode alt text as "이름이름지역명".
+    compact=re.sub(r"\\s+","",value)
+    repeated=re.match(r"^([가-힣]{2,5})\\1",compact)
+    if repeated:
+        return repeated.group(1)
+
+    # Some pages use "이름 의원" or a single visible name.
+    member_label=re.search(r"([가-힣]{2,5})\\s*의원",value)
+    if member_label:
+        return member_label.group(1)
+
+    tokens=re.findall(r"[가-힣]{2,4}",value)
     stop={"의원소개","청주시의회","청원군의회","선거구","비례대표","대의원"}
     for t in tokens:
         if t not in stop and not t.endswith("의원소개"):
