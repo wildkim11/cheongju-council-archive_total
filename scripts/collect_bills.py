@@ -96,18 +96,62 @@ def _field(text:str,label:str,next_labels:list[str])->str|None:
     m=re.search(rf"{re.escape(label)}\s*[:|]?\s*(.+?){tail}",text,re.S)
     return re.sub(r"\s+"," ",m.group(1)).strip(" |") if m else None
 
+def _norm_label(value:str)->str:
+    return re.sub(r"\s+","",value or "").strip(":|")
+
+def _table_fields(html:str)->dict[str,str]:
+    """Extract exact label/value pairs from official detail tables.
+
+    Supports rows shaped as th/td or repeated label/value pairs in one row.
+    Exact labels prevent later committee/plenary fields from leaking into
+    proposer values.
+    """
+    known={
+        "의안번호","의안종류","발의자","발의일","회기","소관위원회",
+        "제안의원","대표발의자","공동발의","위원회","본회의",
+        "집행기관","이송일","공포일","공포번호","철회일자","비고",
+        "첨부파일","기타파일",
+    }
+    out={}
+    for tr in re.findall(r"<tr\b[^>]*>([\s\S]*?)</tr>",html,flags=re.I):
+        cells=[
+            _visible(x)
+            for x in re.findall(r"<t[dh]\b[^>]*>([\s\S]*?)</t[dh]>",tr,flags=re.I)
+        ]
+        if len(cells)<2:
+            continue
+        i=0
+        while i+1<len(cells):
+            label=_norm_label(cells[i])
+            if label in known:
+                value=re.sub(r"\s+"," ",cells[i+1]).strip(" |")
+                if value and label not in out:
+                    out[label]=value
+                i+=2
+            else:
+                i+=1
+    return out
+
 def _names(value:str|None)->list[str]:
     if not value: return []
+    hard_stop=(
+        "위원회회부일","위원회상정일","위원회처리일","위원회처리결과",
+        "본회의회부일","본회의상정일","본회의처리일","본회의처리결과",
+        "집행기관","이송일","공포일","공포번호","철회일자","비고",
+    )
+    compact=re.sub(r"\s+","",value)
+    stop_pos=[compact.find(x) for x in hard_stop if compact.find(x)>=0]
+    if stop_pos:
+        compact=compact[:min(stop_pos)]
     stop={
         "대표발의자","공동발의","발의자","위원회","본회의","처리결과",
         "원안가결","수정가결","부결","철회","의원","위원장","의장",
-        "시장","청주시장","위원회안","위원회","집행기관"
+        "시장","청주시장","위원회안","집행기관","회부일","상정일","처리일"
     }
     out=[]
-    # names may contain an internal space such as 허 선
-    cleaned=re.sub(r"(?<=[가-힣])\s+(?=[가-힣])","",value)
-    for n in re.findall(r"[가-힣]{2,5}",cleaned):
-        if n not in stop and n not in out: out.append(n)
+    for n in re.findall(r"[가-힣]{2,5}",compact):
+        if n not in stop and not any(x in n for x in ("위원회","처리결과","회부일","상정일","처리일")) and n not in out:
+            out.append(n)
     return out
 
 def parse_detail(html:str,row:dict)->dict:
@@ -120,14 +164,17 @@ def parse_detail(html:str,row:dict)->dict:
         "집행기관","이송일","공포일","공포번호","철회일자","비고",
         "첨부파일","기타파일"
     ]
-    bill_number=_field(text,"의안번호",labels)
-    bill_type=_field(text,"의안종류",labels)
-    proposer_type=_field(text,"발의자",labels)
-    proposal_date=_field(text,"발의일",labels)
-    session=_field(text,"회기",labels)
-    committee=_field(text,"소관위원회",labels)
-    representative_text=_field(text,"대표발의자",labels)
-    co_text=_field(text,"공동발의",labels)
+    fields=_table_fields(html)
+    def exact_or_fallback(label:str):
+        return fields.get(label) or _field(text,label,labels)
+    bill_number=exact_or_fallback("의안번호")
+    bill_type=exact_or_fallback("의안종류")
+    proposer_type=exact_or_fallback("발의자")
+    proposal_date=exact_or_fallback("발의일")
+    session=exact_or_fallback("회기")
+    committee=exact_or_fallback("소관위원회")
+    representative_text=exact_or_fallback("대표발의자")
+    co_text=exact_or_fallback("공동발의")
 
     representative=_names(representative_text)
     co_proposers=_names(co_text)
