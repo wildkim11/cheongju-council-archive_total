@@ -24,6 +24,11 @@ def compact_with_indices(value):
     for offset, original in enumerate(value):
         expanded = unicodedata.normalize("NFKC", original)
         for char in expanded:
+            # The official minutes often use Hangul araea (ㆍ) where
+            # the bill listing uses the middle dot (·); both are separators.
+            # Preserve every other Hangul letter and do not fuzzy-match names.
+            if char in ('ㆍ', 'ᆞ'):
+                continue
             if char.isalnum() or ('가' <= char <= '힣'):
                 parts.append(char.casefold())
                 indices.append(offset)
