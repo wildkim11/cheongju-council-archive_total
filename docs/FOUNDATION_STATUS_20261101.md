@@ -257,3 +257,45 @@ Correction:
 This rule also applies to future resignations, deaths, replacements, by-elections and other mid-term roster changes.
 
 Stage-A population is being retried after this correction.
+
+
+## Stage A population — PASS
+
+One-time Stage A population completed successfully and was published to `feature/archive-foundation`.
+
+Verified populated source-fact counts:
+
+- people: 434
+- tenures: 434
+- current party memberships: 44
+- district memberships: 166
+- pre-integration represented-area rows: 187
+- committee states: 26
+- committee memberships: 207
+- current research groups: 5
+- current research-group memberships: 65
+- historical research source pages: 6
+- historical research attachment links: 26
+- identity candidates: 115
+- automatic identity merges: 0
+
+Breakdown:
+- current active members: 44
+- integrated historical roster rows (terms 1-3): 123
+- pre-integration Cheongju city roster rows (terms 4-9): 187
+- pre-integration Cheongwon county roster rows (terms 1-6): 80
+- historical committee states promoted from verified full-roster sources: 16
+- historical committee membership rows: 126
+- current committee membership rows: 81
+
+Temporal correction verified:
+- a term-4 member who later left office remains resolvable in an earlier dated committee state through the term-scoped historical roster;
+- present-day active roster absence no longer erases earlier official membership.
+
+Analyzer export manifest:
+- schema: `cheongju-council-archive-analyzer-export/0.1`
+- source-fact-only principle: PASS
+- identity candidates remain non-promoting
+- Stage-B datasets (bills, speeches/questions, press/activity, meetings) are intentionally still empty until their population gates run.
+
+Stage A publish workflow also now rebases the generated data commit on the latest development branch before pushing, preventing non-fast-forward publication failures when code/docs advance during a long population run.
