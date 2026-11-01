@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "council_scope": "cheongju_integrated",
+  "sources": [
+    {
+      "source_id": "committee-standing-t1-latter-20160705",
+      "term": 1,
+      "phase": "latter_half",
+      "committee_types": [
+        "standing_committee"
+      ],
+      "source_date": "2016-07-05",
+      "title": "제1대 후반기 청주시의회 상임위원회 구성 및 상임위원장단 선출",
+      "official_url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=9995",
+      "source_status": "registered_needs_live_table_verification",
+      "effective_start_date": "2016-07-05",
+      "effective_end_date": null,
+      "period_precision": "start_exact_end_unknown"
+    },
+    {
+      "source_id": "committee-standing-t3-first-20220706",
+      "term": 3,
+      "phase": "first_half",
+      "committee_types": [
+        "standing_committee"
+      ],
+      "source_date": "2022-07-06",
+      "title": "제3대 청주시의회 전반기 상임위원회 구성 및 상임위원장단 선출",
+      "official_url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=14287",
+      "source_status": "verified_full_roster_text",
+      "effective_start_date": "2022-07-06",
+      "effective_end_date": null,
+      "period_precision": "start_exact_end_unknown"
+    },
+    {
+      "source_id": "committee-special-t3-latter-20240826",
+      "term": 3,
+      "phase": "latter_half",
+      "committee_types": [
+        "special_committee"
+      ],
+      "source_date": "2024-08-26",
+      "title": "제3대 청주시의회 후반기 예산결산특별위원장, 윤리특별위원장 선출",
+      "official_url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=18665",
+      "source_status": "verified_full_roster_text",
+      "effective_start_date": "2024-08-26",
+      "effective_end_date": null,
+      "period_precision": "per_committee_explicit_period"
+    },
+    {
+      "source_id": "committee-budget-t3-final-20250630",
+      "term": 3,
+      "phase": "latter_half",
+      "committee_types": [
+        "special_committee"
+      ],
+      "source_date": "2025-06-30",
+      "title": "제3대 청주시의회 마지막 예산결산특별위원장 정재우 의원 선출",
+      "official_url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=20087",
+      "source_status": "registered_partial_text_needs_full_roster_source",
+      "effective_start_date": "2025-07-01",
+      "effective_end_date": "2026-06-30",
+      "period_precision": "exact_date"
+    },
+    {
+      "source_id": "committee-standing-t4-first-20260703",
+      "term": 4,
+      "phase": "first_half",
+      "committee_types": [
+        "standing_committee"
+      ],
+      "source_date": "2026-07-03",
+      "title": "제4대 청주시의회 전반기 상임위원회 구성 및 상임위원장단 선출",
+      "official_url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=21043",
+      "source_status": "verified_full_roster_text",
+      "effective_start_date": "2026-07-03",
+      "effective_end_date": null,
+      "period_precision": "start_exact_end_unknown"
+    }
+  ]
+}
