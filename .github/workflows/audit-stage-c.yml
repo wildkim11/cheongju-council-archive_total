@@ -1,0 +1,35 @@
+name: Stage C offline integrity audit
+
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - scripts/audit_stage_c.py
+      - tests/test_audit_stage_c.py
+      - .github/workflows/audit-stage-c.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test audit invariants
+        run: python -m unittest discover -s tests -p test_audit_stage_c.py
+      - name: Audit stored Stage C source facts and export
+        run: python scripts/audit_stage_c.py --output reports/stage-c-offline-audit.json
+      - name: Preserve audit report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage-c-offline-audit
+          path: reports/stage-c-offline-audit.json
+          if-no-files-found: warn
