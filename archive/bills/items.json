@@ -32880,11 +32880,97 @@
     "committee": "대표발의자",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2017-09-07 처리일 2017-09-07 처리결과 채택",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2017-09-07 처리일 2017-09-07 처리결과 채택",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "김태수"
+    ],
+    "co_proposers": [
+      "김용규",
+      "안성현",
+      "윤인자",
+      "김성택",
+      "이우균",
+      "박정희",
+      "김병국",
+      "정태훈",
+      "변창수",
+      "김현기",
+      "최진현",
+      "박노학",
+      "맹순자",
+      "한병수",
+      "신언식",
+      "남일현",
+      "홍순평",
+      "박금순",
+      "김기동",
+      "박현순",
+      "이병복",
+      "육미선",
+      "이재길",
+      "안흥수",
+      "전규식",
+      "변종오",
+      "최충진",
+      "이유자",
+      "박상돈",
+      "황영호"
+    ],
+    "full_proposer_names": [
+      "김태수",
+      "김용규",
+      "안성현",
+      "윤인자",
+      "김성택",
+      "이우균",
+      "박정희",
+      "김병국",
+      "정태훈",
+      "변창수",
+      "김현기",
+      "최진현",
+      "박노학",
+      "맹순자",
+      "한병수",
+      "신언식",
+      "남일현",
+      "홍순평",
+      "박금순",
+      "김기동",
+      "박현순",
+      "이병복",
+      "육미선",
+      "이재길",
+      "안흥수",
+      "전규식",
+      "변종오",
+      "최충진",
+      "이유자",
+      "박상돈",
+      "황영호"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-1112",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1112",
+        "date": "2017-09-07",
+        "path": "archive/meetings/cheongju_integrated/term-1/2017/minutes-1112.md",
+        "content_sha256": "45e5f5a5f08d1e8a3e71c7e2686b026777a311f459aefc72b7e096495a3fb494",
+        "original_title_adjacent_evidence": "서울∼세종고속도로 충청권 균형발전 위한 청주경유 건의안(김태수 의원 대표발의)(김태수, 김용규, 안성현, 윤인자, 김성택, 이우균, 박정희, 김병국, 정태훈, 변창수, 김현기, 최진현, 박노학, 맹순자, 한병수, 신언식, 남일현,    홍순평, 박금순, 김기동, 박현순, 이병복, 육미선, 이재길, 안흥수, 전규식, 변종오, 최충진, 이유자, 박상돈, 황영호 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-1112",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1112",
+        "date": "2017-09-07",
+        "path": "archive/meetings/cheongju_integrated/term-1/2017/minutes-1112.md",
+        "content_sha256": "45e5f5a5f08d1e8a3e71c7e2686b026777a311f459aefc72b7e096495a3fb494",
+        "original_title_adjacent_evidence": "서울∼세종고속도로 충청권 균형발전 위한 청주경유 건의안(김태수 의원 대표발의)(김태수, 김용규, 안성현, 윤인자, 김성택, 이우균, 박정희, 김병국, 정태훈, 변창수, 김현기, 최진현, 박노학, 맹순자, 한병수, 신언식, 남일현, 홍순평, 박금순, 김기동, 박현순, 이병복, 육미선, 이재길, 안흥수, 전규식, 변종오, 최충진, 이유자, 박상돈, 황영호 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "950",
@@ -61321,11 +61407,73 @@
     "committee": "경제환경위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2021-05-25 처리일 2021-05-25 처리결과 원안가결 본 회 의 회부일 --> 상정일 2021-05-28 처리일 2021-05-28 처리결과 원안가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2021-05-25 처리일 2021-05-25 처리결과 원안가결 본 회 의 회부일 --> 상정일 2021-05-28 처리일 2021-05-28 처리결과 원안가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "박완희"
+    ],
+    "co_proposers": [
+      "김태수",
+      "임정수",
+      "양영순",
+      "이영신",
+      "남일현",
+      "변은영",
+      "김성택",
+      "윤여일",
+      "이현주",
+      "최동식"
+    ],
+    "full_proposer_names": [
+      "박완희",
+      "김태수",
+      "임정수",
+      "양영순",
+      "이영신",
+      "남일현",
+      "변은영",
+      "김성택",
+      "윤여일",
+      "이현주",
+      "최동식"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2401",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2401",
+        "date": "2021-05-25",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2401.md",
+        "content_sha256": "14410b734355459aaed83338658952f41f38fb9d22ca204f0abf1c563ab79c59",
+        "original_title_adjacent_evidence": "청주시 에너지 기본 조례 전부개정조례안(박완희 의원 대표발의)(박완희, 김태수, 임정수, 양영순, 이영신, 남일현, 변은영, 김성택, 윤여일, 이현주, 최동식 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2401",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2401",
+        "date": "2021-05-25",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2401.md",
+        "content_sha256": "14410b734355459aaed83338658952f41f38fb9d22ca204f0abf1c563ab79c59",
+        "original_title_adjacent_evidence": "청주시 에너지 기본 조례 전부개정조례안(박완희 의원 대표발의)(박완희, 김태수, 임정수, 양영순, 이영신, 남일현, 변은영, 김성택, 윤여일, 이현주, 최동식 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2417",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2417",
+        "date": "2021-05-28",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2417.md",
+        "content_sha256": "45894722bb160c561fa8d25864d633c6b5891281df05a27d3f1925590aff3921",
+        "original_title_adjacent_evidence": "청주시 에너지 기본 조례 전부개정조례안(박완희 의원 대표발의)(박완희, 김태수, 임정수, 양영순, 이영신, 남일현, 변은영, 김성택, 윤여일, 이현주, 최동식 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2417",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2417",
+        "date": "2021-05-28",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2417.md",
+        "content_sha256": "45894722bb160c561fa8d25864d633c6b5891281df05a27d3f1925590aff3921",
+        "original_title_adjacent_evidence": "청주시 에너지 기본 조례 전부개정조례안(박완희 의원 대표발의)(박완희, 김태수, 임정수, 양영순, 이영신, 남일현, 변은영, 김성택, 윤여일, 이현주, 최동식 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "1811",
@@ -64715,11 +64863,91 @@
     "committee": "경제환경위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2021-08-25 처리일 2021-08-25 처리결과 본 회 의 회부일 --> 상정일 2021-09-02 처리일 2021-09-02 처리결과 수정가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2021-08-25 처리일 2021-08-25 처리결과 본 회 의 회부일 --> 상정일 2021-09-02 처리일 2021-09-02 처리결과 수정가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "김은숙"
+    ],
+    "co_proposers": [
+      "한병수",
+      "변은영",
+      "정태훈",
+      "이영신",
+      "이재길",
+      "양영순",
+      "최충진",
+      "박정희",
+      "김병국",
+      "임정수",
+      "신언식",
+      "윤여일",
+      "김성택",
+      "변종오",
+      "박완희",
+      "박미자",
+      "이재숙",
+      "유영경",
+      "김용규"
+    ],
+    "full_proposer_names": [
+      "김은숙",
+      "한병수",
+      "변은영",
+      "정태훈",
+      "이영신",
+      "이재길",
+      "양영순",
+      "최충진",
+      "박정희",
+      "김병국",
+      "임정수",
+      "신언식",
+      "윤여일",
+      "김성택",
+      "변종오",
+      "박완희",
+      "박미자",
+      "이재숙",
+      "유영경",
+      "김용규"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2499",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2499",
+        "date": "2021-08-25",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2499.md",
+        "content_sha256": "c771df1bdfe27360ba134fd8f0893f8420bfaa711bdbc2d28f04fe5432b0e4e1",
+        "original_title_adjacent_evidence": "청주시 노동존중 기본 조례안(김은숙 의원 대표발의)(김은숙, 한병수, 변은영, 정태훈, 이영신, 이재길, 양영순, 최충진, 박정희, 김병국, 임정수, 신언식, 윤여일, 김성택, 변종오, 박완희, 박미자, 이재숙, 유영경, 김용규 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2499",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2499",
+        "date": "2021-08-25",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2499.md",
+        "content_sha256": "c771df1bdfe27360ba134fd8f0893f8420bfaa711bdbc2d28f04fe5432b0e4e1",
+        "original_title_adjacent_evidence": "청주시 노동존중 기본 조례안(김은숙 의원 대표발의)(김은숙, 한병수, 변은영, 정태훈, 이영신, 이재길, 양영순, 최충진, 박정희, 김병국, 임정수, 신언식, 윤여일, 김성택, 변종오, 박완희, 박미자, 이재숙, 유영경, 김용규 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2489",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2489",
+        "date": "2021-09-02",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2489.md",
+        "content_sha256": "78a803da3247907fad00573a00fef597300332a5cceea1b51d7d361e769332cf",
+        "original_title_adjacent_evidence": "청주시 노동존중 기본 조례안(김은숙 의원 대표발의)(김은숙, 한병수, 변은영, 정태훈, 이영신, 이재길, 양영순, 최충진, 박정희, 김병국, 임정수, 신언식, 윤여일, 김성택, 변종오, 박완희, 박미자, 이재숙, 유영경, 김용규 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2489",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2489",
+        "date": "2021-09-02",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2489.md",
+        "content_sha256": "78a803da3247907fad00573a00fef597300332a5cceea1b51d7d361e769332cf",
+        "original_title_adjacent_evidence": "청주시 노동존중 기본 조례안(김은숙 의원 대표발의)(김은숙, 한병수, 변은영, 정태훈, 이영신, 이재길, 양영순, 최충진, 박정희, 김병국, 임정수, 신언식, 윤여일, 김성택, 변종오, 박완희, 박미자, 이재숙, 유영경, 김용규 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "1911",
@@ -66217,11 +66445,53 @@
     "committee": "복지교육위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 보류 본 회 의 회부일 --> 상정일 처리일 처리결과",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 보류 본 회 의 회부일 --> 상정일 처리일 처리결과",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "박완희"
+    ],
+    "co_proposers": [
+      "이현주",
+      "이재숙",
+      "이완복",
+      "김태수",
+      "유영경",
+      "임정수",
+      "양영순",
+      "이영신"
+    ],
+    "full_proposer_names": [
+      "박완희",
+      "이현주",
+      "이재숙",
+      "이완복",
+      "김태수",
+      "유영경",
+      "임정수",
+      "양영순",
+      "이영신"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2528",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2528",
+        "date": "2021-10-19",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2528.md",
+        "content_sha256": "35264878c7c79bae99fd1a1503a8deb87f01f10f66d762e4d587a2f5c2d8e701",
+        "original_title_adjacent_evidence": "청주시 아이 돌보는 아빠 장려금 지원 조례안(박완희 의원 대표발의)(박완희, 이현주, 이재숙, 이완복, 김태수, 유영경, 임정수, 양영순, 이영신 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2528",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2528",
+        "date": "2021-10-19",
+        "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2528.md",
+        "content_sha256": "35264878c7c79bae99fd1a1503a8deb87f01f10f66d762e4d587a2f5c2d8e701",
+        "original_title_adjacent_evidence": "청주시 아이 돌보는 아빠 장려금 지원 조례안(박완희 의원 대표발의)(박완희, 이현주, 이재숙, 이완복, 김태수, 유영경, 임정수, 양영순, 이영신 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "1957",
@@ -68486,11 +68756,81 @@
     "committee": "의회운영위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-02-14 처리일 2022-02-14 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-02-25 처리일 2022-02-25 처리결과 수정가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-02-14 처리일 2022-02-14 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-02-25 처리일 2022-02-25 처리결과 수정가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "임은성"
+    ],
+    "co_proposers": [
+      "남일현",
+      "김기동",
+      "김미자",
+      "한병수",
+      "김성택",
+      "변종오",
+      "하재성",
+      "윤여일",
+      "변은영",
+      "이완복",
+      "김영근",
+      "유광욱",
+      "김병국",
+      "최충진"
+    ],
+    "full_proposer_names": [
+      "임은성",
+      "남일현",
+      "김기동",
+      "김미자",
+      "한병수",
+      "김성택",
+      "변종오",
+      "하재성",
+      "윤여일",
+      "변은영",
+      "이완복",
+      "김영근",
+      "유광욱",
+      "김병국",
+      "최충진"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2631",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2631",
+        "date": "2022-02-14",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2631.md",
+        "content_sha256": "a68730fd8a6d08a5c8214f543358723dfb2eb683987249ecd4882d8b2a6cd490",
+        "original_title_adjacent_evidence": "청주시의회의원 의정활동비 등의 지급에 관한 조례 일부개정조례안(임은성 의원 대표발의)(임은성, 남일현, 김기동, 김미자, 한병수, 김성택, 변종오, 하재성, 윤여일, 변은영, 이완복, 김영근, 유광욱, 김병국, 최충진 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2631",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2631",
+        "date": "2022-02-14",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2631.md",
+        "content_sha256": "a68730fd8a6d08a5c8214f543358723dfb2eb683987249ecd4882d8b2a6cd490",
+        "original_title_adjacent_evidence": "청주시의회의원 의정활동비 등의 지급에 관한 조례 일부개정조례안(임은성 의원 대표발의)(임은성, 남일현, 김기동, 김미자, 한병수, 김성택, 변종오, 하재성, 윤여일, 변은영, 이완복, 김영근, 유광욱, 김병국, 최충진 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2635",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2635",
+        "date": "2022-02-25",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2635.md",
+        "content_sha256": "135d4647a54308b6d22fecd3b8e0d6c768dfa27d4e16bb9371c7fc51b513ae68",
+        "original_title_adjacent_evidence": "청주시의회의원 의정활동비 등의 지급에 관한 조례 일부개정조례안(임은성 의원 대표발의)(임은성, 남일현, 김기동, 김미자, 한병수, 김성택, 변종오, 하재성, 윤여일, 변은영, 이완복, 김영근, 유광욱, 김병국, 최충진 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2635",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2635",
+        "date": "2022-02-25",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2635.md",
+        "content_sha256": "135d4647a54308b6d22fecd3b8e0d6c768dfa27d4e16bb9371c7fc51b513ae68",
+        "original_title_adjacent_evidence": "청주시의회의원 의정활동비 등의 지급에 관한 조례 일부개정조례안(임은성 의원 대표발의)(임은성, 남일현, 김기동, 김미자, 한병수, 김성택, 변종오, 하재성, 윤여일, 변은영, 이완복, 김영근, 유광욱, 김병국, 최충진 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2023",
@@ -68513,11 +68853,71 @@
     "committee": "의회운영위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-02-14 처리일 2022-02-14 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-02-25 처리일 2022-02-25 처리결과 수정가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-02-14 처리일 2022-02-14 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-02-25 처리일 2022-02-25 처리결과 수정가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "임정수"
+    ],
+    "co_proposers": [
+      "변종오",
+      "정태훈",
+      "박노학",
+      "변은영",
+      "김은숙",
+      "이재길",
+      "홍성각",
+      "신언식",
+      "최충진"
+    ],
+    "full_proposer_names": [
+      "임정수",
+      "변종오",
+      "정태훈",
+      "박노학",
+      "변은영",
+      "김은숙",
+      "이재길",
+      "홍성각",
+      "신언식",
+      "최충진"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2631",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2631",
+        "date": "2022-02-14",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2631.md",
+        "content_sha256": "a68730fd8a6d08a5c8214f543358723dfb2eb683987249ecd4882d8b2a6cd490",
+        "original_title_adjacent_evidence": "청주시의회 공무원직장협의회의 설립ㆍ운영에 관한 조례 시행규칙안(임정수 의원 대표발의)(임정수, 변종오, 정태훈, 박노학, 변은영, 김은숙, 이재길, 홍성각, 신언식, 최충진 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2631",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2631",
+        "date": "2022-02-14",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2631.md",
+        "content_sha256": "a68730fd8a6d08a5c8214f543358723dfb2eb683987249ecd4882d8b2a6cd490",
+        "original_title_adjacent_evidence": "청주시의회 공무원직장협의회의 설립ㆍ운영에 관한 조례 시행규칙안(임정수 의원 대표발의)(임정수, 변종오, 정태훈, 박노학, 변은영, 김은숙, 이재길, 홍성각, 신언식, 최충진 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2635",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2635",
+        "date": "2022-02-25",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2635.md",
+        "content_sha256": "135d4647a54308b6d22fecd3b8e0d6c768dfa27d4e16bb9371c7fc51b513ae68",
+        "original_title_adjacent_evidence": "청주시의회 공무원직장협의회의 설립ㆍ운영에 관한 조례 시행규칙안(임정수 의원 대표발의)(임정수, 변종오, 정태훈, 박노학, 변은영, 김은숙, 이재길, 홍성각, 신언식, 최충진 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2635",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2635",
+        "date": "2022-02-25",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2635.md",
+        "content_sha256": "135d4647a54308b6d22fecd3b8e0d6c768dfa27d4e16bb9371c7fc51b513ae68",
+        "original_title_adjacent_evidence": "청주시의회 공무원직장협의회의 설립ㆍ운영에 관한 조례 시행규칙안(임정수 의원 대표발의)(임정수, 변종오, 정태훈, 박노학, 변은영, 김은숙, 이재길, 홍성각, 신언식, 최충진 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2024",
@@ -69993,11 +70393,59 @@
     "committee": "재정경제위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-02-22 처리일 2022-02-22 처리결과 보류 본 회 의 회부일 --> 상정일 처리일 처리결과",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-02-22 처리일 2022-02-22 처리결과 보류 본 회 의 회부일 --> 상정일 처리일 처리결과",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "박완희"
+    ],
+    "co_proposers": [
+      "윤여일",
+      "한병수",
+      "이현주",
+      "남일현",
+      "김영근",
+      "이재숙",
+      "이영신",
+      "양영순",
+      "박용현",
+      "김성택",
+      "박정희"
+    ],
+    "full_proposer_names": [
+      "박완희",
+      "윤여일",
+      "한병수",
+      "이현주",
+      "남일현",
+      "김영근",
+      "이재숙",
+      "이영신",
+      "양영순",
+      "박용현",
+      "김성택",
+      "박정희"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2655",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2655",
+        "date": "2022-02-17",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2655.md",
+        "content_sha256": "56b150234d5bb6328a78e788cd1e04c058aa6bb9d30147328654f55b35595024",
+        "original_title_adjacent_evidence": "청주시 공익소송 비용지원에 관한 조례안(박완희 의원 대표발의)(박완희, 윤여일, 한병수, 이현주, 남일현, 김영근, 이재숙, 이영신, 양영순, 박용현, 김성택, 박정희 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2655",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2655",
+        "date": "2022-02-17",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2655.md",
+        "content_sha256": "56b150234d5bb6328a78e788cd1e04c058aa6bb9d30147328654f55b35595024",
+        "original_title_adjacent_evidence": "청주시 공익소송 비용지원에 관한 조례안(박완희 의원 대표발의)(박완희, 윤여일, 한병수, 이현주, 남일현, 김영근, 이재숙, 이영신, 양영순, 박용현, 김성택, 박정희 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2055",
@@ -71837,11 +72285,67 @@
     "committee": "복지교육위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-20 처리일 2022-04-20 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-20 처리일 2022-04-20 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "김영근"
+    ],
+    "co_proposers": [
+      "김미자",
+      "양영순",
+      "변은영",
+      "박용현",
+      "남일현",
+      "박완희",
+      "임정수"
+    ],
+    "full_proposer_names": [
+      "김영근",
+      "김미자",
+      "양영순",
+      "변은영",
+      "박용현",
+      "남일현",
+      "박완희",
+      "임정수"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2704",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2704",
+        "date": "2022-04-20",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2704.md",
+        "content_sha256": "2dacc5a1f05a0cc9dc23dbb276aa0bf5a2d9e5dd9ba2cfc0b67271373fb11809",
+        "original_title_adjacent_evidence": "청주시 1인 가구 지원에 관한 조례안(김영근 의원 대표발의)(김영근, 김미자, 양영순, 변은영, 박용현, 남일현, 박완희, 임정수 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2704",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2704",
+        "date": "2022-04-20",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2704.md",
+        "content_sha256": "2dacc5a1f05a0cc9dc23dbb276aa0bf5a2d9e5dd9ba2cfc0b67271373fb11809",
+        "original_title_adjacent_evidence": "청주시 1인 가구 지원에 관한 조례안(김영근 의원 대표발의)(김영근, 김미자, 양영순, 변은영, 박용현, 남일현, 박완희, 임정수 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 1인 가구 지원에 관한 조례안(김영근 의원 대표발의)(김영근, 김미자, 양영순, 변은영, 박용현, 남일현, 박완희, 임정수 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 1인 가구 지원에 관한 조례안(김영근 의원 대표발의)(김영근, 김미자, 양영순, 변은영, 박용현, 남일현, 박완희, 임정수 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2108",
@@ -71864,11 +72368,75 @@
     "committee": "복지교육위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-20 처리일 2022-04-20 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-20 처리일 2022-04-20 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "변은영"
+    ],
+    "co_proposers": [
+      "남일현",
+      "정태훈",
+      "한병수",
+      "정우철",
+      "박노학",
+      "김은숙",
+      "임정수",
+      "김성택",
+      "김용규",
+      "김미자",
+      "양영순"
+    ],
+    "full_proposer_names": [
+      "변은영",
+      "남일현",
+      "정태훈",
+      "한병수",
+      "정우철",
+      "박노학",
+      "김은숙",
+      "임정수",
+      "김성택",
+      "김용규",
+      "김미자",
+      "양영순"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2704",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2704",
+        "date": "2022-04-20",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2704.md",
+        "content_sha256": "2dacc5a1f05a0cc9dc23dbb276aa0bf5a2d9e5dd9ba2cfc0b67271373fb11809",
+        "original_title_adjacent_evidence": "청주시 사회적 고립청년 지원에 관한 조례안(변은영 의원 대표발의)(변은영, 남일현, 정태훈, 한병수, 정우철, 박노학, 김은숙, 임정수, 김성택, 김용규, 김미자, 양영순 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2704",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2704",
+        "date": "2022-04-20",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2704.md",
+        "content_sha256": "2dacc5a1f05a0cc9dc23dbb276aa0bf5a2d9e5dd9ba2cfc0b67271373fb11809",
+        "original_title_adjacent_evidence": "청주시 사회적 고립청년 지원에 관한 조례안(변은영 의원 대표발의)(변은영, 남일현, 정태훈, 한병수, 정우철, 박노학, 김은숙, 임정수, 김성택, 김용규, 김미자, 양영순 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 사회적 고립청년 지원에 관한 조례안(변은영 의원 대표발의)(변은영, 남일현, 정태훈, 한병수, 정우철, 박노학, 김은숙, 임정수, 김성택, 김용규, 김미자, 양영순 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 사회적 고립청년 지원에 관한 조례안(변은영 의원 대표발의)(변은영, 남일현, 정태훈, 한병수, 정우철, 박노학, 김은숙, 임정수, 김성택, 김용규, 김미자, 양영순 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2109",
@@ -71891,11 +72459,79 @@
     "committee": "경제환경위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-19 처리일 2022-04-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-19 처리일 2022-04-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "남일현"
+    ],
+    "co_proposers": [
+      "김병국",
+      "김영근",
+      "김기동",
+      "김은숙",
+      "김미자",
+      "양영순",
+      "박정희",
+      "정태훈",
+      "윤여일",
+      "박완희",
+      "임은성",
+      "이현주",
+      "한병수"
+    ],
+    "full_proposer_names": [
+      "남일현",
+      "김병국",
+      "김영근",
+      "김기동",
+      "김은숙",
+      "김미자",
+      "양영순",
+      "박정희",
+      "정태훈",
+      "윤여일",
+      "박완희",
+      "임은성",
+      "이현주",
+      "한병수"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2722",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2722",
+        "date": "2022-04-19",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2722.md",
+        "content_sha256": "c7c089a5d4955e78b4ca9d37dfeb748c95aa57e2819f96494c5f0f40a9ea0967",
+        "original_title_adjacent_evidence": "청주시 지역상품 우선구매에 관한 조례안(남일현 의원 대표발의)(남일현, 김병국, 김영근, 김기동, 김은숙, 김미자, 양영순, 박정희, 정태훈, 윤여일, 박완희, 임은성, 이현주, 한병수 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2722",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2722",
+        "date": "2022-04-19",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2722.md",
+        "content_sha256": "c7c089a5d4955e78b4ca9d37dfeb748c95aa57e2819f96494c5f0f40a9ea0967",
+        "original_title_adjacent_evidence": "청주시 지역상품 우선구매에 관한 조례안(남일현 의원 대표발의)(남일현, 김병국, 김영근, 김기동, 김은숙, 김미자, 양영순, 박정희, 정태훈, 윤여일, 박완희, 임은성, 이현주, 한병수 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 지역상품 우선구매에 관한 조례안(남일현 의원 대표발의)(남일현, 김병국, 김영근, 김기동, 김은숙, 김미자, 양영순, 박정희, 정태훈, 윤여일, 박완희, 임은성, 이현주, 한병수 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 지역상품 우선구매에 관한 조례안(남일현 의원 대표발의)(남일현, 김병국, 김영근, 김기동, 김은숙, 김미자, 양영순, 박정희, 정태훈, 윤여일, 박완희, 임은성, 이현주, 한병수 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2110",
@@ -71918,11 +72554,75 @@
     "committee": "경제환경위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-19 처리일 2022-04-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-19 처리일 2022-04-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "박완희"
+    ],
+    "co_proposers": [
+      "남일현",
+      "이현주",
+      "김영근",
+      "한병수",
+      "정우철",
+      "이완복",
+      "양영순",
+      "임은성",
+      "이영신",
+      "임정수",
+      "김기동"
+    ],
+    "full_proposer_names": [
+      "박완희",
+      "남일현",
+      "이현주",
+      "김영근",
+      "한병수",
+      "정우철",
+      "이완복",
+      "양영순",
+      "임은성",
+      "이영신",
+      "임정수",
+      "김기동"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2722",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2722",
+        "date": "2022-04-19",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2722.md",
+        "content_sha256": "c7c089a5d4955e78b4ca9d37dfeb748c95aa57e2819f96494c5f0f40a9ea0967",
+        "original_title_adjacent_evidence": "청주시 소형동물 인공수로 폐사 및 동물 찻길 사고 저감 조례안(박완희 의원 대표발의)(박완희, 남일현, 이현주, 김영근, 한병수, 정우철, 이완복, 양영순, 임은성, 이영신, 임정수, 김기동 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2722",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2722",
+        "date": "2022-04-19",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2722.md",
+        "content_sha256": "c7c089a5d4955e78b4ca9d37dfeb748c95aa57e2819f96494c5f0f40a9ea0967",
+        "original_title_adjacent_evidence": "청주시 소형동물 인공수로 폐사 및 동물 찻길 사고 저감 조례안(박완희 의원 대표발의)(박완희, 남일현, 이현주, 김영근, 한병수, 정우철, 이완복, 양영순, 임은성, 이영신, 임정수, 김기동 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 소형동물 인공수로 폐사 및 동물 찻길 사고 저감 조례안(박완희 의원 대표발의)(박완희, 남일현, 이현주, 김영근, 한병수, 정우철, 이완복, 양영순, 임은성, 이영신, 임정수, 김기동 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 소형동물 인공수로 폐사 및 동물 찻길 사고 저감 조례안(박완희 의원 대표발의)(박완희, 남일현, 이현주, 김영근, 한병수, 정우철, 이완복, 양영순, 임은성, 이영신, 임정수, 김기동 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2111",
@@ -71945,11 +72645,71 @@
     "committee": "도시건설위원회",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-21 처리일 2022-04-21 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-21 처리일 2022-04-21 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "한병수"
+    ],
+    "co_proposers": [
+      "변은영",
+      "정우철",
+      "임은성",
+      "변종오",
+      "유영경",
+      "이재숙",
+      "이재길",
+      "김영근",
+      "김기동"
+    ],
+    "full_proposer_names": [
+      "한병수",
+      "변은영",
+      "정우철",
+      "임은성",
+      "변종오",
+      "유영경",
+      "이재숙",
+      "이재길",
+      "김영근",
+      "김기동"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-2705",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2705",
+        "date": "2022-04-21",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2705.md",
+        "content_sha256": "48c41ddc538c2f8a7bdb2b51ed77eb0c8dc650f5b8210501cb2d048e8846e537",
+        "original_title_adjacent_evidence": "청주시 원도심 활성화 지원 조례안(한병수 의원 대표발의)(한병수, 변은영, 정우철, 임은성, 변종오, 유영경, 이재숙, 이재길, 김영근, 김기동 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2705",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2705",
+        "date": "2022-04-21",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2705.md",
+        "content_sha256": "48c41ddc538c2f8a7bdb2b51ed77eb0c8dc650f5b8210501cb2d048e8846e537",
+        "original_title_adjacent_evidence": "청주시 원도심 활성화 지원 조례안(한병수 의원 대표발의)(한병수, 변은영, 정우철, 임은성, 변종오, 유영경, 이재숙, 이재길, 김영근, 김기동 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 원도심 활성화 지원 조례안(한병수 의원 대표발의)(한병수, 변은영, 정우철, 임은성, 변종오, 유영경, 이재숙, 이재길, 김영근, 김기동 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-2715",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2715",
+        "date": "2022-04-26",
+        "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2715.md",
+        "content_sha256": "1ce718fab10f541fb79671ef29dea1f8872f83fa17ddaebf2f59c51b716dc57b",
+        "original_title_adjacent_evidence": "청주시 원도심 활성화 지원 조례안(한병수 의원 대표발의)(한병수, 변은영, 정우철, 임은성, 변종오, 유영경, 이재숙, 이재길, 김영근, 김기동 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2112",
@@ -72026,11 +72786,53 @@
     "committee": "대표발의자",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "이재길"
+    ],
+    "co_proposers": [
+      "최동식",
+      "이영신",
+      "홍성각",
+      "김미자",
+      "임은성",
+      "전규식",
+      "박완희",
+      "이재숙"
+    ],
+    "full_proposer_names": [
+      "이재길",
+      "최동식",
+      "이영신",
+      "홍성각",
+      "김미자",
+      "임은성",
+      "전규식",
+      "박완희",
+      "이재숙"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-1348",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1348",
+        "date": "2018-09-03",
+        "path": "archive/meetings/cheongju_integrated/term-2/2018/minutes-1348.md",
+        "content_sha256": "62556e1c499187f08f39d5f0e65c09439cae0668d015dc53eec17f464c28ba24",
+        "original_title_adjacent_evidence": "시장 및 관계공무원 출석요구의 건(이재길 의원 대표발의)(이재길, 최동식, 이영신, 홍성각, 김미자, 임은성, 전규식, 박완희, 이재숙 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-1348",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1348",
+        "date": "2018-09-03",
+        "path": "archive/meetings/cheongju_integrated/term-2/2018/minutes-1348.md",
+        "content_sha256": "62556e1c499187f08f39d5f0e65c09439cae0668d015dc53eec17f464c28ba24",
+        "original_title_adjacent_evidence": "시장 및 관계공무원 출석요구의 건(이재길 의원 대표발의)(이재길, 최동식, 이영신, 홍성각, 김미자, 임은성, 전규식, 박완희, 이재숙 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2254",
@@ -82802,11 +83604,61 @@
     "committee": "대표발의자",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2023-10-23 처리일 2023-10-23 처리결과 원안가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2023-10-23 처리일 2023-10-23 처리결과 원안가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "임정수"
+    ],
+    "co_proposers": [
+      "박봉규",
+      "이한국",
+      "홍순철",
+      "이인숙",
+      "한동순",
+      "김태순",
+      "이완복",
+      "이화정",
+      "박정희",
+      "최재호",
+      "김은숙",
+      "이종민"
+    ],
+    "full_proposer_names": [
+      "임정수",
+      "박봉규",
+      "이한국",
+      "홍순철",
+      "이인숙",
+      "한동순",
+      "김태순",
+      "이완복",
+      "이화정",
+      "박정희",
+      "최재호",
+      "김은숙",
+      "이종민"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-3188",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3188",
+        "date": "2023-10-23",
+        "path": "archive/meetings/cheongju_integrated/term-3/2023/minutes-3188.md",
+        "content_sha256": "1014fa49fb70309a9b896b5936ae6bcbfffdeb8d71d0a90de2dc476a1f9fc9db",
+        "original_title_adjacent_evidence": "청주시장 및 관계공무원 출석요구의 건(임정수 의원 대표발의)(임정수, 박봉규, 이한국, 홍순철, 이인숙, 한동순, 김태순, 이완복, 이화정, 박정희, 최재호, 김은숙, 이종민 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-3188",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3188",
+        "date": "2023-10-23",
+        "path": "archive/meetings/cheongju_integrated/term-3/2023/minutes-3188.md",
+        "content_sha256": "1014fa49fb70309a9b896b5936ae6bcbfffdeb8d71d0a90de2dc476a1f9fc9db",
+        "original_title_adjacent_evidence": "청주시장 및 관계공무원 출석요구의 건(임정수 의원 대표발의)(임정수, 박봉규, 이한국, 홍순철, 이인숙, 한동순, 김태순, 이완복, 이화정, 박정희, 최재호, 김은숙, 이종민 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2454",
@@ -84326,11 +85178,51 @@
     "committee": "대표발의자",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2023-11-20 처리일 2023-11-20 처리결과 원안가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2023-11-20 처리일 2023-11-20 처리결과 원안가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "임정수"
+    ],
+    "co_proposers": [
+      "이한국",
+      "홍순철",
+      "정재우",
+      "박봉규",
+      "이인숙",
+      "김태순",
+      "박승찬"
+    ],
+    "full_proposer_names": [
+      "임정수",
+      "이한국",
+      "홍순철",
+      "정재우",
+      "박봉규",
+      "이인숙",
+      "김태순",
+      "박승찬"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-3220",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3220",
+        "date": "2023-11-20",
+        "path": "archive/meetings/cheongju_integrated/term-3/2023/minutes-3220.md",
+        "content_sha256": "fbafce9021d0d20e75b313abb85b5e00f210d2050df3fc2727892e8aa4e94316",
+        "original_title_adjacent_evidence": "청주시장 및 관계공무원 출석요구의 건(임정수 의원 대표발의)(임정수, 이한국, 홍순철, 정재우, 박봉규, 이인숙, 김태순, 박승찬 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-3220",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3220",
+        "date": "2023-11-20",
+        "path": "archive/meetings/cheongju_integrated/term-3/2023/minutes-3220.md",
+        "content_sha256": "fbafce9021d0d20e75b313abb85b5e00f210d2050df3fc2727892e8aa4e94316",
+        "original_title_adjacent_evidence": "청주시장 및 관계공무원 출석요구의 건(임정수 의원 대표발의)(임정수, 이한국, 홍순철, 정재우, 박봉규, 이인숙, 김태순, 박승찬 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2500",
@@ -85898,11 +86790,63 @@
     "committee": "대표발의자",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2024-02-19 처리일 2024-02-19 처리결과 원안가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2024-02-19 처리일 2024-02-19 처리결과 원안가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "임정수"
+    ],
+    "co_proposers": [
+      "이한국",
+      "이인숙",
+      "박봉규",
+      "김태순",
+      "홍순철",
+      "김완식",
+      "박승찬",
+      "박노학",
+      "이종민",
+      "허철",
+      "박근영",
+      "정태훈",
+      "정재우"
+    ],
+    "full_proposer_names": [
+      "임정수",
+      "이한국",
+      "이인숙",
+      "박봉규",
+      "김태순",
+      "홍순철",
+      "김완식",
+      "박승찬",
+      "박노학",
+      "이종민",
+      "허철",
+      "박근영",
+      "정태훈",
+      "정재우"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-3317",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3317",
+        "date": "2024-02-19",
+        "path": "archive/meetings/cheongju_integrated/term-3/2024/minutes-3317.md",
+        "content_sha256": "c2d19425ce500e6c85ec87c813e7eaea81d11d5cc7a749e37b7ab0f730e9a09e",
+        "original_title_adjacent_evidence": "청주시장 및 관계공무원 출석요구의 건(임정수 의원 대표발의)(임정수, 이한국, 이인숙, 박봉규, 김태순, 홍순철, 김완식, 박승찬, 박노학, 이종민, 허철, 박근영, 정태훈, 정재우 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-3317",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3317",
+        "date": "2024-02-19",
+        "path": "archive/meetings/cheongju_integrated/term-3/2024/minutes-3317.md",
+        "content_sha256": "c2d19425ce500e6c85ec87c813e7eaea81d11d5cc7a749e37b7ab0f730e9a09e",
+        "original_title_adjacent_evidence": "청주시장 및 관계공무원 출석요구의 건(임정수 의원 대표발의)(임정수, 이한국, 이인숙, 박봉규, 김태순, 홍순철, 김완식, 박승찬, 박노학, 이종민, 허철, 박근영, 정태훈, 정재우 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2550",
@@ -93204,11 +94148,119 @@
     "committee": "대표발의자",
     "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2024-09-06 처리일 2024-09-06 처리결과 원안가결",
     "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2024-09-06 처리일 2024-09-06 처리결과 원안가결",
-    "representative_proposers": [],
-    "co_proposers": [],
-    "full_proposer_names": [],
+    "representative_proposers": [
+      "이화정"
+    ],
+    "co_proposers": [
+      "김현기",
+      "임은성",
+      "박봉규",
+      "정연숙",
+      "박근영",
+      "이인숙",
+      "이한국",
+      "송병호",
+      "신민수",
+      "이예숙",
+      "홍순철",
+      "박승찬",
+      "김준석",
+      "정영석",
+      "김영근",
+      "남인범",
+      "유광욱",
+      "이상조",
+      "김태순",
+      "박노학",
+      "이우균",
+      "김완식",
+      "이완복",
+      "남연심",
+      "김병국",
+      "안성현",
+      "한동순",
+      "최재호",
+      "신승호",
+      "박완희",
+      "김은숙",
+      "허철",
+      "남일현",
+      "김성택",
+      "김기동",
+      "홍성각",
+      "정태훈",
+      "임정수",
+      "변은영",
+      "이영신",
+      "정재우"
+    ],
+    "full_proposer_names": [
+      "이화정",
+      "김현기",
+      "임은성",
+      "박봉규",
+      "정연숙",
+      "박근영",
+      "이인숙",
+      "이한국",
+      "송병호",
+      "신민수",
+      "이예숙",
+      "홍순철",
+      "박승찬",
+      "김준석",
+      "정영석",
+      "김영근",
+      "남인범",
+      "유광욱",
+      "이상조",
+      "김태순",
+      "박노학",
+      "이우균",
+      "김완식",
+      "이완복",
+      "남연심",
+      "김병국",
+      "안성현",
+      "한동순",
+      "최재호",
+      "신승호",
+      "박완희",
+      "김은숙",
+      "허철",
+      "남일현",
+      "김성택",
+      "김기동",
+      "홍성각",
+      "정태훈",
+      "임정수",
+      "변은영",
+      "이영신",
+      "정재우"
+    ],
     "detail_text_checked": true,
-    "checked_at": "2026-11-02T00:07:00.824877+09:00"
+    "checked_at": "2026-11-02T00:07:00.824877+09:00",
+    "proposer_roster_parse_status": "verified_official_minutes",
+    "proposer_roster_repair_method": "exact_official_minutes_title_and_full_roster",
+    "proposer_roster_minutes_evidence": [
+      {
+        "meeting_id": "cheongju_integrated:minutes-3467",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3467",
+        "date": "2024-09-06",
+        "path": "archive/meetings/cheongju_integrated/term-3/2024/minutes-3467.md",
+        "content_sha256": "c04817f446006de993f6b8f71da1722bd03fcc575fe00fef569832b7c5a5c7e7",
+        "original_title_adjacent_evidence": "불법개설기관 근절을 위한 국민건강보험공단 특별사법경찰권 부여 「사법경찰직무법」 개정안 입법 촉구 결의안(이화정 의원 대표발의)(이화정, 김현기, 임은성, 박봉규, 정연숙, 박근영, 이인숙, 이한국, 송병호, 신민수, 이예숙, 홍순철, 박승찬, 김준석, 정영석, 김영근, 남인범, 유광욱, 이상조, 김태순, 박노학, 이우균, 김완식, 이완복, 남연심, 김병국, 안성현, 한동순, 최재호, 신승호, 박완희, 김은숙, 허철, 남일현, 김성택, 김기동, 홍성각, 정태훈, 임정수, 변은영, 이영신, 정재우 의원 발의)"
+      },
+      {
+        "meeting_id": "cheongju_integrated:minutes-3467",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3467",
+        "date": "2024-09-06",
+        "path": "archive/meetings/cheongju_integrated/term-3/2024/minutes-3467.md",
+        "content_sha256": "c04817f446006de993f6b8f71da1722bd03fcc575fe00fef569832b7c5a5c7e7",
+        "original_title_adjacent_evidence": "불법개설기관 근절을 위한 국민건강보험공단 특별사법경찰권 부여 「사법경찰직무법」 개정안 입법 촉구 결의안(이화정 의원 대표발의)(이화정, 김현기, 임은성, 박봉규, 정연숙, 박근영, 이인숙, 이한국, 송병호, 신민수, 이예숙, 홍순철, 박승찬, 김준석, 정영석, 김영근, 남인범, 유광욱, 이상조, 김태순, 박노학, 이우균, 김완식, 이완복, 남연심, 김병국, 안성현, 한동순, 최재호, 신승호, 박완희, 김은숙, 허철, 남일현, 김성택, 김기동, 홍성각, 정태훈, 임정수, 변은영, 이영신, 정재우 의원 발의)"
+      }
+    ],
+    "proposer_roster_verified_at": "2026-11-02T07:52:39.579857+09:00"
   },
   {
     "internal_number": "2755",

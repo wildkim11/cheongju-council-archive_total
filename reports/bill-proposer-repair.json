@@ -1,16 +1,18 @@
 {
-  "checked_at": "2026-11-01T22:10:40.540657+09:00",
+  "checked_at": "2026-11-02T07:52:39.579857+09:00",
   "bill_records": 3394,
   "member_bills": 893,
   "nonmember_bills": 2501,
-  "member_bills_with_names": 868,
-  "member_bills_without_names": 25,
+  "member_bills_with_names": 885,
+  "member_bills_without_names": 8,
   "nonmember_names_cleared": 0,
-  "representative_rows": 875,
-  "co_proposer_rows": 10239,
+  "representative_rows": 898,
+  "co_proposer_rows": 10568,
   "unknown_proposer_type_rows": 0,
   "unknown_proposer_type_examples": [],
   "acceptance": {
     "nonmember_person_names_zero": true
-  }
+  },
+  "minutes_verified_member_bills": 17,
+  "minutes_verified_proposer_rows": 250
 }
