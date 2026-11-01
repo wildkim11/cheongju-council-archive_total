@@ -35,14 +35,6 @@ def _visible_text(raw:str)->str:
 
 def discover_committees(html:str)->list[dict]:
     found={}
-    for href,label_raw in re.findall(
-        r'<a\b[^>]*href=["\']([^"\']*coIntroduce_([A-Za-z0-9]+)\.html[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
-        html,
-        flags=re.I,
-    ):
-        # regex tuple is href, code, inner label when using three capture groups
-        pass
-    # Re-run with explicit iterator for readability and to avoid tuple-shape mistakes.
     for m in re.finditer(
         r'<a\b[^>]*href=["\']([^"\']*coIntroduce_([A-Za-z0-9]+)\.html[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
         html,
