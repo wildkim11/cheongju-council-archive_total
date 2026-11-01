@@ -45,9 +45,12 @@ CONFIG={
 def _section(text:str,label:str)->str:
     marker=f"\n {label}\n"
     i=text.rfind(marker)
-    if i<0: i=text.rfind(label)
-    if i<0: raise ValueError(f"Missing section label: {label}")
-    s=text[i+len(label):].strip()
+    if i>=0:
+        s=text[i+len(marker):].strip()
+    else:
+        i=text.rfind(label)
+        if i<0: raise ValueError(f"Missing section label: {label}")
+        s=text[i+len(label):].strip()
     cuts=[]
     for p in (
         r"\n\s*목록\s*\n",
