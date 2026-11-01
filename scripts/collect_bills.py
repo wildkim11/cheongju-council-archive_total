@@ -90,7 +90,8 @@ def _names(value:str|None)->list[str]:
     if not value: return []
     stop={
         "대표발의자","공동발의","발의자","위원회","본회의","처리결과",
-        "원안가결","수정가결","부결","철회","의원","위원장","의장"
+        "원안가결","수정가결","부결","철회","의원","위원장","의장",
+        "시장","청주시장","위원회안","위원회","집행기관"
     }
     out=[]
     # names may contain an internal space such as 허 선
