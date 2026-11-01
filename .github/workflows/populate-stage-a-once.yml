@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: archive-population-stage-a
+  cancel-in-progress: true
+
 jobs:
   populate:
     runs-on: macos-14
