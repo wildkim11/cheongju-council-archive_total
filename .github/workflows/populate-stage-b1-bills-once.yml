@@ -32,6 +32,8 @@ jobs:
           test -s archive/people/history/cheongju_integrated_people.json
       - name: Collect official bills and resolutions
         run: python -u scripts/collect_bills.py
+      - name: Repair proposer arrays against term rosters
+        run: python -u scripts/repair_bill_proposer_rosters.py
       - name: Link bill proposer names to term-scoped people
         run: python -u scripts/link_bill_proposers.py
       - name: Validate archive
