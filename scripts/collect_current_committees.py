@@ -34,10 +34,19 @@ def _visible_text(raw:str)->str:
 
 
 def discover_committees(html:str)->list[dict]:
+    section_match=re.search(
+        r'<section\b[^>]*class=["\'][^"\']*\bmCmt\b[^"\']*["\'][^>]*>([\s\S]*?)</section>',
+        html,
+        flags=re.I,
+    )
+    if not section_match:
+        raise ValueError("Missing current committee shortcut section")
+    section=section_match.group(1)
+
     found={}
     for m in re.finditer(
         r'<a\b[^>]*href=["\']([^"\']*coIntroduce_([A-Za-z0-9]+)\.html[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
-        html,
+        section,
         flags=re.I,
     ):
         href,code,label_raw=m.group(1),m.group(2),m.group(3)
@@ -50,9 +59,8 @@ def discover_committees(html:str)->list[dict]:
             "official_url":_abs(href),
         }
     if not found:
-        raise ValueError("No official committee intro links discovered")
+        raise ValueError("No current official committee intro links discovered")
     return sorted(found.values(),key=lambda r:r["committee_name"])
-
 
 def committee_type(name:str)->str:
     if "특별위원회" in name:
