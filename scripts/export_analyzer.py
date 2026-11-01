@@ -73,6 +73,12 @@ def export(root:Path=ROOT)->dict:
         "research_group_memberships":_merge(root,[
             "archive/research_groups/current_memberships.json",
         ]),
+        "research_source_pages":_merge(root,[
+            "archive/research_groups/historical_source_pages.json",
+        ]),
+        "research_attachments":_merge(root,[
+            "archive/research_groups/historical_attachments.json",
+        ]),
         "bills":_merge(root,[
             "archive/bills/items.json",
         ]),
