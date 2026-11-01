@@ -53,6 +53,7 @@ class CurrentCommitteeTests(unittest.TestCase):
     def test_committee_type(self):
         self.assertEqual(c.committee_type("경제문화위원회"),"standing_committee")
         self.assertEqual(c.committee_type("윤리특별위원회"),"special_committee")
+        self.assertEqual(c.committee_type("윤리특별 위원회"),"special_committee")
         self.assertEqual(c.committee_type("인사청문위원회"),"other_committee")
 
 if __name__=="__main__":
