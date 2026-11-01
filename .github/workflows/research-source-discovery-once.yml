@@ -1,0 +1,21 @@
+name: One-time historical research source discovery
+
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: macos-14
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -u scripts/discover_historical_research_sources.py
+      - run: cat reports/historical-research-source-candidates.json
