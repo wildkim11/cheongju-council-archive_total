@@ -31,15 +31,19 @@ def parse_page(html:str,page_url:str)->list[dict]:
         title=cells[3].strip()
         if not date or not re.fullmatch(r"[가-힣]{2,5}",member) or not title:
             continue
+        detail_url=_file_link(tr,"질문파일",page_url)
+        answer_list_url=_file_link(tr,"답변파일",page_url)
+        record_number=_record_number(detail_url)
         out.append({
-            "source_id":source_id,
+            "source_id":record_number or source_id,
+            "list_number":source_id,
             "activity_type":"written_question",
             "council_scope":"cheongju_integrated",
             "date":date,
             "speaker_name":member,
             "title":title,
-            "question_file_url":_file_link(tr,"질문파일",page_url),
-            "answer_file_url":_file_link(tr,"답변파일",page_url),
+            "detail_url":detail_url,
+            "answer_file_url_list":answer_list_url,
             "minutes_url":_file_link(tr,"회의록",page_url),
             "list_source_url":page_url,
         })
@@ -52,7 +56,18 @@ def collect(root:Path=ROOT,max_pages:int=100)->dict:
         page_url=f"{URL}?page={page}"
         parsed=parse_page(fetch_text(page_url),page_url)
         new=[r for r in parsed if r["source_id"] not in seen]
-        for r in new: seen.add(r["source_id"]);r["checked_at"]=stamp;rows.append(r)
+        for r in new:
+            seen.add(r["source_id"])
+            if r.get("detail_url"):
+                files=parse_detail_files(fetch_text(r["detail_url"]),r["detail_url"])
+                r.update(files)
+            else:
+                r["question_file_url"]=None
+                r["answer_file_url"]=r.get("answer_file_url_list")
+            if not r.get("answer_file_url"):
+                r["answer_file_url"]=r.get("answer_file_url_list")
+            r["checked_at"]=stamp
+            rows.append(r)
         if parsed:
             empty=0
         elif rows:
