@@ -1,0 +1,43 @@
+name: One-time term4 historical-only delta
+
+on:
+  push:
+    branches:
+      - population-term4-delta-trigger
+
+permissions:
+  contents: write
+
+jobs:
+  populate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test foundation
+        run: python -m unittest discover -s tests
+      - name: Collect term4 historical-only members
+        run: python -u scripts/collect_term4_departed_members.py
+      - name: Validate archive
+        run: python scripts/validate_archive.py
+      - name: Rebuild identity candidates and analyzer export
+        run: |
+          python scripts/build_identity_candidates.py
+          python scripts/export_analyzer.py
+      - name: Publish term4 delta
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add archive reports exports
+          if ! git diff --cached --quiet; then
+            git commit -m "data: add term4 historical-only member delta"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
