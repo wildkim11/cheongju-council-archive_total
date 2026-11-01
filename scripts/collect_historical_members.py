@@ -129,13 +129,13 @@ def displayed_term(html:str)->int|None:
 
 def _clean_name(value:str)->str|None:
     # Historical pages commonly encode alt text as "이름이름지역명".
-    compact=re.sub(r"\\s+","",value)
-    repeated=re.match(r"^([가-힣]{2,5})\\1",compact)
+    compact=re.sub(r"\s+","",value)
+    repeated=re.match(r"^([가-힣]{2,5})\1",compact)
     if repeated:
         return repeated.group(1)
 
     # Some pages use "이름 의원" or a single visible name.
-    member_label=re.search(r"([가-힣]{2,5})\\s*의원",value)
+    member_label=re.search(r"([가-힣]{2,5})\s*의원",value)
     if member_label:
         return member_label.group(1)
 
@@ -145,7 +145,6 @@ def _clean_name(value:str)->str|None:
         if t not in stop and not t.endswith("의원소개"):
             return t
     return None
-
 
 def parse_members(html:str,source_url:str)->list[dict]:
     p=HistoricalMemberParser(); p.feed(html)
