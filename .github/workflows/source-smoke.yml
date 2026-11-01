@@ -1,19 +1,24 @@
 name: Source smoke check
 
 on:
+  push:
+    branches:
+      - feature/archive-foundation
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  official-source-probe:
+  current-member-probe:
     runs-on: macos-14
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Probe official generation root
-        run: python -u scripts/probe_official_source.py
+      - name: Collect current members without portraits
+        run: python -u scripts/collect_current_members.py --no-portraits
+      - name: Show report
+        run: cat reports/current-members.json
