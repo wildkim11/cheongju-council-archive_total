@@ -1,0 +1,59 @@
+name: Publish safe personal-proposer analyzer views
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/publish-safe-bill-proposer-views.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: one-time-safe-bill-proposer-export
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source code and original archive
+        run: |
+          python -m unittest discover -s tests
+          python scripts/validate_archive.py
+          python scripts/audit_stage_c.py --output reports/stage-c-before-safe-view.json
+      - name: Regenerate analyzer exports with two partitioned views
+        run: python scripts/export_analyzer.py > /tmp/export-manifest.json
+      - name: Assert original relationships are losslessly partitioned
+        run: |
+          python scripts/verify_safe_bill_proposer_export.py
+          python scripts/audit_stage_c.py --output reports/stage-c-after-safe-view.json
+          python -m unittest discover -s tests
+      - name: Preserve verification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-safe-member-proposer-export
+          path: |
+            reports/bill-proposer-safe-export.json
+            reports/stage-c-before-safe-view.json
+            reports/stage-c-after-safe-view.json
+          if-no-files-found: warn
+      - name: Commit additive derived views only to development branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add exports/analyzer
+          git add reports/bill-proposer-safe-export.json
+          if ! git diff --cached --quiet; then
+            git commit -m "export: separate 11377 member proposer links from 44 agency-type source anomalies"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
