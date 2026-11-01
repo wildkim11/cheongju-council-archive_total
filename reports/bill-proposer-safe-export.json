@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-11-01T23:43:24.322000+00:00",
+  "status": "PASS",
+  "source_bills": 3394,
+  "raw_legacy_person_relationships": 11421,
+  "verified_personal_proposer_relationships": 11377,
+  "institutional_type_relationships_separated": 44,
+  "affected_institutional_bill_ids": {
+    "375": 1,
+    "2177": 6,
+    "2180": 12,
+    "3265": 12,
+    "3266": 13
+  },
+  "canonical_bill_sha256": "e6ff0ea651becc77c10fa4fa5b743853fc21b4b12fb101cbf42ab6cdd2edd608",
+  "canonical_proposer_link_sha256": "5dbe93feebdde9ec354998eb95cc11a214b3ef9b66a8b613e140f47a9ebcb174",
+  "member_only_export": {
+    "rows": 11377,
+    "path": "exports/analyzer/bill_proposers_member_only.jsonl",
+    "sha256": "8af75cd22e6a5abb20446bde6aff015568618bf6ba7a516b1b3adae5e45782a9"
+  },
+  "quarantine_export": {
+    "rows": 44,
+    "path": "exports/analyzer/bill_proposers_institutional_type_quarantine.jsonl",
+    "sha256": "ff47e4ef34ce7f985bfb1272b9fd3d3fa502d6c86410b4f147e06c430d462e37"
+  },
+  "source_archive_mutated_by_this_audit": false,
+  "note": "Institutional proposer_type appears for all 44 records; specific personal roles in underlying document have not been authoritatively determined."
+}
