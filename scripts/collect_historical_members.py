@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import html as html_lib
 import re
 import ssl
 import urllib.parse
@@ -127,50 +128,74 @@ def displayed_term(html:str)->int|None:
     return int(m.group(1)) if m else None
 
 
-def _clean_name(value:str)->str|None:
-    # Historical pages commonly encode alt text as "이름이름지역명".
-    compact=re.sub(r"\s+","",value)
-    repeated=re.match(r"^([가-힣]{2,5})\1",compact)
-    if repeated:
-        return repeated.group(1)
+def _visible_text(raw:str)->str:
+    raw=re.sub(r"<br\s*/?>"," ",raw,flags=re.I)
+    raw=re.sub(r"<[^>]+>"," ",raw)
+    return re.sub(r"\s+"," ",html_lib.unescape(raw)).strip()
 
-    # Some pages use "이름 의원" or a single visible name.
-    member_label=re.search(r"([가-힣]{2,5})\s*의원",value)
-    if member_label:
-        return member_label.group(1)
 
-    tokens=re.findall(r"[가-힣]{2,4}",value)
-    stop={"의원소개","청주시의회","청원군의회","선거구","비례대표","대의원"}
-    for t in tokens:
-        if t not in stop and not t.endswith("의원소개"):
-            return t
-    return None
+def _member_section(html:str)->str:
+    m=re.search(
+        r'<section\b[^>]*class=["\'][^"\']*\bmember\b[^"\']*["\'][^>]*>([\s\S]*?)</section>',
+        html,
+        flags=re.I,
+    )
+    if not m:
+        raise ValueError("Missing official member section")
+    return m.group(1)
+
 
 def parse_members(html:str,source_url:str)->list[dict]:
-    p=HistoricalMemberParser(); p.feed(html)
-    out=[]; seen=set()
-    for block in p.blocks:
-        text=" ".join(block["text"]).strip()
-        image=block["images"][0] if block["images"] else None
-        combined=((image or {}).get("alt","")+" "+text).strip()
-        name=_clean_name(combined)
-        if not name:
-            continue
-        portrait_url=_abs(image["src"]) if image and image.get("src") else None
+    """Parse one official static legacy roster page.
 
-        # Remove repeated name from visible block text and keep remaining text as source label.
-        detail=re.sub(re.escape(name)," ",combined)
-        detail=re.sub(r"\s+"," ",detail).strip(" -·,")
-        key=(name,portrait_url,detail)
+    Both old-city and old-county pages use section.member > ul > li. The image
+    alt (or strong text fallback) is the source name. Any text after the strong
+    name is retained as an explicit represented-area label, not reinterpreted.
+    """
+    section=_member_section(html)
+    blocks=re.findall(r"<li\b[^>]*>([\s\S]*?)</li>",section,flags=re.I)
+    out=[];seen=set()
+    for raw in blocks:
+        img=re.search(
+            r'<img\b[^>]*src=["\']([^"\']+)["\'][^>]*>',
+            raw,
+            flags=re.I,
+        )
+        if not img:
+            continue
+        img_tag=img.group(0)
+        alt_match=re.search(r'alt=["\']([^"\']*)["\']',img_tag,flags=re.I)
+        strong_match=re.search(r"<strong\b[^>]*>([\s\S]*?)</strong>",raw,flags=re.I)
+
+        name=(html_lib.unescape(alt_match.group(1)).strip() if alt_match else None)
+        if not name and strong_match:
+            name=_visible_text(strong_match.group(1))
+        if not name or not re.fullmatch(r"[가-힣]{2,5}",name):
+            continue
+
+        portrait_url=_abs(img.group(1))
+        represented_area=None
+        if strong_match:
+            tail=raw[strong_match.end():]
+            # Only visible text remaining in the same member item is retained.
+            value=_visible_text(tail)
+            value=re.sub(r"^[\s,·/-]+|[\s,·/-]+$","",value)
+            represented_area=value or None
+
+        key=(name,portrait_url,represented_area)
         if key in seen:
             continue
         seen.add(key)
         out.append({
             "name":name,
-            "source_detail":detail or None,
+            "source_detail":represented_area,
+            "represented_area_label":represented_area,
             "portrait_source_url":portrait_url,
             "source_url":source_url,
         })
+
+    if not out:
+        raise ValueError(f"No member rows parsed from official member section: {source_url}")
     return out
 
 
@@ -204,7 +229,7 @@ def _mirror_portrait(root:Path,pid:str,url:str,stamp:str)->dict:
 
 def collect_static_scope(scope:str,pages:dict[int,str],root:Path=ROOT,save_portraits:bool=True)->dict:
     stamp=dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat()
-    people=[]; tenures=[]
+    people=[]; tenures=[]; represented_areas=[]
     for expected_term,url in pages.items():
         html=fetch(url)
         actual=displayed_term(html)
@@ -237,6 +262,7 @@ def collect_static_scope(scope:str,pages:dict[int,str],root:Path=ROOT,save_portr
                 "official_profile_code":None,
                 "portrait":portrait,
                 "source_detail":row["source_detail"],
+                "represented_area_label":row.get("represented_area_label"),
                 "source_url":url,
                 "checked_at":stamp,
             })
@@ -250,14 +276,33 @@ def collect_static_scope(scope:str,pages:dict[int,str],root:Path=ROOT,save_portr
                 "source_url":url,
                 "checked_at":stamp,
             })
+            if row.get("represented_area_label"):
+                represented_areas.append({
+                    "person_id":pid,
+                    "council_scope":scope,
+                    "term":actual,
+                    "label":row["represented_area_label"],
+                    "label_type":"official_roster_represented_area",
+                    "start_date":None,
+                    "end_date":None,
+                    "period_precision":"term_only",
+                    "source_url":url,
+                    "checked_at":stamp,
+                })
     save_json(root/f"archive/people/history/{scope}_people_candidates.json",people)
     save_json(root/f"archive/people/history/{scope}_tenures.json",tenures)
+    save_json(root/f"archive/people/history/{scope}_represented_areas.json",represented_areas)
     report={
         "checked_at":stamp,
         "council_scope":scope,
         "terms":sorted(pages),
         "people_candidate_rows":len(people),
         "tenure_rows":len(tenures),
+        "represented_area_rows":len(represented_areas),
+        "by_term":{
+            str(term):sum(1 for row in tenures if row["term"]==term)
+            for term in sorted(pages)
+        },
         "identity_policy":"candidate_unmerged_until_evidence",
     }
     save_json(root/f"reports/{scope}-historical-members.json",report)
