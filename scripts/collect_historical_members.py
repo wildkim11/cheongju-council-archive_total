@@ -43,7 +43,7 @@ OLD_COUNTY_PAGES={
 INTEGRATED_HISTORY_URL=f"{BASE}/content/member/integrationCheongju.html"
 
 
-def fetch(url:str)->str:
+def _request(url:str)->tuple[bytes,str]:
     parsed=urllib.parse.urlsplit(url)
     if parsed.scheme!="https" or parsed.netloc!="council.cheongju.go.kr":
         raise ValueError("Unexpected source host")
@@ -51,7 +51,11 @@ def fetch(url:str)->str:
     with urllib.request.urlopen(req,timeout=40,context=TLS) as resp:
         if resp.status!=200:
             raise ValueError(f"Official source HTTP {resp.status}")
-        return resp.read().decode("utf-8-sig")
+        return resp.read(), resp.headers.get_content_type()
+
+def fetch(url:str)->str:
+    data,_=_request(url)
+    return data.decode("utf-8-sig")
 
 
 class HistoricalMemberParser(HTMLParser):
@@ -178,7 +182,28 @@ def candidate_person_id(scope:str,term:int,name:str,portrait_url:str|None)->str:
     return "person-candidate-"+sha256_bytes(basis)[:16]
 
 
-def collect_static_scope(scope:str,pages:dict[int,str],root:Path=ROOT)->dict:
+def _portrait_extension(content_type:str,url:str)->str:
+    mapping={"image/jpeg":".jpg","image/png":".png","image/webp":".webp"}
+    if content_type in mapping:
+        return mapping[content_type]
+    suffix=Path(urllib.parse.urlsplit(url).path).suffix.lower()
+    return suffix if suffix in {".jpg",".jpeg",".png",".webp"} else ".img"
+
+def _mirror_portrait(root:Path,pid:str,url:str,stamp:str)->dict:
+    data,content_type=_request(url)
+    ext=_portrait_extension(content_type,url)
+    local_path=f"archive/people/portraits/{pid}{ext}"
+    path=root/local_path
+    path.parent.mkdir(parents=True,exist_ok=True)
+    path.write_bytes(data)
+    return {
+        "source_url":url,
+        "local_path":local_path,
+        "checked_at":stamp,
+        "sha256":sha256_bytes(data),
+    }
+
+def collect_static_scope(scope:str,pages:dict[int,str],root:Path=ROOT,save_portraits:bool=True)->dict:
     stamp=dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat()
     people=[]; tenures=[]
     for expected_term,url in pages.items():
@@ -193,6 +218,17 @@ def collect_static_scope(scope:str,pages:dict[int,str],root:Path=ROOT)->dict:
             raise ValueError(f"No historical members parsed: {url}")
         for row in rows:
             pid=candidate_person_id(scope,actual,row["name"],row["portrait_source_url"])
+            portrait=None
+            if row["portrait_source_url"]:
+                if save_portraits:
+                    portrait=_mirror_portrait(root,pid,row["portrait_source_url"],stamp)
+                else:
+                    portrait={
+                        "source_url":row["portrait_source_url"],
+                        "local_path":None,
+                        "checked_at":stamp,
+                        "sha256":None,
+                    }
             people.append({
                 "person_id":pid,
                 "identity_status":"candidate_unmerged",
@@ -200,12 +236,7 @@ def collect_static_scope(scope:str,pages:dict[int,str],root:Path=ROOT)->dict:
                 "aliases":[],
                 "official_profile_url":None,
                 "official_profile_code":None,
-                "portrait":{
-                    "source_url":row["portrait_source_url"],
-                    "local_path":None,
-                    "checked_at":stamp,
-                    "sha256":None,
-                } if row["portrait_source_url"] else None,
+                "portrait":portrait,
                 "source_detail":row["source_detail"],
                 "source_url":url,
                 "checked_at":stamp,
@@ -237,11 +268,12 @@ def collect_static_scope(scope:str,pages:dict[int,str],root:Path=ROOT)->dict:
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--scope",choices=["cheongju_old_city","cheongwon_old_county"],required=True)
+    p.add_argument("--no-portraits",action="store_true")
     args=p.parse_args()
     if args.scope=="cheongju_old_city":
-        report=collect_static_scope(args.scope,OLD_CITY_PAGES)
+        report=collect_static_scope(args.scope,OLD_CITY_PAGES,save_portraits=not args.no_portraits)
     else:
-        report=collect_static_scope(args.scope,OLD_COUNTY_PAGES)
+        report=collect_static_scope(args.scope,OLD_COUNTY_PAGES,save_portraits=not args.no_portraits)
     print(json.dumps(report,ensure_ascii=False))
 
 
