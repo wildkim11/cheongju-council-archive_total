@@ -299,3 +299,35 @@ Analyzer export manifest:
 - Stage-B datasets (bills, speeches/questions, press/activity, meetings) are intentionally still empty until their population gates run.
 
 Stage A publish workflow also now rebases the generated data commit on the latest development branch before pushing, preventing non-fast-forward publication failures when code/docs advance during a long population run.
+
+
+## Stage B1 bills — populated with proposer fallback gate
+
+Official bill population completed for integrated terms 1-4:
+
+| term | records |
+|---:|---:|
+| 1 | 1,098 |
+| 2 | 1,020 |
+| 3 | 1,141 |
+| 4 | 135 |
+| **total** | **3,394** |
+
+Current proposer classification:
+- member-proposed bills: **893**
+- non-member bills: **2,501**
+- member bills with reconstructed official-term proposer roster: **868**
+- member bills requiring minutes fallback: **25**
+
+Proposer identity ledger after repair:
+- proposer rows: **11,114**
+- resolved exact same-term: **11,114**
+- unresolved: **0**
+- ambiguous same-term: **0**
+- non-member bills with person-name rows: **0**
+
+A first-pass flat-text parser incorrectly treated follow-up field labels as person names. The populated data was audited and repaired offline using official term-scoped member names. The raw text fields remain preserved for provenance.
+
+The remaining 25 member-proposed records are not guessed. Their bill-detail pages do not expose a usable proposer roster in the parsed fields. They carry a fallback-needed status and will be reconciled against official meeting text after meeting-body population.
+
+Future Stage B1 full runs must execute the proposer-repair step before identity linking/export.
