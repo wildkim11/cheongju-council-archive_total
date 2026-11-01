@@ -1,28 +1,19 @@
 name: Source smoke check
 
 on:
-  push:
-    branches:
-      - feature/archive-foundation
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  legacy-member-probe:
+  official-source-probe:
     runs-on: macos-14
-    timeout-minutes: 15
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Collect old-city rosters without portraits
-        run: python -u scripts/collect_historical_members.py --scope cheongju_old_city --no-portraits
-      - name: Collect old-county rosters without portraits
-        run: python -u scripts/collect_historical_members.py --scope cheongwon_old_county --no-portraits
-      - name: Show reports
-        run: |
-          cat reports/cheongju_old_city-historical-members.json
-          cat reports/cheongwon_old_county-historical-members.json
+      - name: Probe official generation root
+        run: python -u scripts/probe_official_source.py
