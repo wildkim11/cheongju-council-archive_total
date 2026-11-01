@@ -13,6 +13,13 @@ class BillMinutesFallbackTests(unittest.TestCase):
         self.assertTrue(matches)
         self.assertEqual(matches[0]["match"], "exact_title")
 
+    def test_hangul_araea_and_middle_dot_are_equivalent_only_as_separators(self):
+        source = "청주시 농어업ㆍ농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안(박노학 의원 대표발의)"
+        title = "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안"
+        results = f.candidate_occurrences(source,title)
+        self.assertTrue(results)
+        self.assertEqual(results[0]["match"], "exact_title")
+
     def test_partial_title_marked_weak_evidence(self):
         body = "2022년 청주시 사회적 고립청년 지원에 관한 조례 제정 안건입니다."
         hits = f.candidate_occurrences(body, "청주시 사회적 고립청년 지원에 관한 조례안")
