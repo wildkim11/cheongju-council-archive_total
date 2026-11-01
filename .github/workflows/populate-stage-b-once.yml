@@ -9,9 +9,6 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: archive-population-stage-b2
-  cancel-in-progress: false
 
 jobs:
   populate:
