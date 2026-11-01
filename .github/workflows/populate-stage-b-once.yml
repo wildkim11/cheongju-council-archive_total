@@ -34,6 +34,11 @@ jobs:
           test -s archive/committees/current_memberships.json
           test -s archive/research_groups/current_memberships.json
 
+      - name: Collect term-4 historical-only member delta
+        run: python -u scripts/collect_term4_departed_members.py
+      - name: Validate person references before stage B
+        run: python scripts/validate_archive.py
+
       - name: Collect official bills and resolutions
         run: python -u scripts/collect_bills.py
       - name: Link bill proposer names to term-scoped people
@@ -55,8 +60,8 @@ jobs:
         run: python scripts/export_analyzer.py
       - name: Publish verified stage B core
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
           git add archive reports exports
           if ! git diff --cached --quiet; then
             git commit -m "data: populate archive stage B core"
@@ -81,8 +86,8 @@ jobs:
         run: python scripts/export_analyzer.py
       - name: Publish verified stage B media
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
           git add archive reports exports
           if ! git diff --cached --quiet; then
             git commit -m "data: populate archive stage B media"
