@@ -19,16 +19,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Probe main council site
+      - name: Probe repeated bill-list access
         env:
           PYTHONPATH: scripts
         run: |
           python - <<'PY'
-          from scripts.collect_current_members import fetch_text, LIST_URL
-          text=fetch_text(LIST_URL)
-          print("main_site_bytes", len(text.encode("utf-8")))
-          if "청주시의회" not in text:
-              raise SystemExit("main site probe failed")
+          from collect_bills import discover_term
+          rows=discover_term(4,max_pages=40)
+          print("term4_list_records",len(rows))
+          if len(rows)<100:
+              raise SystemExit("term4 list unexpectedly small")
           PY
       - name: Probe one bill detail
         env:
