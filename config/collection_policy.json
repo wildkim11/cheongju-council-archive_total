@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "schedule": {
+    "incremental": [
+      "07:17 Asia/Seoul",
+      "18:17 Asia/Seoul"
+    ],
+    "full_recheck": "Monday 03:17 Asia/Seoul"
+  },
+  "meeting_publication_status": [
+    "provisional",
+    "published",
+    "superseded"
+  ],
+  "attachment_policy": "metadata_and_official_link_only",
+  "member_portrait_policy": "one_official_profile_portrait_per_person",
+  "scheduled_collection_enabled": false
+}
