@@ -133,26 +133,53 @@ def _table_fields(html:str)->dict[str,str]:
     return out
 
 def _names(value:str|None)->list[str]:
-    if not value: return []
+    if not value:
+        return []
+
+    # Cut off any following workflow/status fields without destroying the
+    # whitespace that separates person names.
     hard_stop=(
         "위원회회부일","위원회상정일","위원회처리일","위원회처리결과",
         "본회의회부일","본회의상정일","본회의처리일","본회의처리결과",
         "집행기관","이송일","공포일","공포번호","철회일자","비고",
     )
-    compact=re.sub(r"\s+","",value)
-    stop_pos=[compact.find(x) for x in hard_stop if compact.find(x)>=0]
-    if stop_pos:
-        compact=compact[:min(stop_pos)]
+    cut=len(value)
+    for label in hard_stop:
+        pattern="\\s*".join(map(re.escape,label))
+        m=re.search(pattern,value)
+        if m:
+            cut=min(cut,m.start())
+    value=value[:cut]
+
     stop={
         "대표발의자","공동발의","발의자","위원회","본회의","처리결과",
         "원안가결","수정가결","부결","철회","의원","위원장","의장",
-        "시장","청주시장","위원회안","집행기관","회부일","상정일","처리일"
+        "시장","청주시장","위원회안","집행기관","회부일","상정일","처리일",
     }
+
     out=[]
-    for n in re.findall(r"[가-힣]{2,5}",compact):
-        if n not in stop and not any(x in n for x in ("위원회","처리결과","회부일","상정일","처리일")) and n not in out:
-            out.append(n)
+    chunks=re.split(r"[,·ㆍ;/]+",value)
+    for chunk in chunks:
+        chunk=re.sub(r"\s+"," ",chunk).strip()
+        if not chunk:
+            continue
+
+        # Preserve ordinary whitespace-separated Korean names.
+        tokens=re.findall(r"[가-힣]+",chunk)
+        if len(tokens)==2 and all(len(x)==1 for x in tokens):
+            tokens=["".join(tokens)]  # e.g. 허 선 -> 허선
+
+        for token in tokens:
+            if 2 <= len(token) <= 5:
+                name=token
+                if (
+                    name not in stop
+                    and not any(x in name for x in ("위원회","처리결과","회부일","상정일","처리일"))
+                    and name not in out
+                ):
+                    out.append(name)
     return out
+
 
 def parse_detail(html:str,row:dict)->dict:
     text=_visible(html)
