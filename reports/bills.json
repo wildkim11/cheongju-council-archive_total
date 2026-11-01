@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-01T22:10:40.540657+09:00",
+  "checked_at": "2026-11-02T00:07:00.824877+09:00",
   "council_scope": "cheongju_integrated",
   "records": 3394,
   "by_term": {
@@ -8,11 +8,6 @@
     "3": 1141,
     "4": 135
   },
-  "member_proposed_bills": 893,
-  "nonmember_bills": 2501,
-  "member_with_proposer_roster": 868,
-  "member_needing_minutes_fallback": 25,
-  "with_any_proposer_names": 868,
-  "resolution_like": 70,
-  "proposer_roster_status": "repaired_term_scoped_names_with_pending_minutes_fallback"
+  "with_full_proposer_roster": 873,
+  "resolution_like": 70
 }
