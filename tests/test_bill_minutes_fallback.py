@@ -14,7 +14,7 @@ class BillMinutesFallbackTests(unittest.TestCase):
         self.assertEqual(matches[0]["match"], "exact_title")
 
     def test_partial_title_marked_weak_evidence(self):
-        body = "2022년 청주시 사회적 고립청년 지원 관련 안건입니다."
+        body = "2022년 청주시 사회적 고립청년 지원에 관한 조례 제정 안건입니다."
         hits = f.candidate_occurrences(body, "청주시 사회적 고립청년 지원에 관한 조례안")
         self.assertTrue(hits)
         self.assertEqual(hits[0]["match"], "partial_prefix_only")
