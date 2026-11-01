@@ -16,6 +16,27 @@ def _file_link(raw:str,label_hint:str,page_url:str)->str|None:
             return html_lib.unescape(urllib.parse.urljoin(page_url,m.group(1)))
     return None
 
+
+def _record_number(url:str|None)->str|None:
+    if not url:
+        return None
+    return (urllib.parse.parse_qs(urllib.parse.urlsplit(url).query).get("number") or [None])[0]
+
+def parse_detail_files(html:str,page_url:str)->dict:
+    question_url=None
+    answer_url=None
+    for m in re.finditer(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>([\s\S]*?)</a>',html,flags=re.I):
+        href,label_raw=m.group(1),m.group(2)
+        label=visible_text(label_raw)
+        full=html_lib.unescape(urllib.parse.urljoin(page_url,href))
+        query=urllib.parse.parse_qs(urllib.parse.urlsplit(full).query)
+        gb=(query.get("gb") or [None])[0]
+        if gb=="qna" or "질문 파일" in label:
+            question_url=full
+        elif gb=="ans" or "답변 파일" in label:
+            answer_url=full
+    return {"question_file_url":question_url,"answer_file_url":answer_url}
+
 def parse_page(html:str,page_url:str)->list[dict]:
     out=[];seen=set()
     for tr in re.findall(r"<tr\b[^>]*>([\s\S]*?)</tr>",html,flags=re.I):
