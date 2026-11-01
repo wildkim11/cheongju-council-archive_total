@@ -48,6 +48,8 @@ def fetch_text(url: str) -> str:
 class BlockParser(HTMLParser):
     """Capture list-like HTML blocks containing official member-home links."""
 
+    VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+
     def __init__(self):
         super().__init__()
         self.depth = 0
@@ -58,7 +60,8 @@ class BlockParser(HTMLParser):
         attrs = dict(attrs)
         if tag == "li" and self.current is None:
             self.current = {"text": [], "links": [], "images": [], "depth": self.depth}
-        self.depth += 1
+        if tag not in self.VOID_TAGS:
+            self.depth += 1
         if self.current is not None:
             if tag == "a" and attrs.get("href"):
                 self.current["links"].append(attrs["href"])
