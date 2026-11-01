@@ -39,12 +39,14 @@ def export(root:Path=ROOT)->dict:
         "people":_merge(root,[
             "archive/people/people.json",
             "archive/people/history/cheongju_integrated_people.json",
+            "archive/people/history/cheongju_integrated_term4_departed_people.json",
             "archive/people/history/cheongju_old_city_people_candidates.json",
             "archive/people/history/cheongwon_old_county_people_candidates.json",
         ]),
         "tenures":_merge(root,[
             "archive/people/tenures.json",
             "archive/people/history/cheongju_integrated_tenures.json",
+            "archive/people/history/cheongju_integrated_term4_departed_tenures.json",
             "archive/people/history/cheongju_old_city_tenures.json",
             "archive/people/history/cheongwon_old_county_tenures.json",
         ]),
@@ -54,6 +56,7 @@ def export(root:Path=ROOT)->dict:
         "district_memberships":_merge(root,[
             "archive/people/district_memberships.json",
             "archive/people/history/cheongju_integrated_district_memberships.json",
+            "archive/people/history/cheongju_integrated_term4_departed_district_memberships.json",
         ]),
         "represented_areas":_merge(root,[
             "archive/people/history/cheongju_old_city_represented_areas.json",
