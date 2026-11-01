@@ -22,6 +22,14 @@ class BillMinutesFallbackTests(unittest.TestCase):
     def test_session_matching(self):
         self.assertTrue(f.session_match("29회", "제029회 청주시의회 제1차 본회의"))
         self.assertFalse(f.session_match("29회", "제30회 청주시의회 제1차 본회의"))
+        self.assertFalse(f.session_match(
+            "70회",
+            "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제37회 ~ 제70회) 제68회[임시회] 본회의 제1호"
+        ))
+        self.assertTrue(f.session_match(
+            "68회",
+            "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제37회 ~ 제70회) 제68회[임시회] 본회의 제1호"
+        ))
 
     def test_date_window(self):
         self.assertTrue(f.near_day("2021-05-28", "2021-04-09", "2021-05-28"))
