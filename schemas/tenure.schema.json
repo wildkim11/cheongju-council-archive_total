@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tenure",
+  "type": "object",
+  "required": [
+    "person_id",
+    "council_scope",
+    "term",
+    "source_url"
+  ],
+  "properties": {
+    "person_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "council_scope": {
+      "enum": [
+        "cheongju_integrated",
+        "cheongju_old_city",
+        "cheongwon_old_county"
+      ]
+    },
+    "term": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "start_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "end_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "checked_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
