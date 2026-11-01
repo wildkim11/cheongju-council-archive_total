@@ -1,6 +1,6 @@
 """Collect official bill/resolution metadata and full proposer rosters for integrated terms 1-4."""
 from __future__ import annotations
-import argparse, datetime as dt, html as html_lib, json, re, ssl, time, urllib.parse, urllib.request
+import argparse, datetime as dt, html as html_lib, http.client, json, re, ssl, threading, time, urllib.parse, urllib.request
 from pathlib import Path
 
 from archive_common import save_json
@@ -13,24 +13,52 @@ COUNCIL_SCOPE="cheongju_integrated"
 TERMS=(1,2,3,4)
 TLS=ssl.create_default_context()
 TLS.minimum_version=ssl.TLSVersion.TLSv1_2
+MAIN_CONNECTIONS=threading.local()
 
 def fetch_main(url:str)->str:
     p=urllib.parse.urlsplit(url)
     if p.scheme!="https" or p.netloc!="council.cheongju.go.kr":
         raise ValueError("Unexpected main-site source host")
+
+    target=p.path+("?" + p.query if p.query else "")
     last=None
-    for attempt in range(3):
+    for attempt in range(6):
         try:
-            req=urllib.request.Request(url,headers={"User-Agent":"CheongjuCouncilArchive/0.1"})
-            with urllib.request.urlopen(req,timeout=40,context=TLS) as resp:
-                if resp.status!=200:
-                    raise ValueError(f"Official source HTTP {resp.status}")
-                return resp.read().decode("utf-8-sig","replace")
+            # The official site may reset rapid TLS handshakes. Pace requests
+            # and reuse one HTTPS connection per worker where possible.
+            time.sleep(0.25)
+            conn=getattr(MAIN_CONNECTIONS,"connection",None)
+            if conn is None:
+                conn=http.client.HTTPSConnection(
+                    p.netloc,timeout=45,context=TLS
+                )
+                MAIN_CONNECTIONS.connection=conn
+            conn.request(
+                "GET",
+                target,
+                headers={
+                    "User-Agent":"CheongjuCouncilArchive/0.1",
+                    "Accept":"text/html,application/xhtml+xml",
+                    "Connection":"keep-alive",
+                },
+            )
+            resp=conn.getresponse()
+            data=resp.read()
+            if resp.status!=200:
+                raise ValueError(f"Official source HTTP {resp.status}")
+            return data.decode("utf-8-sig","replace")
         except Exception as exc:
             last=exc
-            if attempt==2:
+            conn=getattr(MAIN_CONNECTIONS,"connection",None)
+            if conn is not None:
+                try:
+                    conn.close()
+                except Exception:
+                    pass
+            MAIN_CONNECTIONS.connection=None
+            if attempt==5:
                 raise
-            time.sleep(2**attempt)
+            time.sleep(min(8,2**attempt))
     raise last
 
 def fetch_any(url:str)->str:
