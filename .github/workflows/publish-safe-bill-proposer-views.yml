@@ -1,10 +1,6 @@
 name: Publish safe personal-proposer analyzer views
+# One-time migration completed; no automatic reruns on future changes.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/publish-safe-bill-proposer-views.yml
   workflow_dispatch:
 permissions:
   contents: write
