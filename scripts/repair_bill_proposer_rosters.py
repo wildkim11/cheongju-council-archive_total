@@ -89,6 +89,21 @@ def repair(root:Path=ROOT)->dict:
     unknown_types=[]
 
     for row in rows:
+        # Never erase a verified complete roster reconstructed from an
+        # official meeting's title-adjacent proposer list. Raw detail text stays.
+        if row.get("proposer_roster_parse_status") == "verified_official_minutes":
+            names=row.get("full_proposer_names") or []
+            reps=row.get("representative_proposers") or []
+            cos=row.get("co_proposers") or []
+            if (_norm(row.get("proposer_type_list") or row.get("proposer_type"))!="의원"
+                    or not names or len(reps)!=1 or reps[0] not in names
+                    or set(reps+cos)!=set(names)):
+                raise ValueError(f"Invalid pre-verified minutes proposer roster: {row.get('internal_number')}")
+            stats["member_bills"]+=1
+            stats["member_bills_with_names"]+=1
+            stats["representative_rows"]+=len(reps)
+            stats["co_proposer_rows"]+=len(cos)
+            continue
         list_type=_norm(row.get("proposer_type_list"))
         detail_type=_norm(row.get("proposer_type"))
         proposer_type=list_type or detail_type
