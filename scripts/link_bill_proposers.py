@@ -19,6 +19,7 @@ def build_term_name_index(root:Path=ROOT)->dict[int,dict[str,list[str]]]:
     for path in [
         root/"archive/people/people.json",
         root/"archive/people/history/cheongju_integrated_people.json",
+        root/"archive/people/history/cheongju_integrated_term4_departed_people.json",
     ]:
         for p in _load(path):
             people[p["person_id"]]=p
@@ -27,6 +28,7 @@ def build_term_name_index(root:Path=ROOT)->dict[int,dict[str,list[str]]]:
     tenure_paths=[
         root/"archive/people/tenures.json",
         root/"archive/people/history/cheongju_integrated_tenures.json",
+        root/"archive/people/history/cheongju_integrated_term4_departed_tenures.json",
     ]
     for path in tenure_paths:
         for t in _load(path):
