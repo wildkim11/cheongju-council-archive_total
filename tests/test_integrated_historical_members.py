@@ -17,7 +17,13 @@ class IntegratedHistoricalMemberTests(unittest.TestCase):
               임은성 (2대:라 선거구 )
             </a>
           </li>
-          <li>한병수 (3대: ) 임기:2022. 7.1 ~ 2023. 2.2.</li>
+          <li>
+            <a href="/include/memberProfile.html?daesu=3&mcode=TEST3">
+              <img src="/UPDIR/memberphoto/3/test.jpg" alt="한병수">
+              한병수 (3대: )
+            </a>
+            임기:2022. 7.1 ~ 2023. 2.2.
+          </li>
         </ul>
         """
         rows=h.parse_term_members(html,2)
@@ -31,8 +37,14 @@ class IntegratedHistoricalMemberTests(unittest.TestCase):
         self.assertEqual(rows3[0]["end_date"],"2023-02-02")
 
     def test_official_code_connects_terms(self):
-        a={"term":1,"name":"홍길동","district":"가 선거구","portrait_source_url":None,"official_profile_code":"123"}
-        b={"term":2,"name":"홍길동","district":"나 선거구","portrait_source_url":None,"official_profile_code":"123"}
+        a={
+            "term":1,"name":"홍길동","district":"가 선거구","portrait_source_url":None,
+            "official_profile_code":"123","official_profile_code_type":"f_code"
+        }
+        b={
+            "term":2,"name":"홍길동","district":"나 선거구","portrait_source_url":None,
+            "official_profile_code":"123","official_profile_code_type":"f_code"
+        }
         self.assertEqual(h.person_id(a),h.person_id(b))
 
     def test_mcode_is_term_scoped_not_cross_term_identity(self):
