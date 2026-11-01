@@ -32,6 +32,26 @@ class HistoricalCommitteeCollectorTests(unittest.TestCase):
         html="<div>예산결산특별위원회(13) 정영석 박승찬 정재우, 김태순</div>"
         self.assertEqual(c._parse_text_rows(html),[])
 
+    def test_term4_identity_prefers_term_history_and_keeps_departed_member(self):
+        historical=[
+            {
+                "name":"최영중","term":4,"district":"바 선거구",
+                "official_profile_code":"M1","official_profile_code_type":"mcode",
+                "portrait_source_url":None,
+            }
+        ]
+        current=[
+            {"name":"홍길동","f_code":"999"}
+        ]
+        from unittest.mock import patch
+        with patch.object(c,"fetch_term_html",return_value="<html></html>"), \
+             patch.object(c,"parse_term_members",return_value=historical), \
+             patch.object(c,"fetch_text",return_value="<html></html>"), \
+             patch.object(c,"parse_member_index",return_value=current):
+            idx=c._identity_map(4)
+        self.assertIn("최영중",idx)
+        self.assertIn("홍길동",idx)
+
     def test_source_specific_period_wins(self):
         src={
             "effective_start_date":"2024-08-26",
