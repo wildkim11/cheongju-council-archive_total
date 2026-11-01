@@ -100,6 +100,11 @@ def link(root:Path=ROOT)->dict:
         ],
     }
     save_json(root/"reports/bill-proposer-identity-links.json",report)
+    if unresolved or ambiguous:
+        raise ValueError(
+            f"Bill proposer identity linkage incomplete: unresolved={len(unresolved)}, "
+            f"ambiguous={len(ambiguous)}"
+        )
     return report
 
 if __name__=="__main__":
