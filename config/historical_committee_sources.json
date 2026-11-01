@@ -45,7 +45,19 @@
       "source_status": "verified_full_roster_text",
       "effective_start_date": "2024-08-26",
       "effective_end_date": null,
-      "period_precision": "per_committee_explicit_period"
+      "period_precision": "per_committee_explicit_period",
+      "committee_periods": {
+        "예산결산특별위원회": {
+          "start_date": "2024-08-26",
+          "end_date": "2025-06-30",
+          "period_precision": "exact_date"
+        },
+        "윤리특별위원회": {
+          "start_date": "2024-08-26",
+          "end_date": "2026-06-30",
+          "period_precision": "exact_date"
+        }
+      }
     },
     {
       "source_id": "committee-budget-t3-final-20250630",
