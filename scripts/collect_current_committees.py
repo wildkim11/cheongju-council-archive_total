@@ -84,9 +84,12 @@ def parse_committee_page(html:str,expected_name:str)->dict:
     text=_visible_text(html)
     roles=[]
     seen=set()
-    for m in re.finditer(r"([가-힣]{2,5})\s*(위원장|부위원장|위원)",text):
+    for raw in re.findall(r"<li\\b[^>]*>([\\s\\S]*?)</li>",html,flags=re.I):
+        item=_visible_text(raw)
+        m=re.fullmatch(r"([가-힣]{2,5})\\s+(위원장|부위원장|위원)",item)
+        if not m:
+            continue
         name,role=m.group(1),m.group(2)
-        # Avoid headings such as "위원장" without a person name; Korean-name regex handles this.
         key=(name,role)
         if key in seen:
             continue
