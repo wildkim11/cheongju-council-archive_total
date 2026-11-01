@@ -67,6 +67,9 @@ def _parse_participants(value:str)->list[dict]:
 
 def parse_groups(html:str,year:int=CURRENT_YEAR)->list[dict]:
     table=_year_table(html,year)
+    # The official page may retain older roster drafts inside HTML comments.
+    # Only active markup is source-of-truth for the current composition table.
+    table=re.sub(r"<!--[\\s\\S]*?-->","",table)
     groups=[]
     for tr in re.findall(r"<tr\b[^>]*>([\s\S]*?)</tr>",table,flags=re.I):
         cells=[
