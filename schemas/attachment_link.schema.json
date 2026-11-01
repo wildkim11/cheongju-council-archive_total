@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AttachmentLink",
+  "type": "object",
+  "required": [
+    "parent_type",
+    "parent_id",
+    "title",
+    "official_url"
+  ],
+  "properties": {
+    "parent_type": {
+      "enum": [
+        "meeting",
+        "bill",
+        "resolution",
+        "press",
+        "profile",
+        "activity",
+        "other"
+      ]
+    },
+    "parent_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "official_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "official_attachment_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "file_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bytes": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "first_seen_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_checked_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
