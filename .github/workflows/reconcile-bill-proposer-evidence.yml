@@ -1,0 +1,39 @@
+name: One-time strict bill proposer source evidence
+
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - scripts/reconcile_bill_proposers_from_minutes.py
+      - tests/test_reconcile_bill_proposers_from_minutes.py
+      - .github/workflows/reconcile-bill-proposer-evidence.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: strict-bill-proposer-evidence
+  cancel-in-progress: true
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate strict proof parser
+        run: python -m unittest discover -s tests -p test_reconcile_bill_proposers_from_minutes.py
+      - name: Extract official minute evidence without promotion
+        run: python scripts/reconcile_bill_proposers_from_minutes.py
+      - name: Preserve source evidence report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bill-minutes-proposer-evidence
+          path: reports/bill-minutes-proposer-evidence.json
+          if-no-files-found: warn
