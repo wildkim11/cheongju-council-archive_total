@@ -1,0 +1,68 @@
+name: One-time population stage A
+
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+
+permissions:
+  contents: write
+
+jobs:
+  populate:
+    if: ${{ !startsWith(github.event.head_commit.message, 'data: populate archive stage A') }}
+    runs-on: macos-14
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test foundation before collection
+        run: python -m unittest discover -s tests
+      - name: Collect current members and official portraits
+        run: python -u scripts/collect_current_members.py
+      - name: Collect integrated historical members and portraits
+        run: python -u scripts/collect_integrated_historical_members.py
+      - name: Collect pre-integration city members and portraits
+        run: python -u scripts/collect_historical_members.py --scope cheongju_old_city
+      - name: Collect pre-integration county members and portraits
+        run: python -u scripts/collect_historical_members.py --scope cheongwon_old_county
+      - name: Collect current committees
+        run: python -u scripts/collect_current_committees.py
+      - name: Collect current research groups
+        run: python -u scripts/collect_current_research_groups.py
+      - name: Collect historical research source metadata
+        run: python -u scripts/collect_historical_research_metadata.py
+      - name: Collect reviewed historical committee rosters
+        run: python -u scripts/collect_historical_committees.py
+      - name: Build non-promoting identity candidates
+        run: python -u scripts/build_identity_candidates.py
+      - name: Validate archive
+        run: |
+          python scripts/validate_archive.py
+          python -m unittest discover -s tests
+      - name: Build partial analyzer export
+        run: python scripts/export_analyzer.py
+      - name: Publish verified stage A data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive reports exports
+          if ! git diff --cached --quiet; then
+            git commit -m "data: populate archive stage A"
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Summary
+        if: always()
+        run: |
+          echo '## Archive population stage A' >> "$GITHUB_STEP_SUMMARY"
+          for f in reports/current-members.json reports/cheongju_integrated-historical-members.json reports/cheongju_old_city-historical-members.json reports/cheongwon_old_county-historical-members.json reports/current-committees.json reports/current-research-groups.json reports/historical-committees.json reports/identity-candidates.json; do
+            if [ -f "$f" ]; then
+              echo "### $f" >> "$GITHUB_STEP_SUMMARY"
+              cat "$f" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
