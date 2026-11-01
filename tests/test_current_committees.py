@@ -22,9 +22,15 @@ class CurrentCommitteeTests(unittest.TestCase):
         <h1>예산결산특별위원회 위원회 소개</h1>
         <div>위원회 임기 : 2025. 7. 1. ~ 2026. 6. 30.</div>
         <h3>위원장, 부위원장</h3>
-        <ul><li>남일현 위원장</li><li>이상조 부위원장</li></ul>
+        <ul class="chairman">
+          <li><span class="name">남일현 위원장</span><br>(행정안전위원회)</li>
+          <li><span class="name">이상조 부위원장</span><br>(경제문화위원회)</li>
+        </ul>
         <h3>위원</h3>
-        <ul><li>김재년 위원</li><li>허선 위원</li></ul>
+        <ul class="member">
+          <li><span class="name">김재년 위원</span><br>(농업정책위원회)</li>
+          <li><span class="name">허선 위원</span><br>(보건환경위원회)</li>
+        </ul>
         """
         row=c.parse_committee_page(html,"예산결산특별위원회")
         self.assertEqual(len(row["roles"]),4)
@@ -33,7 +39,13 @@ class CurrentCommitteeTests(unittest.TestCase):
     def test_current_period_not_conflict(self):
         html="""
         <div>위원회 임기 : 2026. 7. 1. ~ 2027. 6. 30.</div>
-        <ul><li>홍성각 위원장</li><li>정무신 부위원장</li><li>이상조 위원</li></ul>
+        <ul class="chairman">
+          <li><span class="name">홍성각 위원장</span></li>
+          <li><span class="name">정무신 부위원장</span></li>
+        </ul>
+        <ul class="member">
+          <li><span class="name">이상조 위원</span></li>
+        </ul>
         """
         row=c.parse_committee_page(html,"경제문화위원회")
         self.assertFalse(row["period_conflict_with_current_term"])
