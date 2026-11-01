@@ -31,6 +31,30 @@ def _merge(root:Path,paths:list[str])->list[dict]:
         out.extend(_load(root/rel))
     return out
 
+def partition_bill_proposer_rows(bills:list[dict],links:list[dict])->tuple[list[dict],list[dict]]:
+    """Personal-proposer analytical view vs unresolved institution-type context.
+
+    Both are faithful projections of original relationship records. Institutional
+    source records and their original links are preserved, not silently deleted.
+    """
+    by_id={str(b.get("internal_number")):b for b in bills}
+    if len(by_id)!=len(bills):
+        raise ValueError("Duplicate bill internal number")
+    personal=[]
+    quarantine=[]
+    for row in links:
+        key=str(row.get("internal_number"))
+        if key not in by_id:
+            raise ValueError(f"Proposer membership references unknown bill: {key}")
+        source_type=by_id[key].get("proposer_type_list") or by_id[key].get("proposer_type")
+        if source_type=="의원":
+            personal.append(row)
+        else:
+            quarantine.append(row)
+    if len(personal)+len(quarantine)!=len(links):
+        raise ValueError("Bill proposer export partition lost source relationships")
+    return personal,quarantine
+
 def export(root:Path=ROOT)->dict:
     out=root/"exports/analyzer"
     out.mkdir(parents=True,exist_ok=True)
@@ -118,6 +142,15 @@ def export(root:Path=ROOT)->dict:
         ]),
     }
 
+    # The historical unfiltered bill_proposers dataset is preserved for
+    # provenance; do not treat institution-type names as personal signatures.
+    # Both safe views retain the full original link row without reclassification.
+    safe, quarantined=partition_bill_proposer_rows(
+        datasets["bills"],datasets["bill_proposers"]
+    )
+    datasets["bill_proposers_member_only"]=safe
+    datasets["bill_proposers_institutional_type_quarantine"]=quarantined
+
     # Avoid double-exporting meeting inventory if full meeting index exists.
     full=root/"indexes/integrated/meetings.json"
     if full.exists():
@@ -131,6 +164,9 @@ def export(root:Path=ROOT)->dict:
             "source_facts_only":True,
             "analysis_judgments_included":False,
             "identity_candidates_non_promoting":True,
+            "personal_proposer_statistics_dataset":"bill_proposers_member_only",
+            "unfiltered_bill_proposers_contains_institutional_type_person_names":bool(quarantined),
+            "institutional_type_person_names_quarantined_dataset":"bill_proposers_institutional_type_quarantine",
         },
     }
     for name,rows in datasets.items():
