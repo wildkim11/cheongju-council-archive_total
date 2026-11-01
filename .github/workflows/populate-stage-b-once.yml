@@ -1,0 +1,63 @@
+name: One-time population stage B
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  populate:
+    runs-on: macos-14
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test foundation before collection
+        run: python -m unittest discover -s tests
+      - name: Require stage A people data
+        run: |
+          test -s archive/people/people.json
+          test -s archive/people/history/cheongju_integrated_people.json
+          test -s archive/committees/current_memberships.json
+          test -s archive/research_groups/current_memberships.json
+      - name: Collect official bills and resolutions
+        run: python -u scripts/collect_bills.py
+      - name: Link bill proposer names to term-scoped people
+        run: python -u scripts/link_bill_proposers.py
+      - name: Collect five-minute speeches
+        run: python -u scripts/collect_speeches_questions.py --kind five_minute
+      - name: Collect city questions
+        run: python -u scripts/collect_speeches_questions.py --kind city_question
+      - name: Collect written questions
+        run: python -u scripts/collect_written_questions.py
+      - name: Collect suggestions and resolutions
+        run: python -u scripts/collect_board_activities.py --kind suggestion_resolution
+      - name: Collect official press releases
+        run: python -u scripts/collect_board_activities.py --kind press
+      - name: Collect debates
+        run: python -u scripts/collect_board_activities.py --kind debate
+      - name: Collect photo activity metadata only
+        run: python -u scripts/collect_photo_activity.py
+      - name: Rebuild identity candidates
+        run: python -u scripts/build_identity_candidates.py
+      - name: Validate archive
+        run: |
+          python scripts/validate_archive.py
+          python -m unittest discover -s tests
+      - name: Build analyzer export
+        run: python scripts/export_analyzer.py
+      - name: Publish verified stage B data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive reports exports
+          if ! git diff --cached --quiet; then
+            git commit -m "data: populate archive stage B"
+            git push origin HEAD:feature/archive-foundation
+          fi
