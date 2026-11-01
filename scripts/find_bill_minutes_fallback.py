@@ -45,12 +45,15 @@ def source_excerpt(text, mapping, start, length):
         "speaker_headings": SPEAKER.findall(segment)[:10],
     }
 
-def candidate_occurrences(body, title, window=5):
+def candidate_occurrences(body, title, window=5, normalized=None, mapping=None):
     """Locate normalized exact and conservative prefix mentions.
 
     Prefix evidence is weak, only for discovery when an exact title is absent.
     """
-    norm, mapping = compact_with_indices(body)
+    if normalized is None or mapping is None:
+        norm, mapping = compact_with_indices(body)
+    else:
+        norm = normalized
     wanted = compact(title)
     if len(wanted) < 12:
         return []
@@ -139,9 +142,10 @@ def discover(root=ROOT):
         if len(parts) != 3:
             raise ValueError(f"malformed Markdown source for {meeting.get('meeting_id')}")
         body = parts[2]
+        normalized, mapping = compact_with_indices(body)
         scanned += 1
         for bill in candidates:
-            hits = candidate_occurrences(body, bill["title"])
+            hits = candidate_occurrences(body, bill["title"], normalized=normalized, mapping=mapping)
             if not hits:
                 continue
             entry = results[bill["internal_number"]]
