@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-11-02T01:42:44.101462+09:00",
+  "mode": "initial-term",
+  "term": 3,
+  "status": "populated",
+  "listed": 855,
+  "published": 855,
+  "provisional": 0,
+  "bodies_checked": 855,
+  "inventory_qa": {
+    "term_inventory_count": 2339,
+    "year_inventory_count": 2326,
+    "shared_count": 2326,
+    "only_term": [
+      "1212",
+      "1573",
+      "180",
+      "1848",
+      "1900",
+      "2257",
+      "2258",
+      "2659",
+      "2951",
+      "3315",
+      "3652",
+      "508",
+      "896"
+    ],
+    "only_year": []
+  }
+}
