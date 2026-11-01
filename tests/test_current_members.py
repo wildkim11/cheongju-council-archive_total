@@ -28,11 +28,15 @@ class CurrentMemberTests(unittest.TestCase):
         <div>소속위원회 : 경제문화위원회, 의회운영위원회</div>
         <div>전화번호 : 1234</div>
         <div>이메일 : test@example.com</div>
+        <h4>경력사항</h4>
+        <ul><li>현) 제4대 테스트 의회 위원</li><li>전) 테스트 위원장</li></ul>
+        <div>의정활동</div>
         """
         row = c.parse_profile(html)
         self.assertEqual(row["district"], "나 선거구")
         self.assertEqual(row["party"], "테스트정당")
         self.assertEqual(row["committees"], ["경제문화위원회", "의회운영위원회"])
+        self.assertIn("현) 제4대 테스트 의회 위원", row["career"])
 
     def test_stable_person_id(self):
         self.assertEqual(c.stable_person_id("10230"), "person-fcode-10230")
