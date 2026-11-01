@@ -360,8 +360,79 @@ def _record_path(row: dict) -> str:
     )
 
 
-def write_record(root: Path, row: dict, body: str, now: str) -> dict:
+def _meeting_key(row: dict) -> tuple:
+    title = (row.get("title") or "").split("(")[0]
+    title = re.sub(r"\s+", " ", title).strip()
+    return (row.get("committee_code"), title)
+
+
+def detect_replacements(old_rows: list[dict], live_rows: list[dict]) -> dict[str, str]:
+    """Map disappeared provisional meeting IDs to replacement official IDs.
+
+    Never infer replacements for published records. Ambiguous or unexplained
+    disappearance is a hard QA failure.
+    """
+    old = {row["meeting_id"]: row for row in old_rows}
+    live = {row["meeting_id"]: row for row in live_rows}
+    missing = sorted(set(old) - set(live))
+    new_rows = [row for row in live_rows if row["meeting_id"] not in old]
+    replacements: dict[str, str] = {}
+
+    for old_id in missing:
+        row = old[old_id]
+        if row.get("publication_status") != "provisional":
+            raise ValueError(
+                f"Published meeting disappeared from official inventory: {old_id}"
+            )
+        if not row.get("date"):
+            raise ValueError(f"Provisional meeting missing date: {old_id}")
+
+        d0 = dt.date.fromisoformat(row["date"])
+        matches = []
+        for candidate in new_rows:
+            if _meeting_key(candidate) != _meeting_key(row):
+                continue
+            d1 = dt.date.fromisoformat(candidate["date"])
+            if abs((d1 - d0).days) <= 3:
+                matches.append(candidate["meeting_id"])
+
+        if len(matches) != 1:
+            raise ValueError(
+                f"Provisional disappearance needs manual review: {old_id}; "
+                f"replacement candidates={matches}"
+            )
+        replacements[old_id] = matches[0]
+
+    return replacements
+
+
+def write_record(
+    root: Path,
+    row: dict,
+    body: str | None,
+    now: str,
+    old: dict | None = None,
+    supersedes: str | None = None,
+) -> dict:
+    if body is None:
+        if old is None:
+            raise ValueError(f"Missing body for new meeting: {row['meeting_id']}")
+        return {
+            **old,
+            **row,
+            "last_checked_at": now,
+            "supersedes": supersedes or old.get("supersedes"),
+        }
+
     content_hash = sha256_bytes(canonical(body).encode("utf-8"))
+    if old and old.get("content_sha256") == content_hash:
+        return {
+            **old,
+            **row,
+            "last_checked_at": now,
+            "supersedes": supersedes or old.get("supersedes"),
+        }
+
     source = (
         f"# {row['title']}\n\n"
         f"- official_url: {row['official_url']}\n"
@@ -383,11 +454,20 @@ def write_record(root: Path, row: dict, body: str, now: str) -> dict:
         "content_sha256": content_hash,
         "sha256": sha256_bytes(payload),
         "bytes": len(payload),
-        "first_seen_at": now,
+        "first_seen_at": old.get("first_seen_at") if old else now,
         "last_checked_at": now,
-        "supersedes": None,
+        "supersedes": supersedes or (old.get("supersedes") if old else None),
         "superseded_by": None,
     }
+
+
+def _load_rows(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, list):
+        raise ValueError(f"Expected list index: {path}")
+    return value
 
 
 def run_inventory_only(root: Path = ROOT) -> dict:
@@ -411,52 +491,141 @@ def run_inventory_only(root: Path = ROOT) -> dict:
     return report
 
 
-def run_full(root: Path = ROOT) -> dict:
+def run_sync(mode: str, root: Path = ROOT) -> dict:
+    if mode not in {"incremental", "full"}:
+        raise ValueError("mode must be incremental or full")
+
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
     today = now.date().isoformat()
     stamp = now.isoformat()
-    rows, inventory_qa = read_official_inventory(today)
-    rows.sort(key=lambda r: (r["date"], r["meeting_id"]))
+
+    live_rows, inventory_qa = read_official_inventory(today)
+    live_rows.sort(key=lambda r: (r["date"], r["meeting_id"]))
+
+    current_path = root / "indexes/integrated/meetings.json"
+    history_path = root / "indexes/integrated/meeting_history.json"
+    old_rows = _load_rows(current_path)
+    old = {row["meeting_id"]: row for row in old_rows}
+    history_rows = _load_rows(history_path)
+
+    replacements = detect_replacements(old_rows, live_rows) if old_rows else {}
+    reverse_replacements = {new: old_id for old_id, new in replacements.items()}
+
+    needed = []
+    for row in live_rows:
+        prior = old.get(row["meeting_id"])
+        if (
+            mode == "full"
+            or prior is None
+            or prior.get("publication_status") != row["publication_status"]
+            or row["publication_status"] == "provisional"
+        ):
+            needed.append(row)
 
     def download(row):
-        return row, extract_minutes_body(fetch(row["official_url"]))
+        try:
+            return row["meeting_id"], extract_minutes_body(fetch(row["official_url"]))
+        except Exception as error:
+            raise RuntimeError(f"Failed meeting {row['meeting_id']}") from error
 
+    bodies: dict[str, str] = {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
-        downloaded = list(pool.map(download, rows))
+        for meeting_id, body in pool.map(download, needed):
+            bodies[meeting_id] = body
 
-    # All network reads must succeed before archive mutation.
-    with tempfile.TemporaryDirectory(prefix="archive-integrated-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="archive-integrated-sync-") as tmp:
         stage = Path(tmp)
-        output_rows = [write_record(stage, row, body, stamp) for row, body in downloaded]
+        # Copy current archive first so superseded provisional files are retained.
+        for directory in ("archive", "indexes", "reports"):
+            src = root / directory
+            if src.exists():
+                shutil.copytree(src, stage / directory)
+
+        output_rows = []
+        for row in live_rows:
+            meeting_id = row["meeting_id"]
+            output_rows.append(
+                write_record(
+                    stage,
+                    row,
+                    bodies.get(meeting_id),
+                    stamp,
+                    old=old.get(meeting_id),
+                    supersedes=reverse_replacements.get(meeting_id),
+                )
+            )
+
+        history_map = {row["meeting_id"]: row for row in history_rows}
+        for old_id, new_id in replacements.items():
+            previous = old[old_id]
+            history_map[old_id] = {
+                **previous,
+                "publication_status": "superseded",
+                "superseded_by": new_id,
+                "last_checked_at": stamp,
+            }
+
+        history_out = sorted(
+            history_map.values(), key=lambda r: (r.get("date", ""), r["meeting_id"])
+        )
+        save_json(stage / "indexes/integrated/meetings.json", output_rows)
+        save_json(stage / "indexes/integrated/meeting_history.json", history_out)
+
+        new_ids = sorted(set(r["meeting_id"] for r in live_rows) - set(old))
+        changed_ids = sorted(
+            row["meeting_id"]
+            for row in output_rows
+            if row["meeting_id"] in old
+            and row.get("content_sha256") != old[row["meeting_id"]].get("content_sha256")
+        )
+        report = {
+            "checked_at": stamp,
+            "mode": mode,
+            "council_scope": COUNCIL_SCOPE,
+            "listed": len(output_rows),
+            "published": sum(
+                r["publication_status"] == "published" for r in output_rows
+            ),
+            "provisional": sum(
+                r["publication_status"] == "provisional" for r in output_rows
+            ),
+            "by_term": dict(
+                collections.Counter(str(r["term"]) for r in output_rows)
+            ),
+            "new": new_ids,
+            "changed": changed_ids,
+            "superseded": replacements,
+            "bodies_checked": len(bodies),
+            "history_rows": len(history_out),
+            "inventory_qa": inventory_qa,
+        }
+        save_json(stage / "reports/integrated-sync.json", report)
+
+        # Validate staged archive before replacing working files.
+        import validate_archive
+        validate_archive.validate(stage)
+
         for src in stage.rglob("*"):
             if src.is_file():
                 dst = root / src.relative_to(stage)
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(src, dst)
 
-    save_json(root / "indexes/integrated/meetings.json", output_rows)
-    report = {
-        "checked_at": stamp,
-        "council_scope": COUNCIL_SCOPE,
-        "collected": len(output_rows),
-        "published": sum(
-            r["publication_status"] == "published" for r in output_rows
-        ),
-        "by_term": dict(collections.Counter(str(r["term"]) for r in output_rows)),
-        "provisional": sum(
-            r["publication_status"] == "provisional" for r in output_rows
-        ),
-        "inventory_qa": inventory_qa,
-    }
-    save_json(root / "reports/integrated-full.json", report)
     return report
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["inventory", "full"], default="inventory")
+    parser.add_argument(
+        "--mode",
+        choices=["inventory", "incremental", "full"],
+        default="inventory",
+    )
     args = parser.parse_args()
-    result = run_inventory_only() if args.mode == "inventory" else run_full()
+    if args.mode == "inventory":
+        result = run_inventory_only()
+    else:
+        result = run_sync(args.mode)
     print(json.dumps(result, ensure_ascii=False))
 
 
