@@ -106,3 +106,12 @@ def first_labeled_value(text:str,labels:list[str])->str|None:
             value=m.group(1).strip()
             if value: return value
     return None
+
+
+def section_after_label(text:str,label:str)->str:
+    """Return content after the last line whose full visible text equals label."""
+    lines=[x.strip() for x in text.splitlines()]
+    positions=[i for i,x in enumerate(lines) if x==label]
+    if not positions:
+        raise ValueError(f"Missing section label line: {label}")
+    return "\n".join(lines[positions[-1]+1:]).strip()
