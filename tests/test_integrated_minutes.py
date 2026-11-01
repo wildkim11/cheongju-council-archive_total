@@ -100,6 +100,37 @@ class IntegratedMinutesTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             c.merge_official_inventories(term, year)
 
+    def test_detect_provisional_replacement(self):
+        old = [{
+            "meeting_id": "cheongju_integrated:minutes-1",
+            "publication_status": "provisional",
+            "committee_code": "C101",
+            "title": "제4대 제10회 본회의 제1차(2026.10.01 목요일)",
+            "date": "2026-10-01",
+        }]
+        live = [{
+            "meeting_id": "cheongju_integrated:minutes-2",
+            "publication_status": "published",
+            "committee_code": "C101",
+            "title": "제4대 제10회 본회의 제1차(2026.10.02 금요일)",
+            "date": "2026-10-02",
+        }]
+        self.assertEqual(
+            c.detect_replacements(old, live),
+            {"cheongju_integrated:minutes-1": "cheongju_integrated:minutes-2"},
+        )
+
+    def test_published_disappearance_is_hard_failure(self):
+        old = [{
+            "meeting_id": "cheongju_integrated:minutes-1",
+            "publication_status": "published",
+            "committee_code": "C101",
+            "title": "제4대 본회의 제1차(2026.10.01)",
+            "date": "2026-10-01",
+        }]
+        with self.assertRaises(ValueError):
+            c.detect_replacements(old, [])
+
     def test_write_record_has_scope_and_version_state(self):
         row = {
             "meeting_id": "cheongju_integrated:minutes-1",
