@@ -27,11 +27,13 @@ CONFIG={
 def _detail_section(text:str,label:str)->str:
     marker=f"\n {label}\n"
     i=text.rfind(marker)
-    if i<0:
+    if i>=0:
+        s=text[i+len(marker):].strip()
+    else:
         i=text.rfind(label)
-    if i<0:
-        raise ValueError(f"Missing detail section label: {label}")
-    s=text[i+len(label):].strip()
+        if i<0:
+            raise ValueError(f"Missing detail section label: {label}")
+        s=text[i+len(label):].strip()
     # Detail body ends before the list shown below the record.
     cuts=[]
     for pattern in (r"\n\s*목록\s*\n",r"\n\s*전체\s+\d+\s*,\s*\d+/\d+\s*페이지"):
