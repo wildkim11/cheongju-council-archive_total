@@ -27,17 +27,21 @@ def summarize(root=ROOT):
     if len(by_id)!=len(items):
         raise ValueError("Bill IDs not unique")
     missing={str(x["internal_number"]) for x in report["member_bills_without_names"]}
-    if missing!=set(REMAINING):
-        raise ValueError(f"Remaining bill inventory changed: {sorted(missing)}")
+    valid_snapshots = (set(REMAINING), set(REMAINING)-{"1960"})
+    if missing not in valid_snapshots:
+        raise ValueError(f"Remaining bill inventory changed unexpectedly: {sorted(missing)}")
     pending={str(x["internal_number"]):x for x in minutes["records"]}
     by_bill=collections.defaultdict(list)
     for link in links:
         by_bill[str(link["internal_number"])].append(link)
-    if len(links)!=11408:
-        raise ValueError(f"Expected validated snapshot of 11408 relationships, got {len(links)}")
+    expected_links=11408 if "1960" in missing else 11421
+    if len(links)!=expected_links:
+        raise ValueError(f"Expected validated snapshot of {expected_links} relationships, got {len(links)}")
 
     resolved=[]
     for id in REMAINING:
+        if id not in missing:
+            continue
         b=by_id[id]
         if b.get("full_proposer_names"):
             raise ValueError(f"Unresolved member bill already has names: {id}")
@@ -92,6 +96,7 @@ def summarize(root=ROOT):
         "bill_records":len(items),
         "person_relationships":len(links),
         "pending_member_bill_count":len(resolved),
+        "bill_1960_promoted": "1960" not in missing,
         "institutional_bill_anomaly_count":len(institutions),
         "institutional_person_relationships":link_count,
         "member_bills":resolved,
