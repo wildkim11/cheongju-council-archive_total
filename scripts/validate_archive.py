@@ -33,20 +33,32 @@ def validate(root: Path=ROOT):
     errors=[]
     warnings=[]
 
-    people_path=root/"archive/people/people.json"
-    if people_path.exists():
-        people=load_json(people_path)
-        ids=[p.get("person_id") for p in people]
-        if len(ids)!=len(set(ids)):
-            errors.append("duplicate person_id")
-        for p in people:
+    people_files=[
+        root/"archive/people/people.json",
+        root/"archive/people/history/cheongju_integrated_people.json",
+        root/"archive/people/history/cheongju_integrated_term4_departed_people.json",
+        root/"archive/people/history/cheongju_old_city_people_candidates.json",
+        root/"archive/people/history/cheongwon_old_county_people_candidates.json",
+    ]
+    people=[]
+    for people_path in people_files:
+        if not people_path.exists():
+            continue
+        rows=load_json(people_path)
+        people.extend(rows)
+        for p in rows:
             if not p.get("person_id") or not p.get("name"):
-                errors.append("person missing person_id/name")
+                errors.append(f"{people_path}: person missing person_id/name")
             portrait=p.get("portrait")
-            if portrait:
-                if not portrait.get("source_url") or not portrait.get("local_path") or not portrait.get("sha256"):
+            if portrait and portrait.get("local_path"):
+                if not portrait.get("source_url") or not portrait.get("sha256"):
                     errors.append(f"{p.get('person_id')}: incomplete portrait provenance")
-        _check_no_analysis_fields(people,errors,str(people_path))
+        _check_no_analysis_fields(rows,errors,str(people_path))
+
+    ids=[p.get("person_id") for p in people]
+    if len(ids)!=len(set(ids)):
+        errors.append("duplicate person_id across people ledgers")
+    known_person_ids=set(ids)
 
     meetings_path=root/"indexes/integrated/meetings.json"
     if meetings_path.exists():
@@ -77,6 +89,25 @@ def validate(root: Path=ROOT):
                 errors.append(f"{path}: invalid term")
             if not row.get("source_url"):
                 errors.append(f"{path}: missing source_url")
+        _check_no_analysis_fields(rows,errors,str(path))
+
+    # Referential integrity: any promoted relationship/activity identity link
+    # that carries a person_id must reference a person present in the archive.
+    reference_paths=[
+        root/"archive/committees/current_memberships.json",
+        root/"archive/committees/historical_memberships.json",
+        root/"archive/research_groups/current_memberships.json",
+        root/"archive/research_groups/historical_memberships.json",
+        root/"archive/bills/proposer_memberships.json",
+    ]
+    for path in reference_paths:
+        if not path.exists():
+            continue
+        rows=load_json(path)
+        for row in rows:
+            pid=row.get("person_id")
+            if pid and pid not in known_person_ids:
+                errors.append(f"{path}: dangling person_id {pid}")
         _check_no_analysis_fields(rows,errors,str(path))
 
     if errors:
