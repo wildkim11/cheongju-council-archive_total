@@ -5,6 +5,7 @@ on:
     branches:
       - feature/archive-foundation
     paths:
+      - scripts/promote_verified_bill_rosters.py
       - .github/workflows/promote-verified-bill-rosters.yml
 
 permissions:
