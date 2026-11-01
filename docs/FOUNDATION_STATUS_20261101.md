@@ -171,3 +171,72 @@ Unit-test CI may remain on Ubuntu because it does not contact the official sourc
 4. source-candidate identity resolution layer
 5. archive-to-analyzer export
 6. only then initial full body/portrait population and scheduled incremental collection
+
+
+## Verified official bill detail parsing
+
+One-time live verification on the official bill-detail source succeeded on macOS runner.
+
+Verified sample:
+- internal number: `3492`
+- bill number: `133`
+- bill type: `결의안`
+- proposal date: `2026-10-08`
+- representative proposer: `최동식`
+- co-proposers parsed: **51**
+- full proposer roster parsed: **52**
+
+The bill collector now supports:
+- integrated council terms 1-4 list discovery
+- official detail-page parsing
+- bill number / type / proposal date / session / committee
+- representative proposer(s)
+- full co-proposer roster
+- list processing result/date preservation
+- institutional proposer labels excluded from person-name extraction
+
+Bill proposer identity linkage is term-scoped:
+- exact unique same-term member match -> `resolved_exact_term`
+- multiple same-term candidates -> `ambiguous_same_term`
+- no same-term candidate -> `unresolved`
+
+No global name-only promotion is allowed.
+
+## Historical research-group source discovery
+
+A non-promoting discovery layer now scans:
+- official annual research-group composition notices
+- official annual research-activity report pages
+
+Promotion to a research-group membership relation requires a full official participant roster.
+Group-name-only notices remain source metadata only.
+Large report attachments remain link-only by default.
+
+## Identity candidate layer
+
+The archive now emits a non-promoting identity candidate ledger.
+
+Candidate evidence families:
+- matching official `f_code`
+- same normalized name across source records
+
+Same-name matches are weak evidence and are never merged automatically.
+
+## Analyzer export
+
+The archive now exports source facts under `exports/analyzer/` as JSONL.
+
+Current export families include:
+- people
+- tenures
+- party memberships
+- district memberships
+- represented areas
+- committee states and memberships
+- research groups and memberships
+- bills
+- bill proposer memberships
+- meetings
+- identity candidates
+
+The export explicitly excludes downstream analytical judgments such as Q codes, EVENT clusters, P1-P7 stages, rankings, scores, probabilities and predictions.
