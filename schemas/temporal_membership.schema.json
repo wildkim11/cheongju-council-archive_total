@@ -34,7 +34,8 @@
         "special_committee",
         "research_group",
         "council_office",
-        "committee_role"
+        "committee_role",
+        "other_committee"
       ]
     },
     "label": {
