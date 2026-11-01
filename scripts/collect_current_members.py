@@ -29,17 +29,55 @@ CURRENT_TERM = 4
 
 TLS = ssl.create_default_context()
 TLS.minimum_version = ssl.TLSVersion.TLSv1_2
+CONNECTIONS = threading.local()
 
 
 def _request(url: str) -> tuple[bytes, str]:
     parsed = urllib.parse.urlsplit(url)
     if parsed.scheme != "https" or parsed.netloc != "council.cheongju.go.kr":
         raise ValueError("Unexpected source host")
-    req = urllib.request.Request(url, headers={"User-Agent": "CheongjuCouncilArchive/0.1"})
-    with urllib.request.urlopen(req, timeout=40, context=TLS) as resp:
-        if resp.status != 200:
-            raise ValueError(f"Official source HTTP {resp.status}")
-        return resp.read(), resp.headers.get_content_type()
+
+    target = parsed.path + ("?" + parsed.query if parsed.query else "")
+    last = None
+    for attempt in range(6):
+        try:
+            # Pace repeated official-site requests and reuse one connection.
+            # The source server intermittently resets rapid TLS handshakes.
+            time.sleep(0.25)
+            connection = getattr(CONNECTIONS, "connection", None)
+            if connection is None:
+                connection = http.client.HTTPSConnection(
+                    parsed.netloc, timeout=45, context=TLS
+                )
+                CONNECTIONS.connection = connection
+            connection.request(
+                "GET",
+                target,
+                headers={
+                    "User-Agent": "CheongjuCouncilArchive/0.1",
+                    "Accept": "*/*",
+                    "Connection": "keep-alive",
+                },
+            )
+            response = connection.getresponse()
+            data = response.read()
+            if response.status != 200:
+                raise ValueError(f"Official source HTTP {response.status}")
+            content_type = (response.getheader("Content-Type") or "").split(";", 1)[0].strip()
+            return data, content_type
+        except Exception as exc:
+            last = exc
+            connection = getattr(CONNECTIONS, "connection", None)
+            if connection is not None:
+                try:
+                    connection.close()
+                except Exception:
+                    pass
+            CONNECTIONS.connection = None
+            if attempt == 5:
+                raise
+            time.sleep(min(8, 2 ** attempt))
+    raise last
 
 
 def fetch_text(url: str) -> str:
