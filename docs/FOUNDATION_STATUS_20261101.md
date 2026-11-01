@@ -331,3 +331,64 @@ A first-pass flat-text parser incorrectly treated follow-up field labels as pers
 The remaining 25 member-proposed records are not guessed. Their bill-detail pages do not expose a usable proposer roster in the parsed fields. They carry a fallback-needed status and will be reconciled against official meeting text after meeting-body population.
 
 Future Stage B1 full runs must execute the proposer-repair step before identity linking/export.
+
+
+## Stage B population — PASS
+
+Stage B source population completed and is published on `feature/archive-foundation`.
+
+Verified datasets:
+- official bills / resolutions: **3,394**
+  - term 1: 1,098
+  - term 2: 1,020
+  - term 3: 1,141
+  - term 4: 135
+- bills with a parsed full proposer roster: **873**
+- resolution-like bills: **70**
+- bill proposer membership rows: **11,158**
+  - resolved exact-term: **11,158**
+  - unresolved: **0**
+  - ambiguous same-term: **0**
+- five-minute speeches: **606** (2014-08-25 to 2026-10-23)
+- city questions: **85** (2014-09-04 to 2025-10-30)
+- written questions: **16**, with question files 16 / answer files 16
+- suggestions / resolutions board records: **72**
+- official press releases: **914**
+  - visible body present: 913
+  - metadata-only / missing visible body: 1
+  - attachment links: 1,808
+- debate records: **20**
+  - metadata/attachment source records; visible body absent on the indexed detail shape
+  - attachment links: 25
+- photo-activity metadata rows: **6,606**
+  - binary photos mirrored: 0
+
+Stage B introduced a conservative historical-press rule:
+- title/date/source provenance are retained when the official page is valid but visible body text is absent;
+- such rows use `body_text=null` and `body_status=missing_visible_body`;
+- source families where body text is mandatory, such as suggestion/resolution texts, still fail validation when body is absent.
+
+A duplicate media retry run was triggered once by branch creation plus trigger-file commit. The first run published successfully. The second run completed collection/validation/export but failed only at rebase because the same generated files had already been published by the first run. No second-run data was promoted. The media retry workflow is now manual-only and concurrency-protected.
+
+Current analyzer export now includes:
+- people 435
+- tenures 435
+- party memberships 44
+- district memberships 167
+- represented areas 187
+- committee memberships 207
+- committee states 26
+- research groups 5
+- research-group memberships 65
+- five-minute speeches 606
+- city questions 85
+- written questions 16
+- suggestions/resolutions 72
+- press 914
+- debates 20
+- photo activity 6,606
+- bills 3,394
+- bill proposer memberships 11,158
+- identity candidates 115
+
+Meetings remain intentionally unpopulated in the analyzer export until the full meeting-body population gate runs.
