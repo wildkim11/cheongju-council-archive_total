@@ -21,7 +21,8 @@ from archive_common import save_json, save_text, sha256_bytes
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://council.cheongju.go.kr"
 LIST_URL = BASE + "/content/member/member.html"
-PROFILE_TEMPLATE = BASE + "/memberHome/content/bill.html?f_code={f_code}"
+PROFILE_TEMPLATE = BASE + "/memberHome/content/profile.html?f_code={f_code}"
+BILL_TEMPLATE = BASE + "/memberHome/content/bill.html?f_code={f_code}"
 COUNCIL_SCOPE = "cheongju_integrated"
 CURRENT_TERM = 4
 
@@ -171,6 +172,23 @@ def _field(text: str, label: str, next_labels: list[str]) -> str | None:
     return re.sub(r"\s+", " ", m.group(1)).strip() if m else None
 
 
+def _career_items(html: str) -> list[str]:
+    """Extract visible career list items from the official profile section."""
+    section = re.search(
+        r"경력사항([\s\S]*?)(?:홈\s*>|의정활동|발의의안|발언회의록|청주시의회\s+Cheongju City Council|</main>|</article>)",
+        html,
+        flags=re.I,
+    )
+    target = section.group(1) if section else html
+    items = []
+    for raw in re.findall(r"<li[^>]*>([\s\S]*?)</li>", target, flags=re.I):
+        value = html_text(raw)
+        value = re.sub(r"\s+", " ", value).strip()
+        if value and value not in items:
+            items.append(value)
+    return items
+
+
 def parse_profile(html: str) -> dict:
     text = html_text(html)
     labels = ["선거구", "소속정당", "소속위원회", "전화번호", "이메일"]
@@ -184,6 +202,7 @@ def parse_profile(html: str) -> dict:
         ],
         "phone": _field(text, "전화번호", labels[4:]),
         "email": _field(text, "이메일", []),
+        "career": _career_items(html),
     }
 
 
@@ -239,6 +258,8 @@ def run(root: Path = ROOT, save_portraits: bool = True) -> dict:
                 "official_profile_url": row["profile_url"],
                 "official_profile_code": row["f_code"],
                 "portrait": portrait,
+                "career": profile["career"],
+                "bill_url": BILL_TEMPLATE.format(f_code=row["f_code"]),
                 "source_url": LIST_URL,
                 "checked_at": stamp,
             }
