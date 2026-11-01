@@ -10,6 +10,7 @@ import argparse
 import datetime as dt
 import http.cookiejar
 import json
+import html as html_lib
 import re
 import ssl
 import urllib.parse
@@ -146,20 +147,39 @@ def _explicit_term_dates(text:str)->tuple[str|None,str|None]:
     return _iso_date(*m.groups()[:3]),_iso_date(*m.groups()[3:])
 
 
-def _profile_code(links:list[str])->str|None:
-    for link in links:
-        m=re.search(r"[?&]f_code=([^&#\"']+)",link)
-        if m:
-            return urllib.parse.unquote(m.group(1))
-    return None
+def _visible_text(raw:str)->str:
+    raw=re.sub(r"<br\s*/?>"," ",raw,flags=re.I)
+    raw=re.sub(r"<[^>]+>"," ",raw)
+    return re.sub(r"\s+"," ",html_lib.unescape(raw)).strip()
+
+
+def _source_identity(href:str)->tuple[str|None,str|None]:
+    query=urllib.parse.parse_qs(urllib.parse.urlsplit(_absolute(href)).query)
+    if query.get("f_code"):
+        return "f_code",query["f_code"][0]
+    if query.get("mcode"):
+        return "mcode",query["mcode"][0]
+    return None,None
 
 
 def parse_term_members(html:str,expected_term:int)->list[dict]:
-    p=MemberListParser();p.feed(html)
     rows=[]
     seen=set()
-    for block in p.blocks:
-        text=" ".join(block["text"])
+    blocks=re.findall(r"<li\b[^>]*>([\s\S]*?)</li>",html,flags=re.I)
+    for raw in blocks:
+        if "memberProfile.html" not in raw and "f_code=" not in raw:
+            continue
+        href_match=re.search(r'href=["\']([^"\']+)["\']',raw,flags=re.I)
+        if not href_match:
+            continue
+        href=href_match.group(1)
+        profile_url=_absolute(href)
+        query=urllib.parse.parse_qs(urllib.parse.urlsplit(profile_url).query)
+        if query.get("daesu") and query["daesu"][0].isdigit():
+            if int(query["daesu"][0])!=expected_term:
+                continue
+
+        text=_visible_text(raw)
         m=re.search(
             r"([가-힣]{2,5})\s*\(\s*(\d+)\s*대\s*:\s*([^)]*)\)",
             text,
@@ -172,16 +192,12 @@ def parse_term_members(html:str,expected_term:int)->list[dict]:
             continue
         district=re.sub(r"\s+"," ",m.group(3)).strip() or None
         start_date,end_date=_explicit_term_dates(text)
-        code=_profile_code(block["links"])
-        profile_url=None
-        if code:
-            profile_url=f"{BASE}/memberHome/content/profile.html?f_code={urllib.parse.quote(code)}"
-        portrait_url=None
-        for image in block["images"]:
-            if image.get("src"):
-                portrait_url=_absolute(image["src"])
-                break
-        key=(name,code,district,start_date,end_date)
+
+        code_type,code=_source_identity(href)
+        image_match=re.search(r'<img\b[^>]*src=["\']([^"\']+)["\']',raw,flags=re.I)
+        portrait_url=_absolute(image_match.group(1)) if image_match else None
+
+        key=(term,name,code_type,code,district,start_date,end_date)
         if key in seen:
             continue
         seen.add(key)
@@ -192,6 +208,7 @@ def parse_term_members(html:str,expected_term:int)->list[dict]:
             "start_date":start_date,
             "end_date":end_date,
             "official_profile_code":code,
+            "official_profile_code_type":code_type,
             "official_profile_url":profile_url,
             "portrait_source_url":portrait_url,
             "source_url":URL,
@@ -201,18 +218,24 @@ def parse_term_members(html:str,expected_term:int)->list[dict]:
     return rows
 
 
-def _candidate_person_id(term:int,name:str,district:str|None,portrait_url:str|None)->str:
-    basis=f"{COUNCIL_SCOPE}|{term}|{name}|{district or ''}|{portrait_url or ''}".encode("utf-8")
+def _candidate_person_id(row:dict)->str:
+    basis=(
+        f"{COUNCIL_SCOPE}|{row['term']}|{row['name']}|"
+        f"{row.get('official_profile_code_type') or ''}|"
+        f"{row.get('official_profile_code') or ''}|"
+        f"{row.get('district') or ''}|{row.get('portrait_source_url') or ''}"
+    ).encode("utf-8")
     return "person-candidate-"+sha256_bytes(basis)[:16]
 
 
 def person_id(row:dict)->str:
     code=row.get("official_profile_code")
-    if code:
+    code_type=row.get("official_profile_code_type")
+    # f_code is the stable current member-home identifier. Historical mcode is
+    # scoped by daesu and must not be assumed to identify the same person across terms.
+    if code and code_type=="f_code":
         return "person-fcode-"+re.sub(r"[^A-Za-z0-9_-]","_",code)
-    return _candidate_person_id(
-        row["term"],row["name"],row.get("district"),row.get("portrait_source_url")
-    )
+    return _candidate_person_id(row)
 
 
 def _portrait_extension(content_type:str,url:str)->str:
@@ -262,11 +285,12 @@ def collect(root:Path=ROOT,save_portraits:bool=True)->dict:
         prior=people_by_id.get(pid)
         person={
             "person_id":pid,
-            "identity_status":"official_code" if row.get("official_profile_code") else "candidate_unmerged",
+            "identity_status":"official_fcode" if row.get("official_profile_code_type")=="f_code" else "candidate_unmerged",
             "name":row["name"],
             "aliases":[],
             "official_profile_url":row.get("official_profile_url"),
             "official_profile_code":row.get("official_profile_code"),
+            "official_profile_code_type":row.get("official_profile_code_type"),
             "portrait":portrait or (prior.get("portrait") if prior else None),
             "source_url":URL,
             "checked_at":stamp,
@@ -315,7 +339,10 @@ def collect(root:Path=ROOT,save_portraits:bool=True)->dict:
         "unique_people_rows":len(people),
         "tenure_rows":len(tenures),
         "district_rows":len(districts),
-        "official_code_people":sum(p["identity_status"]=="official_code" for p in people),
+        "official_fcode_people":sum(p["identity_status"]=="official_fcode" for p in people),
+        "historical_mcode_rows":sum(
+            r.get("official_profile_code_type")=="mcode" for r in all_rows
+        ),
         "candidate_unmerged_people":sum(p["identity_status"]=="candidate_unmerged" for p in people),
     }
     save_json(root/"reports/cheongju_integrated-historical-members.json",report)
