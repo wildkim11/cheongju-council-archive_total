@@ -1,6 +1,6 @@
 """Collect official bill/resolution metadata and full proposer rosters for integrated terms 1-4."""
 from __future__ import annotations
-import argparse, datetime as dt, html as html_lib, json, re, ssl, urllib.parse, urllib.request
+import argparse, datetime as dt, html as html_lib, json, re, ssl, time, urllib.parse, urllib.request
 from pathlib import Path
 
 from archive_common import save_json
@@ -18,10 +18,20 @@ def fetch_main(url:str)->str:
     p=urllib.parse.urlsplit(url)
     if p.scheme!="https" or p.netloc!="council.cheongju.go.kr":
         raise ValueError("Unexpected main-site source host")
-    req=urllib.request.Request(url,headers={"User-Agent":"CheongjuCouncilArchive/0.1"})
-    with urllib.request.urlopen(req,timeout=40,context=TLS) as resp:
-        if resp.status!=200: raise ValueError(f"Official source HTTP {resp.status}")
-        return resp.read().decode("utf-8-sig","replace")
+    last=None
+    for attempt in range(3):
+        try:
+            req=urllib.request.Request(url,headers={"User-Agent":"CheongjuCouncilArchive/0.1"})
+            with urllib.request.urlopen(req,timeout=40,context=TLS) as resp:
+                if resp.status!=200:
+                    raise ValueError(f"Official source HTTP {resp.status}")
+                return resp.read().decode("utf-8-sig","replace")
+        except Exception as exc:
+            last=exc
+            if attempt==2:
+                raise
+            time.sleep(2**attempt)
+    raise last
 
 def fetch_any(url:str)->str:
     p=urllib.parse.urlsplit(url)
@@ -158,6 +168,7 @@ def discover_term(term:int,max_pages:int=300)->list[dict]:
             empty=0
     if not all_rows:
         raise ValueError(f"No official bill rows discovered for term {term}")
+    print(f"[bill] term={term} list_records={len(all_rows)}",flush=True)
     return all_rows
 
 def collect(root:Path=ROOT,terms:tuple[int,...]=TERMS)->dict:
@@ -170,6 +181,8 @@ def collect(root:Path=ROOT,terms:tuple[int,...]=TERMS)->dict:
             parsed=parse_detail(fetch_any(row["official_url"]),row)
             parsed["checked_at"]=stamp
             detailed.append(parsed)
+            if i%50==0 or i==len(listed):
+                print(f"[bill] term={term} detail={i}/{len(listed)}",flush=True)
         by_term[str(term)]=len(detailed);rows.extend(detailed)
 
     # The official internal number is the stable source key within this source family.
