@@ -20,7 +20,7 @@ ROOT=Path(__file__).resolve().parents[1]
 COUNCIL_SCOPE="cheongju_integrated"
 CURRENT_TERM=4
 CURRENT_TERM_START=dt.date(2026,7,1)
-SEED_URL=f"{BASE}/content/committee/coIntroduce_C306.html"
+SEED_URL=f"{BASE}/"
 
 
 def _abs(url:str)->str:
@@ -122,6 +122,8 @@ def collect(root:Path=ROOT)->dict:
 
     seed_html=fetch_text(SEED_URL)
     committees=discover_committees(seed_html)
+    if len(committees) < 7:
+        raise ValueError(f"Unexpectedly small current committee set: {len(committees)}")
 
     committee_rows=[]
     membership_rows=[]
