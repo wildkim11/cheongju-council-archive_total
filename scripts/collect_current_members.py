@@ -9,6 +9,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import html as html_lib
 import re
 import ssl
 import urllib.parse
@@ -46,90 +47,116 @@ def fetch_text(url: str) -> str:
     return data.decode("utf-8-sig")
 
 
-class BlockParser(HTMLParser):
-    """Capture list-like HTML blocks containing official member-home links."""
-
-    VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
-
-    def __init__(self):
-        super().__init__()
-        self.depth = 0
-        self.current = None
-        self.blocks = []
-
-    def handle_starttag(self, tag, attrs):
-        attrs = dict(attrs)
-        if tag == "li" and self.current is None:
-            self.current = {"text": [], "links": [], "images": [], "depth": self.depth}
-        if tag not in self.VOID_TAGS:
-            self.depth += 1
-        if self.current is not None:
-            if tag == "a" and attrs.get("href"):
-                self.current["links"].append(attrs["href"])
-            if tag == "img" and attrs.get("src"):
-                self.current["images"].append(
-                    {"src": attrs["src"], "alt": attrs.get("alt", "")}
-                )
-
-    def handle_endtag(self, tag):
-        self.depth = max(0, self.depth - 1)
-        if tag == "li" and self.current is not None and self.depth == self.current["depth"]:
-            if any("f_code=" in link for link in self.current["links"]):
-                self.blocks.append(self.current)
-            self.current = None
-
-    def handle_data(self, data):
-        if self.current is not None and data.strip():
-            self.current["text"].append(data.strip())
-
-
 def _absolute(url: str) -> str:
     return urllib.parse.urljoin(BASE + "/", url)
 
 
-def _f_code(links: list[str]) -> str | None:
-    for link in links:
-        m = re.search(r"[?&]f_code=([A-Za-z0-9_-]+)", link)
+def _visible_text(raw: str) -> str:
+    raw = re.sub(r"<br\s*/?>", " ", raw, flags=re.I)
+    raw = re.sub(r"<[^>]+>", " ", raw)
+    return re.sub(r"\s+", " ", html_lib.unescape(raw)).strip()
+
+
+def _member_section(html: str) -> str:
+    m = re.search(
+        r'<section\b[^>]*class=["\'][^"\']*\bmember\b[^"\']*["\'][^>]*>([\s\S]*?)</section>',
+        html,
+        flags=re.I,
+    )
+    if not m:
+        raise ValueError("Missing current member section")
+    return m.group(1)
+
+
+def _query_code(href: str, key: str) -> str | None:
+    query = urllib.parse.parse_qs(urllib.parse.urlsplit(_absolute(href)).query)
+    values = query.get(key)
+    return values[0] if values else None
+
+
+def _dd_value(raw: str, label: str) -> str | None:
+    for dd in re.findall(r"<dd\b[^>]*>([\s\S]*?)</dd>", raw, flags=re.I):
+        text = _visible_text(dd)
+        m = re.match(rf"{re.escape(label)}\s*:\s*(.*)$", text)
         if m:
-            return m.group(1)
+            value = re.sub(r"\s+", " ", m.group(1)).strip()
+            return value or None
     return None
 
 
-def _name(block: dict) -> str:
-    for image in block["images"]:
-        m = re.fullmatch(r"\s*([가-힣]{2,5})\s*의원\s*", image.get("alt", ""))
-        if m:
-            return m.group(1)
-    text = " ".join(block["text"])
-    for token in re.findall(r"[가-힣]{2,5}", text):
-        if token not in {"선거구", "소속정당", "소속위원회", "상세프로필", "누리집"}:
-            return token
-    raise ValueError("Cannot resolve member name")
-
-
 def parse_member_index(html: str) -> list[dict]:
-    parser = BlockParser()
-    parser.feed(html)
+    """Parse the official current-member list from the main content only."""
+    section = _member_section(html)
     out = []
     seen = set()
-    for block in parser.blocks:
-        f_code = _f_code(block["links"])
+
+    for raw in re.findall(r"<li\b[^>]*>([\s\S]*?)</li>", section, flags=re.I):
+        if "<dl" not in raw.lower() or "f_code=" not in raw:
+            continue
+
+        f_href = re.search(
+            r'href=["\']([^"\']*[?&]f_code=[^"\']+)["\']',
+            raw,
+            flags=re.I,
+        )
+        if not f_href:
+            continue
+        f_code = _query_code(f_href.group(1), "f_code")
         if not f_code or f_code in seen:
             continue
+
+        m_href = re.search(
+            r'href=["\']([^"\']*memberProfile\.html[^"\']*[?&]mcode=[^"\']+)["\']',
+            raw,
+            flags=re.I,
+        )
+        m_code = _query_code(m_href.group(1), "mcode") if m_href else None
+
+        name_match = re.search(
+            r'<dd\b[^>]*class=["\'][^"\']*\bname\b[^"\']*["\'][^>]*>([\s\S]*?)</dd>',
+            raw,
+            flags=re.I,
+        )
+        name = _visible_text(name_match.group(1)) if name_match else None
+
+        image = re.search(
+            r'<img\b[^>]*src=["\']([^"\']+)["\'][^>]*>',
+            raw,
+            flags=re.I,
+        )
+        portrait = _absolute(image.group(1)) if image else None
+        if not name and image:
+            alt = re.search(r'alt=["\']([^"\']+)["\']', image.group(0), flags=re.I)
+            if alt:
+                name = re.sub(r"\s*의원\s*$", "", html_lib.unescape(alt.group(1))).strip()
+
+        if not name or not re.fullmatch(r"[가-힣]{2,5}", name):
+            raise ValueError(f"Cannot resolve current member name for f_code={f_code}")
+
+        committees_raw = _dd_value(raw, "소속위원회")
+        committees = [
+            x.strip()
+            for x in (committees_raw or "").split(",")
+            if x.strip()
+        ]
+
         seen.add(f_code)
-        portrait = None
-        for image in block["images"]:
-            if "의원" in image.get("alt", ""):
-                portrait = _absolute(image["src"])
-                break
         out.append(
             {
                 "f_code": f_code,
-                "name": _name(block),
+                "m_code": m_code,
+                "name": name,
                 "profile_url": PROFILE_TEMPLATE.format(f_code=f_code),
                 "portrait_source_url": portrait,
+                "district": _dd_value(raw, "선거구"),
+                "party": _dd_value(raw, "소속정당"),
+                "committees": committees,
+                "source_url": LIST_URL,
             }
         )
+
+    if not out:
+        raise ValueError("No current members parsed from official member section")
     return out
 
 
@@ -236,19 +263,27 @@ def run(root: Path = ROOT, save_portraits: bool = True) -> dict:
         profile = parse_profile(fetch_text(row["profile_url"]))
         portrait = None
 
-        if save_portraits and row["portrait_source_url"]:
-            data, content_type = _request(row["portrait_source_url"])
-            ext = _portrait_extension(content_type, row["portrait_source_url"])
-            local_path = f"archive/people/portraits/{person_id}{ext}"
-            path = root / local_path
-            path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_bytes(data)
-            portrait = {
-                "source_url": row["portrait_source_url"],
-                "local_path": local_path,
-                "checked_at": stamp,
-                "sha256": sha256_bytes(data),
-            }
+        if row["portrait_source_url"]:
+            if save_portraits:
+                data, content_type = _request(row["portrait_source_url"])
+                ext = _portrait_extension(content_type, row["portrait_source_url"])
+                local_path = f"archive/people/portraits/{person_id}{ext}"
+                path = root / local_path
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(data)
+                portrait = {
+                    "source_url": row["portrait_source_url"],
+                    "local_path": local_path,
+                    "checked_at": stamp,
+                    "sha256": sha256_bytes(data),
+                }
+            else:
+                portrait = {
+                    "source_url": row["portrait_source_url"],
+                    "local_path": None,
+                    "checked_at": stamp,
+                    "sha256": None,
+                }
 
         people.append(
             {
@@ -257,8 +292,11 @@ def run(root: Path = ROOT, save_portraits: bool = True) -> dict:
                 "aliases": [],
                 "official_profile_url": row["profile_url"],
                 "official_profile_code": row["f_code"],
+                "official_roster_code": row.get("m_code"),
                 "portrait": portrait,
                 "career": profile["career"],
+                "official_phone": profile.get("phone"),
+                "official_email": profile.get("email"),
                 "bill_url": BILL_TEMPLATE.format(f_code=row["f_code"]),
                 "source_url": LIST_URL,
                 "checked_at": stamp,
@@ -275,33 +313,33 @@ def run(root: Path = ROOT, save_portraits: bool = True) -> dict:
                 "checked_at": stamp,
             }
         )
-        if profile["party"]:
+        if row.get("party"):
             parties.append(
                 {
                     "person_id": person_id,
                     "council_scope": COUNCIL_SCOPE,
                     "term": CURRENT_TERM,
-                    "party": profile["party"],
+                    "party": row["party"],
                     "start_date": None,
                     "end_date": None,
                     "source_url": row["profile_url"],
                     "checked_at": stamp,
                 }
             )
-        if profile["district"]:
+        if row.get("district"):
             districts.append(
                 {
                     "person_id": person_id,
                     "council_scope": COUNCIL_SCOPE,
                     "term": CURRENT_TERM,
-                    "district": profile["district"],
+                    "district": row["district"],
                     "start_date": None,
                     "end_date": None,
                     "source_url": row["profile_url"],
                     "checked_at": stamp,
                 }
             )
-        for committee in profile["committees"]:
+        for committee in row.get("committees", []):
             committees.append(
                 {
                     "person_id": person_id,
@@ -324,7 +362,8 @@ def run(root: Path = ROOT, save_portraits: bool = True) -> dict:
     report = {
         "checked_at": stamp,
         "current_members": len(people),
-        "portraits": sum(bool(p["portrait"]) for p in people),
+        "portraits": sum(bool(p["portrait"]) and bool(p["portrait"].get("local_path")) for p in people),
+        "portrait_sources": sum(bool(p["portrait"]) for p in people),
         "party_rows": len(parties),
         "district_rows": len(districts),
         "committee_rows": len(committees),
