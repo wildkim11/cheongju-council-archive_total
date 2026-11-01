@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scopes": [
+    {
+      "id": "cheongju_integrated",
+      "label_ko": "통합 청주시의회",
+      "term_numbering": "independent"
+    },
+    {
+      "id": "cheongju_old_city",
+      "label_ko": "통합 전 청주시의회",
+      "term_numbering": "independent"
+    },
+    {
+      "id": "cheongwon_old_county",
+      "label_ko": "통합 전 청원군의회",
+      "term_numbering": "independent"
+    }
+  ]
+}
