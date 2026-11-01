@@ -35,6 +35,38 @@ class IntegratedHistoricalMemberTests(unittest.TestCase):
         b={"term":2,"name":"홍길동","district":"나 선거구","portrait_source_url":None,"official_profile_code":"123"}
         self.assertEqual(h.person_id(a),h.person_id(b))
 
+    def test_mcode_is_term_scoped_not_cross_term_identity(self):
+        a={
+            "term":1,"name":"김병국","district":"다 선거구",
+            "portrait_source_url":None,
+            "official_profile_code":"B103",
+            "official_profile_code_type":"mcode",
+        }
+        b={
+            "term":2,"name":"김병국","district":"가 선거구",
+            "portrait_source_url":None,
+            "official_profile_code":"B103",
+            "official_profile_code_type":"mcode",
+        }
+        self.assertNotEqual(h.person_id(a),h.person_id(b))
+
+    def test_real_markup_shape_with_mcode(self):
+        html="""
+        <ul>
+          <li>
+            <a href="/include/memberProfile.html?daesu=1&mcode=8030">
+              <span class="pic"><img src="/UPDIR/memberphoto/1/a.jpg" alt="김기동"></span>
+              <span class="name">김기동<br><b>(1대:라 선거구 )</b></span>
+            </a>
+          </li>
+        </ul>
+        """
+        rows=h.parse_term_members(html,1)
+        self.assertEqual(rows[0]["name"],"김기동")
+        self.assertEqual(rows[0]["official_profile_code_type"],"mcode")
+        self.assertEqual(rows[0]["official_profile_code"],"8030")
+        self.assertEqual(rows[0]["district"],"라 선거구")
+
     def test_no_code_does_not_merge_same_name_across_terms(self):
         a={"term":1,"name":"홍길동","district":"가 선거구","portrait_source_url":None,"official_profile_code":None}
         b={"term":2,"name":"홍길동","district":"가 선거구","portrait_source_url":None,"official_profile_code":None}
