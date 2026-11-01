@@ -131,6 +131,77 @@ class IntegratedMinutesTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             c.detect_replacements(old, [])
 
+
+    def test_incremental_sync_preserves_superseded_provisional_history(self):
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            old_id="cheongju_integrated:minutes-1"
+            new_id="cheongju_integrated:minutes-2"
+            old_path="archive/meetings/cheongju_integrated/term-4/2026/minutes-1.md"
+            (root/Path(old_path).parent).mkdir(parents=True,exist_ok=True)
+            (root/old_path).write_text("# old provisional\n",encoding="utf-8")
+            (root/"indexes/integrated").mkdir(parents=True,exist_ok=True)
+            old=[{
+                "meeting_id":old_id,
+                "legacy_minutes_id":"minutes-1",
+                "council_scope":"cheongju_integrated",
+                "term":4,
+                "title":"제4대 제10회 본회의 제1차(2026.10.01 목요일)",
+                "date":"2026-10-01",
+                "year":2026,
+                "committee_code":"C101",
+                "meeting_type":"plenary",
+                "publication_status":"provisional",
+                "official_url":c.BASE+"/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1",
+                "source_id":"1",
+                "path":old_path,
+                "content_sha256":"oldhash",
+                "sha256":"oldfilehash",
+                "bytes":18,
+                "first_seen_at":"2026-10-01T00:00:00+09:00",
+                "last_checked_at":"2026-10-01T00:00:00+09:00",
+                "supersedes":None,
+                "superseded_by":None,
+            }]
+            (root/"indexes/integrated/meetings.json").write_text(
+                json.dumps(old,ensure_ascii=False),encoding="utf-8"
+            )
+            live=[{
+                "meeting_id":new_id,
+                "legacy_minutes_id":"minutes-2",
+                "council_scope":"cheongju_integrated",
+                "term":4,
+                "title":"제4대 제10회 본회의 제1차(2026.10.02 금요일)",
+                "date":"2026-10-02",
+                "year":2026,
+                "committee_code":"C101",
+                "meeting_type":"plenary",
+                "publication_status":"published",
+                "official_url":c.BASE+"/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2",
+                "source_id":"2",
+                "inventory_sources":["term","year"],
+            }]
+            body_html=(
+                "<!-- 회의록내용 --><p>○위원장 홍길동</p><p>"
+                + "정식회의록 본문입니다. "*20
+                + "</p><!--// 회의록내용 -->"
+            )
+            with patch.object(c,"read_official_inventory",return_value=(live,{"shared_count":1})), \
+                 patch.object(c,"fetch",return_value=body_html):
+                report=c.run_sync("incremental",root)
+
+            current=json.loads((root/"indexes/integrated/meetings.json").read_text(encoding="utf-8"))
+            history=json.loads((root/"indexes/integrated/meeting_history.json").read_text(encoding="utf-8"))
+            self.assertEqual(current[0]["meeting_id"],new_id)
+            self.assertEqual(current[0]["publication_status"],"published")
+            self.assertEqual(current[0]["supersedes"],old_id)
+            self.assertEqual(history[0]["meeting_id"],old_id)
+            self.assertEqual(history[0]["publication_status"],"superseded")
+            self.assertEqual(history[0]["superseded_by"],new_id)
+            self.assertEqual(report["superseded"],{old_id:new_id})
+
+
     def test_write_record_has_scope_and_version_state(self):
         row = {
             "meeting_id": "cheongju_integrated:minutes-1",
