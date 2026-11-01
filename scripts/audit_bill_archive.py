@@ -36,6 +36,18 @@ def audit(root:Path=ROOT)->dict:
     ]
 
     member_ids={str(x["internal_number"]) for x in member_bills}
+    member_without_names=[
+        {
+            "internal_number":x.get("internal_number"),
+            "term":x.get("term"),
+            "bill_number":x.get("bill_number"),
+            "title":x.get("title"),
+            "official_url":x.get("official_url"),
+            "representative_proposer_text":x.get("representative_proposer_text"),
+            "co_proposers_text":x.get("co_proposers_text"),
+        }
+        for x in member_bills if not (x.get("full_proposer_names") or [])
+    ]
     member_links=[x for x in links if str(x.get("internal_number")) in member_ids]
     nonmember_links=[x for x in links if str(x.get("internal_number")) not in member_ids]
 
@@ -53,6 +65,7 @@ def audit(root:Path=ROOT)->dict:
         "member_bill_link_rows":len(member_links),
         "nonmember_bill_link_rows":len(nonmember_links),
         "unresolved_top_tokens":suspicious,
+        "member_bills_without_names":member_without_names,
         "acceptance":{
             "nonmember_bills_with_person_names_should_be_zero":len(nonmember_with_names)==0,
             "nonmember_bill_link_rows_should_be_zero":len(nonmember_links)==0,
