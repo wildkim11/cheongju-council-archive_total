@@ -1,9 +1,6 @@
 name: One-time population stage B media retry
 
 on:
-  push:
-    branches:
-      - population-stage-b-media-trigger
   workflow_dispatch:
 
 permissions:
