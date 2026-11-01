@@ -9,7 +9,6 @@ on:
 permissions:
   contents: write
 
-
 jobs:
   populate:
     runs-on: ubuntu-latest
@@ -40,6 +39,24 @@ jobs:
         run: python -u scripts/collect_bills.py
       - name: Link bill proposer names to term-scoped people
         run: python -u scripts/link_bill_proposers.py
+      - name: Validate bill checkpoint
+        run: |
+          python scripts/validate_archive.py
+          python -m unittest discover -s tests
+      - name: Build analyzer export after bills
+        run: python scripts/export_analyzer.py
+      - name: Publish verified bills checkpoint
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add archive reports exports
+          if ! git diff --cached --quiet; then
+            git commit -m "data: populate archive stage B bills"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+
       - name: Collect five-minute speeches
         run: python -u scripts/collect_speeches_questions.py --kind five_minute
       - name: Collect city questions
@@ -48,20 +65,19 @@ jobs:
         run: python -u scripts/collect_written_questions.py
       - name: Collect suggestions and resolutions
         run: python -u scripts/collect_board_activities.py --kind suggestion_resolution
-
-      - name: Validate stage B core
+      - name: Validate activity checkpoint
         run: |
           python scripts/validate_archive.py
           python -m unittest discover -s tests
-      - name: Build analyzer export after stage B core
+      - name: Build analyzer export after activities
         run: python scripts/export_analyzer.py
-      - name: Publish verified stage B core
+      - name: Publish verified activity checkpoint
         run: |
           git config user.name github-actions
           git config user.email github-actions@users.noreply.github.com
           git add archive reports exports
           if ! git diff --cached --quiet; then
-            git commit -m "data: populate archive stage B core"
+            git commit -m "data: populate archive stage B activities"
             git fetch origin feature/archive-foundation
             git rebase origin/feature/archive-foundation
             git push origin HEAD:feature/archive-foundation
@@ -75,13 +91,13 @@ jobs:
         run: python -u scripts/collect_photo_activity.py
       - name: Rebuild identity candidates
         run: python -u scripts/build_identity_candidates.py
-      - name: Validate stage B media
+      - name: Validate media checkpoint
         run: |
           python scripts/validate_archive.py
           python -m unittest discover -s tests
       - name: Build final analyzer export for stage B
         run: python scripts/export_analyzer.py
-      - name: Publish verified stage B media
+      - name: Publish verified media checkpoint
         run: |
           git config user.name github-actions
           git config user.email github-actions@users.noreply.github.com
