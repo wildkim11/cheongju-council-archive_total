@@ -3,14 +3,13 @@ name: One-time population stage A
 on:
   push:
     branches:
-      - feature/archive-foundation
+      - population-stage-a-trigger
 
 permissions:
   contents: write
 
 jobs:
   populate:
-    if: ${{ !startsWith(github.event.head_commit.message, 'data: populate archive stage A') }}
     runs-on: macos-14
     timeout-minutes: 120
     steps:
@@ -56,13 +55,3 @@ jobs:
             git commit -m "data: populate archive stage A"
             git push origin HEAD:feature/archive-foundation
           fi
-      - name: Summary
-        if: always()
-        run: |
-          echo '## Archive population stage A' >> "$GITHUB_STEP_SUMMARY"
-          for f in reports/current-members.json reports/cheongju_integrated-historical-members.json reports/cheongju_old_city-historical-members.json reports/cheongwon_old_county-historical-members.json reports/current-committees.json reports/current-research-groups.json reports/historical-committees.json reports/identity-candidates.json; do
-            if [ -f "$f" ]; then
-              echo "### $f" >> "$GITHUB_STEP_SUMMARY"
-              cat "$f" >> "$GITHUB_STEP_SUMMARY"
-            fi
-          done
