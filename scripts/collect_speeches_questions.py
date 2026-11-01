@@ -4,7 +4,7 @@ import argparse, datetime as dt, json, re
 from pathlib import Path
 from archive_common import save_json
 from collect_current_members import fetch_text
-from activity_common import discover_links, visible_text, attachment_links
+from activity_common import discover_links, visible_text, attachment_links, section_after_label
 
 ROOT=Path(__file__).resolve().parents[1]
 CONFIG={
@@ -25,16 +25,7 @@ CONFIG={
 }
 
 def _detail_section(text:str,label:str)->str:
-    marker=f"\n {label}\n"
-    i=text.rfind(marker)
-    if i>=0:
-        s=text[i+len(marker):].strip()
-    else:
-        i=text.rfind(label)
-        if i<0:
-            raise ValueError(f"Missing detail section label: {label}")
-        s=text[i+len(label):].strip()
-    # Detail body ends before the list shown below the record.
+    s=section_after_label(text,label)
     cuts=[]
     for pattern in (r"\n\s*목록\s*\n",r"\n\s*전체\s+\d+\s*,\s*\d+/\d+\s*페이지"):
         m=re.search(pattern,s)
