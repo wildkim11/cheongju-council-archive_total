@@ -1,12 +1,9 @@
 name: One-time guarded source-backed bill proposer promotion
 
+# Historical one-time migration finished in run 41359269974.
+# Disable automatic reruns after 17 previously absent rosters were promoted.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - scripts/promote_verified_bill_rosters.py
-      - .github/workflows/promote-verified-bill-rosters.yml
+  workflow_dispatch:
 
 permissions:
   contents: write
