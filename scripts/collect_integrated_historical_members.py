@@ -13,6 +13,7 @@ import json
 import html as html_lib
 import re
 import ssl
+import time
 import urllib.parse
 import urllib.request
 from html.parser import HTMLParser
@@ -53,10 +54,20 @@ class Session:
             },
             method="GET" if body is None else "POST",
         )
-        with self.opener.open(req,timeout=40) as resp:
-            if resp.status!=200:
-                raise ValueError(f"Official source HTTP {resp.status}")
-            return resp.read(),resp.headers.get_content_type()
+        last=None
+        for attempt in range(6):
+            try:
+                time.sleep(0.25)
+                with self.opener.open(req,timeout=45) as resp:
+                    if resp.status!=200:
+                        raise ValueError(f"Official source HTTP {resp.status}")
+                    return resp.read(),resp.headers.get_content_type()
+            except Exception as exc:
+                last=exc
+                if attempt==5:
+                    raise
+                time.sleep(min(8,2**attempt))
+        raise last
 
     def text(self,url:str,data:dict|None=None)->str:
         raw,_=self.request(url,data)
