@@ -174,7 +174,7 @@ def audit(root=ROOT):
             summary["sha256_content_verified"] += 1
         if len(canon(body)) < 100 and "개의되지 않음" not in body:
             errors.append(f"{mid}: body unexpectedly short ({len(canon(body))} chars)")
-        if len(canon(body)) < 300:
+        if len(canon(body)) < 300 and "개의되지 않음" not in body:
             warnings.append(f"{mid}: body shorter than 300 chars")
         if "## ○" not in raw.decode("utf-8") and "개의되지 않음" not in body:
             warnings.append(f"{mid}: no speaker heading in preserved Markdown")
