@@ -77,30 +77,34 @@ def _parse_table_rows(html:str)->list[dict]:
 def _parse_text_rows(html:str)->list[dict]:
     text=_visible(html)
     out=[]
-    pattern=re.compile(
-        r"([가-힣·ㆍ\s]+위원회)\s*\(\s*(\d+)\s*\)\s+"
-        r"([가-힣]{2,5})\s+([가-힣]{2,5})\s+"
-        r"(.+?)(?=(?:[가-힣·ㆍ\s]+위원회\s*\(\s*\d+\s*\))|$)"
-    )
-    for m in pattern.finditer(text):
-        committee_name=re.sub(r"\s+"," ",m.group(1)).strip()
+    starts=list(re.finditer(r"([가-힣·ㆍ]+위원회)\s*\(\s*(\d+)\s*\)",text))
+    for i,m in enumerate(starts):
+        committee_name=m.group(1).strip()
         expected=int(m.group(2))
-        chair=m.group(3); vice=m.group(4)
-        participants=[
-            {"name":chair,"role":"위원장"},
-            {"name":vice,"role":"부위원장"},
-        ]
-        seen={chair,vice}
-        for name in _split_names(m.group(5)):
-            if name not in seen:
-                participants.append({"name":name,"role":"위원"});seen.add(name)
-        if len(participants)==expected:
-            out.append({
-                "committee_name":committee_name,
-                "expected_count":expected,
-                "participants":participants,
+        end=starts[i+1].start() if i+1<len(starts) else len(text)
+        segment=text[m.end():end].strip()
+        names=re.findall(r"(?<![가-힣])([가-힣]{2,5})(?![가-힣])",segment)
+        stop={"위원장","부위원장","위원","위원회","청주시의회","구성현황","선출"}
+        names=[n for n in names if n not in stop]
+        dedup=[]
+        for n in names:
+            if n not in dedup:
+                dedup.append(n)
+        if len(dedup)!=expected:
+            continue
+        participants=[]
+        for idx,name in enumerate(dedup):
+            participants.append({
+                "name":name,
+                "role":"위원장" if idx==0 else "부위원장" if idx==1 else "위원",
             })
+        out.append({
+            "committee_name":committee_name,
+            "expected_count":expected,
+            "participants":participants,
+        })
     return out
+
 
 def parse_rosters(html:str)->list[dict]:
     rows=_parse_table_rows(html)
