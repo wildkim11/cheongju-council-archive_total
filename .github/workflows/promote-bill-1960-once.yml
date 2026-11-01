@@ -1,0 +1,64 @@
+name: One-time official bill 1960 roster repair
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/promote-bill-1960-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: one-time-bill-1960-promotion
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run baseline safeguards and full repository tests
+        run: python -m unittest discover -s tests
+      - name: Verify original Stage C source integrity
+        run: python scripts/audit_stage_c.py --output reports/stage-c-pre-bill1960.json
+      - name: Apply strictly sourced one-bill repair to isolated checkout
+        run: python scripts/promote_bill_1960_from_minutes.py
+      - name: Run all tests after the repair
+        run: |
+          python -m unittest discover -s tests
+          python scripts/validate_archive.py
+          python scripts/audit_stage_c.py --output reports/stage-c-post-bill1960.json
+          python scripts/audit_remaining_bill_sources.py
+      - name: Preserve verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bill-1960-official-proposers
+          path: |
+            reports/bill-1960-official-roster-promotion.json
+            reports/bill-pending-and-institutional-source-qa.json
+            reports/stage-c-pre-bill1960.json
+            reports/stage-c-post-bill1960.json
+          if-no-files-found: warn
+      - name: Commit verified derived facts to development branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive/bills/items.json archive/bills/proposer_memberships.json
+          git add reports/bill-data-audit.json reports/bill-proposer-identity-links.json
+          git add reports/bill-proposer-repair.json reports/bills.json
+          git add reports/bill-1960-official-roster-promotion.json
+          git add reports/bill-pending-and-institutional-source-qa.json
+          git add exports/analyzer
+          if ! git diff --cached --quiet; then
+            git commit -m "data: verify and add 13 bill 1960 proposers from committee minutes"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
