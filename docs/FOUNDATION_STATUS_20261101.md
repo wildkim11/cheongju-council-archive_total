@@ -240,3 +240,20 @@ Current export families include:
 - identity candidates
 
 The export explicitly excludes downstream analytical judgments such as Q codes, EVENT clusters, P1-P7 stages, rankings, scores, probabilities and predictions.
+
+
+## Historical-state identity correction
+
+Initial stage-A population exposed an important temporal identity case.
+
+The official 2026-07-03 term-4 standing-committee composition includes 최영중 in 행정안전위원회. The member resigned on 2026-07-16, so the present-day active-member roster no longer contains that name.
+
+Correction:
+- historical committee states are resolved against the official roster for that council term;
+- the current active roster is only a corroborating source for still-active term-4 members;
+- a departed/resigned member is retained in earlier historical states when supported by the dated official source;
+- current roster absence must not erase prior official membership.
+
+This rule also applies to future resignations, deaths, replacements, by-elections and other mid-term roster changes.
+
+Stage-A population is being retried after this correction.
