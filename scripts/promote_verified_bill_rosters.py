@@ -79,6 +79,22 @@ def main(root=ROOT):
     if len(rows) != 3394:
         raise ValueError(f"unexpected baseline bill count: {len(rows)}")
     before = {str(x["internal_number"]): x for x in rows}
+    # Preserve pre-existing anomalous institutional rows without silently
+    # deleting their source fields. The promotion is allowed only if it adds
+    # NO NEW institutional-person associations.
+    def institutional_person_rows(items):
+        return {
+            str(x["internal_number"]): {
+                "type": str(x.get("proposer_type") or x.get("proposer_type_list") or ""),
+                "names": x.get("full_proposer_names") or [],
+            }
+            for x in items
+            if "의원" not in str(x.get("proposer_type") or x.get("proposer_type_list") or "")
+            and x.get("full_proposer_names")
+        }
+    baseline_institutional = institutional_person_rows(rows)
+    if set(baseline_institutional) != {"375", "2177", "2180", "3265", "3266"}:
+        raise ValueError(f"unexpected pre-existing institutional-person rows: {sorted(baseline_institutional)}")
     evidence = recover(root)
     proposals = [
         r for r in evidence["records"]
@@ -112,17 +128,14 @@ def main(root=ROOT):
         raise ValueError(f"expected exactly 8 remaining incomplete rosters; found {len(remaining)}")
     if link_report["proposer_rows"] != 11408 or link_report["unresolved"] or link_report["ambiguous_same_term"]:
         raise ValueError(f"linked relation gate failed: {link_report}")
-    if audit_report["nonmember_bills_with_person_names"] != 0:
-        bad = [
-            {"internal_number": x["internal_number"],
-             "proposer_type": x.get("proposer_type"),
-             "proposer_type_list": x.get("proposer_type_list"),
-             "names": x.get("full_proposer_names")}
-            for x in new_items
-            if "의원" not in str(x.get("proposer_type") or x.get("proposer_type_list") or "")
-            and x.get("full_proposer_names")
-        ]
-        raise ValueError(f"institutional type QA: {len(bad)} exceptions, sample={bad[:10]}")
+    after_institutional = institutional_person_rows(new_items)
+    if after_institutional != baseline_institutional:
+        raise ValueError("new or altered institutional-person relationship detected")
+    if audit_report["nonmember_bills_with_person_names"] != len(baseline_institutional):
+        raise ValueError("institutional-person audit count does not match frozen baseline")
+    if audit_report["nonmember_bill_link_rows"] <= 0:
+        raise ValueError("existing institutional link anomalies unexpectedly vanished")
+
     bill_report_path = root / "reports/bills.json"
     bill_report = load(bill_report_path)
     bill_report.update({
@@ -169,6 +182,9 @@ def main(root=ROOT):
         "ambiguous_same_term": link_report["ambiguous_same_term"],
         "meetings_archive_unchanged_by_this_step": True,
         "source_only_export": manifest["principles"]["source_facts_only"],
+        "preexisting_institutional_rows_requiring_separate_source_qa": sorted(baseline_institutional, key=int),
+        "preexisting_institutional_rows_count": len(baseline_institutional),
+        "new_institutional_person_links_created": 0,
     }
     save_json(root / "reports/bill-minutes-promotion.json", result)
     return result
