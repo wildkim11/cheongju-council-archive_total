@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "council_scope": "cheongju_integrated",
+  "sources": [
+    {
+      "source_id": "research-2022-composition-notice",
+      "year": 2022,
+      "source_family": "notice",
+      "official_url": "https://council.cheongju.go.kr/content/news/notice.html?fidx=14438&pg=vv&sid=1000&page=11&opt=&sword=",
+      "source_status": "attachment_verification_required",
+      "html_full_roster": false
+    },
+    {
+      "source_id": "research-2023-composition-notice",
+      "year": 2023,
+      "source_family": "notice",
+      "official_url": "https://council.cheongju.go.kr/content/news/notice.html?fidx=15672&pg=vv&sid=1000&page=9&opt=&sword=",
+      "source_status": "attachment_verification_required",
+      "html_full_roster": false
+    },
+    {
+      "source_id": "research-2023-annual-report",
+      "year": 2023,
+      "source_family": "research_report",
+      "official_url": "https://council.cheongju.go.kr/content/activity/researchReport.html?fidx=17240&pg=vv&sid=1000&page=1&opt=&sword=",
+      "source_status": "attachment_verification_required",
+      "html_full_roster": false
+    },
+    {
+      "source_id": "research-2024-composition-notice",
+      "year": 2024,
+      "source_family": "notice",
+      "official_url": "https://council.cheongju.go.kr/content/news/notice.html?fidx=17189&pg=vv&sid=1000&page=7&opt=&sword=",
+      "source_status": "attachment_verification_required",
+      "html_full_roster": false
+    },
+    {
+      "source_id": "research-2024-annual-report",
+      "year": 2024,
+      "source_family": "research_report",
+      "official_url": "https://council.cheongju.go.kr/content/activity/researchReport.html?fidx=19753&pg=vv&sid=1000&page=1&opt=&sword=",
+      "source_status": "attachment_verification_required",
+      "html_full_roster": false
+    },
+    {
+      "source_id": "research-2025-annual-report",
+      "year": 2025,
+      "source_family": "research_report",
+      "official_url": "https://council.cheongju.go.kr/content/activity/researchReport.html?fidx=20871&pg=vv&sid=1000&page=1&opt=&sword=",
+      "source_status": "attachment_verification_required",
+      "html_full_roster": false
+    }
+  ]
+}
