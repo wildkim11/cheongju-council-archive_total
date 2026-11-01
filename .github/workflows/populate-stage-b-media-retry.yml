@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: stage-b-media-retry
+  cancel-in-progress: true
+
 jobs:
   populate-media:
     runs-on: ubuntu-latest
