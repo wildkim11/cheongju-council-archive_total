@@ -1,6 +1,6 @@
 {
   "schema": "cheongju-council-archive-analyzer-export/0.1",
-  "generated_at": "2026-11-01T22:03:36.968055+09:00",
+  "generated_at": "2026-11-01T22:07:15.623058+09:00",
   "datasets": {
     "people": {
       "rows": 434,
@@ -95,12 +95,12 @@
     "bills": {
       "rows": 3394,
       "path": "exports/analyzer/bills.jsonl",
-      "sha256": "4baac085b408f553c347f9386c0bda809696a621e188e9560a6eca137edf65b0"
+      "sha256": "669bc609d4aa5bf08902dcb0911ca57e88fce9807c83a01278315576f26b37a0"
     },
     "bill_proposers": {
-      "rows": 40624,
+      "rows": 11114,
       "path": "exports/analyzer/bill_proposers.jsonl",
-      "sha256": "f3b65d820e57f735f4cd61bebdafe169f30193c4676e4d330f0f162ee00a5f81"
+      "sha256": "7b2619383aaec1848c41c1800426a79ab4cab8f7787b00f075bd327e7d321b86"
     },
     "meetings": {
       "rows": 0,
