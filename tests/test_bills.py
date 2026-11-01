@@ -40,6 +40,23 @@ class BillCollectorTests(unittest.TestCase):
         self.assertIn("허선",parsed["co_proposers"])
         self.assertEqual(parsed["full_proposer_names"][0],"최동식")
 
+    def test_table_fields_prevent_following_labels_from_leaking(self):
+        html = """
+        <table>
+          <tr><th>대표발의자</th><td>최동식</td></tr>
+          <tr><th>공동발의</th><td>곽현희, 김성수, 변은영, 이상조, 허 선</td></tr>
+          <tr><th>위원회 회부일</th><td>2026-10-08</td></tr>
+          <tr><th>본회의 처리결과</th><td>원안가결</td></tr>
+        </table>
+        """
+        fields=b._table_fields(html)
+        self.assertEqual(fields["대표발의자"],"최동식")
+        self.assertEqual(fields["공동발의"],"곽현희, 김성수, 변은영, 이상조, 허 선")
+
+    def test_names_stop_before_non_person_followup_fields(self):
+        contaminated="곽현희 김성수 변은영 위원회회부일 2026-10-08 본회의처리결과 원안가결"
+        self.assertEqual(b._names(contaminated),["곽현희","김성수","변은영"])
+
     def test_non_member_proposer_does_not_create_names(self):
         self.assertEqual(b._names("시장"),[])
         self.assertEqual(b._names("의장"),[])
