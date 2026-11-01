@@ -26,5 +26,21 @@ class ArchiveValidationTests(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 v.validate(root)
 
+    def test_rejects_dangling_relationship_person_id(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            p=root/"archive/people"
+            p.mkdir(parents=True)
+            (p/"people.json").write_text(json.dumps([
+                {"person_id":"p1","name":"홍길동"}
+            ],ensure_ascii=False),encoding="utf-8")
+            m=root/"archive/committees"
+            m.mkdir(parents=True)
+            (m/"historical_memberships.json").write_text(json.dumps([
+                {"person_id":"missing-person","label":"시험위원회"}
+            ],ensure_ascii=False),encoding="utf-8")
+            with self.assertRaises(SystemExit):
+                v.validate(root)
+
 if __name__=="__main__":
     unittest.main()
