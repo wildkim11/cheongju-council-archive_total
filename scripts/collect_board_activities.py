@@ -46,7 +46,7 @@ def _section(text:str,label:str)->str:
     s=section_after_label(text,label)
     cuts=[]
     for p in (
-        r"\n\s*목록\s*\n",
+        r"(?:^|\\n)\\s*목록\\s*(?:\\n|$)",
         r"\n\s*전체\s+\d+\s*,\s*\d+/\d+\s*페이지",
         r"\n\s*게시물검색\s*\n",
     ):
