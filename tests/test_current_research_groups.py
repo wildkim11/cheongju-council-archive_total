@@ -24,6 +24,21 @@ class CurrentResearchGroupTests(unittest.TestCase):
         self.assertEqual(groups[0]["participants"][0],{"name":"신민수","role":"대표"})
         self.assertEqual(groups[0]["participants"][2]["name"],"허선")
 
+    def test_ignores_commented_old_roster_draft(self):
+        html="""
+        <h3>2026년도 구성현황</h3>
+        <table>
+          <tr><th>연번</th><th>연구단체명</th><th>인원</th><th>참여의원</th></tr>
+          <tr><td>1</td><td>시험 연구회</td><td>3명</td><td>신민수(대표), 임은성, 남일현</td></tr>
+          <!--
+          <tr><td>1</td><td>시험 연구회</td><td>2명</td><td>신민수(대표), 임은성</td></tr>
+          -->
+        </table>
+        """
+        groups=r.parse_groups(html,2026)
+        self.assertEqual(len(groups),1)
+        self.assertEqual(groups[0]["member_count"],3)
+
     def test_rejects_member_count_mismatch(self):
         html="""
         <h3>2026년도 구성현황</h3>
