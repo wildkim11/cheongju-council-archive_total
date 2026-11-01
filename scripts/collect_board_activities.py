@@ -15,6 +15,7 @@ CONFIG={
         "output":"archive/activities/suggestions_resolutions.json",
         "report":"reports/suggestions-resolutions.json",
         "body_expected":True,
+        "allow_missing_visible_body":False,
     },
     "press":{
         "list_url":"https://council.cheongju.go.kr/content/news/bodo.html",
@@ -23,6 +24,7 @@ CONFIG={
         "output":"archive/activities/press.json",
         "report":"reports/press.json",
         "body_expected":True,
+        "allow_missing_visible_body":True,
     },
     "debate":{
         "list_url":"https://council.cheongju.go.kr/content/activity/debate.html",
@@ -31,6 +33,7 @@ CONFIG={
         "output":"archive/activities/debates.json",
         "report":"reports/debates.json",
         "body_expected":False,
+        "allow_missing_visible_body":True,
     },
     "photo":{
         "list_url":"https://council.cheongju.go.kr/content/activity/photo.html?gtid=photo",
@@ -39,6 +42,7 @@ CONFIG={
         "output":"archive/activities/photo_activity.json",
         "report":"reports/photo-activity.json",
         "body_expected":False,
+        "allow_missing_visible_body":True,
     },
 }
 
@@ -87,7 +91,8 @@ def parse_detail(html:str,row:dict,cfg:dict)->dict:
         body_lines.append(x)
     body="\n".join(body_lines).strip()
 
-    if cfg["body_expected"] and len(body)<20:
+    missing_visible_body = len(body) < 20
+    if cfg["body_expected"] and missing_visible_body and not cfg.get("allow_missing_visible_body",False):
         raise ValueError(f"Expected body text missing: {row['official_url']}")
 
     return {
@@ -97,7 +102,8 @@ def parse_detail(html:str,row:dict,cfg:dict)->dict:
         "title":title,
         "author_label":author,
         "date":date,
-        "body_text":body or None,
+        "body_text":body if not missing_visible_body else None,
+        "body_status":"missing_visible_body" if missing_visible_body else "present",
         "attachments":attachments,
     }
 
@@ -120,6 +126,7 @@ def collect(kind:str,root:Path=ROOT,max_pages:int=1000)->dict:
         "min_date":min(r["date"] for r in rows),
         "max_date":max(r["date"] for r in rows),
         "with_body":sum(bool(r.get("body_text")) for r in rows),
+        "missing_visible_body":sum(r.get("body_status")=="missing_visible_body" for r in rows),
         "attachment_links":sum(len(r.get("attachments") or []) for r in rows),
     }
     save_json(root/cfg["report"],report)
