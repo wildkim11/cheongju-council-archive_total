@@ -141,6 +141,26 @@ def repair(root:Path=ROOT)->dict:
             stats["member_bills_without_names"]+=1
 
     save_json(path,rows)
+
+    by_term={}
+    for row in rows:
+        key=str(row["term"])
+        by_term[key]=by_term.get(key,0)+1
+    canonical_report={
+        "checked_at":stamp,
+        "council_scope":COUNCIL_SCOPE,
+        "records":len(rows),
+        "by_term":dict(sorted(by_term.items(),key=lambda x:int(x[0]))),
+        "member_proposed_bills":stats["member_bills"],
+        "nonmember_bills":stats["nonmember_bills"],
+        "member_with_proposer_roster":stats["member_bills_with_names"],
+        "member_needing_minutes_fallback":stats["member_bills_without_names"],
+        "with_any_proposer_names":sum(bool(r.get("full_proposer_names")) for r in rows),
+        "resolution_like":sum((r.get("bill_type") or "") in {"결의안","건의안"} for r in rows),
+        "proposer_roster_status":"repaired_term_scoped_names_with_pending_minutes_fallback",
+    }
+    save_json(root/"reports/bills.json",canonical_report)
+
     report={
         "checked_at":stamp,
         **stats,
