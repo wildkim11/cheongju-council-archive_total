@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-01T22:07:15.378617+09:00",
+  "checked_at": "2026-11-01T22:08:05.773999+09:00",
   "bill_records": 3394,
   "by_term": {
     "1": 1098,
@@ -25,6 +25,233 @@
   "member_bill_link_rows": 11114,
   "nonmember_bill_link_rows": 0,
   "unresolved_top_tokens": [],
+  "member_bills_without_names": [
+    {
+      "internal_number": "949",
+      "term": 1,
+      "bill_number": "947",
+      "title": "서울∼세종고속도로 충청권 균형발전 위한 청주경유 건의안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=949&np=1&daesu=1&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1098",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2017-09-07 처리일 2017-09-07 처리결과 채택",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2017-09-07 처리일 2017-09-07 처리결과 채택"
+    },
+    {
+      "internal_number": "1308",
+      "term": 2,
+      "bill_number": "221",
+      "title": "청주시장 및 관계공무원 출석요구의 건",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1308&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과"
+    },
+    {
+      "internal_number": "1458",
+      "term": 2,
+      "bill_number": "140",
+      "title": "청주시장 및 관계공무원 출석요구의 건",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1458&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과"
+    },
+    {
+      "internal_number": "1810",
+      "term": 2,
+      "bill_number": "731",
+      "title": "청주시 에너지 기본 조례 전부개정조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1810&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2021-05-25 처리일 2021-05-25 처리결과 원안가결 본 회 의 회부일 --> 상정일 2021-05-28 처리일 2021-05-28 처리결과 원안가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2021-05-25 처리일 2021-05-25 처리결과 원안가결 본 회 의 회부일 --> 상정일 2021-05-28 처리일 2021-05-28 처리결과 원안가결"
+    },
+    {
+      "internal_number": "1910",
+      "term": 2,
+      "bill_number": "820",
+      "title": "청주시 노동존중 기본 조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1910&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2021-08-25 처리일 2021-08-25 처리결과 본 회 의 회부일 --> 상정일 2021-09-02 처리일 2021-09-02 처리결과 수정가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2021-08-25 처리일 2021-08-25 처리결과 본 회 의 회부일 --> 상정일 2021-09-02 처리일 2021-09-02 처리결과 수정가결"
+    },
+    {
+      "internal_number": "1956",
+      "term": 2,
+      "bill_number": "865",
+      "title": "청주시 아이 돌보는 아빠 장려금 지원 조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1956&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 보류 본 회 의 회부일 --> 상정일 처리일 처리결과",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 보류 본 회 의 회부일 --> 상정일 처리일 처리결과"
+    },
+    {
+      "internal_number": "1960",
+      "term": 2,
+      "bill_number": "869",
+      "title": "청주시 농어업·농촌 및 식품산업 지원에 관한 기본 조례 일부개정조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=1960&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2021-10-22 처리일 2021-10-22 처리결과 수정가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2021-10-19 처리일 2021-10-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2021-10-22 처리일 2021-10-22 처리결과 수정가결"
+    },
+    {
+      "internal_number": "2022",
+      "term": 2,
+      "bill_number": "931",
+      "title": "청주시의회의원 의정활동비 등의 지급에 관한 조례 일부개정조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2022&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-02-14 처리일 2022-02-14 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-02-25 처리일 2022-02-25 처리결과 수정가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-02-14 처리일 2022-02-14 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-02-25 처리일 2022-02-25 처리결과 수정가결"
+    },
+    {
+      "internal_number": "2023",
+      "term": 2,
+      "bill_number": "932",
+      "title": "청주시의회 공무원직장협의회의 설립ㆍ운영에 관한 조례 시행규칙안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2023&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-02-14 처리일 2022-02-14 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-02-25 처리일 2022-02-25 처리결과 수정가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-02-14 처리일 2022-02-14 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-02-25 처리일 2022-02-25 처리결과 수정가결"
+    },
+    {
+      "internal_number": "2054",
+      "term": 2,
+      "bill_number": "962",
+      "title": "청주시 공익소송 비용지원에 관한 조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2054&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-02-22 처리일 2022-02-22 처리결과 보류 본 회 의 회부일 --> 상정일 처리일 처리결과",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-02-22 처리일 2022-02-22 처리결과 보류 본 회 의 회부일 --> 상정일 처리일 처리결과"
+    },
+    {
+      "internal_number": "2083",
+      "term": 2,
+      "bill_number": "991",
+      "title": "청주시장 및 관계공무원 출석 요구",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2083&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과"
+    },
+    {
+      "internal_number": "2107",
+      "term": 2,
+      "bill_number": "1015",
+      "title": "청주시 1인 가구 지원에 관한 조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2107&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-20 처리일 2022-04-20 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-20 처리일 2022-04-20 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결"
+    },
+    {
+      "internal_number": "2108",
+      "term": 2,
+      "bill_number": "1016",
+      "title": "청주시 사회적 고립청년 지원에 관한 조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2108&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-20 처리일 2022-04-20 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-20 처리일 2022-04-20 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결"
+    },
+    {
+      "internal_number": "2109",
+      "term": 2,
+      "bill_number": "1017",
+      "title": "청주시 지역상품 우선구매에 관한 조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2109&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-19 처리일 2022-04-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-19 처리일 2022-04-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결"
+    },
+    {
+      "internal_number": "2110",
+      "term": 2,
+      "bill_number": "1018",
+      "title": "청주시 소형동물 인공수로 폐사 및 동물 찻길 사고 저감 조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2110&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-19 처리일 2022-04-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-19 처리일 2022-04-19 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결"
+    },
+    {
+      "internal_number": "2111",
+      "term": 2,
+      "bill_number": "1019",
+      "title": "청주시 원도심 활성화 지원 조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2111&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 2022-04-21 처리일 2022-04-21 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 2022-04-21 처리일 2022-04-21 처리결과 수정가결 본 회 의 회부일 --> 상정일 2022-04-26 처리일 2022-04-26 처리결과 수정가결"
+    },
+    {
+      "internal_number": "2253",
+      "term": 2,
+      "bill_number": "41",
+      "title": "시장 및 관계공무원 출석요구의 건",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2253&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과"
+    },
+    {
+      "internal_number": "2258",
+      "term": 2,
+      "bill_number": "181",
+      "title": "청주시 한국아마추어무선연맹 청주시지부 활동 지원에 관한 조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2258&np=1&daesu=2&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1020",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과"
+    },
+    {
+      "internal_number": "2364",
+      "term": 3,
+      "bill_number": "218",
+      "title": "청주시장 및 관계공무원 출석요구의 건",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2364&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과 기타",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과 기타"
+    },
+    {
+      "internal_number": "2453",
+      "term": 3,
+      "bill_number": "305",
+      "title": "청주시장 및 관계공무원 출석요구의 건",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2453&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2023-10-23 처리일 2023-10-23 처리결과 원안가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2023-10-23 처리일 2023-10-23 처리결과 원안가결"
+    },
+    {
+      "internal_number": "2499",
+      "term": 3,
+      "bill_number": "351",
+      "title": "청주시장 및 관계공무원 출석요구의 건",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2499&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2023-11-20 처리일 2023-11-20 처리결과 원안가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2023-11-20 처리일 2023-11-20 처리결과 원안가결"
+    },
+    {
+      "internal_number": "2549",
+      "term": 3,
+      "bill_number": "401",
+      "title": "청주시장 및 관계공무원 출석요구의 건",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2549&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2024-02-19 처리일 2024-02-19 처리결과 원안가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2024-02-19 처리일 2024-02-19 처리결과 원안가결"
+    },
+    {
+      "internal_number": "2637",
+      "term": 3,
+      "bill_number": "489",
+      "title": "청주시장 및 관계공무원 출석요구의 건",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2637&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과"
+    },
+    {
+      "internal_number": "2753",
+      "term": 3,
+      "bill_number": "605",
+      "title": "불법개설기관 근절을 위한 국민건강보험공단 특별사법경찰권 부여 「사법경찰직무법」 개정안 입법 촉구 결의안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2753&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2024-09-06 처리일 2024-09-06 처리결과 원안가결",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 2024-09-06 처리일 2024-09-06 처리결과 원안가결"
+    },
+    {
+      "internal_number": "3255",
+      "term": 3,
+      "bill_number": "1042",
+      "title": "청주시 근로자종합복지관 운영 조례 일부개정조례안",
+      "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=3255&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+      "representative_proposer_text": "공동발의 위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과",
+      "co_proposers_text": "위 원 회 회부일 --> 상정일 처리일 처리결과 본 회 의 회부일 --> 상정일 처리일 처리결과"
+    }
+  ],
   "acceptance": {
     "nonmember_bills_with_person_names_should_be_zero": true,
     "nonmember_bill_link_rows_should_be_zero": true
