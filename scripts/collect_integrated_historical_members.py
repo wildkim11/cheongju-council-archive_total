@@ -25,6 +25,7 @@ BASE="https://council.cheongju.go.kr"
 URL=f"{BASE}/content/member/integrationCheongju.html"
 COUNCIL_SCOPE="cheongju_integrated"
 HISTORICAL_TERMS=(1,2,3)
+CURRENT_TERM=4
 
 TLS=ssl.create_default_context()
 TLS.minimum_version=ssl.TLSVersion.TLSv1_2
@@ -327,6 +328,114 @@ def collect(root:Path=ROOT,save_portraits:bool=True)->dict:
     tenures.sort(key=lambda r:(r["term"],r["person_id"]))
     districts.sort(key=lambda r:(r["term"],r["person_id"]))
 
+    # Preserve current-term members who have already left office. Do not infer
+    # sameness from name alone: an active-row match needs the same name plus
+    # either the same represented district or the same official portrait file.
+    term4_rows=parse_term_members(fetch_term_html(CURRENT_TERM,session),CURRENT_TERM)
+    current_people_path=root/"archive/people/people.json"
+    current_districts_path=root/"archive/people/district_memberships.json"
+    current_people=json.loads(current_people_path.read_text(encoding="utf-8")) if current_people_path.exists() else []
+    current_districts=json.loads(current_districts_path.read_text(encoding="utf-8")) if current_districts_path.exists() else []
+    districts_by_pid={}
+    for item in current_districts:
+        districts_by_pid.setdefault(item.get("person_id"),set()).add(
+            re.sub(r"\s+","",item.get("district") or item.get("label") or "")
+        )
+
+    def portrait_key(url):
+        if not url:
+            return None
+        return Path(urllib.parse.urlsplit(url).path).name.lower()
+
+    def matches_active(row):
+        row_district=re.sub(r"\s+","",row.get("district") or "")
+        row_photo=portrait_key(row.get("portrait_source_url"))
+        for active in current_people:
+            if active.get("name")!=row.get("name"):
+                continue
+            same_district=bool(
+                row_district and row_district in districts_by_pid.get(active.get("person_id"),set())
+            )
+            same_photo=bool(
+                row_photo and row_photo==portrait_key((active.get("portrait") or {}).get("source_url"))
+            )
+            if same_district or same_photo:
+                return True
+        return False
+
+    departed_rows=[row for row in term4_rows if not matches_active(row)]
+    departed_people=[]
+    departed_tenures=[]
+    departed_districts=[]
+    for row in departed_rows:
+        pid=person_id(row)
+        portrait=None
+        if row.get("portrait_source_url"):
+            if save_portraits:
+                raw,ctype=session.request(row["portrait_source_url"])
+                ext=_portrait_extension(ctype,row["portrait_source_url"])
+                local_path=f"archive/people/portraits/{pid}{ext}"
+                path=root/local_path
+                path.parent.mkdir(parents=True,exist_ok=True)
+                path.write_bytes(raw)
+                portrait={
+                    "source_url":row["portrait_source_url"],
+                    "local_path":local_path,
+                    "checked_at":stamp,
+                    "sha256":sha256_bytes(raw),
+                }
+            else:
+                portrait={
+                    "source_url":row["portrait_source_url"],
+                    "local_path":None,
+                    "checked_at":stamp,
+                    "sha256":None,
+                }
+        departed_people.append({
+            "person_id":pid,
+            "identity_status":"candidate_unmerged",
+            "name":row["name"],
+            "aliases":[],
+            "official_profile_url":row.get("official_profile_url"),
+            "official_profile_code":row.get("official_profile_code"),
+            "official_profile_code_type":row.get("official_profile_code_type"),
+            "portrait":portrait,
+            "source_url":URL,
+            "checked_at":stamp,
+            "historical_only_current_term":True,
+        })
+        precision="exact_date" if row.get("start_date") and row.get("end_date") else "term_only"
+        departed_tenures.append({
+            "person_id":pid,
+            "council_scope":COUNCIL_SCOPE,
+            "term":CURRENT_TERM,
+            "start_date":row.get("start_date"),
+            "end_date":row.get("end_date"),
+            "period_precision":precision,
+            "source_url":URL,
+            "checked_at":stamp,
+            "historical_only_current_term":True,
+        })
+        if row.get("district"):
+            departed_districts.append({
+                "person_id":pid,
+                "council_scope":COUNCIL_SCOPE,
+                "term":CURRENT_TERM,
+                "membership_type":"district",
+                "label":row["district"],
+                "role":None,
+                "start_date":row.get("start_date"),
+                "end_date":row.get("end_date"),
+                "period_precision":precision,
+                "source_url":URL,
+                "checked_at":stamp,
+                "historical_only_current_term":True,
+            })
+
+    save_json(root/"archive/people/history/cheongju_integrated_term4_departed_people.json",departed_people)
+    save_json(root/"archive/people/history/cheongju_integrated_term4_departed_tenures.json",departed_tenures)
+    save_json(root/"archive/people/history/cheongju_integrated_term4_departed_district_memberships.json",departed_districts)
+
     save_json(root/"archive/people/history/cheongju_integrated_people.json",people)
     save_json(root/"archive/people/history/cheongju_integrated_tenures.json",tenures)
     save_json(root/"archive/people/history/cheongju_integrated_district_memberships.json",districts)
@@ -344,6 +453,9 @@ def collect(root:Path=ROOT,save_portraits:bool=True)->dict:
             r.get("official_profile_code_type")=="mcode" for r in all_rows
         ),
         "candidate_unmerged_people":sum(p["identity_status"]=="candidate_unmerged" for p in people),
+        "term4_roster_rows_checked":len(term4_rows),
+        "term4_historical_only_people":len(departed_people),
+        "term4_historical_only_names":[p["name"] for p in departed_people],
     }
     save_json(root/"reports/cheongju_integrated-historical-members.json",report)
     return report
