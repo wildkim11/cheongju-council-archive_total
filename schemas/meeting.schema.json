@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Meeting",
+  "type": "object",
+  "required": [
+    "meeting_id",
+    "council_scope",
+    "term",
+    "date",
+    "title",
+    "publication_status",
+    "official_url"
+  ],
+  "properties": {
+    "meeting_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "council_scope": {
+      "enum": [
+        "cheongju_integrated",
+        "cheongju_old_city",
+        "cheongwon_old_county"
+      ]
+    },
+    "term": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "meeting_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "committee_code": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "committee_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "publication_status": {
+      "enum": [
+        "provisional",
+        "published",
+        "superseded"
+      ]
+    },
+    "official_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "content_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "first_seen_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_checked_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "superseded_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
