@@ -1,0 +1,33 @@
+name: One-time original 2025 bill 1042 notice discovery
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/find-2025-bill-1042-notice.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bill-1042-notice-discovery
+  cancel-in-progress: true
+jobs:
+  discover:
+    runs-on: macos-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Discover 2025 notice and original official attachment
+        run: python -u scripts/find_notice_3255.py
+      - name: Preserve matched source only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bill-3255-original-notice-discovery
+          path: |
+            reports/bill-3255-official-public-notice-discovery.json
+            reports/official-attachments-probe/
+          if-no-files-found: warn
