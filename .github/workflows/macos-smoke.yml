@@ -1,0 +1,16 @@
+name: macOS runner smoke
+
+on:
+  push:
+    branches:
+      - stage-c-macos-smoke
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: macos-14
+    timeout-minutes: 5
+    steps:
+      - run: echo macos-runner-ok
