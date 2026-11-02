@@ -222,8 +222,12 @@ def summarize(results: list[dict], discovery:dict) -> dict:
     }
 
 
+def current_official_listing(out):
+    return listing.discover(out=out, baseline_policy="current")
+
+
 def monitor(read=read_one_official_body, scan_date=None, output=DEFAULT_OUT,
-            discover=listing.discover, pause=time.sleep) -> dict:
+            discover=current_official_listing, pause=time.sleep) -> dict:
     if platform.system() != "Darwin":
         raise RuntimeError("OFFICIAL_LIVE_READONLY_MONITOR_MACOS_ONLY")
     today=scan_date or dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date()
@@ -248,8 +252,8 @@ def monitor(read=read_one_official_body, scan_date=None, output=DEFAULT_OUT,
     }
     try:
         saved=json.loads((ROOT/"indexes/integrated/meetings.json").read_text(encoding="utf-8"))
-        if len(saved)!=2339:
-            raise ValueError("PRODUCTION_BASELINE_NOT_2339_READONLY_MONITOR")
+        if len(saved)<2339:
+            raise ValueError("CURRENT_ARCHIVE_BELOW_INITIAL_2339_BASELINE")
         # Report only, not publication. The audit uses on-disk source checksums.
         audit=audit_stage_c.audit(ROOT)
         if audit["status"]!="PASS":
