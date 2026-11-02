@@ -1,0 +1,58 @@
+name: One-time offline evaluation of six verified provisional statuses
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-six-status-candidates-offline-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate fail-closed candidate detection and all saved meeting hashes
+        run: |
+          python -m unittest discover -s tests -p test_provisional_official_change_candidates.py -v
+          python scripts/audit_stage_c.py --output /tmp/stagec-before-six-candidates.json
+      - name: Reconcile official six-status evidence offline without any network
+        run: python -u scripts/evaluate_provisional_official_changes.py
+      - name: Assert all six N statuses unchanged and absolutely no real mutations
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('reports/official-six-provisional-change-candidates-20261102.json'))
+          assert r["decision"]=="NO_CONFIRMED_STATUS_CHANGE_IN_SIX_PROVISIONAL_SOURCES"
+          assert len(r["verified_unchanged"])==6
+          assert r["review_candidates"]==[] and r["unverified"]==[]
+          assert r["source_archive_modified"] is False
+          assert r["full_official_inventory_verified"] is False
+          assert r["production_update_authorized"] is False
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Commit only evidence report on feature branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-six-provisional-change-candidates-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: store six verified unchanged official provisional statuses and no-write gate"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: offline-official-six-provisional-change-candidates
+          path: reports/official-six-provisional-change-candidates-20261102.json
+          if-no-files-found: warn
