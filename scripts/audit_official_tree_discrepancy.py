@@ -93,7 +93,8 @@ def offline(root=ROOT):
                                  "term":candidate["term"],
                                  "meeting_date":candidate["meeting_date"],
                                  "session_end":candidate["session_end"],
-                                 "days_after_session_end":candidate["days_after_session_end"]})
+                                 "days_after_session_end":candidate["days_after_session_end"],
+                                 "cross_calendar_year":candidate["meeting_date"][:4]!=candidate["session_end"][:4]})
     return {
         "scope":"saved GitHub snapshot, offline",
         "total_saved":len(idx),
@@ -101,6 +102,9 @@ def offline(root=ROOT):
         "saved_year_only":len(qa["only_year"]),
         "term_only":ok,
         "shared_year_tree_post_session_count":len(shared_after),
+        "shared_year_tree_post_session_cross_calendar_count":sum(x["cross_calendar_year"] for x in shared_after),
+        "shared_year_tree_post_session_same_calendar_count":sum(not x["cross_calendar_year"] for x in shared_after),
+        "shared_year_tree_post_session_cross_calendar_examples":[x for x in shared_after if x["cross_calendar_year"]][:50],
         "shared_year_tree_post_session_examples":shared_after[:30],
         "title_session_date_parse_rejections":len(bad),
         "parse_rejections_examples":bad[:12],
@@ -173,6 +177,7 @@ def run(root=ROOT,do_live=False):
     print(json.dumps({
         "saved_term_only":report["saved_term_only"],
         "shared_year_tree_post_session_count":report["shared_year_tree_post_session_count"],
+        "shared_year_tree_post_session_cross_calendar_count":report["shared_year_tree_post_session_cross_calendar_count"],
         "session_title_parse_rejections":report["title_session_date_parse_rejections"],
         "live":report.get("live_official_tree_probe",{}).get("same_13_as_saved_snapshot"),
         "live_term_rows":report.get("live_official_tree_probe",{}).get("term_inventory_rows"),
