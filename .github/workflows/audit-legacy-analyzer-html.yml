@@ -1,0 +1,23 @@
+name: Legacy analyzer HTML read-only crosswalk preflight
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - scripts/audit_legacy_analyzer_html.py
+      - tests/test_audit_legacy_analyzer_html.py
+      - .github/workflows/audit-legacy-analyzer-html.yml
+permissions:
+  contents: read
+jobs:
+  fixture-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate no-network structural and unsafe-join cases
+        run: python -m unittest discover -s tests -p test_audit_legacy_analyzer_html.py -v
