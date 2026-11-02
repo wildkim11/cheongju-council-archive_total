@@ -478,6 +478,59 @@ def write_record(
     }
 
 
+def _preserve_source_revision(
+    stage: Path,
+    prior: dict,
+    new_record: dict,
+    prior_bytes: bytes,
+    stamp: str,
+    revisions: list[dict],
+) -> None:
+    """Keep the exact prior Markdown bytes and complete old index metadata.
+
+    Never modify an existing immutable revision file. A returning source hash
+    may reuse an identical prior content-addressed file but each transition
+    gets a separate event in the revision history ledger.
+    """
+    if sha256_bytes(prior_bytes)!=prior.get("sha256"):
+        raise RuntimeError(
+            "PRIOR_MEETING_FILE_HASH_MISMATCH: " + prior["meeting_id"]
+        )
+    if prior["meeting_id"]!=new_record["meeting_id"]:
+        raise ValueError("Revision must retain same official source ID")
+    old_sha=prior["sha256"]
+    if not re.fullmatch(r"[0-9a-f]{64}",old_sha):
+        raise ValueError("Missing valid original meeting source hash")
+    sid=str(prior["source_id"])
+    if not sid.isdigit():
+        raise ValueError("Unexpected official source ID in revision")
+    rel=f"archive/meetings/{COUNCIL_SCOPE}/_revisions/minutes-{sid}/{old_sha}.md"
+    target=stage/rel
+    target.parent.mkdir(parents=True,exist_ok=True)
+    if target.is_file():
+        if target.read_bytes()!=prior_bytes:
+            raise RuntimeError("IMMUTABLE_MEETING_REVISION_COLLISION: "+rel)
+    else:
+        target.write_bytes(prior_bytes)
+    fields=("title","date","term","publication_status",
+            "official_url","content_sha256","sha256")
+    modified=[key for key in fields if prior.get(key)!=new_record.get(key)]
+    revisions.append({
+        "schema":"integrated-meeting-source-revision/1",
+        "meeting_id":prior["meeting_id"],
+        "source_id":sid,
+        "recorded_at":stamp,
+        "revision_path":rel,
+        "prior_path":prior["path"],
+        "prior_sha256":old_sha,
+        "next_sha256":new_record["sha256"],
+        "changed_source_fields":modified,
+        "prior_source_record":prior,
+        "next_source_record":new_record,
+        "original_source_preserved":True,
+    })
+
+
 def _load_rows(path: Path) -> list[dict]:
     if not path.exists():
         return []
@@ -555,6 +608,8 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
     old_rows = _load_rows(current_path)
     old = {row["meeting_id"]: row for row in old_rows}
     history_rows = _load_rows(history_path)
+    revisions_path=root/"indexes/integrated/meeting_revisions.json"
+    revisions=_load_rows(revisions_path)
 
     replacements = detect_replacements(old_rows, live_rows) if old_rows else {}
     reverse_replacements = {new: old_id for old_id, new in replacements.items()}
@@ -611,16 +666,25 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
         output_rows = []
         for row in live_rows:
             meeting_id = row["meeting_id"]
-            output_rows.append(
-                write_record(
-                    stage,
-                    row,
-                    bodies.get(meeting_id),
-                    stamp,
-                    old=old.get(meeting_id),
-                    supersedes=reverse_replacements.get(meeting_id),
-                )
+            previous=old.get(meeting_id)
+            prior_bytes=None
+            if previous is not None:
+                prior_path=stage/previous["path"]
+                if not prior_path.is_file():
+                    raise RuntimeError("MISSING_PRIOR_MEETING_ORIGINAL: "+meeting_id)
+                prior_bytes=prior_path.read_bytes()
+                if sha256_bytes(prior_bytes)!=previous.get("sha256"):
+                    raise RuntimeError("PRIOR_MEETING_FILE_HASH_MISMATCH: "+meeting_id)
+            written=write_record(
+                stage,row,bodies.get(meeting_id),stamp,
+                old=previous,
+                supersedes=reverse_replacements.get(meeting_id),
             )
+            if previous is not None and written.get("sha256")!=previous.get("sha256"):
+                _preserve_source_revision(
+                    stage,previous,written,prior_bytes,stamp,revisions
+                )
+            output_rows.append(written)
 
         history_map = {row["meeting_id"]: row for row in history_rows}
         for old_id, new_id in replacements.items():
@@ -637,6 +701,7 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
         )
         save_json(stage / "indexes/integrated/meetings.json", output_rows)
         save_json(stage / "indexes/integrated/meeting_history.json", history_out)
+        save_json(stage / "indexes/integrated/meeting_revisions.json",revisions)
 
         new_ids = sorted(set(r["meeting_id"] for r in live_rows) - set(old))
         changed_ids = sorted(
@@ -665,6 +730,11 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
             "superseded": replacements,
             "bodies_checked": len(bodies),
             "history_rows": len(history_out),
+            "revision_rows":len(revisions),
+            "revised": sorted({
+                r["meeting_id"] for r in revisions
+                if r["recorded_at"]==stamp
+            }),
             "inventory_qa": inventory_qa,
         }
         save_json(stage / "reports/integrated-sync.json", report)
