@@ -1,0 +1,47 @@
+{
+  "schema": "official-two-legacy-real-meeting-bodies/1",
+  "checked_at_utc": "2026-11-02T07:43:19.029585+00:00",
+  "source": "legacy official leaf plus official JS hyperlink verified",
+  "requests_attempted": 2,
+  "request_limit": 2,
+  "retries": 0,
+  "responses": [
+    {
+      "scope": "cheongju_old_city",
+      "meeting_source_id": "4355",
+      "official_url": "https://councilrec.cheongju.go.kr/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4355",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "raw_response_bytes": 28081,
+      "raw_html_sha256": "386898df77db2ac7f3f9216b8d4bfaf42b81b98efee5584bbc2928425261f5d2",
+      "body_extracted": true,
+      "archive_body_written": false,
+      "normalized_body_characters": 3152,
+      "normalized_body_sha256": "aa8009f8fbdd5b6a2eccf86bd6b863951590503764de66724b8b4c825ba905cd",
+      "html_contains_provisional_notice": false,
+      "body_contains_provisional_notice": false,
+      "verification": "PASS_REAL_OFFICIAL_LEGACY_BODY"
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "meeting_source_id": "2581",
+      "official_url": "https://councilrec.cheongju.go.kr/minuteschw/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2581",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "raw_response_bytes": 34427,
+      "raw_html_sha256": "2aca4f3c1bec86c62183325c344a41cab0ea09a19cdf701460dbd6f2aa354c91",
+      "body_extracted": true,
+      "archive_body_written": false,
+      "normalized_body_characters": 4621,
+      "normalized_body_sha256": "238b6064a2b51113cdd11afbbc179004354a4cc50d97fa51f599534a9db83e57",
+      "html_contains_provisional_notice": false,
+      "body_contains_provisional_notice": false,
+      "verification": "PASS_REAL_OFFICIAL_LEGACY_BODY"
+    }
+  ],
+  "errors": [],
+  "official_meeting_bodies_saved_to_archive": 0,
+  "existing_integrated_originals_modified": false,
+  "production_collector_enabled": false,
+  "status": "PASS_TWO_OFFICIAL_LEGACY_BODIES"
+}
