@@ -1,0 +1,114 @@
+name: One-time integrated macOS official incremental monitor QA (NO PUBLISH)
+# Proposed future cadence after separate release approval only:
+# 07:30 Asia/Seoul every morning = 22:30 UTC previous calendar day.
+# No schedule is active. Production source mutation is forbidden.
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-integrated-macos-readonly-monitor-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cheongju-integrated-official-monitor-preproduction
+  cancel-in-progress: false
+
+jobs:
+  read-only-official-monitor:
+    runs-on: macos-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate offline change detector and 2339 stored originals
+        run: |
+          python -m unittest discover -s tests -p test_official_integrated_monitor.py -v
+          python -m unittest discover -s tests -p test_official_term4_new_meeting_ids.py -v
+          python scripts/audit_stage_c.py --output /tmp/monitor-original-archive-before.json
+      - name: Read official term4 inventory plus bounded provisional and published rolling body samples
+        id: readonly_monitor
+        run: |
+          python -u scripts/monitor_official_incremental_preflight.py \
+            --output reports/official-incremental-monitor-readonly-latest.json
+      - name: Write review or blocked-source summary for operators
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          report=Path('reports/official-incremental-monitor-readonly-latest.json')
+          lines=[
+            '## 청주시의회 회의록 자동갱신 사전 감시 (읽기전용)',
+            '',
+            '**운영 자동수집/원본 갱신: OFF**',
+            '',
+          ]
+          if not report.exists():
+            lines.append('**검증 기록 없음:** 실행기 또는 사전검사 오류. 운영 원본은 변경하지 않았습니다.')
+            print('::error title=Official monitor report absent::No source may be published')
+          else:
+            data=json.loads(report.read_text(encoding='utf-8'))
+            lines += [
+              '| 항목 | 결과 |',
+              '|---|---|',
+              f'| 감시 결과 | {data["status"]} |',
+              f'| 현재 저장본 회의록 | {data.get("saved_meeting_count","미확인")} |',
+              f'| 공식 제4대 목록 | {data.get("official_term4_leaf_count","미확인")} |',
+              f'| 공식 목록 요청 | {data.get("official_term4_inventory_requests","미확인")} |',
+              f'| 공식 본문 요청 | {data["actual_official_body_requests"]} |',
+              f'| 신규 회의록 ID | {", ".join(r["source_id"] for r in data.get("new_ids",[])) or "없음"} |',
+              f'| 공개상태 변경 ID | {", ".join(r["source_id"] for r in data.get("status_change_candidates",[])) or "없음"} |',
+              f'| 메타데이터 변경 ID | {", ".join(r["source_id"] for r in data.get("metadata_change_candidates",[])) or "없음"} |',
+              f'| 본문 변경 ID | {", ".join(r["source_id"] for r in data.get("body_change_candidates",[])) or "없음"} |',
+              '',
+              '기존 원본·인덱스·분석기 파일은 갱신하지 않습니다. 확인된 변경은 검토 후보일 뿐입니다.',
+              '미조회 역사 회의록의 원문이 불변이라는 판정을 포함하지 않습니다.',
+            ]
+            if data["status"].startswith('BLOCKED_'):
+              print('::error title=Official meeting monitor inconclusive::See JSON artifact; do not publish')
+            elif data.get('has_review_candidates'):
+              print('::warning title=Official minutes review candidates::No archive update has been performed')
+          target=os.environ.get('GITHUB_STEP_SUMMARY')
+          if target:
+            with open(target,'a',encoding='utf-8') as fp:
+              fp.write('\n'.join(lines)+'\n')
+          print('\n'.join(lines))
+          PY
+      - name: Require canonical source, index and analyzer unmodified
+        if: always()
+        run: |
+          git diff --exit-code -- archive indexes exports
+          python scripts/audit_stage_c.py --output /tmp/monitor-original-archive-after.json
+      - name: Record metadata and hash report ONLY on feature branch
+        if: always()
+        run: |
+          if ! test -f reports/official-incremental-monitor-readonly-latest.json; then
+            echo 'No monitor report; skip commit'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-incremental-monitor-readonly-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: retain bounded official monitor candidate and error observations only"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Preserve read-only monitor evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-integrated-monitor-readonly-review-results
+          path: reports/official-incremental-monitor-readonly-latest.json
+          if-no-files-found: warn
