@@ -1,0 +1,54 @@
+name: Publish read-only year/term tree discrepancy ledger
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/publish-year-term-tree-diff-once.yml
+permissions:
+  contents: write
+concurrency:
+  group: one-time-publish-year-term-tree-diff
+  cancel-in-progress: false
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently reconstruct exact saved 13 exceptions
+        run: |
+          python -m unittest discover -s tests -p test_official_tree_discrepancy.py
+          python scripts/audit_official_tree_discrepancy.py
+          python scripts/validate_archive.py
+          git diff --exit-code -- archive indexes exports
+      - name: Verify stable ledger counts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/integrated-year-term-discrepancy-probe.json").read_text(encoding="utf-8"))
+          assert r["saved_term_only"]==13
+          assert r["shared_year_tree_post_session_count"]==108
+          assert r["shared_year_tree_post_session_cross_calendar_count"]==0
+          assert r["shared_year_tree_post_session_same_calendar_count"]==108
+          assert r["title_session_date_parse_rejections"]==0
+          assert all(x["post_session"] and x["meeting_date"][:4]!=x["session_end"][:4] for x in r["term_only"])
+          PY
+      - name: Commit QA ledger to feature only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/integrated-year-term-discrepancy-probe.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: preserve exact 13 cross-calendar official-tree exceptions and 108 controls"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
