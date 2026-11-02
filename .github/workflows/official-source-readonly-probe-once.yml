@@ -1,0 +1,73 @@
+name: One-time bounded official-source read-only probe
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/official-source-readonly-probe-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: one-time-official-readonly-limited
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate no-network source comparison code and archival baseline
+        run: |
+          python -m unittest discover -s tests -p test_official_readonly_limited.py -v
+          python scripts/audit_stage_c.py --output /tmp/source-baseline-before-official-probe.json
+      - name: Issue maximum 3 official HTTPS reads (stop on first failure, no retry)
+        run: python -u scripts/probe_official_readonly_limited.py
+      - name: Confirm explicit no-write policy and preserve inconclusive outcomes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('reports/official-limited-readonly-probe-20261102.json').read_text(encoding='utf-8'))
+          assert r['schema']=='cheongju-official-readonly-limited-probe/1'
+          assert r['requests_attempted']<=3
+          assert r['policy']['attempts_per_request']==1
+          assert r['policy']['no_source_writes'] is True
+          assert r['source_archive_modified'] is False
+          assert r['production_sync_used'] is False
+          assert r['operational_release_authorized'] is False
+          assert r['automatic_collection_enabled'] is False
+          assert r['status'] in (
+              'PASS_LIMITED_LIVE_SOURCE_MATCH',
+              'LIVE_RESPONDED_MANUAL_REVIEW_REQUIRED',
+              'INCONCLUSIVE_SOURCE_UNAVAILABLE'
+          )
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Publish exact official reachability result to feature branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-limited-readonly-probe-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: preserve bounded official read-only endpoint evidence with source availability status"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Preserve probe evidence independent of commit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-readonly-limited-reachability
+          path: reports/official-limited-readonly-probe-20261102.json
+          if-no-files-found: warn
