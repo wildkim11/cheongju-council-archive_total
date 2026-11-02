@@ -1,5 +1,5 @@
 name: One-time isolated incremental sync failure-mode audit
-# Rerun after rejecting many-to-one provisional successors.
+# Re-run after implementing fail-closed version handling and exception rollback.
 on:
   push:
     branches:
