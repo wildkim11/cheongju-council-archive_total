@@ -36,10 +36,14 @@ class IsolationAuditTests(unittest.TestCase):
         self.assertTrue(result["original_markdown_unchanged"])
         self.assertTrue(result["derived_meetings_export_stale"])
         self.assertTrue(result["term_shard_stale"])
-    def test_live_code_does_not_archive_same_id_revisions(self):
+    def test_same_id_metadata_transition_fails_closed(self):
+        result=qa.scenario_same_id_status_transition()
+        self.assertTrue(result["same_id_transition_safely_rejected"])
+        self.assertTrue(result["fixture_unchanged"])
+    def test_same_id_body_revision_fails_closed(self):
         result=qa.scenario_same_id_body_revision()
-        self.assertTrue(result["same_path_overwritten"])
-        self.assertTrue(result["old_bytes_not_preserved_in_history"])
+        self.assertTrue(result["same_id_body_revision_safely_rejected"])
+        self.assertTrue(result["original_bytes_preserved"])
     def test_detect_many_to_one_safeguard_gap(self):
         result=qa.scenario_colliding_replacements()
         self.assertTrue(result["many_to_one_rejected"])
