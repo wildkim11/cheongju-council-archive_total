@@ -1,10 +1,6 @@
 name: One-time revision and process-crash recovery isolation verification
+# Completed controlled source-only QA. No automatic reruns.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-revision-crash-recovery-once.yml
   workflow_dispatch:
 permissions:
   contents: read
