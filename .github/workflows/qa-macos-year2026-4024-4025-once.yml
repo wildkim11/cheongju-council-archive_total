@@ -1,10 +1,7 @@
 name: One-time macOS official year2026 presence of new meeting IDs
+# One-time evidence-collection and isolated rehearsal finished.
+# No further scheduled or push-triggered official requests.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-macos-year2026-4024-4025-once.yml
   workflow_dispatch:
 permissions:
   contents: write
