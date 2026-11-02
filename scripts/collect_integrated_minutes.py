@@ -712,9 +712,41 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
         }
         save_json(stage / "reports/integrated-sync.json", report)
 
+        # Preserve the four original initial-term shards as historical
+        # evidence. Future/current snapshots get separate per-term shards and
+        # metadata so the canonical index can advance without rewriting the
+        # first-population capture.
+        for term in SUPPORTED_TERMS:
+            shard=[r for r in output_rows if r["term"]==term]
+            save_json(stage / f"indexes/integrated/current_term_{term}.json",shard)
+            save_json(stage / f"reports/integrated-current-term-{term}.json",{
+                "checked_at":stamp,
+                "mode":"current-term-snapshot-after-sync",
+                "term":term,
+                "listed":len(shard),
+                "published":sum(r["publication_status"]=="published" for r in shard),
+                "provisional":sum(r["publication_status"]=="provisional" for r in shard),
+            })
+
+        # The analyzer is a derived view. Rebuild it from the fully staged
+        # canonical facts BEFORE publishing anything; a stale meetings.jsonl
+        # or manifest must never accompany an updated meeting index.
+        import export_analyzer
+        export_analyzer.export(stage)
+
         # Validate staged archive before replacing working files.
         import validate_archive
         validate_archive.validate(stage)
+        # Full source/hash/export QA runs for populated snapshots carrying a
+        # preexisting manifest. Minimal legacy unit-test fixtures can omit it.
+        if (root / "exports/analyzer/manifest.json").is_file():
+            import audit_stage_c
+            stage_qa=audit_stage_c.audit(stage)
+            if stage_qa["status"]!="PASS":
+                raise RuntimeError(
+                    "STAGED_INTEGRATED_MEETING_QA_FAILED: "
+                    + "; ".join(stage_qa["errors"][:12])
+                )
 
         _publish_staged_snapshot_with_rollback(stage, root)
 
