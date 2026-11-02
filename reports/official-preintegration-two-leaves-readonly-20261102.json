@@ -1,0 +1,99 @@
+{
+  "schema": "legacy-two-official-sampled-meeting-leaves/1",
+  "checked_at_utc": "2026-11-02T07:39:27.554106+00:00",
+  "request_cap": 8,
+  "requests_attempted": 8,
+  "retries": 0,
+  "council_results": [
+    {
+      "scope": "cheongju_old_city",
+      "selected_term": 9,
+      "official_sessions_in_selected_term": 36,
+      "selected_session": "329",
+      "official_committees_under_selected_session": 3,
+      "selected_committee": "본회의",
+      "selected_committee_code": "A010",
+      "leaf_count_in_selected_committee": 3,
+      "leaf_source_samples": [
+        {
+          "text": "개회식(2014.06.10 화요일)",
+          "var12": "4349",
+          "var09": "N",
+          "var01": "9",
+          "var02": "A010",
+          "var03": "329"
+        },
+        {
+          "text": "제1차(2014.06.10 화요일)",
+          "var12": "4354",
+          "var09": "N",
+          "var01": "9",
+          "var02": "A010",
+          "var03": "329"
+        },
+        {
+          "text": "제2차(2014.06.13 금요일)",
+          "var12": "4355",
+          "var09": "N",
+          "var01": "9",
+          "var02": "A010",
+          "var03": "329"
+        }
+      ],
+      "viewer_reference_evidence": {
+        "viewer_contexts": [
+          {
+            "keyword": "goMnts",
+            "source_context": ").click(function(){ $('.mobileLink').slideToggle('fast'); }) }); //]]> function goMntsPage(pageNo, goUrl) { // 페이지 이동 $(\"#mntsPageGoForm input[name='pageNo']\").val(pageNo); $(\"#mntsPageGoForm\").attr({ action : goUrl,"
+          }
+        ],
+        "literal_page_paths": []
+      },
+      "status": "PASS_ONE_SCOPE_LEAF_BRANCH_VERIFIED"
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "selected_term": 6,
+      "official_sessions_in_selected_term": 34,
+      "selected_session": "211",
+      "official_committees_under_selected_session": 4,
+      "selected_committee": "본회의",
+      "selected_committee_code": "A010",
+      "leaf_count_in_selected_committee": 2,
+      "leaf_source_samples": [
+        {
+          "text": "제1차(2014.03.10 월요일)",
+          "var12": "3163",
+          "var09": "N",
+          "var01": "6",
+          "var02": "A010",
+          "var03": "211"
+        },
+        {
+          "text": "제2차(2014.03.17 월요일)",
+          "var12": "2581",
+          "var09": "N",
+          "var01": "6",
+          "var02": "A010",
+          "var03": "211"
+        }
+      ],
+      "viewer_reference_evidence": {
+        "viewer_contexts": [
+          {
+            "keyword": "goMnts",
+            "source_context": ").click(function(){ $('.mobileLink').slideToggle('fast'); }) }); //]]> function goMntsPage(pageNo, goUrl) { // 페이지 이동 $(\"#mntsPageGoForm input[name='pageNo']\").val(pageNo); $(\"#mntsPageGoForm\").attr({ action : goUrl,"
+          }
+        ],
+        "literal_page_paths": []
+      },
+      "status": "PASS_ONE_SCOPE_LEAF_BRANCH_VERIFIED"
+    }
+  ],
+  "errors": [],
+  "archive_source_files_modified": false,
+  "all_terms_enumerated": false,
+  "meeting_bodies_fetched": 0,
+  "production_import_enabled": false,
+  "status": "PASS_BOTH_INDEPENDENT_LEGACY_SCOPE_LEAF_BRANCHES"
+}
