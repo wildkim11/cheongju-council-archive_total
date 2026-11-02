@@ -287,3 +287,16 @@
 - `scripts/assess_official_autonomous_release_gates.py`의 판정은 `release_council_scope=cheongju_integrated`로 명시. `preintegration_legacy_minutes_included=false`, `all_three_council_scopes_analyzer_release_authorized=false`를 항상 표시하며 별도 레거시 출처 검증 전 전범위 출시 불허.
 - 향후 구 청주시·청원군의 공식 회의록·의안 목록/뷰어 식별 및 가용기간 조사 → 기관별 최초 원문 백필/해시·미확인 범위 보존 → 각 기관 독립 변경감시 → 시간별 의원 속성/발언 연결 → 변은영 기준판 바탕 통합분석기 진입. 동명 인물을 이름만으로 결합하지 않음.
 - 기존 무인 운영 QA용 `official-autonomous-readonly-operations-staged.yml`은 통합 이후 청주시의회만 읽고, 예약 스케줄 OFF 및 실제 수집기 ROOT 잠금 유지.
+
+
+## 25. [최신] 통합 전 청주시·청원군 **실제 공식 원문 수집 경로 검증** — 12대수·437회기·실자료 5건 격리 저장 QA PASS
+
+- **상세 공식 검증보고서:** `docs/PREINTEGRATION_OFFICIAL_SOURCE_437_SESSIONS_AND_FIVE_BODY_QA_20261102.md`. 앞의 제24절에서 통합 전 원문 출처를 미확인으로 기록했던 부분을 최신 **실서버 접속/본문 추출 성공**으로 갱신. 단, 정식 전량 원문 아카이브는 여전히 미구축.
+- 청주시의회 공식 홈페이지 링크에서 구 청주시 `/content/cityMinutes/prevsession.html`, 구 청원군 `/content/gunMinutes/prevsession.html` 확인. **macOS 원본 TLS 검증** 환경에서 두 HTML 모두 GET HTTP 200. 페이지에서 서로 독립한 `/minuteschj/`·`/minuteschw/` JS를 확인. 공식 `svc.mnts.tree.js`에서 `SvcMntsTreeGnrtn.php` POST 호출, `jquery.treeview.async.svc.mnts.js`에서 `SvcMntsViewer.php?schSn=<공식 ID>` GET을 독립 확인. 이관 전까지 항상 `council_scope`를 보존.
+- 두 기관 공식 최상위 대수 ROOT 각각 **6개**: 구 청주시 제4~9대(1991~2014) / 구 청원군 제1~6대(1991~2014). `reports/official-preintegration-root-trees-readonly-20261102.json`.
+- 공식 12개 대수 각각의 하위 회기 목록 **12회 직접 POST**, 오류/재시도 0: 구 청주시 44/27/38/40/41/36 = **226회기**, 구 청원군 47/25/36/34/35/34 = **211회기**, **합계 437회기**. 이것은 **회의록 건수 아님**. `reports/official-preintegration-12-terms-sessions-readonly-20261102.json`.
+- **공식 자료 품질 이슈:** 구 청원군 제1대 최상위 설명문은 제001~040회, 하위 공식 회기 노드는 **1~47회 총 47건**. 상위 설명만을 근거로 41~47회를 버리지 말고 별도 원천 확인/누락 QA 실시. 실제 공식 12대수 세션 count와 다른 표시를 임의로 맞추지 말 것.
+- 구 청주시 제9대 제329회 본회의 3건(`4349,4354,4355`), 구 청원군 제6대 제211회 본회의 2건(`3163,2581`)을 공식 분기에서 확인. 공식 상세본문을 기관별로 총 5건 실제 GET, HTTP200/본문 파싱/정규화 SHA-256/임시파일 저장·읽기복원 모두 PASS. 검증 기록 `reports/official-preintegration-five-bodies-isolated-pilot-20261102.json`; macOS 실증 https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41408694408. 소스 5건 원문은 **임시 저장 후 삭제**, 정식 archive에는 아직 추가 0건.
+- **공개상태 의미 미확정:** 과거 공식 목록 `var09=N`이지만 직접 검증한 구 의회 본문에는 통합 이후 시스템의 임시회의록 안내 문구가 발견되지 않음. 따라서 이 값을 임의로 `provisional`로 승격시키지 않고 `source_tree_publication_code=N` 및 `normalized_publication_status=null`, `eligible_for_public_analyzer=false` 상태로 격리. 근거 없이는 '모든 2014년 자료가 임시본'이라고 주장 금지.
+- 안전한 scope 계약 `scripts/legacy_minutes_scope_contract.py` 및 `tests/test_legacy_minutes_scope_contract.py`: 구 청주시/군의회 및 통합 시의회의 독립 term/ID 공간, 공식 URL 범위, 공개상태 미검증 차단, 이름만으로 의원 동일인 통합 금지. 동일 숫자 공식 source_id라도 기관별 회의록은 별개.
+- 후속: 공식 **437회기 각각 위원회→개별 leaf 전체 탐색**으로 원문 대상 건수·가용성/누락 원장 구축 → 12대수 체크포인트·복구 가능한 초도 백필을 **기관별 격리 스냅샷**에서 실행 → 상태코드 의미 및 본문/인물연결 QA → 정식 아카이브 반영. 현재 통합 회의록 원본 **2,339건 그대로**, `main` 불변, 정기 무인 수집·운영 반영 OFF.
