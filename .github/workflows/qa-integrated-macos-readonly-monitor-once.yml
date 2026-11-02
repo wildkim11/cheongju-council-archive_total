@@ -2,12 +2,9 @@ name: One-time integrated macOS official incremental monitor QA (NO PUBLISH)
 # Proposed future cadence after separate release approval only:
 # 07:30 Asia/Seoul every morning = 22:30 UTC previous calendar day.
 # No schedule is active. Production source mutation is forbidden.
+# One-shot QA completed; no automatic reruns, no scheduled source polling.
+# Only explicit workflow_dispatch remains available.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-integrated-macos-readonly-monitor-once.yml
   workflow_dispatch:
 
 permissions:
