@@ -330,3 +330,13 @@
 - 신규 CI 전체 스냅샷 실행 결과는 별도로 확인해야 한다. CI 증빙이 없는 한 'GitHub 전체 회귀검증 PASS'라고 표기하지 않는다.
 - 원본 출처/분류/11,421행/분리뷰 11,377·44행과 운영 회의록 2,339건 모두 그대로. 2,342건은 격리 리허설만 PASS. \`main\`과 독립 아카이브 불변, 정기 실수집 OFF.
 - 미해결: 의원발의 7건 완전 명단, 기관발의 5건 개인 44행 실제 역할은 원안/접수대장/서명부 등 의회사무국 원천자료 필요. 요청서 \`docs/BILL_SOURCE_RECORDS_REQUEST_20261102.md\`는 작성만 완료·미발송.
+
+## 29. [최신] 구버전 의정분석기 2026-09-27 실제 HTML 구조 감사·의안 ID 자동 연결 차단
+- 증거/해석/기술: docs/STAGE_29_LEGACY_ANALYZER_CONSUMER_QA_20261102.md
+- 읽기전용 검사 scripts/audit_legacy_analyzer_html.py, 무네트워크 테스트 tests/test_audit_legacy_analyzer_html.py, CI .github/workflows/audit-legacy-analyzer-html.yml.
+- 사용자 Library의 기존 CheongjuCouncilAnalyzer_MASTER_SOURCE_r10_2_INTEGRATED.html(37,188,810바이트, SHA-256 44087188c7fa390a4c063cb5d63ced0d8afc46ef643f589e34f18c7f90b98582) embedded cca-data를 직접 감사. **해당 HTML은 2026-09-27 생성본이며 사용자 PC 최신 MASTER_SOURCE를 확인한 것이 아님**.
+- 실제 embedded facts 18,451 / member_fact_links 13,748 / BILLS facts 3,332 / BILLS 의원 연결 10,920 / 의원 연결된 BILLS 861. BILLS에서 공식 internal_number·공식 URL·발의유형 정보 0, BILLS 관계에서도 proposer_role 0. 옛 source_item_id=bills-...와 새 공식 internal_number는 증빙 없이 매칭하지 않는다.
+- 해당 HTML 검증 결과 STRUCTURAL_PASS_CROSSWALK_NOT_VERIFIED. 로컬 fixture 6/6 PASS; 신규 원격 CI 실행 성공은 미확인. 기존 HTML 및 원본은 수정하지 않음.
+- 의안 수 차이 3,332 vs 새 아카이브 3,394는 서로 다른 수집시점·정의에서 나온 값이므로 62건을 자동 신규/누락으로 처리 금지. 기존 관련 의원 연결 10,920행과 새 11,377행은 개인 발의관계 동일 기준인지 미검증.
+- 다음 단계: PC 최신 MASTER_SOURCE 원천 데이터의 공식 의안 식별번호/출처와 기존 source_item_id 간 증빙 가능한 crosswalk, 대수별 의원 ID crosswalk를 **독립 파생 원장**으로 설계·검증. 이름·제목 유사도만으로 자동 승격 금지. GOLD/EVENT/P1-P7/기존 집계 보존.
+- 28단계 안전뷰 11,377·격리 44와 운영 아카이브 2,339 / 2,342 격리 시연은 변함없다. main 미병합, 정기 자동수집 OFF, 원천 자료요구 미발송.
