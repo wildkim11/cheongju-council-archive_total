@@ -112,7 +112,7 @@ class CrashRecoveryTests(unittest.TestCase):
             stage.mkdir()
             source_fixture(root,stage)
             p=abrupt_exit(root,stage,"installed")
-            self.assertEqual(p.returncode,77,p.stderr)
+            self.assertEqual(p.returncode,-signal.SIGKILL,p.stderr)
             backup=root/tx.JOURNAL/"old/indexes/integrated/meetings.json"
             backup.write_bytes(b"tampered")
             before=children_snapshot(root)
