@@ -1,10 +1,6 @@
 name: One-time original 2025 bill 1042 notice discovery
+# Completed historical one-time source investigation. Manual rerun only.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/find-2025-bill-1042-notice.yml
   workflow_dispatch:
 permissions:
   contents: read
