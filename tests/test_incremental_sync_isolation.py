@@ -7,10 +7,18 @@ that actual incremental collection is safe to enable.
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 import audit_incremental_sync_isolation as qa
 
 class IsolationAuditTests(unittest.TestCase):
+    def test_real_repository_sync_is_blocked_before_network(self):
+        with patch.object(qa.c,"read_official_inventory",side_effect=AssertionError("network may not run")):
+            with self.assertRaisesRegex(RuntimeError,"LIVE_ARCHIVE_INCREMENTAL_SYNC_DISABLED"):
+                qa.c.run_sync("incremental",qa.ROOT)
+            with self.assertRaisesRegex(RuntimeError,"LIVE_ARCHIVE_INCREMENTAL_SYNC_DISABLED"):
+                qa.c.run_sync("full",qa.ROOT)
+
     def test_fixture_isolation_and_release_gate(self):
         result=qa.diagnose()
         self.assertEqual(result["official_site_requests"],0)
