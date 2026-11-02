@@ -1,10 +1,7 @@
 name: One-time macOS official minutes read-only validation
+# One-time bounded macOS official-source checks completed.
+# No automatic or scheduled reruns are authorized.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/official-macos-readonly-probe-once.yml
   workflow_dispatch:
 
 permissions:
