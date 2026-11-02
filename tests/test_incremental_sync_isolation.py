@@ -32,7 +32,8 @@ class IsolationAuditTests(unittest.TestCase):
         self.assertTrue(result["old_bytes_not_preserved_in_history"])
     def test_detect_many_to_one_safeguard_gap(self):
         result=qa.scenario_colliding_replacements()
-        self.assertTrue(result["same_successor_assigned_more_than_once"])
+        self.assertTrue(result["many_to_one_rejected"])
+        self.assertIn("many-to-one",result["rejection_reason"])
     def test_simulated_network_failure_preserves_source(self):
         result=qa.scenario_fetch_failure()
         self.assertTrue(result["fixture_unchanged"])
