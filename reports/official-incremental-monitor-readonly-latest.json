@@ -1,0 +1,364 @@
+{
+  "schema": "cheongju-official-readonly-monitor-preproduction/1",
+  "checked_at_utc": "2026-11-02T06:07:14.057473+00:00",
+  "date_local_kst": "2026-11-02",
+  "environment": "macOS official collector TLS verification enabled",
+  "mode": "READ_ONLY_REVIEW_CANDIDATES_NO_PUBLISH",
+  "scope": "term4 entire official tree; saved provisional plus rolling published sample; NOT full historical body recheck",
+  "archive_root_modified": false,
+  "production_incremental_enabled": false,
+  "schedule_enabled": false,
+  "operational_release_authorized": false,
+  "max_official_inventory_requests": 80,
+  "max_official_body_requests": 20,
+  "actual_official_body_requests": 17,
+  "retries": 0,
+  "body_results": [
+    {
+      "source_id": "3",
+      "reason": [
+        "published_rotation"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3",
+      "http_status": 200,
+      "raw_response_bytes": 34997,
+      "raw_response_sha256": "ca9c6048fa913a615179d883407d75e813efe60f129c51d3636fba2d453b1070",
+      "body_characters": 7130,
+      "current_body_sha256": "3f8ce46183205ca38d53cbcc54b7765813dbfd35a828b6b31d9dee36618c0e7e",
+      "previous_body_sha256": "3f8ce46183205ca38d53cbcc54b7765813dbfd35a828b6b31d9dee36618c0e7e",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "6",
+      "reason": [
+        "published_rotation"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=6",
+      "http_status": 200,
+      "raw_response_bytes": 19345,
+      "raw_response_sha256": "f5500d8c6391d6ef9e00bfeba0aa27384133332a181ba59493b063db9e400355",
+      "body_characters": 1701,
+      "current_body_sha256": "570e3ea74391d513575e21c2b584f8932ff15731bdd3e67ec9f7d0567d3c40f2",
+      "previous_body_sha256": "570e3ea74391d513575e21c2b584f8932ff15731bdd3e67ec9f7d0567d3c40f2",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "7",
+      "reason": [
+        "published_rotation"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=7",
+      "http_status": 200,
+      "raw_response_bytes": 26767,
+      "raw_response_sha256": "442c15b0e1d02c339bbc296802662d48867b4943f913533b748760d945540cb5",
+      "body_characters": 3481,
+      "current_body_sha256": "b9a3c18d6cf34205885edb900f63dda3c74a7d14ffb64960adbdc456df339ab7",
+      "previous_body_sha256": "b9a3c18d6cf34205885edb900f63dda3c74a7d14ffb64960adbdc456df339ab7",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "9",
+      "reason": [
+        "published_rotation"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=9",
+      "http_status": 200,
+      "raw_response_bytes": 28691,
+      "raw_response_sha256": "326689d94c400c2352a277a1e93f122a698a9ec6c74334d7884e4b3aef71d11d",
+      "body_characters": 3792,
+      "current_body_sha256": "21778e92ac654483fb51ec525821463ae91381999dd5a5d6353fffc511e21ecb",
+      "previous_body_sha256": "21778e92ac654483fb51ec525821463ae91381999dd5a5d6353fffc511e21ecb",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "3961",
+      "reason": [
+        "published_rotation"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3961",
+      "http_status": 200,
+      "raw_response_bytes": 27872,
+      "raw_response_sha256": "094f82a50c3e70c14428a4e554ddec09d158b6f18e49a16b02fd7b93837fcb8a",
+      "body_characters": 3343,
+      "current_body_sha256": "224f043f364d6bf56d0684f92bc39411eebdfd6b9795741e9b50b43971571bee",
+      "previous_body_sha256": "224f043f364d6bf56d0684f92bc39411eebdfd6b9795741e9b50b43971571bee",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "3962",
+      "reason": [
+        "published_rotation"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3962",
+      "http_status": 200,
+      "raw_response_bytes": 64051,
+      "raw_response_sha256": "16cd4ad31d5666b1abb591688b90903ba9e69641d744be947ebc95a6ae0376ee",
+      "body_characters": 11024,
+      "current_body_sha256": "9c1a5c0ab0f2a10db784ad8874027333bea90c818436411709de5d250179d2ed",
+      "previous_body_sha256": "9c1a5c0ab0f2a10db784ad8874027333bea90c818436411709de5d250179d2ed",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "3964",
+      "reason": [
+        "published_rotation"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3964",
+      "http_status": 200,
+      "raw_response_bytes": 31936,
+      "raw_response_sha256": "862bb05176d079b52c217807418b61e432a3c990e34e02e659a60cc00de6b156",
+      "body_characters": 4510,
+      "current_body_sha256": "43880652b9e4812c87bb82b1714d6c2c55eee5a83a651ba7d8615166a0b9058e",
+      "previous_body_sha256": "43880652b9e4812c87bb82b1714d6c2c55eee5a83a651ba7d8615166a0b9058e",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "3965",
+      "reason": [
+        "published_rotation"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3965",
+      "http_status": 200,
+      "raw_response_bytes": 25916,
+      "raw_response_sha256": "2ae165413227170c0093aaccbbb978ed7cb555a05e91ab55b14db743331e9198",
+      "body_characters": 3053,
+      "current_body_sha256": "e8b000d6f1526b0b809fe029f2a0f867256430e729797d2c83f2c50ab609cd6f",
+      "previous_body_sha256": "e8b000d6f1526b0b809fe029f2a0f867256430e729797d2c83f2c50ab609cd6f",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "4017",
+      "reason": [
+        "saved_provisional"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4017",
+      "http_status": 200,
+      "raw_response_bytes": 18469,
+      "raw_response_sha256": "82c0d63325366058e8021baa0e0ac77dd5ce522a6ba8dc2bf437c8f071f35de7",
+      "body_characters": 1475,
+      "current_body_sha256": "791994b804e87aa11f349101b8b322284c6f4751f939d6bf27e4c4dd7d01561a",
+      "previous_body_sha256": "791994b804e87aa11f349101b8b322284c6f4751f939d6bf27e4c4dd7d01561a",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "4018",
+      "reason": [
+        "saved_provisional"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4018",
+      "http_status": 200,
+      "raw_response_bytes": 22779,
+      "raw_response_sha256": "14ccce0dd0f8c67f42a8d1a82090d4f8e249376ec0cf95d6fcc1a158f3dcfb33",
+      "body_characters": 2409,
+      "current_body_sha256": "1121ed3f1d5ffc44a62bdf52d62cd47aa7695064a3afec4948dcfb4cfed7ca56",
+      "previous_body_sha256": "1121ed3f1d5ffc44a62bdf52d62cd47aa7695064a3afec4948dcfb4cfed7ca56",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "4019",
+      "reason": [
+        "saved_provisional"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4019",
+      "http_status": 200,
+      "raw_response_bytes": 67538,
+      "raw_response_sha256": "af6475b130a688ea368031829955158e09538490f55874e08b1ae875dc9a15c5",
+      "body_characters": 14758,
+      "current_body_sha256": "bb96a51d169e43533f6c5388dd7ecf75d24e63bc9e177b698d630e455a4784c1",
+      "previous_body_sha256": "bb96a51d169e43533f6c5388dd7ecf75d24e63bc9e177b698d630e455a4784c1",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "4020",
+      "reason": [
+        "saved_provisional"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4020",
+      "http_status": 200,
+      "raw_response_bytes": 181428,
+      "raw_response_sha256": "629917385328211267b40d6d14f70983f49d8ed07be522df7ef535a400e025c7",
+      "body_characters": 47859,
+      "current_body_sha256": "d295f6d4b92b671674672d020bbab7fd86c8b2aecb499a745b2288f3c7de9107",
+      "previous_body_sha256": "d295f6d4b92b671674672d020bbab7fd86c8b2aecb499a745b2288f3c7de9107",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "4021",
+      "reason": [
+        "saved_provisional"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4021",
+      "http_status": 200,
+      "raw_response_bytes": 133773,
+      "raw_response_sha256": "c3b8a17889ca011f93ff211b5b9e3e09a36e17429723fb43817b56f618f5c649",
+      "body_characters": 34750,
+      "current_body_sha256": "bcc38b2c86f6c70f8751ea562ce956cc008ffd457662e4375d915bfefe410680",
+      "previous_body_sha256": "bcc38b2c86f6c70f8751ea562ce956cc008ffd457662e4375d915bfefe410680",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "4022",
+      "reason": [
+        "saved_provisional"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4022",
+      "http_status": 200,
+      "raw_response_bytes": 218899,
+      "raw_response_sha256": "64d3a8f38cde3455cd75961ebf91394e3023c2a08a1cb566b561d930a8bf2fdb",
+      "body_characters": 66081,
+      "current_body_sha256": "e969bd47ed2ce8858e2250765e68c35b0a1e527bec13ad12e839994b93448c4d",
+      "previous_body_sha256": "e969bd47ed2ce8858e2250765e68c35b0a1e527bec13ad12e839994b93448c4d",
+      "verification": "EXISTING_OFFICIAL_BODY_UNCHANGED",
+      "body_changed": false
+    },
+    {
+      "source_id": "4024",
+      "reason": [
+        "new_source"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4024",
+      "http_status": 200,
+      "raw_response_bytes": 263445,
+      "raw_response_sha256": "e59752aed005620a98a4dbb8b6c6489ac556b8aaf0059981ab8122e160111ab2",
+      "body_characters": 77681,
+      "current_body_sha256": "818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d",
+      "previous_body_sha256": null,
+      "verification": "NEW_OFFICIAL_BODY_READABLE_REVIEW_ONLY",
+      "body_changed": null
+    },
+    {
+      "source_id": "4025",
+      "reason": [
+        "new_source"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4025",
+      "http_status": 200,
+      "raw_response_bytes": 59398,
+      "raw_response_sha256": "f83822e0e9d9bd6136e6887b4b3dbc4c9a15bae86ad18504573a3a145470ff26",
+      "body_characters": 12887,
+      "current_body_sha256": "56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba",
+      "previous_body_sha256": null,
+      "verification": "NEW_OFFICIAL_BODY_READABLE_REVIEW_ONLY",
+      "body_changed": null
+    },
+    {
+      "source_id": "4026",
+      "reason": [
+        "new_source"
+      ],
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4026",
+      "http_status": 200,
+      "raw_response_bytes": 249578,
+      "raw_response_sha256": "3c37408c013a544d7839cab5a8a2dae6dd029c99a3c1cb286a8dce001761e21a",
+      "body_characters": 72103,
+      "current_body_sha256": "c63e097c11c05b89e80d7865816552353838e4914c9244727f1d42b8cd601536",
+      "previous_body_sha256": null,
+      "verification": "NEW_OFFICIAL_BODY_READABLE_REVIEW_ONLY",
+      "body_changed": null
+    }
+  ],
+  "errors": [],
+  "status": "PASS_REVIEW_CANDIDATES_PRESENT",
+  "saved_meeting_count": 2339,
+  "official_term4_inventory_requests": 33,
+  "official_term4_leaf_count": 53,
+  "official_term4_coverage_complete": true,
+  "selected_ids": [
+    "3",
+    "6",
+    "7",
+    "9",
+    "3961",
+    "3962",
+    "3964",
+    "3965",
+    "4017",
+    "4018",
+    "4019",
+    "4020",
+    "4021",
+    "4022",
+    "4024",
+    "4025",
+    "4026"
+  ],
+  "published_rotation_ids": [
+    "3",
+    "6",
+    "7",
+    "9",
+    "3961",
+    "3962",
+    "3964",
+    "3965"
+  ],
+  "saved_provisional_ids": [
+    "4017",
+    "4018",
+    "4019",
+    "4020",
+    "4021",
+    "4022"
+  ],
+  "new_ids": [
+    {
+      "source_id": "4024",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4024",
+      "official_date": "2026-10-14",
+      "official_status": "provisional",
+      "official_title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 12) 도시건설위원회 제1호(2026.10.14 수요일)",
+      "official_session": "106",
+      "official_committee_code": "C601",
+      "action": "NEW_ID_CANDIDATE_READ_ONLY_BODY_VERIFICATION_REQUIRED",
+      "auto_apply": false
+    },
+    {
+      "source_id": "4025",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4025",
+      "official_date": "2026-10-12",
+      "official_status": "provisional",
+      "official_title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 12) 의회운영위원회 제1호(2026.10.12 월요일)",
+      "official_session": "106",
+      "official_committee_code": "C101",
+      "action": "NEW_ID_CANDIDATE_READ_ONLY_BODY_VERIFICATION_REQUIRED",
+      "auto_apply": false
+    },
+    {
+      "source_id": "4026",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4026",
+      "official_date": "2026-10-13",
+      "official_status": "provisional",
+      "official_title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 12) 행정안전위원회 제1호(2026.10.13 화요일)",
+      "official_session": "106",
+      "official_committee_code": "C206",
+      "action": "NEW_ID_CANDIDATE_READ_ONLY_BODY_VERIFICATION_REQUIRED",
+      "auto_apply": false
+    }
+  ],
+  "status_change_candidates": [],
+  "metadata_change_candidates": [],
+  "body_change_candidates": [],
+  "body_failures": [],
+  "body_unmodified": 14,
+  "new_bodies_readable": 3,
+  "has_review_candidates": true,
+  "warnings": [
+    "This does not check all term 1-3 current official inventory branches.",
+    "Historical published bodies are sampled: unchecked records cannot be asserted unchanged.",
+    "Confirmed changes are review candidates only; no archived source is added or overwritten.",
+    "A failed branch or viewer read blocks the monitor rather than implying deletion."
+  ]
+}
