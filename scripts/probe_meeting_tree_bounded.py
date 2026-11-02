@@ -32,6 +32,7 @@ def request(kind, node=None, viewer_id=None):
                         if k.startswith("var")}).encode() if node is not None else None)
     sslctx=ssl.create_default_context()
     sslctx.minimum_version=ssl.TLSVersion.TLSv1_2
+    sslctx.set_ciphers("DEFAULT") # match previously successful official collector TLS configuration
     conn=http.client.HTTPSConnection("councilrec.cheongju.go.kr",timeout=TIMEOUT,context=sslctx)
     try:
         conn.request("POST" if payload is not None else "GET",path,
@@ -65,7 +66,7 @@ def mk_node_report(kind,label,node,report):
     report["trees"].append(entry)
     print(json.dumps({"tree":kind,"label":label,"result":entry["result"],
                       "count":entry.get("row_count"),
-                      "error":entry.get("error_type")},ensure_ascii=False),flush=True)
+                      "error":entry.get("error_type"),"detail":entry.get("error_detail")},ensure_ascii=False),flush=True)
     return rows
 
 def run(root=ROOT):
