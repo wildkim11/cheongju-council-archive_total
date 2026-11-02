@@ -207,3 +207,14 @@
 - 근거 분리 원장: `reports/official-work-browser-readonly-3999-user-report-20261102.json`; 종합 보고서: `docs/OFFICIAL_READONLY_CONNECTIVITY_QA_20261102.md` 제7절.
 - 종합: GitHub Runner에서도 공식 서버 TLS 연결 오류/시간초과였고, ChatGPT Work도 본문 표시 실패. **청주시의회 서버 전체 장애·차단 정책·기존 아카이브 변경**을 단정하지 않는다. 소량 실시간 원문 대조 불가 판정 유지.
 - 다음 단계: **기관의 허가된 로컬/내부망 PC에서 단일 ID 3999 읽기전용 접속을 확인**하고 결과에 따라 후속 원문 대조 범위를 결정. 네트워크/접근정책 우회 또는 TLS 보안 무력화 금지. `run_sync` 운영 하드 잠금과 정기 자동수집 OFF 유지, `main` 및 기존 회의록 아카이브 불변.
+
+
+## 18. [최신·기존 접속장애 판정 갱신] macOS 원본 수집기 TLS로 공식 회의록 3999·4019 및 대수목록 root 실시간 조회 성공
+- **상세:** `docs/MACOS_ORIGINAL_TLS_LIVE_SOURCE_SUCCESS_20261102.md`.
+- macOS `python ssl.create_default_context()` 방식 초기 읽기전용 시험: `3999` SSL handshake 실패, HTTP 0건. 증거 `reports/official-macos-readonly-probe-20261102.json` / https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41390168265.
+- **원본 수집기와 같은 TLS 설정** (`collect_integrated_minutes.TLS`: 인증서 검증 활성, 최소 TLS1.2, `set_ciphers("DEFAULT")`)으로 macOS `3999` 실제 HTTP 200, HTML 322,974바이트, 본문 파싱 및 기존 저장 SHA-256 **완전 일치**. 증거 `reports/official-macos-original-tls-3999-20261102.json` / https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41390349243.
+- 동일 설정의 macOS 추가 시험: `4019` HTTP 200, 본문 파싱 및 기존 저장본 SHA-256 **완전 일치**. 공식 대수목록 `SvcMntsTreeGnrtn.php` 조회용 최상위 POST HTTP 200, JSON 대수 1~4 모두 파싱 성공. 증거 `reports/official-macos-original-tls-4019-tree-20261102.json` / https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41390508185.
+- **제16·17절 및 앞선 '모든 클라우드에서 본문 추출 불가' 판정은 최신 실증으로 정정**: 동일 공식 서버에서 macOS 기존 수집기 TLS로 상세 본문·목록 조회 가능함. 과거 Ubuntu·Work·macOS 기본 TLS 실패도 당시 관찰 사실로 유지. 단, 서로 다른 실행 시점/러너였으므로 TLS 암호군 설정만을 단독 원인으로 확정하지는 않음.
+- 저장된 `3999=published`, `4019=provisional` 상태는 **기존 인덱스의 수집 시점 사실**. `4019` 실시간 공개상태는 회기별 세부 트리 아직 재조회하지 않아 **미검증**.
+- 총 공식 실시간 GET 2회 + 목록 최상위 조회용 POST 1회, 재시도 0회. 원문 2건 해시 일치, 루트 대수 4개 확인. 기존 2,339건·인덱스·exports 수정 0. `main` 및 별도 `cheongju-council-minutes` 불변. 운영 `run_sync` 하드 잠금과 정기 자동수집 OFF.
+- 다음 단계: 이 원본 TLS 컨텍스트를 정식 소량 진단기에서 재사용하고 제4대 106회 좁은 트리로 `4019`의 실시간 `var09`만 제한적 조회, 이후 **격리 환경**에서 증분 변경 후보를 검증. **실운영 자동갱신은 아직 미승인.**
