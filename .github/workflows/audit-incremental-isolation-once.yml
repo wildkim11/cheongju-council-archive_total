@@ -1,0 +1,37 @@
+name: One-time isolated incremental sync failure-mode audit
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/audit-incremental-isolation-once.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: incremental-fault-injection-isolated
+  cancel-in-progress: true
+jobs:
+  safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run disposable fixtures with mocked official HTTP and injected failures
+        run: |
+          python -m unittest discover -s tests -p test_incremental_sync_isolation.py -v
+          python scripts/audit_incremental_sync_isolation.py
+      - name: Verify no repository archival source changed
+        run: |
+          git diff --exit-code -- archive indexes exports
+          test "$(python -c 'import json; print(json.load(open("reports/incremental-sync-isolation-diagnostics.json"))["official_site_requests"])')" = "0"
+      - name: Upload explicit NOT READY safety report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: incremental-sync-isolation-safety-report
+          path: reports/incremental-sync-isolation-diagnostics.json
+          if-no-files-found: warn
