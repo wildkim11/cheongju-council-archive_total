@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-11-02T02:22:29.441216+00:00",
+  "status": "PASS",
+  "mode": "strictly synthetic cross-year/cross-term migration in temporary byte-exact copy",
+  "original_saved_meetings": 2339,
+  "temporary_current_meetings": 2339,
+  "official_site_requests": 0,
+  "unchanged_other_originals": 2338,
+  "one_moved_original_prior_bytes_preserved": true,
+  "obsolete_path_removed_from_copy": true,
+  "new_canonical_path_present_in_copy": true,
+  "revision_ledger_entries": 1,
+  "stage_c_result": "PASS",
+  "stage_c_verified_current_files": 2339,
+  "stage_c_verified_immutable_revisions": 1,
+  "exported_current_meetings": 2339,
+  "source_repository_files_modified": false,
+  "production_sync_still_locked": true,
+  "warning": "Simulated title/date/term is NOT evidence of a real Cheongju Council meeting change.",
+  "errors": []
+}
