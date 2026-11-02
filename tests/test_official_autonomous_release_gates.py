@@ -80,6 +80,14 @@ class ReleaseCriteriaTests(unittest.TestCase):
         deployment["user_explicit_production_release_approval"]=True
         r2=g.evaluate(hist,current,real,[day_proof(i) for i in range(36)],deployment)
         self.assertTrue(r2["production_archive_auto_update_authorized"])
+        # Even an approved integrated-only rollout cannot claim that
+        # the two pre-integration councils' meeting archives exist.
+        self.assertEqual(r2["release_council_scope"],"cheongju_integrated")
+        self.assertFalse(r2["preintegration_legacy_minutes_included"])
+        self.assertFalse(r2["all_three_council_scopes_analyzer_release_authorized"])
+        self.assertEqual(set(r2["separate_scope_blockers"]),{
+            "cheongju_old_city","cheongwon_old_county",
+        })
 
     def test_empty_sources_never_authorized(self):
         r=g.evaluate(None,None,None,[],None)
