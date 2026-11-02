@@ -1,10 +1,6 @@
 name: One-time publish immutable revisions and crash recovery QA
+# Completed controlled source-only QA. No automatic reruns.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/publish-incremental-revision-crash-ledger.yml
   workflow_dispatch:
 permissions:
   contents: write
