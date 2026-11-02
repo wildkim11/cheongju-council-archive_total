@@ -535,6 +535,20 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
     replacements = detect_replacements(old_rows, live_rows) if old_rows else {}
     reverse_replacements = {new: old_id for old_id, new in replacements.items()}
 
+    # Fail closed on a *same-ID* metadata transition until the previous
+    # rendered source file and its exact provenance can be preserved as a
+    # separate immutable revision. Otherwise write_record may update the
+    # canonical index while retaining an obsolete Markdown provenance header.
+    important = ("title", "date", "term", "council_scope", "source_id",
+                 "official_url", "publication_status")
+    for live_row in live_rows:
+        prior = old.get(live_row["meeting_id"])
+        if prior and any(prior.get(k) != live_row.get(k) for k in important):
+            raise RuntimeError(
+                "SAME_ID_METADATA_REVISION_REQUIRES_VERSION_HISTORY: "
+                + live_row["meeting_id"]
+            )
+
     needed = []
     for row in live_rows:
         prior = old.get(row["meeting_id"])
@@ -556,6 +570,20 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
         for meeting_id, body in pool.map(download, needed):
             bodies[meeting_id] = body
+
+    # Even an unchanged official meeting ID may contain a changed body. The
+    # legacy code would overwrite its old Markdown bytes in place and discard
+    # the original source revision. Do not proceed until versioned retention
+    # and audit of original bytes is implemented.
+    for live_row in live_rows:
+        mid = live_row["meeting_id"]
+        if mid in old and mid in bodies and (
+            sha256_bytes(canonical(bodies[mid]).encode("utf-8"))
+            != old[mid].get("content_sha256")
+        ):
+            raise RuntimeError(
+                "SAME_ID_BODY_REVISION_REQUIRES_VERSION_HISTORY: " + mid
+            )
 
     with tempfile.TemporaryDirectory(prefix="archive-integrated-sync-") as tmp:
         stage = Path(tmp)
