@@ -60,6 +60,24 @@ class IsolationAuditTests(unittest.TestCase):
         self.assertTrue(result["all_old_bytes_still_present"])
         self.assertTrue(result["original_first_version_preserved"])
 
+    def test_same_id_date_change_that_moves_original_path_is_blocked(self):
+        import tempfile
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            qa.fixture(root,[qa.row(915,date="2026-10-01")])
+            before=qa.snapshot(root)
+            moved=qa.row(915,date="2026-10-02",
+                         title="제4대 제107회 본회의 제1차(2026.10.02 금요일)")
+            with patch.object(qa.c,"read_official_inventory",
+                              return_value=([moved],{"only_term":[],"only_year":[]})), \
+                 patch.object(qa.c,"fetch",
+                              side_effect=AssertionError("must not query official source")):
+                with self.assertRaisesRegex(RuntimeError,
+                        "SAME_ID_PATH_CHANGE_REQUIRES_VERSIONED_MIGRATION"):
+                    qa.c.run_sync("incremental",root)
+            self.assertEqual(qa.snapshot(root),before)
+
     def test_detect_many_to_one_safeguard_gap(self):
         result=qa.scenario_colliding_replacements()
         self.assertTrue(result["many_to_one_rejected"])
