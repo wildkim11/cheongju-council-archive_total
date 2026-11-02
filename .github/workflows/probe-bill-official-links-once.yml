@@ -1,10 +1,6 @@
 name: One-time official bill source link probe
+# Completed historical one-time source investigation. Manual rerun only.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/probe-bill-official-links-once.yml
   workflow_dispatch:
 permissions:
   contents: read
