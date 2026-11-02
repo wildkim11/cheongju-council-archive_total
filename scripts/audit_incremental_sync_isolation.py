@@ -177,12 +177,19 @@ def scenario_publish_copy_failure():
 def scenario_colliding_replacements():
     old=[row(909,publication_status="provisional"),row(910,publication_status="provisional")]
     new=row(911,publication_status="published",date="2026-10-02")
-    result=c.detect_replacements(old,[new])
-    return {
-        "distinct_missing_provisionals":len(old),
-        "same_successor_assigned_more_than_once":len(result)>len(set(result.values())),
-        "mapping":result,
-    }
+    try:
+        result=c.detect_replacements(old,[new])
+        return {
+            "distinct_missing_provisionals":len(old),
+            "many_to_one_rejected":False,
+            "unsafe_mapping":result,
+        }
+    except ValueError as exc:
+        return {
+            "distinct_missing_provisionals":len(old),
+            "many_to_one_rejected":True,
+            "rejection_reason":str(exc)[:320],
+        }
 
 def diagnose():
     results={
@@ -198,7 +205,7 @@ def diagnose():
         "same_id_publication_status_header_inconsistent":results["same_id_status"]["index_markdown_status_mismatch"],
         "original_bytes_overwritten_on_same_id_revisions":results["same_id_body"]["same_path_overwritten"] and results["same_id_body"]["old_bytes_not_preserved_in_history"],
         "publish_failure_leaves_partial_target":results["publish_failure"]["partial_publication_mutated_destination"] and results["publish_failure"]["canonical_index_unchanged"],
-        "many_to_one_provisional_replacements_allowed":results["colliding_replacements"]["same_successor_assigned_more_than_once"]
+        "many_to_one_provisional_replacements_allowed":not results["colliding_replacements"]["many_to_one_rejected"]
     }
     return {
         "generated_at_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
