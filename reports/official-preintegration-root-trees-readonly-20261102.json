@@ -1,0 +1,170 @@
+{
+  "schema": "cheongju-official-preintegration-two-term-roots/1",
+  "checked_at_utc": "2026-11-02T07:36:55.153802+00:00",
+  "source": "official Javascript verified legacy SvcMntsTreeGnrtn.php",
+  "requests_attempted": 2,
+  "request_limit": 2,
+  "retries": 0,
+  "root_results": [
+    {
+      "scope": "cheongju_old_city",
+      "url": "https://councilrec.cheongju.go.kr/minuteschj/svc/web/cms/mnts/SvcMntsTreeGnrtn.php",
+      "http_status": 200,
+      "response_bytes": 3082,
+      "response_sha256": "d3a30742663d9f9a62db9e4dce5672263c156a105cc61577c24cb7ff2134ce55",
+      "root_nodes": [
+        {
+          "text": "제9대 의회(2010. 7. 1 ~ 2014. 6. 30&nbsp;:&nbsp;제294회 ~ &nbsp;제329회)",
+          "var01": "9",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제8대 의회(2006. 7. 1 ~ 2010. 6. 30&nbsp;:&nbsp;제253회 ~ 제293회)",
+          "var01": "8",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제7대 의회(2002. 7. 8 ~ 2006. 6. 27&nbsp;:&nbsp;제213회 ~ 제252회)",
+          "var01": "7",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제6대 의회(1998. 7. 7 ~ 2002. 6. 30&nbsp;&nbsp;&nbsp;:&nbsp;제175회 ~ 제212회)",
+          "var01": "6",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제5대 의회(1995. 7. 5 ~ 1998. 6. 18&nbsp;&nbsp;:&nbsp;제148회 ~ 제174회)",
+          "var01": "5",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제4대 의회(1991. 4. 15 ~ 1995. 5. 30&nbsp;:&nbsp;제104회 ~ 제147회)",
+          "var01": "4",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        }
+      ],
+      "count": 6,
+      "verification": "PASS_OFFICIAL_LEGACY_SCOPE_TERM_ROOT"
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "url": "https://councilrec.cheongju.go.kr/minuteschw/svc/web/cms/mnts/SvcMntsTreeGnrtn.php",
+      "http_status": 200,
+      "response_bytes": 3149,
+      "response_sha256": "6442b3645d88c9434e24d0a776d3a9451746ca4dfad2300d35436942fe65a2c4",
+      "root_nodes": [
+        {
+          "text": "제6대 의회(2010. 7. 1 ~ 2014. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제178회 ~ &nbsp;제211회)",
+          "var01": "6",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제5대 의회(2006. 7. 1 ~ 2010. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제143회 ~ 제177회)",
+          "var01": "5",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제4대 의회(2002. 7. 1 ~ 2006. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제109회 ~ 제142회)",
+          "var01": "4",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제3대 의회(1998. 7. 1 ~ 2002. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제073회 ~ 제108회)",
+          "var01": "3",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제2대 의회(1995. 7. 11 ~ 1998. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제048회 ~ 제072회)",
+          "var01": "2",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        },
+        {
+          "text": "제1대 의회(1991. 4. 15 ~ 1995. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제001회 ~ 제040회)",
+          "var01": "1",
+          "var02": "",
+          "var03": "",
+          "var04": "",
+          "var09": "",
+          "var10": "",
+          "var11": "SvcMntsTreeGnrtnSesn",
+          "var12": ""
+        }
+      ],
+      "count": 6,
+      "verification": "PASS_OFFICIAL_LEGACY_SCOPE_TERM_ROOT"
+    }
+  ],
+  "errors": [],
+  "archive_source_files_modified": false,
+  "full_legacy_inventory_claimed": false,
+  "record_bodies_downloaded": 0,
+  "production_collection_enabled": false,
+  "status": "PASS_BOTH_PREINTEGRATION_TERM_ROOTS"
+}
