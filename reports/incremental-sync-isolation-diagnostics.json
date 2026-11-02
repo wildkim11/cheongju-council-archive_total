@@ -1,0 +1,73 @@
+{
+  "generated_at_utc": "2026-11-02T01:20:14.962903+00:00",
+  "mode": "isolated temporary fixture, network fully mocked",
+  "scenarios": {
+    "new_and_derived": {
+      "added_new_source": true,
+      "original_markdown_unchanged": true,
+      "derived_meetings_export_matches_current": true,
+      "term_shard_matches_current": true,
+      "initial_term_shard_preserved": true,
+      "derived_manifest_meetings_count": 2,
+      "stale_old_derived_hash_replaced": true,
+      "reported_new": [
+        "cheongju_integrated:minutes-902"
+      ]
+    },
+    "same_id_status": {
+      "same_id_transition_safely_rejected": true,
+      "fixture_unchanged": true,
+      "indexed_publication_status": "provisional",
+      "markdown_publication_status": "provisional"
+    },
+    "same_id_body": {
+      "same_id_body_revision_safely_rejected": true,
+      "original_bytes_preserved": true,
+      "history_unchanged": true
+    },
+    "remote_failure": {
+      "error_propagated": true,
+      "fixture_unchanged": true
+    },
+    "publish_failure": {
+      "error_propagated": true,
+      "rollback_restored_destination": true,
+      "fault_was_injected": true,
+      "new_markdown_exists_after_rollback": false,
+      "canonical_index_unchanged": true
+    },
+    "colliding_replacements": {
+      "distinct_missing_provisionals": 2,
+      "many_to_one_rejected": true,
+      "rejection_reason": "Ambiguous many-to-one provisional replacements need manual review: {'cheongju_integrated:minutes-909': 'cheongju_integrated:minutes-911', 'cheongju_integrated:minutes-910': 'cheongju_integrated:minutes-911'}"
+    },
+    "real_repository_interlock": {
+      "real_root_interlock_pass": true,
+      "blocked_modes": [
+        "incremental",
+        "full"
+      ]
+    }
+  },
+  "successes": {
+    "new_markdown_appended_without_editing_old_source": true,
+    "staged_analyzer_exports_and_current_term_shards_are_consistent": true,
+    "remote_fetch_failure_aborts_without_writes": true,
+    "real_repository_sync_hard_interlock": true,
+    "caught_publish_exception_restores_full_fixture": true,
+    "same_id_metadata_and_original_bytes_fail_closed": true
+  },
+  "release_blockers": {
+    "derived_exports_and_current_shards_not_updated": false,
+    "same_id_metadata_transition_requires_versioned_history": true,
+    "same_id_content_revision_requires_versioned_history": true,
+    "publish_exception_can_leave_partial_target": false,
+    "unexpected_process_termination_crash_atomicity_not_proven": true,
+    "many_to_one_provisional_replacements_allowed": false
+  },
+  "release_blocker_count": 3,
+  "release_decision": "BLOCKED_UNSAFE_TO_OPERATE",
+  "canonical_project_files_modified": false,
+  "official_site_requests": 0,
+  "assertion": "No live or scheduled incremental collection permitted by this test report."
+}
