@@ -1,10 +1,6 @@
 name: Retry official 13 rollover path probe using exact committee codes
+# Verified single-use evidence job; no push or scheduled trigger.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/probe-13-year-rollover.yml
   workflow_dispatch:
 permissions:
   contents: read
