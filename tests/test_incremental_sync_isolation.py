@@ -79,21 +79,61 @@ class IsolationAuditTests(unittest.TestCase):
             self.assertIn("- meeting_date: 2026-10-02",
                           (root/current["path"]).read_text(encoding="utf-8"))
 
-    def test_same_id_date_change_that_moves_original_path_is_blocked(self):
+    def test_cross_year_same_id_migration_keeps_prior_in_immutable_revision(self):
+        import tempfile,json,hashlib
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            old=qa.row(915,date="2025-12-30")
+            old["term"]=3
+            original=qa.fixture(root,[old])[0]
+            original_path=root/original["path"]
+            original_bytes=original_path.read_bytes()
+            moved=qa.row(915,date="2026-01-02",
+                         title="제4대 제107회 본회의 제1차(2026.01.02 금요일)")
+            report=qa.sync(root,[moved])
+            current=json.loads((root/"indexes/integrated/meetings.json").read_text(encoding="utf-8"))[0]
+            revisions=json.loads((root/"indexes/integrated/meeting_revisions.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(revisions),1)
+            self.assertEqual(current["term"],4)
+            self.assertEqual(current["date"],"2026-01-02")
+            self.assertEqual(current["path"],"archive/meetings/cheongju_integrated/term-4/2026/minutes-915.md")
+            self.assertFalse(original_path.exists(),"obsolete canonical path must be absent after migration")
+            self.assertEqual((root/revisions[0]["revision_path"]).read_bytes(),original_bytes)
+            self.assertEqual(revisions[0]["prior_sha256"],hashlib.sha256(original_bytes).hexdigest())
+            self.assertEqual(report["migrated_old_paths"],[original["path"]])
+            self.assertIn("term-3/2025",revisions[0]["prior_path"])
+            self.assertTrue((root/current["path"]).is_file())
+            self.assertEqual(len(json.loads((root/"indexes/integrated/current_term_3.json").read_text(encoding="utf-8"))),0)
+            self.assertEqual(len(json.loads((root/"indexes/integrated/current_term_4.json").read_text(encoding="utf-8"))),1)
+
+    def test_cross_year_same_term_migration(self):
+        import tempfile,json
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            old=qa.row(917,date="2025-12-29")
+            prior=qa.fixture(root,[old])[0]
+            prior_bytes=(root/prior["path"]).read_bytes()
+            changed=qa.row(917,date="2026-01-04",
+                         title="제4대 제107회 본회의 제1차(2026.01.04 일요일)")
+            qa.sync(root,[changed])
+            ledger=json.loads((root/"indexes/integrated/meeting_revisions.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(ledger),1)
+            self.assertFalse((root/prior["path"]).exists())
+            self.assertEqual((root/ledger[0]["revision_path"]).read_bytes(),prior_bytes)
+            self.assertTrue((root/"archive/meetings/cheongju_integrated/term-4/2026/minutes-917.md").exists())
+
+    def test_cross_year_migration_source_fetch_failure_preserves_original(self):
         import tempfile
         from unittest.mock import patch
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder)
-            qa.fixture(root,[qa.row(915,date="2025-12-30")])
+            old=qa.row(918,date="2025-12-29")
+            qa.fixture(root,[old])
             before=qa.snapshot(root)
-            moved=qa.row(915,date="2026-01-02",
-                         title="제4대 제107회 본회의 제1차(2026.01.02 금요일)")
-            with patch.object(qa.c,"read_official_inventory",
-                              return_value=([moved],{"only_term":[],"only_year":[]})), \
-                 patch.object(qa.c,"fetch",
-                              side_effect=AssertionError("must not query official source")):
-                with self.assertRaisesRegex(RuntimeError,
-                        "SAME_ID_PATH_CHANGE_REQUIRES_VERSIONED_MIGRATION"):
+            changed=qa.row(918,date="2026-01-04")
+            with patch.object(qa.c,"read_official_inventory",return_value=([changed],{"only_term":[],"only_year":[]})), \
+                 patch.object(qa.c,"fetch",side_effect=TimeoutError("offline injected timeout")):
+                with self.assertRaisesRegex(RuntimeError,"Failed meeting"):
                     qa.c.run_sync("incremental",root)
             self.assertEqual(qa.snapshot(root),before)
 
