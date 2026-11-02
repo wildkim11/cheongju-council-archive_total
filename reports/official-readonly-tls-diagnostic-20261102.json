@@ -1,0 +1,37 @@
+{
+  "checked_at_utc": "2026-11-02T02:31:43.390852+00:00",
+  "kind": "STRICT_TLS_ONLY_DIAGNOSTIC_NO_HTTP",
+  "official_hosts": [
+    "councilrec.cheongju.go.kr",
+    "council.cheongju.go.kr"
+  ],
+  "max_tls_handshakes": 2,
+  "tls_handshakes_attempted": 2,
+  "http_requests": 0,
+  "certificate_verification_disabled": false,
+  "saved_archive_modified": false,
+  "production_sync_enabled": false,
+  "hosts": [
+    {
+      "host": "councilrec.cheongju.go.kr",
+      "tcp_port": 443,
+      "attempts": 1,
+      "http_requests": 0,
+      "tls": "not_verified",
+      "error_type": "TimeoutError",
+      "error": "timed out"
+    },
+    {
+      "host": "council.cheongju.go.kr",
+      "tcp_port": 443,
+      "attempts": 1,
+      "http_requests": 0,
+      "tls": "not_verified",
+      "error_type": "TimeoutError",
+      "error": "timed out"
+    }
+  ],
+  "status": "OFFICIAL_TLS_UNAVAILABLE_FROM_THIS_RUNNER",
+  "no_inference_about_server_global_uptime": true,
+  "live_collection_authorized": false
+}
