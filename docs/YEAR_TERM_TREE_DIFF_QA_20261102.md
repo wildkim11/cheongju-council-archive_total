@@ -8,7 +8,7 @@
 - 실제 회의일은 제목의 회기 종료일보다 **27~49일** 뒤. 의회운영위원회 12건, 미세먼지 행정사무조사특별위원회 1건.
 - **저장된 인덱스 전체 2,339건의 비교집단 분석:** 회기 종료 뒤 개최된 사례는 총 121건. 이 중 **108건은 회기 종료일과 실제 회의일의 연도가 같아서 대수별·연도별 양쪽 목록에 모두 있다**. 반면 **연도가 바뀐 13건은 모두 대수별 목록에만 있다**. 회기 날짜 파싱 실패 0건.
 - **분류상 강한 연관관계이나 공식 홈페이지 내부 연도별 트리의 SQL/관리 규칙을 확인한 것은 아니다.** 회기 귀속과 회의일 중 어느 쪽을 기준으로 목록을 생성하는지 설명 없이 임의로 보정하지 않는다.
-- 전체 원본 MD/인덱스·신원·의안·분석기 데이터와 \`main\`에 변경 없음.
+- 전체 원본 MD/인덱스·신원·의안·분석기 데이터와 `main`에 변경 없음.
 
 ## 13건 전체 비교표
 
@@ -28,29 +28,29 @@
 | 3315 | 3 | 제83회 | 2023-12-21 | 2024-02-07 | 48 | 의회운영 |
 | 3652 | 3 | 제91회 | 2024-12-20 | 2025-02-06 | 48 | 의회운영 |
 
-위 표의 고유 ID는 **회의록 viewer \`schSn\`**이다. 예컨대 회의록 \`minutes-2258\`은 의안 내부번호 2258과 별개 식별체계이므로 혼동 금지. 공식 회의록 URL은 \`https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=<ID>\`.
+위 표의 고유 ID는 **회의록 viewer `schSn`**이다. 예컨대 회의록 `minutes-2258`은 의안 내부번호 2258과 별개 식별체계이므로 혼동 금지. 공식 회의록 URL은 `https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=<ID>`.
 
 ## 검증 단계 구분
 
 **저장자료 검사(통과):**
-1. \`reports/integrated-sync.json\`의 term-only 13개 ID와 \`indexes/integrated/meetings.json\`에서 \`inventory_sources=["term"]\`인 행의 1:1 일치.
+1. `reports/integrated-sync.json`의 term-only 13개 ID와 `indexes/integrated/meetings.json`에서 `inventory_sources=["term"]`인 행의 1:1 일치.
 2. 저장된 공식 제목의 회기 시작·종료일과 정식 회의일 사이 차이 계산.
 3. 각 13개 공식 Markdown 원본의 제목·meeting_date와 통합 인덱스 대조.
 4. 수집된 2,339개 개별 회의록 Markdown의 파일 SHA-256·정규화 본문 해시와 분석기 JSONL 일치 여부는 기존 Stage C 전수 무결성 검사에서 PASS.
 
 **실시간 공식 트리 재조회(별도 검사):**
-- \`scripts/audit_official_tree_discrepancy.py --live\`: \`SvcMntsTreeGnrtn.php\` 및 \`SvcMntsTreeYear.php\`에 기존 collector의 정상 파라미터를 POST하여 공식 목록을 **각각 독립 재탐색**. 13개 공식 viewer도 HTTPS GET으로 직접 검사.
+- `scripts/audit_official_tree_discrepancy.py --live`: `SvcMntsTreeGnrtn.php` 및 `SvcMntsTreeYear.php`에 기존 collector의 정상 파라미터를 POST하여 공식 목록을 **각각 독립 재탐색**. 13개 공식 viewer도 HTTPS GET으로 직접 검사.
 - Actions: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41368923499
 - 실시간 전체 대수별/연도별 트리 재탐색은 **FAIL (공식 서버 HTTPS 연결 시간초과)**. 대수별 트리 순회 도중 요청이 끊겨 최종 재조회 2,339/2,326을 끝까지 재확인하지 못함. 이전 저장 스냅샷의 검증 통과와 혼동 금지.
-- 저장자료에 대한 독립 비교검증은 **PASS**: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41369346819. `reports/integrated-year-term-discrepancy-probe.json\`에 13건과 공유된 108건의 대조 결과가 기록된다.
+- 저장자료에 대한 독립 비교검증은 **PASS**: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41369346819. `reports/integrated-year-term-discrepancy-probe.json`에 13건과 공유된 108건의 대조 결과가 기록된다.
 - 실패한 원격 재조회: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41368923499. 이 재조회 시도에서 자료가 변경되지는 않았다.
-- 신속한 단위 검증: \`tests/test_official_tree_discrepancy.py\`.
+- 신속한 단위 검증: `tests/test_official_tree_discrepancy.py`.
 
 ## 분석·수집 규칙
 
 1. 대수·회기 귀속은 **공식 대수별 목록(원천 term tree)**을 우선한다. 회의일이 다음 해에 개최되었다고 다음 대수로 넘기지 않는다.
-2. **실제 개최 연도**는 \`meeting_date\`로 별도로 저장하고, 파일 경로 \`term-N/YYYY/minutes-X.md\`의 YYYY는 *실제 회의일 기준*을 유지한다.
-3. \`inventory_sources=["term"]\`은 누락·오류 판정이 아닌 **원천 목록 출처의 차이**로 보존한다.
+2. **실제 개최 연도**는 `meeting_date`로 별도로 저장하고, 파일 경로 `term-N/YYYY/minutes-X.md`의 YYYY는 *실제 회의일 기준*을 유지한다.
+3. `inventory_sources=["term"]`은 누락·오류 판정이 아닌 **원천 목록 출처의 차이**로 보존한다.
 4. 연도별 트리만으로 수집하면 이 13건처럼 빠질 수 있으므로 **연도별 검색은 검산용**, 대수별 정식 목록을 기준으로 수집한다.
 5. 추후 공식 사이트의 트리 변경으로 13건이 연도별 목록에도 표시되면, **원본 회의록의 내용을 덮어쓰기하지 않고** 새로 관측한 목록 출처만 이력과 함께 반영한다.
 6. 기관 내부 트리 생성 규칙 또는 관리부서 공식 확인 이전에는 “왜 13건이 제외됐는지” 원인을 확정했다고 적지 않는다.
@@ -60,4 +60,4 @@
 - 공식 연도별 트리의 **서버 내부 생성 조건/페이지 담당자 확인**은 미실시. 관측된 날짜 패턴과 내부 구현 원인은 서로 다르다.
 - **저장된 전체 2,339건을 교차검사한 결과** 108건의 회기 종료 후 같은 연도 개최는 모두 공유목록에, 다음 연도 개최 13건은 모두 대수별 목록에만 있다. 이 결과는 연도 경계와의 강한 연관성을 나타내지만, 사이트 내부의 실제 제외조건을 확정하진 않는다.
 - 공식 서버 응답이 안정화되면 **요청 단위를 작게 나눈 연도별·대수별 재탐색**으로 최종 외부 목록 재현성을 검증한다.
-- 원본 Stage C 아카이브는 보존. \`main\` 병합과 정기 자동수집 운영은 여전히 비활성.
+- 원본 Stage C 아카이브는 보존. `main` 병합과 정기 자동수집 운영은 여전히 비활성.
