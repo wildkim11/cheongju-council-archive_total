@@ -1,10 +1,6 @@
 name: One-time bounded withdrawn ordinance notice verification
+# Historical read-only source probe completed; disable push reruns.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/probe-bill-3255-neighbors.yml
   workflow_dispatch:
 permissions:
   contents: read
