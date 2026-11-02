@@ -1,4 +1,5 @@
 name: One-time offline cross-year tree discrepancy comparator
+# Follow-up partition test for year-overlap among 108 post-session records.
 on:
   push:
     branches:
