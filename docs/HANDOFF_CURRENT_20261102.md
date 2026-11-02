@@ -229,3 +229,14 @@
 - **범위 제한:** 이것은 기존 임시 6건의 현재 공개상태 검증이지 전체 공식 신규 회의록·모든 수정 이력의 전수 재조회가 아님. 4개 관련 위원회 외 새로 생긴 회의록 존재 여부는 미확인.
 - 전체 기존 회의록 **2,339건 원본·인덱스·export 변경 없음**, 전체 원본 무결성 PASS. `main` 및 별도 저장소 불변, 실운영 `run_sync` HARD LOCKED, 정기 자동수집 OFF.
 - 다음: **공식 전체 목록을 당장 재수집하지 말고**, 변경 탐지를 위한 조회범위/자원상한·실패복구 기준을 설계해 macOS 격리 복사본에서 검증. 운영 활성화에는 사용자 단일 승인 필요.
+
+
+## 20. [최신] 제4대 전체 공식 회의록 목록 실시간 재조회 — 미수집 ID 2건 4024·4025 및 본문 검증 완료
+- **최신 상세 QA:** `docs/TERM4_NEW_MEETING_IDS_LIVE_DISCOVERY_20261102.md`. 이 절은 제19절의 임시본 6건 상태 확인 후 다음 과제인 **신규 ID 후보 탐지**를 실제 서버에서 수행한 결과.
+- GitHub macOS + 원본 수집기 TLS(`set_ciphers("DEFAULT")`, 인증서 검증 유지): 공식 대수별 트리 **제4대 전 회기 4개(103~106회), 위원회 26개 분기, 개별 leaf 52개**에 대해 총 **32회 읽기전용 조회**, 재시도 0회, 모든 하위 분기 완료/에러 0. 기존 `indexes/integrated/meetings.json`의 전체 2,339 ID 집합과 비교: 제4대 기존 **50건 전부 동일**, 새 `schSn=4024`, `schSn=4025` **2건**. 제4대 기존 상태·제목·일자·위원회/URL 변경 0, 미발견된 기존 제4대 ID 0. 공식 신설/게시 시각은 불명; '저장본에 없고 현재 공식목록에 있음'을 정확히 표현. 공식 목록 조회 QA: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41393348557, `reports/official-term4-new-meeting-id-discovery-20261102.json`.
+- **4024:** 제106회 도시건설위원회 제1호, 개최 2026-10-14, 공식 상태 `N` 임시, 공식 상세 HTTP 200, HTML 263,445바이트, 본문 77,681자, 정규화 본문 SHA `818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d`.
+- **4025:** 제106회 의회운영위원회 제1호, 개최 2026-10-12, 공식 상태 `N` 임시, 공식 상세 HTTP 200, HTML 59,398바이트, 본문 12,887자, 정규화 본문 SHA `56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba`.
+- 두 새 ID는 공식 HTML 추출/임시 안내까지 실제 확인. 각각 GET 1회, 재시도 0회. 조회 QA https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41393659913, `reports/official-term4-new-meeting-body-check-20261102.json`. HTML·본문 자체를 이번 아카이브에는 발행하지 않고 QA 원장에 해시만 보존.
+- 안전 코드는 `scripts/probe_official_term4_new_meeting_ids_macos.py`, `scripts/probe_official_new_term4_bodies_macos.py`; 테스트 `tests/test_official_term4_new_meeting_ids.py`, `tests/test_official_new_term4_bodies.py`. API 호출 예산 제4대 전부 80회 상한/실제 32, 본문 2회 상한/실제 2. 회기/위원회 분기가 불완전하면 누락을 삭제로 처리하지 않는 fail-closed 판정.
+- **중요 운영 현황:** 기존 보존본 **2,339건 그대로**, 제4대 원본 **50건 그대로**. 공식 최신 제4대 **52건**과의 차이 2건은 **검토 후보**일 뿐 원본 추가 0건. 실제 2,341건 아카이브 작성/Stage C 검증을 이번에 성공했다고 주장하지 않는다. `main`과 독립 `cheongju-council-minutes` 변경 없음, 운영 `run_sync` 하드 잠금/스케줄 OFF.
+- 다음 단계: 정식 수집 자동화 적용 전 **임시 루트에 기존 2,339건을 복사**하고 공식 4024·4025 새 원문을 재조회하여 기존 SHA와 대조한 뒤 추가·원본 불변·Stage C 2,341행/이력·충돌복구 **격리 리허설**. 그 이전에는 실제 원본 갱신 금지. 제1~3대 기존 회의록의 최신성은 이번 작업 범위 밖.
