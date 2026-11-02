@@ -142,20 +142,30 @@ def classify(saved_rows:list[dict],official_rows:list[dict],coverage_complete:bo
     }
 
 
-def discover(read=official_query,sleep=time.sleep,out:Path=OUTPUT)->dict:
+def discover(read=official_query,sleep=time.sleep,out:Path=OUTPUT,baseline_policy:str="initial")->dict:
     if platform.system()!="Darwin":
         raise RuntimeError("Refusing official live requests outside macOS")
     baseline=json.loads(INDEX.read_text(encoding="utf-8"))
-    if len(baseline)!=2339:
-        raise ValueError("Expected 2339 saved sources before live comparison")
-    if sum(int(x["term"])==4 for x in baseline)!=50:
-        raise ValueError("Expected 50 term-4 saved source rows")
+    if baseline_policy not in {"initial","current"}:
+        raise ValueError("Unknown baseline policy")
+    old_count=len(baseline)
+    term4_count=sum(int(x["term"])==4 for x in baseline)
+    if baseline_policy=="initial":
+        if old_count!=2339 or term4_count!=50:
+            raise ValueError("Expected 2339 saved sources and 50 term4 rows for initial QA")
+    else:
+        if old_count<2339 or term4_count<50:
+            raise ValueError("Current archive baseline unexpectedly smaller than initial source")
+        if len({str(r["source_id"]) for r in baseline})!=old_count:
+            raise ValueError("Duplicate saved source IDs")
+
     report={
         "schema":"official-term4-new-ids-bounded-live-inventory/1",
         "checked_at_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
         "official_source":HOST,
         "runner":"GitHub-hosted macOS; original collector TLS DEFAULT with verification",
         "selection":"All live official term-4 sessions returned; no historical terms 1,2,3 scanned",
+        "baseline_policy":baseline_policy,
         "request_limit":MAX_CALLS,
         "requests_attempted":0,
         "retries":0,
