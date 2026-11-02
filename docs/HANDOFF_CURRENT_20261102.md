@@ -148,3 +148,16 @@
 - **실시간 전체 트리 재탐색 시도는 FAIL(공식 서버 연결 시간 초과)**: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41368923499. 저장자료 전수 QA PASS와 실시간 재조회 실패를 구분. 공식 서버 안정화 뒤 요청 단위 작은 재탐색 필요.
 - 미해결 다른 현안: ① 발의자 명단 미확인 7건 공식 원안/서명부 확보(자료제출요구안 `docs/BILL_SOURCE_RECORDS_REQUEST_20261102.md`), ② 기관형 문서 인명관계 44행의 실제 역할 확인, ③ 증분수집을 격리 환경에서 설계·시험.
 - `main` 및 기존 `wildkim11/cheongju-council-minutes` 미변경. 정기 수집 비활성.
+
+
+## 13. [최신] 증분수집 격리 시뮬레이션 및 실운영 하드 차단 (2026-11-02)
+- 최신 증분수집 격리보고서: `docs/INCREMENTAL_SYNC_ISOLATION_SAFETY_20261102.md`.
+- **재현 가능 QA 원장(개발 브랜치에 저장):** `reports/incremental-sync-isolation-diagnostics.json`, `release_decision=BLOCKED_UNSAFE_TO_OPERATE`, 잔여 release blocker **3개**.
+- 검증 CI: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41371942115 (**성공**: 전체 unittest, 격리 7시나리오, Stage C 전체 원본/해시 QA, 프로젝트 원본 무변경 검증).
+- 기존 수집기 `scripts/collect_integrated_minutes.py`의 위험을 synthetic fixture로 재현: ① 신규 수집은 정상·원본 불변, ② 공식 서버 타임아웃은 쓰기 전 중단, ③ 같은 ID 공개상태만 변경하면 원본 헤더 불일치, ④ 같은 ID 본문 수정이면 기존 MD 덮어쓰기, ⑤ 디스크 오류 중간 복사로 인덱스/파일 부분 불일치, ⑥ 두 provisional ID -> 같은 published ID 매핑, ⑦ 파생 출력·대수 shard 갱신 누락.
+- **조치 완료:** 부적절한 many-to-one provisional 대체 차단 및 published 후계만 허용; staging 사전 백업 + Python 예외 시 바이트 단위 롤백; 새 canonical 인덱스와 동기화된 `exports/analyzer/*` / `indexes/integrated/current_term_{1..4}.json` 생성, 기존 `initial_term_*` 불변; Stage C audit가 최신 current shard를 우선 검사.
+- **위험 반영 차단:** 동일 ID의 상태/제목/날짜 변경 또는 본문 개정은 이력 보존 기능이 없어 **쓰기 전 오류로 중단**(`SAME_ID_METADATA_REVISION_REQUIRES_VERSION_HISTORY` / `SAME_ID_BODY_REVISION_REQUIRES_VERSION_HISTORY`). 아직 실제 임시→정식 동일-ID 전환을 지원하지 않는다.
+- **실운영 실행 방지:** 실제 저장소 ROOT에서 `run_sync("incremental")` 또는 `run_sync("full")`는 공식 네트워크 요청 이전에 `LIVE_ARCHIVE_INCREMENTAL_SYNC_DISABLED`로 거부한다. 운영 스케줄은 계속 OFF.
+- **최신 잔여 차단조건 3개:** ① 동일 ID 공개상태/메타데이터 이력 안전한 보존, ② 동일 ID 본문 개정의 버전별 원본 안전보존, ③ 프로세스 강제종료/전원장애 시 다중파일 일관성 보장 및 복구시험. Python 예외 롤백 통과가 크래시 원자성을 뜻하지 않는다.
+- **현재 검증은 오프라인 임시 데이터 7개 시나리오 + 기존 실제 아카이브의 read-only Stage C 검사**다. 청주시의회 공식 서버 HTTP 접속 0회, 운영 원본 수집/갱신 없음. `main`, 독립 `cheongju-council-minutes` 미변경.
+- 현행 보고서는 '운영 준비 완료'로 읽으면 안 된다. 다음은 snapshot version history + crash recovery 설계·격리 검증이며, 전체 2,339건을 반영하는 리허설 전까지 운영 잠금 해제 금지.
