@@ -1,10 +1,7 @@
 name: One-time macOS official term4 new ID discovery read-only
+# One-time live official ID discovery completed; manual rerun only.
+# No scheduled or push-triggered official requests.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-macos-term4-new-id-discovery-once.yml
   workflow_dispatch:
 
 permissions:
