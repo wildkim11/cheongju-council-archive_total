@@ -1,10 +1,6 @@
 name: One-time macOS term 4 immediate tree navigation read-only
+# One-time official status QA completed. Re-running requires explicit manual dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-term4-branch-discovery-once.yml
   workflow_dispatch:
 
 permissions:
