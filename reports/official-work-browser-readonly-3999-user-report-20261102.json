@@ -1,0 +1,32 @@
+{
+  "schema": "cheongju-official-cloud-browser-readonly-probe/1",
+  "reported_date": "2026-11-02",
+  "evidence_type": "user_reported_cloud_browser_observation",
+  "independently_reproduced_by_repository_ci": false,
+  "platform": "ChatGPT Work cloud browser",
+  "official_detail_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3999",
+  "source_id": "3999",
+  "navigated_to_detail_url": true,
+  "http_body_retrieved": false,
+  "detail_visible": false,
+  "error_string": "upstream connect error … connection timeout",
+  "refresh_attempts": 1,
+  "refresh_outcome": "same connection timeout",
+  "verified_fields": [],
+  "unable_to_verify_fields": [
+    "title",
+    "meeting_date",
+    "publication_status",
+    "body_excerpt"
+  ],
+  "source_files_edited": "none reported by user",
+  "conclusion": "CLOUD_BROWSER_TIMEOUT_NO_LIVE_SOURCE_VERIFICATION",
+  "interpretation": "Navigation to a URL is not successful retrieval of the official meeting document. This record is user-reported; no independent browser logs attached.",
+  "not_proven": [
+    "official_site_global_outage",
+    "existing_archived_source_changed",
+    "browser_environment_cause",
+    "meeting_publication_status_today"
+  ],
+  "operational_collection_authorized": false
+}
