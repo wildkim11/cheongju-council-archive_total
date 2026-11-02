@@ -1,0 +1,58 @@
+name: One-time macOS official sessions 105 106 tree read-only
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-term4-sessions-105-106-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: one-shot-term4-two-sessions
+  cancel-in-progress: false
+jobs:
+  macos-sessions:
+    runs-on: macos-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Baseline integrity read only
+        run: python scripts/audit_stage_c.py --output /tmp/stage-c-macos-two-sessions.json
+      - name: Read only two narrowly targeted fourth-term session branch nodes
+        run: python -u scripts/probe_term4_target_sessions.py
+      - name: Strict source files unchanged and request budget
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('reports/official-term4-target-sessions-20261102.json'))
+          assert r['requests_attempted']<=2 and r['retries']==0
+          assert not r['archive_files_modified']
+          assert not r['production_sync_enabled']
+          assert not r['operational_release_authorized']
+          assert r['status'] in ('INCONCLUSIVE','PASS_TWO_SESSIONS_DISCOVERED')
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Preserve source metadata on feature branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-term4-target-sessions-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: archive bounded official session 105 and 106 tree node shape"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fourth-term-105-106-committee-node-navigation
+          path: reports/official-term4-target-sessions-20261102.json
+          if-no-files-found: warn
