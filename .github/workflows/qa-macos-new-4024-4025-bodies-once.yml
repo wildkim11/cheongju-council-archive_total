@@ -1,0 +1,69 @@
+name: One-time macOS original TLS bodies for new term4 IDs 4024 and 4025
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-macos-new-4024-4025-bodies-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: official-two-new-term4-readonly
+  cancel-in-progress: false
+
+jobs:
+  new-bodies:
+    runs-on: macos-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit-test no-network body classifier and verify 2339 archived original hashes
+        run: |
+          python -m unittest discover -s tests -p test_official_new_term4_bodies.py -v
+          python scripts/audit_stage_c.py --output /tmp/stagec-before-new-term4-body-check.json
+      - name: Read exact two new official meeting IDs, never publish original contents
+        run: python -u scripts/probe_official_new_term4_bodies_macos.py
+      - name: Require at most two official GETs, no source writes or auto collection
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('reports/official-term4-new-meeting-body-check-20261102.json',encoding='utf-8'))
+          assert r['requests_attempted']<=2 and r['retries']==0
+          assert r['expected_new_ids']==['4024','4025']
+          assert r['existing_saved_meetings']==2339
+          assert r['canonical_new_sources_published']==0
+          assert not r['source_archive_modified']
+          assert not r['production_collection_enabled']
+          assert not r['operational_release_authorized']
+          assert r['decision'] in {
+            'BOTH_NEW_OFFICIAL_BODIES_READABLE_READY_FOR_ISOLATED_IMPORT_REHEARSAL',
+            'INCOMPLETE_NEW_OFFICIAL_BODY_VERIFICATION',
+          }
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Preserve two-viewer content-hash evidence on feature branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-term4-new-meeting-body-check-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: preserve two live new official provisional body hashes without archive writes"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: new-term4-4024-4025-official-body-hashes
+          path: reports/official-term4-new-meeting-body-check-20261102.json
+          if-no-files-found: warn
