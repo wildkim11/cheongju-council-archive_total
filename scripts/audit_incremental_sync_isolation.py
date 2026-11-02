@@ -49,7 +49,7 @@ def read_json(path):
 def snapshot(root):
     # SHA256 for all payload bytes; baseline snapshots do not rely on mtime.
     return {p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
-            for p in root.rglob("*") if p.is_file()}
+            for p in root.rglob("*") if p.is_file() and p.name!=".integrated-sync.lock"}
 
 def fixture(root,initial_rows,with_derived=False):
     prepared=[]
@@ -109,25 +109,24 @@ def scenario_same_id_status_transition():
     with tempfile.TemporaryDirectory() as folder:
         root=Path(folder)
         old=row(903,publication_status="provisional")
-        fixture(root,[old])
+        before_record=fixture(root,[old])[0]
+        original=(root/before_record["path"]).read_bytes()
         live=row(903,publication_status="published")
-        before=snapshot(root)
-        error=None
-        try:
-            sync(root,[live])
-        except RuntimeError as exc:
-            error=str(exc)
+        report=sync(root,[live])
         idx=read_json(root/"indexes/integrated/meetings.json")[0]
         source=(root/idx["path"]).read_text(encoding="utf-8")
+        revs=read_json(root/"indexes/integrated/meeting_revisions.json")
+        preserved=(root/revs[0]["revision_path"]).read_bytes() if revs else b""
         return {
-            "same_id_transition_safely_rejected":error is not None and "SAME_ID_METADATA_REVISION_REQUIRES_VERSION_HISTORY" in error,
-            "fixture_unchanged":before==snapshot(root),
-            "indexed_publication_status":idx["publication_status"],
-            "markdown_publication_status":(
-                "published" if "- publication_status: published" in source else
-                "provisional" if "- publication_status: provisional" in source else "missing"
-            ),
+            "same_id_transition_versioned":idx["publication_status"]=="published"
+                and "- publication_status: published" in source,
+            "prior_exact_original_bytes_preserved":preserved==original,
+            "revision_rows":len(revs),
+            "prior_status":revs[0]["prior_source_record"]["publication_status"] if revs else None,
+            "next_status":revs[0]["next_source_record"]["publication_status"] if revs else None,
+            "reported_revised":report["revised"],
         }
+
 
 def scenario_same_id_body_revision():
     with tempfile.TemporaryDirectory() as folder:
@@ -135,19 +134,47 @@ def scenario_same_id_body_revision():
         live=row(904)
         before=fixture(root,[live])[0]
         raw_before=(root/before["path"]).read_bytes()
-        error=None
-        try:
-            sync(root,[live],mode="full",fetch_impl=lambda _url:html_doc("수정"))
-        except RuntimeError as exc:
-            error=str(exc)
+        report=sync(root,[live],mode="full",fetch_impl=lambda _url:html_doc("수정"))
         after=read_json(root/"indexes/integrated/meetings.json")[0]
         raw_after=(root/after["path"]).read_bytes()
-        history=read_json(root/"indexes/integrated/meeting_history.json")
+        revs=read_json(root/"indexes/integrated/meeting_revisions.json")
+        previous_path=root/revs[0]["revision_path"] if revs else root/"missing"
         return {
-            "same_id_body_revision_safely_rejected":error is not None and "SAME_ID_BODY_REVISION_REQUIRES_VERSION_HISTORY" in error,
-            "original_bytes_preserved":before["path"]==after["path"] and raw_before==raw_after,
-            "history_unchanged":len(history)==0,
+            "content_revision_changed_current":raw_after!=raw_before,
+            "original_bytes_immutable":previous_path.is_file() and previous_path.read_bytes()==raw_before,
+            "revision_rows":len(revs),
+            "prior_sha256_matches":bool(revs) and revs[0]["prior_sha256"]==hashlib.sha256(raw_before).hexdigest(),
+            "changed_ids":report["changed"],
         }
+
+
+def scenario_revert_after_revisions():
+    with tempfile.TemporaryDirectory() as folder:
+        root=Path(folder)
+        live=row(912,publication_status="provisional")
+        first=fixture(root,[live])[0]
+        source_original=(root/first["path"]).read_bytes()
+        sync(root,[row(912,publication_status="published")])
+        sync(root,[row(912,publication_status="published")],mode="full",
+             fetch_impl=lambda _url:html_doc("수정"))
+        report=sync(root,[row(912,publication_status="published")],mode="full",
+                    fetch_impl=lambda _url:html_doc())
+        ledger=read_json(root/"indexes/integrated/meeting_revisions.json")
+        return {
+            "three_transitions_recorded":len(ledger)==3,
+            "all_old_bytes_still_present":all(
+                (root/item["revision_path"]).is_file()
+                and hashlib.sha256((root/item["revision_path"]).read_bytes()).hexdigest()==item["prior_sha256"]
+                for item in ledger
+            ),
+            "original_first_version_preserved":any(
+                (root/item["revision_path"]).read_bytes()==source_original for item in ledger
+            ),
+            "last_transition_from_modified_body":bool(ledger)
+               and "content_sha256" in ledger[-1]["changed_source_fields"],
+            "reported_revised":report["revised"],
+        }
+
 
 def scenario_fetch_failure():
     with tempfile.TemporaryDirectory() as folder:
@@ -172,7 +199,8 @@ def scenario_publish_copy_failure():
         old=row(907)
         fixture(root,[old])
         before=snapshot(root)
-        copy_source=c.shutil.copyfile
+        import sync_transaction
+        install_source=sync_transaction._atomic_install
         error=None
         fault_injected=[False]
         def fail_on_index(src,dst,*args,**kwargs):
@@ -180,9 +208,10 @@ def scenario_publish_copy_failure():
                 and Path(dst).as_posix().endswith("indexes/integrated/meetings.json")):
                 fault_injected[0]=True
                 raise OSError("simulated disk/publish failure")
-            return copy_source(src,dst,*args,**kwargs)
+            return install_source(src,dst,*args,**kwargs)
         try:
-            sync(root,[old,row(908,date="2026-10-02")],copy_impl=fail_on_index)
+            with patch.object(sync_transaction,"_atomic_install",side_effect=fail_on_index):
+                sync(root,[old,row(908,date="2026-10-02")])
         except OSError as exc:
             error=type(exc).__name__
         after=snapshot(root)
@@ -231,6 +260,7 @@ def diagnose():
         "new_and_derived":scenario_add_and_derived(),
         "same_id_status":scenario_same_id_status_transition(),
         "same_id_body":scenario_same_id_body_revision(),
+        "same_id_revert":scenario_revert_after_revisions(),
         "remote_failure":scenario_fetch_failure(),
         "publish_failure":scenario_publish_copy_failure(),
         "colliding_replacements":scenario_colliding_replacements(),
@@ -242,8 +272,15 @@ def diagnose():
             and results["new_and_derived"]["term_shard_matches_current"]
             and results["new_and_derived"]["initial_term_shard_preserved"]
         ),
-        "same_id_metadata_transition_requires_versioned_history":results["same_id_status"]["same_id_transition_safely_rejected"],
-        "same_id_content_revision_requires_versioned_history":results["same_id_body"]["same_id_body_revision_safely_rejected"],
+        "same_id_metadata_transition_requires_versioned_history":not (
+            results["same_id_status"]["same_id_transition_versioned"]
+            and results["same_id_status"]["prior_exact_original_bytes_preserved"]
+        ),
+        "same_id_content_revision_requires_versioned_history":not (
+            results["same_id_body"]["content_revision_changed_current"]
+            and results["same_id_body"]["original_bytes_immutable"]
+            and results["same_id_revert"]["all_old_bytes_still_present"]
+        ),
         "publish_exception_can_leave_partial_target":not results["publish_failure"]["rollback_restored_destination"],
         "unexpected_process_termination_crash_atomicity_not_proven":True,
         "many_to_one_provisional_replacements_allowed":not results["colliding_replacements"]["many_to_one_rejected"]
@@ -262,11 +299,11 @@ def diagnose():
             "remote_fetch_failure_aborts_without_writes":results["remote_failure"]["error_propagated"] and results["remote_failure"]["fixture_unchanged"],
             "real_repository_sync_hard_interlock":results["real_repository_interlock"]["real_root_interlock_pass"],
             "caught_publish_exception_restores_full_fixture":results["publish_failure"]["rollback_restored_destination"] and results["publish_failure"]["fault_was_injected"],
-            "same_id_metadata_and_original_bytes_fail_closed":(
-                results["same_id_status"]["same_id_transition_safely_rejected"]
-                and results["same_id_status"]["fixture_unchanged"]
-                and results["same_id_body"]["same_id_body_revision_safely_rejected"]
-                and results["same_id_body"]["original_bytes_preserved"]
+            "same_id_metadata_and_original_bytes_versioned":(
+                results["same_id_status"]["same_id_transition_versioned"]
+                and results["same_id_status"]["prior_exact_original_bytes_preserved"]
+                and results["same_id_body"]["original_bytes_immutable"]
+                and results["same_id_revert"]["all_old_bytes_still_present"]
             ),
         },
         "release_blockers":blocks,
