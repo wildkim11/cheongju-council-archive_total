@@ -1,10 +1,7 @@
 name: One-time macOS legacy Cheongju city/county official JS endpoint references
+# Source-reading one-time QA completed. No push-triggered or recurring reruns.
+# A further official source request requires explicit workflow_dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-preintegration-js-references-once.yml
   workflow_dispatch:
 permissions:
   contents: write
