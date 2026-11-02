@@ -1,0 +1,25 @@
+name: Read-only analyzer bill safe-import gate
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - scripts/verify_analyzer_bill_import.py
+      - tests/test_verify_analyzer_bill_import.py
+      - .github/workflows/audit-analyzer-bill-safe-import.yml
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exercise fail-closed boundary with isolated fixtures
+        run: python -m unittest discover -s tests -p test_verify_analyzer_bill_import.py -v
+      - name: Validate archive manifest, SHA, and full producer partition without modifying data
+        run: python scripts/verify_analyzer_bill_import.py
