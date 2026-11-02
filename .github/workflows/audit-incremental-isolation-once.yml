@@ -1,11 +1,7 @@
 name: One-time isolated incremental sync failure-mode audit
 # Rerun after staging synchronized current-term shards plus complete derived analyzer exports.
+# Completed initial isolation audit; subsequent runs require explicit dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/audit-incremental-isolation-once.yml
   workflow_dispatch:
 permissions:
   contents: read
