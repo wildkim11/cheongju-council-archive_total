@@ -333,6 +333,8 @@ def publish_staged_snapshot(
                     fsync_dir((root/rel).parent)
                     if (root/rel).exists():
                         raise RuntimeError("INSTALL_DELETION_FAILED: "+str(rel))
+                    if on_phase:
+                        on_phase("deleted",i)
                 if on_phase:
                     on_phase("installed",i)
             _write_json_atomic(journal/COMMITTED,{"schema":"integrated-sync-journal-commit/1",
