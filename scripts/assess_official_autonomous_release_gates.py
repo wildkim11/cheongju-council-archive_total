@@ -135,6 +135,16 @@ def evaluate(history:dict|None,current:dict|None,
     approved=operational_technical_ok and flags["explicit_final_production_release_approval"]
     return {
         "schema":"cheongju-autonomous-official-release-gates/1",
+        # All gates above refer ONLY to the 2014+ integrated council minutes.
+        # Pre-integration councils have separate numbering and source archives;
+        # member-roster candidates are not a substitute for meeting bodies.
+        "release_council_scope":"cheongju_integrated",
+        "preintegration_legacy_minutes_included":False,
+        "all_three_council_scopes_analyzer_release_authorized":False,
+        "separate_scope_blockers":{
+            "cheongju_old_city":"NO_OFFICIAL_MEETING_BODY_ARCHIVE_OR_LIVE_SYNC_QA",
+            "cheongwon_old_county":"NO_OFFICIAL_MEETING_BODY_ARCHIVE_OR_LIVE_SYNC_QA",
+        },
         "status":"AUTHORIZED_RELEASE_GATES_SATISFIED" if approved else "BLOCKED_PRE_RELEASE",
         "technical_ready":operational_technical_ok,
         "production_archive_auto_update_authorized":approved,
