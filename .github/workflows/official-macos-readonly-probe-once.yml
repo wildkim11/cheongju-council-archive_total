@@ -1,0 +1,88 @@
+name: One-time macOS official minutes read-only validation
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/official-macos-readonly-probe-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: official-macos-readonly-one-shot
+  cancel-in-progress: false
+
+jobs:
+  official-readonly-macos:
+    runs-on: macos-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check local parser fixtures and stored 2339 original SHA
+        run: |
+          python -m unittest discover -s tests -p test_official_readonly_limited.py -v
+          python scripts/audit_stage_c.py --output /tmp/stage-c-macos-before-probe.json
+      - name: Read-only official source probes on macOS (maximum 3, no retry)
+        run: |
+          python -u - <<'PY'
+          import json, platform, sys
+          from pathlib import Path
+          assert platform.system()=="Darwin", "Refusing non-macOS execution"
+          sys.path.insert(0,"scripts")
+          import probe_official_readonly_limited as p
+          output=Path("reports/official-macos-readonly-probe-20261102.json")
+          result=p.probe(output=output)
+          result["execution_platform"]="GitHub-hosted macOS runner"
+          result["runtime_platform"]=platform.platform()
+          result["rechecked_after_prior_ubuntu_failure"]=True
+          result["scope"]="Known archived viewer IDs 3999 and 4019, then read-only root tree only if previous calls succeed"
+          result["status_does_not_authorize_collection"]=True
+          output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(result,ensure_ascii=False,indent=2))
+          PY
+      - name: Verify no existing originals, indexes or analyzer files changed
+        run: |
+          python - <<'PY'
+          import json
+          p='reports/official-macos-readonly-probe-20261102.json'
+          r=json.load(open(p,encoding='utf-8'))
+          assert r['execution_platform']=="GitHub-hosted macOS runner"
+          assert r['requests_attempted']<=3
+          assert r['policy']['attempts_per_request']==1
+          assert not r['source_archive_modified']
+          assert not r['production_sync_used']
+          assert not r['automatic_collection_enabled']
+          assert not r['operational_release_authorized']
+          assert r['status'] in {
+            "INCONCLUSIVE_SOURCE_UNAVAILABLE",
+            "PASS_LIMITED_LIVE_SOURCE_MATCH",
+            "LIVE_RESPONDED_MANUAL_REVIEW_REQUIRED",
+          }
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Store diagnostic result ONLY on feature/archive-foundation
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-macos-readonly-probe-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: record live read-only macOS official minutes connectivity and body match"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Preserve macOS evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: one-shot-official-macos-readonly-3999-4019
+          path: reports/official-macos-readonly-probe-20261102.json
+          if-no-files-found: warn
