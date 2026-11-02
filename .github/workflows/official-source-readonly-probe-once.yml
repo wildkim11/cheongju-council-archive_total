@@ -1,10 +1,7 @@
 name: One-time bounded official-source read-only probe
+# Initial bounded read-only external validation has finished.
+# No automatic or scheduled further connection attempts.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/official-source-readonly-probe-once.yml
   workflow_dispatch:
 
 permissions:
