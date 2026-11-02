@@ -175,5 +175,53 @@ class IntegratedOfficialMonitorTests(unittest.TestCase):
             self.assertTrue(out.is_file())
 
 
+    def test_monitor_current_listing_does_not_assume_permanent_2339_baseline(self):
+        from unittest.mock import MagicMock
+        marker=Path("/tmp/disposable-monitor-list.json")
+        with patch.object(m.listing,"discover",return_value={"sample":"current"}) as fake:
+            self.assertEqual(m.current_official_listing(marker),{"sample":"current"})
+        fake.assert_called_once_with(out=marker,baseline_policy="current")
+
+    def test_bounded_tree_accepts_future_2341_current_index_only_when_opted_in(self):
+        # Synthetic INDEX rows: no official server or archived source files changed.
+        advanced=list(self.saved)
+        for sid in ("4024","4025"):
+            advanced.append({"source_id":sid,"term":4,"publication_status":"provisional"})
+        self.assertEqual(len(advanced),2341)
+        def fake_tree(node):
+            kind=node.get("var11")
+            if node.get("var10")=="SvcMntsTreeGnrtn":
+                return [{"var01":"4","var03":"","text":"제4대",
+                         "var11":"SvcMntsTreeGnrtnSesn"}]
+            if kind=="SvcMntsTreeGnrtnSesn":
+                return [{"var01":"4","var03":"106","text":"제106회",
+                         "var11":"SvcMntsTreeGnrtnCmmtNm"}]
+            if kind=="SvcMntsTreeGnrtnCmmtNm":
+                return [{"var01":"4","var03":"106","var02":"A010",
+                         "text":"본회의","var11":"SvcMntsTreeGnrtnChasu"}]
+            if kind=="SvcMntsTreeGnrtnChasu":
+                return []
+            raise AssertionError("Unexpected official-tree request")
+        with tempfile.TemporaryDirectory() as td:
+            index=Path(td)/"advanced-index.json"
+            index.write_text(json.dumps(advanced),encoding="utf-8")
+            output=Path(td)/"result.json"
+            with patch.object(m.listing,"INDEX",index), \
+                 patch.object(m.listing.platform,"system",return_value="Darwin"):
+                with self.assertRaisesRegex(ValueError,"Expected 2339"):
+                    m.listing.discover(read=fake_tree,sleep=lambda _ : None,out=output)
+                r=m.listing.discover(
+                    read=fake_tree,sleep=lambda _ : None,out=output,
+                    baseline_policy="current",
+                )
+            self.assertEqual(r["saved_total_meeting_count"],2341)
+            self.assertEqual(r["saved_term4_count"],52)
+            self.assertEqual(r["requests_attempted"],4)
+            self.assertEqual(r["baseline_policy"],"current")
+            self.assertEqual(r["new_source_id_candidates"],[])
+            self.assertEqual(r["conclusion"],"TERM4_INVENTORY_HAS_REVIEW_CANDIDATES")
+            self.assertFalse(r["production_archive_update_allowed"])
+
+
 if __name__=="__main__":
     unittest.main()
