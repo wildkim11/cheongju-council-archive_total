@@ -67,6 +67,7 @@ def audit(root=ROOT):
         "published": 0,
         "provisional": 0,
         "superseded": 0,
+        "revisions_verified": 0,
         "by_term": {},
         "year_inventory_only_term": [],
         "errors": errors,
@@ -241,6 +242,77 @@ def audit(root=ROOT):
             errors.append(f"historical meeting without replacement: {mid}")
         if row.get("path"):
             referenced_paths.add(row["path"])
+
+    revisions_path = root / "indexes/integrated/meeting_revisions.json"
+    revisions = read_json(revisions_path) if revisions_path.is_file() else []
+    if not isinstance(revisions,list):
+        errors.append("meeting_revisions ledger must be an array")
+        revisions=[]
+    revision_paths=set()
+    by_revision_id=collections.defaultdict(list)
+    for idx,rev in enumerate(revisions):
+        name=f"revision #{idx}"
+        prior=rev.get("prior_source_record")
+        next_record=rev.get("next_source_record")
+        mid=rev.get("meeting_id")
+        if rev.get("schema")!="integrated-meeting-source-revision/1" or not isinstance(prior,dict) or not isinstance(next_record,dict):
+            errors.append(f"{name}: revision schema or snapshots missing")
+            continue
+        sid=str(rev.get("source_id",""))
+        old_sha=rev.get("prior_sha256")
+        if not sid.isdigit() or not isinstance(old_sha,str) or not re.fullmatch(r"[a-f0-9]{64}",old_sha):
+            errors.append(f"{name}: invalid source ID or prior SHA-256")
+            continue
+        expected=f"archive/meetings/{SCOPE}/_revisions/minutes-{sid}/{old_sha}.md"
+        rel=rev.get("revision_path")
+        if rel!=expected or prior.get("meeting_id")!=mid or next_record.get("meeting_id")!=mid:
+            errors.append(f"{name}: unsafe revision path or changed meeting identity")
+            continue
+        if prior.get("source_id")!=sid or prior.get("sha256")!=old_sha or next_record.get("sha256")!=rev.get("next_sha256"):
+            errors.append(f"{name}: prior/next snapshot checksum identity mismatch")
+            continue
+        if prior.get("path")!=rev.get("prior_path") or not rev.get("original_source_preserved"):
+            errors.append(f"{name}: prior original source path missing or unpreserved")
+            continue
+        path=root/rel
+        if not path.is_file() or path.is_symlink():
+            errors.append(f"{name}: immutable original revision file missing")
+            continue
+        original=path.read_bytes()
+        if sha256(original)!=old_sha or len(original)!=prior.get("bytes"):
+            errors.append(f"{name}: immutable prior bytes SHA or byte count mismatch")
+            continue
+        try:
+            rev_title,rev_header,rev_body=markdown_parts(original.decode("utf-8"))
+        except (UnicodeError,ValueError) as exc:
+            errors.append(f"{name}: malformed original revision: {exc}")
+            continue
+        if (rev_title!=prior.get("title")
+            or rev_header.get("publication_status")!=prior.get("publication_status")
+            or rev_header.get("meeting_date")!=prior.get("date")
+            or rev_header.get("source_id")!=sid
+            or sha256(canon(rev_body).encode("utf-8"))!=prior.get("content_sha256")):
+            errors.append(f"{name}: prior source facts differ from preserved Markdown")
+            continue
+        by_revision_id[mid].append(rev)
+        revision_paths.add(rel)
+        summary["revisions_verified"]+=1
+    for mid,events in by_revision_id.items():
+        for older,newer in zip(events,events[1:]):
+            if older.get("next_sha256")!=newer.get("prior_sha256"):
+                errors.append(f"{mid}: broken source revision chain")
+        latest=events[-1].get("next_sha256")
+        current=by_id.get(mid)
+        last_history=next((r for r in history if r.get("meeting_id")==mid),None)
+        last=current or last_history
+        if last is None or last.get("sha256")!=latest:
+            errors.append(f"{mid}: revision chain does not terminate at current or superseded source")
+    actual_revision_files={
+        p.relative_to(root).as_posix()
+        for p in (root/f"archive/meetings/{SCOPE}/_revisions").glob("minutes-*/*.md")
+    }
+    if actual_revision_files!=revision_paths:
+        errors.append("Immutable revision file set differs from referenced revision ledger paths")
 
     all_files = {
         path.relative_to(root).as_posix()
