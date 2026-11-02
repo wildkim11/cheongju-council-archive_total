@@ -1,10 +1,7 @@
 name: One-time five REAL premerger city county official bodies disposable staging QA
+# Source-reading one-time QA completed. No push-triggered or recurring reruns.
+# A further official source request requires explicit workflow_dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-preintegration-five-bodies-temp-once.yml
   workflow_dispatch:
 permissions:
   contents: write
