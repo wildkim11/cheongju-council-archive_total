@@ -177,3 +177,16 @@
 - 기존 원본수는 **2,339**, 공식 신규 1건 추가가 아니며, 리허설에서만 2,340.
 - **실운영 수집은 계속 HARD BLOCKED**: `run_sync("full"|"incremental", ROOT)`는 네트워크 전에 거부. 원본 회의록의 날짜·대수 변경으로 canonical 파일 경로 이동이 필요한 경우 별도 migration 구현 전까지 `SAME_ID_PATH_CHANGE_REQUIRES_VERSIONED_MIGRATION` 오류로 거부. 물리적 전원장애·네트워크 파일시스템은 SIGKILL 검증과 별개로 미검증.
 - 다음 승인·후속: 날짜/회기 경로 이동을 원본 손실 없이 이력으로 안전하게 처리하는 테스트, 청주시의회 서버의 **요청량 제한 읽기전용** 소규모 재조회 및 파서 QA, 운영 루트 잠금 해제 판단은 사용자 단일 승인 후. `main`, 기존 `wildkim11/cheongju-council-minutes` 변경 없음. 스케줄 OFF.
+
+
+## 15. [최신] 회의록 동일 ID의 연도·대수·경로 이동, 불변 원문 및 SIGKILL 복구
+- **최신 상세보고서:** `docs/CROSS_YEAR_PATH_MIGRATION_QA_20261102.md`.
+- 기존 제14절의 `SAME_ID_PATH_CHANGE_REQUIRES_VERSIONED_MIGRATION` 차단은 개발 브랜치에서 **기능 구현 및 오프라인 격리검증으로 대체됐다**. 현재 실운영 ROOT 차단과 스케줄 OFF는 그대로다.
+- 수집기 `scripts/collect_integrated_minutes.py`: 이전 `term-N/YYYY/minutes-X.md`에서 새로운 `term-M/YYYY/minutes-X.md`로 동일 source ID가 이동할 때, 구본 SHA를 확인하고 `_revisions/minutes-X/<old_sha>.md`와 이력 원장에 이전 정확한 바이트·메타데이터 보존. 옛 canonical 파일은 staging에서 제거하고 **명시적 삭제 목록**으로 트랜잭션에 전달. source ID가 바뀌면 이 처리로 묶지 않음.
+- `scripts/sync_transaction.py`: 저널에 파일 추가·수정과 **구 canonical 경로 삭제(new_exists=false, old_sha256)**를 함께 기록. 복사 중 실패나 SIGKILL로 미완료된 경우 구 경로·구 SHA·기존 인덱스 모두 복원. 이미 committed된 경우 새 경로 SHA를 검증하고 구 경로 부재를 확인. 허용된 삭제는 `archive/meetings/cheongju_integrated/term-N/YYYY/minutes-X.md` 패턴만.
+- 단위 회귀: `tests/test_incremental_sync_isolation.py` (동일 ID 연도/대수 변경 및 이전 원본 보존, 같은 대수 연도변경, 연결 실패 시 원본 불변), `tests/test_sync_transaction_crash.py` (구 경로 삭제 직후 실제 SIGKILL 후 복구, 커밋 후 SIGKILL, 무단 삭제 차단 등).
+- **2,339건 전체 복사본 시험 CI PASS:** https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41377032467. 가상 회의록 1건의 `term-3/2025` → `term-4/2026`만 이동. 현재 파일 **2,339건 유지**, 나머지 **2,338건 원본 SHA 불변**, 이전 1건 정확한 바이트 `_revisions` 보존, 옛 경로 없음, 새 canonical 존재, 개정 원장 1건, 전체 Stage C QA **2,339건+개정 1건 PASS**, 분석기 2,339행 일치.
+- 기계검증 코드: `scripts/rehearse_cross_year_migration_full_snapshot.py`. 공식 서버 HTTP **0회**, 실제 GitHub 원본/인덱스/대수 변경 **0건**. 가상 변경을 현실의 공식 날짜 재분류로 오해 금지.
+- **기계검증 원장**: `reports/synthetic-cross-year-migration-full-2339-qa.json` (일회성 CI를 통해 개발 브랜치에 저장; 성공 실행 확인 후 출처로 사용).
+- **운영 미승인:** 실제 ROOT `run_sync("full"/"incremental")`는 네트워크 이전에 거부; 자동 실행 OFF. 실시간 소량 읽기전용 원천 검증·물리적 전원차단/네트워크 저장소 내구성은 별도이며 현재 성공했다고 주장하지 않는다.
+- `main` 및 독립 `wildkim11/cheongju-council-minutes` 미변경. 다음은 실서버 소량 읽기전용 검증과 의회사무국에만 존재하는 발의자 원안 확보.
