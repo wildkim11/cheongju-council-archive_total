@@ -1,0 +1,36 @@
+{
+  "schema": "synthetic-published-body-and-provisional-transition-full-copy/1",
+  "checked_at_utc": "2026-11-02T06:13:46.860221+00:00",
+  "status": "PASS",
+  "data_type": "ENTIRELY_SYNTHETIC_CHANGES_TO_EXISTING_SAVED_BODIES",
+  "actual_official_site_requests": 0,
+  "offline_full_original_copy_source_count": 2339,
+  "simulated_provisional_to_published_id": "4019",
+  "simulated_published_same_id_body_drift_id": "3999",
+  "force_published_body_recheck_exercised": [
+    "cheongju_integrated:minutes-3999"
+  ],
+  "changed_originals": [
+    "3999",
+    "4019"
+  ],
+  "unchanged_other_originals": 2337,
+  "old_versions_immutably_preserved": {
+    "3999": true,
+    "4019": true
+  },
+  "revision_ledger_entries": 2,
+  "current_meetings": 2339,
+  "current_published": 2334,
+  "current_provisional": 5,
+  "sha256_files_verified": 2339,
+  "sha256_bodies_verified": 2339,
+  "analyzer_export_meeting_rows": 2339,
+  "analyzer_export_file_hashes_verified": 24,
+  "stage_c_audit": "PASS",
+  "stage_c_errors": [],
+  "production_root_unchanged": true,
+  "production_sync_hard_lock_kept": true,
+  "no_schedule_enabled": true,
+  "no_real_source_claims_from_synthetic_data": true
+}
