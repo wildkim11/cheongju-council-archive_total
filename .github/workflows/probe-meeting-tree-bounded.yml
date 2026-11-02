@@ -1,10 +1,6 @@
 name: Retry two of one-time bounded meeting tree official-site probe
+# Verified single-use evidence job; no push or scheduled trigger.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/probe-meeting-tree-bounded.yml
   workflow_dispatch:
 permissions:
   contents: read
