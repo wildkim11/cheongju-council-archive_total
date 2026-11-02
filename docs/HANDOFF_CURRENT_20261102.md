@@ -300,3 +300,12 @@
 - **공개상태 의미 미확정:** 과거 공식 목록 `var09=N`이지만 직접 검증한 구 의회 본문에는 통합 이후 시스템의 임시회의록 안내 문구가 발견되지 않음. 따라서 이 값을 임의로 `provisional`로 승격시키지 않고 `source_tree_publication_code=N` 및 `normalized_publication_status=null`, `eligible_for_public_analyzer=false` 상태로 격리. 근거 없이는 '모든 2014년 자료가 임시본'이라고 주장 금지.
 - 안전한 scope 계약 `scripts/legacy_minutes_scope_contract.py` 및 `tests/test_legacy_minutes_scope_contract.py`: 구 청주시/군의회 및 통합 시의회의 독립 term/ID 공간, 공식 URL 범위, 공개상태 미검증 차단, 이름만으로 의원 동일인 통합 금지. 동일 숫자 공식 source_id라도 기관별 회의록은 별개.
 - 후속: 공식 **437회기 각각 위원회→개별 leaf 전체 탐색**으로 원문 대상 건수·가용성/누락 원장 구축 → 12대수 체크포인트·복구 가능한 초도 백필을 **기관별 격리 스냅샷**에서 실행 → 상태코드 의미 및 본문/인물연결 QA → 정식 아카이브 반영. 현재 통합 회의록 원본 **2,339건 그대로**, `main` 불변, 정기 무인 수집·운영 반영 OFF.
+
+
+## 26. [최신] 대수별·연도별 회의록 불일치 13건 공식 웹 트리 실시간 전수 검증 완료
+- 상세: `docs/MEETING_YEAR_TREE_ROLLOVER_FINDING_20261102.md` (이 절은 제12절의 실시간 전수조회 실패 상태를 최신 결과로 대체).
+- 전체 저장자료 대조: 대수별 목록 2,339 / 연도별 목록 2,326 / 대수별 전용 13. 회기 종료 후 위원회 개최 121건 중 **같은 해 개최 108건은 두 트리에 모두 있고**, **전년도 12월 회기의 다음 해 1~2월 개최 13건은 대수별에만 존재**. 기존 ID 변경 없음. 비교 CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41421036637.
+- 기존 macOS 수집기와 동일한 TLS 암호설정 `sslctx.set_ciphers("DEFAULT")` 적용: 공식 트리 root·표본 8건, 상세뷰어 180/1848/3652 3건 **모두 실시간 조회 성공** ( https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41421027454 ). 이전 41368923499 전체 재조회 타임아웃을 서버의 영구 접속불가로 해석하지 않는다.
+- **원본 ID 13건을 공식 `SvcMntsTreeYear.php`와 `SvcMntsTreeGnrtn.php` 각각 회기·위원회 leaf까지 제한적으로 직접 대조**: 대수별에는 **13/13 모두 존재**, 연도별에는 **13/13 모두 누락**(해당 위원회 leaf에서 제외 11건, 위원회 분기 자체 제외 2건: 1848·2951). 요청 **60회**, 네트워크 실패 **0건**. exact `committee_code` 탐색으로 `C101` 의회운영위원회와 `J101` 행정사무감사 명칭 혼동 방지. CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41421849139; 결과물 artifact `official-13-year-rollover-tree-paths`.
+- **이제 확인된 사실**은 두 공식 트리에서 13건이 실제로 다르게 색인된다는 것. 강한 연관인 '전년도 회기/차년도 개최'는 전수 관찰로 확정됐지만 **공식 내부 서버 SQL·프로그램 분기 구현 원인은 직접 보지 못했으므로 단정 불가**. 실무적으로 '공식 연도별 트리 인덱싱 누락 13건'으로 표기하고 본문 원본·대수·개최일·정식/임시 상태는 변경하지 않는다.
+- 원본 `archive/meetings/*`, 실무 export, 의원/의안 원천 데이터 **이 조사에서는 수정 없음**. `main`과 독립 저장소 미변경, 정기 스케줄 OFF. 2026-11-02 당시 최신 운영 아카이브 2,339건 및 별도 격리 검증 2,342건 구분 유지.
