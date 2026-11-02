@@ -1,9 +1,5 @@
-name: One-time institutional five bill role provenance audit
+name: Manual-only institutional five bill role provenance audit
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths:
-      - .github/workflows/audit-institutional-bill-roles.yml
   workflow_dispatch:
 permissions:
   contents: read
