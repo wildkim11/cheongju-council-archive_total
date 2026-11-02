@@ -218,3 +218,14 @@
 - 저장된 `3999=published`, `4019=provisional` 상태는 **기존 인덱스의 수집 시점 사실**. `4019` 실시간 공개상태는 회기별 세부 트리 아직 재조회하지 않아 **미검증**.
 - 총 공식 실시간 GET 2회 + 목록 최상위 조회용 POST 1회, 재시도 0회. 원문 2건 해시 일치, 루트 대수 4개 확인. 기존 2,339건·인덱스·exports 수정 0. `main` 및 별도 `cheongju-council-minutes` 불변. 운영 `run_sync` 하드 잠금과 정기 자동수집 OFF.
 - 다음 단계: 이 원본 TLS 컨텍스트를 정식 소량 진단기에서 재사용하고 제4대 106회 좁은 트리로 `4019`의 실시간 `var09`만 제한적 조회, 이후 **격리 환경**에서 증분 변경 후보를 검증. **실운영 자동갱신은 아직 미승인.**
+
+
+## 19. [최신] 임시 회의록 6건 공식 상태 전수 확인 및 변경후보 0건 (2026-11-02)
+- **최신 상세 검증:** `docs/SIX_PROVISIONAL_OFFICIAL_LIVE_STATUS_QA_20261102.md`. 이 절은 앞의 제18절에서 `4019` 실시간 공개상태가 미검증이라고 한 상황을 최신 공식 조회 결과로 대체한다.
+- macOS 원본 수집기 TLS 컨텍스트(`set_ciphers("DEFAULT")`, 서버 인증서 검증 유지)에서 공식 대수별 목록을 루트→제4대 회기→제105·106회 위원회→정확히 네 해당 위원회까지 한정 조회. **총 8회 공식 목록 조회, 각 요청 재시도 0회, 기존 수집 파일 변경 0건.**
+- 공식 위원회 회의록 노드 `var12`와 `var09`로 **6개 모두 실시간 상태 확인**: `4017=N`, `4018=N`, `4019=N`, `4020=N`, `4021=N`, `4022=N`. 기존 저장 상태 `provisional`과 6건 모두 동일하며 **확인된 전환 후보 0건**.
+- 단계별 공식 응답 원장: `reports/official-term4-branch-discovery-20261102.json` (제4대 루트/회기, PASS, CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41391542744); `reports/official-term4-target-sessions-20261102.json` (105·106회 위원회, PASS, CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41391710745); `reports/official-six-provisional-status-20261102.json` (4개 위원회·6개 `var09`, PASS, CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41391894216).
+- 오프라인 변경판정 `scripts/evaluate_provisional_official_changes.py`, `tests/test_provisional_official_change_candidates.py`, 보고 `reports/official-six-provisional-change-candidates-20261102.json`, CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41392066334. **실자료는 6건 불변·검토 후보 0건**, 별도 가상시험에서 `4019:N→Y`를 주입하면 자동 적용 대신 본문·원본 이력 확인 후보 1건을 생성함. 가상시험 결과를 공식 상태로 오인하지 말 것.
+- **범위 제한:** 이것은 기존 임시 6건의 현재 공개상태 검증이지 전체 공식 신규 회의록·모든 수정 이력의 전수 재조회가 아님. 4개 관련 위원회 외 새로 생긴 회의록 존재 여부는 미확인.
+- 전체 기존 회의록 **2,339건 원본·인덱스·export 변경 없음**, 전체 원본 무결성 PASS. `main` 및 별도 저장소 불변, 실운영 `run_sync` HARD LOCKED, 정기 자동수집 OFF.
+- 다음: **공식 전체 목록을 당장 재수집하지 말고**, 변경 탐지를 위한 조회범위/자원상한·실패복구 기준을 설계해 macOS 격리 복사본에서 검증. 운영 활성화에는 사용자 단일 승인 필요.
