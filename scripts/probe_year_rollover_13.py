@@ -70,10 +70,20 @@ def navigate(kind,session_node,case):
             # If this is the fully-enumerated leaf level, a missing ID is
             # supported only for the specific navigated committee branch.
             return {"result":"absent_in_complete_leaf_branch","source_id":id,"path":steps}
+        # Exact official committee code takes precedence over substring names:
+        # e.g. C101 '의회운영위원회' and J101 '의회운영위원회행정사무감사'
+        # must never be treated as two candidate branches.
         opts=[x for x in children if not x.get("var12") and
-              (str(x.get("var02") or "")==code or target in str(x.get("text","")))]
+              str(x.get("var02") or "")==code]
+        if not opts:
+            opts=[x for x in children if not x.get("var12") and
+                  str(x.get("text","")).strip()==target]
+        if not opts:
+            return {"result":"absent_committee_branch","source_id":id,
+                    "committee_code":code,"path":steps,
+                    "children_sample":[slim(x) for x in children[:18]]}
         if len(opts)!=1:
-            return {"result":"unresolved_branch_selection","source_id":id,
+            return {"result":"ambiguous_committee_code","source_id":id,
                     "options":len(opts),"path":steps,
                     "children_sample":[slim(x) for x in children[:18]]}
         node=opts[0]
