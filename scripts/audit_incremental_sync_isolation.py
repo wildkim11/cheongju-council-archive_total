@@ -88,13 +88,20 @@ def scenario_add_and_derived():
         report=sync(root,[old,new])
         ids={x["meeting_id"] for x in read_json(root/"indexes/integrated/meetings.json")}
         copied=hashlib.sha256(original_md.read_bytes()).hexdigest()==old_hash
-        derived_untouched=hashlib.sha256((root/"exports/analyzer/meetings.jsonl").read_bytes()).hexdigest()==manifest_hash
-        shard_count=len(read_json(root/"indexes/integrated/initial_term_4.json"))
+        generated=root/"exports/analyzer/meetings.jsonl"
+        rows_exported=[json.loads(line) for line in generated.read_text(encoding="utf-8").splitlines() if line.strip()]
+        derived_matches=rows_exported==read_json(root/"indexes/integrated/meetings.json")
+        initial_count=len(read_json(root/"indexes/integrated/initial_term_4.json"))
+        current_count=len(read_json(root/"indexes/integrated/current_term_4.json"))
+        manifest=read_json(root/"exports/analyzer/manifest.json")
         return {
             "added_new_source":new["meeting_id"] in ids,
             "original_markdown_unchanged":copied,
-            "derived_meetings_export_stale":derived_untouched,
-            "term_shard_stale":shard_count!=len(ids),
+            "derived_meetings_export_matches_current":derived_matches,
+            "term_shard_matches_current":current_count==len(ids),
+            "initial_term_shard_preserved":initial_count==1,
+            "derived_manifest_meetings_count":manifest["datasets"]["meetings"]["rows"],
+            "stale_old_derived_hash_replaced":hashlib.sha256(generated.read_bytes()).hexdigest()!=manifest_hash,
             "reported_new":report["new"],
         }
 
@@ -230,7 +237,11 @@ def diagnose():
         "real_repository_interlock":scenario_real_repository_interlock(),
     }
     blocks={
-        "derived_exports_and_shards_not_updated":results["new_and_derived"]["derived_meetings_export_stale"] and results["new_and_derived"]["term_shard_stale"],
+        "derived_exports_and_current_shards_not_updated":not (
+            results["new_and_derived"]["derived_meetings_export_matches_current"]
+            and results["new_and_derived"]["term_shard_matches_current"]
+            and results["new_and_derived"]["initial_term_shard_preserved"]
+        ),
         "same_id_metadata_transition_requires_versioned_history":results["same_id_status"]["same_id_transition_safely_rejected"],
         "same_id_content_revision_requires_versioned_history":results["same_id_body"]["same_id_body_revision_safely_rejected"],
         "publish_exception_can_leave_partial_target":not results["publish_failure"]["rollback_restored_destination"],
@@ -243,6 +254,11 @@ def diagnose():
         "scenarios":results,
         "successes":{
             "new_markdown_appended_without_editing_old_source":results["new_and_derived"]["added_new_source"] and results["new_and_derived"]["original_markdown_unchanged"],
+            "staged_analyzer_exports_and_current_term_shards_are_consistent":(
+                results["new_and_derived"]["derived_meetings_export_matches_current"]
+                and results["new_and_derived"]["term_shard_matches_current"]
+                and results["new_and_derived"]["initial_term_shard_preserved"]
+            ),
             "remote_fetch_failure_aborts_without_writes":results["remote_failure"]["error_propagated"] and results["remote_failure"]["fixture_unchanged"],
             "real_repository_sync_hard_interlock":results["real_repository_interlock"]["real_root_interlock_pass"],
             "caught_publish_exception_restores_full_fixture":results["publish_failure"]["rollback_restored_destination"] and results["publish_failure"]["fault_was_injected"],
