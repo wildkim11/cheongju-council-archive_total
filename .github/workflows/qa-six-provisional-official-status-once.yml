@@ -1,10 +1,6 @@
 name: One-time six provisional official leaf status verification on macOS
+# One-time official status QA completed. Re-running requires explicit manual dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-six-provisional-official-status-once.yml
   workflow_dispatch:
 permissions:
   contents: write
