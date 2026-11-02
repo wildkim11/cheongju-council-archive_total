@@ -1,5 +1,5 @@
 name: One-time isolated incremental sync failure-mode audit
-# Re-run after implementing fail-closed version handling and exception rollback.
+# Rerun after staging synchronized current-term shards plus complete derived analyzer exports.
 on:
   push:
     branches:
