@@ -1,0 +1,58 @@
+name: One-time TLS-only connectivity diagnosis for official council domains
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/official-tls-diagnostic-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  tls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline test of allowlist and no-HTTP/no-write properties
+        run: python -m unittest discover -s tests -p test_official_tls_path.py -v
+      - name: Exactly two TLS handshakes, no GET or POST
+        run: python -u scripts/diagnose_official_tls_path_readonly.py
+      - name: Verify diagnostic policy and original archive unchanged
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('reports/official-readonly-tls-diagnostic-20261102.json'))
+          assert r['http_requests']==0
+          assert r['tls_handshakes_attempted']==2
+          assert not r['certificate_verification_disabled']
+          assert not r['saved_archive_modified']
+          assert not r['production_sync_enabled']
+          assert not r['live_collection_authorized']
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Publish evidence on feature branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-readonly-tls-diagnostic-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: preserve two official-domain TLS-only reachability results"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-tls-only-connection-evidence
+          path: reports/official-readonly-tls-diagnostic-20261102.json
+          if-no-files-found: warn
