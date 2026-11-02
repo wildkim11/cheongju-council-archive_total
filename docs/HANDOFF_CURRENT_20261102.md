@@ -264,3 +264,15 @@
 - **알림/주기 개발상태:** 제안 정기 실행 오전 **07:30 KST**, 그러나 **schedule OFF**, 워크플로는 **수동 workflow_dispatch만** 유지; 실패 시 Actions 실패/오류, 변경 후보 시 경고 주석·요약·JSON 보고 가능. 외부 이메일·메신저 푸시 실제 발송 연결은 미검증. 보고는 `reports/`만 기록하고 원본·인덱스·export 수정 0.
 - **중요 잔여 과제:** 새 4026의 공식 연도별 목록 교차조회, 신규 3건으로 구성된 **2,342건 전체 격리 임포트**(종전 2,341건 리허설에 4026은 없음), 1~3대 전체 공식 대수별 목록의 신규/수정 감시 범위, 장기간 무인실행 안전관리와 통보 수신 설정. 자동수집/실운영 원본 반영은 여전히 **별도 사용자 승인 전 금지**.
 - **현재 원본:** 통합 회의록 2,339건 원래 바이트 및 SHA 유지, `main` 및 독립 `wildkim11/cheongju-council-minutes` 불변, 프로덕션 `run_sync` 잠금 유지. 테스트 복사본은 폐기.
+
+
+## 23. [최신] 공식 2026 연도별 목록 4024·4025·4026 모두 임시본 확인, 실제 2,342건 격리 증분수집 및 SIGKILL 원복 PASS
+
+- **최신 상세 QA:** docs/REAL_THREE_NEW_2342_FULL_COPY_QA_20261102.md. 이 절은 제22절의 4026 연도별 목록·2,342건 격리 검증 미완료 상태를 최신 실증으로 갱신한다.
+- macOS 기존 성공 TLS 설정으로 공식 **2026년 연도별 목록**을 읽기전용 탐색한 결과 **4024·4025·4026 전부 존재**, var09=N(임시). 공식 서버 요청 **9회**, 재시도 0, 오류 0. CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41400610405, reports/official-year2026-three-new-ids-presence-20261102.json.
+- 세 회의록 상세페이지 **각 1회 새로 GET**, HTTP 200, 전부 기존 실시간 해시와 일치. 4024 본문 SHA 818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d / 4025 56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba / 4026 c63e097c11c05b89e80d7865816552353838e4914c9244727f1d42b8cd601536.
+- **2,339건 원본을 임시 두 복사본에 복제**, 첫 복사본의 기존 증분수집기를 mock 공식 목록과 실자료 세 본문으로 구동. 임시본 기존 6건 본문은 저장 Markdown에서 SHA 검증 후 mock 재생(새 실시간 조회로 주장하지 않음). **격리 2,342건** (정식 2,333·임시 9, 대수별 663/771/855/53) Stage C PASS, **파일 SHA 2,342건/본문 SHA 2,342건**, 기존 원본 2,339건 바이트 불변, 분석기 meetings.jsonl **2,342행**, 내보내기 24개 SHA 전부 검증, 오류·경고 0.
+- **SIGKILL 복구:** 두 번째 복사본에서 8개 변경 대상 파일 중 2개 설치 직후 프로세스를 강제 중단. 미완료 트랜잭션 저널을 rolled_back_uncommitted로 복원, **2,339건 전체 원본 SHA와 기존 인덱스·분석기 바이트 모두 복구**. 복구 후 Stage C PASS.
+- 실증 CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41401069874. 기계검증 reports/official-real-three-new-2342-full-copy-rehearsal-20261102.json. 코드 scripts/rehearse_real_three_new_2342_full_copy_macos.py, 무네트워크 방어 시험 tests/test_real_three_new_2342_isolated_rehearsal.py.
+- **운영 아카이브는 실제 여전히 2,339건**. 두 임시 복사본 삭제. 신규 원문 세 건 정식 반영 0건, main 및 독립 회의록 저장소 변경 0, 실운영 run_sync full/incremental 하드 잠금 유지, 자동 스케줄 OFF.
+- 남은 출시 조건: 제1~3대 최신 목록 감시 범위·요청상한, 연속 자동실행/장기 실패 후 백필, 오류 알림 실제 전송, 사용자 명시 승인 없는 자동 원본 반영을 절대 허용하지 않는 출시 정책 확인.
