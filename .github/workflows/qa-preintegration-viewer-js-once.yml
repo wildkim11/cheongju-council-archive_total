@@ -1,10 +1,7 @@
 name: One-time official oldcity oldcounty viewer JS route verification on macOS
+# Source-reading one-time QA completed. No push-triggered or recurring reruns.
+# A further official source request requires explicit workflow_dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-preintegration-viewer-js-once.yml
   workflow_dispatch:
 permissions:
   contents: write
