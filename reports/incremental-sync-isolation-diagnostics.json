@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-02T01:20:14.962903+00:00",
+  "generated_at_utc": "2026-11-02T02:06:56.497915+00:00",
   "mode": "isolated temporary fixture, network fully mocked",
   "scenarios": {
     "new_and_derived": {
@@ -15,15 +15,32 @@
       ]
     },
     "same_id_status": {
-      "same_id_transition_safely_rejected": true,
-      "fixture_unchanged": true,
-      "indexed_publication_status": "provisional",
-      "markdown_publication_status": "provisional"
+      "same_id_transition_versioned": true,
+      "prior_exact_original_bytes_preserved": true,
+      "revision_rows": 1,
+      "prior_status": "provisional",
+      "next_status": "published",
+      "reported_revised": [
+        "cheongju_integrated:minutes-903"
+      ]
     },
     "same_id_body": {
-      "same_id_body_revision_safely_rejected": true,
-      "original_bytes_preserved": true,
-      "history_unchanged": true
+      "content_revision_changed_current": true,
+      "original_bytes_immutable": true,
+      "revision_rows": 1,
+      "prior_sha256_matches": true,
+      "changed_ids": [
+        "cheongju_integrated:minutes-904"
+      ]
+    },
+    "same_id_revert": {
+      "three_transitions_recorded": true,
+      "all_old_bytes_still_present": true,
+      "original_first_version_preserved": true,
+      "last_transition_from_modified_body": true,
+      "reported_revised": [
+        "cheongju_integrated:minutes-912"
+      ]
     },
     "remote_failure": {
       "error_propagated": true,
@@ -55,17 +72,17 @@
     "remote_fetch_failure_aborts_without_writes": true,
     "real_repository_sync_hard_interlock": true,
     "caught_publish_exception_restores_full_fixture": true,
-    "same_id_metadata_and_original_bytes_fail_closed": true
+    "same_id_metadata_and_original_bytes_versioned": true
   },
   "release_blockers": {
     "derived_exports_and_current_shards_not_updated": false,
-    "same_id_metadata_transition_requires_versioned_history": true,
-    "same_id_content_revision_requires_versioned_history": true,
+    "same_id_metadata_transition_requires_versioned_history": false,
+    "same_id_content_revision_requires_versioned_history": false,
     "publish_exception_can_leave_partial_target": false,
-    "unexpected_process_termination_crash_atomicity_not_proven": true,
+    "hardware_power_loss_atomicity_not_certified": true,
     "many_to_one_provisional_replacements_allowed": false
   },
-  "release_blocker_count": 3,
+  "release_blocker_count": 1,
   "release_decision": "BLOCKED_UNSAFE_TO_OPERATE",
   "canonical_project_files_modified": false,
   "official_site_requests": 0,

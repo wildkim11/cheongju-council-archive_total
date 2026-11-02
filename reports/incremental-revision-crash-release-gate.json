@@ -1,0 +1,40 @@
+{
+  "generated_at_utc": "2026-11-02T02:07:44.599672+00:00",
+  "status": "OFFLINE_SAFETY_TESTS_PASS_PRODUCTION_LOCKED",
+  "production_collection_enabled": false,
+  "canonical_archive_modified": false,
+  "official_http_requests": 0,
+  "same_id_metadata_revision_immutable_originals_verified": true,
+  "same_id_body_revision_and_revert_immutable_originals_verified": true,
+  "crash_restart_recovery": {
+    "mechanism": "real SIGKILL child processes followed by fresh-process recovery",
+    "test_count": 6,
+    "pass": true,
+    "uncommitted_journal_restored_old_bytes": true,
+    "committed_journal_retained_new_bytes": true,
+    "corrupted_preimage_detection_refuses_unsafe_recovery": true,
+    "concurrent_writer_local_posix_lock_tested": true,
+    "hardware_power_loss_tested": false
+  },
+  "saved_full_snapshot_rehearsal": {
+    "official_saved_originals": 2339,
+    "original_file_hashes_unchanged": true,
+    "synthetic_added": 1,
+    "temporary_snapshot_count": 2340,
+    "stage_c_qa_verified_source_files": 2340,
+    "source_canonical_files_modified": false
+  },
+  "release_gates_remaining": [
+    "Live official site inventory and incremental retry/load must undergo a separate controlled, read-only pilot",
+    "Same-ID date/term edits that change canonical original path are fail-closed pending versioned migration",
+    "Physical power-loss, unsupported/network filesystems and non-cooperating writers not certified",
+    "Explicit approval to unlock production ROOT or schedule automatic updates not given"
+  ],
+  "source_test_files": [
+    "tests/test_sync_transaction_crash.py",
+    "tests/test_incremental_sync_isolation.py",
+    "scripts/audit_incremental_sync_isolation.py",
+    "scripts/rehearse_incremental_full_snapshot.py"
+  ],
+  "assertion": "An offline PASS does not authorize actual Cheongju City Council incremental harvesting."
+}
