@@ -1,0 +1,68 @@
+name: Publish one-time synthetic cross-year migration ledger
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/publish-cross-year-migration-ledger.yml
+permissions:
+  contents: write
+concurrency:
+  group: publish-cross-year-migration-ledger
+  cancel-in-progress: false
+jobs:
+  ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm regression tests, strict source SHA baseline, SIGKILL deletion recovery
+        run: |
+          python -m unittest discover -s tests -v
+          python scripts/audit_stage_c.py --output /tmp/baseline-before-migration.json
+      - name: Independently generate exact 2339 synthetic migration results
+        run: python -u scripts/rehearse_cross_year_migration_full_snapshot.py
+      - name: Require safe result and no actual source modifications
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open("reports/synthetic-cross-year-migration-full-2339-qa.json"))
+          assert r["status"]=="PASS"
+          assert r["original_saved_meetings"]==2339 and r["temporary_current_meetings"]==2339
+          assert r["unchanged_other_originals"]==2338
+          assert r["one_moved_original_prior_bytes_preserved"]
+          assert r["obsolete_path_removed_from_copy"]
+          assert r["new_canonical_path_present_in_copy"]
+          assert r["revision_ledger_entries"]==1
+          assert r["stage_c_result"]=="PASS"
+          assert r["stage_c_verified_current_files"]==2339
+          assert r["stage_c_verified_immutable_revisions"]==1
+          assert r["exported_current_meetings"]==2339
+          assert r["official_site_requests"]==0 and not r["source_repository_files_modified"]
+          assert r["production_sync_still_locked"]
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Commit generated QA ledger to development branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/synthetic-cross-year-migration-full-2339-qa.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: store 2339-row original-preserving cross-year migration ledger"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Preserve machine-readable workflow evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: complete-cross-year-migration-2339-qa
+          path: reports/synthetic-cross-year-migration-full-2339-qa.json
+          if-no-files-found: warn
