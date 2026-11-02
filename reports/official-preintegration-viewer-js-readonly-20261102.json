@@ -1,0 +1,144 @@
+{
+  "schema": "official-premerger-viewer-click-js-metadata/1",
+  "checked_at_utc": "2026-11-02T07:41:33.516874+00:00",
+  "requests_attempted": 2,
+  "request_cap": 2,
+  "retries": 0,
+  "sources": [
+    {
+      "scope": "cheongju_old_city",
+      "http_status": 200,
+      "bytes": 3578,
+      "sha256": "1c28e4589e86faf707fe2375ec1514bcfa5068df15d016f522436005aa6845ae",
+      "viewer_reference_confirmed": true,
+      "script_references": [
+        "/minuteschj/img/svc/jquery/tree/ajax-loader.gif",
+        "/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php?schSn="
+      ],
+      "php_references": [
+        "//www.opensource.org/licenses/mit-license.php",
+        "/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php"
+      ],
+      "source_contexts": [
+        {
+          "marker": "Viewer",
+          "evidence": "str+=\"<span class='file'>\"; str+=\"<a href=\\\"/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php?schSn=\"+this.var12+\"#an\"+this.var11+\"\\\" \"; str+=\"return false;\\\" title=\\\"\\\" target=\\\"_blank\\\">\"+this.text+\"</a></span>\"; current = $(\"<"
+        },
+        {
+          "marker": "schSn",
+          "evidence": "<span class='file'>\"; str+=\"<a href=\\\"/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php?schSn=\"+this.var12+\"#an\"+this.var11+\"\\\" \"; str+=\"return false;\\\" title=\\\"\\\" target=\\\"_blank\\\">\"+this.text+\"</a></span>\"; current = $(\"<li/>\").att"
+        },
+        {
+          "marker": "var12",
+          "evidence": "this.var07+\"','\"+this.var08+\"','\"+this.var09+\"','\"+this.var10+\"','\"+this.var11+\"','\"+this.var12+\"')\\\">\"+this.text+\"</span>\").appendTo(parent); } else{ str+=\"<span class='file'>\"; str+=\"<a href=\\\"/minuteschj/svc/web/cms/mnts/Svc"
+        },
+        {
+          "marker": "var12",
+          "evidence": "file'>\"; str+=\"<a href=\\\"/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php?schSn=\"+this.var12+\"#an\"+this.var11+\"\\\" \"; str+=\"return false;\\\" title=\\\"\\\" target=\\\"_blank\\\">\"+this.text+\"</a></span>\"; current = $(\"<li/>\").attr(\"id\", this."
+        },
+        {
+          "marker": "var12",
+          "evidence": "\"var08\":_var08, \"var09\":_var09, \"var10\":_var10, \"var11\":_var11, \"var12\":_var12 }, type: \"post\", success: function(response) { child.empty(); $.each(response, createNode, [child]); $(container)."
+        },
+        {
+          "marker": "var12",
+          "evidence": "r08\":_var08, \"var09\":_var09, \"var10\":_var10, \"var11\":_var11, \"var12\":_var12 }, type: \"post\", success: function(response) { child.empty(); $.each(response, createNode, [child]); $(container).treeview"
+        },
+        {
+          "marker": "click",
+          "evidence": "Children) { current=$(\"<li/>\").attr(\"id\",this.id || \"\").html(\"<span class='folder' onclick=\\\"setvar('\"+this.var01+\"','\"+this.var02+\"','\"+this.var03+\"','\"+this.var04+\"','\"+this.var05+\"','\"+this.var06+\"','\"+this.var07+\"','\"+this.var08+\"','\"+t"
+        },
+        {
+          "marker": "href",
+          "evidence": "/span>\").appendTo(parent); } else{ str+=\"<span class='file'>\"; str+=\"<a href=\\\"/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php?schSn=\"+this.var12+\"#an\"+this.var11+\"\\\" \"; str+=\"return false;\\\" title=\\\"\\\" target=\\\"_blank\\\">\""
+        },
+        {
+          "marker": "setvar",
+          "evidence": ") { current=$(\"<li/>\").attr(\"id\",this.id || \"\").html(\"<span class='folder' onclick=\\\"setvar('\"+this.var01+\"','\"+this.var02+\"','\"+this.var03+\"','\"+this.var04+\"','\"+this.var05+\"','\"+this.var06+\"','\"+this.var07+\"','\"+this.var08+\"','\"+this.var09"
+        },
+        {
+          "marker": "url",
+          "evidence": "(this.children, createNode, [branch]); } } } $.ajax($.extend(true, { url: settings.url, dataType: \"json\", data: { \"additional\": function() { return \"yeah: \" + new Date; }, \"var01\":_var01,"
+        },
+        {
+          "marker": "url",
+          "evidence": ", createNode, [branch]); } } } $.ajax($.extend(true, { url: settings.url, dataType: \"json\", data: { \"additional\": function() { return \"yeah: \" + new Date; }, \"var01\":_var01, \"var02\":_var02"
+        },
+        {
+          "marker": "url",
+          "evidence": "var proxied = $.fn.treeview; $.fn.treeview = function(settings) { if (!settings.url) { return proxied.apply(this, arguments); } var container = this; if (!container.children().size()) { load(settings, \"source\", this,"
+        }
+      ]
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "http_status": 200,
+      "bytes": 3578,
+      "sha256": "adf8afd6845d1c525757fee46f4c9b40371c82bc0b6a5d13834afe77ae9070ec",
+      "viewer_reference_confirmed": true,
+      "script_references": [
+        "/minuteschj/img/svc/jquery/tree/ajax-loader.gif",
+        "/minuteschw/svc/web/cms/mnts/SvcMntsViewer.php?schSn="
+      ],
+      "php_references": [
+        "//www.opensource.org/licenses/mit-license.php",
+        "/minuteschw/svc/web/cms/mnts/SvcMntsViewer.php"
+      ],
+      "source_contexts": [
+        {
+          "marker": "Viewer",
+          "evidence": "str+=\"<span class='file'>\"; str+=\"<a href=\\\"/minuteschw/svc/web/cms/mnts/SvcMntsViewer.php?schSn=\"+this.var12+\"#an\"+this.var11+\"\\\" \"; str+=\"return false;\\\" title=\\\"\\\" target=\\\"_blank\\\">\"+this.text+\"</a></span>\"; current = $(\"<"
+        },
+        {
+          "marker": "schSn",
+          "evidence": "<span class='file'>\"; str+=\"<a href=\\\"/minuteschw/svc/web/cms/mnts/SvcMntsViewer.php?schSn=\"+this.var12+\"#an\"+this.var11+\"\\\" \"; str+=\"return false;\\\" title=\\\"\\\" target=\\\"_blank\\\">\"+this.text+\"</a></span>\"; current = $(\"<li/>\").att"
+        },
+        {
+          "marker": "var12",
+          "evidence": "this.var07+\"','\"+this.var08+\"','\"+this.var09+\"','\"+this.var10+\"','\"+this.var11+\"','\"+this.var12+\"')\\\">\"+this.text+\"</span>\").appendTo(parent); } else{ str+=\"<span class='file'>\"; str+=\"<a href=\\\"/minuteschw/svc/web/cms/mnts/Svc"
+        },
+        {
+          "marker": "var12",
+          "evidence": "file'>\"; str+=\"<a href=\\\"/minuteschw/svc/web/cms/mnts/SvcMntsViewer.php?schSn=\"+this.var12+\"#an\"+this.var11+\"\\\" \"; str+=\"return false;\\\" title=\\\"\\\" target=\\\"_blank\\\">\"+this.text+\"</a></span>\"; current = $(\"<li/>\").attr(\"id\", this."
+        },
+        {
+          "marker": "var12",
+          "evidence": "\"var08\":_var08, \"var09\":_var09, \"var10\":_var10, \"var11\":_var11, \"var12\":_var12 }, type: \"post\", success: function(response) { child.empty(); $.each(response, createNode, [child]); $(container)."
+        },
+        {
+          "marker": "var12",
+          "evidence": "r08\":_var08, \"var09\":_var09, \"var10\":_var10, \"var11\":_var11, \"var12\":_var12 }, type: \"post\", success: function(response) { child.empty(); $.each(response, createNode, [child]); $(container).treeview"
+        },
+        {
+          "marker": "click",
+          "evidence": "Children) { current=$(\"<li/>\").attr(\"id\",this.id || \"\").html(\"<span class='folder' onclick=\\\"setvar('\"+this.var01+\"','\"+this.var02+\"','\"+this.var03+\"','\"+this.var04+\"','\"+this.var05+\"','\"+this.var06+\"','\"+this.var07+\"','\"+this.var08+\"','\"+t"
+        },
+        {
+          "marker": "href",
+          "evidence": "/span>\").appendTo(parent); } else{ str+=\"<span class='file'>\"; str+=\"<a href=\\\"/minuteschw/svc/web/cms/mnts/SvcMntsViewer.php?schSn=\"+this.var12+\"#an\"+this.var11+\"\\\" \"; str+=\"return false;\\\" title=\\\"\\\" target=\\\"_blank\\\">\""
+        },
+        {
+          "marker": "setvar",
+          "evidence": ") { current=$(\"<li/>\").attr(\"id\",this.id || \"\").html(\"<span class='folder' onclick=\\\"setvar('\"+this.var01+\"','\"+this.var02+\"','\"+this.var03+\"','\"+this.var04+\"','\"+this.var05+\"','\"+this.var06+\"','\"+this.var07+\"','\"+this.var08+\"','\"+this.var09"
+        },
+        {
+          "marker": "url",
+          "evidence": "(this.children, createNode, [branch]); } } } $.ajax($.extend(true, { url: settings.url, dataType: \"json\", data: { \"additional\": function() { return \"yeah: \" + new Date; }, \"var01\":_var01,"
+        },
+        {
+          "marker": "url",
+          "evidence": ", createNode, [branch]); } } } $.ajax($.extend(true, { url: settings.url, dataType: \"json\", data: { \"additional\": function() { return \"yeah: \" + new Date; }, \"var01\":_var01, \"var02\":_var02"
+        },
+        {
+          "marker": "url",
+          "evidence": "var proxied = $.fn.treeview; $.fn.treeview = function(settings) { if (!settings.url) { return proxied.apply(this, arguments); } var container = this; if (!container.children().size()) { load(settings, \"source\", this,"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "archive_modified": false,
+  "existing_minutes_saved": 0,
+  "prod_sync_enabled": false,
+  "status": "PASS_TWO_OFFICIAL_VIEWER_CLICK_JS_READ"
+}
