@@ -46,8 +46,17 @@ def partition_bill_proposer_rows(bills:list[dict],links:list[dict])->tuple[list[
         key=str(row.get("internal_number"))
         if key not in by_id:
             raise ValueError(f"Proposer membership references unknown bill: {key}")
-        source_type=by_id[key].get("proposer_type_list") or by_id[key].get("proposer_type")
-        if source_type=="의원":
+        source_list=str(by_id[key].get("proposer_type_list") or "").strip()
+        source_detail=str(by_id[key].get("proposer_type") or "").strip()
+        # A personal proposal may be represented by either display, but it
+        # must not contradict the other official field. An institutional
+        # label in EITHER field vetoes counting the name as a legislator's
+        # personally proposed bill. This is conservative and lossless:
+        # quarantined records remain in the raw source export.
+        has_personal=(source_list=="의원" or source_detail=="의원")
+        has_contradiction=(bool(source_list) and bool(source_detail)
+                           and source_list!=source_detail)
+        if has_personal and not has_contradiction:
             personal.append(row)
         else:
             quarantine.append(row)
