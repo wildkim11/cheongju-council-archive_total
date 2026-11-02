@@ -167,8 +167,11 @@ def scenario_publish_copy_failure():
         before=snapshot(root)
         copy_source=c.shutil.copyfile
         error=None
+        fault_injected=[False]
         def fail_on_index(src,dst,*args,**kwargs):
-            if Path(dst).is_relative_to(root) and Path(dst).as_posix().endswith("indexes/integrated/meetings.json"):
+            if (not fault_injected[0] and Path(dst).is_relative_to(root)
+                and Path(dst).as_posix().endswith("indexes/integrated/meetings.json")):
+                fault_injected[0]=True
                 raise OSError("simulated disk/publish failure")
             return copy_source(src,dst,*args,**kwargs)
         try:
@@ -178,8 +181,9 @@ def scenario_publish_copy_failure():
         after=snapshot(root)
         return {
             "error_propagated":error=="OSError",
-            "partial_publication_mutated_destination":after!=before,
-            "new_markdown_exists":(root/"archive/meetings/cheongju_integrated/term-4/2026/minutes-908.md").exists(),
+            "rollback_restored_destination":after==before,
+            "fault_was_injected":fault_injected[0],
+            "new_markdown_exists_after_rollback":(root/"archive/meetings/cheongju_integrated/term-4/2026/minutes-908.md").exists(),
             "canonical_index_unchanged":read_json(root/"indexes/integrated/meetings.json")[0]["source_id"]=="907"
                 and len(read_json(root/"indexes/integrated/meetings.json"))==1,
         }
@@ -229,7 +233,8 @@ def diagnose():
         "derived_exports_and_shards_not_updated":results["new_and_derived"]["derived_meetings_export_stale"] and results["new_and_derived"]["term_shard_stale"],
         "same_id_metadata_transition_requires_versioned_history":results["same_id_status"]["same_id_transition_safely_rejected"],
         "same_id_content_revision_requires_versioned_history":results["same_id_body"]["same_id_body_revision_safely_rejected"],
-        "publish_failure_leaves_partial_target":results["publish_failure"]["partial_publication_mutated_destination"] and results["publish_failure"]["canonical_index_unchanged"],
+        "publish_exception_can_leave_partial_target":not results["publish_failure"]["rollback_restored_destination"],
+        "unexpected_process_termination_crash_atomicity_not_proven":True,
         "many_to_one_provisional_replacements_allowed":not results["colliding_replacements"]["many_to_one_rejected"]
     }
     return {
@@ -240,6 +245,7 @@ def diagnose():
             "new_markdown_appended_without_editing_old_source":results["new_and_derived"]["added_new_source"] and results["new_and_derived"]["original_markdown_unchanged"],
             "remote_fetch_failure_aborts_without_writes":results["remote_failure"]["error_propagated"] and results["remote_failure"]["fixture_unchanged"],
             "real_repository_sync_hard_interlock":results["real_repository_interlock"]["real_root_interlock_pass"],
+            "caught_publish_exception_restores_full_fixture":results["publish_failure"]["rollback_restored_destination"] and results["publish_failure"]["fault_was_injected"],
             "same_id_metadata_and_original_bytes_fail_closed":(
                 results["same_id_status"]["same_id_transition_safely_rejected"]
                 and results["same_id_status"]["fixture_unchanged"]
