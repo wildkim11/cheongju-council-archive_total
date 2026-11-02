@@ -1,10 +1,6 @@
 name: One-time official meeting tree discrepancy QA
+# Completed one-time evidence job. Manual re-execution only.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/audit-official-tree-differences.yml
   workflow_dispatch:
 permissions:
   contents: read
