@@ -1,0 +1,148 @@
+name: Cheongju official minutes staged autonomous monitor (READ ONLY)
+# Staged implementation. To activate a true recurring schedule:
+# 1) pass full historic cycle, scheduled-run and notification delivery release gates
+# 2) receive explicit user approval for production operating changes
+# 3) merge reviewed workflow to the default branch
+# 4) add the following schedule stanza:
+#    schedule:
+#      - cron: '30 7 * * *'
+#        timezone: 'Asia/Seoul'
+# Scheduled GitHub Actions run ONLY on the default branch. No schedule yet.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cheongju-official-council-readonly-daily
+  cancel-in-progress: false
+
+jobs:
+  monitor-official:
+    runs-on: macos-latest
+    timeout-minutes: 35
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout approved official source archive
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source archive before contact with official site
+        run: python scripts/audit_stage_c.py --output /tmp/daily-cheongju-before-readonly.json
+      - name: Read complete current term4 official inventory and bounded body samples
+        run: |
+          python -u scripts/monitor_official_incremental_preflight.py \
+            --output reports/official-incremental-monitor-readonly-latest.json
+      - name: Read one complete official historic session per each term 1 2 3
+        run: |
+          python -u scripts/monitor_official_historical_rotation_macos.py \
+            --output reports/official-historical-rolling-readonly-latest.json
+      - name: Verify source originals, canonical indexes and exports were never modified
+        if: always()
+        run: |
+          git diff --exit-code -- archive indexes exports
+          python scripts/audit_stage_c.py --output /tmp/daily-cheongju-after-readonly.json
+      - name: Write daily monitoring summary
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          lines=['## 청주시의회 공식 회의록 읽기전용 감시',
+                 '',
+                 '**운영 원본 자동갱신: 비활성화**',
+                 '',
+                 '| 검사 | 상태 |',
+                 '|---|---|']
+          for file,label in (
+            ('reports/official-incremental-monitor-readonly-latest.json','제4대 목록/본문'),
+            ('reports/official-historical-rolling-readonly-latest.json','제1~3대 회기별 순환'),
+          ):
+            p=Path(file)
+            if p.exists():
+              obj=json.loads(p.read_text(encoding='utf-8'))
+              lines.append(f'| {label} | {obj.get("status","UNKNOWN")} |')
+            else:
+              lines.append(f'| {label} | 미실행/실패 |')
+          lines += ['','기존 원본은 수정하지 않으며, 누락이나 오류를 원본 삭제로 해석하지 않습니다.']
+          text='\n'.join(lines)+'\n'
+          target=os.getenv('GITHUB_STEP_SUMMARY')
+          if target:
+              with open(target,'a',encoding='utf-8') as out:
+                  out.write(text)
+          print(text)
+          PY
+      - name: Preserve term4 read-only report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-term4-daily-readonly
+          path: reports/official-incremental-monitor-readonly-latest.json
+          if-no-files-found: warn
+      - name: Preserve historic session read-only report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-historic-daily-readonly
+          path: reports/official-historical-rolling-readonly-latest.json
+          if-no-files-found: warn
+
+  report-issues-on-scheduled-operations:
+    # Currently unreachable: no schedule configured and default branch unchanged.
+    # Later, issues are an auditable alert, NOT proof of an email/push arrival.
+    if: always() && github.ref == 'refs/heads/main' && github.event_name == 'schedule'
+    needs: monitor-official
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve official term4 daily result if available
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: official-term4-daily-readonly
+          path: reports
+      - name: Retrieve historic daily result if available
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: official-historic-daily-readonly
+          path: reports
+      - name: Calculate no-body deduplicated issue alert
+        id: alert
+        env:
+          JOB_RESULT: ${{ needs.monitor-official.result }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python scripts/prepare_official_operations_alert.py \
+            --job-result "$JOB_RESULT" \
+            --run-url "$RUN_URL"
+      - name: Create issue or append only previously unseen candidate/error fingerprint
+        if: steps.alert.outputs.kind != 'none'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          ALERT_TITLE: ${{ steps.alert.outputs.title }}
+          FINGERPRINT: ${{ steps.alert.outputs.fingerprint }}
+        run: |
+          set -euo pipefail
+          existing="$(gh issue list --repo "$REPO" --state open --limit 200 \
+            --json number,title | python -c \
+            'import json,os,sys; a=json.load(sys.stdin); print(next((str(v["number"]) for v in a if v["title"]==os.environ["ALERT_TITLE"]), ""))')"
+          if [ -z "$existing" ]; then
+            gh issue create --repo "$REPO" --title "$ALERT_TITLE" \
+              --body-file reports/official-operations-alert-body.md
+          else
+            gh issue view "$existing" --repo "$REPO" --json body,comments \
+              | python -c \
+                'import json,os,sys; d=json.load(sys.stdin); h="FINGERPRINT="+os.environ["FINGERPRINT"]; contents=d.get("body","")+"\n"+"\n".join(x.get("body","") for x in d.get("comments",[])); sys.exit(0 if h in contents else 2)' \
+              && echo "Existing identical monitored issue; no repeated notification" \
+              || gh issue comment "$existing" --repo "$REPO" \
+                   --body-file reports/official-operations-alert-body.md
+          fi
