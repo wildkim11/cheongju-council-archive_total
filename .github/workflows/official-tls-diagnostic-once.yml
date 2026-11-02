@@ -1,10 +1,7 @@
 name: One-time TLS-only connectivity diagnosis for official council domains
+# Initial bounded read-only external validation has finished.
+# No automatic or scheduled further connection attempts.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/official-tls-diagnostic-once.yml
   workflow_dispatch:
 
 permissions:
