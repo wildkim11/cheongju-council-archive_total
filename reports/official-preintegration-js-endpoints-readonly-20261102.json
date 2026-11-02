@@ -1,0 +1,342 @@
+{
+  "schema": "official-preintegration-js-source-refs/1",
+  "checked_at_utc": "2026-11-02T07:34:57.590707+00:00",
+  "requests_attempted": 4,
+  "request_limit": 4,
+  "retries": 0,
+  "sources": [
+    {
+      "scope": "cheongju_old_city",
+      "path": "/minuteschj/js/svc/svc.mnts.tree.js",
+      "status": 200,
+      "bytes": 1144,
+      "sha256": "688a355d7647c46982f9076327ea10c22a966f9d25a7db0add1549a682a72d08",
+      "candidate_only": true,
+      "source_contexts": [
+        {
+          "keyword": "TreeGnrtn",
+          "context": "function initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false,"
+        },
+        {
+          "keyword": "TreeGnrtn",
+          "context": "n initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr,"
+        },
+        {
+          "keyword": "TreeYear",
+          "context": "tatus) { }, complete : function(xhr, status) { } } }); } function initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false,"
+        },
+        {
+          "keyword": "TreeYear",
+          "context": "on initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr,"
+        },
+        {
+          "keyword": "SvcMnts",
+          "context": "function initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : func"
+        },
+        {
+          "keyword": "SvcMnts",
+          "context": "function initMntsTreeCmmt(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : funct"
+        },
+        {
+          "keyword": "SvcMnts",
+          "context": "function initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : funct"
+        },
+        {
+          "keyword": "SvcMnts",
+          "context": "function initMntsTreeAdt(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : functi"
+        },
+        {
+          "keyword": "url:",
+          "context": "function initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr"
+        },
+        {
+          "keyword": "url:",
+          "context": "xhr, status) { } } }); } function initMntsTreeCmmt(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr,"
+        },
+        {
+          "keyword": "url:",
+          "context": "r, status) { } } }); } function initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr,"
+        },
+        {
+          "keyword": "url:",
+          "context": "(xhr, status) { } } }); } function initMntsTreeAdt(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr,"
+        },
+        {
+          "keyword": "ajax",
+          "context": "(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) {"
+        },
+        {
+          "keyword": "ajax",
+          "context": "t(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) {"
+        },
+        {
+          "keyword": "ajax",
+          "context": "r(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) {"
+        },
+        {
+          "keyword": "ajax",
+          "context": "dt(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) {"
+        },
+        {
+          "keyword": "var10",
+          "context": ".treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) { } } }); } fu"
+        },
+        {
+          "keyword": "var10",
+          "context": ").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) { } } }); }"
+        },
+        {
+          "keyword": "var10",
+          "context": ").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) { } } }); } fu"
+        },
+        {
+          "keyword": "var10",
+          "context": "\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) { } } }); }"
+        },
+        {
+          "keyword": "minuteschj",
+          "context": "function initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) {"
+        },
+        {
+          "keyword": "minuteschj",
+          "context": "atus) { } } }); } function initMntsTreeCmmt(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) {"
+        },
+        {
+          "keyword": "minuteschj",
+          "context": "us) { } } }); } function initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) {"
+        },
+        {
+          "keyword": "minuteschj",
+          "context": "tatus) { } } }); } function initMntsTreeAdt(v) { $(\"#mixed\").treeview({ url: \"/minuteschj/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) {"
+        }
+      ],
+      "literal_php_paths": [
+        "/minuteschj/svc/web/cms/mnts/SvcMntsTreeAdt.php",
+        "/minuteschj/svc/web/cms/mnts/SvcMntsTreeCmmt.php",
+        "/minuteschj/svc/web/cms/mnts/SvcMntsTreeGnrtn.php",
+        "/minuteschj/svc/web/cms/mnts/SvcMntsTreeYear.php"
+      ],
+      "literal_tree_names": [
+        "SvcMntsTreeAdt",
+        "SvcMntsTreeCmmt",
+        "SvcMntsTreeGnrtn",
+        "SvcMntsTreeYear"
+      ],
+      "finding": "JS_SOURCE_READABLE_ENDPOINT_REFERENCE_DISCOVERY"
+    },
+    {
+      "scope": "cheongju_old_city",
+      "path": "/minuteschj/js/svc/svc.mnts.tree.var.js",
+      "status": 200,
+      "bytes": 549,
+      "sha256": "2e058654ca0e3a9bd06d596964a854a7de6b6942679286c1d47456ecd06ef06c",
+      "candidate_only": true,
+      "source_contexts": [
+        {
+          "keyword": "var10",
+          "context": "var _var05 = \"\"; var _var06 = \"\"; var _var07 = \"\"; var _var08 = \"\"; var _var09 = \"\"; var _var10 = \"\"; var _var11 = \"\"; var _var12 = \"\"; function setvar(var01,var02,var03,var04,var05,var06,var07,var08,var09,var10,var11,var12) { _var01 ="
+        },
+        {
+          "keyword": "var10",
+          "context": "= \"\"; var _var12 = \"\"; function setvar(var01,var02,var03,var04,var05,var06,var07,var08,var09,var10,var11,var12) { _var01 = var01; _var02 = var02; _var03 = var03; _var04 = var04; _var05 = var05; _var06 = var06; _var07 = var07; _"
+        },
+        {
+          "keyword": "var10",
+          "context": "; _var05 = var05; _var06 = var06; _var07 = var07; _var08 = var08; _var09 = var09; _var10 = var10; _var11 = var11; _var12 = var12; }"
+        },
+        {
+          "keyword": "var10",
+          "context": "05 = var05; _var06 = var06; _var07 = var07; _var08 = var08; _var09 = var09; _var10 = var10; _var11 = var11; _var12 = var12; }"
+        },
+        {
+          "keyword": "var11",
+          "context": "var _var06 = \"\"; var _var07 = \"\"; var _var08 = \"\"; var _var09 = \"\"; var _var10 = \"\"; var _var11 = \"\"; var _var12 = \"\"; function setvar(var01,var02,var03,var04,var05,var06,var07,var08,var09,var10,var11,var12) { _var01 = var01; _var02 ="
+        },
+        {
+          "keyword": "var11",
+          "context": "var _var12 = \"\"; function setvar(var01,var02,var03,var04,var05,var06,var07,var08,var09,var10,var11,var12) { _var01 = var01; _var02 = var02; _var03 = var03; _var04 = var04; _var05 = var05; _var06 = var06; _var07 = var07; _var08"
+        },
+        {
+          "keyword": "var11",
+          "context": "; _var06 = var06; _var07 = var07; _var08 = var08; _var09 = var09; _var10 = var10; _var11 = var11; _var12 = var12; }"
+        },
+        {
+          "keyword": "var11",
+          "context": "06 = var06; _var07 = var07; _var08 = var08; _var09 = var09; _var10 = var10; _var11 = var11; _var12 = var12; }"
+        }
+      ],
+      "literal_php_paths": [],
+      "literal_tree_names": [],
+      "finding": "JS_SOURCE_READABLE_ENDPOINT_REFERENCE_DISCOVERY"
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "path": "/minuteschw/js/svc/svc.mnts.tree.js",
+      "status": 200,
+      "bytes": 1144,
+      "sha256": "b7dfb5e7c40b68dd6821a6573ee3fc8045e9aec0f5b62a10577d75837db1f60b",
+      "candidate_only": true,
+      "source_contexts": [
+        {
+          "keyword": "TreeGnrtn",
+          "context": "function initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false,"
+        },
+        {
+          "keyword": "TreeGnrtn",
+          "context": "n initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr,"
+        },
+        {
+          "keyword": "TreeYear",
+          "context": "tatus) { }, complete : function(xhr, status) { } } }); } function initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false,"
+        },
+        {
+          "keyword": "TreeYear",
+          "context": "on initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr,"
+        },
+        {
+          "keyword": "SvcMnts",
+          "context": "function initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : func"
+        },
+        {
+          "keyword": "SvcMnts",
+          "context": "function initMntsTreeCmmt(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : funct"
+        },
+        {
+          "keyword": "SvcMnts",
+          "context": "function initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : funct"
+        },
+        {
+          "keyword": "SvcMnts",
+          "context": "function initMntsTreeAdt(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : functi"
+        },
+        {
+          "keyword": "url:",
+          "context": "function initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr"
+        },
+        {
+          "keyword": "url:",
+          "context": "xhr, status) { } } }); } function initMntsTreeCmmt(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr,"
+        },
+        {
+          "keyword": "url:",
+          "context": "r, status) { } } }); } function initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr,"
+        },
+        {
+          "keyword": "url:",
+          "context": "(xhr, status) { } } }); } function initMntsTreeAdt(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr,"
+        },
+        {
+          "keyword": "ajax",
+          "context": "(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) {"
+        },
+        {
+          "keyword": "ajax",
+          "context": "t(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) {"
+        },
+        {
+          "keyword": "ajax",
+          "context": "r(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) {"
+        },
+        {
+          "keyword": "ajax",
+          "context": "dt(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) {"
+        },
+        {
+          "keyword": "var10",
+          "context": ".treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) { } } }); } fu"
+        },
+        {
+          "keyword": "var10",
+          "context": ").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) { } } }); }"
+        },
+        {
+          "keyword": "var10",
+          "context": ").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) { } } }); } fu"
+        },
+        {
+          "keyword": "var10",
+          "context": "\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) { }, complete : function(xhr, status) { } } }); }"
+        },
+        {
+          "keyword": "minuteschw",
+          "context": "function initMntsTreeGnrtn(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeGnrtn.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) {"
+        },
+        {
+          "keyword": "minuteschw",
+          "context": "atus) { } } }); } function initMntsTreeCmmt(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeCmmt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) {"
+        },
+        {
+          "keyword": "minuteschw",
+          "context": "us) { } } }); } function initMntsTreeYear(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeYear.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) {"
+        },
+        {
+          "keyword": "minuteschw",
+          "context": "tatus) { } } }); } function initMntsTreeAdt(v) { $(\"#mixed\").treeview({ url: \"/minuteschw/svc/web/cms/mnts/SvcMntsTreeAdt.php\", ajax: { data:{\"var10\":v}, cache:false, type:\"post\", error : function(xhr, status) {"
+        }
+      ],
+      "literal_php_paths": [
+        "/minuteschw/svc/web/cms/mnts/SvcMntsTreeAdt.php",
+        "/minuteschw/svc/web/cms/mnts/SvcMntsTreeCmmt.php",
+        "/minuteschw/svc/web/cms/mnts/SvcMntsTreeGnrtn.php",
+        "/minuteschw/svc/web/cms/mnts/SvcMntsTreeYear.php"
+      ],
+      "literal_tree_names": [
+        "SvcMntsTreeAdt",
+        "SvcMntsTreeCmmt",
+        "SvcMntsTreeGnrtn",
+        "SvcMntsTreeYear"
+      ],
+      "finding": "JS_SOURCE_READABLE_ENDPOINT_REFERENCE_DISCOVERY"
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "path": "/minuteschw/js/svc/svc.mnts.tree.var.js",
+      "status": 200,
+      "bytes": 549,
+      "sha256": "2e058654ca0e3a9bd06d596964a854a7de6b6942679286c1d47456ecd06ef06c",
+      "candidate_only": true,
+      "source_contexts": [
+        {
+          "keyword": "var10",
+          "context": "var _var05 = \"\"; var _var06 = \"\"; var _var07 = \"\"; var _var08 = \"\"; var _var09 = \"\"; var _var10 = \"\"; var _var11 = \"\"; var _var12 = \"\"; function setvar(var01,var02,var03,var04,var05,var06,var07,var08,var09,var10,var11,var12) { _var01 ="
+        },
+        {
+          "keyword": "var10",
+          "context": "= \"\"; var _var12 = \"\"; function setvar(var01,var02,var03,var04,var05,var06,var07,var08,var09,var10,var11,var12) { _var01 = var01; _var02 = var02; _var03 = var03; _var04 = var04; _var05 = var05; _var06 = var06; _var07 = var07; _"
+        },
+        {
+          "keyword": "var10",
+          "context": "; _var05 = var05; _var06 = var06; _var07 = var07; _var08 = var08; _var09 = var09; _var10 = var10; _var11 = var11; _var12 = var12; }"
+        },
+        {
+          "keyword": "var10",
+          "context": "05 = var05; _var06 = var06; _var07 = var07; _var08 = var08; _var09 = var09; _var10 = var10; _var11 = var11; _var12 = var12; }"
+        },
+        {
+          "keyword": "var11",
+          "context": "var _var06 = \"\"; var _var07 = \"\"; var _var08 = \"\"; var _var09 = \"\"; var _var10 = \"\"; var _var11 = \"\"; var _var12 = \"\"; function setvar(var01,var02,var03,var04,var05,var06,var07,var08,var09,var10,var11,var12) { _var01 = var01; _var02 ="
+        },
+        {
+          "keyword": "var11",
+          "context": "var _var12 = \"\"; function setvar(var01,var02,var03,var04,var05,var06,var07,var08,var09,var10,var11,var12) { _var01 = var01; _var02 = var02; _var03 = var03; _var04 = var04; _var05 = var05; _var06 = var06; _var07 = var07; _var08"
+        },
+        {
+          "keyword": "var11",
+          "context": "; _var06 = var06; _var07 = var07; _var08 = var08; _var09 = var09; _var10 = var10; _var11 = var11; _var12 = var12; }"
+        },
+        {
+          "keyword": "var11",
+          "context": "06 = var06; _var07 = var07; _var08 = var08; _var09 = var09; _var10 = var10; _var11 = var11; _var12 = var12; }"
+        }
+      ],
+      "literal_php_paths": [],
+      "literal_tree_names": [],
+      "finding": "JS_SOURCE_READABLE_ENDPOINT_REFERENCE_DISCOVERY"
+    }
+  ],
+  "errors": [],
+  "archive_modified": false,
+  "full_legacy_inventory_claimed": false,
+  "production_collection_enabled": false,
+  "status": "PASS_FOUR_OFFICIAL_LEGACY_SCRIPTS_READ"
+}
