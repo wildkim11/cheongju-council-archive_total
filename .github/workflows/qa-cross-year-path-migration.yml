@@ -1,10 +1,6 @@
 name: One-time isolated full 2339 cross-year path migration
+# One-time verification completed; further execution requires explicit manual dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-cross-year-path-migration.yml
   workflow_dispatch:
 permissions:
   contents: read
