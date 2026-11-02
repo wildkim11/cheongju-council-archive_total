@@ -276,3 +276,14 @@
 - 실증 CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41401069874. 기계검증 reports/official-real-three-new-2342-full-copy-rehearsal-20261102.json. 코드 scripts/rehearse_real_three_new_2342_full_copy_macos.py, 무네트워크 방어 시험 tests/test_real_three_new_2342_isolated_rehearsal.py.
 - **운영 아카이브는 실제 여전히 2,339건**. 두 임시 복사본 삭제. 신규 원문 세 건 정식 반영 0건, main 및 독립 회의록 저장소 변경 0, 실운영 run_sync full/incremental 하드 잠금 유지, 자동 스케줄 OFF.
 - 남은 출시 조건: 제1~3대 최신 목록 감시 범위·요청상한, 연속 자동실행/장기 실패 후 백필, 오류 알림 실제 전송, 사용자 명시 승인 없는 자동 원본 반영을 절대 허용하지 않는 출시 정책 확인.
+
+
+## 24. [중요 범위 정정] '통합 청주시의회 제1~4대'와 통합 전 구 청주시·청원군의회는 별도 아카이브
+
+- 범위 및 인수인계: `docs/PRE_INTEGRATION_CITY_COUNTY_INCLUSION_AND_RELEASE_SCOPE_20261102.md`.
+- 이 프로젝트에는 세 기관을 `config/council_scopes.json`에 독립적으로 등록: `cheongju_integrated` / `cheongju_old_city` / `cheongwon_old_county`. 대수 번호와 source_id는 기관 간 혼합 금지.
+- **현재 원본 회의록 2,339건/실자료 2,342건 격리 검증은 통합 이후 청주시의회에만 해당.** 방금 macOS에서 검증한 제1~3대 회기 순환 조회도 **통합 이후 제1~3대**만 해당. 통합 전 시의회·군의회 회의록 원문은 `archive/meetings` 안에 아직 없다.
+- 통합 전 구 청주시 의원 명부: 공식 제4~9대 자료에서 187 재임행 후보, 대표지역 표시 187행. 구 청원군: 공식 제1~6대 자료에서 80 재임행 후보, 대표지역 표시 0행. 각각 `reports/cheongju_old_city-historical-members.json`, `reports/cheongwon_old_county-historical-members.json`; **재임행은 고유 인물 수가 아님**. 의원 명부 일부 확보를 회의록·발언·의안 데이터 완수로 오인 금지.
+- `scripts/assess_official_autonomous_release_gates.py`의 판정은 `release_council_scope=cheongju_integrated`로 명시. `preintegration_legacy_minutes_included=false`, `all_three_council_scopes_analyzer_release_authorized=false`를 항상 표시하며 별도 레거시 출처 검증 전 전범위 출시 불허.
+- 향후 구 청주시·청원군의 공식 회의록·의안 목록/뷰어 식별 및 가용기간 조사 → 기관별 최초 원문 백필/해시·미확인 범위 보존 → 각 기관 독립 변경감시 → 시간별 의원 속성/발언 연결 → 변은영 기준판 바탕 통합분석기 진입. 동명 인물을 이름만으로 결합하지 않음.
+- 기존 무인 운영 QA용 `official-autonomous-readonly-operations-staged.yml`은 통합 이후 청주시의회만 읽고, 예약 스케줄 OFF 및 실제 수집기 ROOT 잠금 유지.
