@@ -1,0 +1,190 @@
+{
+  "schema": "official-six-provisional-targeted-status/1",
+  "timestamp_utc": "2026-11-02T05:04:48.440936+00:00",
+  "host": "councilrec.cheongju.go.kr",
+  "runner": "GitHub macOS original collector TLS with verified certificate",
+  "original_index_count": 50,
+  "target_source_ids": [
+    "4017",
+    "4018",
+    "4019",
+    "4020",
+    "4021",
+    "4022"
+  ],
+  "max_requests": 4,
+  "requests_attempted": 4,
+  "retries": 0,
+  "committees": [
+    {
+      "session": "105",
+      "committee_code": "C101",
+      "leaf_count": 2,
+      "listed_source_ids": [
+        "3997",
+        "4017"
+      ],
+      "duplicate_ids": [],
+      "records": {
+        "4017": {
+          "stored_status": "provisional",
+          "live_status_code": "N",
+          "live_status": "provisional",
+          "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+          "status_changed": false,
+          "title_leaf": "제2호(2026.10.01 목요일)",
+          "official_leaf_id": "4017"
+        }
+      },
+      "potential_new_ids_in_targeted_branch": []
+    },
+    {
+      "session": "106",
+      "committee_code": "A010",
+      "leaf_count": 2,
+      "listed_source_ids": [
+        "4018",
+        "4019"
+      ],
+      "duplicate_ids": [],
+      "records": {
+        "4018": {
+          "stored_status": "provisional",
+          "live_status_code": "N",
+          "live_status": "provisional",
+          "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+          "status_changed": false,
+          "title_leaf": "개회식(2026.10.12 월요일)",
+          "official_leaf_id": "4018"
+        },
+        "4019": {
+          "stored_status": "provisional",
+          "live_status_code": "N",
+          "live_status": "provisional",
+          "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+          "status_changed": false,
+          "title_leaf": "제1호(2026.10.12 월요일)",
+          "official_leaf_id": "4019"
+        }
+      },
+      "potential_new_ids_in_targeted_branch": []
+    },
+    {
+      "session": "106",
+      "committee_code": "C403",
+      "leaf_count": 1,
+      "listed_source_ids": [
+        "4022"
+      ],
+      "duplicate_ids": [],
+      "records": {
+        "4022": {
+          "stored_status": "provisional",
+          "live_status_code": "N",
+          "live_status": "provisional",
+          "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+          "status_changed": false,
+          "title_leaf": "제1호(2026.10.14 수요일)",
+          "official_leaf_id": "4022"
+        }
+      },
+      "potential_new_ids_in_targeted_branch": []
+    },
+    {
+      "session": "106",
+      "committee_code": "C501",
+      "leaf_count": 2,
+      "listed_source_ids": [
+        "4020",
+        "4021"
+      ],
+      "duplicate_ids": [],
+      "records": {
+        "4020": {
+          "stored_status": "provisional",
+          "live_status_code": "N",
+          "live_status": "provisional",
+          "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+          "status_changed": false,
+          "title_leaf": "제1호(2026.10.13 화요일)",
+          "official_leaf_id": "4020"
+        },
+        "4021": {
+          "stored_status": "provisional",
+          "live_status_code": "N",
+          "live_status": "provisional",
+          "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+          "status_changed": false,
+          "title_leaf": "제2호(2026.10.14 수요일)",
+          "official_leaf_id": "4021"
+        }
+      },
+      "potential_new_ids_in_targeted_branch": []
+    }
+  ],
+  "errors": [],
+  "source_archive_modified": false,
+  "production_sync_enabled": false,
+  "operational_release_authorized": false,
+  "status": "PASS_ALL_SIX_OFFICIAL_STATUS_VERIFIED",
+  "results_by_id": {
+    "4017": {
+      "stored_status": "provisional",
+      "live_status_code": "N",
+      "live_status": "provisional",
+      "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+      "status_changed": false,
+      "title_leaf": "제2호(2026.10.01 목요일)",
+      "official_leaf_id": "4017"
+    },
+    "4018": {
+      "stored_status": "provisional",
+      "live_status_code": "N",
+      "live_status": "provisional",
+      "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+      "status_changed": false,
+      "title_leaf": "개회식(2026.10.12 월요일)",
+      "official_leaf_id": "4018"
+    },
+    "4019": {
+      "stored_status": "provisional",
+      "live_status_code": "N",
+      "live_status": "provisional",
+      "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+      "status_changed": false,
+      "title_leaf": "제1호(2026.10.12 월요일)",
+      "official_leaf_id": "4019"
+    },
+    "4022": {
+      "stored_status": "provisional",
+      "live_status_code": "N",
+      "live_status": "provisional",
+      "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+      "status_changed": false,
+      "title_leaf": "제1호(2026.10.14 수요일)",
+      "official_leaf_id": "4022"
+    },
+    "4020": {
+      "stored_status": "provisional",
+      "live_status_code": "N",
+      "live_status": "provisional",
+      "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+      "status_changed": false,
+      "title_leaf": "제1호(2026.10.13 화요일)",
+      "official_leaf_id": "4020"
+    },
+    "4021": {
+      "stored_status": "provisional",
+      "live_status_code": "N",
+      "live_status": "provisional",
+      "verification": "CONFIRMED_LIVE_OFFICIAL_LEAF",
+      "status_changed": false,
+      "title_leaf": "제2호(2026.10.14 수요일)",
+      "official_leaf_id": "4021"
+    }
+  },
+  "confirmed_live_status_count": 6,
+  "confirmed_status_changed_ids": [],
+  "old_snapshot_modified": false,
+  "methodology_warning": "Only four specific committee nodes, not all new/current meetings or a full inventory. Absence in a targeted node is not deletion."
+}
