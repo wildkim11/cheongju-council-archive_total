@@ -1,0 +1,96 @@
+{
+  "schema": "official-two-legacy-councils-five-body-disposable-staging/1",
+  "checked_at_utc": "2026-11-02T07:49:03.522218+00:00",
+  "original_term_session_nodes_in_all_12_terms": 437,
+  "initial_source_coverage": "5 verified leaf ID samples only; NOT full historic inventories",
+  "requests_attempted": 5,
+  "request_limit": 5,
+  "retries": 0,
+  "body_rows": [
+    {
+      "council_scope": "cheongju_old_city",
+      "source_id": "4349",
+      "meeting_id": "cheongju_old_city:minutes-4349",
+      "official_url": "https://councilrec.cheongju.go.kr/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4349",
+      "http_status": 200,
+      "content_sha256": "6d5a5451978275c67719550c13771b4c0c9b608732daa38fbae8d31610d39812",
+      "source_markdown_sha256": "0f2f13c01864be0748d7604932293ce501b39c4959ef89a33590ce32af5dad23",
+      "body_characters": 2211,
+      "stored_status_code": "N",
+      "normalized_status": null,
+      "eligible_for_public_analyzer": false
+    },
+    {
+      "council_scope": "cheongju_old_city",
+      "source_id": "4354",
+      "meeting_id": "cheongju_old_city:minutes-4354",
+      "official_url": "https://councilrec.cheongju.go.kr/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4354",
+      "http_status": 200,
+      "content_sha256": "be88a7a556904dcf7ebecb0e5761815b88742a7db04d38480c69bc52928b6590",
+      "source_markdown_sha256": "810643872e82e9036b8fd8ccd359dbadaa343615d2ce4bef2120a0e784299fb3",
+      "body_characters": 22959,
+      "stored_status_code": "N",
+      "normalized_status": null,
+      "eligible_for_public_analyzer": false
+    },
+    {
+      "council_scope": "cheongju_old_city",
+      "source_id": "4355",
+      "meeting_id": "cheongju_old_city:minutes-4355",
+      "official_url": "https://councilrec.cheongju.go.kr/minuteschj/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4355",
+      "http_status": 200,
+      "content_sha256": "aa8009f8fbdd5b6a2eccf86bd6b863951590503764de66724b8b4c825ba905cd",
+      "source_markdown_sha256": "5410557052655c3dd53221f3f24d8ba6d0fa45fc99e58c7f651ac03200b5f890",
+      "body_characters": 3152,
+      "stored_status_code": "N",
+      "normalized_status": null,
+      "eligible_for_public_analyzer": false
+    },
+    {
+      "council_scope": "cheongwon_old_county",
+      "source_id": "3163",
+      "meeting_id": "cheongwon_old_county:minutes-3163",
+      "official_url": "https://councilrec.cheongju.go.kr/minuteschw/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3163",
+      "http_status": 200,
+      "content_sha256": "b7a3aaaf2f145e27bd9a9a281f2c4d2946c3713058e3ef3cae290738a8373d5f",
+      "source_markdown_sha256": "12b3613c45032ed5b500efb6f33945174517ece5ebdd16565889964092dd34e6",
+      "body_characters": 13492,
+      "stored_status_code": "N",
+      "normalized_status": null,
+      "eligible_for_public_analyzer": false
+    },
+    {
+      "council_scope": "cheongwon_old_county",
+      "source_id": "2581",
+      "meeting_id": "cheongwon_old_county:minutes-2581",
+      "official_url": "https://councilrec.cheongju.go.kr/minuteschw/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2581",
+      "http_status": 200,
+      "content_sha256": "238b6064a2b51113cdd11afbbc179004354a4cc50d97fa51f599534a9db83e57",
+      "source_markdown_sha256": "b819372667365fc74c0ead5392ea553d8d1a8f970cf600909bec12952605b3cd",
+      "body_characters": 4621,
+      "stored_status_code": "N",
+      "normalized_status": null,
+      "eligible_for_public_analyzer": false
+    }
+  ],
+  "errors": [],
+  "staged_original_markdown_count": 5,
+  "staging_removed_after_run": true,
+  "source_archive_modified": false,
+  "integrated_original_files_modified": false,
+  "production_backfill_enabled": false,
+  "analyzer_publication_enabled": false,
+  "historic_N_code_normalized": false,
+  "scope_counts": {
+    "cheongju_old_city": 3,
+    "cheongwon_old_county": 2
+  },
+  "verified_scope_contract": {
+    "verified_staging_rows": 5,
+    "distinct_scope_aware_meeting_ids": 5,
+    "individual_council_source_id_overlap_allowed": true,
+    "operational_archive_write_allowed": false,
+    "historical_status_semantics_unverified": true
+  },
+  "status": "PASS_FIVE_REAL_OFFICIAL_LEGACY_BODIES_IN_DISPOSABLE_SCOPE_ISOLATED_STAGING"
+}
