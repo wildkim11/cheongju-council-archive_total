@@ -1,0 +1,27 @@
+name: One-time offline meeting tree discrepancy case control
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/meeting-tree-control-study.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline_control_study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Analyze date and committee matched controls from immutable snapshot
+        run: python -u scripts/analyze_tree_discrepancy_controls.py
+      - name: Upload read-only source inventory control study
+        uses: actions/upload-artifact@v4
+        with:
+          name: meeting-tree-case-control-analysis
+          path: reports/integrated-tree-discrepancy-case-control.json
+          if-no-files-found: error
