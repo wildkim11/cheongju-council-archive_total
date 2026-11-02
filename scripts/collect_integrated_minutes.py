@@ -393,7 +393,10 @@ def detect_replacements(old_rows: list[dict], live_rows: list[dict]) -> dict[str
             if _meeting_key(candidate) != _meeting_key(row):
                 continue
             d1 = dt.date.fromisoformat(candidate["date"])
-            if abs((d1 - d0).days) <= 3:
+            if (
+                abs((d1 - d0).days) <= 3
+                and candidate.get("publication_status") == "published"
+            ):
                 matches.append(candidate["meeting_id"])
 
         if len(matches) != 1:
@@ -403,6 +406,15 @@ def detect_replacements(old_rows: list[dict], live_rows: list[dict]) -> dict[str
             )
         replacements[old_id] = matches[0]
 
+    # Each disappeared provisional source must map to a DIFFERENT published
+    # successor. A many-to-one match can silently relabel two old originals as
+    # superseded by one new record and falsify the provenance graph.
+    successor_ids=list(replacements.values())
+    if len(successor_ids) != len(set(successor_ids)):
+        raise ValueError(
+            "Ambiguous many-to-one provisional replacements need manual review: "
+            + repr(replacements)
+        )
     return replacements
 
 
