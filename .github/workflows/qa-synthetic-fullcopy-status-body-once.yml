@@ -1,10 +1,7 @@
 name: One-time synthetic provisional transition and published drift full-copy QA
+# One-shot QA completed; no automatic reruns, no scheduled source polling.
+# Only explicit workflow_dispatch remains available.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-synthetic-fullcopy-status-body-once.yml
   workflow_dispatch:
 
 permissions:
