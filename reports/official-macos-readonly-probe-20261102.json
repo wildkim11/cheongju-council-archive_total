@@ -1,0 +1,49 @@
+{
+  "schema": "cheongju-official-readonly-limited-probe/1",
+  "checked_at_utc": "2026-11-02T04:45:20.594600+00:00",
+  "policy": {
+    "official_hostname": "councilrec.cheongju.go.kr",
+    "max_requests": 3,
+    "attempts_per_request": 1,
+    "timeout_per_request_seconds": 12,
+    "max_response_bytes": 12582912,
+    "minimum_seconds_between_successful_requests": 1,
+    "methods": "GET two known viewer pages; POST root generation-tree read endpoint only",
+    "no_recursive_tree": true,
+    "no_body_or_html_saved": true,
+    "no_source_writes": true
+  },
+  "baseline": {
+    "saved_index_rows": 2339,
+    "selected_official_source_ids": [
+      "3999",
+      "4019"
+    ]
+  },
+  "requests_attempted": 1,
+  "requests_succeeded": 0,
+  "samples": [],
+  "tree_root": null,
+  "errors": [
+    {
+      "request_number": 1,
+      "method": "GET",
+      "endpoint_type": "viewer",
+      "exception_type": "SSLError",
+      "message": "[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)"
+    }
+  ],
+  "source_archive_modified": false,
+  "production_sync_used": false,
+  "automatic_collection_enabled": false,
+  "status": "INCONCLUSIVE_SOURCE_UNAVAILABLE",
+  "successful_body_parses": 0,
+  "body_hash_matches": 0,
+  "operational_release_authorized": false,
+  "warning": "This is NOT a full official meeting inventory or approval for archival updates.",
+  "execution_platform": "GitHub-hosted macOS runner",
+  "runtime_platform": "macOS-26.6.2-arm64-arm-64bit",
+  "rechecked_after_prior_ubuntu_failure": true,
+  "scope": "Known archived viewer IDs 3999 and 4019, then read-only root tree only if previous calls succeed",
+  "status_does_not_authorize_collection": true
+}
