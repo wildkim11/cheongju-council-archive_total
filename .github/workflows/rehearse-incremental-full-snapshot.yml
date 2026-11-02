@@ -1,0 +1,30 @@
+name: One-time complete 2339-source offline incremental rehearsal
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/rehearse-incremental-full-snapshot.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rehearsal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rehearse 2339 original archive preservation plus one synthetic record in a disposable copy
+        run: python -u scripts/rehearse_incremental_full_snapshot.py
+      - name: Verify downloaded project archive has not changed
+        run: git diff --exit-code -- archive indexes exports
+      - name: Preserve independent QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-snapshot-2339-offline-incremental-qa
+          path: reports/incremental-full-snapshot-rehearsal.json
+          if-no-files-found: warn
