@@ -1,10 +1,7 @@
 name: One-time real new 4024 and 4025 macOS full-copy 2341 rehearsal
+# One-time evidence-collection and isolated rehearsal finished.
+# No further scheduled or push-triggered official requests.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-real-two-new-2341-full-copy-once.yml
   workflow_dispatch:
 
 permissions:
