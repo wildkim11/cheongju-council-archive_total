@@ -1,0 +1,494 @@
+{
+  "scope": "saved GitHub snapshot, offline",
+  "total_saved": 2339,
+  "saved_term_only": 13,
+  "saved_year_only": 0,
+  "term_only": [
+    {
+      "source_id": "180",
+      "term": 1,
+      "title": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회) 제4회[제2차정례회](2014. 11. 20 ~ 2014. 12. 19) 의회운영위원회 제2차(2015.01.23 금요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2015-01-23",
+      "session_start": "2014-11-20",
+      "session_end": "2014-12-19",
+      "days_after_session_end": 35,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=180",
+      "path": "archive/meetings/cheongju_integrated/term-1/2015/minutes-180.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "508",
+      "term": 1,
+      "title": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회) 제14회[제2차정례회](2015. 11. 20 ~ 2015. 12. 21) 의회운영위원회 제3차(2016.01.19 화요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2016-01-19",
+      "session_start": "2015-11-20",
+      "session_end": "2015-12-21",
+      "days_after_session_end": 29,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=508",
+      "path": "archive/meetings/cheongju_integrated/term-1/2016/minutes-508.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "896",
+      "term": 1,
+      "title": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회) 제23회[제2차정례회](2016. 11. 28 ~ 2016. 12. 19) 의회운영위원회 제3호(2017.01.24 화요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2017-01-24",
+      "session_start": "2016-11-28",
+      "session_end": "2016-12-19",
+      "days_after_session_end": 36,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=896",
+      "path": "archive/meetings/cheongju_integrated/term-1/2017/minutes-896.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "1212",
+      "term": 1,
+      "title": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회) 제31회[제2차정례회](2017. 11. 28 ~ 2017. 12. 19) 의회운영위원회 제3호(2018.01.26 금요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2018-01-26",
+      "session_start": "2017-11-28",
+      "session_end": "2017-12-19",
+      "days_after_session_end": 38,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1212",
+      "path": "archive/meetings/cheongju_integrated/term-1/2018/minutes-1212.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "1573",
+      "term": 2,
+      "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제39회[제2차정례회](2018. 11. 20 ~ 2018. 12. 20) 의회운영위원회 제3호(2019.02.07 목요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2019-02-07",
+      "session_start": "2018-11-20",
+      "session_end": "2018-12-20",
+      "days_after_session_end": 49,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1573",
+      "path": "archive/meetings/cheongju_integrated/term-2/2019/minutes-1573.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "1848",
+      "term": 2,
+      "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제48회[제2차정례회](2019. 11. 20 ~ 2019. 12. 20) 청주시미세먼지원인ㆍ실태관련행정사무조사특별위원회 제5호(2020.01.16 목요일)",
+      "committee_code": "G220",
+      "meeting_type": "administrative_investigation",
+      "meeting_date": "2020-01-16",
+      "session_start": "2019-11-20",
+      "session_end": "2019-12-20",
+      "days_after_session_end": 27,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1848",
+      "path": "archive/meetings/cheongju_integrated/term-2/2020/minutes-1848.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "1900",
+      "term": 2,
+      "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제48회[제2차정례회](2019. 11. 20 ~ 2019. 12. 20) 의회운영위원회 제2호(2020.01.31 금요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2020-01-31",
+      "session_start": "2019-11-20",
+      "session_end": "2019-12-20",
+      "days_after_session_end": 42,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1900",
+      "path": "archive/meetings/cheongju_integrated/term-2/2020/minutes-1900.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "2258",
+      "term": 2,
+      "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제59회[제2차정례회](2020. 11. 20 ~ 2020. 12. 24) 의회운영위원회 제4호(2021.01.29 금요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2021-01-29",
+      "session_start": "2020-11-20",
+      "session_end": "2020-12-24",
+      "days_after_session_end": 36,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2258",
+      "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2258.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "2257",
+      "term": 2,
+      "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제59회[제2차정례회](2020. 11. 20 ~ 2020. 12. 24) 의회운영위원회 제5호(2021.02.05 금요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2021-02-05",
+      "session_start": "2020-11-20",
+      "session_end": "2020-12-24",
+      "days_after_session_end": 43,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2257",
+      "path": "archive/meetings/cheongju_integrated/term-2/2021/minutes-2257.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "2659",
+      "term": 2,
+      "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제67회[제2차정례회](2021. 11. 22 ~ 2021. 12. 21) 의회운영위원회 제3호(2022.01.27 목요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2022-01-27",
+      "session_start": "2021-11-22",
+      "session_end": "2021-12-21",
+      "days_after_session_end": 37,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2659",
+      "path": "archive/meetings/cheongju_integrated/term-2/2022/minutes-2659.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "2951",
+      "term": 3,
+      "title": "제3대 의회(2022. 07. 01 ~ 2026. 06. 30 : 제071회 ~ 제102회) 제75회[임시회](2022. 12. 22 ~ 2022. 12. 22) 의회운영위원회 제1호(2023.02.02 목요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2023-02-02",
+      "session_start": "2022-12-22",
+      "session_end": "2022-12-22",
+      "days_after_session_end": 42,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2951",
+      "path": "archive/meetings/cheongju_integrated/term-3/2023/minutes-2951.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "3315",
+      "term": 3,
+      "title": "제3대 의회(2022. 07. 01 ~ 2026. 06. 30 : 제071회 ~ 제102회) 제83회[제2차정례회](2023. 11. 20 ~ 2023. 12. 21) 의회운영위원회 제4호(2024.02.07 수요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2024-02-07",
+      "session_start": "2023-11-20",
+      "session_end": "2023-12-21",
+      "days_after_session_end": 48,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3315",
+      "path": "archive/meetings/cheongju_integrated/term-3/2024/minutes-3315.md",
+      "index_sources": [
+        "term"
+      ]
+    },
+    {
+      "source_id": "3652",
+      "term": 3,
+      "title": "제3대 의회(2022. 07. 01 ~ 2026. 06. 30 : 제071회 ~ 제102회) 제91회[제2차정례회](2024. 11. 20 ~ 2024. 12. 20) 의회운영위원회 제3호(2025.02.06 목요일)",
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "meeting_date": "2025-02-06",
+      "session_start": "2024-11-20",
+      "session_end": "2024-12-20",
+      "days_after_session_end": 48,
+      "post_session": true,
+      "status": "published",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3652",
+      "path": "archive/meetings/cheongju_integrated/term-3/2025/minutes-3652.md",
+      "index_sources": [
+        "term"
+      ]
+    }
+  ],
+  "shared_year_tree_post_session_count": 108,
+  "shared_year_tree_post_session_cross_calendar_count": 0,
+  "shared_year_tree_post_session_same_calendar_count": 108,
+  "shared_year_tree_post_session_cross_calendar_examples": [],
+  "shared_year_tree_post_session_examples": [
+    {
+      "source_id": "15",
+      "term": 1,
+      "meeting_date": "2014-08-13",
+      "session_end": "2014-07-02",
+      "days_after_session_end": 42,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "104",
+      "term": 1,
+      "meeting_date": "2014-09-29",
+      "session_end": "2014-09-05",
+      "days_after_session_end": 24,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "355",
+      "term": 1,
+      "meeting_date": "2014-11-10",
+      "session_end": "2014-10-22",
+      "days_after_session_end": 19,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "229",
+      "term": 1,
+      "meeting_date": "2015-02-26",
+      "session_end": "2015-02-06",
+      "days_after_session_end": 20,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "285",
+      "term": 1,
+      "meeting_date": "2015-04-06",
+      "session_end": "2015-03-17",
+      "days_after_session_end": 20,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "314",
+      "term": 1,
+      "meeting_date": "2015-04-27",
+      "session_end": "2015-04-20",
+      "days_after_session_end": 7,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "373",
+      "term": 1,
+      "meeting_date": "2015-08-25",
+      "session_end": "2015-08-19",
+      "days_after_session_end": 6,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "374",
+      "term": 1,
+      "meeting_date": "2015-09-02",
+      "session_end": "2015-08-19",
+      "days_after_session_end": 14,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "360",
+      "term": 1,
+      "meeting_date": "2015-09-08",
+      "session_end": "2015-08-19",
+      "days_after_session_end": 20,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "375",
+      "term": 1,
+      "meeting_date": "2015-09-11",
+      "session_end": "2015-08-19",
+      "days_after_session_end": 23,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "389",
+      "term": 1,
+      "meeting_date": "2015-09-24",
+      "session_end": "2015-09-22",
+      "days_after_session_end": 2,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "390",
+      "term": 1,
+      "meeting_date": "2015-09-25",
+      "session_end": "2015-09-22",
+      "days_after_session_end": 3,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "391",
+      "term": 1,
+      "meeting_date": "2015-10-05",
+      "session_end": "2015-09-22",
+      "days_after_session_end": 13,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "393",
+      "term": 1,
+      "meeting_date": "2015-10-06",
+      "session_end": "2015-09-22",
+      "days_after_session_end": 14,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "394",
+      "term": 1,
+      "meeting_date": "2015-10-07",
+      "session_end": "2015-09-22",
+      "days_after_session_end": 15,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "409",
+      "term": 1,
+      "meeting_date": "2015-10-12",
+      "session_end": "2015-09-22",
+      "days_after_session_end": 20,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "451",
+      "term": 1,
+      "meeting_date": "2015-11-05",
+      "session_end": "2015-10-27",
+      "days_after_session_end": 9,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "550",
+      "term": 1,
+      "meeting_date": "2016-02-25",
+      "session_end": "2016-02-02",
+      "days_after_session_end": 23,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "586",
+      "term": 1,
+      "meeting_date": "2016-04-07",
+      "session_end": "2016-03-11",
+      "days_after_session_end": 27,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "615",
+      "term": 1,
+      "meeting_date": "2016-05-02",
+      "session_end": "2016-04-22",
+      "days_after_session_end": 10,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "791",
+      "term": 1,
+      "meeting_date": "2016-09-20",
+      "session_end": "2016-07-06",
+      "days_after_session_end": 76,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "806",
+      "term": 1,
+      "meeting_date": "2016-10-17",
+      "session_end": "2016-10-05",
+      "days_after_session_end": 12,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "813",
+      "term": 1,
+      "meeting_date": "2016-11-10",
+      "session_end": "2016-10-28",
+      "days_after_session_end": 13,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "910",
+      "term": 1,
+      "meeting_date": "2017-02-27",
+      "session_end": "2017-02-10",
+      "days_after_session_end": 17,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "927",
+      "term": 1,
+      "meeting_date": "2017-04-04",
+      "session_end": "2017-03-17",
+      "days_after_session_end": 18,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "957",
+      "term": 1,
+      "meeting_date": "2017-05-02",
+      "session_end": "2017-04-27",
+      "days_after_session_end": 5,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "1045",
+      "term": 1,
+      "meeting_date": "2017-08-30",
+      "session_end": "2017-06-30",
+      "days_after_session_end": 61,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "1109",
+      "term": 1,
+      "meeting_date": "2017-10-12",
+      "session_end": "2017-09-19",
+      "days_after_session_end": 23,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "1132",
+      "term": 1,
+      "meeting_date": "2017-11-20",
+      "session_end": "2017-10-27",
+      "days_after_session_end": 24,
+      "cross_calendar_year": false
+    },
+    {
+      "source_id": "1230",
+      "term": 1,
+      "meeting_date": "2018-02-28",
+      "session_end": "2018-02-09",
+      "days_after_session_end": 19,
+      "cross_calendar_year": false
+    }
+  ],
+  "title_session_date_parse_rejections": 0,
+  "parse_rejections_examples": [],
+  "origin": "reports/integrated-sync.json + indexes/integrated/meetings.json",
+  "interpretation": "All 13 term-only items are post-session committee meetings. This association alone does not establish why the official year tree excludes them.",
+  "generated_at_utc": "2026-11-02T00:52:40.086246+00:00",
+  "source_files_modified": false
+}
