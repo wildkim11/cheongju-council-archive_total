@@ -1,0 +1,85 @@
+name: One-time real new 4024 and 4025 macOS full-copy 2341 rehearsal
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-real-two-new-2341-full-copy-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: one-time-2341-full-copy-real-official-no-production
+  cancel-in-progress: false
+
+jobs:
+  real-two-new-disposable-snapshot:
+    runs-on: macos-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail-closed official source guard unit tests plus 2339-source hash baseline
+        run: |
+          python -m unittest discover -s tests -p test_real_two_new_2341_isolated_rehearsal.py -v
+          python scripts/audit_stage_c.py --output /tmp/original-2339-before-real-two-new-2341.json
+      - name: Official 4024 4025 two GETs plus full-copy isolated 2341 incremental and SIGKILL WAL recovery
+        run: python -u scripts/rehearse_real_two_new_2341_full_copy_macos.py
+      - name: Independently verify strict no-write result and original repository unchanged
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("reports/official-real-two-new-2341-full-copy-rehearsal-20261102.json")
+          r=json.loads(p.read_text(encoding="utf-8"))
+          assert r["schema"]=="official-real-two-new-full-copy-incremental-rehearsal/1"
+          assert r["status"]=="PASS"
+          assert r["original_source_count"]==2339
+          assert r["copy_source_count"]==2341
+          assert r["copy_existing_sources_byte_identical"]==2339
+          assert r["copy_published"]==2333
+          assert r["copy_provisional"]==8
+          assert r["copy_by_term"]=={"1":663,"2":771,"3":855,"4":52}
+          assert r["copy_sha256_files_verified"]==2341
+          assert r["copy_sha256_bodies_verified"]==2341
+          assert r["copy_analyzer_meeting_rows"]==2341
+          assert r["copy_stage_c_result"]=="PASS"
+          assert r["read_only_official_gets"]==2
+          assert r["live_official"]["body_hashes_match_previous_probe"]
+          assert r["crash_recovery"]["prior_canonical_index_exactly_restored"]
+          assert r["crash_recovery"]["prior_analyzer_meetings_and_manifest_exactly_restored"]
+          assert r["crash_recovery"]["prior_original_source_file_hashes_restored"]==2339
+          assert r["crash_recovery"]["recovered_stage_c"]=="PASS"
+          assert not r["archive_root_modified"]
+          assert not r["main_branch_modified"]
+          assert r["production_sync_hard_lock_maintained"]
+          assert not r["scheduled_collection_enabled"]
+          assert not r["operational_release_authorized"]
+          PY
+          git diff --exit-code -- archive indexes exports
+          python scripts/audit_stage_c.py --output /tmp/original-2339-after-real-two-new-2341.json
+      - name: Commit only QA report on feature branch, never originals or main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-real-two-new-2341-full-copy-rehearsal-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: real two-new 2341-source isolated macOS sync and SIGKILL WAL recovery PASS"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Preserve diagnostics, not original content
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-two-new-2341-isolated-full-copy-rehearsal
+          path: reports/official-real-two-new-2341-full-copy-rehearsal-20261102.json
+          if-no-files-found: warn
