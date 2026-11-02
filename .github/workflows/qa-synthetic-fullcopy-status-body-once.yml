@@ -1,0 +1,76 @@
+name: One-time synthetic provisional transition and published drift full-copy QA
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-synthetic-fullcopy-status-body-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+concurrency:
+  group: one-time-fullcopy-status-and-body-drift
+  cancel-in-progress: false
+
+jobs:
+  synthetic-full-copy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests verify the release hard lock and known-ID forced recheck
+        run: |
+          python -m unittest discover -s tests -p test_official_force_body_recheck.py -v
+          python scripts/audit_stage_c.py --output /tmp/pre-synthetic-status-and-body-drift-audit.json
+      - name: Rehearse synthetic N to Y and published-body drift on a byte-exact 2339 source COPY
+        run: python -u scripts/rehearse_synthetic_status_and_body_drift_full_copy.py
+      - name: Assert two immutable revisions and full export consistency without original mutation
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('reports/synthetic-status-and-published-body-drift-2339-full-copy-20261102.json'))
+          assert r['status']=='PASS'
+          assert r['data_type']=='ENTIRELY_SYNTHETIC_CHANGES_TO_EXISTING_SAVED_BODIES'
+          assert r['actual_official_site_requests']==0
+          assert r['offline_full_original_copy_source_count']==2339
+          assert r['simulated_provisional_to_published_id']=='4019'
+          assert r['simulated_published_same_id_body_drift_id']=='3999'
+          assert r['unchanged_other_originals']==2337
+          assert all(r['old_versions_immutably_preserved'].values())
+          assert r['revision_ledger_entries']==2
+          assert r['current_meetings']==2339
+          assert r['current_published']==2334 and r['current_provisional']==5
+          assert r['sha256_files_verified']==2339
+          assert r['sha256_bodies_verified']==2339
+          assert r['analyzer_export_meeting_rows']==2339
+          assert r['stage_c_audit']=='PASS'
+          assert r['production_root_unchanged']
+          assert r['production_sync_hard_lock_kept']
+          assert r['no_schedule_enabled']
+          PY
+          git diff --exit-code -- archive indexes exports
+          python scripts/audit_stage_c.py --output /tmp/post-synthetic-status-and-body-drift-audit.json
+      - name: Commit only synthetic QA evidence to protected development branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/synthetic-status-and-published-body-drift-2339-full-copy-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: full copy synthetic status transition plus published body drift preserves original revisions"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: synthetic-status-and-published-body-drift-fullcopy
+          path: reports/synthetic-status-and-published-body-drift-2339-full-copy-20261102.json
+          if-no-files-found: warn
