@@ -161,3 +161,19 @@
 - **최신 잔여 차단조건 3개:** ① 동일 ID 공개상태/메타데이터 이력 안전한 보존, ② 동일 ID 본문 개정의 버전별 원본 안전보존, ③ 프로세스 강제종료/전원장애 시 다중파일 일관성 보장 및 복구시험. Python 예외 롤백 통과가 크래시 원자성을 뜻하지 않는다.
 - **현재 검증은 오프라인 임시 데이터 7개 시나리오 + 기존 실제 아카이브의 read-only Stage C 검사**다. 청주시의회 공식 서버 HTTP 접속 0회, 운영 원본 수집/갱신 없음. `main`, 독립 `cheongju-council-minutes` 미변경.
 - 현행 보고서는 '운영 준비 완료'로 읽으면 안 된다. 다음은 snapshot version history + crash recovery 설계·격리 검증이며, 전체 2,339건을 반영하는 리허설 전까지 운영 잠금 해제 금지.
+
+
+## 14. [최신] 원본 변경이력+SIGKILL 복구 개발 및 2,339건 복사본 전체 리허설
+- 기준 상세보고서: `docs/INCREMENTAL_VERSION_CRASH_RESULTS_20261102.md`.
+- 이 절은 앞의 §13에서 “동일 ID 이력 미구현”이라고 적은 상태를 **최신 변경 사항으로 대체**한다. 다만 운영 루트 수집 해제나 실시간 자동 증분수집 인증을 뜻하지 않는다.
+- **개발 브랜치에 구현**:
+  1. `scripts/collect_integrated_minutes.py` 같은 ID `provisional → published` 전환 및 동일 ID 본문 수정 시 이전 MD 바이트를 `archive/meetings/cheongju_integrated/_revisions/minutes-XXXX/<prior_file_sha256>.md`에 불변 보존하고, 이전/다음 인덱스 상태·SHA·변경 필드를 `indexes/integrated/meeting_revisions.json`에 기록. 3회 연속 변경·본문 복귀도 tested.
+  2. `scripts/audit_stage_c.py`가 개정 원본 SHA/바이트·이력 chain·현재 인덱스 연결 검증.
+  3. `scripts/sync_transaction.py` 디스크 write-ahead journal: 완전한 원본 백업과 신규 파일을 저널로 봉인, fsync + 원자적 `os.replace`로 개별 파일 반영. 미완료 시 재시작 후 **rollback**, 커밋 표식 뒤 강제 종료 시 **commit finalize**. 완료·복구된 저널은 원자적으로 다른 이름으로 분리한 뒤 삭제해 삭제 중 크래시 시 활성 저널이 손상되지 않도록 함. `fcntl.flock` 로컬 실행 잠금.
+  4. 실제 **SIGKILL** 별도 subprocess 강제 종료: 저널 준비 직후 / 일부 파일 반영 직후 / 커밋 직후, 손상 백업 복구 거부, 락 충돌, 경로 이탈 검증 등 회귀시험.
+- 전체 unittest 및 원본 Stage C QA 포함 검증: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41375340219 (당시 PASS), SIGKILL 신호로 강화한 뒤 회귀 PASS https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41375676225.
+- **실제 원본 2,339건 전체를 임시 폴더로 복사**해 오프라인으로 가상 회의록 하나 추가(최종 복사본 2,340행): 기존 2,339 원본 SHA 동일, 기존 provisional 6건 원문을 로컬에서만 재사용, 2,340행 Stage C 전수 감사와 분석기 출력 동기화 PASS. 100% **가상 증분**, 공식 HTTP 0회, 원본 아카이브/실제 의안 인덱스 불변. CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41375525361.
+- **QA 자료**: `scripts/rehearse_incremental_full_snapshot.py`, `tests/test_sync_transaction_crash.py`, `scripts/compose_incremental_release_gate.py`, `reports/incremental-revision-crash-release-gate.json` 및 `reports/incremental-full-snapshot-rehearsal.json`(최종 발행 후 이용).
+- 기존 원본수는 **2,339**, 공식 신규 1건 추가가 아니며, 리허설에서만 2,340.
+- **실운영 수집은 계속 HARD BLOCKED**: `run_sync("full"|"incremental", ROOT)`는 네트워크 전에 거부. 원본 회의록의 날짜·대수 변경으로 canonical 파일 경로 이동이 필요한 경우 별도 migration 구현 전까지 `SAME_ID_PATH_CHANGE_REQUIRES_VERSIONED_MIGRATION` 오류로 거부. 물리적 전원장애·네트워크 파일시스템은 SIGKILL 검증과 별개로 미검증.
+- 다음 승인·후속: 날짜/회기 경로 이동을 원본 손실 없이 이력으로 안전하게 처리하는 테스트, 청주시의회 서버의 **요청량 제한 읽기전용** 소규모 재조회 및 파서 QA, 운영 루트 잠금 해제 판단은 사용자 단일 승인 후. `main`, 기존 `wildkim11/cheongju-council-minutes` 변경 없음. 스케줄 OFF.
