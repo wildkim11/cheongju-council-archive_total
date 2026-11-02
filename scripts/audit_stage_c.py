@@ -190,7 +190,14 @@ def audit(root=ROOT):
 
     shard_ids = set()
     for term in TERMS:
-        shard_path = root / f"indexes/integrated/initial_term_{term}.json"
+        # First-population shards are an immutable historical snapshot. Once
+        # an incremental snapshot is built, prefer its current-term shard
+        # without rewriting the original per-term initial inventory.
+        current_shard = root / f"indexes/integrated/current_term_{term}.json"
+        shard_path = (
+            current_shard if current_shard.is_file()
+            else root / f"indexes/integrated/initial_term_{term}.json"
+        )
         if not shard_path.is_file():
             errors.append(f"missing term {term} shard")
             continue
@@ -211,7 +218,11 @@ def audit(root=ROOT):
                 errors.append(f"{mid}: shard row and canonical row differ")
         if local_ids != ids_by_term[term]:
             errors.append(f"term {term} shard ID set != canonical index")
-        term_report_path = root / f"reports/integrated-initial-term-{term}.json"
+        term_report_path = (
+            root / f"reports/integrated-current-term-{term}.json"
+            if current_shard.is_file()
+            else root / f"reports/integrated-initial-term-{term}.json"
+        )
         if term_report_path.exists():
             report = read_json(term_report_path)
             if report.get("listed") != len(local_ids):
