@@ -1,11 +1,8 @@
 name: One-time offline cross-year tree discrepancy comparator
 # Follow-up partition test for year-overlap among 108 post-session records.
+# Completed one-time evidence job. Manual re-execution only.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/audit-official-tree-offline-once.yml
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
