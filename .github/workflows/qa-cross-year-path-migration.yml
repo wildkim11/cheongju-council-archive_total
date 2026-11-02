@@ -1,0 +1,49 @@
+name: One-time isolated full 2339 cross-year path migration
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-cross-year-path-migration.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  migrate-copy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify official original 2339-source archive baseline
+        run: python scripts/audit_stage_c.py --output /tmp/baseline-stage-c-before-migration.json
+      - name: Run all regression and SIGKILL migration-restart tests
+        run: python -m unittest discover -s tests -v
+      - name: Migrate ONE synthetic term/date in exact temporary copy of all 2339 originals
+        run: python -u scripts/rehearse_cross_year_migration_full_snapshot.py
+      - name: Verify no actual archival source file changed
+        run: |
+          git diff --exit-code -- archive indexes exports
+          python - <<'PY'
+          import json
+          x=json.load(open("reports/synthetic-cross-year-migration-full-2339-qa.json"))
+          assert x["status"]=="PASS"
+          assert x["official_site_requests"]==0
+          assert x["original_saved_meetings"]==2339
+          assert x["temporary_current_meetings"]==2339
+          assert x["unchanged_other_originals"]==2338
+          assert x["one_moved_original_prior_bytes_preserved"]
+          assert x["obsolete_path_removed_from_copy"]
+          assert x["stage_c_verified_immutable_revisions"]==1
+          assert x["exported_current_meetings"]==2339
+          assert x["source_repository_files_modified"] is False
+          PY
+      - name: Preserve fake migration and crash rollback evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: isolated-2339-cross-year-migration-audit
+          path: reports/synthetic-cross-year-migration-full-2339-qa.json
+          if-no-files-found: warn
