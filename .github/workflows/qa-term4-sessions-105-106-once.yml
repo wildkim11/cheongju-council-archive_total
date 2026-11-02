@@ -1,10 +1,6 @@
 name: One-time macOS official sessions 105 106 tree read-only
+# One-time official status QA completed. Re-running requires explicit manual dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-term4-sessions-105-106-once.yml
   workflow_dispatch:
 permissions:
   contents: write
