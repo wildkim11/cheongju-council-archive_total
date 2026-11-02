@@ -1,0 +1,27 @@
+name: One-time offline cross-year tree discrepancy comparator
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/audit-official-tree-offline-once.yml
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify 13 stored exceptions and shared-tree comparison group
+        run: |
+          python -m unittest discover -s tests -p test_official_tree_discrepancy.py
+          python scripts/audit_official_tree_discrepancy.py
+      - name: Publish read-only comparison results
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-session-year-tree-comparison
+          path: reports/integrated-year-term-discrepancy-probe.json
