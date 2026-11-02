@@ -164,6 +164,11 @@ class IntegratedMinutesTests(unittest.TestCase):
                 "supersedes":None,
                 "superseded_by":None,
             }]
+            old[0]=c.write_record(
+                root,old[0],
+                "○위원장 홍길동\n"+("기존 임시회의록 원문을 점검합니다. "*24),
+                "2026-10-01T00:00:00+09:00"
+            )
             (root/"indexes/integrated/meetings.json").write_text(
                 json.dumps(old,ensure_ascii=False),encoding="utf-8"
             )
