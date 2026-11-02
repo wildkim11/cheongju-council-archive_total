@@ -309,3 +309,13 @@
 - **원본 ID 13건을 공식 `SvcMntsTreeYear.php`와 `SvcMntsTreeGnrtn.php` 각각 회기·위원회 leaf까지 제한적으로 직접 대조**: 대수별에는 **13/13 모두 존재**, 연도별에는 **13/13 모두 누락**(해당 위원회 leaf에서 제외 11건, 위원회 분기 자체 제외 2건: 1848·2951). 요청 **60회**, 네트워크 실패 **0건**. exact `committee_code` 탐색으로 `C101` 의회운영위원회와 `J101` 행정사무감사 명칭 혼동 방지. CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41421849139; 결과물 artifact `official-13-year-rollover-tree-paths`.
 - **이제 확인된 사실**은 두 공식 트리에서 13건이 실제로 다르게 색인된다는 것. 강한 연관인 '전년도 회기/차년도 개최'는 전수 관찰로 확정됐지만 **공식 내부 서버 SQL·프로그램 분기 구현 원인은 직접 보지 못했으므로 단정 불가**. 실무적으로 '공식 연도별 트리 인덱싱 누락 13건'으로 표기하고 본문 원본·대수·개최일·정식/임시 상태는 변경하지 않는다.
 - 원본 `archive/meetings/*`, 실무 export, 의원/의안 원천 데이터 **이 조사에서는 수정 없음**. `main`과 독립 저장소 미변경, 정기 스케줄 OFF. 2026-11-02 당시 최신 운영 아카이브 2,339건 및 별도 격리 검증 2,342건 구분 유지.
+
+
+## 27. [최신] 기관형 의안 5건·인명관계 44행 공식 발의유형 실시간 검증 및 안전 분리 강화
+- 보고서 `docs/INSTITUTIONAL_BILL_44_LIVE_ROLE_PROVENANCE_20261102.md`. 검증 코드 `scripts/audit_institutional_bill_roles.py`, 테스트 `tests/test_institutional_bill_roles.py`와 `tests/test_safe_bill_proposer_exports.py`.
+- **공식 의안 상세 5건 직접 재조회 5/5 성공**, 공식 발의자 유형 375=위원장, 2177=의장, 2180=시장, 3265=위원장, 3266=위원장: 저장된 목록·상세 타입 모두와 일치. 실시간 증거 https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41435208518 (PASS, 공식 페이지 SHA 및 필드별 원천 문구 artifact 포함).
+- 2177·2180 공식 상세 자체에 깨진 문자열과 인명 반복이 있으며, 3265·3266에도 ‘대표발의자’에 적힌 이름이 공동 목록에 중복 표시. **법적 제안 주체는 기관이므로, 사람 이름은 당사자 개인 의원발의 실적의 증거가 아니다.** 실제 역할(위원장·보고/참석 등)은 의안 원본·역할 필드 없이 확정할 수 없다.
+- **원본 관계 11,421 = 개인발의 통계용 11,377 + 기관형 격리 44** 정확히 일치하며 각 원본 관계·SHA·분리 뷰가 오프라인 1:1 검증 PASS https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41435371657.
+- `scripts/export_analyzer.py`의 미래 분리 규칙을 **두 원천 필드의 불일치가 있을 경우 무조건 격리**하도록 강화. 기존 단일 리스트 우선 구현은 만약 `proposer_type_list='의원'`, `proposer_type='시장'`가 들어올 때 오인 위험이 있어 방어 보완. 두 가지 역방향 모순 회귀 테스트 추가. 기존 실제 44행 데이터 및 raw/source export 변경 **0행**.
+- 남은 법적 관계 검증은 의회사무국 원안 서식/의안접수 DB 원시 필드 필요. 요구안 `docs/BILL_SOURCE_RECORDS_REQUEST_20261102.md`는 **준비만 완료, 미발송**. 의원발의 미확인 7건 그대로 유지, 이름 추정 금지.
+- 운영 아카이브 회의록 실제 2,339건 유지, 2,342건은 별도 격리 리허설만 PASS. `main`과 다른 저장소 변경하지 않았고 정기/운영 실수집 OFF.
