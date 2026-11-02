@@ -1,10 +1,7 @@
 name: Publish one-time incremental sync isolation safety ledger
+# Completed initial isolation audit; subsequent runs require explicit dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/publish-incremental-isolation-ledger.yml
+  workflow_dispatch:
 permissions:
   contents: write
 concurrency:
