@@ -1,0 +1,46 @@
+{
+  "schema": "official-provisional-change-candidates/1",
+  "source_live_report": "reports/official-six-provisional-status-20261102.json",
+  "source_live_status": "PASS_ALL_SIX_OFFICIAL_STATUS_VERIFIED",
+  "evaluation_scope": "ONLY six previously saved provisional meeting IDs",
+  "review_candidates": [],
+  "verified_unchanged": [
+    {
+      "source_id": "4017",
+      "status": "provisional",
+      "stored_original_sha256": "ee45527a07dbab2e10e983c55587db8c413c347792cad5523487dc6832a1b90d"
+    },
+    {
+      "source_id": "4018",
+      "status": "provisional",
+      "stored_original_sha256": "554407d325696b525219ef8f7fbe4ebb2679652fd84f5a2e11d273b3a2bfec41"
+    },
+    {
+      "source_id": "4019",
+      "status": "provisional",
+      "stored_original_sha256": "6701155a3e62c9e194cfc648a618b8693111b28dc4aa75eb56f8702be72da439"
+    },
+    {
+      "source_id": "4020",
+      "status": "provisional",
+      "stored_original_sha256": "edafc6a82a6301e07af578bfa7ba9b4a97dca5b6e8adc64eabca5c621e6c105d"
+    },
+    {
+      "source_id": "4021",
+      "status": "provisional",
+      "stored_original_sha256": "fe37f3f0475ea6b4c15e5b1e29add7f717035ec00f948cb2a74a7476c62b4a3a"
+    },
+    {
+      "source_id": "4022",
+      "status": "provisional",
+      "stored_original_sha256": "9edcac75578c6d017ddcaf5ef9435c35a2c626c5a8c0685915483195a2e07634"
+    }
+  ],
+  "unverified": [],
+  "source_archive_modified": false,
+  "full_official_inventory_verified": false,
+  "production_update_authorized": false,
+  "decision": "NO_CONFIRMED_STATUS_CHANGE_IN_SIX_PROVISIONAL_SOURCES",
+  "evaluated_at_utc": "2026-11-02T05:06:40.923496+00:00",
+  "warning": "This is not a full live inventory. No original file has been updated."
+}
