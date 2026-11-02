@@ -1,0 +1,122 @@
+{
+  "schema": "official-real-three-new-full-copy-incremental-rehearsal/1",
+  "checked_at_utc": "2026-11-02T06:38:02.272198+00:00",
+  "mode": "real 4024, 4025 and 4026 official bodies; disposable full 2339-source snapshot; isolated incremental",
+  "live_official": {
+    "official_get_requests": 3,
+    "official_get_retries": 0,
+    "responses": [
+      {
+        "source_id": "4024",
+        "http_status": 200,
+        "body_normalized_sha256": "818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d",
+        "raw_response_bytes": 263445,
+        "body_characters": 77681
+      },
+      {
+        "source_id": "4025",
+        "http_status": 200,
+        "body_normalized_sha256": "56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba",
+        "raw_response_bytes": 59398,
+        "body_characters": 12887
+      },
+      {
+        "source_id": "4026",
+        "http_status": 200,
+        "body_normalized_sha256": "c63e097c11c05b89e80d7865816552353838e4914c9244727f1d42b8cd601536",
+        "raw_response_bytes": 249578,
+        "body_characters": 72103
+      }
+    ],
+    "body_hashes_match_previous_probe": true
+  },
+  "original_source_count": 2339,
+  "expected_copy_source_count": 2342,
+  "original_root_never_used_for_incremental": true,
+  "archive_root_modified": false,
+  "main_branch_modified": false,
+  "production_sync_hard_lock_maintained": true,
+  "scheduled_collection_enabled": false,
+  "operational_release_authorized": false,
+  "status": "PASS",
+  "read_only_official_gets": 3,
+  "source_added_into_disposable_copy": [
+    {
+      "source_id": "4024",
+      "canonical_path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4024.md",
+      "raw_markdown_sha256": "bbb8ad23c433ad42c86b01f826a56fdc2da3b114b4e18dc2790aac180a4eb219",
+      "normalized_official_body_sha256": "818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d",
+      "body_match": true
+    },
+    {
+      "source_id": "4025",
+      "canonical_path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4025.md",
+      "raw_markdown_sha256": "da051e4ea0159ed53fc300007f2b5678135ebec4f9e7cfc9c5f610661e2f04bb",
+      "normalized_official_body_sha256": "56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba",
+      "body_match": true
+    },
+    {
+      "source_id": "4026",
+      "canonical_path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4026.md",
+      "raw_markdown_sha256": "80176f6487277c6c9c987c75c12a1c589b248a8664dad93f2eedfefb1235c75a",
+      "normalized_official_body_sha256": "c63e097c11c05b89e80d7865816552353838e4914c9244727f1d42b8cd601536",
+      "body_match": true
+    }
+  ],
+  "copy_new_source_ids": [
+    "4024",
+    "4025",
+    "4026"
+  ],
+  "copy_existing_sources_byte_identical": 2339,
+  "copy_source_count": 2342,
+  "copy_published": 2333,
+  "copy_provisional": 9,
+  "copy_by_term": {
+    "1": 663,
+    "2": 771,
+    "3": 855,
+    "4": 53
+  },
+  "copy_sha256_files_verified": 2342,
+  "copy_sha256_bodies_verified": 2342,
+  "copy_analyzer_meeting_rows": 2342,
+  "copy_export_manifest_sha_verified": 24,
+  "copy_stage_c_result": "PASS",
+  "copy_stage_c_warning_count": 0,
+  "copy_stage_c_errors": [],
+  "six_unchanged_provisional_bodies_replayed_from_saved_source": true,
+  "nine_mocked_fetch_url_lookups_to_saved_or_live_verified_body_map": [
+    "4017",
+    "4018",
+    "4019",
+    "4020",
+    "4021",
+    "4022",
+    "4024",
+    "4025",
+    "4026"
+  ],
+  "canonical_sync_report_new_ids": [
+    "cheongju_integrated:minutes-4024",
+    "cheongju_integrated:minutes-4025",
+    "cheongju_integrated:minutes-4026"
+  ],
+  "canonical_sync_report_bodies_checked": 9,
+  "crash_recovery": {
+    "signal": "SIGKILL",
+    "interrupted_after_installs": 2,
+    "recovery_completed": true,
+    "recovery_diagnostic": {
+      "status": "rolled_back_uncommitted",
+      "journal_found": true,
+      "files": 8
+    },
+    "prior_canonical_index_exactly_restored": true,
+    "prior_analyzer_meetings_and_manifest_exactly_restored": true,
+    "prior_original_source_file_hashes_restored": 2339,
+    "recovered_stage_c": "PASS",
+    "recovered_source_count": 2339
+  },
+  "temp_copies_removed_after_run": true
+}
