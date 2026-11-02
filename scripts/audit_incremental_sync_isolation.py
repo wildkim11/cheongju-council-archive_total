@@ -104,16 +104,22 @@ def scenario_same_id_status_transition():
         old=row(903,publication_status="provisional")
         fixture(root,[old])
         live=row(903,publication_status="published")
-        sync(root,[live])
+        before=snapshot(root)
+        error=None
+        try:
+            sync(root,[live])
+        except RuntimeError as exc:
+            error=str(exc)
         idx=read_json(root/"indexes/integrated/meetings.json")[0]
         source=(root/idx["path"]).read_text(encoding="utf-8")
         return {
+            "same_id_transition_safely_rejected":error is not None and "SAME_ID_METADATA_REVISION_REQUIRES_VERSION_HISTORY" in error,
+            "fixture_unchanged":before==snapshot(root),
             "indexed_publication_status":idx["publication_status"],
             "markdown_publication_status":(
                 "published" if "- publication_status: published" in source else
                 "provisional" if "- publication_status: provisional" in source else "missing"
             ),
-            "index_markdown_status_mismatch":idx["publication_status"]=="published" and "- publication_status: provisional" in source,
         }
 
 def scenario_same_id_body_revision():
@@ -122,14 +128,18 @@ def scenario_same_id_body_revision():
         live=row(904)
         before=fixture(root,[live])[0]
         raw_before=(root/before["path"]).read_bytes()
-        report=sync(root,[live],mode="full",fetch_impl=lambda _url:html_doc("수정"))
+        error=None
+        try:
+            sync(root,[live],mode="full",fetch_impl=lambda _url:html_doc("수정"))
+        except RuntimeError as exc:
+            error=str(exc)
         after=read_json(root/"indexes/integrated/meetings.json")[0]
         raw_after=(root/after["path"]).read_bytes()
         history=read_json(root/"indexes/integrated/meeting_history.json")
         return {
-            "same_path_overwritten":before["path"]==after["path"] and raw_before!=raw_after,
-            "old_bytes_not_preserved_in_history":len(history)==0,
-            "changed_ids":report["changed"],
+            "same_id_body_revision_safely_rejected":error is not None and "SAME_ID_BODY_REVISION_REQUIRES_VERSION_HISTORY" in error,
+            "original_bytes_preserved":before["path"]==after["path"] and raw_before==raw_after,
+            "history_unchanged":len(history)==0,
         }
 
 def scenario_fetch_failure():
@@ -217,8 +227,8 @@ def diagnose():
     }
     blocks={
         "derived_exports_and_shards_not_updated":results["new_and_derived"]["derived_meetings_export_stale"] and results["new_and_derived"]["term_shard_stale"],
-        "same_id_publication_status_header_inconsistent":results["same_id_status"]["index_markdown_status_mismatch"],
-        "original_bytes_overwritten_on_same_id_revisions":results["same_id_body"]["same_path_overwritten"] and results["same_id_body"]["old_bytes_not_preserved_in_history"],
+        "same_id_metadata_transition_requires_versioned_history":results["same_id_status"]["same_id_transition_safely_rejected"],
+        "same_id_content_revision_requires_versioned_history":results["same_id_body"]["same_id_body_revision_safely_rejected"],
         "publish_failure_leaves_partial_target":results["publish_failure"]["partial_publication_mutated_destination"] and results["publish_failure"]["canonical_index_unchanged"],
         "many_to_one_provisional_replacements_allowed":not results["colliding_replacements"]["many_to_one_rejected"]
     }
@@ -230,6 +240,12 @@ def diagnose():
             "new_markdown_appended_without_editing_old_source":results["new_and_derived"]["added_new_source"] and results["new_and_derived"]["original_markdown_unchanged"],
             "remote_fetch_failure_aborts_without_writes":results["remote_failure"]["error_propagated"] and results["remote_failure"]["fixture_unchanged"],
             "real_repository_sync_hard_interlock":results["real_repository_interlock"]["real_root_interlock_pass"],
+            "same_id_metadata_and_original_bytes_fail_closed":(
+                results["same_id_status"]["same_id_transition_safely_rejected"]
+                and results["same_id_status"]["fixture_unchanged"]
+                and results["same_id_body"]["same_id_body_revision_safely_rejected"]
+                and results["same_id_body"]["original_bytes_preserved"]
+            ),
         },
         "release_blockers":blocks,
         "release_blocker_count":sum(blocks.values()),
