@@ -1,0 +1,31 @@
+name: One-time institutional five bill role provenance audit
+on:
+  push:
+    branches: [feature/archive-foundation]
+    paths:
+      - .github/workflows/audit-institutional-bill-roles.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check institutional type and all 44 quarantined source rows offline
+        run: |
+          python -m unittest discover -s tests -p test_institutional_bill_roles.py
+          python scripts/audit_institutional_bill_roles.py
+      - name: Confirm official proposal actor text on five live detail pages
+        run: python -u scripts/audit_institutional_bill_roles.py --live
+      - name: Preserve official HTML hash and provenance/role conflict evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: institutional-bill-role-provenance-evidence
+          path: reports/institutional-bill-44-person-links-provenance.json
+          if-no-files-found: error
