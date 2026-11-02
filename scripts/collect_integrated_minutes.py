@@ -700,9 +700,10 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
             "provisional": sum(
                 r["publication_status"] == "provisional" for r in output_rows
             ),
-            "by_term": dict(
-                collections.Counter(str(r["term"]) for r in output_rows)
-            ),
+            "by_term": {
+                str(term):sum(r["term"]==term for r in output_rows)
+                for term in SUPPORTED_TERMS
+            },
             "new": new_ids,
             "changed": changed_ids,
             "superseded": replacements,
