@@ -1,6 +1,6 @@
-"""Real SIGKILL-equivalent process exit and restart tests (isolated temp roots).
+"""Real OS SIGKILL process termination and restart tests (isolated temp roots).
 
-The child process uses os._exit(77) to skip cleanup/finally and leave a real
+The child process sends itself SIGKILL, skipping cleanup/finally and leaving a real
 write-ahead journal on disk. A separate parent invocation restores/finalizes.
 No official website and NO canonical GitHub archive source is ever modified.
 """
@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import signal
 import subprocess
 import sys
 import tempfile
@@ -48,14 +49,14 @@ def children_snapshot(root):
 
 def abrupt_exit(root,stage,point):
     script=r'''
-import os,sys
+import os,sys,signal
 from pathlib import Path
 import sync_transaction as tx
 root,stage=Path(sys.argv[1]),Path(sys.argv[2])
 phase_to_kill=sys.argv[3]
 def trigger(phase,count):
     if phase==phase_to_kill and (phase!="installed" or count==1):
-        os._exit(77)
+        os.kill(os.getpid(),signal.SIGKILL)
 with tx.exclusive_lock(root):
     tx.publish_staged_snapshot(stage,root,on_phase=trigger)
 raise RuntimeError("Phase was not hit; expected process exit")
@@ -76,7 +77,7 @@ class CrashRecoveryTests(unittest.TestCase):
             old,new=source_fixture(root,stage)
             baseline=children_snapshot(root)
             p=abrupt_exit(root,stage,point)
-            self.assertEqual(p.returncode,77,p.stderr)
+            self.assertEqual(p.returncode,-signal.SIGKILL,p.stderr)
             self.assertTrue((root/tx.JOURNAL/"manifest.json").is_file())
             with tx.exclusive_lock(root):
                 out=tx.recover_pending(root)
