@@ -1,10 +1,6 @@
 name: One-time offline evaluation of six verified provisional statuses
+# One-time official status QA completed. Re-running requires explicit manual dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-six-status-candidates-offline-once.yml
   workflow_dispatch:
 permissions:
   contents: write
