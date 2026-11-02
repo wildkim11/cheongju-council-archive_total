@@ -503,6 +503,65 @@ def run_inventory_only(root: Path = ROOT) -> dict:
     return report
 
 
+def _publish_staged_snapshot_with_rollback(stage: Path, root: Path) -> None:
+    """Publish changed staged files and restore prior bytes on copy errors.
+
+    Only files present in the prevalidated stage are touched. Originals are
+    backed up before *any* destination file is updated; newly added files are
+    removed on rollback. This is exception-safe in a running Python process,
+    but NOT a crash-atomic multi-file transaction (a power failure can
+    interrupt recovery). Full operational deployment remains disabled.
+    """
+    stage, root = Path(stage), Path(root)
+    source_files = sorted(
+        (src.relative_to(stage) for src in stage.rglob("*") if src.is_file()),
+        key=lambda item:item.as_posix()
+    )
+    changes = []
+    for rel in source_files:
+        source, destination = stage / rel, root / rel
+        if destination.is_file():
+            if sha256_bytes(source.read_bytes()) == sha256_bytes(destination.read_bytes()):
+                continue
+        changes.append(rel)
+
+    with tempfile.TemporaryDirectory(prefix="archive-sync-copy-backup-") as tmp:
+        backup = Path(tmp)
+        original_exists = {}
+        # Complete the backup phase before any production destination changes.
+        for rel in changes:
+            dst = root / rel
+            original_exists[rel] = dst.is_file()
+            if original_exists[rel]:
+                bkp = backup / rel
+                bkp.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(dst,bkp)
+        touched = []
+        try:
+            for rel in changes:
+                dst = root / rel
+                dst.parent.mkdir(parents=True,exist_ok=True)
+                touched.append(rel)  # includes a potentially partially copied file
+                shutil.copyfile(stage / rel,dst)
+        except Exception as primary:
+            rollback_errors = []
+            for rel in reversed(touched):
+                dst = root / rel
+                try:
+                    if original_exists[rel]:
+                        shutil.copyfile(backup / rel,dst)
+                    elif dst.exists():
+                        dst.unlink()
+                except Exception as rollback_error:
+                    rollback_errors.append(f"{rel}: {rollback_error}")
+            if rollback_errors:
+                raise RuntimeError(
+                    "INCREMENTAL_PUBLISH_ROLLBACK_FAILED: "
+                    + "; ".join(rollback_errors)
+                ) from primary
+            raise
+
+
 def run_sync(mode: str, root: Path = ROOT) -> dict:
     if mode not in {"incremental", "full"}:
         raise ValueError("mode must be incremental or full")
@@ -657,11 +716,7 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
         import validate_archive
         validate_archive.validate(stage)
 
-        for src in stage.rglob("*"):
-            if src.is_file():
-                dst = root / src.relative_to(stage)
-                dst.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(src, dst)
+        _publish_staged_snapshot_with_rollback(stage, root)
 
     return report
 
