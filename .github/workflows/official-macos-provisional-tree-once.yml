@@ -1,10 +1,7 @@
 name: One-time macOS original-TLS provisional and tree root check
+# One-time bounded macOS official-source checks completed.
+# No automatic or scheduled reruns are authorized.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/official-macos-provisional-tree-once.yml
   workflow_dispatch:
 permissions:
   contents: write
