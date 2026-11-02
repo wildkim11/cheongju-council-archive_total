@@ -158,7 +158,7 @@ def scenario_publish_copy_failure():
         copy_source=c.shutil.copyfile
         error=None
         def fail_on_index(src,dst,*args,**kwargs):
-            if str(dst).endswith("indexes/integrated/meetings.json"):
+            if Path(dst).is_relative_to(root) and Path(dst).as_posix().endswith("indexes/integrated/meetings.json"):
                 raise OSError("simulated disk/publish failure")
             return copy_source(src,dst,*args,**kwargs)
         try:
