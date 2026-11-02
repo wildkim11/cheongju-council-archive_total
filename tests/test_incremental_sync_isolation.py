@@ -60,6 +60,25 @@ class IsolationAuditTests(unittest.TestCase):
         self.assertTrue(result["all_old_bytes_still_present"])
         self.assertTrue(result["original_first_version_preserved"])
 
+    def test_same_id_date_change_within_year_retains_previous_source(self):
+        import tempfile
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            old=qa.row(916,date="2026-10-01")
+            before_record=qa.fixture(root,[old])[0]
+            before_bytes=(root/before_record["path"]).read_bytes()
+            changed=qa.row(916,date="2026-10-02",
+                           title="제4대 제107회 본회의 제1차(2026.10.02 금요일)")
+            qa.sync(root,[changed])
+            current=json.loads((root/"indexes/integrated/meetings.json").read_text(encoding="utf-8"))[0]
+            ledger=json.loads((root/"indexes/integrated/meeting_revisions.json").read_text(encoding="utf-8"))
+            self.assertEqual(current["date"],"2026-10-02")
+            self.assertEqual(len(ledger),1)
+            self.assertEqual((root/ledger[0]["revision_path"]).read_bytes(),before_bytes)
+            self.assertIn("- meeting_date: 2026-10-02",
+                          (root/current["path"]).read_text(encoding="utf-8"))
+
     def test_same_id_date_change_that_moves_original_path_is_blocked(self):
         import tempfile
         from unittest.mock import patch
