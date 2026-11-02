@@ -1,9 +1,5 @@
-name: One-time offline institutional bill source consistency
+name: Manual-only offline institutional bill source consistency
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths:
-      - .github/workflows/institutional-bill-offline-check.yml
   workflow_dispatch:
 permissions:
   contents: read
