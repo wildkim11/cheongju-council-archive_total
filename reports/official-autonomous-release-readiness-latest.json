@@ -1,0 +1,48 @@
+{
+  "schema": "cheongju-autonomous-official-release-gates/1",
+  "status": "BLOCKED_PRE_RELEASE",
+  "technical_ready": false,
+  "production_archive_auto_update_authorized": false,
+  "release_gates": {
+    "live_term4_full_catalog_and_bounded_viewer_checks": true,
+    "live_term1_2_3_one_session_each": true,
+    "live_term1_2_3_full_cycle_covered": false,
+    "full_2342_isolated_real_source_sha_and_analyzer_qa": true,
+    "rollback_on_sigkill_preserves_original_2339": true,
+    "automatic_default_branch_schedule_observed": false,
+    "failure_notification_delivery_verified": false,
+    "seven_successful_scheduled_day_runs": false,
+    "explicit_final_production_release_approval": false
+  },
+  "blocked_gates": [
+    "live_term1_2_3_full_cycle_covered",
+    "automatic_default_branch_schedule_observed",
+    "failure_notification_delivery_verified",
+    "seven_successful_scheduled_day_runs",
+    "explicit_final_production_release_approval"
+  ],
+  "historical_rolling_coverage": {
+    "valid_distinct_days": 1,
+    "checked_session_counts": {
+      "1": 1,
+      "2": 1,
+      "3": 1
+    },
+    "current_official_session_totals": {
+      "1": 34,
+      "2": 36,
+      "3": 32
+    },
+    "full_historical_cycle_coverage_confirmed": false,
+    "rejected_or_failed_days": [],
+    "scope_limit": "Session metadata only, not full historical meeting body SHA checks"
+  },
+  "notes": [
+    "This report is descriptive only: it cannot unlock the real run_sync production interlock.",
+    "A schedule added only on a feature branch will not execute automatically in GitHub Actions.",
+    "GitHub Actions issues, web/email notifications and an actual recipient acknowledgement are different checks.",
+    "No historical term can be declared fully covered from one rotating sample.",
+    "True source body modifications and ongoing notifications require ongoing monitored evidence."
+  ],
+  "evaluated_at_utc": "2026-11-02T07:01:10.026835+00:00"
+}
