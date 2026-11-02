@@ -25,6 +25,8 @@ class IsolationAuditTests(unittest.TestCase):
         self.assertFalse(result["canonical_project_files_modified"])
         self.assertEqual(len(result["scenarios"]),7)
         self.assertTrue(result["successes"]["real_repository_sync_hard_interlock"])
+        self.assertTrue(result["successes"]["caught_publish_exception_restores_full_fixture"])
+        self.assertTrue(result["successes"]["same_id_metadata_and_original_bytes_fail_closed"])
         self.assertEqual(result["release_blocker_count"],4)
         self.assertTrue(result["successes"]["new_markdown_appended_without_editing_old_source"])
         self.assertTrue(result["successes"]["remote_fetch_failure_aborts_without_writes"])
@@ -54,7 +56,9 @@ class IsolationAuditTests(unittest.TestCase):
     def test_simulated_publish_failure_is_detected(self):
         result=qa.scenario_publish_copy_failure()
         self.assertTrue(result["error_propagated"])
-        self.assertTrue(result["partial_publication_mutated_destination"])
+        self.assertTrue(result["fault_was_injected"])
+        self.assertTrue(result["rollback_restored_destination"])
+        self.assertFalse(result["new_markdown_exists_after_rollback"])
         self.assertTrue(result["canonical_index_unchanged"])
 
 if __name__=="__main__":
