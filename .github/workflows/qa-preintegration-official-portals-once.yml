@@ -1,0 +1,62 @@
+name: One-time macOS official old-city and old-county portal discovery NO WRITES
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-preintegration-official-portals-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+concurrency:
+  group: preintegration-official-portals-once
+  cancel-in-progress: false
+jobs:
+  legacy-official-portals:
+    runs-on: macos-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm original 2339 Cheongju meeting files remain valid
+        run: python scripts/audit_stage_c.py --output /tmp/oldcouncil-before-originals.json
+      - name: GET the two actual official premerger minutes portal pages only
+        run: python -u scripts/probe_official_preintegration_portals_macos.py
+      - name: Verify strict source scope and immutable original archive
+        run: |
+          python - <<'PY'
+          import json
+          j=json.load(open('reports/official-preintegration-portals-readonly-20261102.json',encoding='utf-8'))
+          assert j['request_limit']==2 and j['requests_attempted']==2
+          assert j['retries']==0
+          assert set(x['council_scope'] for x in j['official_gets']).issubset({'cheongju_old_city','cheongwon_old_county'})
+          assert not j['archive_minutes_modified']
+          assert not j['production_source_sync_enabled']
+          assert not j['operational_release_authorized']
+          assert j['result'] in {'PASS_BOTH_OFFICIAL_PREINTEGRATION_PORTAL_HTML_ACCESSIBLE','INCONCLUSIVE_OFFICIAL_PREINTEGRATION_PORTAL_ACCESS'}
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Commit only portal metadata and source fingerprints to feature branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-preintegration-portals-readonly-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: store read-only legacy city/county official portal metadata, not meeting bodies"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Archive portal discovery report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: old-city-old-county-two-official-portals
+          path: reports/official-preintegration-portals-readonly-20261102.json
+          if-no-files-found: warn
