@@ -1,0 +1,33 @@
+{
+  "schema": "cheongju-official-year2026-new-id-presence/1",
+  "checked_at_utc": "2026-11-02T05:34:26.831014+00:00",
+  "host": "councilrec.cheongju.go.kr",
+  "requested_source_ids": [
+    "4024",
+    "4025"
+  ],
+  "request_limit": 75,
+  "requests_attempted": 8,
+  "retries": 0,
+  "year_branch": "2026 only",
+  "found": {
+    "4025": {
+      "year": "2026",
+      "official_status_code": "N",
+      "source_id": "4025",
+      "leaf_text": "제1호(2026.10.12 월요일)"
+    },
+    "4024": {
+      "year": "2026",
+      "official_status_code": "N",
+      "source_id": "4024",
+      "leaf_text": "제1호(2026.10.14 수요일)"
+    }
+  },
+  "errors": [],
+  "source_archive_modified": false,
+  "production_collection_enabled": false,
+  "operational_release_authorized": false,
+  "both_new_ids_confirmed_in_official_year2026": true,
+  "status": "PASS_BOTH_NEW_IDS_IN_OFFICIAL_YEAR2026"
+}
