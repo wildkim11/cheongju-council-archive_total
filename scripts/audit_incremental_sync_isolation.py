@@ -191,6 +191,20 @@ def scenario_colliding_replacements():
             "rejection_reason":str(exc)[:320],
         }
 
+def scenario_real_repository_interlock():
+    # The real project root may never be scanned or modified by this fixture.
+    from unittest.mock import patch
+    for mode in ("incremental","full"):
+        with patch.object(c,"read_official_inventory",side_effect=AssertionError("network was called")):
+            try:
+                c.run_sync(mode,ROOT)
+            except RuntimeError as exc:
+                if "LIVE_ARCHIVE_INCREMENTAL_SYNC_DISABLED" not in str(exc):
+                    return {"real_root_interlock_pass":False,"mode":mode,"reason":str(exc)[:160]}
+            else:
+                return {"real_root_interlock_pass":False,"mode":mode,"reason":"No exception"}
+    return {"real_root_interlock_pass":True,"blocked_modes":["incremental","full"]}
+
 def diagnose():
     results={
         "new_and_derived":scenario_add_and_derived(),
@@ -199,6 +213,7 @@ def diagnose():
         "remote_failure":scenario_fetch_failure(),
         "publish_failure":scenario_publish_copy_failure(),
         "colliding_replacements":scenario_colliding_replacements(),
+        "real_repository_interlock":scenario_real_repository_interlock(),
     }
     blocks={
         "derived_exports_and_shards_not_updated":results["new_and_derived"]["derived_meetings_export_stale"] and results["new_and_derived"]["term_shard_stale"],
@@ -214,6 +229,7 @@ def diagnose():
         "successes":{
             "new_markdown_appended_without_editing_old_source":results["new_and_derived"]["added_new_source"] and results["new_and_derived"]["original_markdown_unchanged"],
             "remote_fetch_failure_aborts_without_writes":results["remote_failure"]["error_propagated"] and results["remote_failure"]["fixture_unchanged"],
+            "real_repository_sync_hard_interlock":results["real_repository_interlock"]["real_root_interlock_pass"],
         },
         "release_blockers":blocks,
         "release_blocker_count":sum(blocks.values()),
