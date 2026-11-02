@@ -17,6 +17,7 @@ class TreeExceptionTests(unittest.TestCase):
         report=offline()
         self.assertEqual(report["total_saved"],2339)
         self.assertEqual(report["saved_term_only"],13)
+        self.assertEqual(report["shared_year_tree_post_session_count"],report["shared_year_tree_post_session_cross_calendar_count"]+report["shared_year_tree_post_session_same_calendar_count"])
         self.assertEqual({x["source_id"] for x in report["term_only"]},set(IDS))
         self.assertTrue(all(x["post_session"] and x["days_after_session_end"]>0
                             for x in report["term_only"]))
