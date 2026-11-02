@@ -65,10 +65,10 @@ class IsolationAuditTests(unittest.TestCase):
         from unittest.mock import patch
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder)
-            qa.fixture(root,[qa.row(915,date="2026-10-01")])
+            qa.fixture(root,[qa.row(915,date="2025-12-30")])
             before=qa.snapshot(root)
-            moved=qa.row(915,date="2026-10-02",
-                         title="제4대 제107회 본회의 제1차(2026.10.02 금요일)")
+            moved=qa.row(915,date="2026-01-02",
+                         title="제4대 제107회 본회의 제1차(2026.01.02 금요일)")
             with patch.object(qa.c,"read_official_inventory",
                               return_value=([moved],{"only_term":[],"only_year":[]})), \
                  patch.object(qa.c,"fetch",
