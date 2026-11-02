@@ -1,4 +1,4 @@
-name: One-time 13 calendar-year rollover source tree path probe
+name: Retry official 13 rollover path probe using exact committee codes
 on:
   push:
     branches:
