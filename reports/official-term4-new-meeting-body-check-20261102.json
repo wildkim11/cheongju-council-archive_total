@@ -1,0 +1,52 @@
+{
+  "schema": "official-new-term4-body-readonly-check/1",
+  "checked_at_utc": "2026-11-02T05:23:08.792507+00:00",
+  "runner": "GitHub macOS original verified collector TLS",
+  "source_discovery": "reports/official-term4-new-meeting-id-discovery-20261102.json",
+  "max_requests": 2,
+  "requests_attempted": 2,
+  "retries": 0,
+  "expected_new_ids": [
+    "4024",
+    "4025"
+  ],
+  "responses": [
+    {
+      "source_id": "4024",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4024",
+      "official_meeting_date": "2026-10-14",
+      "official_tree_publication_status": "provisional",
+      "http_status": 200,
+      "response_bytes": 263445,
+      "response_sha256": "e59752aed005620a98a4dbb8b6c6489ac556b8aaf0059981ab8122e160111ab2",
+      "body_extracted": true,
+      "body_normalized_sha256": "818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d",
+      "body_characters": 77681,
+      "provisional_notice_present": true,
+      "verification": "BODY_EXTRACTED_OFFICIAL_NEW_ID"
+    },
+    {
+      "source_id": "4025",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4025",
+      "official_meeting_date": "2026-10-12",
+      "official_tree_publication_status": "provisional",
+      "http_status": 200,
+      "response_bytes": 59398,
+      "response_sha256": "f83822e0e9d9bd6136e6887b4b3dbc4c9a15bae86ad18504573a3a145470ff26",
+      "body_extracted": true,
+      "body_normalized_sha256": "56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba",
+      "body_characters": 12887,
+      "provisional_notice_present": true,
+      "verification": "BODY_EXTRACTED_OFFICIAL_NEW_ID"
+    }
+  ],
+  "errors": [],
+  "existing_saved_meetings": 2339,
+  "canonical_new_sources_published": 0,
+  "source_archive_modified": false,
+  "production_collection_enabled": false,
+  "operational_release_authorized": false,
+  "body_parsed_count": 2,
+  "decision": "BOTH_NEW_OFFICIAL_BODIES_READABLE_READY_FOR_ISOLATED_IMPORT_REHEARSAL",
+  "warning": "Body hashes prove the two pages were readable; no canonical source file has been added, and no automated promotion is authorized."
+}
