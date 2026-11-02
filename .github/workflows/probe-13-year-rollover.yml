@@ -1,0 +1,28 @@
+name: One-time 13 calendar-year rollover source tree path probe
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/probe-13-year-rollover.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official_tree_paths:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read-only 13 exceptions in both official session trees
+        run: python -u scripts/probe_year_rollover_13.py
+      - name: Preserve bounded source navigation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-13-year-rollover-tree-paths
+          path: reports/official-year-rollover-13-tree-paths.json
+          if-no-files-found: warn
