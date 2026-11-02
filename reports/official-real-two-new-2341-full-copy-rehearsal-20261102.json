@@ -1,0 +1,105 @@
+{
+  "schema": "official-real-two-new-full-copy-incremental-rehearsal/1",
+  "checked_at_utc": "2026-11-02T05:40:11.265302+00:00",
+  "mode": "real 4024 and 4025 official bodies; disposable full 2339-source snapshot; isolated incremental",
+  "live_official": {
+    "official_get_requests": 2,
+    "official_get_retries": 0,
+    "responses": [
+      {
+        "source_id": "4024",
+        "http_status": 200,
+        "body_normalized_sha256": "818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d",
+        "raw_response_bytes": 263445,
+        "body_characters": 77681
+      },
+      {
+        "source_id": "4025",
+        "http_status": 200,
+        "body_normalized_sha256": "56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba",
+        "raw_response_bytes": 59398,
+        "body_characters": 12887
+      }
+    ],
+    "body_hashes_match_previous_probe": true
+  },
+  "original_source_count": 2339,
+  "expected_copy_source_count": 2341,
+  "original_root_never_used_for_incremental": true,
+  "archive_root_modified": false,
+  "main_branch_modified": false,
+  "production_sync_hard_lock_maintained": true,
+  "scheduled_collection_enabled": false,
+  "operational_release_authorized": false,
+  "status": "PASS",
+  "read_only_official_gets": 2,
+  "source_added_into_disposable_copy": [
+    {
+      "source_id": "4024",
+      "canonical_path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4024.md",
+      "raw_markdown_sha256": "d770779b0b025d23b1af1ed3d63c0e77d02aa6b9eb332a9f17c5213513d6bffc",
+      "normalized_official_body_sha256": "818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d",
+      "body_match": true
+    },
+    {
+      "source_id": "4025",
+      "canonical_path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4025.md",
+      "raw_markdown_sha256": "5833c96774da6e5a481b0467d194fda71a51f455c34cbb8855e41c2a1beb6d8f",
+      "normalized_official_body_sha256": "56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba",
+      "body_match": true
+    }
+  ],
+  "copy_new_source_ids": [
+    "4024",
+    "4025"
+  ],
+  "copy_existing_sources_byte_identical": 2339,
+  "copy_source_count": 2341,
+  "copy_published": 2333,
+  "copy_provisional": 8,
+  "copy_by_term": {
+    "1": 663,
+    "2": 771,
+    "3": 855,
+    "4": 52
+  },
+  "copy_sha256_files_verified": 2341,
+  "copy_sha256_bodies_verified": 2341,
+  "copy_analyzer_meeting_rows": 2341,
+  "copy_export_manifest_sha_verified": 24,
+  "copy_stage_c_result": "PASS",
+  "copy_stage_c_warning_count": 0,
+  "copy_stage_c_errors": [],
+  "six_unchanged_provisional_bodies_replayed_from_saved_source": true,
+  "eight_mocked_fetch_url_lookups_to_saved_or_live_verified_body_map": [
+    "4017",
+    "4018",
+    "4019",
+    "4020",
+    "4021",
+    "4022",
+    "4024",
+    "4025"
+  ],
+  "canonical_sync_report_new_ids": [
+    "cheongju_integrated:minutes-4024",
+    "cheongju_integrated:minutes-4025"
+  ],
+  "canonical_sync_report_bodies_checked": 8,
+  "crash_recovery": {
+    "signal": "SIGKILL",
+    "interrupted_after_installs": 2,
+    "recovery_completed": true,
+    "recovery_diagnostic": {
+      "status": "rolled_back_uncommitted",
+      "journal_found": true,
+      "files": 7
+    },
+    "prior_canonical_index_exactly_restored": true,
+    "prior_analyzer_meetings_and_manifest_exactly_restored": true,
+    "prior_original_source_file_hashes_restored": 2339,
+    "recovered_stage_c": "PASS",
+    "recovered_source_count": 2339
+  },
+  "temp_copies_removed_after_run": true
+}
