@@ -1,0 +1,75 @@
+name: One-time macOS historic terms 1-3 official session rotation QA (READ ONLY)
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-macos-historic-terms-1-3-rolling-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: historical-terms-1-3-readonly-qa
+  cancel-in-progress: false
+
+jobs:
+  historical-session-rotation:
+    runs-on: macos-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline regression cases and baseline 2339 original source audit
+        run: |
+          python -m unittest discover -s tests -p test_official_historical_rotation.py -v
+          python scripts/audit_stage_c.py --output /tmp/pre-historic-rolling-originals.json
+      - name: Read exactly one official session branch for each historic term 1 2 3
+        run: |
+          python -u scripts/monitor_official_historical_rotation_macos.py \
+            --output reports/official-historical-rolling-readonly-latest.json
+      - name: Insist complete scoped checks and original source integrity
+        run: |
+          python - <<'PY'
+          import json
+          x=json.load(open('reports/official-historical-rolling-readonly-latest.json',encoding='utf-8'))
+          assert x['status'] in {'PASS_SCOPED_NO_CHANGES_OBSERVED','PASS_SCOPED_REVIEW_CANDIDATES_PRESENT'}
+          assert x['all_three_selected_sessions_complete'] is True
+          assert set(x['roots_found'])=={1,2,3}
+          assert len(x['selected_session_branches'])==3
+          assert all(r['inspection_status']=='COMPLETE' for r in x['selected_session_branches'])
+          assert x['requests_attempted']<=90 and x['retries']==0
+          assert not x['branch_errors']
+          assert not x['any_missing_saved_id_inferred']
+          assert x['whole_terms_completely_scanned']==[]
+          assert not x['production_archive_modified']
+          assert not x['production_sync_enabled']
+          assert not x['scheduled_execution_enabled']
+          assert not x['operational_release_authorized']
+          PY
+          git diff --exit-code -- archive indexes exports
+          python scripts/audit_stage_c.py --output /tmp/post-historic-rolling-originals.json
+      - name: Publish only read-only QA metadata on feature branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-historical-rolling-readonly-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: store three historical official session results without any original source changes"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Preserve scoped QA and failures in artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-terms-one-session-each-readonly
+          path: reports/official-historical-rolling-readonly-latest.json
+          if-no-files-found: warn
