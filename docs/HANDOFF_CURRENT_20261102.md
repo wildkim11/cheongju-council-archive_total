@@ -190,3 +190,12 @@
 - **기계검증 원장**: `reports/synthetic-cross-year-migration-full-2339-qa.json` (일회성 CI를 통해 개발 브랜치에 저장; 성공 실행 확인 후 출처로 사용).
 - **운영 미승인:** 실제 ROOT `run_sync("full"/"incremental")`는 네트워크 이전에 거부; 자동 실행 OFF. 실시간 소량 읽기전용 원천 검증·물리적 전원차단/네트워크 저장소 내구성은 별도이며 현재 성공했다고 주장하지 않는다.
 - `main` 및 독립 `wildkim11/cheongju-council-minutes` 미변경. 다음은 실서버 소량 읽기전용 검증과 의회사무국에만 존재하는 발의자 원안 확보.
+
+
+## 16. [최신] 공식 회의록 서버의 소량 읽기전용 접속 검증 (2026-11-02)
+- **상세 결과:** `docs/OFFICIAL_READONLY_CONNECTIVITY_QA_20261102.md`. 현재 결론은 `LIVE_SOURCE_VALIDATION_NOT_COMPLETED`. 이는 운영 수집기의 파싱 오류나 보존 원본 손상 확정이 아니라 **검증을 시도한 GitHub 클라우드 실행 환경에서 공식 서버와 TLS 접속에 실패했다**는 뜻이다.
+- 1차 한도형 검증: `scripts/probe_official_readonly_limited.py`, `reports/official-limited-readonly-probe-20261102.json`. GET viewer `schSn=3999` 첫 요청에서 `SSLError: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE]`; 요청 **1회, 응답 0건**, 이후 `schSn=4019` 및 회기 트리 root 요청은 **미시도**, 재시도 0회. "SSLV3_ALERT"는 TLS 오류 코드 명칭이지 실제 SSL3 사용 증거 아님. 저장본은 `3999=published`, `4019=provisional`이지만 **실시간 공개상태와 본문 동일성은 확인 못함**. QA CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41377991597.
+- 2차 TLS-only 원인 범위 확인: `scripts/diagnose_official_tls_path_readonly.py`, `reports/official-readonly-tls-diagnostic-20261102.json`. `councilrec.cheongju.go.kr`와 `council.cheongju.go.kr` 각각 1회 TLS 접속 시 **TimeoutError**, 총 TLS 연결 2회/HTTP **0회**, 인증서 검증 비활성화 없음. QA CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41378195345.
+- 공식 사이트와 회기 검색 페이지는 공개 검색색인에서 보이지만, 검색 캐시는 실제 동적 PHP 페이지의 실시간 응답·본문을 증명하지 않는다. 웹에서 해당 ID 페이지 직접 열기도 캐시 미스. **서버 전체 장애를 확정하지 말 것**.
+- 보존 아카이브 기존 **2,339건은 불변**. 공식 서버에서 신규 회의록을 수집하거나 기존 본문을 갱신한 적 없음. 개발 브랜치에 소량 읽기전용 코드·QA 원장·보고서만 추가. `main`, 독립 `wildkim11/cheongju-council-minutes` 불변. 실운영 `run_sync` 하드 잠금 및 자동 실행 OFF.
+- 후속은 기관이 허용한 다른 네트워크에서 **한 건짜리 읽기전용 접속 확인**부터 수행할 것. 성공 전에는 조회범위를 확대하지 않고 TLS 보안 검증을 약화시키지도 않는다. 연결 뒤에도 본문·상태 변경은 보존자료와 별도 대조·검토하고 자동반영 금지.
