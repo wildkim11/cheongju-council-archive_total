@@ -1,0 +1,72 @@
+name: One-time publish immutable revisions and crash recovery QA
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/publish-incremental-revision-crash-ledger.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-incremental-revision-crash-ledger-once
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run all offline unit/regression and real SIGKILL tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate all existing 2339 actual archive originals
+        run: python scripts/audit_stage_c.py --output /tmp/full-stage-c-before.json
+      - name: Execute isolated same-ID and crash-related mock scenarios
+        run: python scripts/audit_incremental_sync_isolation.py
+      - name: Rehearse on copied 2339 official archived sources plus ONE synthetic source
+        run: python -u scripts/rehearse_incremental_full_snapshot.py
+      - name: Recheck real SIGKILL scenarios and assemble release-gate evidence
+        run: python scripts/compose_incremental_release_gate.py
+      - name: Verify no canonical source files are modified by any QA task
+        run: |
+          git diff --exit-code -- archive indexes exports
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/incremental-revision-crash-release-gate.json").read_text(encoding="utf-8"))
+          assert r["status"]=="OFFLINE_SAFETY_TESTS_PASS_PRODUCTION_LOCKED"
+          assert r["production_collection_enabled"] is False
+          assert r["canonical_archive_modified"] is False
+          assert r["official_http_requests"]==0
+          assert r["crash_restart_recovery"]["test_count"]>=6
+          assert r["crash_restart_recovery"]["hardware_power_loss_tested"] is False
+          PY
+      - name: Commit report JSON ONLY to feature branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/incremental-sync-isolation-diagnostics.json \
+                  reports/incremental-full-snapshot-rehearsal.json \
+                  reports/incremental-revision-crash-release-gate.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: preserve verified 2339 full-copy and SIGKILL versioned-sync evidence"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Preserve historical workflow artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-incremental-offline-qa-evidence
+          path: |
+            reports/incremental-sync-isolation-diagnostics.json
+            reports/incremental-full-snapshot-rehearsal.json
+            reports/incremental-revision-crash-release-gate.json
+          if-no-files-found: warn
