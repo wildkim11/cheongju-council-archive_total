@@ -437,7 +437,12 @@ def write_record(
         }
 
     content_hash = sha256_bytes(canonical(body).encode("utf-8"))
-    if old and old.get("content_sha256") == content_hash:
+    metadata_same = old and all(
+        old.get(key)==row.get(key) for key in
+        ("title","date","term","council_scope","source_id",
+         "official_url","publication_status")
+    )
+    if old and old.get("content_sha256") == content_hash and metadata_same:
         return {
             **old,
             **row,
@@ -449,7 +454,7 @@ def write_record(
         f"# {row['title']}\n\n"
         f"- official_url: {row['official_url']}\n"
         f"- meeting_date: {row['date']}\n"
-        f"- collected_at: {now}\n"
+        f"- collected_at: {old.get('first_seen_at') if old else now}\n"
         f"- source_id: {row['source_id']}\n"
         f"- council_scope: {row['council_scope']}\n"
         f"- term: {row['term']}\n"
@@ -504,62 +509,12 @@ def run_inventory_only(root: Path = ROOT) -> dict:
 
 
 def _publish_staged_snapshot_with_rollback(stage: Path, root: Path) -> None:
-    """Publish changed staged files and restore prior bytes on copy errors.
+    """Publish a fully validated snapshot with a durable crash-recovery journal.
 
-    Only files present in the prevalidated stage are touched. Originals are
-    backed up before *any* destination file is updated; newly added files are
-    removed on rollback. This is exception-safe in a running Python process,
-    but NOT a crash-atomic multi-file transaction (a power failure can
-    interrupt recovery). Full operational deployment remains disabled.
+    The caller must hold sync_transaction.exclusive_lock(root).
     """
-    stage, root = Path(stage), Path(root)
-    source_files = sorted(
-        (src.relative_to(stage) for src in stage.rglob("*") if src.is_file()),
-        key=lambda item:item.as_posix()
-    )
-    changes = []
-    for rel in source_files:
-        source, destination = stage / rel, root / rel
-        if destination.is_file():
-            if sha256_bytes(source.read_bytes()) == sha256_bytes(destination.read_bytes()):
-                continue
-        changes.append(rel)
-
-    with tempfile.TemporaryDirectory(prefix="archive-sync-copy-backup-") as tmp:
-        backup = Path(tmp)
-        original_exists = {}
-        # Complete the backup phase before any production destination changes.
-        for rel in changes:
-            dst = root / rel
-            original_exists[rel] = dst.is_file()
-            if original_exists[rel]:
-                bkp = backup / rel
-                bkp.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(dst,bkp)
-        touched = []
-        try:
-            for rel in changes:
-                dst = root / rel
-                dst.parent.mkdir(parents=True,exist_ok=True)
-                touched.append(rel)  # includes a potentially partially copied file
-                shutil.copyfile(stage / rel,dst)
-        except Exception as primary:
-            rollback_errors = []
-            for rel in reversed(touched):
-                dst = root / rel
-                try:
-                    if original_exists[rel]:
-                        shutil.copyfile(backup / rel,dst)
-                    elif dst.exists():
-                        dst.unlink()
-                except Exception as rollback_error:
-                    rollback_errors.append(f"{rel}: {rollback_error}")
-            if rollback_errors:
-                raise RuntimeError(
-                    "INCREMENTAL_PUBLISH_ROLLBACK_FAILED: "
-                    + "; ".join(rollback_errors)
-                ) from primary
-            raise
+    import sync_transaction
+    sync_transaction.publish_staged_snapshot(stage,root)
 
 
 def run_sync(mode: str, root: Path = ROOT) -> dict:
@@ -578,6 +533,16 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
             "Only disposable-fixture tests are currently authorized."
         )
 
+    import sync_transaction
+    with sync_transaction.exclusive_lock(Path(root)):
+        # Reconcile a possibly interrupted previous publish BEFORE official
+        # site requests. A committed journal is finalized, an uncommitted
+        # journal is rolled back from immutable source hashes.
+        sync_transaction.recover_pending(Path(root))
+        return _run_sync_locked(mode,root)
+
+
+def _run_sync_locked(mode: str, root: Path) -> dict:
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
     today = now.date().isoformat()
     stamp = now.isoformat()
@@ -594,17 +559,22 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
     replacements = detect_replacements(old_rows, live_rows) if old_rows else {}
     reverse_replacements = {new: old_id for old_id, new in replacements.items()}
 
-    # Fail closed on a *same-ID* metadata transition until the previous
-    # rendered source file and its exact provenance can be preserved as a
-    # separate immutable revision. Otherwise write_record may update the
-    # canonical index while retaining an obsolete Markdown provenance header.
-    important = ("title", "date", "term", "council_scope", "source_id",
-                 "official_url", "publication_status")
+    # The canonical same-ID date/term/path migration is a separate operation
+    # because the old source path must move into the immutable revision ledger.
+    # Until that migration is implemented it remains fail-closed, without
+    # risking an unindexed orphan Markdown in the original filename.
+    important = ("title","date","term","council_scope","source_id",
+                 "official_url","publication_status")
     for live_row in live_rows:
-        prior = old.get(live_row["meeting_id"])
-        if prior and any(prior.get(k) != live_row.get(k) for k in important):
+        prior=old.get(live_row["meeting_id"])
+        if prior and _record_path(live_row)!=prior["path"]:
             raise RuntimeError(
-                "SAME_ID_METADATA_REVISION_REQUIRES_VERSION_HISTORY: "
+                "SAME_ID_PATH_CHANGE_REQUIRES_VERSIONED_MIGRATION: "
+                + live_row["meeting_id"]
+            )
+        if prior and prior.get("publication_status")=="published" and live_row.get("publication_status")=="provisional":
+            raise RuntimeError(
+                "PUBLISHED_TO_PROVISIONAL_REGRESSION_REQUIRES_REVIEW: "
                 + live_row["meeting_id"]
             )
 
@@ -614,7 +584,7 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
         if (
             mode == "full"
             or prior is None
-            or prior.get("publication_status") != row["publication_status"]
+            or (prior is not None and any(prior.get(k)!=row.get(k) for k in important))
             or row["publication_status"] == "provisional"
         ):
             needed.append(row)
@@ -629,20 +599,6 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
         for meeting_id, body in pool.map(download, needed):
             bodies[meeting_id] = body
-
-    # Even an unchanged official meeting ID may contain a changed body. The
-    # legacy code would overwrite its old Markdown bytes in place and discard
-    # the original source revision. Do not proceed until versioned retention
-    # and audit of original bytes is implemented.
-    for live_row in live_rows:
-        mid = live_row["meeting_id"]
-        if mid in old and mid in bodies and (
-            sha256_bytes(canonical(bodies[mid]).encode("utf-8"))
-            != old[mid].get("content_sha256")
-        ):
-            raise RuntimeError(
-                "SAME_ID_BODY_REVISION_REQUIRES_VERSION_HISTORY: " + mid
-            )
 
     with tempfile.TemporaryDirectory(prefix="archive-integrated-sync-") as tmp:
         stage = Path(tmp)
