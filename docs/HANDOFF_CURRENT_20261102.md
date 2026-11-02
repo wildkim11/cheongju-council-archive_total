@@ -251,3 +251,16 @@
 - **실제 GitHub 아카이브는 여전히 2,339건**. 임시 두 복사본 모두 폐기. 신규 원문 4024/4025 실운영 원본 추가 없음. 개발 브랜치에는 안전 리허설 코드·테스트·본문 해시 및 QA 보고서만 보존. `main`, 독립 `wildkim11/cheongju-council-minutes` 변경 없음.
 - 운영 `run_sync("incremental"/"full",ROOT)` 하드 잠금 및 자동 스케줄 OFF. 기존 2,339건과 두 신규 ID를 실제 운영 저장소에 합치거나 자동수집을 가동하려면 **별도의 사용자 명시적 승인** 필요.
 - 후속 우선순위: 실제 정식 무인 증분 운영의 **안전한 요청 예산, 중복/재수집 주기, 새 본문 변경·임시→정식 전환 이력 보존, 전체 회기·연도 목록 커버리지와 장애 알림** 설계 및 격리 QA. 이번 PASS가 원본 자동 배포 승인이라는 해석은 금지.
+
+
+## 22. [최신] macOS 통합 공식 증분 감시 개발 및 제4대 신규 4026 추가 발견, 합성 상태·본문 복합변동 전수 QA PASS
+- **통합 상세:** `docs/OFFICIAL_AUTOMATED_INCREMENTAL_MONITOR_PRE_RELEASE_20261102.md`.
+- macOS 본 수집기 원본 TLS 설정으로 `scripts/monitor_official_incremental_preflight.py` 실행. **공식 제4대 회의록 목록 53건**, 기존 보존본 제4대 50건과 차이 **신규 4024·4025·4026 세 건**. 4026은 제106회 행정안전위원회 제1호(2026-10-13), 현행 공식 `var09=N` 임시, 실제 본문 파싱 성공, 정규화 SHA `c63e097c11c05b89e80d7865816552353838e4914c9244727f1d42b8cd601536`. 4024·4025도 재조회 성공/이전 본문 SHA 일치. **신규 자료의 공식 게시 시각은 미검증**.
+- 공식 목록 요청 **33회**, 본문 GET **17회** (기존 임시본 6·기존 정식 표본 8·새 자료 3). 기존 본문 **14건 SHA 전부 일치**, 공식 상태·메타데이터 변경 0, 오류 0, 재시도 0. 이는 **제4대 목록 전량 + 기존 본문 일부 표본**에 한정되며 1~3대 전체 공식 현재 목록 또는 본문 2,339건 실시간 동일성 전수검증이 아님.
+- 모니터 실증 CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41397894568, 원장 `reports/official-incremental-monitor-readonly-latest.json`. macOS 원본 수집기 TLS/서버 인증서 검증 유지. 트리 최대 80/본문 최대 20요청, 12초 타임아웃/요청, 재시도 0. 새 ID/기존 본문 변경/임시→정식/메타데이터 후보 검토 보고, 장애·불완전 트리 실패차단 및 Actions 경고·오류·요약·아티팩트 준비.
+- **동적 기준 수량 지원:** 기존 단발 제4대 탐지의 2,339·제4대 50 고정은 `baseline_policy="initial"`로 계속 유지하고, 발전한 아카이브(예: 2,341건)를 읽는 감시에서는 `baseline_policy="current"` 사용하도록 코드·무네트워크 단위시험 추가.
+- **정식본 내용만 수정된 상황의 격리 반영 보완:** `collect_integrated_minutes.run_sync(mode,temp_root,force_body_ids={meeting_id})`에서 별도 본문 SHA 변경후보를 재조회 대상으로 포함할 수 있게 확장. 알 수 없는 ID는 거부, 실운영 ROOT의 `LIVE_ARCHIVE_INCREMENTAL_SYNC_DISABLED`는 먼저 작동하므로 우회 불가.
+- **합성 복합변동 전체 원본 복사본 QA:** 실제 변경 사실이 아닌 오프라인 가상 `4019` 임시→정식 `N→Y`, `3999` 정식본 메타데이터 불변·본문만 변경을 2,339건 전체 복사본에 적용. 나머지 2,337건 SHA 불변, 이전 두 원본 바이트 별도 불변 리비전·이력 2건, 변경 후 2,339건 SHA 전수 및 분석기 2,339행 PASS, 정식 2,334·임시 5, Stage C 오류 0. **실제 서버 변경을 뜻하지 않음**. CI https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41398476676, 원장 `reports/synthetic-status-and-published-body-drift-2339-full-copy-20261102.json`, 스크립트 `scripts/rehearse_synthetic_status_and_body_drift_full_copy.py`.
+- **알림/주기 개발상태:** 제안 정기 실행 오전 **07:30 KST**, 그러나 **schedule OFF**, 워크플로는 **수동 workflow_dispatch만** 유지; 실패 시 Actions 실패/오류, 변경 후보 시 경고 주석·요약·JSON 보고 가능. 외부 이메일·메신저 푸시 실제 발송 연결은 미검증. 보고는 `reports/`만 기록하고 원본·인덱스·export 수정 0.
+- **중요 잔여 과제:** 새 4026의 공식 연도별 목록 교차조회, 신규 3건으로 구성된 **2,342건 전체 격리 임포트**(종전 2,341건 리허설에 4026은 없음), 1~3대 전체 공식 대수별 목록의 신규/수정 감시 범위, 장기간 무인실행 안전관리와 통보 수신 설정. 자동수집/실운영 원본 반영은 여전히 **별도 사용자 승인 전 금지**.
+- **현재 원본:** 통합 회의록 2,339건 원래 바이트 및 SHA 유지, `main` 및 독립 `wildkim11/cheongju-council-minutes` 불변, 프로덕션 `run_sync` 잠금 유지. 테스트 복사본은 폐기.
