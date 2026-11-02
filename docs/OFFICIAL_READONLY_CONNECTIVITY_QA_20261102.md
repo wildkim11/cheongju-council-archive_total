@@ -69,3 +69,18 @@
 **종합 판단:** GitHub Actions 직접 연결, ChatGPT 웹 검색, ChatGPT Work 클라우드 브라우저 모두 **실시간 회의록 본문 확보에 실패**했다. 그렇다고 서버 전체 장애 또는 청주시의회 정책상 차단을 확정하는 증거는 아니다. 브라우저가 URL로 이동한 성공과 실제 HTML을 읽은 성공은 구분해야 한다.
 
 **다음 실행 지점:** 기관에서 접속이 허용된 PC 및 네트워크에서 공식 홈페이지의 회의록 상세페이지 한 건 `schSn=3999`을 사람의 브라우저로 확인하고, 성공 시에만 수집 검증을 확장한다. 내부망 및 외부망 접속 정책을 준수한다. 연결에 실패하면 해당 환경의 시각·최소 오류유형만 남기고 무차별 재시도 금지. 운영 ROOT 수집 잠금과 스케줄 OFF는 유지한다.
+
+
+## 8. [중요 후속 정정] macOS 원본 수집기 TLS 설정에서 공식 서버 실시간 조회 성공
+
+**이 절은 앞쪽의 '클라우드 환경에서 실시간 회의록 본문 확보 실패'라는 종합판정을 이후의 성공 실증으로 갱신한다.** 이전 실패 기록 자체는 재현 증거로 보존하지만, 이를 현재의 전면적 서버 접속 불가로 읽어서는 안 된다.
+
+- 최신 상세보고서: `docs/MACOS_ORIGINAL_TLS_LIVE_SOURCE_SUCCESS_20261102.md`.
+- GitHub macOS 기본 TLS `3999` 첫 요청은 여전히 SSL handshake 실패 (https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41390168265).
+- **과거 2,339건 최초 수집에 성공한 수집기와 동일한 TLS 컨텍스트** (`ssl.create_default_context` + 최소 TLS 1.2 + `set_ciphers("DEFAULT")` + 인증서 검증 유지)를 사용한 macOS 시험에서는 **공식 회의록 3999번 HTTP 200, HTML 322,974바이트, 본문 SHA-256 저장본과 완전 일치** (https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41390349243).
+- 동일 TLS 컨텍스트에서 **임시 저장본 ID 4019 HTTP 200, 본문 SHA 완전 일치**, 그리고 **대수별 공식 회의록 트리 최상위 HTTP 200, 대수 1·2·3·4 파싱 성공** (https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41390508185).
+- 실시간 상태 `4019`가 여전히 provisional인지 여부는 **최상위 목록만으로 확인하지 못함**. 임시본 원문이 같다는 사실만 확인.
+- **TLS 암호군 차이가 한 가지 설명 후보**지만 두 설정 시험이 서로 다른 CI 작업에서 실행됐으므로 유일한 원인으로 단정하지 않는다.
+- 기존 회의록 2,339건·인덱스·분석기 수정 0건. 운영 수집 잠금 및 자동 일정 OFF, `main` 불변.
+
+**최신 판정: `LIMITED_OFFICIAL_LIVE_READ_SUCCESS_WITH_ORIGINAL_MACOS_TLS`, `PRODUCTION_INCREMENTAL_COLLECTION_NOT_AUTHORIZED`.**
