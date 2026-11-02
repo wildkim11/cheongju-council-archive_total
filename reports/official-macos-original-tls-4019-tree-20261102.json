@@ -1,0 +1,44 @@
+{
+  "schema": "official-macos-original-tls-provisional-and-tree/1",
+  "timestamp_utc": "2026-11-02T04:49:13.653911+00:00",
+  "runner": "GitHub hosted macOS",
+  "scope": "known provisional 4019 viewer + generation tree root only",
+  "tls_context": "identical to original collector (TLSv1.2 minimum, DEFAULT ciphers, verified)",
+  "request_cap": 2,
+  "attempts": 2,
+  "retries": 0,
+  "samples": [
+    {
+      "source_id": "4019",
+      "stored_date": "2026-10-12",
+      "stored_term": 4,
+      "stored_publication_status": "provisional",
+      "stored_body_sha256": "bb96a51d169e43533f6c5388dd7ecf75d24e63bc9e177b698d630e455a4784c1",
+      "http_status": 200,
+      "response_bytes": 67538,
+      "raw_response_sha256": "af6475b130a688ea368031829955158e09538490f55874e08b1ae875dc9a15c5",
+      "body_parsed": true,
+      "live_body_sha256": "bb96a51d169e43533f6c5388dd7ecf75d24e63bc9e177b698d630e455a4784c1",
+      "comparison": "SAME_SAVED_BODY"
+    }
+  ],
+  "tree": {
+    "http_status": 200,
+    "response_bytes": 2011,
+    "raw_response_sha256": "17234726c68d6d71b9f48783c783ab3ac227406f52046e098c108d509bd42bd9",
+    "parsed": true,
+    "root_nodes": 4,
+    "declared_numeric_roots": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "integrated_terms_1_to_4_present": true
+  },
+  "errors": [],
+  "source_archive_modified": false,
+  "production_collection_enabled": false,
+  "operational_release_authorized": false,
+  "status": "PASS_4019_BODY_MATCH_AND_TREE_ROOT"
+}
