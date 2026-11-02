@@ -7,7 +7,7 @@
 - 재현 코드: `scripts/audit_official_tree_discrepancy.py`, `scripts/analyze_tree_discrepancy_controls.py`, `scripts/probe_meeting_tree_bounded.py`, `scripts/probe_year_rollover_13.py`.
 - 보존자료 비교 CI: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41421036637 (PASS).
 - 공식 서버 최소 요청 CI: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41421027454 (PASS: 트리 요청 8/8, 회의록 뷰어 요청 3/3).
-- 13건 원천 트리 경로 세부 검증: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41421484222 (결과 별도 확인 필요).
+- 13건 원천 트리 경로 최종 검증: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41421849139 (**직접 원천 조회 PASS: 대수별 13/13 존재, 연도별 13/13 제외**). 최초 경로 탐색 41421484222에서는 `C101`/`J101` 위원회 이름 부분문자열 충돌이 있었으나 정확한 `committee_code` 우선 탐색으로 보완 후 전수 재검증했다.
 
 ## 핵심 확인 사실: 연도가 바뀐 뒤 열린 전년도 회기의 위원회
 1. **13건 모두** 제목상 회기 종료일은 **전년도 12월**, 실제 회의일은 **다음 해 1~2월**이다.
@@ -45,3 +45,13 @@
 - 분석기는 회의록 2,339건 모두를 이용한다. 연도별 트리 전용 검색에만 의존하면 13건이 제외될 수 있다.
 - 13건을 '진짜 원본 누락' 또는 '삭제된 회의록'으로 단정하거나 자료를 임의 재편집하지 않는다.
 - 연도 경계가 실제 웹사이트 내부의 어느 SQL 조건/트리 필터에서 발생하는지는 서버 구현자료 없이는 확정할 수 없으며, 공개 두 트리 결과로 판별 가능한 **관측된 현상**과 **내부 원인 추정**을 구분한다.
+
+## 최종 공식 원천 13건 전수 직접 대조 (확정)
+- 검증 실행 https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41421849139. Actions 결과물 `official-13-year-rollover-tree-paths`에 세션과 위원회 트리 응답 경로 및 source_id별 판정을 보존했다.
+- **대수별 트리 `SvcMntsTreeGnrtn.php`: 13건 모두 공식 원본 ID가 존재** (`found=13`). 회기의 대수, 회기번호, 위원회 코드와 원본 ID에 이르는 상위·하위 트리를 실제 GET/POST로 조회한 결과다.
+- **연도별 트리 `SvcMntsTreeYear.php`: 13건 모두 공식 목록에서 제외**. 11건은 해당 회기의 위원회 목록까지 존재하지만 정해진 위원회의 전체 자식 원본 ID에 포함되지 않음(`absent_in_complete_leaf_branch=11`). 나머지 **2건(`1848`, `2951`)은 해당 연도의 공식 회기 하위에 위원회 분기가 나타나지 않음**(`absent_committee_branch=2`).
+- 최소 범위 총 공식 HTTPS 요청 **60회**, 응답 캐시 재사용 18회, 공식 서버 요청 실패 **0건**. 각 건당 두 트리를 비교했으며 단일 SSL 설정을 기존 성공한 수집기와 일치시켰다.
+- 원천 웹의 재현 가능한 주소 예시: [대수별 누락없는 회의록 180](https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=180), [1848](https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1848), [3652](https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3652).
+- **따라서 '현재 공식 연도별·대수별 트리 결과가 13건 다르다'는 현상을 독립적인 두 시점의 저장목록 및 실시간 공식 트리에서 확인했다.** 13건은 수집 실패나 원본문서 유실이 아니다.
+- 연도 이월과 13건 전수가 정확히 대응하는 것은 확정적인 비교관찰이다. 그러나 **공식 홈페이지 내부 SQL, API 쿼리 필터, 개발자가 의도한 분류 규칙은 공개 트리 응답만으로 확인할 수 없어 원인 구현까지 확정한 것은 아니다**. 관련 결함 가능성이 있다면 공식 운영기관에 수정 요청할 사항이다.
+- 아카이브 조치: 현재 `inventory_sources=["term"]`을 유지하고 원문 파일 2,339개와 해당 날짜·대수·해시를 그대로 보존한다. 연도별 목록 수치 2,326을 완전한 실제 회의록 수로 오용하지 않도록 문서화한다.
