@@ -561,13 +561,17 @@ def run_inventory_only(root: Path = ROOT) -> dict:
     return report
 
 
-def _publish_staged_snapshot_with_rollback(stage: Path, root: Path) -> None:
+def _publish_staged_snapshot_with_rollback(
+    stage: Path, root: Path, removals: list[str] | None = None
+) -> None:
     """Publish a fully validated snapshot with a durable crash-recovery journal.
 
     The caller must hold sync_transaction.exclusive_lock(root).
     """
     import sync_transaction
-    sync_transaction.publish_staged_snapshot(stage,root)
+    sync_transaction.publish_staged_snapshot(
+        stage,root,removals=removals or []
+    )
 
 
 def run_sync(mode: str, root: Path = ROOT) -> dict:
@@ -614,18 +618,16 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
     replacements = detect_replacements(old_rows, live_rows) if old_rows else {}
     reverse_replacements = {new: old_id for old_id, new in replacements.items()}
 
-    # The canonical same-ID date/term/path migration is a separate operation
-    # because the old source path must move into the immutable revision ledger.
-    # Until that migration is implemented it remains fail-closed, without
-    # risking an unindexed orphan Markdown in the original filename.
+    # Cross-date and cross-term moves are allowed only when the official
+    # source ID is stable, old path metadata matches the source index, and
+    # both previous and replacement bytes are retained in the WAL journal.
     important = ("title","date","term","council_scope","source_id",
                  "official_url","publication_status")
     for live_row in live_rows:
         prior=old.get(live_row["meeting_id"])
-        if prior and _record_path(live_row)!=prior["path"]:
+        if prior and prior.get("path")!=_record_path(prior):
             raise RuntimeError(
-                "SAME_ID_PATH_CHANGE_REQUIRES_VERSIONED_MIGRATION: "
-                + live_row["meeting_id"]
+                "PRIOR_MEETING_PATH_NOT_CANONICAL: " + live_row["meeting_id"]
             )
         if prior and prior.get("publication_status")=="published" and live_row.get("publication_status")=="provisional":
             raise RuntimeError(
@@ -664,6 +666,7 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
                 shutil.copytree(src, stage / directory)
 
         output_rows = []
+        paths_to_remove=[]
         for row in live_rows:
             meeting_id = row["meeting_id"]
             previous=old.get(meeting_id)
@@ -675,6 +678,11 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
                 prior_bytes=prior_path.read_bytes()
                 if sha256_bytes(prior_bytes)!=previous.get("sha256"):
                     raise RuntimeError("PRIOR_MEETING_FILE_HASH_MISMATCH: "+meeting_id)
+            moving=previous is not None and previous["path"]!=_record_path(row)
+            if moving and (stage/_record_path(row)).exists():
+                raise RuntimeError(
+                    "NEW_MEETING_PATH_ALREADY_OCCUPIED: "+_record_path(row)
+                )
             written=write_record(
                 stage,row,bodies.get(meeting_id),stamp,
                 old=previous,
@@ -684,6 +692,14 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
                 _preserve_source_revision(
                     stage,previous,written,prior_bytes,stamp,revisions
                 )
+            if moving:
+                if written["sha256"]==previous["sha256"]:
+                    raise RuntimeError("MIGRATED_MEETING_PATH_MUST_CHANGE_SOURCE_METADATA")
+                # Old bytes are already verified and saved in _revisions.
+                # Remove only from the *temporary stage*; a matching
+                # explicit journal delete is needed during final publication.
+                (stage/previous["path"]).unlink()
+                paths_to_remove.append(previous["path"])
             output_rows.append(written)
 
         history_map = {row["meeting_id"]: row for row in history_rows}
@@ -731,6 +747,7 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
             "bodies_checked": len(bodies),
             "history_rows": len(history_out),
             "revision_rows":len(revisions),
+            "migrated_old_paths":sorted(paths_to_remove),
             "revised": sorted({
                 r["meeting_id"] for r in revisions
                 if r["recorded_at"]==stamp
@@ -775,7 +792,9 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
                     + "; ".join(stage_qa["errors"][:12])
                 )
 
-        _publish_staged_snapshot_with_rollback(stage, root)
+        _publish_staged_snapshot_with_rollback(
+            stage,root,removals=paths_to_remove
+        )
 
     return report
 
