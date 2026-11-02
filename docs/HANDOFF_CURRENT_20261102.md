@@ -133,3 +133,18 @@
 - 개인 식별 상태 \`candidate_unmerged\`; **435는 실존하는 서로 다른 고유 자연인 435명이라는 뜻이 아니다**. 다른 대수 같은 이름은 신원 근거 없이는 자동 병합 금지.
 - 공식 원천 보고서·실제 JSON·analyzer manifest 교차검증 **PASS**: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41367113137. 공식 원천파일 변경 없음.
 - 남은 현안은 ① 발의자 명단 미확인 7건(의회사무국 원안/서명부 자료 요청 초안 준비), ② 기관형 문서에 저장된 인명 44행 원문 역할 확인, ③ 공식 대수/연도 목록 차이 13건 원인, ④ 증분수집의 격리 시험. \`main\` 병합 및 정기 자동수집 여전히 보류.
+
+
+## 12. [최신] Stage C 공식 대수별/연도별 목록 차이 13건 유형 규명
+- 심화 보고서: `docs/YEAR_TERM_TREE_DIFF_QA_20261102.md`.
+- 코드/테스트: `scripts/audit_official_tree_discrepancy.py`, `tests/test_official_tree_discrepancy.py`.
+- **개발 브랜치에 영구 저장한 재현 가능한 분석 원장:** `reports/integrated-year-term-discrepancy-probe.json`.
+- 기존 공식 목록 스냅샷 **2,339건** 전수 분석, 회기 시작/종료일 파싱 실패 0건.
+- 회기 종료일보다 실제 회의일이 늦은 전체 **121건** 중 **같은 해 개최 108건은 대수별·연도별 두 목록 모두에 있음**, **연도가 바뀐 13건은 대수별 목록에만 있음**. 추가적인 `only_year`는 0건. 13건은 2014~2024년 12월에 끝난 회기의 회의록인데, 실제 개최는 다음 해 1~2월이며 27~49일 차이.
+- 13건 ID: `180,508,896,1212,1573,1848,1900,2258,2257,2659,2951,3315,3652` (이것은 **회의록 schSn**, 의안 내부번호와 별개).
+- 공식 회의록 원본/해시 보존. 회기 귀속은 대수별 공식 트리, 기록의 실제 날짜/연도는 개최일로 관리. **내부 연도별 트리 생성조건은 아직 공식 확인되지 않았으므로 원인을 확정하지 않는다**.
+- 저장자료 비교검증 CI PASS: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41369346819.
+- 검증 원장 영구 저장 CI PASS: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41369481983.
+- **실시간 전체 트리 재탐색 시도는 FAIL(공식 서버 연결 시간 초과)**: https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41368923499. 저장자료 전수 QA PASS와 실시간 재조회 실패를 구분. 공식 서버 안정화 뒤 요청 단위 작은 재탐색 필요.
+- 미해결 다른 현안: ① 발의자 명단 미확인 7건 공식 원안/서명부 확보(자료제출요구안 `docs/BILL_SOURCE_RECORDS_REQUEST_20261102.md`), ② 기관형 문서 인명관계 44행의 실제 역할 확인, ③ 증분수집을 격리 환경에서 설계·시험.
+- `main` 및 기존 `wildkim11/cheongju-council-minutes` 미변경. 정기 수집 비활성.
