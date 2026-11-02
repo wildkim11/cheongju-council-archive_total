@@ -135,7 +135,12 @@ def _read_manifest(journal:Path)->dict:
         seen.add(rel.as_posix())
         if not isinstance(e.get("old_exists"),bool):
             raise RuntimeError("MALFORMED_ARCHIVE_SYNC_JOURNAL")
-        if not isinstance(e.get("new_sha256"),str) or len(e["new_sha256"])!=64:
+        if not isinstance(e.get("new_exists",True),bool):
+            raise RuntimeError("MALFORMED_ARCHIVE_SYNC_JOURNAL")
+        if e.get("new_exists",True):
+            if not isinstance(e.get("new_sha256"),str) or len(e["new_sha256"])!=64:
+                raise RuntimeError("MALFORMED_ARCHIVE_SYNC_JOURNAL")
+        elif e.get("new_sha256") is not None or not e["old_exists"]:
             raise RuntimeError("MALFORMED_ARCHIVE_SYNC_JOURNAL")
         if e["old_exists"] and (not isinstance(e.get("old_sha256"),str) or len(e["old_sha256"])!=64):
             raise RuntimeError("MALFORMED_ARCHIVE_SYNC_JOURNAL")
@@ -146,8 +151,11 @@ def _verify_journal_payload(journal:Path,m:dict)->None:
     for item in m["files"]:
         rel=_safe_relative(item["path"])
         new=journal/"new"/rel
-        if not new.is_file() or sha(new)!=item["new_sha256"]:
-            raise RuntimeError(f"ARCHIVE_SYNC_JOURNAL_NEW_BYTES_MISSING_OR_CORRUPT: {rel}")
+        if item.get("new_exists",True):
+            if not new.is_file() or sha(new)!=item["new_sha256"]:
+                raise RuntimeError(f"ARCHIVE_SYNC_JOURNAL_NEW_BYTES_MISSING_OR_CORRUPT: {rel}")
+        elif new.exists():
+            raise RuntimeError(f"ARCHIVE_SYNC_JOURNAL_DELETED_FILE_HAS_NEW_PAYLOAD: {rel}")
         if item["old_exists"]:
             old=journal/"old"/rel
             if not old.is_file() or sha(old)!=item["old_sha256"]:
@@ -207,8 +215,11 @@ def recover_pending(root:Path)->dict:
             rel=_safe_relative(item["path"])
             _no_symlinks(root,rel)
             dst=root/rel
-            if not dst.is_file() or sha(dst)!=item["new_sha256"]:
-                raise RuntimeError("COMMITTED_ARCHIVE_SYNC_DESTINATION_MISMATCH: "+str(rel))
+            if item.get("new_exists",True):
+                if not dst.is_file() or sha(dst)!=item["new_sha256"]:
+                    raise RuntimeError("COMMITTED_ARCHIVE_SYNC_DESTINATION_MISMATCH: "+str(rel))
+            elif dst.exists():
+                raise RuntimeError("COMMITTED_ARCHIVE_SYNC_DELETED_FILE_STILL_EXISTS: "+str(rel))
         action="finished_committed"
     else:
         _rollback(journal,root,m)
@@ -217,7 +228,12 @@ def recover_pending(root:Path)->dict:
     return {"status":action,"journal_found":True,"files":len(m["files"])}
 
 
-def publish_staged_snapshot(stage:Path,root:Path,on_phase:Callable[[str,int],None]|None=None)->dict:
+def publish_staged_snapshot(
+    stage:Path,
+    root:Path,
+    on_phase:Callable[[str,int],None]|None=None,
+    removals:tuple[str,...]|list[str]=(),
+)->dict:
     """Publish from validated stage. Caller must hold exclusive_lock.
 
     Crash simulator callback exists only for offline fixture tests; it can
@@ -241,6 +257,33 @@ def publish_staged_snapshot(stage:Path,root:Path,on_phase:Callable[[str,int],Non
             raise RuntimeError("NONFILE_ARCHIVE_TARGET")
         if not dest.is_file() or sha(src)!=sha(dest):
             changes.append(rel)
+    # A deletion must be explicitly authorized by the caller. Never infer
+    # removals from files absent in stage, as prior data may be intentionally
+    # outside the staged subset.
+    removal_paths=[]
+    seen=set()
+    stage_set=set(files)
+    for raw in removals:
+        rel=_safe_relative(raw)
+        if (
+            rel.parts[:3]!=("archive","meetings","cheongju_integrated")
+            or len(rel.parts)!=6
+            or not rel.parts[3].startswith("term-")
+            or not rel.parts[4].isdigit()
+            or not rel.name.startswith("minutes-")
+            or rel.suffix!=".md"
+        ):
+            raise ValueError("ONLY_CANONICAL_MEETING_ORIGINAL_DELETION_ALLOWED: "+str(rel))
+        if rel in seen or rel in stage_set or rel in changes:
+            raise ValueError("DUPLICATE_OR_STAGED_DELETION: "+str(rel))
+        seen.add(rel)
+        _no_symlinks(root,rel)
+        dest=root/rel
+        if not dest.is_file():
+            raise RuntimeError("MISSING_OR_UNEXPECTED_DELETION_TARGET: "+str(rel))
+        removal_paths.append(rel)
+    removals_set=set(removal_paths)
+    changes.extend(sorted(removals_set,key=lambda p:p.as_posix()))
     if not changes:
         return {"status":"unchanged","changed_files":0}
 
@@ -251,11 +294,15 @@ def publish_staged_snapshot(stage:Path,root:Path,on_phase:Callable[[str,int],Non
         manifest={"schema":"integrated-sync-journal/1","files":[]}
         for rel in changes:
             dst=root/rel
+            is_delete=rel in removals_set
             item={"path":rel.as_posix(),"old_exists":dst.is_file(),
                   "old_sha256":sha(dst) if dst.is_file() else None,
-                  "new_sha256":sha(stage/rel)}
+                  "new_exists":not is_delete,
+                  "new_sha256":None if is_delete else sha(stage/rel)}
             for section,source in (("new",stage/rel),("old",dst)):
-                if section=="old" and not item["old_exists"]:
+                if (section=="old" and not item["old_exists"]) or (
+                    section=="new" and is_delete
+                ):
                     continue
                 stored=draft/section/rel
                 stored.parent.mkdir(parents=True,exist_ok=True)
@@ -275,9 +322,17 @@ def publish_staged_snapshot(stage:Path,root:Path,on_phase:Callable[[str,int],Non
             for i,item in enumerate(manifest["files"],1):
                 rel=_safe_relative(item["path"])
                 _no_symlinks(root,rel)
-                _atomic_install(journal/"new"/rel,root/rel)
-                if sha(root/rel)!=item["new_sha256"]:
-                    raise RuntimeError("INSTALL_CHECKSUM_FAILED: "+str(rel))
+                if item.get("new_exists",True):
+                    _atomic_install(journal/"new"/rel,root/rel)
+                    if sha(root/rel)!=item["new_sha256"]:
+                        raise RuntimeError("INSTALL_CHECKSUM_FAILED: "+str(rel))
+                else:
+                    if not (root/rel).is_file():
+                        raise RuntimeError("EXPECTED_DELETION_TARGET_MISSING: "+str(rel))
+                    (root/rel).unlink()
+                    fsync_dir((root/rel).parent)
+                    if (root/rel).exists():
+                        raise RuntimeError("INSTALL_DELETION_FAILED: "+str(rel))
                 if on_phase:
                     on_phase("installed",i)
             _write_json_atomic(journal/COMMITTED,{"schema":"integrated-sync-journal-commit/1",
