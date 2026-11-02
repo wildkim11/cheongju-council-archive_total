@@ -1,10 +1,6 @@
 name: One-time complete 2339-source offline incremental rehearsal
+# Completed controlled source-only QA. No automatic reruns.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/rehearse-incremental-full-snapshot.yml
   workflow_dispatch:
 permissions:
   contents: read
