@@ -1,10 +1,6 @@
 name: Retry two of one-time offline meeting tree discrepancy case control
+# Verified single-use evidence job; no push or scheduled trigger.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/meeting-tree-control-study.yml
   workflow_dispatch:
 permissions:
   contents: read
