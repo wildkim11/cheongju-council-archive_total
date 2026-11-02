@@ -22,10 +22,16 @@ def run(root=ROOT):
         raise ValueError("Wrong exception IDs")
     def distribution(xs,func):
         return dict(sorted(collections.Counter(func(x) for x in xs).items(),key=lambda p:p[0]))
+    def cross_year(x):
+        return x["meeting_date"][:4] != x["session_end"][:4]
     report={
         "basis":"archived 2026-11-02 official term/year inventory labels, no current re-query",
         "sample_sizes":{"term_only_cases":len(cases),"year_and_term_controls":len(controls),
                         "year_and_term_post_session_controls":len(post)},
+        "cross_calendar_year":{"term_only":sum(cross_year(x) for x in cases),
+          "shared_post_session":sum(cross_year(x) for x in post),
+          "term_only_session_end_dates":{x["source_id"]:x["session_end"] for x in cases},
+          "shared_post_session_cross_year_examples":[{"source_id":x["source_id"],"date":x["meeting_date"],"session_end":x["session_end"]} for x in post if cross_year(x)][:25]},
         "post_session_days":{"term_only_min":min(x["days_after_session_end"] for x in cases),
           "term_only_max":max(x["days_after_session_end"] for x in cases),
           "controls_min":min(x["days_after_session_end"] for x in post),
@@ -70,6 +76,7 @@ def run(root=ROOT):
        "case_committees":report["committees"]["term_only"],
        "control_post_committees":report["committees"]["shared_post_session"],
        "case_minmax_days":report["post_session_days"],
+       "cross_calendar_year":report["cross_calendar_year"],
        "case_matched_same_year_and_committee":{
            x["source_id"]:len(x["nearby_shared_post_session_controls_same_year_committee"])
            for x in report["cases"]}},ensure_ascii=False,indent=2),flush=True)
