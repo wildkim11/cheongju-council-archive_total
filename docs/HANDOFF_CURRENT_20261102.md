@@ -240,3 +240,14 @@
 - 안전 코드는 `scripts/probe_official_term4_new_meeting_ids_macos.py`, `scripts/probe_official_new_term4_bodies_macos.py`; 테스트 `tests/test_official_term4_new_meeting_ids.py`, `tests/test_official_new_term4_bodies.py`. API 호출 예산 제4대 전부 80회 상한/실제 32, 본문 2회 상한/실제 2. 회기/위원회 분기가 불완전하면 누락을 삭제로 처리하지 않는 fail-closed 판정.
 - **중요 운영 현황:** 기존 보존본 **2,339건 그대로**, 제4대 원본 **50건 그대로**. 공식 최신 제4대 **52건**과의 차이 2건은 **검토 후보**일 뿐 원본 추가 0건. 실제 2,341건 아카이브 작성/Stage C 검증을 이번에 성공했다고 주장하지 않는다. `main`과 독립 `cheongju-council-minutes` 변경 없음, 운영 `run_sync` 하드 잠금/스케줄 OFF.
 - 다음 단계: 정식 수집 자동화 적용 전 **임시 루트에 기존 2,339건을 복사**하고 공식 4024·4025 새 원문을 재조회하여 기존 SHA와 대조한 뒤 추가·원본 불변·Stage C 2,341행/이력·충돌복구 **격리 리허설**. 그 이전에는 실제 원본 갱신 금지. 제1~3대 기존 회의록의 최신성은 이번 작업 범위 밖.
+
+
+## 21. [최신] 공식 신규 4024·4025를 실제 원문으로 2,341건 격리 복사본에 증분 추가·복구 검증 PASS
+- 상세 QA `docs/REAL_TWO_NEW_2341_FULL_COPY_QA_20261102.md`, 기계검증 `reports/official-real-two-new-2341-full-copy-rehearsal-20261102.json`. macOS 전체 리허설 Actions https://github.com/wildkim11/cheongju-council-archive_total/actions/runs/41395286199 **PASS**.
+- 공식 2026 연도별 목록에서 `4024,4025` 모두 `var09=N` 재확인, GET 2회로 실제 공식 원문 재수신, 직전 라이브 SHA와 완전 일치. 4024 본문 정규화 SHA `818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d`, 4025 `56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba`.
+- **2,339건 전체 정확한 바이트 복사본**에만 기존 `collect_integrated_minutes.run_sync("incremental",temp_root)`를 활용. 실제 서버에서 새로 읽은 본문 2건 외 기존 임시 6건은 저장된 Markdown에서 SHA 검사 후 mock 재생했고 별도 라이브 조회로 주장하지 않음.
+- 결과 **격리 복사본 2,341건**: 기존 2,339 원본 파일 해시 **전부 불변**, 새 2건 공식 본문 해시 일치, 신규 정규화 본문 SHA 및 Markdown 파일 SHA **2,341/2,341 PASS**, term 663/771/855/**52**, published **2,333**, provisional **8**, 분석기 `meetings.jsonl` **2,341행**, export manifest 해시 **24/24 PASS**, Stage C **경고 0·오류 0**.
+- **두 번째 별도 원본 복사본**에서 업데이트 저널 7파일의 2파일 설치 직후 SIGKILL 종료. `sync_transaction.recover_pending`이 `rolled_back_uncommitted`로 복구. 이전 **2,339건 원본 SHA**·인덱스·분석기 JSONL/manifest **정확한 기존 바이트 복원**, Stage C 재검증 PASS. 정전·NFS 검증은 아님.
+- **실제 GitHub 아카이브는 여전히 2,339건**. 임시 두 복사본 모두 폐기. 신규 원문 4024/4025 실운영 원본 추가 없음. 개발 브랜치에는 안전 리허설 코드·테스트·본문 해시 및 QA 보고서만 보존. `main`, 독립 `wildkim11/cheongju-council-minutes` 변경 없음.
+- 운영 `run_sync("incremental"/"full",ROOT)` 하드 잠금 및 자동 스케줄 OFF. 기존 2,339건과 두 신규 ID를 실제 운영 저장소에 합치거나 자동수집을 가동하려면 **별도의 사용자 명시적 승인** 필요.
+- 후속 우선순위: 실제 정식 무인 증분 운영의 **안전한 요청 예산, 중복/재수집 주기, 새 본문 변경·임시→정식 전환 이력 보존, 전체 회기·연도 목록 커버리지와 장애 알림** 설계 및 격리 QA. 이번 PASS가 원본 자동 배포 승인이라는 해석은 금지.
