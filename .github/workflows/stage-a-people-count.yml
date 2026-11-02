@@ -1,10 +1,6 @@
 name: One-time Stage A identity row-count reconciliation
+# Completed one-time source-only QA. No automatic reruns.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/stage-a-people-count.yml
   workflow_dispatch:
 permissions:
   contents: read
