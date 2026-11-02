@@ -1,0 +1,138 @@
+{
+  "schema": "official-legacy-12-historical-term-session-counts/1",
+  "checked_at_utc": "2026-11-02T07:45:31.819926+00:00",
+  "request_cap": 12,
+  "requests_attempted": 12,
+  "retries": 0,
+  "official_term_session_counts": [
+    {
+      "scope": "cheongju_old_city",
+      "term": 4,
+      "official_term_label": "제4대 의회(1991. 4. 15 ~ 1995. 5. 30&nbsp;:&nbsp;제104회 ~ 제147회)",
+      "verified_session_count": 44,
+      "min_session_number": 104,
+      "max_session_number": 147,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongju_old_city",
+      "term": 5,
+      "official_term_label": "제5대 의회(1995. 7. 5 ~ 1998. 6. 18&nbsp;&nbsp;:&nbsp;제148회 ~ 제174회)",
+      "verified_session_count": 27,
+      "min_session_number": 148,
+      "max_session_number": 174,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongju_old_city",
+      "term": 6,
+      "official_term_label": "제6대 의회(1998. 7. 7 ~ 2002. 6. 30&nbsp;&nbsp;&nbsp;:&nbsp;제175회 ~ 제212회)",
+      "verified_session_count": 38,
+      "min_session_number": 175,
+      "max_session_number": 212,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongju_old_city",
+      "term": 7,
+      "official_term_label": "제7대 의회(2002. 7. 8 ~ 2006. 6. 27&nbsp;:&nbsp;제213회 ~ 제252회)",
+      "verified_session_count": 40,
+      "min_session_number": 213,
+      "max_session_number": 252,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongju_old_city",
+      "term": 8,
+      "official_term_label": "제8대 의회(2006. 7. 1 ~ 2010. 6. 30&nbsp;:&nbsp;제253회 ~ 제293회)",
+      "verified_session_count": 41,
+      "min_session_number": 253,
+      "max_session_number": 293,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongju_old_city",
+      "term": 9,
+      "official_term_label": "제9대 의회(2010. 7. 1 ~ 2014. 6. 30&nbsp;:&nbsp;제294회 ~ &nbsp;제329회)",
+      "verified_session_count": 36,
+      "min_session_number": 294,
+      "max_session_number": 329,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "term": 1,
+      "official_term_label": "제1대 의회(1991. 4. 15 ~ 1995. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제001회 ~ 제040회)",
+      "verified_session_count": 47,
+      "min_session_number": 1,
+      "max_session_number": 47,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "term": 2,
+      "official_term_label": "제2대 의회(1995. 7. 11 ~ 1998. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제048회 ~ 제072회)",
+      "verified_session_count": 25,
+      "min_session_number": 48,
+      "max_session_number": 72,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "term": 3,
+      "official_term_label": "제3대 의회(1998. 7. 1 ~ 2002. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제073회 ~ 제108회)",
+      "verified_session_count": 36,
+      "min_session_number": 73,
+      "max_session_number": 108,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "term": 4,
+      "official_term_label": "제4대 의회(2002. 7. 1 ~ 2006. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제109회 ~ 제142회)",
+      "verified_session_count": 34,
+      "min_session_number": 109,
+      "max_session_number": 142,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "term": 5,
+      "official_term_label": "제5대 의회(2006. 7. 1 ~ 2010. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제143회 ~ 제177회)",
+      "verified_session_count": 35,
+      "min_session_number": 143,
+      "max_session_number": 177,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    },
+    {
+      "scope": "cheongwon_old_county",
+      "term": 6,
+      "official_term_label": "제6대 의회(2010. 7. 1 ~ 2014. 6. 30&nbsp;&nbsp; : &nbsp;&nbsp;제178회 ~ &nbsp;제211회)",
+      "verified_session_count": 34,
+      "min_session_number": 178,
+      "max_session_number": 211,
+      "complete_session_node_list_verified": true,
+      "meeting_record_count_not_yet_verified": true
+    }
+  ],
+  "errors": [],
+  "all_12_term_session_branches_verified": true,
+  "all_official_meeting_leaf_counts_verified": false,
+  "full_legacy_meeting_body_backfill_completed": false,
+  "legacy_archives_modified": false,
+  "integrated_archive_modified": false,
+  "production_sync_enabled": false,
+  "total_verified_historical_session_nodes": 437,
+  "status": "PASS_ALL_12_OFFICIAL_LEGACY_TERM_SESSION_COUNTS"
+}
