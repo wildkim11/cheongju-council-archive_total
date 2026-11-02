@@ -1,0 +1,88 @@
+name: One-time real 4024 4025 4026 macOS isolated 2342 full-copy QA
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-real-three-new-2342-full-copy-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: one-time-2342-full-copy-official-three
+  cancel-in-progress: false
+
+jobs:
+  real-official-three-disposable-snapshot:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test proof fail-closed and original 2339 SHA-256 baseline
+        run: |
+          python -m unittest discover -s tests -p test_real_three_new_2342_isolated_rehearsal.py -v
+          python scripts/audit_stage_c.py --output /tmp/pre-real-three-2342-stage-c.json
+      - name: Fetch exactly 3 official real bodies and rehearse 2342 full copy plus SIGKILL rollback
+        run: python -u scripts/rehearse_real_three_new_2342_full_copy_macos.py
+      - name: Require full copy 2342 source/export/hash integrity and hard production lock
+        run: |
+          python - <<'PY'
+          import json
+          j=json.load(open('reports/official-real-three-new-2342-full-copy-rehearsal-20261102.json',encoding='utf-8'))
+          assert j['status']=='PASS'
+          assert j['schema']=='official-real-three-new-full-copy-incremental-rehearsal/1'
+          assert j['original_source_count']==2339
+          assert j['copy_source_count']==2342
+          assert j['copy_new_source_ids']==['4024','4025','4026']
+          assert j['copy_existing_sources_byte_identical']==2339
+          assert j['copy_sha256_files_verified']==2342
+          assert j['copy_sha256_bodies_verified']==2342
+          assert j['copy_analyzer_meeting_rows']==2342
+          assert j['copy_published']==2333 and j['copy_provisional']==9
+          assert j['copy_by_term']=={'1':663,'2':771,'3':855,'4':53}
+          assert j['copy_stage_c_result']=='PASS'
+          assert j['copy_stage_c_errors']==[] and j['copy_stage_c_warning_count']==0
+          assert j['copy_export_manifest_sha_verified']==24
+          assert j['read_only_official_gets']==3
+          assert j['live_official']['official_get_retries']==0
+          assert j['live_official']['body_hashes_match_previous_probe']
+          assert j['canonical_sync_report_bodies_checked']==9
+          assert j['crash_recovery']['recovery_diagnostic']['status']=='rolled_back_uncommitted'
+          assert j['crash_recovery']['prior_original_source_file_hashes_restored']==2339
+          assert j['crash_recovery']['prior_canonical_index_exactly_restored']
+          assert j['crash_recovery']['prior_analyzer_meetings_and_manifest_exactly_restored']
+          assert j['crash_recovery']['recovered_stage_c']=='PASS'
+          assert j['temp_copies_removed_after_run']
+          assert j['original_root_never_used_for_incremental']
+          assert j['production_sync_hard_lock_maintained']
+          assert not j['archive_root_modified'] and not j['main_branch_modified']
+          assert not j['scheduled_collection_enabled'] and not j['operational_release_authorized']
+          PY
+          git diff --exit-code -- archive indexes exports
+          python scripts/audit_stage_c.py --output /tmp/post-real-three-2342-stage-c.json
+      - name: Publish QA JSON evidence only to feature branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-real-three-new-2342-full-copy-rehearsal-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: three real official sources create 2342 disposable snapshot, audit 2342 hashes and SIGKILL rollback"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Archive audit evidence without original minutes text
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-three-official-2342-isolated-incremental-and-wal
+          path: reports/official-real-three-new-2342-full-copy-rehearsal-20261102.json
+          if-no-files-found: warn
