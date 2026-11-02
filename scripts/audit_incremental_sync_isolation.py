@@ -282,7 +282,7 @@ def diagnose():
             and results["same_id_revert"]["all_old_bytes_still_present"]
         ),
         "publish_exception_can_leave_partial_target":not results["publish_failure"]["rollback_restored_destination"],
-        "unexpected_process_termination_crash_atomicity_not_proven":True,
+        "hardware_power_loss_atomicity_not_certified":True,
         "many_to_one_provisional_replacements_allowed":not results["colliding_replacements"]["many_to_one_rejected"]
     }
     return {
