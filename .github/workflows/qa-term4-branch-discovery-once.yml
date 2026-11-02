@@ -1,0 +1,61 @@
+name: One-time macOS term 4 immediate tree navigation read-only
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-term4-branch-discovery-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+concurrency:
+  group: one-shot-term4-branch-shape
+  cancel-in-progress: false
+
+jobs:
+  macos-tree-shape:
+    runs-on: macos-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify original archived 2339 meeting hash baseline
+        run: python scripts/audit_stage_c.py --output /tmp/stagec-term4-before.json
+      - name: Strictly two official term tree calls, original collector TLS
+        run: python -u scripts/probe_term4_branch_shape.py
+      - name: Prove no production changes or unauthorized broad tree crawl
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('reports/official-term4-branch-discovery-20261102.json'))
+          assert r['requests_attempted']<=2 and r['retries']==0
+          assert not r['source_archive_modified']
+          assert not r['production_collection_enabled']
+          assert not r['operational_release_authorized']
+          assert r['status'] in {'PASS_TERM4_NODE_DISCOVERED','INCONCLUSIVE'}
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Publish tree shape metadata to feature branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-term4-branch-discovery-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: store bounded term4 official tree branch structure"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Preserve read-only navigation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-term4-root-shape
+          path: reports/official-term4-branch-discovery-20261102.json
+          if-no-files-found: warn
