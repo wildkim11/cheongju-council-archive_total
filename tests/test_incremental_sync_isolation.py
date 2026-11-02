@@ -23,11 +23,11 @@ class IsolationAuditTests(unittest.TestCase):
         result=qa.diagnose()
         self.assertEqual(result["official_site_requests"],0)
         self.assertFalse(result["canonical_project_files_modified"])
-        self.assertEqual(len(result["scenarios"]),7)
+        self.assertEqual(len(result["scenarios"]),8)
         self.assertTrue(result["successes"]["real_repository_sync_hard_interlock"])
         self.assertTrue(result["successes"]["caught_publish_exception_restores_full_fixture"])
-        self.assertTrue(result["successes"]["same_id_metadata_and_original_bytes_fail_closed"])
-        self.assertEqual(result["release_blocker_count"],3)
+        self.assertTrue(result["successes"]["same_id_metadata_and_original_bytes_versioned"])
+        self.assertEqual(result["release_blocker_count"],1)
         self.assertTrue(result["successes"]["staged_analyzer_exports_and_current_term_shards_are_consistent"])
         self.assertTrue(result["successes"]["new_markdown_appended_without_editing_old_source"])
         self.assertTrue(result["successes"]["remote_fetch_failure_aborts_without_writes"])
@@ -41,14 +41,25 @@ class IsolationAuditTests(unittest.TestCase):
         self.assertTrue(result["term_shard_matches_current"])
         self.assertTrue(result["initial_term_shard_preserved"])
         self.assertEqual(result["derived_manifest_meetings_count"],2)
-    def test_same_id_metadata_transition_fails_closed(self):
+    def test_same_id_metadata_transition_retains_original(self):
         result=qa.scenario_same_id_status_transition()
-        self.assertTrue(result["same_id_transition_safely_rejected"])
-        self.assertTrue(result["fixture_unchanged"])
-    def test_same_id_body_revision_fails_closed(self):
+        self.assertTrue(result["same_id_transition_versioned"])
+        self.assertTrue(result["prior_exact_original_bytes_preserved"])
+        self.assertEqual(result["revision_rows"],1)
+        self.assertEqual(result["prior_status"],"provisional")
+        self.assertEqual(result["next_status"],"published")
+    def test_same_id_body_revision_retains_original(self):
         result=qa.scenario_same_id_body_revision()
-        self.assertTrue(result["same_id_body_revision_safely_rejected"])
-        self.assertTrue(result["original_bytes_preserved"])
+        self.assertTrue(result["content_revision_changed_current"])
+        self.assertTrue(result["original_bytes_immutable"])
+        self.assertTrue(result["prior_sha256_matches"])
+        self.assertEqual(result["revision_rows"],1)
+    def test_multiple_revisions_and_return_to_original_body(self):
+        result=qa.scenario_revert_after_revisions()
+        self.assertTrue(result["three_transitions_recorded"])
+        self.assertTrue(result["all_old_bytes_still_present"])
+        self.assertTrue(result["original_first_version_preserved"])
+
     def test_detect_many_to_one_safeguard_gap(self):
         result=qa.scenario_colliding_replacements()
         self.assertTrue(result["many_to_one_rejected"])
