@@ -1,10 +1,7 @@
 name: One-time macOS official OLD Cheongju city and Cheongwon county term root trees
+# Source-reading one-time QA completed. No push-triggered or recurring reruns.
+# A further official source request requires explicit workflow_dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-preintegration-root-trees-once.yml
   workflow_dispatch:
 permissions:
   contents: write
