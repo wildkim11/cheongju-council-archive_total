@@ -574,7 +574,9 @@ def _publish_staged_snapshot_with_rollback(
     )
 
 
-def run_sync(mode: str, root: Path = ROOT) -> dict:
+def run_sync(
+    mode: str, root: Path = ROOT, force_body_ids: set[str] | None = None
+) -> dict:
     if mode not in {"incremental", "full"}:
         raise ValueError("mode must be incremental or full")
 
@@ -596,10 +598,12 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
         # site requests. A committed journal is finalized, an uncommitted
         # journal is rolled back from immutable source hashes.
         sync_transaction.recover_pending(Path(root))
-        return _run_sync_locked(mode,root)
+        return _run_sync_locked(mode,root,force_body_ids=force_body_ids)
 
 
-def _run_sync_locked(mode: str, root: Path) -> dict:
+def _run_sync_locked(
+    mode: str, root: Path, force_body_ids: set[str] | None = None
+) -> dict:
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
     today = now.date().isoformat()
     stamp = now.isoformat()
@@ -611,6 +615,12 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
     history_path = root / "indexes/integrated/meeting_history.json"
     old_rows = _load_rows(current_path)
     old = {row["meeting_id"]: row for row in old_rows}
+    # Exact, independently verified body-hash drift candidates from a prior
+    # read-only monitor may force a published body's re-download. This API
+    # cannot release the production hard lock. Unrecognized IDs fail closed.
+    forced = set(force_body_ids or ())
+    if any(not isinstance(mid,str) or mid not in old for mid in forced):
+        raise ValueError("FORCED_BODY_REVIEW_ID_NOT_IN_SAVED_INDEX")
     history_rows = _load_rows(history_path)
     revisions_path=root/"indexes/integrated/meeting_revisions.json"
     revisions=_load_rows(revisions_path)
@@ -643,6 +653,7 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
             or prior is None
             or (prior is not None and any(prior.get(k)!=row.get(k) for k in important))
             or row["publication_status"] == "provisional"
+            or row["meeting_id"] in forced
         ):
             needed.append(row)
 
@@ -745,6 +756,7 @@ def _run_sync_locked(mode: str, root: Path) -> dict:
             "changed": changed_ids,
             "superseded": replacements,
             "bodies_checked": len(bodies),
+            "forced_body_checks": sorted(forced),
             "history_rows": len(history_out),
             "revision_rows":len(revisions),
             "migrated_old_paths":sorted(paths_to_remove),
