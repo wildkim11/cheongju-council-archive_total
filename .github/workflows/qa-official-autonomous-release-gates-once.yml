@@ -1,0 +1,63 @@
+name: One-time autonomous official archive release gates preproduction QA
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-official-autonomous-release-gates-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  evaluate-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test gates and verify all source archive originals
+        run: |
+          python -m unittest discover -s tests -p test_official_autonomous_release_gates.py -v
+          python scripts/audit_stage_c.py --output /tmp/pre-release-original-audit.json
+      - name: Evaluate actual live QA evidence without approving any operation
+        run: python -u scripts/assess_official_autonomous_release_gates.py
+      - name: Require blocked final release even though technical components passed
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('reports/official-autonomous-release-readiness-latest.json',encoding='utf-8'))
+          assert r['status']=='BLOCKED_PRE_RELEASE'
+          assert not r['production_archive_auto_update_authorized']
+          assert r['release_gates']['live_term1_2_3_one_session_each']
+          assert r['release_gates']['live_term4_full_catalog_and_bounded_viewer_checks']
+          assert r['release_gates']['full_2342_isolated_real_source_sha_and_analyzer_qa']
+          assert r['release_gates']['rollback_on_sigkill_preserves_original_2339']
+          assert not r['release_gates']['live_term1_2_3_full_cycle_covered']
+          assert not r['release_gates']['automatic_default_branch_schedule_observed']
+          assert not r['release_gates']['failure_notification_delivery_verified']
+          assert not r['release_gates']['explicit_final_production_release_approval']
+          PY
+          git diff --exit-code -- archive indexes exports
+      - name: Commit gate report on development branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-autonomous-release-readiness-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: record verified official pre-release blockers while source archive stays locked"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Archive gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-autonomous-release-gates
+          path: reports/official-autonomous-release-readiness-latest.json
+          if-no-files-found: warn
