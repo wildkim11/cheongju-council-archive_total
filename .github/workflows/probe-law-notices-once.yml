@@ -1,10 +1,6 @@
 name: One-time public law notice attachment investigation
+# Completed historical one-time source investigation. Manual rerun only.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/probe-law-notices-once.yml
   workflow_dispatch:
 permissions:
   contents: read
