@@ -1,0 +1,35 @@
+name: One-time official meeting tree discrepancy QA
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/audit-official-tree-differences.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: meeting-tree-difference-qa
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify offline 13-record disagreement
+        run: |
+          python -m unittest discover -s tests -p test_official_tree_discrepancy.py
+          python scripts/audit_official_tree_discrepancy.py
+      - name: Recheck all official term and year inventory trees, plus 13 viewers
+        run: python -u scripts/audit_official_tree_discrepancy.py --live
+      - name: Preserve original-source, read-only QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-year-term-tree-13-discrepancies
+          path: reports/integrated-year-term-discrepancy-probe.json
+          if-no-files-found: warn
