@@ -1,10 +1,7 @@
 name: One-time official year 2026 4024 4025 4026 crosscheck macOS
+# This single-purpose QA ran successfully; automatic push reruns disabled.
+# Live official requests require manual dispatch for additional tests.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-macos-year2026-three-new-once.yml
   workflow_dispatch:
 
 permissions:
