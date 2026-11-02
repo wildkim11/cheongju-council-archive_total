@@ -22,6 +22,7 @@ import json
 import os
 import shutil
 import tempfile
+import uuid
 from pathlib import Path, PurePosixPath
 from typing import Callable
 
@@ -171,6 +172,22 @@ def _rollback(journal:Path,root:Path,m:dict)->None:
             fsync_dir(dest.parent)
 
 
+def _discard_resolved_journal(journal:Path,root:Path)->None:
+    """Rename the *resolved* journal before recursively deleting it.
+
+    If SIGKILL interrupts recursive cleanup, no active JOURNAL is left to be
+    misinterpreted as an incomplete/unsafe recovery. Completed or rolled-back
+    bytes have already been fsynced prior to this call.
+    """
+    target=root/(".integrated-sync-resolved-"+uuid.uuid4().hex)
+    if target.exists():
+        raise RuntimeError("ARCHIVE_SYNC_JOURNAL_RESOLVED_NAME_COLLISION")
+    os.replace(journal,target)
+    fsync_dir(root)
+    shutil.rmtree(target)
+    fsync_dir(root)
+
+
 def recover_pending(root:Path)->dict:
     """Call under exclusive_lock; idempotent after SIGKILL/power interruption.
 
@@ -196,8 +213,7 @@ def recover_pending(root:Path)->dict:
     else:
         _rollback(journal,root,m)
         action="rolled_back_uncommitted"
-    shutil.rmtree(journal)
-    fsync_dir(root)
+    _discard_resolved_journal(journal,root)
     return {"status":action,"journal_found":True,"files":len(m["files"])}
 
 
@@ -276,13 +292,11 @@ def publish_staged_snapshot(stage:Path,root:Path,on_phase:Callable[[str,int],Non
                 raise
             try:
                 _rollback(journal,root,manifest)
-                shutil.rmtree(journal)
-                fsync_dir(root)
+                _discard_resolved_journal(journal,root)
             except BaseException as rollback_error:
                 raise RuntimeError("ARCHIVE_SYNC_RECOVERY_REQUIRED: rollback failed") from rollback_error
             raise
-        shutil.rmtree(journal)
-        fsync_dir(root)
+        _discard_resolved_journal(journal,root)
         return {"status":"committed","changed_files":len(changes)}
     finally:
         if not sealed and draft.exists():
