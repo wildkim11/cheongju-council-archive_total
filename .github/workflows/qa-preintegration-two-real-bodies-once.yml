@@ -1,10 +1,7 @@
 name: One-time real 2014 premerger Cheongju city and Cheongwon county official bodies
+# Source-reading one-time QA completed. No push-triggered or recurring reruns.
+# A further official source request requires explicit workflow_dispatch.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-preintegration-two-real-bodies-once.yml
   workflow_dispatch:
 permissions:
   contents: write
