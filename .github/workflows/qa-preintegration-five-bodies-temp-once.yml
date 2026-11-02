@@ -1,0 +1,71 @@
+name: One-time five REAL premerger city county official bodies disposable staging QA
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/qa-preintegration-five-bodies-temp-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: one-time-premerger-five-real-bodies-staging
+  cancel-in-progress: false
+jobs:
+  real-5-premerger-meetings:
+    runs-on: macos-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run no-network original council scope collision safety tests
+        run: |
+          python -m unittest discover -s tests -p test_legacy_minutes_scope_contract.py -v
+          python scripts/audit_stage_c.py --output /tmp/before-real-five-premerger-staging.json
+      - name: Fetch five actual official 2014 source bodies into temporary staging only
+        run: python -u scripts/rehearse_preintegration_two_scope_five_bodies_macos.py
+      - name: Enforce exact 5 sources and zero original writes
+        run: |
+          python - <<'PY'
+          import json
+          j=json.load(open('reports/official-preintegration-five-bodies-isolated-pilot-20261102.json',encoding='utf-8'))
+          assert j['status']=='PASS_FIVE_REAL_OFFICIAL_LEGACY_BODIES_IN_DISPOSABLE_SCOPE_ISOLATED_STAGING'
+          assert j['requests_attempted']==5 and j['request_limit']==5
+          assert j['retries']==0
+          assert j['original_term_session_nodes_in_all_12_terms']==437
+          assert j['scope_counts']=={'cheongju_old_city':3,'cheongwon_old_county':2}
+          assert j['staged_original_markdown_count']==5
+          assert j['staging_removed_after_run']
+          assert j['verified_scope_contract']['distinct_scope_aware_meeting_ids']==5
+          assert j['verified_scope_contract']['operational_archive_write_allowed'] is False
+          assert all(x['normalized_status'] is None and not x['eligible_for_public_analyzer'] for x in j['body_rows'])
+          assert j['historic_N_code_normalized'] is False
+          assert not j['source_archive_modified']
+          assert not j['integrated_original_files_modified']
+          assert not j['production_backfill_enabled']
+          assert not j['analyzer_publication_enabled']
+          PY
+          git diff --exit-code -- archive indexes exports
+          python scripts/audit_stage_c.py --output /tmp/after-real-five-premerger-staging.json
+      - name: Commit only public metadata and SHA hashes from staging proof
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/official-preintegration-five-bodies-isolated-pilot-20261102.json
+          if ! git diff --cached --quiet; then
+            git commit -m "qa: 5 actual old-city/old-county bodies staged only in disposable temp, hashes and namespace checks PASS"
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: isolated-five-real-historical-council-bodies
+          path: reports/official-preintegration-five-bodies-isolated-pilot-20261102.json
+          if-no-files-found: warn
