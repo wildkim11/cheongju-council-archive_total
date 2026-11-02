@@ -1,10 +1,7 @@
 name: One-time real 4024 4025 4026 macOS isolated 2342 full-copy QA
+# This single-purpose QA ran successfully; automatic push reruns disabled.
+# Live official requests require manual dispatch for additional tests.
 on:
-  push:
-    branches:
-      - feature/archive-foundation
-    paths:
-      - .github/workflows/qa-real-three-new-2342-full-copy-once.yml
   workflow_dispatch:
 
 permissions:
