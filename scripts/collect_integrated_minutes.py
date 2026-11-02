@@ -507,6 +507,18 @@ def run_sync(mode: str, root: Path = ROOT) -> dict:
     if mode not in {"incremental", "full"}:
         raise ValueError("mode must be incremental or full")
 
+    # HARD RELEASE INTERLOCK. The legacy incremental publisher still has
+    # documented blockers (partial-copy rollback, same-ID revision history,
+    # metadata drift, derived export/shard synchronization). Do not permit
+    # manual CLI calls to mutate the real repository while these are unresolved.
+    # Isolated, disposable test fixtures pass their own temp root.
+    if Path(root).resolve() == ROOT.resolve():
+        raise RuntimeError(
+            "LIVE_ARCHIVE_INCREMENTAL_SYNC_DISABLED: production root is "
+            "blocked pending isolated transaction, revision and export QA. "
+            "Only disposable-fixture tests are currently authorized."
+        )
+
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
     today = now.date().isoformat()
     stamp = now.isoformat()
