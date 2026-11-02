@@ -1,0 +1,30 @@
+name: One-time Stage A identity row-count reconciliation
+on:
+  push:
+    branches:
+      - feature/archive-foundation
+    paths:
+      - .github/workflows/stage-a-people-count.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify Stage A profile count and identity preservation
+        run: python -m unittest discover -s tests -p test_stage_a_people_count.py
+      - name: Create source-only QA report
+        run: python scripts/audit_stage_a_people_count.py
+      - name: Preserve QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage-a-people-count-reconciliation
+          path: reports/stage-a-people-count-reconciliation.json
+          if-no-files-found: warn
