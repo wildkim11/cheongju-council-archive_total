@@ -12,7 +12,7 @@ on:
         description: Source family (auto rotates all families)
         default: auto
         type: choice
-        options: [auto, minutes, bills, activities, people, groups, media, attachments]
+        options: [auto, all, bootstrap, minutes, bills, activities, people, groups, media, attachments]
 permissions:
   contents: write
 concurrency:
@@ -39,8 +39,9 @@ jobs:
         id: collection
         continue-on-error: true
         env:
-          COLLECTION_FAMILY: ${{ inputs.family || 'auto' }}
-        run: python -u scripts/automated_collection.py --family "$COLLECTION_FAMILY"
+          COLLECTION_FAMILY: ${{ inputs.family || (github.event_name == 'push' && 'bootstrap' || 'auto') }}
+          EXPLICIT_RETRY: ${{ github.event_name == 'push' && '--retry-now' || '' }}
+        run: bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
       - name: Persist validated snapshot and retry state
         if: always() && steps.collection.outcome != 'skipped'
         run: |
@@ -50,7 +51,7 @@ jobs:
           git add archive indexes exports reports
           if ! git diff --cached --quiet; then
             git commit -m "data: automatic official collection and durable retry state"
-            git push origin HEAD:feature/archive-foundation
+            bash scripts/push_collected_snapshot.sh
           fi
       - name: Preserve collection report
         if: always()
