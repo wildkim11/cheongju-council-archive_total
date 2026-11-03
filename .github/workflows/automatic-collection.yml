@@ -50,6 +50,21 @@ jobs:
               if (e.status !== 404) throw e;
             }
             fs.writeFileSync(process.env.RUNNER_TEMP + '/collection-state.json', JSON.stringify(state));
+
+            // Checkpoint coverage is separate from this gate job's success.
+            const families = ['minutes','bills','activities','people','groups','media','attachments'];
+            const records = families.map(name => {
+              const item = state.families?.[name] || {};
+              return [name, item.last_success_at || 'No successful checkpoint',
+                String(item.consecutive_failures || 0)];
+            });
+            const verified = families.filter(name => state.families?.[name]?.last_success_at).length;
+            await core.summary
+              .addHeading('Source collection checkpoints')
+              .addRaw('This gate reads GitHub state only. Its success does not mean official-site collection ran.\n\n')
+              .addRaw('Families with a recorded success: ' + verified + '/' + families.length + '. These are historical checkpoints, not a freshness guarantee.\n\n')
+              .addTable([[{data:'Family',header:true},{data:'Last recorded success (UTC)',header:true},{data:'Consecutive failures',header:true}], ...records])
+              .write();
       - name: Choose daily collection or due failures only
         id: plan
         env:
