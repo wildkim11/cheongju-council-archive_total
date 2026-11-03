@@ -1,0 +1,214 @@
+{
+  "family": "minutes",
+  "started_at": "2026-11-03T08:41:57.342050+00:00",
+  "status": "FAILED",
+  "published": false,
+  "collection": {
+    "checked_at": "2026-11-03T17:41:58.708255+09:00",
+    "mode": "incremental",
+    "council_scope": "cheongju_integrated",
+    "listed": 2353,
+    "published": 2333,
+    "provisional": 20,
+    "by_term": {
+      "1": 663,
+      "2": 771,
+      "3": 855,
+      "4": 64
+    },
+    "new": [
+      "cheongju_integrated:minutes-4024",
+      "cheongju_integrated:minutes-4025",
+      "cheongju_integrated:minutes-4026",
+      "cheongju_integrated:minutes-4027",
+      "cheongju_integrated:minutes-4030",
+      "cheongju_integrated:minutes-4031",
+      "cheongju_integrated:minutes-4032",
+      "cheongju_integrated:minutes-4033",
+      "cheongju_integrated:minutes-4034",
+      "cheongju_integrated:minutes-4035",
+      "cheongju_integrated:minutes-4037",
+      "cheongju_integrated:minutes-4038",
+      "cheongju_integrated:minutes-4039",
+      "cheongju_integrated:minutes-4040"
+    ],
+    "changed": [],
+    "superseded": {},
+    "bodies_checked": 28,
+    "forced_body_checks": [
+      "cheongju_integrated:minutes-1988",
+      "cheongju_integrated:minutes-1989",
+      "cheongju_integrated:minutes-199",
+      "cheongju_integrated:minutes-1990",
+      "cheongju_integrated:minutes-1995",
+      "cheongju_integrated:minutes-1996",
+      "cheongju_integrated:minutes-1997",
+      "cheongju_integrated:minutes-1998"
+    ],
+    "history_rows": 0,
+    "revision_rows": 5,
+    "migrated_old_paths": [],
+    "revised": [
+      "cheongju_integrated:minutes-4018",
+      "cheongju_integrated:minutes-4019",
+      "cheongju_integrated:minutes-4020",
+      "cheongju_integrated:minutes-4021",
+      "cheongju_integrated:minutes-4022"
+    ],
+    "inventory_qa": {
+      "term_inventory_count": 2353,
+      "year_inventory_count": 2340,
+      "shared_count": 2340,
+      "only_term": [
+        "1212",
+        "1573",
+        "180",
+        "1848",
+        "1900",
+        "2257",
+        "2258",
+        "2659",
+        "2951",
+        "3315",
+        "3652",
+        "508",
+        "896"
+      ],
+      "only_year": []
+    }
+  },
+  "qa": {
+    "scope": "offline stored snapshot (not a fresh official-site inventory)",
+    "checked_at_utc": "2026-11-03T08:49:48.641822+00:00",
+    "status": "PASS",
+    "source_rows": 2353,
+    "source_files_checked": 2353,
+    "source_file_bytes_checked": 222605800,
+    "sha256_file_verified": 2353,
+    "sha256_content_verified": 2353,
+    "export_rows_checked": 2353,
+    "export_files_hash_verified": 24,
+    "published": 2333,
+    "provisional": 20,
+    "superseded": 0,
+    "revisions_verified": 5,
+    "by_term": {
+      "1": 663,
+      "2": 771,
+      "3": 855,
+      "4": 64
+    },
+    "year_inventory_only_term": [
+      {
+        "source_id": "180",
+        "term": 1,
+        "date": "2015-01-23",
+        "status": "published",
+        "title": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회) 제4회[제2차정례회](2014. 11. 20 ~ 2014. 12. 19) 의회운영위원회 제2차(2015.01.23 금요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=180"
+      },
+      {
+        "source_id": "508",
+        "term": 1,
+        "date": "2016-01-19",
+        "status": "published",
+        "title": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회) 제14회[제2차정례회](2015. 11. 20 ~ 2015. 12. 21) 의회운영위원회 제3차(2016.01.19 화요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=508"
+      },
+      {
+        "source_id": "896",
+        "term": 1,
+        "date": "2017-01-24",
+        "status": "published",
+        "title": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회) 제23회[제2차정례회](2016. 11. 28 ~ 2016. 12. 19) 의회운영위원회 제3호(2017.01.24 화요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=896"
+      },
+      {
+        "source_id": "1212",
+        "term": 1,
+        "date": "2018-01-26",
+        "status": "published",
+        "title": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회) 제31회[제2차정례회](2017. 11. 28 ~ 2017. 12. 19) 의회운영위원회 제3호(2018.01.26 금요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1212"
+      },
+      {
+        "source_id": "1573",
+        "term": 2,
+        "date": "2019-02-07",
+        "status": "published",
+        "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제39회[제2차정례회](2018. 11. 20 ~ 2018. 12. 20) 의회운영위원회 제3호(2019.02.07 목요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1573"
+      },
+      {
+        "source_id": "1848",
+        "term": 2,
+        "date": "2020-01-16",
+        "status": "published",
+        "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제48회[제2차정례회](2019. 11. 20 ~ 2019. 12. 20) 청주시미세먼지원인ㆍ실태관련행정사무조사특별위원회 제5호(2020.01.16 목요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1848"
+      },
+      {
+        "source_id": "1900",
+        "term": 2,
+        "date": "2020-01-31",
+        "status": "published",
+        "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제48회[제2차정례회](2019. 11. 20 ~ 2019. 12. 20) 의회운영위원회 제2호(2020.01.31 금요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=1900"
+      },
+      {
+        "source_id": "2257",
+        "term": 2,
+        "date": "2021-02-05",
+        "status": "published",
+        "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제59회[제2차정례회](2020. 11. 20 ~ 2020. 12. 24) 의회운영위원회 제5호(2021.02.05 금요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2257"
+      },
+      {
+        "source_id": "2258",
+        "term": 2,
+        "date": "2021-01-29",
+        "status": "published",
+        "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제59회[제2차정례회](2020. 11. 20 ~ 2020. 12. 24) 의회운영위원회 제4호(2021.01.29 금요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2258"
+      },
+      {
+        "source_id": "2659",
+        "term": 2,
+        "date": "2022-01-27",
+        "status": "published",
+        "title": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회) 제67회[제2차정례회](2021. 11. 22 ~ 2021. 12. 21) 의회운영위원회 제3호(2022.01.27 목요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2659"
+      },
+      {
+        "source_id": "2951",
+        "term": 3,
+        "date": "2023-02-02",
+        "status": "published",
+        "title": "제3대 의회(2022. 07. 01 ~ 2026. 06. 30 : 제071회 ~ 제102회) 제75회[임시회](2022. 12. 22 ~ 2022. 12. 22) 의회운영위원회 제1호(2023.02.02 목요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2951"
+      },
+      {
+        "source_id": "3315",
+        "term": 3,
+        "date": "2024-02-07",
+        "status": "published",
+        "title": "제3대 의회(2022. 07. 01 ~ 2026. 06. 30 : 제071회 ~ 제102회) 제83회[제2차정례회](2023. 11. 20 ~ 2023. 12. 21) 의회운영위원회 제4호(2024.02.07 수요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3315"
+      },
+      {
+        "source_id": "3652",
+        "term": 3,
+        "date": "2025-02-06",
+        "status": "published",
+        "title": "제3대 의회(2022. 07. 01 ~ 2026. 06. 30 : 제071회 ~ 제102회) 제91회[제2차정례회](2024. 11. 20 ~ 2024. 12. 20) 의회운영위원회 제3호(2025.02.06 목요일)",
+        "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3652"
+      }
+    ],
+    "errors": [],
+    "warnings": [],
+    "error_count": 0,
+    "warning_count": 0
+  },
+  "error": "ValueError: Unsafe journal destination: .integrated-sync.lock",
+  "failed_requests": []
+}
