@@ -1,10 +1,10 @@
 {
   "family": "minutes",
-  "started_at": "2026-11-03T08:41:57.342050+00:00",
-  "status": "FAILED",
-  "published": false,
+  "started_at": "2026-11-03T08:56:11.914609+00:00",
+  "status": "PASS",
+  "published": true,
   "collection": {
-    "checked_at": "2026-11-03T17:41:58.708255+09:00",
+    "checked_at": "2026-11-03T17:56:14.168079+09:00",
     "mode": "incremental",
     "council_scope": "cheongju_integrated",
     "listed": 2353,
@@ -79,7 +79,7 @@
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-03T08:49:48.641822+00:00",
+    "checked_at_utc": "2026-11-03T09:03:46.219722+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
@@ -209,6 +209,8 @@
     "error_count": 0,
     "warning_count": 0
   },
-  "error": "ValueError: Unsafe journal destination: .integrated-sync.lock",
-  "failed_requests": []
+  "transaction": {
+    "status": "committed",
+    "changed_files": 2073
+  }
 }
