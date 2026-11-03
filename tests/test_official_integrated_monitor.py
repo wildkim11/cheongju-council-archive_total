@@ -1,6 +1,7 @@
 """No-network safety tests for the pre-production macOS official monitor."""
 from __future__ import annotations
 
+from historical_snapshot import initial_meetings
 import datetime as dt
 import hashlib
 import html
@@ -17,7 +18,7 @@ import monitor_official_incremental_preflight as m
 
 
 def saved():
-    return json.loads((m.ROOT/"indexes/integrated/meetings.json").read_text(encoding="utf-8"))
+    return initial_meetings()
 
 
 def discovered():
@@ -35,6 +36,14 @@ class IntegratedOfficialMonitorTests(unittest.TestCase):
         self.saved=saved()
         self.discovery=discovered()
         self.date=dt.date(2026,11,2)
+        # Pin old-monitor rehearsals to an isolated synthetic body corpus so a
+        # successful live update cannot invalidate historical fixture proofs.
+        self.fixture_body=lambda sid: ("격리 회의록 시험 자료 "+str(sid)+" ")*30
+        for row in self.saved:row['content_sha256']=m.sha256(audit_stage_c.canon(self.fixture_body(row['source_id'])).encode())
+        folder=tempfile.TemporaryDirectory();self.addCleanup(folder.cleanup)
+        fixture=Path(folder.name);(fixture/'indexes/integrated').mkdir(parents=True)
+        (fixture/'indexes/integrated/meetings.json').write_text(json.dumps(self.saved),encoding='utf-8')
+        root_patch=patch.object(m,'ROOT',fixture);root_patch.start();self.addCleanup(root_patch.stop)
         self.assertEqual(len(self.saved),2339)
 
     def test_bounded_plan_includes_six_provisional_two_new_and_rotating_published(self):
@@ -149,8 +158,7 @@ class IntegratedOfficialMonitorTests(unittest.TestCase):
             calls.append(sid)
             if sid in lookup:
                 row=lookup[sid]
-                _,_,body=audit_stage_c.markdown_parts(
-                    (m.ROOT/row["path"]).read_text(encoding="utf-8"))
+                body=self.fixture_body(sid)
             else:
                 self.assertIn(sid,("4024","4025"))
                 body="오프라인 시험 전용 가상 임시회의록입니다. "*16

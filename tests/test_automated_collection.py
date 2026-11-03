@@ -30,6 +30,14 @@ class AutoCollectionTests(unittest.TestCase):
    r=Path(td);self.fixture(r)
    def worker(f,s,o):(s/'archive/new.json').write_text('[2]');return {'new':1}
    result=a.run(r,'activities',worker,lambda s,r:{'status':'PASS'});self.assertTrue(result['published']);self.assertTrue((r/'archive/new.json').exists())
+ def test_nested_candidate_lock_is_not_published(self):
+  with tempfile.TemporaryDirectory() as td:
+   r=Path(td);self.fixture(r)
+   def worker(f,s,o):
+    (s/a.sync_transaction.LOCK).write_text('temporary candidate lock')
+    (s/'archive/new.json').write_text('[2]');return {}
+   result=a.run(r,'minutes',worker,lambda s,r:{'status':'PASS'})
+   self.assertTrue(result['published']);self.assertTrue((r/'archive/new.json').exists())
  def test_retry_is_durable_and_deferred(self):
   with tempfile.TemporaryDirectory() as td:
    r=Path(td);self.fixture(r)

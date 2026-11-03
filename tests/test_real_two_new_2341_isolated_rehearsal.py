@@ -1,6 +1,7 @@
 """No-network regression tests for two-real-new isolated full copy fixture guards."""
 from __future__ import annotations
 
+from historical_snapshot import initial_meetings
 import copy
 import json
 import sys
@@ -15,7 +16,7 @@ import rehearse_real_two_new_2341_full_copy_macos as q
 
 class RealTwoNewSnapshotFixtureTests(unittest.TestCase):
     def setUp(self):
-        self.source=q.load(q.INDEX)
+        self.source=initial_meetings()
         self.assertEqual(len(self.source),2339)
 
     def test_official_double_sourced_new_metadata_yields_only_two_new(self):

@@ -1,5 +1,6 @@
 """No-network regression tests for exactly three real new official IDs in a 2342-copy rehearsal."""
 from __future__ import annotations
+from historical_snapshot import initial_meetings
 import copy
 import json
 import sys
@@ -12,7 +13,7 @@ import rehearse_real_three_new_2342_full_copy_macos as q
 
 class ThreeOfficialSourceFullCopySafetyTests(unittest.TestCase):
     def setUp(self):
-        self.source=q.load(q.INDEX)
+        self.source=initial_meetings()
         self.assertEqual(len(self.source),2339)
 
     def test_confirmed_current_year_and_term_crosscheck_three_new_ids(self):

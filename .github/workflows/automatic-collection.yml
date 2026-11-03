@@ -39,8 +39,9 @@ jobs:
         id: collection
         continue-on-error: true
         env:
-          COLLECTION_FAMILY: ${{ inputs.family || 'auto' }}
-        run: python -u scripts/automated_collection.py --family "$COLLECTION_FAMILY"
+          COLLECTION_FAMILY: ${{ inputs.family || 'minutes' }}
+          EXPLICIT_RETRY: ${{ github.event_name == 'push' && '--retry-now' || '' }}
+        run: python -u scripts/automated_collection.py --family "$COLLECTION_FAMILY" $EXPLICIT_RETRY
       - name: Persist validated snapshot and retry state
         if: always() && steps.collection.outcome != 'skipped'
         run: |

@@ -1,8 +1,11 @@
 """Regression tests for term-versus-year official tree discrepancy audit."""
+from historical_snapshot import initial_meetings
+from unittest.mock import patch
 import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
+import audit_official_tree_discrepancy as audit
 from audit_official_tree_discrepancy import classify, offline, IDS
 
 class TreeExceptionTests(unittest.TestCase):
@@ -14,7 +17,12 @@ class TreeExceptionTests(unittest.TestCase):
         self.assertEqual(a["session_end"],"2015-01-17")
         self.assertEqual(a["days_after_session_end"],6)
     def test_snapshot_exact_13_and_no_source_mutation(self):
-        report=offline()
+        original=audit.read
+        def historical(path):
+            if path.name=="meetings.json":return initial_meetings()
+            if path.name=="integrated-sync.json":return {"inventory_qa":{"only_term":list(IDS),"only_year":[]}}
+            return original(path)
+        with patch.object(audit,"read",side_effect=historical):report=offline()
         self.assertEqual(report["total_saved"],2339)
         self.assertEqual(report["saved_term_only"],13)
         self.assertEqual(report["shared_year_tree_post_session_count"],report["shared_year_tree_post_session_cross_calendar_count"]+report["shared_year_tree_post_session_same_calendar_count"])

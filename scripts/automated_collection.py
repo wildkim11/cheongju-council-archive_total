@@ -165,9 +165,9 @@ def validate_candidate(stage,oldroot):
     if qa['status']!='PASS':raise ValueError('candidate archive QA failed: '+str(qa['errors'][:10]))
     return qa
 
-def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate):
+def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False):
     root=Path(root);state=load(root/'reports/automatic/collection_state.json',{'schema':'cheongju-auto-collection/1','cursor':0,'families':{}});now=dt.datetime.now(dt.timezone.utc);selected=select_family(state,family,now);slot=state['families'].setdefault(selected,{'attempts':0});report={'family':selected,'started_at':now.isoformat(),'status':'FAILED','published':False}
-    if slot.get('next_retry_at','')>now.isoformat():report['status']='DEFERRED';save_json(root/'reports/automatic-collection-latest.json',report);return report
+    if not retry_now and slot.get('next_retry_at','')>now.isoformat():report['status']='DEFERRED';save_json(root/'reports/automatic-collection-latest.json',report);return report
     slot['attempts']+=1
     capture=None
     try:
@@ -179,7 +179,7 @@ def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate):
                     if (root/name).exists():shutil.copytree(root/name,stage/name)
                 with Capture(stage) as capture:report['collection']=runner(selected,stage,now.toordinal())
                 save_json(stage/'reports/automatic/source-response-latest.json',capture.rows)
-                report['qa']=validator(stage,root);report['transaction']=sync_transaction.publish_staged_snapshot(stage,root);report.update(status='PASS',published=True)
+                report['qa']=validator(stage,root);(stage/sync_transaction.LOCK).unlink(missing_ok=True);report['transaction']=sync_transaction.publish_staged_snapshot(stage,root);report.update(status='PASS',published=True)
         slot.update(last_success_at=now.isoformat(),consecutive_failures=0);slot.pop('next_retry_at',None);slot.pop('last_error',None)
     except Exception as e:
         fails=slot.get('consecutive_failures',0)+1;slot.update(consecutive_failures=fails,last_error=type(e).__name__+': '+str(e)[:500],next_retry_at=(now+dt.timedelta(minutes=min(1440,15*2**min(fails-1,6)))).isoformat());report['error']=slot['last_error']
@@ -189,5 +189,5 @@ def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate):
     return report
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--family',choices=('auto',)+FAMILIES,default='auto');a=p.parse_args();result=run(family=a.family);print(json.dumps({k:v for k,v in result.items() if k!='qa'},ensure_ascii=False,indent=2));raise SystemExit(0 if result['status'] in ('PASS','DEFERRED') else 1)
+    p=argparse.ArgumentParser();p.add_argument('--retry-now',action='store_true',help='Explicit retry after a code fix; normal schedule honors backoff');p.add_argument('--family',choices=('auto',)+FAMILIES,default='auto');a=p.parse_args();result=run(family=a.family,retry_now=a.retry_now);print(json.dumps({k:v for k,v in result.items() if k!='qa'},ensure_ascii=False,indent=2));raise SystemExit(0 if result['status'] in ('PASS','DEFERRED') else 1)
 if __name__=='__main__':main()
