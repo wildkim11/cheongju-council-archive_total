@@ -84,3 +84,27 @@ class FailedOnlyRetryTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as td:
    r=Path(td);a.save_json(r/'reports/automatic/attachments.json',{'https://council.cheongju.go.kr/download?id=1':{'status':'pending','attempts':0}})
    result=a.download_attachments(r,retry_only=True);self.assertEqual(result['attempted'],0)
+
+
+class MeetingTextPipelineTests(unittest.TestCase):
+ def mocks(self,stack,text_export):
+  for name,attr,value in [('export_analyzer','export',{}),('validate_archive','validate',None),('audit_stage_c','audit',{'status':'PASS'}),('process_meeting_segments','process',{}),('verify_processing','verify',{'status':'PASS'})]:
+   module=__import__(name);stack.enter_context(patch.object(module,attr,return_value=value))
+  return stack.enter_context(patch('export_minutes_text.export',side_effect=text_export))
+ def test_validated_candidate_exports_text_before_publication(self):
+  with tempfile.TemporaryDirectory() as td,a.contextlib.ExitStack() as stack:
+   r=Path(td)
+   def export(stage):
+    a.save_json(stage/'exports/minutes-text/catalog.json',{'schema':'test','rows':1});return {'rows':1}
+   mock=self.mocks(stack,export)
+   result=a.run(r,'minutes',lambda *args:{})
+   self.assertTrue(result['published']);self.assertEqual(result['qa']['minutes_text']['rows'],1)
+   self.assertTrue((r/'exports/minutes-text/catalog.json').is_file());mock.assert_called_once()
+ def test_text_hash_failure_retains_previous_snapshot(self):
+  with tempfile.TemporaryDirectory() as td,a.contextlib.ExitStack() as stack:
+   r=Path(td);a.save_json(r/'exports/minutes-text/catalog.json',{'rows':7})
+   self.mocks(stack,ValueError('meeting original hash mismatch'))
+   result=a.run(r,'minutes',lambda *args:{})
+   self.assertFalse(result['published']);self.assertEqual(result['status'],'FAILED')
+   self.assertEqual(a.load(r/'exports/minutes-text/catalog.json',{})['rows'],7)
+   self.assertIn('hash mismatch',result['error'])

@@ -5,8 +5,10 @@ on:
     paths:
       - scripts/process_meeting_segments.py
       - scripts/verify_processing.py
+      - scripts/export_minutes_text.py
       - tests/test_process_meeting_segments.py
       - tests/test_verify_processing.py
+      - tests/test_export_minutes_text.py
       - .github/workflows/process-archived-records.yml
   workflow_dispatch:
 permissions:
@@ -36,12 +38,14 @@ jobs:
         run: python -u scripts/process_meeting_segments.py
       - name: Verify every source range and derived ledger
         run: python -u scripts/verify_processing.py --out reports/processing-qa-latest.json
+      - name: Export hash-verified meeting text for HTML consumers
+        run: python -u scripts/export_minutes_text.py
       - name: Commit verified derived data only
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add exports/processing reports/processing-latest.json reports/processing-qa-latest.json
+          git add exports/processing exports/minutes-text reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "data: verified speech segments and source-backed activity roles"
             bash scripts/push_collected_snapshot.sh

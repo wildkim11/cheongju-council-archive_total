@@ -185,6 +185,10 @@ def validate_candidate(stage,oldroot):
     process_meeting_segments.process(stage);processing=verify_processing.verify(stage)
     save_json(stage/'reports/processing-qa-latest.json',processing)
     qa['processing']=processing
+    # HTML consumers must receive text packs from this same verified snapshot.
+    # Export failures abort the candidate before any live snapshot is published.
+    import export_minutes_text
+    qa['minutes_text']=export_minutes_text.export(stage)
     return qa
 
 def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False,retry_attempt=False):
