@@ -12,8 +12,9 @@ political scores or promote identity candidates.
 Each run copies the archive to a disposable candidate, collects there, rebuilds
 all analyzer JSONL exports, runs archive/hash QA, and only then installs the
 candidate with the existing crash-recoverable transaction journal. Git commits
-use an ordinary fast-forward push; concurrent branch changes fail rather than
-being overwritten. The original live `run_sync` hard lock is retained.
+use a fast-forward push. Concurrent code-only changes can be rebased after the
+full tests and archive QA pass again; concurrent source changes stop publication
+rather than merging independently collected snapshots. The original live `run_sync` hard lock is retained.
 
 The state in `reports/automatic/collection_state.json` records each source
 family, attempts, errors, last success and next retry. Failure preserves the
@@ -49,3 +50,19 @@ A workflow success is evidence for the selected family only. All-family
 operational completion requires successful recorded collection for all seven
 families. Meeting/text export into a downloadable HTML is a separate downstream
 consumer and does not replace collection. This change does not publish HTML.
+
+The immutable initial-term shards remain historical regression fixtures. Tests
+for the old 2,339-record capture must not use the growing current index.
+
+`export_minutes_text.py` is a downstream command-line producer for reproducible
+plain-text gzip packs with official URLs and original/content hashes. The local
+full-corpus trial verified 2,339 bodies: 217,884,901 UTF-8 text bytes and
+58,516,198 compressed bytes. It is not an HTML build, and these large packs are
+not committed by this change. The canonical Markdown sources already remain in
+Git. Text-pack delivery can be added after collection operation is stable.
+
+Initial activation uses `bootstrap`: run all source families that lack a
+successful checkpoint within 24 hours. Each family is committed independently.
+An individual source failure is recorded and does not prevent later families
+from being attempted. Normal scheduled operations rotate one family per run.
+A manual `all` performs a complete cycle without the bootstrap freshness skip.

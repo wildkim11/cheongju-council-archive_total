@@ -167,7 +167,7 @@ def validate_candidate(stage,oldroot):
 
 def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False):
     root=Path(root);state=load(root/'reports/automatic/collection_state.json',{'schema':'cheongju-auto-collection/1','cursor':0,'families':{}});now=dt.datetime.now(dt.timezone.utc);selected=select_family(state,family,now);slot=state['families'].setdefault(selected,{'attempts':0});report={'family':selected,'started_at':now.isoformat(),'status':'FAILED','published':False}
-    if not retry_now and slot.get('next_retry_at','')>now.isoformat():report['status']='DEFERRED';save_json(root/'reports/automatic-collection-latest.json',report);return report
+    if not retry_now and slot.get('next_retry_at','')>now.isoformat():report['status']='DEFERRED';state['last_run']=report;save_json(root/'reports/automatic/collection_state.json',state);save_json(root/'reports/automatic-collection-latest.json',report);return report
     slot['attempts']+=1
     capture=None
     try:

@@ -45,6 +45,14 @@ class AutoCollectionTests(unittest.TestCase):
    a.run(r,'minutes',fail,lambda s,r:{})
    with patch.object(a,'Capture',side_effect=AssertionError('must not request')):
     self.assertEqual(a.run(r,'minutes',fail,lambda s,r:{})['status'],'DEFERRED')
+ def test_deferred_auto_family_does_not_starve_other_sources(self):
+  with tempfile.TemporaryDirectory() as td:
+   r=Path(td);self.fixture(r)
+   future=(a.dt.datetime.now(a.dt.timezone.utc)+a.dt.timedelta(days=1)).isoformat()
+   a.save_json(r/'reports/automatic/collection_state.json',{'cursor':0,'families':{'minutes':{'attempts':1,'next_retry_at':future}}})
+   self.assertEqual(a.run(r,'auto',lambda *x:None,lambda *x:None)['status'],'DEFERRED')
+   state=a.load(r/'reports/automatic/collection_state.json',{})
+   self.assertEqual(state['cursor'],1);self.assertEqual(a.select_family(state,'auto',None),'bills')
  def test_capture_preserves_decoded_source(self):
   with tempfile.TemporaryDirectory() as td:
    c=a.Capture(Path(td));self.assertEqual(c.wrap(lambda u:'의회')('https://council.cheongju.go.kr/test'),'의회');p=Path(td)/c.rows[0]['path'];self.assertEqual(a.gzip.decompress(p.read_bytes()).decode(),'의회')
