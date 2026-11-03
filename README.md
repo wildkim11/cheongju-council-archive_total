@@ -6,6 +6,6 @@
 - 운영 설명: [자동수집 구조와 제한](https://github.com/wildkim11/cheongju-council-archive_total/blob/feature/archive-foundation/docs/AUTOMATIC_COLLECTION.md)
 - 실행 결과: [GitHub Actions](https://github.com/wildkim11/cheongju-council-archive_total/actions/workflows/automatic-collection.yml)
 
-`main`의 실행 진입점이 3시간 간격(매 25분)에 macOS 작업을 시작합니다. 실제 작업은 개발 브랜치의 원장을 사용하며 회의록·의안·의정활동·의원명부·위원회/연구단체·보도자료·문서첨부를 순환 수집합니다. 검증된 후보만 원장에 반영하며 실패·재시도 상태도 기록합니다.
+`main`의 실행 진입점이 매일 오전 6시(한국시간)에 전체 자료군을 수집합니다. 매시간 가벼운 실패 상태 확인을 하고, 정상 자료군은 공식 사이트에 재접속하지 않습니다. 실패한 자료군만 하루 최대 3회 추가 재시도합니다. 실제 작업은 개발 브랜치의 원장을 사용하며 회의록·의안·의정활동·의원명부·위원회/연구단체·보도자료·문서첨부를 수집합니다. 검증된 후보만 원장에 반영하며 실패·재시도 상태도 기록합니다.
 
 운영 완료 여부는 각 자료군의 실제 실행 기록으로 확인합니다. 일정 설정이나 코드 검사 통과만으로 전 자료 수집 완료를 뜻하지 않습니다. HTML은 이 저장소에서 처리한 자료를 받는 후속 열람·배포 도구이며 현재 작업의 우선 대상은 저장소 자동수집입니다.
