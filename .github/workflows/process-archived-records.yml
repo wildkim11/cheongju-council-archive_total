@@ -1,0 +1,49 @@
+name: Process archived meeting records (offline)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cheongju-source-collection
+  cancel-in-progress: false
+jobs:
+  process:
+    # No council-site HTTP/TLS here: only already preserved GitHub source files.
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test processing and validate stored originals
+        run: |
+          python -m unittest discover -s tests
+          python scripts/validate_archive.py
+          python scripts/audit_stage_c.py --output /tmp/processing-source-qa.json
+      - name: Generate source-coordinate segments and activity roles
+        run: python -u scripts/process_meeting_segments.py
+      - name: Verify every source range and derived ledger
+        run: python -u scripts/verify_processing.py --out reports/processing-qa-latest.json
+      - name: Commit verified derived data only
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add exports/processing reports/processing-latest.json reports/processing-qa-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: verified speech segments and source-backed activity roles"
+            bash scripts/push_collected_snapshot.sh
+          fi
+      - name: Preserve processing summaries
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-processing-qa
+          path: |
+            reports/processing-latest.json
+            reports/processing-qa-latest.json
+          if-no-files-found: warn
