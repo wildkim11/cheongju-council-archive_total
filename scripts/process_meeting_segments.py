@@ -31,12 +31,17 @@ def recognized_role(role):
  plain=re.sub(r'\([^)]*\)','',role).replace(' ','')
  return plain.endswith(ROLE_ENDINGS)
 
+def document_heading(header):
+ """Recognize documentary markers before attempting a person-name fallback."""
+ rest=re.sub(r'^(?:## )?○\s*','',header).strip()
+ return bool(SECTION.match(rest) or (not WIDE.search(rest) and (re.search(r'끝에\s*실음|의\s*건(?:은|$)',rest) or (re.match(r'^(?:## )?○[ \t]+',header) and re.search(r'(?:조례(?:안|\s*(?:일부|전부)개정조례안)|동의안|결의안|건의안)\s*$',rest)))))
+
 def parse_label(header):
  """Return explicit label fields and content offset within the header only."""
  prefix=re.match(r'^(?:## )?○',header)
  if not prefix:return None
  offset=prefix.end();rest=header[offset:];trim=len(rest)-len(rest.lstrip());offset+=trim;rest=rest.lstrip()
- if SECTION.match(rest):return None
+ if document_heading(header):return None
  delimiter=WIDE.search(rest)
  label=rest[:delimiter.start()].strip() if delimiter else rest.strip()
  candidates=[]
@@ -104,7 +109,7 @@ def segment_document(text,row,identities):
  for n,(a,b) in enumerate(zip(starts,ends),1):
   if a==b:continue
   line=text[a:text.find('\n',a) if '\n' in text[a:b] else b];label=parse_label(line);sid=row['meeting_id']+'@'+row['sha256'][:12]+':s'+str(n)
-  rec={'segment_id':sid,'kind':'speech' if label else 'document_section' if MARKER.match(text,a) and (SECTION.match(re.sub(r'^(?:## )?○\s*','',line)) or (not WIDE.search(line) and re.search(r'끝에\s*실음|의\s*건(?:은|$)',line))) else 'unparsed_marker' if MARKER.match(text,a) else 'preamble','char_start':a,'char_end':b,'line_start':bisect.bisect_right(line_starts,a),'line_end':bisect.bisect_right(line_starts,b-1)}
+  rec={'segment_id':sid,'kind':'speech' if label else 'document_section' if MARKER.match(text,a) and document_heading(line) else 'unparsed_marker' if MARKER.match(text,a) else 'preamble','char_start':a,'char_end':b,'line_start':bisect.bisect_right(line_starts,a),'line_end':bisect.bisect_right(line_starts,b-1)}
   content_start=a
   if label:
    content_start=a+label['content_offset'];rec.update({k:v for k,v in label.items() if k!='content_offset'})

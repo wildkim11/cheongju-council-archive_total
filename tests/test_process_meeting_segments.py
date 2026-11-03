@@ -18,6 +18,12 @@ class SegmentTests(unittest.TestCase):
  def test_role_first_and_ascii_fallback(self):
   x=p.parse_label('## ○위원장 홍길동 발언입니다.');self.assertEqual(x['speaker_name'],'홍길동');self.assertEqual(x['speaker_category'],'council_presiding')
  def test_attendance_is_not_a_speech(self):self.assertIsNone(p.parse_label('## ○출석 위원(7명)'))
+ def test_document_titles_do_not_become_people(self):
+  for header in ['## ○ 청주시의회 의원 상해 등 보상금 지급에 관한 조례 일부개정조례안','## ○ 상임위원회 위원 개선의 건은 끝에 실음','## ○ 부의장 사임서는 끝에 실음']:
+   self.assertTrue(p.document_heading(header));self.assertIsNone(p.parse_label(header))
+ def test_spoken_bill_title_stays_speech(self):
+  for header in ['## ○홍길동 위원 \u2003청주시 도시계획 조례 일부개정조례안','## ○홍길동 위원 청주시 도시계획 조례 일부개정조례안']:
+   self.assertFalse(p.document_heading(header));self.assertEqual(p.parse_label(header)['speaker_name'],'홍길동')
  def test_staff_not_mapped_to_same_named_member(self):
   text,row=self.source();segments=p.segment_document(text,row,self.identities());staff=[s for s in segments if s.get('speaker_role')=='기획예산과장'][0];self.assertIsNone(staff['person_id']);self.assertEqual(staff['identity_status'],'not_a_council_speaker')
  def test_exact_source_coverage_and_paragraph_hashes(self):
