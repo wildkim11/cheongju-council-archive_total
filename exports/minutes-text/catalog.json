@@ -1,0 +1,37 @@
+{
+  "schema": "cheongju-meeting-text-packs/1",
+  "source_index_sha256": "dd17d0f771754b15ba3979f2386bb2109b95f9b76e3ba03781bae4074efb77ce",
+  "rows": 2353,
+  "parts": [
+    {
+      "term": 1,
+      "file": "term-1.jsonl.gz",
+      "rows": 663,
+      "bytes": 12931300,
+      "sha256": "3317fbf373ad61db9323b5ff693363233174d1c42c11c16420195fb93975af11"
+    },
+    {
+      "term": 2,
+      "file": "term-2.jsonl.gz",
+      "rows": 771,
+      "bytes": 21838055,
+      "sha256": "be888d9ee8eab112f5b66443ed6117529943e46a8ab7960d081150db79486ba1"
+    },
+    {
+      "term": 3,
+      "file": "term-3.jsonl.gz",
+      "rows": 855,
+      "bytes": 22485554,
+      "sha256": "294990bb922354566b621fc3ae8ac695490a23bf77d5ac1ca3334ea6aef20fbf"
+    },
+    {
+      "term": 4,
+      "file": "term-4.jsonl.gz",
+      "rows": 64,
+      "bytes": 1682629,
+      "sha256": "9538681861e71045f66e02e81d2fad64afbafaeb9bcdaa8c25d7a3dc8bbd3d4c"
+    }
+  ],
+  "text_bytes": 219522292,
+  "compressed_bytes": 58937538
+}
