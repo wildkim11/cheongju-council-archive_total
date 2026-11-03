@@ -5,13 +5,22 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
+from historical_snapshot import initial_meetings
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 import probe_official_readonly_limited as p
 
 
 class OfficialLimitedProbeTests(unittest.TestCase):
+    def setUp(self):
+        # This historical three-request rehearsal uses its original fixture,
+        # never the now-growing live meeting index.
+        folder=tempfile.TemporaryDirectory();self.addCleanup(folder.cleanup)
+        root=Path(folder.name);(root/'indexes/integrated').mkdir(parents=True)
+        (root/'indexes/integrated/meetings.json').write_text(json.dumps(initial_meetings()),encoding='utf-8')
+        scoped=patch.object(p,'ROOT',root);scoped.start();self.addCleanup(scoped.stop)
+
     def test_post_must_be_root_read_only_query(self):
         for target,params in (
             (p.TREE,{"var10":"AnyOtherCommand"}),

@@ -84,6 +84,21 @@ class Capture:
         return self
     def __exit__(self,*args):return self.stack.__exit__(*args)
 
+def preserve_response_manifest(root,family,started_at,rows):
+    # Keep provenance for every successful collection, not just the last family.
+    for row in rows:
+        rel=Path(row['path'])
+        if rel.is_absolute() or '..' in rel.parts or rel.parts[:2]!=('archive','source_responses'):
+            raise ValueError('unsafe source-response path')
+        raw=gzip.decompress((root/rel).read_bytes())
+        if hashlib.sha256(raw).hexdigest()!=row['decoded_utf8_sha256']:
+            raise ValueError('source-response hash mismatch')
+    document={'schema':'cheongju-source-responses/1','family':family,'collection_started_at':started_at,'responses':rows}
+    raw=(json.dumps(document,ensure_ascii=False,sort_keys=True,indent=2)+'\n').encode()
+    rel=Path('archive/source_responses/manifests')/(hashlib.sha256(raw).hexdigest()+'.json')
+    (root/rel).parent.mkdir(parents=True,exist_ok=True);(root/rel).write_bytes(raw)
+    return str(rel)
+
 def download_attachments(root,limit=20,max_bytes=8*1024*1024):
     queue=load(root/'reports/automatic/attachments.json',{})
     def walk(x):
@@ -177,7 +192,14 @@ def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retr
                 stage=Path(td)
                 for name in ('archive','indexes','reports','exports'):
                     if (root/name).exists():shutil.copytree(root/name,stage/name)
+                prior_rows=load(stage/'reports/automatic/source-response-latest.json',[])
+                if prior_rows and not (stage/'reports/automatic/source-response-latest-metadata.json').exists():
+                    successful=[(v['last_success_at'],k) for k,v in state['families'].items() if v.get('last_success_at')]
+                    if successful:
+                        stamp,name=max(successful);preserve_response_manifest(stage,name,stamp,prior_rows)
                 with Capture(stage) as capture:report['collection']=runner(selected,stage,now.toordinal())
+                manifest=preserve_response_manifest(stage,selected,now.isoformat(),capture.rows)
+                save_json(stage/'reports/automatic/source-response-latest-metadata.json',{'family':selected,'collection_started_at':now.isoformat(),'manifest':manifest})
                 save_json(stage/'reports/automatic/source-response-latest.json',capture.rows)
                 report['qa']=validator(stage,root);(stage/sync_transaction.LOCK).unlink(missing_ok=True);report['transaction']=sync_transaction.publish_staged_snapshot(stage,root);report.update(status='PASS',published=True)
         slot.update(last_success_at=now.isoformat(),consecutive_failures=0);slot.pop('next_retry_at',None);slot.pop('last_error',None)

@@ -56,6 +56,13 @@ class AutoCollectionTests(unittest.TestCase):
  def test_capture_preserves_decoded_source(self):
   with tempfile.TemporaryDirectory() as td:
    c=a.Capture(Path(td));self.assertEqual(c.wrap(lambda u:'의회')('https://council.cheongju.go.kr/test'),'의회');p=Path(td)/c.rows[0]['path'];self.assertEqual(a.gzip.decompress(p.read_bytes()).decode(),'의회')
+ def test_source_provenance_survives_next_family(self):
+  with tempfile.TemporaryDirectory() as td:
+   root=Path(td);c=a.Capture(root);c.wrap(lambda u:'공식 원문')('https://council.cheongju.go.kr/one')
+   first=a.preserve_response_manifest(root,'minutes','2026-11-03T00:00:00+00:00',c.rows)
+   second=a.preserve_response_manifest(root,'bills','2026-11-03T01:00:00+00:00',c.rows)
+   self.assertNotEqual(first,second);self.assertTrue((root/first).is_file())
+   self.assertEqual(a.load(root/first,{})['responses'][0]['url'],'https://council.cheongju.go.kr/one')
  def test_capture_rejects_unrelated_host(self):
   with tempfile.TemporaryDirectory() as td:
    with self.assertRaises(ValueError):a.Capture(Path(td)).wrap(lambda u:'x')('https://example.com/')
