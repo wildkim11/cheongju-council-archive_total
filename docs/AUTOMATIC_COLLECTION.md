@@ -69,3 +69,9 @@ successful checkpoint within 24 hours. Each family is committed independently.
 An individual source failure is recorded and does not prevent later families
 from being attempted. Normal daily operations run the full source cycle; failed-only retries are separate.
 A manual `all` performs a complete cycle without the bootstrap freshness skip.
+
+Verified source candidates now also generate and validate speech/paragraph ranges
+and source activity-role records before transaction publication. A separate
+`process-archived-records.yml` job processes existing GitHub originals without
+official-site access. It uses Ubuntu for offline computation; live collection
+remains macOS. Derived records do not assert question/answer or policy scores.

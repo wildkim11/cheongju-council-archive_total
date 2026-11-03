@@ -22,21 +22,21 @@ These are fact extraction and integrity operations. They do not mean that all po
 
 | Need | Available starting point | Remaining work |
 |---|---|---|
-| Temporal identities | Person/tenure/profile records | Explicit service dates and historical party/district/committee intervals; resolve 675 previously unlinked activities with direct evidence |
+| Temporal identities | Person/tenure/profile records | Explicit service dates and historical party/district/committee intervals; resolve the remaining 645 activities; 30 gained exact full-body evidence links |
 | Full relationship evidence | Bill rosters and membership records | 21 held cases, original signature lists, committee/research validity periods |
 | Documents | Official attachment links and bounded document queue | Complete downloads, failed/oversized document handling, PDF/HWP/HWPX text extraction and origin links |
-| Meeting speech segments | 2,353 canonical Markdown meetings after first automatic update | Speaker/role segmentation, answer blocks, paragraph IDs and person linkage |
+| Meeting speech segments | 2,353 canonical Markdown meetings after first automatic update | Basic speaker/role/paragraph segmentation implemented; answer/function classification and remaining identity review still required |
 | Follow-up and policy progress | Replies in meetings and official bills | Extract existing replies; additionally register official action-result reports, budget decisions and project milestones as sources |
 | Public media | Official press/photo metadata sources | Source coverage/deduplication; general media is a separate collection scope, not already complete |
 
-## Processing engines still required
+## Processing progress and remaining engines
 
-- Verified person × term × date joins, with unresolved/ambiguous rows retained separately.
-- Shared activity-role ledger across speeches, questions, bills and official activities; deduplicate source copies without collapsing different events.
-- Speech/question/answer/evidence segment ledger; point every result back to meeting ID, paragraph and official URL.
+- Implemented evidence-level identity links: explicit tenure dates, source meeting term/role/roster links and exact full-body cross-source links; unresolved cases remain separate.
+- Implemented shared source activity-role ledger for official speeches/questions and safe bill proposer roles. Distinct-event deduplication is still required.
+- Implemented source speech/document/paragraph ranges, original URLs and hashes. Question/answer/function labels remain unclassified.
 - Versioned policy taxonomy and Q/X/P/M rules; keep evidence states and uncertainty instead of promoting unsupported inference.
 - Cross-session follow-up links and evidence-backed policy-progress stages.
 - Person × space × policy × time aggregates with scope, period, denominator and missing-data coverage.
 - Distribution bundles/text packs and offline-HTML updates after repository-side collection and processing are verified.
 
-`export_minutes_text.py` is a tested producer for URL/hash-preserving compressed meeting text. Automated text extraction of document binaries, full analysis-ledger generation and HTML embedding are not yet connected to the production controller.
+`export_minutes_text.py` is a tested producer for URL/hash-preserving compressed meeting text. Speech segmentation and the shared source activity-role ledger now run before collection publication and in a separate no-official-HTTP GitHub job. Binary-document text extraction, higher-level analysis and HTML embedding remain incomplete. See MEETING_PROCESSING.md.

@@ -180,6 +180,11 @@ def validate_candidate(stage,oldroot):
     if {x['meeting_id'] for x in old}-{x['meeting_id'] for x in new+history}:raise ValueError('saved meetings missing from candidate and history')
     export_analyzer.export(stage);validate_archive.validate(stage);qa=audit_stage_c.audit(stage)
     if qa['status']!='PASS':raise ValueError('candidate archive QA failed: '+str(qa['errors'][:10]))
+    # Offline processing consumes only this verified candidate, before publication.
+    import process_meeting_segments,verify_processing
+    process_meeting_segments.process(stage);processing=verify_processing.verify(stage)
+    save_json(stage/'reports/processing-qa-latest.json',processing)
+    qa['processing']=processing
     return qa
 
 def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False,retry_attempt=False):

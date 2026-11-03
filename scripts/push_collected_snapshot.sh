@@ -15,5 +15,8 @@ if not all(p.startswith(("scripts/","tests/","docs/",".github/")) for p in paths
   python -m unittest discover -s tests
   python scripts/validate_archive.py
   python scripts/audit_stage_c.py --output "${TMPDIR:-/tmp}/after-collection-rebase.json"
+  if [ -f exports/processing/manifest.json ]; then
+    python scripts/verify_processing.py
+  fi
 fi
 git push origin "HEAD:$branch"
