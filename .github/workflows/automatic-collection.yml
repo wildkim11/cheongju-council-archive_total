@@ -1,0 +1,66 @@
+name: Automatic source collection (macOS)
+on:
+  push:
+    branches: [feature/archive-foundation]
+    paths:
+      - scripts/automated_collection.py
+      - tests/test_automated_collection.py
+      - .github/workflows/automatic-collection.yml
+  workflow_dispatch:
+    inputs:
+      family:
+        description: Source family (auto rotates all families)
+        default: auto
+        type: choice
+        options: [auto, minutes, bills, activities, people, groups, media, attachments]
+permissions:
+  contents: write
+concurrency:
+  group: cheongju-source-collection
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: macos-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate code and saved archive
+        run: |
+          python -m unittest discover -s tests
+          python scripts/validate_archive.py
+          python scripts/audit_stage_c.py --output /tmp/before-collection.json
+      - name: Collect into isolated candidate and publish only after validation
+        id: collection
+        continue-on-error: true
+        env:
+          COLLECTION_FAMILY: ${{ inputs.family || 'auto' }}
+        run: python -u scripts/automated_collection.py --family "$COLLECTION_FAMILY"
+      - name: Persist validated snapshot and retry state
+        if: always() && steps.collection.outcome != 'skipped'
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive indexes exports reports
+          if ! git diff --cached --quiet; then
+            git commit -m "data: automatic official collection and durable retry state"
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - name: Preserve collection report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: automatic-collection-report
+          path: |
+            reports/automatic-collection-latest.json
+            reports/automatic/collection_state.json
+          if-no-files-found: warn
+      - name: Surface collection failure after preserving retry state
+        if: steps.collection.outcome == 'failure'
+        run: exit 1
