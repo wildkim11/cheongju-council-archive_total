@@ -20,11 +20,16 @@ PY
 else
   families="$requested"
 fi
+retry_flag=''
+if [ "$requested" = 'retry' ]; then
+  families="$(python scripts/collection_policy.py due --state reports/automatic/collection_state.json)"
+  retry_flag='--retry-attempt'
+fi
 failed=0
 git config user.name 'github-actions[bot]'
 git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 for family in $families; do
-  if ! python -u scripts/automated_collection.py --family "$family" ${EXPLICIT_RETRY:-}; then
+  if ! python -u scripts/automated_collection.py --family "$family" ${EXPLICIT_RETRY:-} $retry_flag; then
     failed=1
   fi
   git add archive indexes exports reports

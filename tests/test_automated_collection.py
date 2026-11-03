@@ -73,3 +73,14 @@ class AutoCollectionTests(unittest.TestCase):
    (old/'indexes/integrated/meetings.json').write_text('[{"meeting_id":"1"}]');(new/'indexes/integrated/meetings.json').write_text('[]')
    with self.assertRaisesRegex(ValueError,'saved meetings missing'):a.validate_candidate(new,old)
 if __name__=='__main__':unittest.main()
+
+class FailedOnlyRetryTests(unittest.TestCase):
+ def test_healthy_retry_never_requests_sources(self):
+  with tempfile.TemporaryDirectory() as td:
+   r=Path(td)
+   with patch.object(a,'Capture',side_effect=AssertionError('healthy source must not run')):
+    self.assertEqual(a.run(r,'minutes',retry_attempt=True)['status'],'DEFERRED')
+ def test_document_retry_does_not_fetch_new_pending_files(self):
+  with tempfile.TemporaryDirectory() as td:
+   r=Path(td);a.save_json(r/'reports/automatic/attachments.json',{'https://council.cheongju.go.kr/download?id=1':{'status':'pending','attempts':0}})
+   result=a.download_attachments(r,retry_only=True);self.assertEqual(result['attempted'],0)

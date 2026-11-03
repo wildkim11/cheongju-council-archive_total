@@ -5,8 +5,11 @@ The production task is repository collection/processing, not HTML development.
 `automatic-collection.yml` runs the original collectors on macOS. A thin copy
 on `main` supplies the scheduled entry point; it checks out
 `feature/archive-foundation` for the actual collector code and source archive.
-The schedule rotates minutes, bills, activities, people, committee/research
-groups, public media/photo metadata and document attachments. It does not infer
+The daily 06:00 Asia/Seoul schedule runs all source families: minutes, bills,
+activities, people, committee/research groups, public media/photo metadata and
+document attachments. An hourly Ubuntu gate reads GitHub retry state only;
+healthy sources do not start macOS or official-site requests. Due failures have
+a maximum of three extra attempts per family per Korean calendar day. It does not infer
 political scores or promote identity candidates.
 
 Each run copies the archive to a disposable candidate, collects there, rebuilds
@@ -64,5 +67,5 @@ Git. Text-pack delivery can be added after collection operation is stable.
 Initial activation uses `bootstrap`: run all source families that lack a
 successful checkpoint within 24 hours. Each family is committed independently.
 An individual source failure is recorded and does not prevent later families
-from being attempted. Normal scheduled operations rotate one family per run.
+from being attempted. Normal daily operations run the full source cycle; failed-only retries are separate.
 A manual `all` performs a complete cycle without the bootstrap freshness skip.

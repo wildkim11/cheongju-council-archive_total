@@ -10,6 +10,7 @@ from pathlib import Path
 from unittest.mock import patch
 from archive_common import save_json
 import sync_transaction
+import collection_policy
 
 ROOT=Path(__file__).resolve().parents[1]
 FAMILIES=('minutes','bills','activities','people','groups','media','attachments')
@@ -99,7 +100,7 @@ def preserve_response_manifest(root,family,started_at,rows):
     (root/rel).parent.mkdir(parents=True,exist_ok=True);(root/rel).write_bytes(raw)
     return str(rel)
 
-def download_attachments(root,limit=20,max_bytes=8*1024*1024):
+def download_attachments(root,limit=20,max_bytes=8*1024*1024,retry_only=False):
     queue=load(root/'reports/automatic/attachments.json',{})
     def walk(x):
         if isinstance(x,dict):
@@ -120,6 +121,7 @@ def download_attachments(root,limit=20,max_bytes=8*1024*1024):
             return super().redirect_request(req,fp,code,msg,headers,newurl)
     opener=urllib.request.build_opener(OfficialRedirect())
     for url,item in sorted(queue.items(),key=lambda kv:(kv[1].get('attempts',0),kv[0])):
+        if retry_only and item['status']!='failed':continue
         if item['status']=='downloaded' or item.get('next_retry_at','')>now:continue
         if attempted>=limit:break
         attempted+=1;item['attempts']+=1
@@ -136,7 +138,7 @@ def download_attachments(root,limit=20,max_bytes=8*1024*1024):
     save_json(root/'reports/automatic/attachments.json',queue)
     return {'queued':len(queue),'attempted':attempted,'downloaded_total':sum(x['status']=='downloaded' for x in queue.values()),'failed_total':sum(x['status']=='failed' for x in queue.values())}
 
-def execute(family,root,ordinal):
+def execute(family,root,ordinal,retry_only=False):
     if family=='minutes':
         import collect_integrated_minutes as c
         old=load(root/'indexes/integrated/meetings.json',[]);published=sorted([x for x in old if x['publication_status']=='published'],key=lambda x:x['meeting_id']);i=(ordinal*8)%max(1,len(published));forced={x['meeting_id'] for x in (published+published)[i:i+min(8,len(published))]}
@@ -168,7 +170,7 @@ def execute(family,root,ordinal):
     if family=='media':
         import collect_board_activities as b,collect_photo_activity as p
         out={k:refresh_board(root,b,k,ordinal=ordinal) for k in b.CONFIG if k!='photo'};old=load(root/'archive/activities/photo_activity.json',[]);out['photo']=p.collect(root);save_json(root/'archive/activities/photo_activity.json',preserved_merge(old,load(root/'archive/activities/photo_activity.json',[]),'source_id'));return out
-    if family=='attachments':return download_attachments(root)
+    if family=='attachments':return download_attachments(root,retry_only=retry_only)
     raise ValueError('unknown collection family')
 
 def validate_candidate(stage,oldroot):
@@ -180,9 +182,14 @@ def validate_candidate(stage,oldroot):
     if qa['status']!='PASS':raise ValueError('candidate archive QA failed: '+str(qa['errors'][:10]))
     return qa
 
-def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False):
+def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False,retry_attempt=False):
     root=Path(root);state=load(root/'reports/automatic/collection_state.json',{'schema':'cheongju-auto-collection/1','cursor':0,'families':{}});now=dt.datetime.now(dt.timezone.utc);selected=select_family(state,family,now);slot=state['families'].setdefault(selected,{'attempts':0});report={'family':selected,'started_at':now.isoformat(),'status':'FAILED','published':False}
-    if not retry_now and slot.get('next_retry_at','')>now.isoformat():report['status']='DEFERRED';state['last_run']=report;save_json(root/'reports/automatic/collection_state.json',state);save_json(root/'reports/automatic-collection-latest.json',report);return report
+    if retry_attempt and not collection_policy.failed_due(slot,now):
+        report.update(status='DEFERRED',reason='no due failed source or daily retry budget exhausted');save_json(root/'reports/automatic-collection-latest.json',report);return report
+    if retry_attempt:
+        count=slot.get('retry_attempts_today',0) if slot.get('retry_attempts_day')==collection_policy.day(now) else 0
+        slot.update(retry_attempts_day=collection_policy.day(now),retry_attempts_today=count+1)
+    if not retry_now and not retry_attempt and slot.get('next_retry_at','')>now.isoformat():report['status']='DEFERRED';state['last_run']=report;save_json(root/'reports/automatic/collection_state.json',state);save_json(root/'reports/automatic-collection-latest.json',report);return report
     slot['attempts']+=1
     capture=None
     try:
@@ -197,19 +204,23 @@ def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retr
                     successful=[(v['last_success_at'],k) for k,v in state['families'].items() if v.get('last_success_at')]
                     if successful:
                         stamp,name=max(successful);preserve_response_manifest(stage,name,stamp,prior_rows)
-                with Capture(stage) as capture:report['collection']=runner(selected,stage,now.toordinal())
+                with Capture(stage) as capture:
+                    report['collection']=runner(selected,stage,now.toordinal(),retry_only=True) if runner is execute and retry_attempt else runner(selected,stage,now.toordinal())
                 manifest=preserve_response_manifest(stage,selected,now.isoformat(),capture.rows)
                 save_json(stage/'reports/automatic/source-response-latest-metadata.json',{'family':selected,'collection_started_at':now.isoformat(),'manifest':manifest})
                 save_json(stage/'reports/automatic/source-response-latest.json',capture.rows)
                 report['qa']=validator(stage,root);(stage/sync_transaction.LOCK).unlink(missing_ok=True);report['transaction']=sync_transaction.publish_staged_snapshot(stage,root);report.update(status='PASS',published=True)
+        if selected=='attachments':
+            queue=load(root/'reports/automatic/attachments.json',{});failed=[x for x in queue.values() if x.get('status')=='failed']
+            slot.update(failed_documents=len(failed),pending_attachment_retry_at=min((x.get('next_retry_at',now.isoformat()) for x in failed),default=None))
         slot.update(last_success_at=now.isoformat(),consecutive_failures=0);slot.pop('next_retry_at',None);slot.pop('last_error',None)
     except Exception as e:
-        fails=slot.get('consecutive_failures',0)+1;slot.update(consecutive_failures=fails,last_error=type(e).__name__+': '+str(e)[:500],next_retry_at=(now+dt.timedelta(minutes=min(1440,15*2**min(fails-1,6)))).isoformat());report['error']=slot['last_error']
+        fails=slot.get('consecutive_failures',0)+1;slot.update(consecutive_failures=fails,last_error=type(e).__name__+': '+str(e)[:500],next_retry_at=(now+dt.timedelta(minutes=min(1440,60*2**min(fails-1,5)))).isoformat());report['error']=slot['last_error']
         if capture:report['failed_requests']=capture.failures
     # Keep durable operational status even when no source snapshot was accepted.
     state['last_run']=report;save_json(root/'reports/automatic/collection_state.json',state);save_json(root/'reports/automatic-collection-latest.json',report)
     return report
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--retry-now',action='store_true',help='Explicit retry after a code fix; normal schedule honors backoff');p.add_argument('--family',choices=('auto',)+FAMILIES,default='auto');a=p.parse_args();result=run(family=a.family,retry_now=a.retry_now);print(json.dumps({k:v for k,v in result.items() if k!='qa'},ensure_ascii=False,indent=2));raise SystemExit(0 if result['status'] in ('PASS','DEFERRED') else 1)
+    p=argparse.ArgumentParser();p.add_argument('--retry-attempt',action='store_true');p.add_argument('--retry-now',action='store_true',help='Explicit retry after a code fix; normal schedule honors backoff');p.add_argument('--family',choices=('auto',)+FAMILIES,default='auto');a=p.parse_args();result=run(family=a.family,retry_now=a.retry_now,retry_attempt=a.retry_attempt);print(json.dumps({k:v for k,v in result.items() if k!='qa'},ensure_ascii=False,indent=2));raise SystemExit(0 if result['status'] in ('PASS','DEFERRED') else 1)
 if __name__=='__main__':main()
