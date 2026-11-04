@@ -1,0 +1,61 @@
+name: Extract preserved attachment text (offline)
+on:
+  push:
+    branches: [feature/archive-foundation]
+    paths:
+      - archive/attachments/**
+      - reports/automatic/attachments.json
+      - exports/analyzer/manifest.json
+      - scripts/extract_attachment_text.py
+      - scripts/attachment_formats.py
+      - tests/test_extract_attachment_text.py
+      - .github/workflows/process-attachment-text.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cheongju-source-collection
+  cancel-in-progress: false
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ensure offline PDF extraction dependencies
+        run: |
+          if ! command -v pdftotext >/dev/null || ! command -v pdfinfo >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y poppler-utils
+          fi
+      - name: Test extraction and verify preserved inputs
+        run: |
+          python -m unittest discover -s tests
+          python scripts/audit_attachment_downloads.py --strict
+      - name: Extract page-addressed text without council-site requests
+        run: python -u scripts/extract_attachment_text.py
+      - name: Save derived attachment text only
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add exports/attachment-text reports/attachment-text-latest.json reports/attachment-download-audit.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: page-addressed attachment text with unreviewed status"
+            bash scripts/push_collected_snapshot.sh
+          fi
+      - name: Preserve extraction summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: attachment-text-qa
+          path: |
+            reports/attachment-text-latest.json
+            reports/attachment-download-audit.json
+          if-no-files-found: warn
