@@ -1,13 +1,8 @@
 {
   "attempt_day": "2026-11-04",
-  "last_reserved_at": "2026-11-04T05:47:20.989668+00:00",
-  "next_retry_at": "2026-11-04T06:47:20.989668+00:00",
+  "last_reserved_at": "2026-11-04T07:15:41.664041+00:00",
+  "next_retry_at": "2026-11-04T09:15:41.664041+00:00",
   "pending_targets": [
-    "minutes",
-    "bills",
-    "activities",
-    "people",
-    "groups",
     "media",
     "attachments"
   ],
@@ -26,8 +21,19 @@
         "media",
         "attachments"
       ]
+    },
+    {
+      "failed_cycle_started_at": "2026-11-04T05:47:12+00:00",
+      "recovery_kind": "partial_cycle_interrupted",
+      "reserved_at": "2026-11-04T07:15:41.664041+00:00",
+      "source_run_attempt": 1,
+      "source_run_id": 41781370126,
+      "targets": [
+        "media",
+        "attachments"
+      ]
     }
   ],
-  "retry_attempts_today": 1,
+  "retry_attempts_today": 2,
   "schema": "cheongju-runner-recovery/1"
 }
