@@ -29,5 +29,18 @@ class WrittenQuestionTests(unittest.TestCase):
         self.assertIn("gb=qna",files["question_file_url"])
         self.assertIn("gb=ans",files["answer_file_url"])
 
+    def test_adjacent_record_answer_does_not_overwrite(self):
+        raw='<a href="/paper_down.html?number=29&gb=ans">답변 파일</a><a href="/paper_down.html?number=14&gb=ans">답변 파일</a>'
+        files=c.parse_detail_files(raw,c.URL+'?number=29')
+        self.assertIn('number=29',files['answer_file_url'])
+
+    def test_only_other_record_or_external_link_is_rejected(self):
+        raw='<a href="/paper_down.html?number=14&gb=ans">답변 파일</a><a href="https://example.org/paper_down.html?number=29&gb=qna">질문 파일</a>'
+        self.assertEqual(c.parse_detail_files(raw,c.URL+'?number=29'),{'question_file_url':None,'answer_file_url':None})
+
+    def test_conflicting_same_record_links_are_held(self):
+        raw='<a href="/paper_down.html?number=29&gb=ans&v=1">답변 파일</a><a href="/paper_down.html?number=29&gb=ans&v=2">답변 파일</a>'
+        self.assertIsNone(c.parse_detail_files(raw,c.URL+'?number=29')['answer_file_url'])
+
 if __name__=="__main__":
     unittest.main()
