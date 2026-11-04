@@ -1,0 +1,1111 @@
+{
+  "schema": "cheongju-council-period-source-audit/1",
+  "status": "SOURCES_READY_FOR_REVIEW",
+  "official_site_requests": 0,
+  "source_versions": 3,
+  "source_urls_captured": 3,
+  "missing_source_urls": [],
+  "sources": [
+    {
+      "source_url": "https://council.cheongju.go.kr/content/council/history.html",
+      "source_response_path": "archive/source_responses/ef0beee8d4639cd7ffb718c33223c731ac6c4fa5e0f67c3957aeb648ff60be66.html.gz",
+      "decoded_utf8_sha256": "ef0beee8d4639cd7ffb718c33223c731ac6c4fa5e0f67c3957aeb648ff60be66",
+      "bytes": 70516,
+      "source_manifests": [
+        {
+          "path": "archive/source_responses/manifests/f0ec5661c3138742f2ebcb6f103e8a692c8c98fbcb8b33805b9d12053403a91b.json",
+          "sha256": "f0ec5661c3138742f2ebcb6f103e8a692c8c98fbcb8b33805b9d12053403a91b",
+          "collection_started_at": "2026-11-04T22:14:34.442842+00:00"
+        }
+      ],
+      "mentions": [
+        {
+          "html_line": 166,
+          "html_column": 56,
+          "text": "의원임무/임기",
+          "context": [
+            {
+              "html_line": 162,
+              "html_column": 104,
+              "text": "통합전(청주시)"
+            },
+            {
+              "html_line": 163,
+              "html_column": 103,
+              "text": "통합전(청원군)"
+            },
+            {
+              "html_line": 166,
+              "html_column": 56,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 169,
+              "html_column": 37,
+              "text": "의정활동"
+            },
+            {
+              "html_line": 171,
+              "html_column": 83,
+              "text": "처리의안"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 634,
+          "html_column": 77,
+          "text": "의원임무/임기",
+          "context": [
+            {
+              "html_line": 632,
+              "html_column": 70,
+              "text": "현역의원"
+            },
+            {
+              "html_line": 633,
+              "html_column": 83,
+              "text": "역대의원"
+            },
+            {
+              "html_line": 634,
+              "html_column": 77,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 637,
+              "html_column": 89,
+              "text": "의정활동"
+            },
+            {
+              "html_line": 639,
+              "html_column": 83,
+              "text": "처리의안"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 950,
+          "html_column": 68,
+          "text": "제1대 청주시의회 개원(38명)",
+          "context": [
+            {
+              "html_line": 949,
+              "html_column": 48,
+              "text": "2014"
+            },
+            {
+              "html_line": 950,
+              "html_column": 54,
+              "text": "07월 01일"
+            },
+            {
+              "html_line": 950,
+              "html_column": 68,
+              "text": "제1대 청주시의회 개원(38명)"
+            },
+            {
+              "html_line": 955,
+              "html_column": 48,
+              "text": "2018"
+            },
+            {
+              "html_line": 956,
+              "html_column": 54,
+              "text": "07월 03일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 956,
+          "html_column": 68,
+          "text": "제2대 청주시의회 개원(39명)",
+          "context": [
+            {
+              "html_line": 955,
+              "html_column": 48,
+              "text": "2018"
+            },
+            {
+              "html_line": 956,
+              "html_column": 54,
+              "text": "07월 03일"
+            },
+            {
+              "html_line": 956,
+              "html_column": 68,
+              "text": "제2대 청주시의회 개원(39명)"
+            },
+            {
+              "html_line": 961,
+              "html_column": 48,
+              "text": "2022"
+            },
+            {
+              "html_line": 962,
+              "html_column": 54,
+              "text": "07월 04일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 962,
+          "html_column": 68,
+          "text": "제3대 청주시의회 개원(42명)",
+          "context": [
+            {
+              "html_line": 961,
+              "html_column": 48,
+              "text": "2022"
+            },
+            {
+              "html_line": 962,
+              "html_column": 54,
+              "text": "07월 04일"
+            },
+            {
+              "html_line": 962,
+              "html_column": 68,
+              "text": "제3대 청주시의회 개원(42명)"
+            },
+            {
+              "html_line": 968,
+              "html_column": 36,
+              "text": "청주시의회"
+            },
+            {
+              "html_line": 972,
+              "html_column": 48,
+              "text": "1952"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 973,
+          "html_column": 68,
+          "text": "제1대 청주시의회 개원(20명)",
+          "context": [
+            {
+              "html_line": 972,
+              "html_column": 48,
+              "text": "1952"
+            },
+            {
+              "html_line": 973,
+              "html_column": 54,
+              "text": "05월 05일"
+            },
+            {
+              "html_line": 973,
+              "html_column": 68,
+              "text": "제1대 청주시의회 개원(20명)"
+            },
+            {
+              "html_line": 978,
+              "html_column": 48,
+              "text": "1956"
+            },
+            {
+              "html_line": 979,
+              "html_column": 54,
+              "text": "08월 17일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 979,
+          "html_column": 68,
+          "text": "제2대 청주시의회 개원(15명)",
+          "context": [
+            {
+              "html_line": 978,
+              "html_column": 48,
+              "text": "1956"
+            },
+            {
+              "html_line": 979,
+              "html_column": 54,
+              "text": "08월 17일"
+            },
+            {
+              "html_line": 979,
+              "html_column": 68,
+              "text": "제2대 청주시의회 개원(15명)"
+            },
+            {
+              "html_line": 984,
+              "html_column": 48,
+              "text": "1960"
+            },
+            {
+              "html_line": 985,
+              "html_column": 54,
+              "text": "12월 22일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 985,
+          "html_column": 68,
+          "text": "제3대 청주시의회 개원(15명)",
+          "context": [
+            {
+              "html_line": 984,
+              "html_column": 48,
+              "text": "1960"
+            },
+            {
+              "html_line": 985,
+              "html_column": 54,
+              "text": "12월 22일"
+            },
+            {
+              "html_line": 985,
+              "html_column": 68,
+              "text": "제3대 청주시의회 개원(15명)"
+            },
+            {
+              "html_line": 990,
+              "html_column": 48,
+              "text": "1991"
+            },
+            {
+              "html_line": 991,
+              "html_column": 54,
+              "text": "04월 15일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 991,
+          "html_column": 68,
+          "text": "제4대 청주시의회 개원(37명)",
+          "context": [
+            {
+              "html_line": 990,
+              "html_column": 48,
+              "text": "1991"
+            },
+            {
+              "html_line": 991,
+              "html_column": 54,
+              "text": "04월 15일"
+            },
+            {
+              "html_line": 991,
+              "html_column": 68,
+              "text": "제4대 청주시의회 개원(37명)"
+            },
+            {
+              "html_line": 996,
+              "html_column": 48,
+              "text": "1995"
+            },
+            {
+              "html_line": 997,
+              "html_column": 54,
+              "text": "07월 10일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 997,
+          "html_column": 68,
+          "text": "제5대 청주시의회 개원(42명)",
+          "context": [
+            {
+              "html_line": 996,
+              "html_column": 48,
+              "text": "1995"
+            },
+            {
+              "html_line": 997,
+              "html_column": 54,
+              "text": "07월 10일"
+            },
+            {
+              "html_line": 997,
+              "html_column": 68,
+              "text": "제5대 청주시의회 개원(42명)"
+            },
+            {
+              "html_line": 1002,
+              "html_column": 48,
+              "text": "1998"
+            },
+            {
+              "html_line": 1003,
+              "html_column": 54,
+              "text": "07월 07일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1003,
+          "html_column": 68,
+          "text": "제6대 청주시의회 개원(27명)",
+          "context": [
+            {
+              "html_line": 1002,
+              "html_column": 48,
+              "text": "1998"
+            },
+            {
+              "html_line": 1003,
+              "html_column": 54,
+              "text": "07월 07일"
+            },
+            {
+              "html_line": 1003,
+              "html_column": 68,
+              "text": "제6대 청주시의회 개원(27명)"
+            },
+            {
+              "html_line": 1008,
+              "html_column": 48,
+              "text": "2002"
+            },
+            {
+              "html_line": 1009,
+              "html_column": 54,
+              "text": "07월 08일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1009,
+          "html_column": 68,
+          "text": "제7대 청주시의회 개원(28명)",
+          "context": [
+            {
+              "html_line": 1008,
+              "html_column": 48,
+              "text": "2002"
+            },
+            {
+              "html_line": 1009,
+              "html_column": 54,
+              "text": "07월 08일"
+            },
+            {
+              "html_line": 1009,
+              "html_column": 68,
+              "text": "제7대 청주시의회 개원(28명)"
+            },
+            {
+              "html_line": 1014,
+              "html_column": 48,
+              "text": "2006"
+            },
+            {
+              "html_line": 1015,
+              "html_column": 54,
+              "text": "07월 05일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1015,
+          "html_column": 68,
+          "text": "제8대 청주시의회 개원(26명)",
+          "context": [
+            {
+              "html_line": 1014,
+              "html_column": 48,
+              "text": "2006"
+            },
+            {
+              "html_line": 1015,
+              "html_column": 54,
+              "text": "07월 05일"
+            },
+            {
+              "html_line": 1015,
+              "html_column": 68,
+              "text": "제8대 청주시의회 개원(26명)"
+            },
+            {
+              "html_line": 1020,
+              "html_column": 48,
+              "text": "2010"
+            },
+            {
+              "html_line": 1021,
+              "html_column": 54,
+              "text": "07월 05일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1021,
+          "html_column": 68,
+          "text": "제9대 청주시의회 개원",
+          "context": [
+            {
+              "html_line": 1020,
+              "html_column": 48,
+              "text": "2010"
+            },
+            {
+              "html_line": 1021,
+              "html_column": 54,
+              "text": "07월 05일"
+            },
+            {
+              "html_line": 1021,
+              "html_column": 68,
+              "text": "제9대 청주시의회 개원"
+            },
+            {
+              "html_line": 1027,
+              "html_column": 36,
+              "text": "청원군의회"
+            },
+            {
+              "html_line": 1031,
+              "html_column": 48,
+              "text": "1991"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1032,
+          "html_column": 68,
+          "text": "제1대 청원군의회 개원(14명)",
+          "context": [
+            {
+              "html_line": 1031,
+              "html_column": 48,
+              "text": "1991"
+            },
+            {
+              "html_line": 1032,
+              "html_column": 54,
+              "text": "04월 15일"
+            },
+            {
+              "html_line": 1032,
+              "html_column": 68,
+              "text": "제1대 청원군의회 개원(14명)"
+            },
+            {
+              "html_line": 1037,
+              "html_column": 48,
+              "text": "1995"
+            },
+            {
+              "html_line": 1038,
+              "html_column": 54,
+              "text": "07월 11일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1038,
+          "html_column": 68,
+          "text": "제2대 청원군의회 개원",
+          "context": [
+            {
+              "html_line": 1037,
+              "html_column": 48,
+              "text": "1995"
+            },
+            {
+              "html_line": 1038,
+              "html_column": 54,
+              "text": "07월 11일"
+            },
+            {
+              "html_line": 1038,
+              "html_column": 68,
+              "text": "제2대 청원군의회 개원"
+            },
+            {
+              "html_line": 1043,
+              "html_column": 48,
+              "text": "1998"
+            },
+            {
+              "html_line": 1044,
+              "html_column": 54,
+              "text": "07월 10일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1044,
+          "html_column": 68,
+          "text": "제3대 청원군의회 개원",
+          "context": [
+            {
+              "html_line": 1043,
+              "html_column": 48,
+              "text": "1998"
+            },
+            {
+              "html_line": 1044,
+              "html_column": 54,
+              "text": "07월 10일"
+            },
+            {
+              "html_line": 1044,
+              "html_column": 68,
+              "text": "제3대 청원군의회 개원"
+            },
+            {
+              "html_line": 1049,
+              "html_column": 48,
+              "text": "2002"
+            },
+            {
+              "html_line": 1050,
+              "html_column": 54,
+              "text": "07월 12일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1050,
+          "html_column": 68,
+          "text": "제4대 청원군의회 개원",
+          "context": [
+            {
+              "html_line": 1049,
+              "html_column": 48,
+              "text": "2002"
+            },
+            {
+              "html_line": 1050,
+              "html_column": 54,
+              "text": "07월 12일"
+            },
+            {
+              "html_line": 1050,
+              "html_column": 68,
+              "text": "제4대 청원군의회 개원"
+            },
+            {
+              "html_line": 1055,
+              "html_column": 48,
+              "text": "2006"
+            },
+            {
+              "html_line": 1056,
+              "html_column": 54,
+              "text": "07월 06일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1056,
+          "html_column": 68,
+          "text": "제5대 청원군의회 개원",
+          "context": [
+            {
+              "html_line": 1055,
+              "html_column": 48,
+              "text": "2006"
+            },
+            {
+              "html_line": 1056,
+              "html_column": 54,
+              "text": "07월 06일"
+            },
+            {
+              "html_line": 1056,
+              "html_column": 68,
+              "text": "제5대 청원군의회 개원"
+            },
+            {
+              "html_line": 1061,
+              "html_column": 48,
+              "text": "2010"
+            },
+            {
+              "html_line": 1062,
+              "html_column": 54,
+              "text": "07월 08일"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 1062,
+          "html_column": 68,
+          "text": "제6대 청원군의회 개원",
+          "context": [
+            {
+              "html_line": 1061,
+              "html_column": 48,
+              "text": "2010"
+            },
+            {
+              "html_line": 1062,
+              "html_column": 54,
+              "text": "07월 08일"
+            },
+            {
+              "html_line": 1062,
+              "html_column": 68,
+              "text": "제6대 청원군의회 개원"
+            },
+            {
+              "html_line": 1097,
+              "html_column": 26,
+              "text": "청주시의회"
+            },
+            {
+              "html_line": 1097,
+              "html_column": 37,
+              "text": "Cheongju City Council"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        }
+      ]
+    },
+    {
+      "source_url": "https://council.cheongju.go.kr/content/member/memberMission.html",
+      "source_response_path": "archive/source_responses/ef676d77ecfe1dccf09632df812121093550166d179e4f8accc3dc0fe5261672.html.gz",
+      "decoded_utf8_sha256": "ef676d77ecfe1dccf09632df812121093550166d179e4f8accc3dc0fe5261672",
+      "bytes": 63284,
+      "source_manifests": [
+        {
+          "path": "archive/source_responses/manifests/f0ec5661c3138742f2ebcb6f103e8a692c8c98fbcb8b33805b9d12053403a91b.json",
+          "sha256": "f0ec5661c3138742f2ebcb6f103e8a692c8c98fbcb8b33805b9d12053403a91b",
+          "collection_started_at": "2026-11-04T22:14:34.442842+00:00"
+        }
+      ],
+      "mentions": [
+        {
+          "html_line": 166,
+          "html_column": 56,
+          "text": "의원임무/임기",
+          "context": [
+            {
+              "html_line": 162,
+              "html_column": 104,
+              "text": "통합전(청주시)"
+            },
+            {
+              "html_line": 163,
+              "html_column": 103,
+              "text": "통합전(청원군)"
+            },
+            {
+              "html_line": 166,
+              "html_column": 56,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 169,
+              "html_column": 37,
+              "text": "의정활동"
+            },
+            {
+              "html_line": 171,
+              "html_column": 83,
+              "text": "처리의안"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 634,
+          "html_column": 77,
+          "text": "의원임무/임기",
+          "context": [
+            {
+              "html_line": 632,
+              "html_column": 70,
+              "text": "현역의원"
+            },
+            {
+              "html_line": 633,
+              "html_column": 83,
+              "text": "역대의원"
+            },
+            {
+              "html_line": 634,
+              "html_column": 77,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 637,
+              "html_column": 89,
+              "text": "의정활동"
+            },
+            {
+              "html_line": 639,
+              "html_column": 83,
+              "text": "처리의안"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 768,
+          "html_column": 61,
+          "text": "의원임무/임기",
+          "context": [
+            {
+              "html_line": 764,
+              "html_column": 115,
+              "text": "통합전(청주시)"
+            },
+            {
+              "html_line": 765,
+              "html_column": 99,
+              "text": "통합전(청원군)"
+            },
+            {
+              "html_line": 768,
+              "html_column": 61,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 780,
+              "html_column": 40,
+              "text": "홈 > 의원소개 >"
+            },
+            {
+              "html_line": 780,
+              "html_column": 65,
+              "text": "의원임무/임기"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 780,
+          "html_column": 65,
+          "text": "의원임무/임기",
+          "context": [
+            {
+              "html_line": 768,
+              "html_column": 61,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 780,
+              "html_column": 40,
+              "text": "홈 > 의원소개 >"
+            },
+            {
+              "html_line": 780,
+              "html_column": 65,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 783,
+              "html_column": 35,
+              "text": "청주시의회 - 의원임무/임기"
+            },
+            {
+              "html_line": 845,
+              "html_column": 229,
+              "text": "밴드"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 783,
+          "html_column": 35,
+          "text": "청주시의회 - 의원임무/임기",
+          "context": [
+            {
+              "html_line": 780,
+              "html_column": 40,
+              "text": "홈 > 의원소개 >"
+            },
+            {
+              "html_line": 780,
+              "html_column": 65,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 783,
+              "html_column": 35,
+              "text": "청주시의회 - 의원임무/임기"
+            },
+            {
+              "html_line": 845,
+              "html_column": 229,
+              "text": "밴드"
+            },
+            {
+              "html_line": 847,
+              "html_column": 197,
+              "text": "URL"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 908,
+          "html_column": 24,
+          "text": "의원임무/임기",
+          "context": [
+            {
+              "html_line": 848,
+              "html_column": 180,
+              "text": "https://council.cheongju.go.kr/content/member/memberMission.html?"
+            },
+            {
+              "html_line": 852,
+              "html_column": 197,
+              "text": "닫기"
+            },
+            {
+              "html_line": 908,
+              "html_column": 24,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 917,
+              "html_column": 49,
+              "text": "청주시의회 시의원임기는 4년이며 시민의 대표자로서 직무를 성실히 수행하고 있습니다."
+            },
+            {
+              "html_line": 920,
+              "html_column": 28,
+              "text": "의원의 임무"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 917,
+          "html_column": 49,
+          "text": "청주시의회 시의원임기는 4년이며 시민의 대표자로서 직무를 성실히 수행하고 있습니다.",
+          "context": [
+            {
+              "html_line": 852,
+              "html_column": 197,
+              "text": "닫기"
+            },
+            {
+              "html_line": 908,
+              "html_column": 24,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 917,
+              "html_column": 49,
+              "text": "청주시의회 시의원임기는 4년이며 시민의 대표자로서 직무를 성실히 수행하고 있습니다."
+            },
+            {
+              "html_line": 920,
+              "html_column": 28,
+              "text": "의원의 임무"
+            },
+            {
+              "html_line": 923,
+              "html_column": 33,
+              "text": "지방의회의원은 시민의 대표자로서 공공의 이익을 우선하여 양심에 따라 그 직무를 성실히 수행하여야 하고, 청렴의 의무를 지며, 의원으로서의 품위를 유지하여야 한다."
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 927,
+          "html_column": 28,
+          "text": "의원의 임기",
+          "context": [
+            {
+              "html_line": 923,
+              "html_column": 33,
+              "text": "지방의회의원은 시민의 대표자로서 공공의 이익을 우선하여 양심에 따라 그 직무를 성실히 수행하여야 하고, 청렴의 의무를 지며, 의원으로서의 품위를 유지하여야 한다."
+            },
+            {
+              "html_line": 924,
+              "html_column": 36,
+              "text": "지방의회의원은 지위를 남용하여 지방자치단체, 공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리.이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선하여서는 아니되며, 법에 규정한 일정한 직을 겸할 수 없다."
+            },
+            {
+              "html_line": 927,
+              "html_column": 28,
+              "text": "의원의 임기"
+            },
+            {
+              "html_line": 928,
+              "html_column": 46,
+              "text": "시의원의 임기는 4년으로 전임의원의 임기만료일 다음날부터 임기가 개시된다. 다만, 보궐선거에 의한 의원의 임기는 당선이 확정된 때부터 개시되며, 전임자의 잔임기간으로 한다."
+            },
+            {
+              "html_line": 931,
+              "html_column": 28,
+              "text": "의원의 선서"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 928,
+          "html_column": 46,
+          "text": "시의원의 임기는 4년으로 전임의원의 임기만료일 다음날부터 임기가 개시된다. 다만, 보궐선거에 의한 의원의 임기는 당선이 확정된 때부터 개시되며, 전임자의 잔임기간으로 한다.",
+          "context": [
+            {
+              "html_line": 924,
+              "html_column": 36,
+              "text": "지방의회의원은 지위를 남용하여 지방자치단체, 공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리.이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선하여서는 아니되며, 법에 규정한 일정한 직을 겸할 수 없다."
+            },
+            {
+              "html_line": 927,
+              "html_column": 28,
+              "text": "의원의 임기"
+            },
+            {
+              "html_line": 928,
+              "html_column": 46,
+              "text": "시의원의 임기는 4년으로 전임의원의 임기만료일 다음날부터 임기가 개시된다. 다만, 보궐선거에 의한 의원의 임기는 당선이 확정된 때부터 개시되며, 전임자의 잔임기간으로 한다."
+            },
+            {
+              "html_line": 931,
+              "html_column": 28,
+              "text": "의원의 선서"
+            },
+            {
+              "html_line": 932,
+              "html_column": 46,
+              "text": "나는 법령을 준수하고 주민의 권익신장과 복리증진 및 지역사회의 발전을 위하여 의원의 직무를 양심에 따라 성실히 수행할 것을 주민앞에 엄숙히 선서합니다."
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        }
+      ]
+    },
+    {
+      "source_url": "https://council.cheongju.go.kr/content/council/configuration.html",
+      "source_response_path": "archive/source_responses/d58ffed200f25b10fed46e7bbc4a1c5721963895709be5175828c5528eb088b6.html.gz",
+      "decoded_utf8_sha256": "d58ffed200f25b10fed46e7bbc4a1c5721963895709be5175828c5528eb088b6",
+      "bytes": 69535,
+      "source_manifests": [
+        {
+          "path": "archive/source_responses/manifests/f0ec5661c3138742f2ebcb6f103e8a692c8c98fbcb8b33805b9d12053403a91b.json",
+          "sha256": "f0ec5661c3138742f2ebcb6f103e8a692c8c98fbcb8b33805b9d12053403a91b",
+          "collection_started_at": "2026-11-04T22:14:34.442842+00:00"
+        }
+      ],
+      "mentions": [
+        {
+          "html_line": 166,
+          "html_column": 56,
+          "text": "의원임무/임기",
+          "context": [
+            {
+              "html_line": 162,
+              "html_column": 104,
+              "text": "통합전(청주시)"
+            },
+            {
+              "html_line": 163,
+              "html_column": 103,
+              "text": "통합전(청원군)"
+            },
+            {
+              "html_line": 166,
+              "html_column": 56,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 169,
+              "html_column": 37,
+              "text": "의정활동"
+            },
+            {
+              "html_line": 171,
+              "html_column": 83,
+              "text": "처리의안"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        },
+        {
+          "html_line": 634,
+          "html_column": 77,
+          "text": "의원임무/임기",
+          "context": [
+            {
+              "html_line": 632,
+              "html_column": 70,
+              "text": "현역의원"
+            },
+            {
+              "html_line": 633,
+              "html_column": 83,
+              "text": "역대의원"
+            },
+            {
+              "html_line": 634,
+              "html_column": 77,
+              "text": "의원임무/임기"
+            },
+            {
+              "html_line": 637,
+              "html_column": 89,
+              "text": "의정활동"
+            },
+            {
+              "html_line": 639,
+              "html_column": 83,
+              "text": "처리의안"
+            }
+          ],
+          "status": "MENTION_REQUIRING_CONTEXT_REVIEW",
+          "period_usable": false
+        }
+      ]
+    }
+  ],
+  "official_periods_promoted": 0,
+  "interpretation": "Visible mentions include navigation, historical events and personal office terms; no automatic council period inference."
+}
