@@ -171,3 +171,22 @@ not text extraction or semantic/content verification. The existing 20-attempt
 and 8-MiB-per-file limits remain unchanged; source-family success must not be
 presented as all historical attachments downloaded. Only the macOS collector
 fetches official attachments; this audit reads preserved local bytes only.
+
+## Image attachments and size-limit holds (2026-11-04)
+
+The first attachment cycle saved four PDF files and recorded 16 failures. Catalog
+metadata identifies 14 of those as JPG posters; the collector previously accepted
+only document containers. Their actual response bytes still require a macOS
+retry before successful download can be claimed. `attachment_formats.py` now
+shares JPEG/PNG/PDF/ZIP/OLE header recognition between download and byte audit.
+A JPG filename or catalog label does not bypass the byte check; HTML/error
+responses remain failed. Image decoding and OCR are not implied by headers.
+
+The other two failures explicitly exceeded the unchanged 8-MiB limit. Such
+responses are now `blocked` with `size_limit_exceeded`, not transient failures
+retried indefinitely. Existing failures with that exact size-limit error migrate
+without another HTTP request during the next attachment execution. Blocked URLs
+stay in the queue and remain incomplete coverage; no file is silently discarded
+or treated as downloaded. JPEG/PNG repair waits for the existing failed-file
+backoff; normal hourly checks and daily limits are unchanged. Pending files are
+not pulled into a failed-file retry.

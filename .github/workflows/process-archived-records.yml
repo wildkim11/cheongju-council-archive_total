@@ -3,6 +3,8 @@ on:
   push:
     branches: [feature/archive-foundation]
     paths:
+      - scripts/attachment_formats.py
+      - tests/test_attachment_retry_formats.py
       - scripts/audit_attachment_downloads.py
       - tests/test_attachment_download_audit.py
       - scripts/audit_written_question_links.py

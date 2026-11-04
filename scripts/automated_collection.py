@@ -112,8 +112,14 @@ def preserve_response_manifest(root,family,started_at,rows):
     (root/rel).parent.mkdir(parents=True,exist_ok=True);(root/rel).write_bytes(raw)
     return str(rel)
 
+class AttachmentSizeLimitError(ValueError):pass
+
 def download_attachments(root,limit=20,max_bytes=8*1024*1024,retry_only=False):
+    from attachment_formats import signature
     queue=load(root/'reports/automatic/attachments.json',{})
+    for item in queue.values():
+        if item.get('status')=='failed'and item.get('error')=='attachment exceeds per-file archive limit':
+            item.update(status='blocked',hold_reason='size_limit_exceeded',max_bytes=max_bytes);item.pop('next_retry_at',None)
     def walk(x):
         if isinstance(x,dict):
             for k,v in x.items():
@@ -134,21 +140,23 @@ def download_attachments(root,limit=20,max_bytes=8*1024*1024,retry_only=False):
     opener=urllib.request.build_opener(OfficialRedirect())
     for url,item in sorted(queue.items(),key=lambda kv:(kv[1].get('attempts',0),kv[0])):
         if retry_only and item['status']!='failed':continue
-        if item['status']=='downloaded' or item.get('next_retry_at','')>now:continue
+        if item['status']in {'downloaded','blocked'} or item.get('next_retry_at','')>now:continue
         if attempted>=limit:break
         attempted+=1;item['attempts']+=1
         try:
             time.sleep(.3)
             with opener.open(urllib.request.Request(url,headers={'User-Agent':'CheongjuCouncilArchive/0.2'}),timeout=40) as response:
                 raw=response.read(max_bytes+1)
-                if len(raw)>max_bytes:raise ValueError('attachment exceeds per-file archive limit')
-                if not raw.startswith((b'%PDF',b'PK\x03\x04',b'\xd0\xcf\x11\xe0')):raise ValueError('unexpected document signature; not counted as downloaded')
+                if len(raw)>max_bytes:raise AttachmentSizeLimitError('attachment exceeds per-file archive limit')
+                if signature(raw)is None:raise ValueError('unexpected attachment signature; not counted as downloaded')
             digest=hashlib.sha256(raw).hexdigest();path=root/'archive/attachments'/f'{digest}.bin';path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(raw)
-            item.update(status='downloaded',sha256=digest,bytes=len(raw),path=str(path.relative_to(root)),checked_at=now);item.pop('error',None)
+            item.update(status='downloaded',sha256=digest,bytes=len(raw),path=str(path.relative_to(root)),checked_at=now,container_header=signature(raw));item.pop('error',None);item.pop('next_retry_at',None)
+        except AttachmentSizeLimitError as e:
+            item.update(status='blocked',hold_reason='size_limit_exceeded',max_bytes=max_bytes,error=str(e));item.pop('next_retry_at',None)
         except Exception as e:
             item.update(status='failed',error=str(e)[:240],next_retry_at=(dt.datetime.now(dt.timezone.utc)+dt.timedelta(hours=min(24,2**min(item['attempts'],5)))).isoformat())
     save_json(root/'reports/automatic/attachments.json',queue)
-    return {'queued':len(queue),'attempted':attempted,'downloaded_total':sum(x['status']=='downloaded' for x in queue.values()),'failed_total':sum(x['status']=='failed' for x in queue.values())}
+    return {'queued':len(queue),'attempted':attempted,'downloaded_total':sum(x['status']=='downloaded' for x in queue.values()),'failed_total':sum(x['status']=='failed' for x in queue.values()),'blocked_total':sum(x['status']=='blocked'for x in queue.values()),'pending_total':sum(x['status']=='pending'for x in queue.values())}
 
 def execute(family,root,ordinal,retry_only=False):
     if family=='minutes':
@@ -268,7 +276,7 @@ def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retr
                 report['qa']=validator(stage,root);(stage/sync_transaction.LOCK).unlink(missing_ok=True);report['transaction']=sync_transaction.publish_staged_snapshot(stage,root);report.update(status='PASS',published=True)
         if selected=='attachments':
             queue=load(root/'reports/automatic/attachments.json',{});failed=[x for x in queue.values() if x.get('status')=='failed']
-            slot.update(failed_documents=len(failed),pending_attachment_retry_at=min((x.get('next_retry_at',now.isoformat()) for x in failed),default=None))
+            slot.update(blocked_documents=sum(x.get('status')=='blocked'for x in queue.values()),pending_documents=sum(x.get('status')=='pending'for x in queue.values()),failed_documents=len(failed),pending_attachment_retry_at=min((x.get('next_retry_at',now.isoformat()) for x in failed),default=None))
         slot.update(last_success_at=now.isoformat(),consecutive_failures=0);slot.pop('next_retry_at',None);slot.pop('last_error',None)
     except Exception as e:
         fails=slot.get('consecutive_failures',0)+1;slot.update(consecutive_failures=fails,last_error=type(e).__name__+': '+str(e)[:500],next_retry_at=(now+dt.timedelta(minutes=min(1440,60*2**min(fails-1,5)))).isoformat());report['error']=slot['last_error']
