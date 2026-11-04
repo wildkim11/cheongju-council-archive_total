@@ -109,3 +109,20 @@ validation, publication and persisted `last_success_at`. This patch does not
 claim successful collection of previously unverified families. A start failure
 after any job step, a missing scheduled run, or a failure older than 24 hours
 requires separate diagnosis; this recovery rule does not silently guess.
+
+## Written-question link regression check (2026-11-04)
+
+The recovered macOS activities cycle collected all 16 written-question records.
+An independent HTMLParser-based audit matched both current-record question and
+answer download links against the 16 preserved official detail responses, with
+hash/size checks. Fourteen previously wrong answer record numbers changed; all
+16 pairs now match. This confirms link provenance, not attachment binary contents.
+
+`scripts/audit_written_question_links.py` consumes the latest durable activities
+response manifest rather than the rotating latest-response pointer. Repeated
+capture entries for the same URL/content are one proof, not independent sources.
+Wrong question IDs, answer/question type mix-ups, duplicate query values,
+external hosts, missing/ambiguous anchors, changed response hashes and unsafe
+paths are held. macOS candidate validation rejects a HOLD report; offline
+processing runs the same audit in strict mode. The source rows, dates and member
+identity are not rewritten by this audit.

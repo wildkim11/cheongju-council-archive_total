@@ -192,6 +192,9 @@ def validate_candidate(stage,oldroot):
     if {x['meeting_id'] for x in old}-{x['meeting_id'] for x in new+history}:raise ValueError('saved meetings missing from candidate and history')
     export_analyzer.export(stage);validate_archive.validate(stage);qa=audit_stage_c.audit(stage)
     if qa['status']!='PASS':raise ValueError('candidate archive QA failed: '+str(qa['errors'][:10]))
+    import audit_written_question_links
+    qa['written_question_links']=audit_written_question_links.build(stage)
+    if qa['written_question_links']['status']!='PASS':raise ValueError('written question link provenance audit failed')
     # Offline processing consumes only this verified candidate, before publication.
     import process_meeting_segments,verify_processing
     process_meeting_segments.process(stage)
