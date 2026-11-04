@@ -1,0 +1,12 @@
+{
+  "schema": "cheongju-council-period-source-collection/1",
+  "status": "CAPTURED_FOR_REVIEW",
+  "source_manifest": "archive/source_responses/manifests/f0ec5661c3138742f2ebcb6f103e8a692c8c98fbcb8b33805b9d12053403a91b.json",
+  "responses": 3,
+  "failures": [],
+  "maximum_requests": 3,
+  "attempts_per_request": 1,
+  "runtime_platform": "Darwin",
+  "official_periods_promoted": 0,
+  "identities_merged": 0
+}

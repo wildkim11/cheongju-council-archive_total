@@ -1,0 +1,28 @@
+{
+  "collection_started_at": "2026-11-04T22:14:34.442842+00:00",
+  "family": "council_period_sources",
+  "responses": [
+    {
+      "bytes": 70516,
+      "decoded_utf8_sha256": "ef0beee8d4639cd7ffb718c33223c731ac6c4fa5e0f67c3957aeb648ff60be66",
+      "path": "archive/source_responses/ef0beee8d4639cd7ffb718c33223c731ac6c4fa5e0f67c3957aeb648ff60be66.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/council/history.html"
+    },
+    {
+      "bytes": 63284,
+      "decoded_utf8_sha256": "ef676d77ecfe1dccf09632df812121093550166d179e4f8accc3dc0fe5261672",
+      "path": "archive/source_responses/ef676d77ecfe1dccf09632df812121093550166d179e4f8accc3dc0fe5261672.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/memberMission.html"
+    },
+    {
+      "bytes": 69535,
+      "decoded_utf8_sha256": "d58ffed200f25b10fed46e7bbc4a1c5721963895709be5175828c5528eb088b6",
+      "path": "archive/source_responses/d58ffed200f25b10fed46e7bbc4a1c5721963895709be5175828c5528eb088b6.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/council/configuration.html"
+    }
+  ],
+  "schema": "cheongju-source-responses/1"
+}
