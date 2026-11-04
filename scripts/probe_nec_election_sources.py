@@ -15,7 +15,9 @@ URL = 'https://info.nec.go.kr/search/searchCandidate.xhtml'
 LIMIT = 2 * 1024 * 1024
 
 
-def fetch(url):
+def fetch(url, *, max_bytes=LIMIT):
+    if type(max_bytes) is not int or not 1 <= max_bytes <= 8 * 1024 * 1024:
+        raise ValueError('invalid NEC response size limit')
     parsed = urlsplit(url)
     if parsed.scheme != 'https' or parsed.netloc != 'info.nec.go.kr' or parsed.fragment:
         raise ValueError('unexpected NEC source URL')
@@ -24,8 +26,8 @@ def fetch(url):
         conn.request('GET', parsed.path + ('?' + parsed.query if parsed.query else ''),
                      headers={'User-Agent': 'CheongjuCouncilArchive-SourceInspection/0.1'})
         response = conn.getresponse()
-        raw = response.read(LIMIT + 1)
-        if response.status != 200 or len(raw) > LIMIT:
+        raw = response.read(max_bytes + 1)
+        if response.status != 200 or len(raw) > max_bytes:
             raise ValueError(f'NEC source HTTP {response.status}, bytes {len(raw)}')
         return raw
     finally:

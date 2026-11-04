@@ -12,9 +12,7 @@ from probe_nec_election_sources import ROOT, URL, fetch
 TARGETS = [('person-fcode-2130', '최동식'), ('person-fcode-1120', '남일현'), ('person-fcode-10040', '김완식')]
 
 
-def collect(root=ROOT, *, request=fetch, system=platform.system):
-    if system() != 'Darwin':
-        raise ValueError('official election requests require macOS')
+def verify_transport(root):
     root = Path(root)
     inspection = json.loads((root / 'reports/nec-source-inspection-latest.json').read_text())
     transport_verified = False
@@ -31,6 +29,13 @@ def collect(root=ROOT, *, request=fetch, system=platform.system):
         transport_verified = '/search/searchCandidate.xhtml?searchKeyword=' in text and 'encodeURIComponent(searchKeyword)' in text
     if not transport_verified:
         raise ValueError('public name-search GET transport not confirmed from captured official JS')
+
+
+def collect(root=ROOT, *, request=fetch, system=platform.system):
+    if system() != 'Darwin':
+        raise ValueError('official election requests require macOS')
+    root = Path(root)
+    verify_transport(root)
     careers = json.loads((root / 'reports/current-career-evidence-latest.json').read_text())
     known = {(r['profile_id'], r['name']) for r in careers['rows']}
     if not set(TARGETS).issubset(known):
