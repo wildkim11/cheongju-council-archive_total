@@ -57,9 +57,10 @@ def derive(root):
                 continue
             if doc.get('schema') != 'cheongju-source-responses/1' or manifest.stem != sha(raw_manifest):
                 raise ValueError('root tree manifest hash or schema mismatch')
-            if response['path'] in seen:
+            response_key = (response['path'], str(manifest))
+            if response_key in seen:
                 continue
-            seen.add(response['path'])
+            seen.add(response_key)
             local_terms = set()
             for i, node in enumerate(nodes):
                 if not isinstance(node, dict):
@@ -101,6 +102,12 @@ def load_verified(root, registry=None):
         seen.add(ref)
         # Every registered field and provenance pointer must reproduce from
         # archived source bytes. No dates from conventions or individual terms.
-        if row != official[ref]:
+        expected = official[ref]
+        base = {k: v for k, v in row.items() if k != 'source_evidence'}
+        expected_base = {k: v for k, v in expected.items() if k != 'source_evidence'}
+        evidence = row.get('source_evidence')
+        if (base != expected_base or not isinstance(evidence, list) or not evidence
+                or any(e not in expected['source_evidence'] for e in evidence)
+                or len({json.dumps(e, sort_keys=True) for e in evidence}) != len(evidence)):
             raise ValueError('registered period differs from preserved root evidence')
     return registry['periods']

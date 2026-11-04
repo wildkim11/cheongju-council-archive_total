@@ -88,6 +88,14 @@ class VerifiedPeriodTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     load_verified(root, {'schema': 'cheongju-analysis-period-registry/1', 'periods': records})
 
+    def test_new_corroborating_capture_preserves_registered_provenance(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); self.fixture(root)
+            registry = {'schema': 'cheongju-analysis-period-registry/1', 'periods': derive(root)}
+            self.fixture(root, [{**self.node(), 'id': 'new-session-root-id'}])
+            self.assertEqual(len(derive(root)[0]['source_evidence']), 2)
+            self.assertEqual(load_verified(root, registry), registry['periods'])
+
     def test_real_registry_four_whole_terms_only(self):
         root = Path(__file__).resolve().parents[1]
         rows = load_verified(root)
