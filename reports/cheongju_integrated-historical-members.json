@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-01T21:18:25.931705+09:00",
+  "checked_at": "2026-11-04T15:08:56.845965+09:00",
   "council_scope": "cheongju_integrated",
   "terms": [
     1,
@@ -12,5 +12,10 @@
   "district_rows": 122,
   "official_fcode_people": 0,
   "historical_mcode_rows": 123,
-  "candidate_unmerged_people": 123
+  "candidate_unmerged_people": 123,
+  "term4_roster_rows_checked": 1,
+  "term4_historical_only_people": 1,
+  "term4_historical_only_names": [
+    "최영중"
+  ]
 }

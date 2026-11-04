@@ -16,43 +16,73 @@
       "attempts": 1,
       "last_success_at": "2026-11-04T06:04:30.098093+00:00",
       "consecutive_failures": 0
+    },
+    "people": {
+      "attempts": 1,
+      "last_success_at": "2026-11-04T06:08:01.564082+00:00",
+      "consecutive_failures": 0
     }
   },
   "last_run": {
-    "family": "activities",
-    "started_at": "2026-11-04T06:04:30.098093+00:00",
+    "family": "people",
+    "started_at": "2026-11-04T06:08:01.564082+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
-      "five_minute": {
-        "listed": 606,
-        "details_checked": 42,
-        "saved": 606,
-        "review_priority_ids": [
-          "331",
-          "332"
+      "current": {
+        "checked_at": "2026-11-04T15:08:07.761466+09:00",
+        "current_members": 44,
+        "portraits": 44,
+        "portrait_sources": 44,
+        "party_rows": 44,
+        "district_rows": 44,
+        "committee_rows": 53
+      },
+      "historical": {
+        "checked_at": "2026-11-04T15:08:56.845965+09:00",
+        "council_scope": "cheongju_integrated",
+        "terms": [
+          1,
+          2,
+          3
         ],
-        "missing_saved_ids_retained": []
+        "roster_rows": 123,
+        "unique_people_rows": 123,
+        "tenure_rows": 123,
+        "district_rows": 122,
+        "official_fcode_people": 0,
+        "historical_mcode_rows": 123,
+        "candidate_unmerged_people": 123,
+        "term4_roster_rows_checked": 1,
+        "term4_historical_only_people": 1,
+        "term4_historical_only_names": [
+          "최영중"
+        ]
       },
-      "city_question": {
-        "listed": 85,
-        "details_checked": 20,
-        "saved": 85,
-        "review_priority_ids": [],
-        "missing_saved_ids_retained": []
+      "departed": {
+        "checked_at": "2026-11-04T15:12:31.304177+09:00",
+        "council_scope": "cheongju_integrated",
+        "term": 4,
+        "official_term_roster_rows": 1,
+        "current_active_rows": 44,
+        "historical_only_rows": 1,
+        "historical_only_names": [
+          "최영중"
+        ],
+        "identity_rule": "same_name_plus_district_or_portrait_for_active_match"
       },
-      "written": {
-        "checked_at": "2026-11-04T15:06:22.363015+09:00",
-        "records": 16,
-        "min_date": "2014-12-26",
-        "max_date": "2026-03-12",
-        "question_files": 16,
-        "answer_files": 16
+      "identity_candidates": {
+        "checked_at": "2026-11-04T15:12:34.822867+09:00",
+        "person_source_records": 435,
+        "candidate_rows": 115,
+        "strong_official_code_candidates": 0,
+        "weak_same_name_candidates": 115,
+        "automatic_merges": 0
       }
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-04T06:06:37.930892+00:00",
+      "checked_at_utc": "2026-11-04T06:12:35.455162+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
@@ -348,7 +378,7 @@
                 "start_date": "2022-07-01",
                 "end_date": "2023-02-01",
                 "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
-                "record_sha256": "f8745ecb042242a238e4b773dfd6efff171a7c694753a4f8165660744fe499ec"
+                "record_sha256": "4c3cef245c64221bf6e4af68f69671c753f426bb78a05d0dfb627f280554ccc4"
               }
             ],
             "status": "archived_date_conflict_review_required"
@@ -367,7 +397,7 @@
                 "start_date": "2022-07-01",
                 "end_date": "2023-02-01",
                 "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
-                "record_sha256": "f8745ecb042242a238e4b773dfd6efff171a7c694753a4f8165660744fe499ec"
+                "record_sha256": "4c3cef245c64221bf6e4af68f69671c753f426bb78a05d0dfb627f280554ccc4"
               }
             ],
             "status": "archived_date_conflict_review_required"
@@ -386,7 +416,7 @@
                 "start_date": "2022-07-01",
                 "end_date": "2023-02-01",
                 "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
-                "record_sha256": "f8745ecb042242a238e4b773dfd6efff171a7c694753a4f8165660744fe499ec"
+                "record_sha256": "4c3cef245c64221bf6e4af68f69671c753f426bb78a05d0dfb627f280554ccc4"
               }
             ],
             "status": "archived_date_conflict_review_required"
@@ -602,7 +632,7 @@
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 190
+      "changed_files": 91
     }
   }
 }
