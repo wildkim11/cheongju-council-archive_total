@@ -26,95 +26,51 @@
       "attempts": 1,
       "last_success_at": "2026-11-04T06:13:46.917794+00:00",
       "consecutive_failures": 0
+    },
+    "media": {
+      "attempts": 1,
+      "last_success_at": "2026-11-04T07:16:27.815032+00:00",
+      "consecutive_failures": 0
     }
   },
   "last_run": {
-    "family": "groups",
-    "started_at": "2026-11-04T06:13:46.917794+00:00",
+    "family": "media",
+    "started_at": "2026-11-04T07:16:27.815032+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
-      "collect_current_committees": {
-        "checked_at": "2026-11-04T15:13:51.418632+09:00",
-        "committee_count": 10,
-        "membership_rows": 81,
-        "by_type": {
-          "other_committee": 1,
-          "special_committee": 2,
-          "standing_committee": 7
-        },
-        "period_conflict_codes": [],
-        "unresolved_members": 0
+      "suggestion_resolution": {
+        "listed": 72,
+        "details_checked": 40,
+        "saved": 72,
+        "review_priority_ids": [],
+        "missing_saved_ids_retained": []
       },
-      "collect_historical_committees": {
-        "checked_at": "2026-11-04T15:14:01.263077+09:00",
-        "promoted_sources": 3,
-        "committee_states": 16,
-        "membership_rows": 126,
-        "skipped_sources": [
-          {
-            "source_id": "committee-standing-t1-latter-20160705",
-            "source_status": "registered_needs_live_table_verification",
-            "reason": "not_promotable_full_roster"
-          },
-          {
-            "source_id": "committee-budget-t3-final-20250630",
-            "source_status": "registered_partial_text_needs_full_roster_source",
-            "reason": "not_promotable_full_roster"
-          }
-        ],
-        "by_term": {
-          "3": 9,
-          "4": 7
-        }
+      "press": {
+        "listed": 914,
+        "details_checked": 40,
+        "saved": 914,
+        "review_priority_ids": [],
+        "missing_saved_ids_retained": []
       },
-      "collect_current_research_groups": {
-        "checked_at": "2026-11-04T15:14:13.378262+09:00",
-        "year": 2026,
-        "group_count": 5,
-        "membership_rows": 65,
-        "representative_rows": 5,
-        "unresolved_members": 0,
-        "groups": [
-          {
-            "group_name": "청주시 강호축 미래전략 연구회",
-            "member_count": 22
-          },
-          {
-            "group_name": "도서관을 사랑하는 의원 모임",
-            "member_count": 13
-          },
-          {
-            "group_name": "미래 정책 연구 포럼",
-            "member_count": 7
-          },
-          {
-            "group_name": "청주공항 비상을 바라는 모임",
-            "member_count": 12
-          },
-          {
-            "group_name": "청주시의회 문화·예술 연구회",
-            "member_count": 11
-          }
-        ]
+      "debate": {
+        "listed": 20,
+        "details_checked": 20,
+        "saved": 20,
+        "review_priority_ids": [],
+        "missing_saved_ids_retained": []
       },
-      "collect_historical_research_metadata": {
-        "checked_at": "2026-11-04T15:14:14.852789+09:00",
-        "source_pages": 6,
-        "attachments": 26,
-        "pages_with_html_full_roster": 0,
-        "attachment_verification_required": 6,
-        "by_year": {
-          "2022": 1,
-          "2023": 2,
-          "2024": 2,
-          "2025": 1
-        }
+      "photo": {
+        "checked_at": "2026-11-04T16:19:00.901327+09:00",
+        "records": 6611,
+        "min_date": "2014-07-01",
+        "max_date": "2026-11-04",
+        "binary_files_mirrored": 0
       }
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-04T06:14:20.105414+00:00",
+      "checked_at_utc": "2026-11-04T07:28:52.092574+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
@@ -243,6 +199,167 @@
       "warnings": [],
       "error_count": 0,
       "warning_count": 0,
+      "written_question_links": {
+        "schema": "cheongju-written-question-link-audit/1",
+        "status": "PASS",
+        "source_records": 16,
+        "verified_records": 16,
+        "held_records": 0,
+        "source_dataset_sha256": "df45edc0bf930e9cf5125d2abdfdb4081cb4fd67128676ab9af9133aba9078ba",
+        "source_manifest": "archive/source_responses/manifests/92837b31772ebea20ef9b98886a804e03714a76edc3a6e720b0284ce8a02bbbf.json",
+        "source_manifest_sha256": "92837b31772ebea20ef9b98886a804e03714a76edc3a6e720b0284ce8a02bbbf",
+        "collection_started_at": "2026-11-04T06:04:30.098093+00:00",
+        "rows": [
+          {
+            "source_id": "14",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=14&page=2&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=14&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=14&gb=ans",
+            "source_response_path": "archive/source_responses/2f114d96c7d74a5670723290cec1d5e09e3bec5a83eafa53b54157ac56810d59.html.gz",
+            "source_response_sha256": "2f114d96c7d74a5670723290cec1d5e09e3bec5a83eafa53b54157ac56810d59"
+          },
+          {
+            "source_id": "15",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=15&page=2&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=15&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=15&gb=ans",
+            "source_response_path": "archive/source_responses/2588938371641a26d3c798394b49c94c84844dc155c9d681d2363310e68c76a1.html.gz",
+            "source_response_sha256": "2588938371641a26d3c798394b49c94c84844dc155c9d681d2363310e68c76a1"
+          },
+          {
+            "source_id": "16",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=16&page=2&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=16&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=16&gb=ans",
+            "source_response_path": "archive/source_responses/958b64d3a8bbafe535ec4d409e611cb22ceffc60ec69ae7febf05fce93e3a458.html.gz",
+            "source_response_sha256": "958b64d3a8bbafe535ec4d409e611cb22ceffc60ec69ae7febf05fce93e3a458"
+          },
+          {
+            "source_id": "17",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=17&page=2&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=17&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=17&gb=ans",
+            "source_response_path": "archive/source_responses/df9c1f6771a63db5d5b18c4be84b21aa893d10e496eca09590513063a3ca5cf1.html.gz",
+            "source_response_sha256": "df9c1f6771a63db5d5b18c4be84b21aa893d10e496eca09590513063a3ca5cf1"
+          },
+          {
+            "source_id": "18",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=18&page=2&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=18&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=18&gb=ans",
+            "source_response_path": "archive/source_responses/383d206e7849b6f921d9cc31400697b6851cde1125c429919788913d2831baa4.html.gz",
+            "source_response_sha256": "383d206e7849b6f921d9cc31400697b6851cde1125c429919788913d2831baa4"
+          },
+          {
+            "source_id": "19",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=19&page=2&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=19&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=19&gb=ans",
+            "source_response_path": "archive/source_responses/924cfe53df368849a4bda2a88bad69c807b2a440230e34a212f5ca57bead42fa.html.gz",
+            "source_response_sha256": "924cfe53df368849a4bda2a88bad69c807b2a440230e34a212f5ca57bead42fa"
+          },
+          {
+            "source_id": "20",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=20&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=20&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=20&gb=ans",
+            "source_response_path": "archive/source_responses/affbda8f1a066d04d5793fcd66de32f63388aebab22c95c80353ea224f51c53f.html.gz",
+            "source_response_sha256": "affbda8f1a066d04d5793fcd66de32f63388aebab22c95c80353ea224f51c53f"
+          },
+          {
+            "source_id": "21",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=21&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=21&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=21&gb=ans",
+            "source_response_path": "archive/source_responses/6283212210f57f8a2a4939ca0bd6772db1349b9f574c77d57f2ab7788e7d82c8.html.gz",
+            "source_response_sha256": "6283212210f57f8a2a4939ca0bd6772db1349b9f574c77d57f2ab7788e7d82c8"
+          },
+          {
+            "source_id": "22",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=22&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=22&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=22&gb=ans",
+            "source_response_path": "archive/source_responses/aff0ecd25b3c6ec2b5c093010fd4d9ffe06580eabd8d03977c9ef66a76de0668.html.gz",
+            "source_response_sha256": "aff0ecd25b3c6ec2b5c093010fd4d9ffe06580eabd8d03977c9ef66a76de0668"
+          },
+          {
+            "source_id": "23",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=23&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=23&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=23&gb=ans",
+            "source_response_path": "archive/source_responses/a0e610e95e94e56c0e2c25280bff32451ebf5cd356f3f6da355823e22fa1c6fb.html.gz",
+            "source_response_sha256": "a0e610e95e94e56c0e2c25280bff32451ebf5cd356f3f6da355823e22fa1c6fb"
+          },
+          {
+            "source_id": "24",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=24&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=24&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=24&gb=ans",
+            "source_response_path": "archive/source_responses/5e0d860f2f3f3c83c22b952f38430b3ab627ccc4795267ebb0ad263adeb56176.html.gz",
+            "source_response_sha256": "5e0d860f2f3f3c83c22b952f38430b3ab627ccc4795267ebb0ad263adeb56176"
+          },
+          {
+            "source_id": "25",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=25&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=25&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=25&gb=ans",
+            "source_response_path": "archive/source_responses/83a8011ccff7935c40e5486da8e58f0079fc302987b344a8cf7e6c6dec5bd02e.html.gz",
+            "source_response_sha256": "83a8011ccff7935c40e5486da8e58f0079fc302987b344a8cf7e6c6dec5bd02e"
+          },
+          {
+            "source_id": "26",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=26&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=26&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=26&gb=ans",
+            "source_response_path": "archive/source_responses/a661aa94ef3aa635f56c7aaddac05e54b78bb2c06a75cc118546e0fc8e6834cf.html.gz",
+            "source_response_sha256": "a661aa94ef3aa635f56c7aaddac05e54b78bb2c06a75cc118546e0fc8e6834cf"
+          },
+          {
+            "source_id": "27",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=27&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=27&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=27&gb=ans",
+            "source_response_path": "archive/source_responses/5d30cdb445425628d4b949dc03d306241984aa59bc04750e3536aa6e0a232855.html.gz",
+            "source_response_sha256": "5d30cdb445425628d4b949dc03d306241984aa59bc04750e3536aa6e0a232855"
+          },
+          {
+            "source_id": "28",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=28&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=28&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=28&gb=ans",
+            "source_response_path": "archive/source_responses/bf2493e6d598f5e2ddfe45012c06292e27e44736959aef60f1af1e18af40601d.html.gz",
+            "source_response_sha256": "bf2493e6d598f5e2ddfe45012c06292e27e44736959aef60f1af1e18af40601d"
+          },
+          {
+            "source_id": "29",
+            "detail_url": "https://council.cheongju.go.kr/content/activity/questionLetter.html?pg=vv&number=29&page=1&sword=",
+            "status": "verified",
+            "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=29&gb=qna",
+            "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=29&gb=ans",
+            "source_response_path": "archive/source_responses/6dc3e7ae7cdcafd11dc22dab1f3f613aca824819aaf7f08c1954435efdca361f.html.gz",
+            "source_response_sha256": "6dc3e7ae7cdcafd11dc22dab1f3f613aca824819aaf7f08c1954435efdca361f"
+          }
+        ],
+        "official_site_requests": 0,
+        "attachment_contents_verified": false,
+        "identity_promotions": 0,
+        "date_changes": 0
+      },
       "activity_spacing_linking": {
         "status": "PASS",
         "method": "entire_activity_body_exact_spacing_compacted_digit_boundaries",
@@ -664,7 +781,7 @@
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 60
+      "changed_files": 1050
     }
   }
 }
