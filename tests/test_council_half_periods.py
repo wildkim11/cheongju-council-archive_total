@@ -108,3 +108,9 @@ class HalfPeriodTests(unittest.TestCase):
             row = next(r for r in changed['periods'] if r['term'] == 1 and r['half'] == 'second')
             row.update(patch)
             with self.assertRaises(ValueError): load_verified(ROOT, changed)
+
+    def test_external_boundary_config_validates_against_selected_source_root(self):
+        registry = json.loads((ROOT / 'config/analysis_periods.json').read_text())
+        self.assertEqual(len(load_verified(ROOT, registry, half_boundaries=self.boundaries)), 10)
+        changed = copy.deepcopy(self.boundaries); changed[0]['source']['sha256'] = '0' * 64
+        with self.assertRaises(ValueError): load_verified(ROOT, registry, half_boundaries=changed)

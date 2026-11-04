@@ -85,7 +85,7 @@ def derive(root):
     return [periods[t] for t in sorted(periods)]
 
 
-def load_verified(root, registry=None):
+def load_verified(root, registry=None, *, half_boundaries=None):
     root = Path(root)
     if registry is None:
         registry = json.loads((root / 'config/analysis_periods.json').read_text())
@@ -95,7 +95,7 @@ def load_verified(root, registry=None):
         return []
     from council_half_periods import derive_halves
     whole = derive(root)
-    official = {r['record_ref']: r for r in whole + derive_halves(root, whole)}
+    official = {r['record_ref']: r for r in whole + derive_halves(root, whole, half_boundaries)}
     seen = set()
     for row in registry['periods']:
         ref = row.get('record_ref')

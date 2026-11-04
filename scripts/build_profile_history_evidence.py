@@ -220,7 +220,16 @@ def build(root=ROOT, *, write=True, periods_root=None):
             group['status'] = 'HELD'
     from verified_council_periods import load_verified
     period_basis = Path(periods_root).resolve() if periods_root is not None else root
-    period_rows = len(load_verified(period_basis)) if (period_basis / 'config/analysis_periods.json').exists() else None
+    registry_path = period_basis / 'config/analysis_periods.json'
+    if registry_path.exists():
+        registry = json.loads(registry_path.read_text())
+        boundary_path = period_basis / 'config/council_half_boundaries.json'
+        boundaries = json.loads(boundary_path.read_text())['boundaries'] if boundary_path.exists() else None
+        # Candidate source bytes/indexes are the validation root; configuration
+        # may come from the operational root because candidate dirs omit config.
+        period_rows = len(load_verified(root, registry, half_boundaries=boundaries))
+    else:
+        period_rows = None
     report = {'schema': 'cheongju-profile-history-evidence/1', 'official_site_requests': 0,
               'status': 'REVIEW_EVIDENCE_NOT_IDENTITY_APPROVAL',
               'analyzer_inputs': {n: manifest['datasets'][n] for n in data},
