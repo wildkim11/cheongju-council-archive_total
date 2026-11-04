@@ -205,6 +205,8 @@ def validate_candidate(stage,oldroot):
     qa['activity_date_review']=review_activity_date_discrepancies.review(stage)
     import build_question_answer_parts
     qa['question_answer_parts']=build_question_answer_parts.build(stage)
+    import review_single_activity_differences
+    qa['single_activity_differences']=review_single_activity_differences.review(stage)
     # HTML consumers must receive text packs from this same verified snapshot.
     # Export failures abort the candidate before any live snapshot is published.
     import export_minutes_text

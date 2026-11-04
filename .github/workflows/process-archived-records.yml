@@ -7,6 +7,7 @@ on:
       - scripts/resolve_activity_spacing_matches.py
       - scripts/review_activity_date_discrepancies.py
       - scripts/build_question_answer_parts.py
+      - scripts/review_single_activity_differences.py
       - scripts/verify_processing.py
       - scripts/export_minutes_text.py
       - scripts/build_activity_temporal_context.py
@@ -16,6 +17,7 @@ on:
       - tests/test_resolve_activity_spacing_matches.py
       - tests/test_review_activity_date_discrepancies.py
       - tests/test_question_answer_parts.py
+      - tests/test_single_activity_differences.py
       - tests/test_verify_processing.py
       - tests/test_export_minutes_text.py
       - tests/test_activity_temporal_context.py
@@ -56,6 +58,8 @@ jobs:
         run: python -u scripts/review_activity_date_discrepancies.py
       - name: Derive exact source-backed question and executive answer parts
         run: python -u scripts/build_question_answer_parts.py
+      - name: Preserve single-edit activity differences without promotion
+        run: python -u scripts/review_single_activity_differences.py
       - name: Attach explicit historical intervals and hold unresolved context
         run: python -u scripts/build_activity_temporal_context.py
       - name: Partition source-attributed activity inputs and preserve held records
@@ -69,7 +73,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
+          git add reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "data: verified speech segments and source-backed activity roles"
             bash scripts/push_collected_snapshot.sh
@@ -85,6 +89,7 @@ jobs:
             reports/activity-spacing-link-review.json
             reports/activity-date-discrepancies.json
             reports/question-answer-parts-latest.json
+            reports/activity-single-differences.json
             reports/temporal-context-latest.json
             reports/analysis-activity-gate-latest.json
             reports/member-activity-counts-latest.json
