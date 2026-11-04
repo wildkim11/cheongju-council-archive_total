@@ -44,6 +44,18 @@ def refresh_board(root,module,kind=None,width=20,ordinal=0):
     rotate=sorted(index,key=int);start=(ordinal*width)%max(1,len(rotate))
     chosen={str(x['source_id']) for x in ordered[:width]}
     chosen.update((rotate+rotate)[start:start+min(width,len(rotate))])
+    # Recheck bounded reviewed date conflicts in the normal macOS source cycle.
+    # Only IDs rediscovered in the official list are fetched, never report URLs.
+    review=load(root/'reports/activity-date-discrepancies.json',{})
+    reviewed=set()
+    if review.get('schema')=='cheongju-activity-date-review/1':
+        dataset=Path(cfg['output']).stem
+        for item in review.get('rows',[]):
+            parts=item.get('activity_id','').split(':')
+            if item.get('source_dataset')==dataset and len(parts)==3 and parts[0]==dataset and parts[1].isdigit():reviewed.add(parts[1])
+    listed_ids={str(r['source_id']) for r in listed}
+    reviewed=sorted(reviewed&listed_ids,key=int)[:width]
+    chosen.update(reviewed)
     rows=[]
     for r in listed:
         sid=str(r['source_id'])
@@ -52,7 +64,7 @@ def refresh_board(root,module,kind=None,width=20,ordinal=0):
             parsed=module.parse_detail(module.fetch_text(r['official_url']),r,cfgarg)
             parsed.update(activity_type=kind,council_scope='cheongju_integrated',checked_at=dt.datetime.now(dt.timezone.utc).isoformat());rows.append(parsed)
     save_json(root/cfg['output'],preserved_merge(old,rows,'source_id'))
-    return {'listed':len(listed),'details_checked':len(rows),'saved':len(index),'missing_saved_ids_retained':sorted(set(index)-{str(r['source_id']) for r in listed})}
+    return {'listed':len(listed),'details_checked':len(rows),'saved':len(index),'review_priority_ids':reviewed,'missing_saved_ids_retained':sorted(set(index)-{str(r['source_id']) for r in listed})}
 
 class Capture:
     def __init__(self,root):self.root=root;self.rows=[];self.lock=threading.Lock();self.stack=contextlib.ExitStack();self.failures=[]
@@ -189,6 +201,8 @@ def validate_candidate(stage,oldroot):
     processing=verify_processing.verify(stage)
     save_json(stage/'reports/processing-qa-latest.json',processing)
     qa['processing']=processing
+    import review_activity_date_discrepancies
+    qa['activity_date_review']=review_activity_date_discrepancies.review(stage)
     # HTML consumers must receive text packs from this same verified snapshot.
     # Export failures abort the candidate before any live snapshot is published.
     import export_minutes_text

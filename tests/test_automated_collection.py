@@ -88,7 +88,7 @@ class FailedOnlyRetryTests(unittest.TestCase):
 
 class MeetingTextPipelineTests(unittest.TestCase):
  def mocks(self,stack,text_export):
-  for name,attr,value in [('export_analyzer','export',{}),('validate_archive','validate',None),('audit_stage_c','audit',{'status':'PASS'}),('process_meeting_segments','process',{}),('resolve_activity_spacing_matches','resolve',{'status':'PASS'}),('verify_processing','verify',{'status':'PASS'}),('build_activity_temporal_context','build',{'status':'PASS'}),('build_analysis_activity_gate','build',{'status':'PASS'}),('build_member_activity_counts','build',{'status':'PASS'})]:
+  for name,attr,value in [('export_analyzer','export',{}),('validate_archive','validate',None),('audit_stage_c','audit',{'status':'PASS'}),('process_meeting_segments','process',{}),('resolve_activity_spacing_matches','resolve',{'status':'PASS'}),('verify_processing','verify',{'status':'PASS'}),('review_activity_date_discrepancies','review',{'status':'PASS'}),('build_activity_temporal_context','build',{'status':'PASS'}),('build_analysis_activity_gate','build',{'status':'PASS'}),('build_member_activity_counts','build',{'status':'PASS'})]:
    module=__import__(name);stack.enter_context(patch.object(module,attr,return_value=value))
   return stack.enter_context(patch('export_minutes_text.export',side_effect=text_export))
  def test_validated_candidate_exports_text_before_publication(self):
@@ -108,3 +108,15 @@ class MeetingTextPipelineTests(unittest.TestCase):
    self.assertFalse(result['published']);self.assertEqual(result['status'],'FAILED')
    self.assertEqual(a.load(r/'exports/minutes-text/catalog.json',{})['rows'],7)
    self.assertIn('hash mismatch',result['error'])
+
+
+class DateReviewRefreshTests(unittest.TestCase):
+ def test_reviewed_dates_are_refreshed_in_normal_board_cycle(self):
+  from types import SimpleNamespace
+  with tempfile.TemporaryDirectory()as td:
+   r=Path(td);a.save_json(r/'archive/activities/five_minute_speeches.json',[{'source_id':'1'},{'source_id':'331'}]);a.save_json(r/'reports/activity-date-discrepancies.json',{'schema':'cheongju-activity-date-review/1','rows':[{'activity_id':'five_minute_speeches:331:speaker','source_dataset':'five_minute_speeches'}]});calls=[]
+   cfg={'output':'archive/activities/five_minute_speeches.json','list_url':'https://council.cheongju.go.kr/list','detail_pattern':'unused','section_label':'5분발언'}
+   listed=[{'source_id':i,'official_url':'https://council.cheongju.go.kr/'+i}for i in ['1','331','1000']]
+   module=SimpleNamespace(__name__='collect_speeches_questions',CONFIG={'five':cfg},discover_links=lambda *args:listed,fetch_text=lambda u:calls.append(u)or'html',parse_detail=lambda text,row,cfg:dict(row))
+   result=a.refresh_board(r,module,'five',width=1,ordinal=0)
+   self.assertIn('https://council.cheongju.go.kr/331',calls);self.assertEqual(result['review_priority_ids'],['331'])
