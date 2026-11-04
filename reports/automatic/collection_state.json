@@ -31,46 +31,29 @@
       "attempts": 1,
       "last_success_at": "2026-11-04T07:16:27.815032+00:00",
       "consecutive_failures": 0
+    },
+    "attachments": {
+      "attempts": 1,
+      "failed_documents": 16,
+      "pending_attachment_retry_at": "2026-11-04T09:30:47.053222+00:00",
+      "last_success_at": "2026-11-04T07:30:38.457028+00:00",
+      "consecutive_failures": 0
     }
   },
   "last_run": {
-    "family": "media",
-    "started_at": "2026-11-04T07:16:27.815032+00:00",
+    "family": "attachments",
+    "started_at": "2026-11-04T07:30:38.457028+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
-      "suggestion_resolution": {
-        "listed": 72,
-        "details_checked": 40,
-        "saved": 72,
-        "review_priority_ids": [],
-        "missing_saved_ids_retained": []
-      },
-      "press": {
-        "listed": 914,
-        "details_checked": 40,
-        "saved": 914,
-        "review_priority_ids": [],
-        "missing_saved_ids_retained": []
-      },
-      "debate": {
-        "listed": 20,
-        "details_checked": 20,
-        "saved": 20,
-        "review_priority_ids": [],
-        "missing_saved_ids_retained": []
-      },
-      "photo": {
-        "checked_at": "2026-11-04T16:19:00.901327+09:00",
-        "records": 6611,
-        "min_date": "2014-07-01",
-        "max_date": "2026-11-04",
-        "binary_files_mirrored": 0
-      }
+      "queued": 1891,
+      "attempted": 20,
+      "downloaded_total": 4,
+      "failed_total": 16
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-04T07:28:52.092574+00:00",
+      "checked_at_utc": "2026-11-04T07:33:10.358660+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
@@ -359,6 +342,51 @@
         "attachment_contents_verified": false,
         "identity_promotions": 0,
         "date_changes": 0
+      },
+      "attachment_downloads": {
+        "schema": "cheongju-attachment-download-audit/1",
+        "status": "PASS",
+        "queue_present": true,
+        "source_queue_sha256": "a28d9da291acdcb45c664f38453147f2bc3cbed91ab22522f9b4157aa3b5f15f",
+        "queued_urls": 1891,
+        "status_counts": {
+          "downloaded": 4,
+          "failed": 16,
+          "pending": 1871
+        },
+        "verified_downloaded_urls": 4,
+        "unique_verified_files": 4,
+        "unique_verified_bytes": 12906363,
+        "remaining_unverified_urls": 1887,
+        "download_queue_complete": false,
+        "held_records": 0,
+        "held": [],
+        "unique_file_containers": {
+          "ed245d2e44397994026c94a43bfaebfb6aa9259e94200d8c647774c53d1de62a": {
+            "bytes": 2996673,
+            "container_header": "pdf_header",
+            "path": "archive/attachments/ed245d2e44397994026c94a43bfaebfb6aa9259e94200d8c647774c53d1de62a.bin"
+          },
+          "eb8f6bf920fc9cea6a8cbca0610e52a2bfbc36166eccde731eb2fa565547d5f7": {
+            "bytes": 1012983,
+            "container_header": "pdf_header",
+            "path": "archive/attachments/eb8f6bf920fc9cea6a8cbca0610e52a2bfbc36166eccde731eb2fa565547d5f7.bin"
+          },
+          "930990153b44c75b009ef70cc9ade068763e515d5ff13734369b76d64d0ba971": {
+            "bytes": 8197443,
+            "container_header": "pdf_header",
+            "path": "archive/attachments/930990153b44c75b009ef70cc9ade068763e515d5ff13734369b76d64d0ba971.bin"
+          },
+          "f2accccba595a739ce52d7a48258674df81b30a42e0ad24fa088a655e7b93e68": {
+            "bytes": 699264,
+            "container_header": "pdf_header",
+            "path": "archive/attachments/f2accccba595a739ce52d7a48258674df81b30a42e0ad24fa088a655e7b93e68.bin"
+          }
+        },
+        "official_site_requests": 0,
+        "document_text_extracted": false,
+        "document_semantics_verified": false,
+        "note": "Checks archived bytes and container headers only. A successful queue snapshot is not full download coverage or document-content validation."
       },
       "activity_spacing_linking": {
         "status": "PASS",
@@ -781,7 +809,7 @@
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 1050
+      "changed_files": 10
     }
   }
 }
