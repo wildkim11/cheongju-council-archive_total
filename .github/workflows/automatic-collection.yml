@@ -1,5 +1,8 @@
 name: Automatic source collection (macOS)
 on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/automatic-collection.yml]
   schedule:
     # Daily full collection: 06:00 Asia/Seoul.
     - cron: '0 21 * * *'
@@ -19,6 +22,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   gate:
+    permissions:
+      contents: write
+      actions: read
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -51,6 +57,38 @@ jobs:
             }
             fs.writeFileSync(process.env.RUNNER_TEMP + '/collection-state.json', JSON.stringify(state));
 
+
+            let recovery = {schema:'cheongju-runner-recovery/1'};
+            let recoverySha = null;
+            try {
+              const {data} = await github.rest.repos.getContent({
+                ...context.repo, ref:'feature/archive-foundation',
+                path:'reports/automatic/runner_recovery.json'
+              });
+              recovery = JSON.parse(Buffer.from(data.content,'base64').toString('utf8'));
+              recoverySha = data.sha;
+            } catch(e) { if(e.status !== 404) throw e; }
+            fs.writeFileSync(process.env.RUNNER_TEMP + '/runner-recovery.json',JSON.stringify(recovery));
+            fs.writeFileSync(process.env.RUNNER_TEMP + '/runner-recovery-sha.json',JSON.stringify(recoverySha));
+            // GitHub metadata only: detect failure before the first macOS step.
+            const {data:recent} = await github.rest.actions.listWorkflowRuns({
+              ...context.repo, workflow_id:'automatic-collection.yml', per_page:50
+            });
+            const cutoff = Date.now() - 24*60*60*1000;
+            const failed = recent.workflow_runs.filter(r => r.status==='completed' &&
+              r.conclusion==='failure' && Date.parse(r.updated_at)>=cutoff)
+              .sort((a,b)=>Date.parse(b.updated_at)-Date.parse(a.updated_at))[0];
+            let failure = null;
+            if(failed) {
+              const {data} = await github.rest.actions.listJobsForWorkflowRun({
+                ...context.repo, run_id:failed.id, per_page:100
+              });
+              failure = {id:failed.id,run_attempt:failed.run_attempt,status:failed.status,
+                conclusion:failed.conclusion,created_at:failed.created_at,updated_at:failed.updated_at,
+                jobs:data.jobs.map(j=>({name:j.name,status:j.status,conclusion:j.conclusion,steps:j.steps}))};
+            }
+            fs.writeFileSync(process.env.RUNNER_TEMP + '/runner-failure.json',JSON.stringify(failure));
+
             // Checkpoint coverage is separate from this gate job's success.
             const families = ['minutes','bills','activities','people','groups','media','attachments'];
             const records = families.map(name => {
@@ -74,7 +112,28 @@ jobs:
         run: |
           python scripts/collection_policy.py plan \
             --state "$RUNNER_TEMP/collection-state.json" \
-            --event "$EVENT_NAME" --schedule "$EVENT_SCHEDULE" --requested "$REQUESTED_FAMILY"
+            --event "$EVENT_NAME" --schedule "$EVENT_SCHEDULE" --requested "$REQUESTED_FAMILY" \
+            --runner-failure "$RUNNER_TEMP/runner-failure.json" \
+            --runner-recovery "$RUNNER_TEMP/runner-recovery.json" \
+            --runner-decision "$RUNNER_TEMP/runner-decision.json"
+      - name: Reserve bounded startup retry before requesting macOS
+        if: steps.plan.outputs.mode == 'startup_retry'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync(process.env.RUNNER_TEMP + '/runner-decision.json');
+            const sha = JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP + '/runner-recovery-sha.json','utf8'));
+            await github.rest.repos.createOrUpdateFileContents({
+              ...context.repo,branch:'feature/archive-foundation',
+              path:'reports/automatic/runner_recovery.json',
+              message:'ops: reserve bounded collection startup recovery',
+              content:body.toString('base64'),...(sha ? {sha} : {})
+            });
+            const decision = JSON.parse(body.toString('utf8'));
+            await core.summary.addHeading('Collection startup retry reserved')
+              .addRaw('Official collection has not run in this gate. Selected families: ' + decision.pending_targets.join(', ') + '\n')
+              .addRaw('Korean-day startup retry budget: ' + decision.retry_attempts_today + '/3.\n').write();
   collect:
     needs: gate
     if: needs.gate.outputs.run == 'true'
