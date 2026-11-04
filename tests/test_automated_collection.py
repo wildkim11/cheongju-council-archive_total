@@ -88,7 +88,7 @@ class FailedOnlyRetryTests(unittest.TestCase):
 
 class MeetingTextPipelineTests(unittest.TestCase):
  def mocks(self,stack,text_export):
-  for name,attr,value in [('export_analyzer','export',{}),('validate_archive','validate',None),('audit_stage_c','audit',{'status':'PASS'}),('process_meeting_segments','process',{}),('verify_processing','verify',{'status':'PASS'})]:
+  for name,attr,value in [('export_analyzer','export',{}),('validate_archive','validate',None),('audit_stage_c','audit',{'status':'PASS'}),('process_meeting_segments','process',{}),('verify_processing','verify',{'status':'PASS'}),('build_activity_temporal_context','build',{'status':'PASS'})]:
    module=__import__(name);stack.enter_context(patch.object(module,attr,return_value=value))
   return stack.enter_context(patch('export_minutes_text.export',side_effect=text_export))
  def test_validated_candidate_exports_text_before_publication(self):

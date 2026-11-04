@@ -189,6 +189,8 @@ def validate_candidate(stage,oldroot):
     # Export failures abort the candidate before any live snapshot is published.
     import export_minutes_text
     qa['minutes_text']=export_minutes_text.export(stage)
+    import build_activity_temporal_context
+    qa['temporal_context']=build_activity_temporal_context.build(stage)
     return qa
 
 def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False,retry_attempt=False):

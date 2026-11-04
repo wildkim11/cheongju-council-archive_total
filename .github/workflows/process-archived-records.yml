@@ -6,9 +6,11 @@ on:
       - scripts/process_meeting_segments.py
       - scripts/verify_processing.py
       - scripts/export_minutes_text.py
+      - scripts/build_activity_temporal_context.py
       - tests/test_process_meeting_segments.py
       - tests/test_verify_processing.py
       - tests/test_export_minutes_text.py
+      - tests/test_activity_temporal_context.py
       - .github/workflows/process-archived-records.yml
   workflow_dispatch:
 permissions:
@@ -38,6 +40,8 @@ jobs:
         run: python -u scripts/process_meeting_segments.py
       - name: Verify every source range and derived ledger
         run: python -u scripts/verify_processing.py --out reports/processing-qa-latest.json
+      - name: Attach explicit historical intervals and hold unresolved context
+        run: python -u scripts/build_activity_temporal_context.py
       - name: Export hash-verified meeting text for HTML consumers
         run: python -u scripts/export_minutes_text.py
       - name: Commit verified derived data only
@@ -45,7 +49,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add exports/processing exports/minutes-text reports/processing-latest.json reports/processing-qa-latest.json
+          git add exports/processing exports/minutes-text reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "data: verified speech segments and source-backed activity roles"
             bash scripts/push_collected_snapshot.sh
@@ -58,4 +62,5 @@ jobs:
           path: |
             reports/processing-latest.json
             reports/processing-qa-latest.json
+            reports/temporal-context-latest.json
           if-no-files-found: warn
