@@ -30,3 +30,31 @@ python scripts/install_html_data_versions.py source.html prepared.html
 필요 필드이며 gzip/index는 해당 커밋에서 받은 원본 바이트다. 실행은 `updated/`에
 저장 Blob의 HTML을 기록하고 다시 열어 검사한다. 이는 네이티브 브라우저의
 CORS·다운로드 완료·실제 모바일 배치 검증을 대체하지 않는다.
+
+## 최신 집계에서 의안·활동·공동참여 근거 연결
+
+`current_activity_evidence.js`는 기존 검증기의 expand/validate를 거친 집계 자료에서
+집계 가능행만 읽는다. 의안은 의회 범위·대수·내부번호로 묶고, 역할·인물 ID·고정
+원장 행 좌표를 보존한다. 동일 사건의 메타데이터 충돌은 표시 중단 사유다.
+보류행·기관발의 격리 인명·과거 후보 명부를 관계 근거로 섞지 않는다.
+
+`current_activity_evidence_ui.js`는 의안·활동·관계망·협업 화면에 최신 근거 목록을
+보여주며, 기존 화면은 과거 자료라는 안내와 접힌 영역으로 유지한다. 공동참여는
+동일 의안의 기초 포함행에 함께 등장한 횟수이며, 협업강도·성과·그룹 판정이 아니다.
+대수/범위를 나누고 인명순으로 표시하며 재임기회·당시 정당/위원회 보정은 하지 않는다.
+개인판에는 다른 의원의 참여행이 없어 비교를 계산하지 않는다. 최신 활동 목록은
+포함 판정된 발언/질문 근거이며, 전체 원자료나 본문 추출 완료 목록이 아니다.
+
+기존 기초집계 갱신·검증·적용 경로를 그대로 소비하므로 별도의 원장 배포가 필요 없다.
+집계 적용 시 새 객체를 다시 검증해 화면을 계산하며, 과거 release/model을 덮어쓰지
+않는다. 현재 적용 자료의 사건 누락·인물/날짜 변경은 기존 갱신기가 자동 수용하지 않는다.
+
+```sh
+python scripts/install_current_activity_evidence.py current.html updated.html
+node tests/manual_current_activity_dom.cjs WORKDIR ABSOLUTE_JSDOM_PATH
+```
+
+WORKDIR에는 기존 두 HTML과 `updated/`의 설치 결과가 필요하다. jsdom26.1.0 수동
+검증은 7그룹24화면·필터·공동참여 근거·기존 데이터 보존·HTML 재실행 및 합성 의안
+추가를 이용한 집계 갱신 후 캐시/저장 Blob 재실행을 확인한다. 합성 자료는 테스트
+메모리와 Blob에서만 쓰며 사용자 파일이나 저장소 원장에 기록하지 않는다.
