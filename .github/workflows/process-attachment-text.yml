@@ -9,6 +9,8 @@ on:
       - scripts/extract_attachment_text.py
       - scripts/attachment_formats.py
       - tests/test_extract_attachment_text.py
+      - scripts/ocr_attachment_pages.py
+      - tests/test_ocr_attachment_pages.py
       - .github/workflows/process-attachment-text.yml
   workflow_dispatch:
 permissions:
@@ -28,24 +30,25 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Ensure offline PDF extraction dependencies
+      - name: Ensure offline PDF and Korean OCR dependencies
         run: |
-          if ! command -v pdftotext >/dev/null || ! command -v pdfinfo >/dev/null; then
-            sudo apt-get update
-            sudo apt-get install -y poppler-utils
-          fi
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-kor tesseract-ocr-eng
+          python -m pip install 'Pillow>=10,<14'
       - name: Test extraction and verify preserved inputs
         run: |
           python -m unittest discover -s tests
           python scripts/audit_attachment_downloads.py --strict
       - name: Extract page-addressed text without council-site requests
         run: python -u scripts/extract_attachment_text.py
+      - name: OCR preserved images and empty PDF text pages without promotion
+        run: python -u scripts/ocr_attachment_pages.py
       - name: Save derived attachment text only
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add exports/attachment-text reports/attachment-text-latest.json reports/attachment-download-audit.json
+          git add exports/attachment-text exports/attachment-ocr reports/attachment-text-latest.json reports/attachment-ocr-latest.json reports/attachment-download-audit.json
           if ! git diff --cached --quiet; then
             git commit -m "data: page-addressed attachment text with unreviewed status"
             bash scripts/push_collected_snapshot.sh
@@ -58,4 +61,5 @@ jobs:
           path: |
             reports/attachment-text-latest.json
             reports/attachment-download-audit.json
+            reports/attachment-ocr-latest.json
           if-no-files-found: warn
