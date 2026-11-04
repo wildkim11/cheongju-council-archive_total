@@ -1,8 +1,6 @@
 name: Capture remaining current-roster NEC election searches on macOS
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths: [scripts/collect_nec_current_roster.py]
+  # Bounded 44-name snapshot completed; any additional source queries are manual.
   workflow_dispatch:
 permissions:
   contents: write

@@ -37,7 +37,7 @@ def parse_claim(text):
         'office_text': text[m.end():].strip(), 'scope_verified': False}
 
 
-def current_rosters(root):
+def current_rosters(root, *, include_rows=False):
     index = defaultdict(list)
     seen = set()
     for manifest in sorted((root / 'archive/source_responses/manifests').glob('*.json')):
@@ -58,10 +58,12 @@ def current_rosters(root):
                 continue
             seen.add(response['path'])
             for row in parse_member_index(raw.decode('utf-8')):
-                index[(row['name'], row['profile_url'])].append({
+                evidence = {
                     'source_manifest': str(manifest.relative_to(root)),
                     'manifest_sha256': sha(raw_manifest), 'source_response_path': response['path'],
-                    'decoded_utf8_sha256': sha(raw), 'parsed_row_sha256': sha(encoded(row))})
+                    'decoded_utf8_sha256': sha(raw), 'parsed_row_sha256': sha(encoded(row))}
+                if include_rows: evidence['parsed_row'] = row
+                index[(row['name'], row['profile_url'])].append(evidence)
     return index
 
 

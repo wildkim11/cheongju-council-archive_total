@@ -78,3 +78,25 @@ class NECElectionAuditTests(unittest.TestCase):
         self.assertEqual(report['target_local_council_wins'], 8)
         self.assertEqual(report['seniority_decisions'], 0)
         self.assertEqual(report['identity_merges'], 0)
+
+    def test_independent_profile_facts_retain_exact_source_spans(self):
+        record = self.record().replace('<div>당선인 명부 링크</div>', '<div class="box"><table class="data"><tr><td class="th">경력</td><td><p>(전)독립된 구체적 경력</p></td></tr></table></div>')
+        text = self.html('', record)
+        events, _ = parse_source(text, '시험인')
+        fact = events[0]['published_profile_facts'][0]
+        self.assertEqual(fact['field'], '경력'); self.assertEqual(fact['tab'], '당선인')
+        self.assertEqual(fact['text'], '(전)독립된 구체적 경력')
+        self.assertEqual(sha(text[fact['char_start']:fact['char_end']].encode()), fact['span_sha256'])
+
+    def test_roster_audit_isolates_parse_error_without_treating_it_as_zero_elections(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); self.fixture(root, self.html('', self.record()))
+            manifest = root / 'reports/nec-election-sample-collection-latest.json'
+            doc = json.loads(manifest.read_text()); other = dict(doc['sources'][0])
+            other['query_name'] = '다른사람'
+            other['url'] = 'https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%8B%A4%EB%A5%B8%EC%82%AC%EB%9E%8C'
+            doc['sources'].append(other); manifest.write_text(json.dumps(doc))
+            report = build(root, isolate_parse_errors=True)
+            self.assertEqual(report['parsed_sources'], 1)
+            self.assertEqual(report['held_sources'], 1)
+            self.assertNotIn('target_local_council_wins', report['sources'][1])

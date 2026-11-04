@@ -109,25 +109,40 @@ def parse_source(text, query_name):
                     'winner_tab_and_badge_confirmed': False, 'candidate_without_confirmed_win_is_loss': False,
                     'target_local_council_scope': bool(selected),
                     'displayed_municipality': location[1] if selected else None,
-                    'current_person_identity_confirmed': False, 'seniority_usable': False})
+                    'current_person_identity_confirmed': False, 'seniority_usable': False, 'published_profile_facts': []})
                 if row['displayed_heading'] != heading: raise ValueError('NEC duplicate event display conflict')
                 if label not in row['tabs']: row['tabs'].append(label)
                 row['winner_tab_and_badge_confirmed'] |= label == '당선인' and win
                 raw_span = text[node['start']:node['end']]
                 row['source_spans'].append({'tab': label, 'char_start': node['start'], 'char_end': node['end'],
                                              'span_sha256': sha(raw_span.encode())})
+                for table in find(node, lambda n: n['tag'] == 'table' and 'data' in classes(n)):
+                    for tr in find(table, lambda n: n['tag'] == 'tr'):
+                        cells = [n for n in tr['children'] if isinstance(n, dict) and n['tag'] in {'td', 'th'}]
+                        for i, cell in enumerate(cells[:-1]):
+                            field = visible(cell)
+                            if 'th' not in classes(cell) or field not in {'직업', '학력', '경력'}: continue
+                            value_cell = cells[i+1]
+                            values = list(find(value_cell, lambda n: n['tag'] == 'p')) or [value_cell]
+                            for value in values:
+                                if value['end'] is None or not visible(value): continue
+                                row['published_profile_facts'].append({'field': field, 'text': visible(value), 'tab': label,
+                                    'char_start': value['start'], 'char_end': value['end'],
+                                    'span_sha256': sha(text[value['start']:value['end']].encode())})
     return list(events.values()), len(homonyms)
 
 
-def build(root=ROOT, *, write=True):
+def build(root=ROOT, *, write=True, collection_relative='reports/nec-election-sample-collection-latest.json',
+          output_relative='reports/nec-election-sample-audit-latest.json', isolate_parse_errors=False):
     root = Path(root)
-    collection_path = root / 'reports/nec-election-sample-collection-latest.json'
+    collection_path = root / collection_relative
+    if not collection_path.resolve().is_relative_to((root / 'reports').resolve()): raise ValueError('NEC manifest path escape')
     if not collection_path.exists():
         report = {'schema': 'cheongju-nec-election-sample-audit/1', 'status': 'NOT_COLLECTED',
                   'official_site_requests': 0, 'seniority_decisions': 0, 'sources': [], 'events': []}
     else:
         raw_collection = collection_path.read_bytes(); collection = json.loads(raw_collection)
-        if collection.get('schema') != 'cheongju-nec-election-samples/1': raise ValueError('invalid NEC sample collection schema')
+        if collection.get('schema') not in {'cheongju-nec-election-samples/1', 'cheongju-nec-current-roster-collection/1'}: raise ValueError('invalid NEC sample collection schema')
         events, sources = [], []
         seen = set()
         for source in collection['sources']:
@@ -141,24 +156,40 @@ def build(root=ROOT, *, write=True):
             if not path.is_relative_to((root / 'archive/elections/nec/source_responses').resolve()): raise ValueError('NEC sample path escape')
             raw = gzip.decompress(path.read_bytes())
             if sha(raw) != source['sha256'] or len(raw) != source['bytes']: raise ValueError('NEC sample source hash/size mismatch')
-            rows, homonyms = parse_source(raw.decode('utf-8-sig'), source['query_name'])
+            try:
+                rows, homonyms = parse_source(raw.decode('utf-8-sig'), source['query_name'])
+            except (ValueError, KeyError, TypeError) as exc:
+                if not isolate_parse_errors: raise
+                sources.append({**source, 'parse_status': 'HELD', 'parse_error': type(exc).__name__ + ': ' + str(exc)[:200]})
+                continue
             for row in rows:
                 row['source_response_path'] = source['path']; row['source_response_sha256'] = source['sha256']; row['source_url'] = source['url']
             events.extend(rows)
-            sources.append({**source, 'name_groups': homonyms, 'unique_candidate_or_winner_events': len(rows),
+            sources.append({**source, 'parse_status': 'VERIFIED_SOURCE', 'name_groups': homonyms, 'unique_candidate_or_winner_events': len(rows),
                 'target_local_council_events': sum(r['target_local_council_scope'] for r in rows),
                 'target_local_council_wins': sum(r['target_local_council_scope'] and r['winner_tab_and_badge_confirmed'] for r in rows)})
         selected = [r for r in events if r['target_local_council_scope']]
         report = {'schema': 'cheongju-nec-election-sample-audit/1', 'status': 'SOURCE_FACTS_NOT_CURRENT_PERSON_IDENTITY',
             'official_site_requests': 0, 'collection_manifest_sha256': sha(raw_collection), 'sources': sources,
-            'collection_complete': collection.get('status') == 'SAMPLES_CAPTURED_FOR_OFFLINE_REVIEW' and len(sources) == 3 and not collection.get('errors'),
+            'collection_manifest_path': collection_relative,
+            'collection_complete': collection.get('status') in {'SAMPLES_CAPTURED_FOR_OFFLINE_REVIEW', 'ROSTER_SEARCHES_CAPTURED'} and len(sources) == collection.get('target_profiles', 3) and not collection.get('errors'),
+            'parsed_sources': sum(s['parse_status'] == 'VERIFIED_SOURCE' for s in sources),
+            'held_sources': sum(s['parse_status'] == 'HELD' for s in sources),
             'target_profiles_are_query_targets_only': True,
             'unique_candidate_or_winner_events': len(events), 'target_local_council_events': len(selected),
             'target_local_council_wins': sum(r['winner_tab_and_badge_confirmed'] for r in selected),
             'identity_merges': 0, 'seniority_decisions': 0, 'events': events,
             'interpretation': 'Only published winner-tab + explicit badge rows are displayed wins. Name groups separated by hashed source birth-date key. No current-person links, complete-history or loss inference. Full source bytes retained for review.'}
-    if write: write_json(root / 'reports/nec-election-sample-audit-latest.json', report)
+    if write:
+        output = root / output_relative
+        if not output.resolve().is_relative_to((root / 'reports').resolve()): raise ValueError('NEC audit output path escape')
+        write_json(output, report)
     return report
+
+
+def build_current(root=ROOT, *, write=True):
+    return build(root, write=write, collection_relative='reports/nec-current-roster-collection-latest.json',
+                 output_relative='reports/nec-current-roster-audit-latest.json', isolate_parse_errors=True)
 
 
 if __name__ == '__main__':
