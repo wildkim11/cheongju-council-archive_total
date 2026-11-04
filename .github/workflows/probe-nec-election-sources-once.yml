@@ -1,0 +1,37 @@
+name: Inspect public NEC election search sources on macOS
+on:
+  push:
+    branches: [feature/archive-foundation]
+    paths: [scripts/probe_nec_election_sources.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cheongju-nec-source-inspection
+  cancel-in-progress: false
+jobs:
+  inspect:
+    runs-on: macos-14
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p test_nec_source_inspection.py
+      - run: python -u scripts/probe_nec_election_sources.py
+      - name: Preserve bounded source inspection only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive/elections/nec reports/nec-source-inspection-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: preserve bounded public NEC search source inspection'
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
