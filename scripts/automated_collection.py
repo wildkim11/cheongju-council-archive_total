@@ -182,7 +182,11 @@ def validate_candidate(stage,oldroot):
     if qa['status']!='PASS':raise ValueError('candidate archive QA failed: '+str(qa['errors'][:10]))
     # Offline processing consumes only this verified candidate, before publication.
     import process_meeting_segments,verify_processing
-    process_meeting_segments.process(stage);processing=verify_processing.verify(stage)
+    process_meeting_segments.process(stage)
+    import resolve_activity_spacing_matches
+    linking=resolve_activity_spacing_matches.resolve(stage)
+    qa['activity_spacing_linking']=linking
+    processing=verify_processing.verify(stage)
     save_json(stage/'reports/processing-qa-latest.json',processing)
     qa['processing']=processing
     # HTML consumers must receive text packs from this same verified snapshot.

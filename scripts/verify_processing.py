@@ -27,7 +27,16 @@ def verify(root=ROOT):
     if s['identity_status']=='resolved_source_meeting_term':require(s.get('tenure_interval_verified') is False,'term evidence misreported as exact dates')
    for activity in requests.get(sid,[]):
     proof=activity['source_link'];source=inputs[activity['source_dataset']][activity['source_row_1based']-1];needle=re.sub(r'\s+',' ',source.get('body_text') or '').strip();haystack=re.sub(r'\s+',' ',text[s['content_start']:end]).strip()
-    require(len(needle)>=80 and source['date']==row['date'] and activity['person_name']==s.get('speaker_name'),'cross-source match scope mismatch');require(proof['meeting_id']==row['meeting_id'] and proof['source_sha256']==row['sha256'] and activity['person_id']==s.get('person_id'),'cross-source identity mismatch');require(digest(needle.encode())==proof['normalized_body_sha256'] and haystack[proof['normalized_start']:proof['normalized_end']]==needle,'cross-source full body mismatch');links_checked+=1
+    method=proof.get('method','entire_activity_body_exact_normalized_substring')
+    if method=='entire_activity_body_exact_spacing_compacted_digit_boundaries':
+     def independent_spacing(value):
+      parts=re.split(r'(\s+)',value)
+      return ''.join((' ' if i>0 and i+1<len(parts) and parts[i-1] and parts[i+1] and parts[i-1][-1].isdecimal() and parts[i+1][0].isdecimal() else '') if part.isspace() else part for i,part in enumerate(parts))
+     needle=independent_spacing(source.get('body_text') or '');haystack=independent_spacing(text[s['content_start']:end])
+     require(digest((source.get('body_text') or '').encode())==proof.get('activity_body_sha256'),'activity original body hash mismatch')
+     post=manifest.get('activity_spacing_postprocessor',{});require(post.get('method')==method and post.get('script_sha256')==digest((Path(__file__).parent/'resolve_activity_spacing_matches.py').read_bytes()),'spacing postprocessor version mismatch')
+    else:require(method=='entire_activity_body_exact_normalized_substring','unsupported cross-source match method')
+    require(len(needle)>=80 and source['date']==row['date'] and source.get('council_scope')==row['council_scope'] and activity['person_name']==s.get('speaker_name'),'cross-source match scope mismatch');require(proof['meeting_id']==row['meeting_id'] and proof['source_sha256']==row['sha256'] and activity['person_id']==s.get('person_id'),'cross-source identity mismatch');require(digest(needle.encode())==proof['normalized_body_sha256'] and haystack[proof['normalized_start']:proof['normalized_end']]==needle,'cross-source full body mismatch');links_checked+=1
    previous=s['content_start'];pids=set()
    for para in s['paragraphs']:
     a,b=para['char_start'],para['char_end'];require(previous<=a<b<=end,'paragraph range mismatch');previous=b;require(para['paragraph_id'] not in pids and para['paragraph_id'].startswith(sid+':p'),'paragraph ID mismatch');pids.add(para['paragraph_id']);require(digest(text[a:b].encode())==para['text_sha256'],'paragraph text hash mismatch');require(para['line_start']==bisect.bisect_right(line_starts,a) and para['line_end']==bisect.bisect_right(line_starts,b-1),'paragraph line mismatch');paragraph_count+=1

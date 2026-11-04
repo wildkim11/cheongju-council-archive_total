@@ -4,12 +4,14 @@ on:
     branches: [feature/archive-foundation]
     paths:
       - scripts/process_meeting_segments.py
+      - scripts/resolve_activity_spacing_matches.py
       - scripts/verify_processing.py
       - scripts/export_minutes_text.py
       - scripts/build_activity_temporal_context.py
       - scripts/build_analysis_activity_gate.py
       - scripts/build_member_activity_counts.py
       - tests/test_process_meeting_segments.py
+      - tests/test_resolve_activity_spacing_matches.py
       - tests/test_verify_processing.py
       - tests/test_export_minutes_text.py
       - tests/test_activity_temporal_context.py
@@ -42,6 +44,8 @@ jobs:
           python scripts/audit_stage_c.py --output /tmp/processing-source-qa.json
       - name: Generate source-coordinate segments and activity roles
         run: python -u scripts/process_meeting_segments.py
+      - name: Link unique complete activity bodies with spacing differences
+        run: python -u scripts/resolve_activity_spacing_matches.py
       - name: Verify every source range and derived ledger
         run: python -u scripts/verify_processing.py --out reports/processing-qa-latest.json
       - name: Attach explicit historical intervals and hold unresolved context
@@ -57,7 +61,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
+          git add reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "data: verified speech segments and source-backed activity roles"
             bash scripts/push_collected_snapshot.sh
@@ -70,6 +74,7 @@ jobs:
           path: |
             reports/processing-latest.json
             reports/processing-qa-latest.json
+            reports/activity-spacing-link-review.json
             reports/temporal-context-latest.json
             reports/analysis-activity-gate-latest.json
             reports/member-activity-counts-latest.json
