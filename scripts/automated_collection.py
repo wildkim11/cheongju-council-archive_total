@@ -227,6 +227,9 @@ def validate_candidate(stage,oldroot):
     qa['topic_review_materials']=build_topic_review_materials.build(stage,codebook_path=oldroot/'config/policy_topics_v1.json')
     import build_topic_review_drafts
     qa['topic_review_drafts']=build_topic_review_drafts.build(stage,codebook_path=oldroot/'config/policy_topics_v1.json')
+    import build_topic_review_ui
+    build_topic_review_ui.build(stage,codebook_path=oldroot/'config/policy_topics_v1.json',template_path=oldroot/'web/topic_review.html')
+    qa['topic_review_ui']={'file':'exports/topic-review/review.html','human_reviews_created':0}
     return qa
 
 def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False,retry_attempt=False):

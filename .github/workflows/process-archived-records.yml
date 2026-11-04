@@ -11,6 +11,9 @@ on:
       - scripts/review_single_activity_differences.py
       - scripts/build_member_text_inputs.py
       - scripts/build_topic_review_materials.py
+      - scripts/build_topic_review_ui.py
+      - web/topic_review.html
+      - tests/test_topic_review_ui.py
       - scripts/build_topic_review_drafts.py
       - archive/analysis_annotations/**/ai_draft_*.jsonl
       - config/policy_topics_v1.json
@@ -90,6 +93,8 @@ jobs:
         run: python -u scripts/build_topic_review_materials.py
       - name: Validate AI topic drafts without promoting human references or scores
         run: python -u scripts/build_topic_review_drafts.py
+      - name: Build self-contained human review packet from verified snapshots
+        run: python -u scripts/build_topic_review_ui.py
       - name: Export hash-verified meeting text for HTML consumers
         run: python -u scripts/export_minutes_text.py
       - name: Commit verified derived data only
