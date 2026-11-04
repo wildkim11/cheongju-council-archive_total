@@ -35,6 +35,9 @@ class OCRTests(unittest.TestCase):
  def test_corrupt_cached_result_is_rejected(self):
   self.build();m=self.manifest();self.put('exports/attachment-ocr/'+m['items'][0]['file'],b'corrupt')
   with self.assertRaisesRegex(ValueError,'cache integrity'):self.build()
+ def test_cached_metadata_cannot_claim_approval(self):
+  self.build();m=self.manifest();m['items'][0]['semantic_verified']=True;self.put('exports/attachment-ocr/manifest.json',base.encoded(m))
+  with self.assertRaisesRegex(ValueError,'cache metadata'):self.build()
  def test_errors_held_until_explicit_retry(self):
   def fail(*args):raise ValueError('recognizer failed')
   self.assertEqual(self.build(fail)['status_counts']['ocr_error_held'],1);self.build(lambda *args:self.fail('error retried'));self.assertEqual(self.build(retry_errors=True)['status_counts']['machine_ocr_unreviewed'],1)

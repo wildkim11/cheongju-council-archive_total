@@ -46,7 +46,7 @@ python scripts/ocr_attachment_pages.py --tessdata-dir /path/to/tessdata
 python scripts/ocr_attachment_pages.py --retry-errors
 ```
 
-전체511시험(기존499+신규12)을 수행했다. 한국어 모델을 갖춘 로컬 실행에서 전부통과.
+전체512시험(기존499+신규13)을 수행했다. 한국어 모델을 갖춘 로컬 실행에서 전부통과.
 원본/캐시 변조·쪽/텍스트SHA·단어 경계/신뢰도 범위·한글모델 누락·재사용·참조정보만
 갱신·오류선택재시도·회차한도·귀속/의미승격 금지를 확인했다. 별도 모델 디렉터리에
 txt/tsv 설정파일이 없어도 명시적 출력옵션으로 두 결과가 생성되는 실제 회귀시험도 포함한다.

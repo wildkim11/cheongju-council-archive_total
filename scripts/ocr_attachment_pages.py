@@ -103,6 +103,7 @@ def build(root=ROOT,tessdata_dir=None,engine=None,recognizer=None,retry_errors=F
     raw=(out/cached['file']).read_bytes()
     if len(raw)!=cached['bytes']or base.sha(raw)!=cached['sha256']:raise ValueError('OCR cache integrity error')
     cached_doc=verify_document(json.loads(gzip.decompress(raw)),cached['task'],engine)
+    if cached.get('status')!=cached_doc['status']or cached.get('words')!=len(cached_doc['result']['words'])or cached.get('text_sha256')!=cached_doc['result']['text_sha256']or cached.get('semantic_verified')is not False or cached.get('member_attribution_allowed')is not False:raise ValueError('OCR cache metadata integrity error')
     if cached['task']!=task:
      cached_doc['task']=task;raw=gzip.compress(base.encoded(verify_document(cached_doc,task,engine)),mtime=0);outputs[cached['file']]=raw;cached={**cached,'task':task,'bytes':len(raw),'sha256':base.sha(raw)}
     items.append(cached);continue
