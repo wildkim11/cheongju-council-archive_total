@@ -28,6 +28,7 @@ These are fact extraction and integrity operations. They do not mean that all po
 | Meeting speech segments | 2,353 canonical Markdown meetings after first automatic update | Basic speaker/role/paragraph segmentation implemented; answer/function classification and remaining identity review still required |
 | Follow-up and policy progress | Replies in meetings and official bills | Extract existing replies; additionally register official action-result reports, budget decisions and project milestones as sources |
 | Public media | Official press/photo metadata sources | Source coverage/deduplication; general media is a separate collection scope, not already complete |
+| Detailed election results (user-approved plan, 2026-11-05) | NEC searches for 44 current-profile names; partial source-corroborated election links | Official district-wide candidate/results ledger, votes/share/rank/seats/margins and statistics; term/election/by-election and boundary versions; user-defined multi-sort, filters and comparisons. See ELECTION_RESULTS_PLAN_20261105.md. Planning only; detailed collection/UI not complete. |
 
 ## Processing progress and remaining engines
 
