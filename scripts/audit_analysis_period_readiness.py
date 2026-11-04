@@ -32,14 +32,22 @@ def build(root=ROOT, *, write=True):
                         'held_rows': len(rows) - exact, 'hold_reasons': dict(reasons)}
     registry = json.loads((root / 'config/analysis_periods.json').read_text())
     periods = load_verified(root, registry)
+    whole = [row for row in periods if row['half'] == 'whole']
+    halves = [row for row in periods if row['half'] != 'whole']
     report = {'schema': 'cheongju-analysis-period-readiness/1',
               'status': 'INCOMPLETE_EVIDENCE', 'official_site_requests': 0,
               'analyzer_inputs': {n: manifest['datasets'][n] for n in names},
               'datasets': result, 'official_period_registry_rows': len(periods),
               'verified_whole_term_selectors': [
-                  {k: row[k] for k in ('council_scope', 'term', 'half')} for row in periods],
-              'whole_term_periods_source_verified': bool(periods),
-              'half_term_periods_source_verified': False,
+                  {k: row[k] for k in ('council_scope', 'term', 'half')} for row in whole],
+              'verified_half_term_selectors': [
+                  {k: row[k] for k in ('council_scope', 'term', 'half')} for row in halves],
+              'whole_term_periods_source_verified': bool(whole),
+              'half_term_periods_source_verified': bool(halves),
+              'missing_integrated_half_selectors': [
+                  {k: v for k, v in dict(council_scope=w['council_scope'], term=w['term'], half=h).items()}
+                  for w in whole for h in ('first', 'second')
+                  if not any(r['council_scope'] == w['council_scope'] and r['term'] == w['term'] and r['half'] == h for r in halves)],
               'seniority_filter_ready': False, 'term_half_filter_ready': False,
               'missing_contracts': ['verified_cross_profile_person_links',
                   'complete_scoped_election_or_service_history',

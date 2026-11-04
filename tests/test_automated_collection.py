@@ -88,7 +88,7 @@ class FailedOnlyRetryTests(unittest.TestCase):
 
 class MeetingTextPipelineTests(unittest.TestCase):
  def mocks(self,stack,text_export):
-  for name,attr,value in [('export_analyzer','export',{}),('validate_archive','validate',None),('audit_stage_c','audit',{'status':'PASS'}),('process_meeting_segments','process',{}),('resolve_activity_spacing_matches','resolve',{'status':'PASS'}),('verify_processing','verify',{'status':'PASS'}),('review_activity_date_discrepancies','review',{'status':'PASS'}),('build_question_answer_parts','build',{'status':'PASS'}),('resolve_question_answer_links','resolve',{'status':'PASS'}),('review_question_identity_evidence','review',{'status':'PASS'}),('review_single_activity_differences','review',{'status':'PASS'}),('build_activity_temporal_context','build',{'status':'PASS'}),('build_profile_history_evidence','build',{'status':'PASS'}),('build_analysis_activity_gate','build',{'status':'PASS'}),('build_member_activity_counts','build',{'status':'PASS'}),('build_member_text_inputs','build',{'status':'PASS'}),('build_topic_review_materials','build',{'status':'PASS'}),('build_topic_review_drafts','build',{'status':'PASS'}),('build_topic_review_ui','build',{}),('audit_written_question_links','build',{'status':'PASS'}),('audit_attachment_downloads','build',{'status':'PASS'})]:
+  for name,attr,value in [('export_analyzer','export',{}),('validate_archive','validate',None),('audit_stage_c','audit',{'status':'PASS'}),('process_meeting_segments','process',{}),('resolve_activity_spacing_matches','resolve',{'status':'PASS'}),('verify_processing','verify',{'status':'PASS'}),('review_activity_date_discrepancies','review',{'status':'PASS'}),('build_question_answer_parts','build',{'status':'PASS'}),('resolve_question_answer_links','resolve',{'status':'PASS'}),('review_question_identity_evidence','review',{'status':'PASS'}),('review_single_activity_differences','review',{'status':'PASS'}),('build_activity_temporal_context','build',{'status':'PASS'}),('build_profile_history_evidence','build',{'status':'PASS'}),('build_current_career_evidence','build',{'status':'PASS'}),('build_analysis_activity_gate','build',{'status':'PASS'}),('build_member_activity_counts','build',{'status':'PASS'}),('build_member_text_inputs','build',{'status':'PASS'}),('build_topic_review_materials','build',{'status':'PASS'}),('build_topic_review_drafts','build',{'status':'PASS'}),('build_topic_review_ui','build',{}),('audit_written_question_links','build',{'status':'PASS'}),('audit_attachment_downloads','build',{'status':'PASS'})]:
    module=__import__(name);stack.enter_context(patch.object(module,attr,return_value=value))
   return stack.enter_context(patch('export_minutes_text.export',side_effect=text_export))
  def test_validated_candidate_exports_text_before_publication(self):
@@ -108,6 +108,15 @@ class MeetingTextPipelineTests(unittest.TestCase):
    self.assertFalse(result['published']);self.assertEqual(result['status'],'FAILED')
    self.assertEqual(a.load(r/'exports/minutes-text/catalog.json',{})['rows'],7)
    self.assertIn('hash mismatch',result['error'])
+ def test_career_source_hash_failure_retains_previous_snapshot(self):
+  with tempfile.TemporaryDirectory() as td,a.contextlib.ExitStack() as stack:
+   r=Path(td);a.save_json(r/'archive/people/people.json',[{'person_id':'retained'}])
+   self.mocks(stack,lambda stage:{'rows':1})
+   stack.enter_context(patch('build_current_career_evidence.build',side_effect=ValueError('career source response hash mismatch')))
+   result=a.run(r,'members',lambda *args:{})
+   self.assertFalse(result['published']);self.assertEqual(result['status'],'FAILED')
+   self.assertEqual(a.load(r/'archive/people/people.json',[]),[{'person_id':'retained'}])
+   self.assertIn('career source response hash mismatch',result['error'])
 
 
 class DateReviewRefreshTests(unittest.TestCase):

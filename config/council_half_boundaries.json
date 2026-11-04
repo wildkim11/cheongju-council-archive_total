@@ -1,0 +1,90 @@
+{
+  "schema": "cheongju-council-half-boundaries/1",
+  "boundaries": [
+    {
+      "record_ref": "official-half-boundary:cheongju_integrated:term-1",
+      "council_scope": "cheongju_integrated",
+      "term": 1,
+      "calendar_kind": "council_half_calendar",
+      "boundary_date": "2016-07-01",
+      "interpretation_rule": "explicit_month_day_boundary_in_meeting_year",
+      "source": {
+        "meeting_id": "cheongju_integrated:minutes-728",
+        "source_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=728",
+        "source_path": "archive/meetings/cheongju_integrated/term-1/2016/minutes-728.md",
+        "sha256": "180e569f0156adf354844ed8115d3daa007ebba31607573388246c8a8ee4bd76"
+      },
+      "excerpts": [
+        {
+          "char_start": 5736,
+          "char_end": 5802,
+          "quote": "전반기 임기가 6월 30일 자로 마감되는 것이 맞습니다. 그래서 7월 1일부터 원 구성을 해서 일정을 소화시켜야 되는데",
+          "quote_sha256": "5d7c375dea8a9938ce2da2aab11345c542636bbf1bf75db002f830424c5168ce",
+          "speaker_name": "오병호",
+          "speaker_role": "의사팀장",
+          "purpose": "calendar_boundary"
+        },
+        {
+          "char_start": 6798,
+          "char_end": 6840,
+          "quote": "그건 후임 의장 임기, 선거하기 전날까지 전반기 의장이 하도록 돼 있습니다.",
+          "quote_sha256": "d34cf9fcd7e27320ebdc5fffebf1e886b42794be1179fa49df0b1918faa89ff1",
+          "speaker_name": "오병호",
+          "speaker_role": "의사팀장",
+          "purpose": "personal_office_contrast"
+        }
+      ]
+    },
+    {
+      "record_ref": "official-half-boundary:cheongju_integrated:term-2",
+      "council_scope": "cheongju_integrated",
+      "term": 2,
+      "calendar_kind": "council_half_calendar",
+      "boundary_date": "2020-07-01",
+      "interpretation_rule": "dated_meeting_is_second_half_first_day",
+      "source": {
+        "meeting_id": "cheongju_integrated:minutes-2003",
+        "source_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=2003",
+        "source_path": "archive/meetings/cheongju_integrated/term-2/2020/minutes-2003.md",
+        "sha256": "1919cc10070221fd4f7f981483317c63affa0d498d2270781c92e0a7a5738a8d"
+      },
+      "excerpts": [
+        {
+          "char_start": 952,
+          "char_end": 999,
+          "quote": "제2대 청주시의회가 어느덧 전반기를 마감하고 제2대 후반기 청주시의회가 시작되는 첫날",
+          "quote_sha256": "2aecdb07fb9c467c14f122617272743cdb50bdb83d796f85ceff89e0e61f5980",
+          "speaker_name": "최충진",
+          "speaker_role": "의장",
+          "purpose": "calendar_boundary"
+        }
+      ]
+    },
+    {
+      "record_ref": "official-half-boundary:cheongju_integrated:term-3",
+      "council_scope": "cheongju_integrated",
+      "term": 3,
+      "calendar_kind": "council_half_calendar",
+      "boundary_date": "2024-07-01",
+      "interpretation_rule": "dated_meeting_starts_new_second_half",
+      "source": {
+        "meeting_id": "cheongju_integrated:minutes-3424",
+        "source_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=3424",
+        "source_path": "archive/meetings/cheongju_integrated/term-3/2024/minutes-3424.md",
+        "sha256": "2b2d54c89bad068ecb12b858c229f52a84b6bf74f3093925bdb528bd81d6d6ca"
+      },
+      "excerpts": [
+        {
+          "char_start": 1534,
+          "char_end": 1624,
+          "quote": "오늘은 민선 8기 청주시 출범 3년 차에 접어드는 날이자 통합청주시 출범 10년이 되는 날이고, 제3대 청주시의회가 새로운 후반기를 시작하는 의미 깊은 날입니다.",
+          "quote_sha256": "449b190c6e3b452622570cb7280de8c2e9689ca22a08eec87c75f89b215c2c4b",
+          "speaker_name": "이범석",
+          "speaker_role": "시장",
+          "purpose": "calendar_boundary"
+        }
+      ]
+    }
+  ],
+  "note": "Source-grounded calendar boundaries. Whole-term endpoints partitioned around explicit boundary; no chair/committee tenure inference. Term 4 remains unregistered."
+}

@@ -240,14 +240,27 @@ def _field(text: str, label: str, next_labels: list[str]) -> str | None:
     return re.sub(r"\s+", " ", m.group(1)).strip() if m else None
 
 
+def career_section(html: str):
+    """Return only the list immediately following the career heading.
+
+    Missing/duplicate headings are held as no extracted careers. Never fall back
+    to the full page, which includes navigation and other members' names.
+    """
+    headings = list(re.finditer(r'<h([1-6])\b[^>]*>\s*경력사항\s*</h\1>', html, flags=re.I))
+    if len(headings) != 1:
+        return None
+    section = re.match(r'\s*<ul\b[^>]*>([\s\S]*?)</ul>', html[headings[0].end():], flags=re.I)
+    if section and not re.search(r'<ul\b|</section\b|<footer\b', section.group(1), flags=re.I):
+        return section
+    return None
+
+
 def _career_items(html: str) -> list[str]:
-    """Extract visible career list items from the official profile section."""
-    section = re.search(
-        r"경력사항([\s\S]*?)(?:홈\s*>|의정활동|발의의안|발언회의록|청주시의회\s+Cheongju City Council|</main>|</article>)",
-        html,
-        flags=re.I,
-    )
-    target = section.group(1) if section else html
+    """Extract visible career items only from the explicit career list."""
+    section = career_section(html)
+    if section is None:
+        return []
+    target = section.group(1)
     items = []
     for raw in re.findall(r"<li[^>]*>([\s\S]*?)</li>", target, flags=re.I):
         value = html_text(raw)

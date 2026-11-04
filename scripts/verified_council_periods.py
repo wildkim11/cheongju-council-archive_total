@@ -93,7 +93,9 @@ def load_verified(root, registry=None):
         raise ValueError('invalid period registry')
     if not registry['periods']:
         return []
-    official = {r['record_ref']: r for r in derive(root)}
+    from council_half_periods import derive_halves
+    whole = derive(root)
+    official = {r['record_ref']: r for r in whole + derive_halves(root, whole)}
     seen = set()
     for row in registry['periods']:
         ref = row.get('record_ref')

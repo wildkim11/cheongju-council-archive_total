@@ -96,8 +96,9 @@ class VerifiedPeriodTests(unittest.TestCase):
             self.assertEqual(len(derive(root)[0]['source_evidence']), 2)
             self.assertEqual(load_verified(root, registry), registry['periods'])
 
-    def test_real_registry_four_whole_terms_only(self):
+    def test_real_registry_four_whole_terms_and_six_source_grounded_halves(self):
         root = Path(__file__).resolve().parents[1]
         rows = load_verified(root)
-        self.assertEqual([r['term'] for r in rows], [1, 2, 3, 4])
-        self.assertTrue(all(r['half'] == 'whole' and len(r['source_evidence']) >= 1 for r in rows))
+        self.assertEqual([r['term'] for r in rows if r['half'] == 'whole'], [1, 2, 3, 4])
+        self.assertEqual(len([r for r in rows if r['half'] != 'whole']), 6)
+        self.assertTrue(all(len(r['source_evidence']) >= 1 for r in rows))
