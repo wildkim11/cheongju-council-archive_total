@@ -20,6 +20,9 @@ class QuestionAnswerPartsTests(unittest.TestCase):
  def test_repeated_answer_is_ambiguous(self):
   q='의원 질문입니다. '*20;a='시장 답변입니다. '*20
   self.assertIsNone(split_candidate(q+a,q,a+a))
+ def test_overlapping_answer_occurrences_are_ambiguous(self):
+  q='의원 질문입니다. '*20;a='가'*80
+  self.assertIsNone(split_candidate(q+a,q,a+'가'))
  def test_numeric_whitespace_stays_significant(self):
   q='질문 12 34입니다. '*20;a='답변입니다. '*20
   self.assertIsNone(split_candidate(q.replace('12 34','1234')+a,q,a))

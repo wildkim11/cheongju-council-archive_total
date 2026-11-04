@@ -10,7 +10,8 @@ def split_candidate(body,question,answer):
  a=compact(body);q=compact(question)
  if len(q)<80 or not a.startswith(q):return None
  tail=a[len(q):]
- if len(tail)<80 or compact(answer).count(tail)!=1:return None
+ hay=compact(answer);start=hay.find(tail)
+ if len(tail)<80 or start<0 or hay.find(tail,start+1)>=0:return None
  # Map normalized question end back to the original text without changing it.
  positions=[];last=0
  for m in re.finditer(r'\s+',body):
