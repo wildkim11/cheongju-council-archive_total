@@ -191,6 +191,8 @@ def validate_candidate(stage,oldroot):
     qa['minutes_text']=export_minutes_text.export(stage)
     import build_activity_temporal_context
     qa['temporal_context']=build_activity_temporal_context.build(stage)
+    import build_analysis_activity_gate
+    qa['analysis_activity_gate']=build_analysis_activity_gate.build(stage)
     return qa
 
 def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False,retry_attempt=False):
