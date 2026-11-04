@@ -126,3 +126,29 @@ external hosts, missing/ambiguous anchors, changed response hashes and unsafe
 paths are held. macOS candidate validation rejects a HOLD report; offline
 processing runs the same audit in strict mode. The source rows, dates and member
 identity are not rewritten by this audit.
+
+## Isolated report edits and interrupted-cycle recovery (2026-11-04)
+
+A media candidate passed collection QA but its push was refused when a concurrent
+code change also added `reports/written-question-link-audit.json`. The former
+publisher treated every report as source drift. The media result therefore never
+became a durable remote checkpoint, and attachment collection did not start.
+
+The publisher now permits only that explicitly named, isolated generated audit
+report in addition to code/documentation paths, and only when the collected data
+commit does not edit the same path. Changes to archive/index/export data, arbitrary
+reports, overlapping paths or a non-descendant baseline still stop publication.
+After rebasing, tests, archive/processing checks and the strict written-question
+audit run again. A changed tracked snapshot left by validation stops the push.
+Local Git integration tests verify preservation of both non-overlapping edits
+and rejection of another accepted source snapshot.
+
+Bounded recovery also recognizes a failed collection step after at least one
+family has a durable checkpoint from that workflow's cycle. Only families with
+no such checkpoint are resumed; controller-recorded source failures retain their
+own retry policy. A failed test/checkout, a manually cancelled workflow, or a
+started job with no checkpoint is not guessed to be a partially published cycle.
+The same three-per-Korean-day reservation budget and backoff remain in force.
+The affected run had five durable families, so its eligible remainder is media
+and attachments only. A local PASS or a diagnostic artifact is not remote
+publication success.

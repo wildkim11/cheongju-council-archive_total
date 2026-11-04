@@ -1,5 +1,5 @@
 """Exercise real local git repositories: code drift is safe, data drift is not."""
-import os,subprocess,tempfile,unittest
+import os,shutil,subprocess,tempfile,unittest
 from pathlib import Path
 SCRIPT=Path(__file__).resolve().parents[1]/'scripts/push_collected_snapshot.sh'
 class GitCollectionPublishTests(unittest.TestCase):
@@ -7,6 +7,7 @@ class GitCollectionPublishTests(unittest.TestCase):
  def fixture(self,base):
   bare=base/'remote.git';self.git(base,'init','--bare',str(bare));a=base/'collector';self.git(base,'clone',str(bare),str(a));self.git(a,'config','user.name','Test');self.git(a,'config','user.email','test@example.invalid');self.git(a,'checkout','-b','feature/archive-foundation')
   for d in ['archive','scripts','tests']:(a/d).mkdir()
+  shutil.copy(SCRIPT.parent/'validate_collection_rebase.py',a/'scripts/validate_collection_rebase.py')
   (a/'archive/source.txt').write_text('old');(a/'scripts/validate_archive.py').write_text('pass');(a/'scripts/audit_stage_c.py').write_text('pass');(a/'tests/test_fixture.py').write_text('import unittest\nfrom pathlib import Path\nclass Fixture(unittest.TestCase):\n def test_source_exists(self):self.assertTrue(Path("archive/source.txt").is_file())\n');self.git(a,'add','.');self.git(a,'commit','-m','initial');self.git(a,'push','-u','origin','feature/archive-foundation')
   b=base/'other';self.git(base,'clone','-b','feature/archive-foundation',str(bare),str(b));self.git(b,'config','user.name','Test');self.git(b,'config','user.email','test@example.invalid');return a,b,bare
  def changed(self,root,path,text):

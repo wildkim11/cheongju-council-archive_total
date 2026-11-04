@@ -62,7 +62,7 @@ jobs:
             } catch(e) { if(e.status !== 404) throw e; }
             fs.writeFileSync(process.env.RUNNER_TEMP + '/runner-recovery.json',JSON.stringify(recovery));
             fs.writeFileSync(process.env.RUNNER_TEMP + '/runner-recovery-sha.json',JSON.stringify(recoverySha));
-            // GitHub metadata only: detect failure before the first macOS step.
+            // GitHub metadata only: detect startup failures or interrupted partial cycles.
             const {data:recent} = await github.rest.actions.listWorkflowRuns({
               ...context.repo, workflow_id:'automatic-collection.yml', per_page:50
             });
@@ -108,7 +108,7 @@ jobs:
             --runner-failure "$RUNNER_TEMP/runner-failure.json" \
             --runner-recovery "$RUNNER_TEMP/runner-recovery.json" \
             --runner-decision "$RUNNER_TEMP/runner-decision.json"
-      - name: Reserve bounded startup retry before requesting macOS
+      - name: Reserve bounded interrupted-cycle retry before requesting macOS
         if: steps.plan.outputs.mode == 'startup_retry'
         uses: actions/github-script@v7
         with:
@@ -123,7 +123,7 @@ jobs:
               content:body.toString('base64'),...(sha ? {sha} : {})
             });
             const decision = JSON.parse(body.toString('utf8'));
-            await core.summary.addHeading('Collection startup retry reserved')
+            await core.summary.addHeading('Collection interruption retry reserved')
               .addRaw('Official collection has not run in this gate. Selected families: ' + decision.pending_targets.join(', ') + '\n')
               .addRaw('Korean-day startup retry budget: ' + decision.retry_attempts_today + '/3.\n').write();
   collect:

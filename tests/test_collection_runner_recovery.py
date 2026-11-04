@@ -35,4 +35,16 @@ class StartupRecoveryTests(unittest.TestCase):
    for name,data in [('state.json',{}),('recovery.json',{'schema':r.SCHEMA}),('failure.json',f)]:(root/name).write_text(json.dumps(data))
    result=subprocess.run([sys.executable,str(Path(p.__file__)),'plan','--state',str(root/'state.json'),'--event','schedule','--schedule',p.RETRY_CRON,'--runner-failure',str(root/'failure.json'),'--runner-recovery',str(root/'recovery.json'),'--runner-decision',str(root/'decision.json')],capture_output=True,text=True,check=True);self.assertIn('mode=startup_retry',result.stdout);self.assertEqual(json.loads((root/'decision.json').read_text())['retry_attempts_today'],1)
  def test_configuration_push_never_forces_full_collection(self):self.assertEqual(p.plan('push','','all',{},self.now),'skip')
+ def partial(self):
+  f=copy.deepcopy(self.failure);f['jobs'][0]['conclusion']='failure';f['jobs'][0]['steps']=[{'name':'Collect into isolated candidate and publish only after validation','conclusion':'failure'}];state={'families':{n:{'last_success_at':'2026-11-04T00:00:00Z'}for n in p.FAMILIES[:5]}};return f,state
+ def test_partial_cycle_recovers_only_unpublished_families(self):
+  f,state=self.partial();d=self.decide(state=state,failure=f);self.assertEqual(d['targets'],['media','attachments']);self.assertEqual(d['state']['reservations'][-1]['recovery_kind'],'partial_cycle_interrupted')
+ def test_partial_cycle_preserves_source_failure_budget(self):
+  f,state=self.partial();state['families']['media']={'consecutive_failures':1};self.assertEqual(self.decide(state=state,failure=f)['targets'],['attachments'])
+ def test_started_job_without_any_success_checkpoint_not_guessed(self):
+  f,state=self.partial();self.assertEqual(self.decide(failure=f)['mode'],'skip')
+ def test_failed_test_step_not_partial_collection(self):
+  f,state=self.partial();f['jobs'][0]['steps']=[{'name':'Validate code and saved archive','conclusion':'failure'}];self.assertEqual(self.decide(state=state,failure=f)['mode'],'skip')
+ def test_partial_recovery_respects_existing_backoff(self):
+  f,state=self.partial();old={'schema':r.SCHEMA,'attempt_day':p.day(self.now),'retry_attempts_today':1,'next_retry_at':(self.now+dt.timedelta(hours=1)).isoformat()};self.assertEqual(self.decide(state=state,recovery=old,failure=f)['mode'],'skip')
 if __name__=='__main__':unittest.main()

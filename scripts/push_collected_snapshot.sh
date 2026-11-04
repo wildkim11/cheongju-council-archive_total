@@ -5,12 +5,7 @@ branch="${1:-feature/archive-foundation}"
 git fetch origin "$branch"
 if ! git merge-base --is-ancestor "origin/$branch" HEAD; then
   # HEAD is the newly created data commit; HEAD~1 is its collection baseline.
-  git diff --name-only HEAD~1 "origin/$branch" | python -c '
-import sys
-paths=[p.strip() for p in sys.stdin if p.strip()]
-if not all(p.startswith(("scripts/","tests/","docs/",".github/")) for p in paths):
-    raise SystemExit("REMOTE_SOURCE_SNAPSHOT_CHANGED: recollect instead of overwriting another snapshot")
-'
+  python scripts/validate_collection_rebase.py "origin/$branch"
   git rebase "origin/$branch"
   python -m unittest discover -s tests
   python scripts/validate_archive.py
@@ -18,5 +13,10 @@ if not all(p.startswith(("scripts/","tests/","docs/",".github/")) for p in paths
   if [ -f exports/processing/manifest.json ]; then
     python scripts/verify_processing.py
   fi
+  if [ -f reports/written-question-link-audit.json ]; then
+    python scripts/audit_written_question_links.py --strict
+  fi
+  # A validator must not silently leave a different tracked snapshot uncommitted.
+  git diff --quiet && git diff --cached --quiet
 fi
 git push origin "HEAD:$branch"

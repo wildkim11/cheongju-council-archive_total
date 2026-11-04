@@ -1,4 +1,4 @@
-"""Bounded recovery of failed workflows whose macOS collection never started.
+"""Bounded recovery of failed workflows whose macOS collection never started or stopped after partial checkpoints.
 
 This module only reads supplied GitHub metadata. It never requests official sites.
 """
@@ -19,9 +19,13 @@ def decide(state,recovery,failure,now):
  if not failure:return result
  if failure.get('status')!='completed'or failure.get('conclusion')!='failure':return result
  collect=[j for j in failure.get('jobs',[])if j.get('name')=='collect']
- if len(collect)!=1 or collect[0].get('status')!='completed'or collect[0].get('conclusion')not in {'cancelled','failure','timed_out'}or collect[0].get('steps')!=[]:return result
+ if len(collect)!=1 or collect[0].get('status')!='completed'or collect[0].get('conclusion')not in {'cancelled','failure','timed_out'}:return result
+ steps=collect[0].get('steps');startup=steps==[]
+ interrupted=isinstance(steps,list)and any(s.get('name')=='Collect into isolated candidate and publish only after validation'and s.get('conclusion')in {'failure','cancelled','timed_out'}for s in steps)
+ if not startup and not interrupted:return result
  start=stamp(failure['created_at']);end=stamp(failure['updated_at'])
  if end<start or end>now or now-end>dt.timedelta(hours=24):return result
+ if not startup and not any(slot.get('last_success_at')and stamp(slot['last_success_at'])>=start for slot in state.get('families',{}).values()):return result
  # Only source families still missing their checkpoint for this failed cycle.
  # Controller-recorded source failures keep their own backoff and retry budget.
  targets=[]
@@ -36,9 +40,9 @@ def decide(state,recovery,failure,now):
  if type(count)is not int or not 0<=count<=MAX_RETRIES:raise ValueError('invalid runner retry budget')
  if count>=MAX_RETRIES:result['reason']='startup retry daily budget exhausted';return result
  if old.get('next_retry_at')and stamp(old['next_retry_at'])>now:result['reason']='startup retry backoff';return result
- reservation={'source_run_id':failure['id'],'source_run_attempt':failure.get('run_attempt',1),'failed_cycle_started_at':start.isoformat(),'reserved_at':now.isoformat(),'targets':targets}
+ reservation={'source_run_id':failure['id'],'source_run_attempt':failure.get('run_attempt',1),'failed_cycle_started_at':start.isoformat(),'reserved_at':now.isoformat(),'targets':targets,'recovery_kind':'not_started'if startup else'partial_cycle_interrupted'}
  old.update(schema=SCHEMA,attempt_day=day(now),retry_attempts_today=count+1,next_retry_at=(now+dt.timedelta(hours=2**count)).isoformat(),pending_targets=targets,last_reserved_at=now.isoformat(),reservations=(old.get('reservations',[])+[reservation])[-20:])
- result.update(mode='startup_retry',reason='collection job ended before its first step; retry uncheckpointed families',state=old,targets=targets)
+ result.update(mode='startup_retry',reason='retry only uncheckpointed families after eligible collection interruption',state=old,targets=targets)
  return result
 
 def pending_targets(recovery,state=None):
