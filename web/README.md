@@ -82,3 +82,29 @@ WORKDIR는 두 원본 HTML, `updated/`의 설치 결과, `assets/COMMIT/`에 고
 메모리에 캐시하며, 새 HTML에는 네트워크로 읽은 본문을 새 내장자료로 저장하지 않는다.
 기초집계의 검증·적용·저장 후 재실행에도 같은 기준 커밋을 따라간다. PC/모바일 실기기
 검수와 브라우저의 CORS·다운로드 완료는 별도 검증 대상이다.
+
+## 첨부 쪽별 추출문 열람
+
+`attachment_text_reader.js`는 별도 고정 커밋/목록SHA에 따라 첨부 manifest·원본 큐·
+원장 manifest를 검증하고, 쪽별 gzip과 텍스트SHA를 확인한다. PDF 원본은 별도 버튼으로
+GitHub 보존 바이트를 읽어 크기·SHA·헤더를 검사한 뒤 PDF MIME Blob으로 제공한다.
+공식사이트 수집을 수행하지 않는다. 쪽은 인쇄면수가 아닌 PDF1기준이다.
+
+`attachment_text_ui.js`는 마스터 활동 화면에 공통 첨부 열람 버튼을 제공한다.
+개인판/개인 기초집계에 공통 토론회 자료를 귀속시키지 않는다. 미검토·OCR대상·
+미수집 상태를 유지하고 TXT에 쪽좌표·원문URL·보존주소·해시를 보존한다.
+
+```sh
+python scripts/install_attachment_view.py source.html updated.html --descriptor descriptor.json
+node tests/manual_attachment_view_dom.cjs WORKDIR ARCHIVE_ROOT ABSOLUTE_JSDOM_PATH
+```
+
+descriptor는 `cheongju-attachment-view/1`, commit, manifest_sha256으로 구성한다.
+활동/집계 버전과 독립적이다. 새자료 확인 시 GitHub HEAD를 고정하고 분기/역행·
+기존URL 삭제/원본변경을 차단한다. 확인과 적용을 분리하며 HTML Blob 저장 요청
+준비 후에만 내장 descriptor를 바꾼다. 확인한 새자료는 메모리에만 두고, 저장하는
+HTML에는 작은 descriptor만 유지한다. 첨부목록/본문은 열람 시 네트워크가 필요하다.
+
+수동 jsdom검증은4PDF129쪽/빈추출7쪽·쪽별TXT·4PDF원본 해시·개인판 범위·
+닫기 경합·구형데이터보존·합성 메타데이터 갱신의 확인/적용/저장후재실행을 확인한다.
+실제 브라우저의 PDF뷰어·CORS·OS다운로드·모바일 시각검수는 별도 확인해야 한다.
