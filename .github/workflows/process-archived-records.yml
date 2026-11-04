@@ -30,6 +30,8 @@ on:
       - scripts/export_minutes_text.py
       - scripts/build_activity_temporal_context.py
       - scripts/analysis_periods.py
+      - scripts/build_profile_history_evidence.py
+      - tests/test_profile_history_evidence.py
       - scripts/audit_analysis_period_readiness.py
       - tests/test_analysis_periods.py
       - config/analysis_periods.json
@@ -99,6 +101,8 @@ jobs:
         run: python -u scripts/build_activity_temporal_context.py
       - name: Audit analysis period evidence without inferring missing history
         run: python -u scripts/audit_analysis_period_readiness.py
+      - name: Preserve source-backed personal periods and profile-link review candidates
+        run: python -u scripts/build_profile_history_evidence.py
       - name: Partition source-attributed activity inputs and preserve held records
         run: python -u scripts/build_analysis_activity_gate.py
       - name: Aggregate member counts with row-level evidence
@@ -118,6 +122,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add exports/profile-history reports/profile-history-evidence-latest.json
           git add reports/analysis-period-readiness-latest.json reports/attachment-download-audit.json reports/written-question-link-audit.json reports/topic-draft-review-latest.json exports/topic-review reports/topic-review-materials-latest.json reports/question-answer-links-latest.json reports/question-identity-evidence-review.json reports/member-text-inputs-latest.json reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "data: verified speech segments and source-backed activity roles"
@@ -141,6 +146,7 @@ jobs:
             reports/topic-review-materials-latest.json
             reports/topic-draft-review-latest.json
             reports/analysis-period-readiness-latest.json
+            reports/profile-history-evidence-latest.json
             reports/temporal-context-latest.json
             reports/analysis-activity-gate-latest.json
             reports/member-activity-counts-latest.json
