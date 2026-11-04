@@ -1,0 +1,45 @@
+name: Capture official council period sources on macOS
+on:
+  push:
+    branches: [feature/archive-foundation]
+    paths:
+      - scripts/collect_council_period_sources.py
+      - .github/workflows/collect-council-period-sources-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cheongju-source-collection
+  cancel-in-progress: false
+jobs:
+  capture:
+    runs-on: macos-14
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p test_council_period_sources.py -v
+      - name: Capture at most three observed navigation pages without retries
+        run: python -u scripts/collect_council_period_sources.py
+      - name: Preserve captured sources and diagnostic only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive/source_responses reports/council-period-source-collection-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: preserve official council period pages for offline review'
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: council-period-source-evidence
+          path: reports/council-period-source-collection-latest.json
