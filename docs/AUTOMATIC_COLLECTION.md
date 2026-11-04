@@ -75,3 +75,37 @@ and source activity-role records before transaction publication. A separate
 `process-archived-records.yml` job processes existing GitHub originals without
 official-site access. It uses Ubuntu for offline computation; live collection
 remains macOS. Derived records do not assert question/answer or policy scores.
+
+## Recovery when macOS never starts (2026-11-04)
+
+The source controller cannot record a failure when its macOS job ends before
+its first step. Hourly gates therefore also inspect recent GitHub workflow/job
+metadata. A completed failed workflow with a cancelled/failed/timed-out `collect`
+job and **zero steps** is eligible for startup recovery within 24 hours of its
+last update. This identifies a job that did not start; it does not establish
+whether capacity, account limits or another infrastructure condition caused it.
+Manual workflow cancellation and jobs with any started step are not classified
+by this recovery rule.
+
+The gate persists `reports/automatic/runner_recovery.json` **before** requesting
+macOS. It reserves at most three startup retries per Korean calendar day, with
+1/2/4-hour backoff after reservations. Failed allocations therefore consume the
+budget even though no collector ran. Families with a saved success since the
+failed workflow began are excluded. Controller-recorded source failures remain
+under their existing backoff and daily budget. Replayed startup reservations
+also skip families subsequently checkpointed or handed to source retry.
+
+`main` runs a lightweight gate when this workflow file changes. Configuration
+pushes never request a full cycle by themselves: collection starts only if the
+bounded startup-failure recovery rule authorizes it. Normal daily collection
+remains 06:00 Asia/Seoul. Hourly healthy checks make zero official-site requests.
+Only GitHub Actions macOS performs official collection; the gate reads/writes
+GitHub operational metadata and never contacts council hosts. The existing
+shared concurrency group serializes gate reservation and snapshot publication.
+
+Reservations and successful gates are **not** successful source checkpoints.
+Operational coverage still requires each family's actual successful collection,
+validation, publication and persisted `last_success_at`. This patch does not
+claim successful collection of previously unverified families. A start failure
+after any job step, a missing scheduled run, or a failure older than 24 hours
+requires separate diagnosis; this recovery rule does not silently guess.

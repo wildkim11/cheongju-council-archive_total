@@ -1,0 +1,76 @@
+{
+  "schema": "cheongju-collection-operational-audit/1",
+  "checked_at_utc": "2026-11-04T05:45:17.543610+00:00",
+  "scope": "GitHub operational records only; no fresh official-site collection",
+  "families": [
+    {
+      "family": "minutes",
+      "last_success_at": "2026-11-03T08:56:11.914609+00:00",
+      "status": "historical_success_checkpoint"
+    },
+    {
+      "family": "bills",
+      "last_success_at": null,
+      "status": "no_success_checkpoint"
+    },
+    {
+      "family": "activities",
+      "last_success_at": null,
+      "status": "no_success_checkpoint"
+    },
+    {
+      "family": "people",
+      "last_success_at": null,
+      "status": "no_success_checkpoint"
+    },
+    {
+      "family": "groups",
+      "last_success_at": null,
+      "status": "no_success_checkpoint"
+    },
+    {
+      "family": "media",
+      "last_success_at": null,
+      "status": "no_success_checkpoint"
+    },
+    {
+      "family": "attachments",
+      "last_success_at": null,
+      "status": "no_success_checkpoint"
+    }
+  ],
+  "successful_checkpoint_families": 1,
+  "unverified_families": 6,
+  "failed_workflow": {
+    "id": 41723251068,
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-11-03T21:35:53Z",
+    "updated_at": "2026-11-03T22:43:37Z",
+    "jobs": [
+      {
+        "name": "collect",
+        "status": "completed",
+        "conclusion": "cancelled",
+        "steps": []
+      }
+    ]
+  },
+  "root_cause": "collect job did not start; underlying infrastructure cause not established",
+  "startup_retry_dry_plan": {
+    "mode": "startup_retry",
+    "targets": [
+      "minutes",
+      "bills",
+      "activities",
+      "people",
+      "groups",
+      "media",
+      "attachments"
+    ],
+    "reservation_persisted": false
+  },
+  "patch_status": "prepared; production activation and actual macOS execution must be checked separately",
+  "official_site_requests": 0
+}

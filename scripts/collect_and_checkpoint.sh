@@ -4,6 +4,8 @@ set -euo pipefail
 requested="${1:-auto}"
 if [ "$requested" = 'all' ]; then
   families='minutes bills activities people groups media attachments'
+elif [ "$requested" = 'startup_retry' ]; then
+  families="$(python scripts/collection_runner_recovery.py targets --recovery reports/automatic/runner_recovery.json --state reports/automatic/collection_state.json)"
 elif [ "$requested" = 'bootstrap' ]; then
   families="$(python - <<'PY'
 import datetime as dt,json
