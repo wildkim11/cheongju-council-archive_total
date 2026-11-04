@@ -1,0 +1,27 @@
+{
+  "schema": "cheongju-nec-source-inspection/1",
+  "status": "SOURCE_CAPTURED_FOR_TRANSPORT_REVIEW",
+  "maximum_requests": 3,
+  "attempts_per_request": 1,
+  "runtime_platform": "Darwin",
+  "sources": [
+    {
+      "url": "https://info.nec.go.kr/search/searchCandidate.xhtml",
+      "method": "GET",
+      "path": "archive/elections/nec/source_responses/f364a6a22069214e3decc42a3cb40ad87bc52b665f1a11ffc4e69410d3e28fc5.txt.gz",
+      "sha256": "f364a6a22069214e3decc42a3cb40ad87bc52b665f1a11ffc4e69410d3e28fc5",
+      "bytes": 27550
+    },
+    {
+      "url": "https://info.nec.go.kr/common/js/search.js?ver=231025",
+      "method": "GET",
+      "path": "archive/elections/nec/source_responses/8be8692658cdbaf4285ac0251ab8d6961628868ccfebd9a81b9ba67b427b8a3a.txt.gz",
+      "sha256": "8be8692658cdbaf4285ac0251ab8d6961628868ccfebd9a81b9ba67b427b8a3a",
+      "bytes": 14740
+    }
+  ],
+  "errors": [],
+  "election_rows_collected": 0,
+  "seniority_decisions": 0,
+  "note": "Public search HTML and observed search JS only. No form submission, identity merge or election-result inference."
+}
