@@ -10,6 +10,9 @@ on:
       - scripts/resolve_question_answer_links.py
       - scripts/review_single_activity_differences.py
       - scripts/build_member_text_inputs.py
+      - scripts/build_topic_review_materials.py
+      - config/policy_topics_v1.json
+      - docs/policy-topic-coding-v1.md
       - scripts/review_question_identity_evidence.py
       - docs/analysis-methods-v1.md
       - scripts/verify_processing.py
@@ -24,6 +27,7 @@ on:
       - tests/test_question_answer_links.py
       - tests/test_single_activity_differences.py
       - tests/test_member_text_inputs.py
+      - tests/test_topic_review_materials.py
       - tests/test_question_identity_evidence.py
       - tests/test_verify_processing.py
       - tests/test_export_minutes_text.py
@@ -79,6 +83,8 @@ jobs:
         run: python -u scripts/build_member_activity_counts.py
       - name: Build member-only text inputs using attribution and content gates
         run: python -u scripts/build_member_text_inputs.py
+      - name: Prepare unlabelled policy-topic review tasks and development sample
+        run: python -u scripts/build_topic_review_materials.py
       - name: Export hash-verified meeting text for HTML consumers
         run: python -u scripts/export_minutes_text.py
       - name: Commit verified derived data only
@@ -86,7 +92,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add reports/question-answer-links-latest.json reports/question-identity-evidence-review.json reports/member-text-inputs-latest.json reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
+          git add exports/topic-review reports/topic-review-materials-latest.json reports/question-answer-links-latest.json reports/question-identity-evidence-review.json reports/member-text-inputs-latest.json reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "data: verified speech segments and source-backed activity roles"
             bash scripts/push_collected_snapshot.sh
@@ -106,6 +112,7 @@ jobs:
             reports/member-text-inputs-latest.json
             reports/question-identity-evidence-review.json
             reports/question-answer-links-latest.json
+            reports/topic-review-materials-latest.json
             reports/temporal-context-latest.json
             reports/analysis-activity-gate-latest.json
             reports/member-activity-counts-latest.json

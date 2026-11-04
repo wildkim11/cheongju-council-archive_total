@@ -1,0 +1,185 @@
+{
+  "schema": "cheongju-policy-topic-codebook/1",
+  "version": "cj-topics-0.1",
+  "status": "development_draft_not_validated",
+  "coding_unit": "unique_verified_member_activity_document",
+  "multiple_topics_allowed": true,
+  "reference_framework": {
+    "name": "Comparative Agendas Project; structural reference only, not a CAP-compatible coding or crosswalk",
+    "url": "https://www.comparativeagendas.net/pages/master-codebook",
+    "accessed_on": "2026-11-04"
+  },
+  "topics": [
+    {
+      "id": "CJ01",
+      "label": "행정·재정·의회",
+      "definition": "행정 조직·절차·의회 운영과 세입·예결산 체계 자체에 대한 정책",
+      "include": "조직개편, 체납 징수, 재정운용, 정보공개, 의회 운영",
+      "exclude": "복지사업의 예산액을 단순 소개한 경우에는 해당 복지 주제만 부여",
+      "positive_example": "세금 징수 체계 개선을 요구한다",
+      "negative_example": "문화공연에 예산이 필요하다고만 언급한다"
+    },
+    {
+      "id": "CJ02",
+      "label": "지역경제·산업·상권",
+      "definition": "기업·산업·지역상권과 지역경제 생태계에 대한 정책",
+      "include": "소상공인 지원, 산업단지 경제활성화, 사회적경제, 지역브랜드",
+      "exclude": "노동조건 자체는 노동·일자리와 구분",
+      "positive_example": "소상공인 금융지원 제도를 개선하자",
+      "negative_example": "축제의 문화예술 프로그램만 논의한다"
+    },
+    {
+      "id": "CJ03",
+      "label": "노동·일자리",
+      "definition": "노동조건·고용·취업 진입과 직업능력에 대한 정책",
+      "include": "비정규직, 근로시간, 산업안전, 취업 지원",
+      "exclude": "노인 돌봄 자체와 단순 공무원 인사 절차는 제외",
+      "positive_example": "청년의 취업 진입을 지원하자",
+      "negative_example": "청년이라는 단어만 인사말에 등장한다"
+    },
+    {
+      "id": "CJ04",
+      "label": "농림·축산·농촌",
+      "definition": "농업·축산·임업의 생산·경영·농촌 기반에 대한 정책",
+      "include": "공익직불, 농기계 임대, 청년농, 축산농가",
+      "exclude": "산림의 공원 이용이나 생태 보전만 다루면 해당 주제로 구분",
+      "positive_example": "농기계 임대소의 접근성을 개선하자",
+      "negative_example": "반려동물의 등록만 논의한다"
+    },
+    {
+      "id": "CJ05",
+      "label": "복지·돌봄·인구",
+      "definition": "생활보장·돌봄·인구집단의 사회적 지원에 대한 정책",
+      "include": "노인·아동·장애인 돌봄, 긴급복지, 고독사, 출산·가족 지원",
+      "exclude": "의료서비스 자체는 보건·의료, 취업조건 자체는 노동으로 구분",
+      "positive_example": "발달장애인 돌봄 공급을 확충하자",
+      "negative_example": "어르신 버스라는 이유만으로 복지를 자동 부여하지 않는다"
+    },
+    {
+      "id": "CJ06",
+      "label": "보건·의료",
+      "definition": "질병 예방·진료·공공보건과 의료서비스에 대한 정책",
+      "include": "보건소, 병원, 감염병, 정신건강, 건강검진",
+      "exclude": "걷기 시설·체육시설 자체는 체육으로 구분",
+      "positive_example": "보건소의 진료와 접근성을 개선하자",
+      "negative_example": "건강한 도시라는 수사만 등장한다"
+    },
+    {
+      "id": "CJ07",
+      "label": "교육·청소년",
+      "definition": "학교·학습·교육 기회와 청소년 성장 환경에 대한 정책",
+      "include": "교복, 교육지원, 학교안전, 평생학습",
+      "exclude": "청소년 복지급여만 다루는 경우는 복지, 등하교 도로는 교통과 경계 검토",
+      "positive_example": "학생의 교육비 부담을 줄이는 제도를 논의한다",
+      "negative_example": "의원이 학창 시절을 회상만 한다"
+    },
+    {
+      "id": "CJ08",
+      "label": "인권·성평등·접근성",
+      "definition": "권리 보장·차별 해소·동등한 접근성 자체에 대한 정책",
+      "include": "인권보장 제도, 성평등, 이동·정보 접근 차별",
+      "exclude": "특정 집단을 언급했다고 자동 부여하지 않는다",
+      "positive_example": "장애인의 시설 접근권 보장을 요구한다",
+      "negative_example": "장애인 사업의 사업비만 열거한다"
+    },
+    {
+      "id": "CJ09",
+      "label": "도시계획·주거·공공개발",
+      "definition": "도시 공간 배치·주거·정비·개발의 공공성에 대한 정책",
+      "include": "공공임대, 도시개발, 역세권, 정비사업, 청사 입지",
+      "exclude": "개발 관련 교통문제만 다루면 교통을 우선 검토",
+      "positive_example": "공공임대 분양 전환의 조건을 논의한다",
+      "negative_example": "기업 투자 규모만 소개한다"
+    },
+    {
+      "id": "CJ10",
+      "label": "교통·이동·도로",
+      "definition": "사람·차량의 이동체계와 도로·교통서비스에 대한 정책",
+      "include": "버스·택시·주차·철도·킥보드·보행·자전거",
+      "exclude": "공원 안 산책의 여가 기능만 다루면 체육·생태와 경계 검토",
+      "positive_example": "택시 할증제와 버스 요금 정책을 논의한다",
+      "negative_example": "시장 방문 차량이 많았다는 배경 설명만 있다"
+    },
+    {
+      "id": "CJ11",
+      "label": "환경·자원순환·상하수도",
+      "definition": "오염·폐기물·생활용수·하수 등 환경서비스에 대한 정책",
+      "include": "대기질, 매립·소각, 재활용, 하수·급수 품질",
+      "exclude": "재난 대응·침수 피해 대응은 재난과, 에너지 공급 자체는 에너지와 구분",
+      "positive_example": "소각장 배출과 주민 환경영향을 논의한다",
+      "negative_example": "친환경이라는 홍보 문구만 있다"
+    },
+    {
+      "id": "CJ12",
+      "label": "에너지·기후",
+      "definition": "에너지 공급·전환과 온실가스·기후 대응에 대한 정책",
+      "include": "도시가스, 발전시설, 재생에너지, 탄소중립",
+      "exclude": "일반 쓰레기 처리만 다루면 환경 주제",
+      "positive_example": "도시가스 미공급 지역의 공급 확대를 요구한다",
+      "negative_example": "전기요금이 사업비에 포함됐다는 언급만 있다"
+    },
+    {
+      "id": "CJ13",
+      "label": "재난·안전·치안",
+      "definition": "재난 예방·대응·피해 회복과 생활·치안 안전체계에 대한 정책",
+      "include": "침수, 화재, 제설, 대피, 범죄예방, 위험시설",
+      "exclude": "구체적 위험 대응 없이 안전이라는 수사만 쓰면 제외",
+      "positive_example": "지하차도 침수 대응체계를 점검한다",
+      "negative_example": "안전한 행정을 하자는 인사말만 있다"
+    },
+    {
+      "id": "CJ14",
+      "label": "문화·예술·관광",
+      "definition": "문화예술·독서·문화유산 활용·관광 경험에 대한 정책",
+      "include": "공연, 미술관, 도서관, 문화시설, 관광 연계",
+      "exclude": "기념·보훈 목적이 핵심이면 보훈·역사와 경계 검토",
+      "positive_example": "문화시설의 프로그램과 접근성을 개선하자",
+      "negative_example": "소상공인 매출에만 초점을 둔 행사 논의다"
+    },
+    {
+      "id": "CJ15",
+      "label": "체육·생활여가",
+      "definition": "운동·생활체육·체육시설과 시민 여가활동에 대한 정책",
+      "include": "체육관, 파크골프, 수영장, 스포츠팀, 걷기 활동",
+      "exclude": "의료서비스나 단순 도시개발은 해당 주제로 구분",
+      "positive_example": "생활체육시설의 공급과 운영을 점검한다",
+      "negative_example": "건강이라는 단어만 포함돼 있다"
+    },
+    {
+      "id": "CJ16",
+      "label": "보훈·역사·기억",
+      "definition": "국가유공자·추모·역사적 피해와 공적 기억에 대한 정책",
+      "include": "충혼탑, 보훈 예우, 민간인 희생 추모, 기념시설",
+      "exclude": "문화유산 관광만 다루면 문화·예술·관광",
+      "positive_example": "추모시설의 관리와 예우를 개선하자",
+      "negative_example": "인사말에서 선열에게 감사를 전할 뿐이다"
+    },
+    {
+      "id": "CJ17",
+      "label": "디지털·과학기술",
+      "definition": "디지털 전환·정보서비스·기술 활용 체계 자체에 대한 정책",
+      "include": "공공 디지털 서비스, AI, 데이터, 디지털 접근성",
+      "exclude": "단순 온라인 접수 수단만 언급하면 해당 사업 주제로 구분",
+      "positive_example": "행정의 종이 없는 업무와 데이터 체계를 논의한다",
+      "negative_example": "문자 안내를 보냈다는 배경 설명만 있다"
+    },
+    {
+      "id": "CJ18",
+      "label": "동물·생태·녹지",
+      "definition": "동물복지·생물다양성·도시녹지의 보호·관리에 대한 정책",
+      "include": "반려동물, 동물원, 가로수, 생태공간, 녹지 관리",
+      "exclude": "축산 생산·농가 지원은 농림·축산, 공원의 운동시설만은 체육",
+      "positive_example": "동물원 운영과 동물복지를 논의한다",
+      "negative_example": "가축 사육농가 경영지원만 논의한다"
+    }
+  ],
+  "rules": [
+    "발언 본문 전체를 읽고 실질적으로 다룬 정책대상을 분류한다. 제목만으로 확정하지 않는다.",
+    "인사말·직책·의례·인용·답변자 문장을 관심사 근거로 자동 채택하지 않는다.",
+    "예산·청년·안전·건강·친환경 등 일반 단어만으로 관련 주제를 부여하지 않는다.",
+    "부정·비판·반대도 해당 정책을 다룬 관측에는 포함할 수 있으나 찬성이나 선호로 해석하지 않는다.",
+    "모든 주제에는 해당 원문에서 정확히 재현되는 근거 범위를 남긴다.",
+    "코딩 불가·모호함·정책주제 없음은 빈도0이나 관심없음과 구별한다.",
+    "복수 주제는 실제로 각각 다룬 경우에만 부여하며 비중 합은100%를 넘을 수 있다."
+  ]
+}

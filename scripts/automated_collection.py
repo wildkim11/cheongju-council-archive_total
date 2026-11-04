@@ -223,6 +223,8 @@ def validate_candidate(stage,oldroot):
     qa['member_activity_counts']=build_member_activity_counts.build(stage)
     import build_member_text_inputs
     qa['member_text_inputs']=build_member_text_inputs.build(stage)
+    import build_topic_review_materials
+    qa['topic_review_materials']=build_topic_review_materials.build(stage,codebook_path=oldroot/'config/policy_topics_v1.json')
     return qa
 
 def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False,retry_attempt=False):
