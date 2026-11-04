@@ -14,6 +14,8 @@ on:
       - scripts/build_ocr_review_assets.py
       - scripts/build_ocr_review_packet.py
       - tests/test_ocr_review.py
+      - scripts/validate_ocr_review_intake.py
+      - tests/test_ocr_review_intake.py
       - web/ocr_review.html
       - web/ocr_review_core.js
       - .github/workflows/process-attachment-text.yml
@@ -62,11 +64,15 @@ jobs:
           fi
       - name: Export a source-bound offline OCR review packet
         run: python scripts/build_ocr_review_packet.py --source-commit "$(git rev-parse HEAD)" --output "$RUNNER_TEMP/OCR_review.html"
+      - name: Verify exported packet without inventing user review records
+        run: python scripts/validate_ocr_review_intake.py --packet "$RUNNER_TEMP/OCR_review.html" --output "$RUNNER_TEMP/ocr-intake-no-user.json"
       - name: Preserve offline OCR review packet
         uses: actions/upload-artifact@v4
         with:
           name: ocr-review-packet
-          path: ${{ runner.temp }}/OCR_review.html
+          path: |
+            ${{ runner.temp }}/OCR_review.html
+            ${{ runner.temp }}/ocr-intake-no-user.json
       - name: Preserve extraction summary
         if: always()
         uses: actions/upload-artifact@v4
