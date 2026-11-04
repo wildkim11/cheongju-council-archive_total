@@ -9,3 +9,24 @@
 본문 자료 버전은 의안·활동 분석자료 버전과 별도로 표시한다. SHA 검증은 자료 정합성 확인이며 발행자 전자서명이 아니다. 실제 브라우저의 CORS·파일선택·다운로드와 모바일 배치는 별도 검수가 필요하다.
 
 Python unittest discovery에서 Node 기반 reader/update 회귀시험을 실행한다. 실제 Stage47 HTML 조립 및 DOM 시험은 프로젝트의 회의록 HTML 연결 재현 묶음에서 수행한다.
+
+## 자료별 버전 표시와 HTML 동기화
+
+`data_versions_ui.js`는 기존 Stage47 앱 IIFE의 기초집계 갱신 확장 뒤에 삽입한다.
+회의록·기초집계·기존 의안/활동/관계망 묶음의 기준 버전을 구분하며, 기존 대조
+진단을 현재 수집 상태로 오인하지 않도록 표시한다. 자료 배정이나 판정을 바꾸지 않는다.
+
+```sh
+python scripts/install_html_data_versions.py source.html prepared.html
+```
+
+설치기는 기존 JSON 데이터와 시작 지점을 유지하고 명시적 마커 사이만 재설치한다.
+알 수 없는 시작 구조나 중복 마커는 추측해 수정하지 않는다.
+
+수동 통합 검증: `tests/manual_stage47_sync_dom.cjs`에 검토 작업 폴더와 jsdom 경로를
+인자로 준다. 작업 폴더는 `prepared/`의 마스터·의원 HTML, `assets/branch.json`,
+구 버전별 compare 결과, 고정 커밋의 catalog/index/집계 묶음과 term-4 본문 묶음을
+포함한다. jsdom 26.1.0을 사용한다. JSON 메타데이터는 GitHub에서 확인한 응답의
+필요 필드이며 gzip/index는 해당 커밋에서 받은 원본 바이트다. 실행은 `updated/`에
+저장 Blob의 HTML을 기록하고 다시 열어 검사한다. 이는 네이티브 브라우저의
+CORS·다운로드 완료·실제 모바일 배치 검증을 대체하지 않는다.
