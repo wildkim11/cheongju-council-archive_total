@@ -1,0 +1,39 @@
+{
+  "schema": "cheongju-nec-election-samples/1",
+  "status": "SAMPLES_CAPTURED_FOR_OFFLINE_REVIEW",
+  "sources": [
+    {
+      "current_profile_id": "person-fcode-2130",
+      "query_name": "최동식",
+      "url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%B5%9C%EB%8F%99%EC%8B%9D",
+      "method": "GET",
+      "path": "archive/elections/nec/source_responses/50819a2b92cac7139635a1b716246241393cebaf1d3034226c46b43a36369845.txt.gz",
+      "sha256": "50819a2b92cac7139635a1b716246241393cebaf1d3034226c46b43a36369845",
+      "bytes": 326890
+    },
+    {
+      "current_profile_id": "person-fcode-1120",
+      "query_name": "남일현",
+      "url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%82%A8%EC%9D%BC%ED%98%84",
+      "method": "GET",
+      "path": "archive/elections/nec/source_responses/1a75cffbc9fbe9482a54ac3404f420dd3c0764c41968ac8954cd5caefa94719d.txt.gz",
+      "sha256": "1a75cffbc9fbe9482a54ac3404f420dd3c0764c41968ac8954cd5caefa94719d",
+      "bytes": 131329
+    },
+    {
+      "current_profile_id": "person-fcode-10040",
+      "query_name": "김완식",
+      "url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%99%84%EC%8B%9D",
+      "method": "GET",
+      "path": "archive/elections/nec/source_responses/178a13044e247c433145c7ad4c1828deced24f608e02f00b34b3f64f3be311c9.txt.gz",
+      "sha256": "178a13044e247c433145c7ad4c1828deced24f608e02f00b34b3f64f3be311c9",
+      "bytes": 145201
+    }
+  ],
+  "errors": [],
+  "maximum_requests": 3,
+  "attempts_per_request": 1,
+  "seniority_decisions": 0,
+  "identity_merges": 0,
+  "note": "A name search can include homonyms, candidates and winners. No row is a confirmed current-person election until offline type and identity checks."
+}
