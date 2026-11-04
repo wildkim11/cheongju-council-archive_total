@@ -7,6 +7,7 @@ on:
       - scripts/resolve_activity_spacing_matches.py
       - scripts/review_activity_date_discrepancies.py
       - scripts/build_question_answer_parts.py
+      - scripts/resolve_question_answer_links.py
       - scripts/review_single_activity_differences.py
       - scripts/build_member_text_inputs.py
       - scripts/review_question_identity_evidence.py
@@ -20,6 +21,7 @@ on:
       - tests/test_resolve_activity_spacing_matches.py
       - tests/test_review_activity_date_discrepancies.py
       - tests/test_question_answer_parts.py
+      - tests/test_question_answer_links.py
       - tests/test_single_activity_differences.py
       - tests/test_member_text_inputs.py
       - tests/test_question_identity_evidence.py
@@ -57,14 +59,16 @@ jobs:
         run: python -u scripts/process_meeting_segments.py
       - name: Link unique complete activity bodies with spacing differences
         run: python -u scripts/resolve_activity_spacing_matches.py
-      - name: Verify every source range and derived ledger
-        run: python -u scripts/verify_processing.py --out reports/processing-qa-latest.json
-      - name: Review unmatched activity display-date discrepancies without promotion
-        run: python -u scripts/review_activity_date_discrepancies.py
       - name: Derive exact source-backed question and executive answer parts
         run: python -u scripts/build_question_answer_parts.py
       - name: Audit split-question source-term identity evidence without promotion
         run: python -u scripts/review_question_identity_evidence.py
+      - name: Link unique complete questions with verified executive tails
+        run: python -u scripts/resolve_question_answer_links.py
+      - name: Verify every source range and derived ledger
+        run: python -u scripts/verify_processing.py --out reports/processing-qa-latest.json
+      - name: Review unmatched activity display-date discrepancies without promotion
+        run: python -u scripts/review_activity_date_discrepancies.py
       - name: Preserve single-edit activity differences without promotion
         run: python -u scripts/review_single_activity_differences.py
       - name: Attach explicit historical intervals and hold unresolved context
@@ -82,7 +86,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add reports/question-identity-evidence-review.json reports/member-text-inputs-latest.json reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
+          git add reports/question-answer-links-latest.json reports/question-identity-evidence-review.json reports/member-text-inputs-latest.json reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "data: verified speech segments and source-backed activity roles"
             bash scripts/push_collected_snapshot.sh
@@ -101,6 +105,7 @@ jobs:
             reports/activity-single-differences.json
             reports/member-text-inputs-latest.json
             reports/question-identity-evidence-review.json
+            reports/question-answer-links-latest.json
             reports/temporal-context-latest.json
             reports/analysis-activity-gate-latest.json
             reports/member-activity-counts-latest.json

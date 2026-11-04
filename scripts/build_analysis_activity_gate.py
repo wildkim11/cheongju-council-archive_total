@@ -14,7 +14,7 @@ def classify(role,context):
  if context['committee_opportunity_ready'] and (not context['group_comparison_ready'] or c['committee_memberships']['status']!='archived_explicit_interval'):raise ValueError('committee readiness contradicts dated evidence')
  reasons=[]
  if not role.get('person_id'):reasons.append('unresolved_person_id')
- if role.get('person_id') and role.get('identity_status') not in {'archive_exact_term_link','resolved_explicit_tenure','resolved_cross_source_exact_body','resolved_source_meeting_term'}:reasons.append('unrecognized_identity_basis')
+ if role.get('person_id') and role.get('identity_status') not in {'archive_exact_term_link','resolved_explicit_tenure','resolved_cross_source_exact_body','resolved_source_meeting_term','resolved_cross_source_question_answer'}:reasons.append('unrecognized_identity_basis')
  if not context.get('council_scope') or type(role.get('term'))is not int or (isinstance(role.get('term'),int) and role['term']<=0):reasons.append('missing_council_scope_or_term')
  try:dt.date.fromisoformat(role.get('date'))
  except (TypeError,ValueError):reasons.append('missing_or_invalid_activity_date')

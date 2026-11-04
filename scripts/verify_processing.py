@@ -5,6 +5,26 @@ ROOT=Path(__file__).resolve().parents[1]
 def digest(raw):return hashlib.sha256(raw).hexdigest()
 def require(value,message):
  if not value:raise ValueError(message)
+def question_spacing(value):
+ parts=re.split(r'(\s+)',value)
+ return ''.join((' ' if i>0 and i+1<len(parts) and parts[i-1] and parts[i+1] and parts[i-1][-1].isdecimal() and parts[i+1][0].isdecimal() else '') if part.isspace() else part for i,part in enumerate(parts))
+def verify_question_parts(activity,source,row,segment,segments,text,proof,manifest):
+ require(activity['source_dataset']=='city_questions' and activity['identity_status']=='resolved_cross_source_question_answer','question proof activity type/status mismatch')
+ require(activity.get('tenure_interval_verified') is False and activity['term']==row['term']==proof['term'],'question term/tenure mismatch')
+ raw=source.get('body_text')or'';cut=proof.get('question_char_end')
+ require(type(cut)is int and 0<cut<len(raw),'question original boundary invalid')
+ q,a=raw[:cut],raw[cut:];needle=question_spacing(q);hay=question_spacing(text[segment['content_start']:segment['char_end']])
+ require(needle==hay and len(needle)>=80 and proof['normalized_start']==0 and proof['normalized_end']==len(needle),'question complete speaker body mismatch')
+ require(digest(raw.encode())==proof['activity_body_sha256'] and digest(q.encode())==proof['question_original_sha256'] and digest(a.encode())==proof['answer_original_sha256'],'question/answer original hash mismatch')
+ answers=[s for s in segments if s['segment_id']==proof['answer_segment_id']]
+ require(len(answers)==1,'question answer segment absent');answer=answers[0]
+ require(answer.get('speaker_category')=='executive_or_staff' and answer['content_start']>segment['char_end'],'question answer speaker/order mismatch')
+ tail=question_spacing(a);executive=question_spacing(text[answer['content_start']:answer['char_end']]);start=executive.find(tail)
+ require(len(tail)>=80 and start>=0 and executive.find(tail,start+1)<0,'question complete executive tail mismatch or ambiguous')
+ require(start==proof['answer_normalized_start'] and start+len(tail)==proof['answer_normalized_end'] and digest(tail.encode())==proof['answer_body_sha256'],'question answer range/hash mismatch')
+ post=manifest.get('activity_question_postprocessor',{})
+ require(post.get('method')==proof['method'] and post.get('script_sha256')==digest((Path(__file__).parent/'resolve_question_answer_links.py').read_bytes()),'question postprocessor version mismatch')
+ return needle,hay
 def verify(root=ROOT):
  root=Path(root);out=root/'exports/processing';manifest=json.loads((out/'manifest.json').read_text());require(manifest['schema']=='cheongju-processing-manifest/1','processing schema');require(manifest['processor_sha256']==digest((Path(__file__).parent/'process_meeting_segments.py').read_bytes()),'processing code version mismatch')
  inputs={}
@@ -28,7 +48,9 @@ def verify(root=ROOT):
    for activity in requests.get(sid,[]):
     proof=activity['source_link'];source=inputs[activity['source_dataset']][activity['source_row_1based']-1];needle=re.sub(r'\s+',' ',source.get('body_text') or '').strip();haystack=re.sub(r'\s+',' ',text[s['content_start']:end]).strip()
     method=proof.get('method','entire_activity_body_exact_normalized_substring')
-    if method=='entire_activity_body_exact_spacing_compacted_digit_boundaries':
+    if method=='complete_question_prefix_and_verified_executive_answer_tail':
+     needle,haystack=verify_question_parts(activity,source,row,s,segs,text,proof,manifest)
+    elif method=='entire_activity_body_exact_spacing_compacted_digit_boundaries':
      def independent_spacing(value):
       parts=re.split(r'(\s+)',value)
       return ''.join((' ' if i>0 and i+1<len(parts) and parts[i-1] and parts[i+1] and parts[i-1][-1].isdecimal() and parts[i+1][0].isdecimal() else '') if part.isspace() else part for i,part in enumerate(parts))

@@ -198,15 +198,17 @@ def validate_candidate(stage,oldroot):
     import resolve_activity_spacing_matches
     linking=resolve_activity_spacing_matches.resolve(stage)
     qa['activity_spacing_linking']=linking
+    import build_question_answer_parts
+    qa['question_answer_parts']=build_question_answer_parts.build(stage)
+    import review_question_identity_evidence
+    qa['question_identity_evidence']=review_question_identity_evidence.review(stage)
+    import resolve_question_answer_links
+    qa['question_answer_linking']=resolve_question_answer_links.resolve(stage)
     processing=verify_processing.verify(stage)
     save_json(stage/'reports/processing-qa-latest.json',processing)
     qa['processing']=processing
     import review_activity_date_discrepancies
     qa['activity_date_review']=review_activity_date_discrepancies.review(stage)
-    import build_question_answer_parts
-    qa['question_answer_parts']=build_question_answer_parts.build(stage)
-    import review_question_identity_evidence
-    qa['question_identity_evidence']=review_question_identity_evidence.review(stage)
     import review_single_activity_differences
     qa['single_activity_differences']=review_single_activity_differences.review(stage)
     # HTML consumers must receive text packs from this same verified snapshot.
