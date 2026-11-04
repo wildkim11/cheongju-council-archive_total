@@ -128,28 +128,40 @@
     "attempts": 0
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=11820": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:30:47.053222+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "ae2e694c14cadeaf01d648d1944022091a75a5fddbbbcfa90578d0cc3ce49d6c",
+    "bytes": 1517524,
+    "path": "archive/attachments/ae2e694c14cadeaf01d648d1944022091a75a5fddbbbcfa90578d0cc3ce49d6c.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=11980": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:30:52.118738+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "ab670b368c736bc0f9ac57bccbe1ca5826c7a8ecc1fd7c64a77dd140012d3417",
+    "bytes": 1352651,
+    "path": "archive/attachments/ab670b368c736bc0f9ac57bccbe1ca5826c7a8ecc1fd7c64a77dd140012d3417.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=11982": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:30:59.924297+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "3a31670a49e8f79ebca010226a07e89acf819790f009dfe81ebc2772f918a7f2",
+    "bytes": 2521721,
+    "path": "archive/attachments/3a31670a49e8f79ebca010226a07e89acf819790f009dfe81ebc2772f918a7f2.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=11992": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:31:16.230481+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "521271d667431bce00dbaa70bf0a388f1a659bae3baf041052eae7e8768af249",
+    "bytes": 6241540,
+    "path": "archive/attachments/521271d667431bce00dbaa70bf0a388f1a659bae3baf041052eae7e8768af249.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12376": {
     "status": "downloaded",
@@ -160,16 +172,22 @@
     "checked_at": "2026-11-04T07:30:41.466526+00:00"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12378": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:31:26.508330+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "c4beaedaebd812014d76c93dabbb21a085669ffcb31f7786941de94d57d32308",
+    "bytes": 34688,
+    "path": "archive/attachments/c4beaedaebd812014d76c93dabbb21a085669ffcb31f7786941de94d57d32308.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12379": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:31:29.361963+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "bff2587af7f3dd477398bde08e4adda51dc0202d991e9cf111b256ee343e1b01",
+    "bytes": 530754,
+    "path": "archive/attachments/bff2587af7f3dd477398bde08e4adda51dc0202d991e9cf111b256ee343e1b01.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12380": {
     "status": "downloaded",
@@ -180,10 +198,11 @@
     "checked_at": "2026-11-04T07:30:41.466526+00:00"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12381": {
-    "status": "failed",
+    "status": "blocked",
     "attempts": 1,
     "error": "attachment exceeds per-file archive limit",
-    "next_retry_at": "2026-11-04T09:31:53.209746+00:00"
+    "hold_reason": "size_limit_exceeded",
+    "max_bytes": 8388608
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12382": {
     "status": "downloaded",
@@ -194,46 +213,65 @@
     "checked_at": "2026-11-04T07:30:41.466526+00:00"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12468": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:32:18.669119+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "dc07d5ccac2aab5403ac943744a3284c9b8b76cf762663dbaa48208f197c297a",
+    "bytes": 1648045,
+    "path": "archive/attachments/dc07d5ccac2aab5403ac943744a3284c9b8b76cf762663dbaa48208f197c297a.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12469": {
-    "status": "failed",
+    "status": "blocked",
     "attempts": 1,
     "error": "attachment exceeds per-file archive limit",
-    "next_retry_at": "2026-11-04T09:32:39.702312+00:00"
+    "hold_reason": "size_limit_exceeded",
+    "max_bytes": 8388608
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12808": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:32:44.593339+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "b6ed9249c5cc96e816572ecc46f4c2c5b6b428988d0872f96a8552b1057166f5",
+    "bytes": 1329144,
+    "path": "archive/attachments/b6ed9249c5cc96e816572ecc46f4c2c5b6b428988d0872f96a8552b1057166f5.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=12848": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:32:49.433502+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "8ab65521437cdee72ea33e6bb22f50dcdbb382009cc8a3be4847266e7ce8d96b",
+    "bytes": 1277857,
+    "path": "archive/attachments/8ab65521437cdee72ea33e6bb22f50dcdbb382009cc8a3be4847266e7ce8d96b.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=13609": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:32:51.953748+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "da8c53d8424cdd42c4adad8904101599593331a9c033c8f5e60dfa8add130790",
+    "bytes": 449541,
+    "path": "archive/attachments/da8c53d8424cdd42c4adad8904101599593331a9c033c8f5e60dfa8add130790.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=13691": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:32:56.119340+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "63658bbab4f774917e8fe615a7f4c8d6a8240aebd4ac54864e01f9325b184626",
+    "bytes": 978079,
+    "path": "archive/attachments/63658bbab4f774917e8fe615a7f4c8d6a8240aebd4ac54864e01f9325b184626.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=13725": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:33:00.033524+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "8808a825697dc37c18303a2590b4203719c6e05a901f6b4f7451d04b44951798",
+    "bytes": 936976,
+    "path": "archive/attachments/8808a825697dc37c18303a2590b4203719c6e05a901f6b4f7451d04b44951798.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=15371": {
     "status": "downloaded",
@@ -244,16 +282,22 @@
     "checked_at": "2026-11-04T07:30:41.466526+00:00"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=15372": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:33:07.820196+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "b4615570f320a536a9fea2823872ef2863c22186e60ee6e56684a41124f42987",
+    "bytes": 1150816,
+    "path": "archive/attachments/b4615570f320a536a9fea2823872ef2863c22186e60ee6e56684a41124f42987.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=15375": {
-    "status": "failed",
-    "attempts": 1,
-    "error": "unexpected document signature; not counted as downloaded",
-    "next_retry_at": "2026-11-04T09:33:09.813677+00:00"
+    "status": "downloaded",
+    "attempts": 2,
+    "sha256": "1cddccb6bf765d8eabd3aba1ed01c599f344a5017407e2fb571c9d7e3484e8a2",
+    "bytes": 319727,
+    "path": "archive/attachments/1cddccb6bf765d8eabd3aba1ed01c599f344a5017407e2fb571c9d7e3484e8a2.bin",
+    "checked_at": "2026-11-04T10:19:47.416544+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=debate&fid=15378": {
     "status": "pending",
