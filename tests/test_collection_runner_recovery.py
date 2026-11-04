@@ -47,4 +47,8 @@ class StartupRecoveryTests(unittest.TestCase):
   f,state=self.partial();f['jobs'][0]['steps']=[{'name':'Validate code and saved archive','conclusion':'failure'}];self.assertEqual(self.decide(state=state,failure=f)['mode'],'skip')
  def test_partial_recovery_respects_existing_backoff(self):
   f,state=self.partial();old={'schema':r.SCHEMA,'attempt_day':p.day(self.now),'retry_attempts_today':1,'next_retry_at':(self.now+dt.timedelta(hours=1)).isoformat()};self.assertEqual(self.decide(state=state,recovery=old,failure=f)['mode'],'skip')
+ def test_continue_on_error_failure_uses_explicit_failure_surface(self):
+  f,state=self.partial();f['jobs'][0]['steps']=[{'name':'Collect into isolated candidate and publish only after validation','conclusion':'success'},{'name':'Surface collection failure after preserving retry state','conclusion':'failure'}];self.assertEqual(self.decide(state=state,failure=f)['targets'],['media','attachments'])
+ def test_successful_collection_without_failure_surface_not_guessed(self):
+  f,state=self.partial();f['jobs'][0]['steps']=[{'name':'Collect into isolated candidate and publish only after validation','conclusion':'success'},{'name':'Preserve collection report','conclusion':'failure'}];self.assertEqual(self.decide(state=state,failure=f)['mode'],'skip')
 if __name__=='__main__':unittest.main()

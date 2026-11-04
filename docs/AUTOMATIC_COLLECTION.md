@@ -152,3 +152,5 @@ The same three-per-Korean-day reservation budget and backoff remain in force.
 The affected run had five durable families, so its eligible remainder is media
 and attachments only. A local PASS or a diagnostic artifact is not remote
 publication success.
+
+GitHub marks a continue-on-error collection step successful in its job API even when the command failed. Interrupted-cycle detection also accepts the explicit `Surface collection failure after preserving retry state` failure step, together with an entered collection step and durable partial checkpoints. An unrelated artifact-upload failure alone does not qualify.

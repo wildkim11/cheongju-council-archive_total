@@ -21,7 +21,10 @@ def decide(state,recovery,failure,now):
  collect=[j for j in failure.get('jobs',[])if j.get('name')=='collect']
  if len(collect)!=1 or collect[0].get('status')!='completed'or collect[0].get('conclusion')not in {'cancelled','failure','timed_out'}:return result
  steps=collect[0].get('steps');startup=steps==[]
- interrupted=isinstance(steps,list)and any(s.get('name')=='Collect into isolated candidate and publish only after validation'and s.get('conclusion')in {'failure','cancelled','timed_out'}for s in steps)
+ surfaced=isinstance(steps,list)and any(s.get('name')=='Surface collection failure after preserving retry state'and s.get('conclusion')=='failure'for s in steps)
+ # continue-on-error makes the collection step appear successful in the API;
+ # the explicit final failure step preserves its actual outcome.
+ interrupted=isinstance(steps,list)and any(s.get('name')=='Collect into isolated candidate and publish only after validation'and(s.get('conclusion')in {'failure','cancelled','timed_out'}or(s.get('conclusion')=='success'and surfaced))for s in steps)
  if not startup and not interrupted:return result
  start=stamp(failure['created_at']);end=stamp(failure['updated_at'])
  if end<start or end>now or now-end>dt.timedelta(hours=24):return result
