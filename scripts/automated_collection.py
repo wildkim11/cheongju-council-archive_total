@@ -233,6 +233,8 @@ def validate_candidate(stage,oldroot):
     qa['temporal_context']=build_activity_temporal_context.build(stage)
     import build_profile_history_evidence
     qa['profile_history_evidence']=build_profile_history_evidence.build(stage)
+    import audit_council_period_sources
+    qa['council_period_source_evidence']=audit_council_period_sources.audit(stage)
     import build_analysis_activity_gate
     qa['analysis_activity_gate']=build_analysis_activity_gate.build(stage)
     import build_member_activity_counts

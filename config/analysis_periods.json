@@ -1,6 +1,131 @@
 {
   "schema": "cheongju-analysis-period-registry/1",
-  "periods": [],
-  "status": "awaiting_archived_official_period_evidence",
-  "note": "No term or half dates inferred from July conventions. Empty registry deliberately holds term selectors."
+  "periods": [
+    {
+      "council_scope": "cheongju_integrated",
+      "term": 1,
+      "half": "whole",
+      "start_date": "2014-07-01",
+      "end_date": "2018-06-30",
+      "period_precision": "exact_date",
+      "source_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsTreeGnrtn.php",
+      "record_ref": "official-root-tree:cheongju_integrated:term-1:whole",
+      "period_kind": "officially_displayed_full_term_not_elapsed_service",
+      "source_evidence": [
+        {
+          "source_manifest": "archive/source_responses/manifests/31c0e073487975297382bc4c44fb5dd1a92449ba81a316a56b4ff88ce992b155.json",
+          "manifest_sha256": "31c0e073487975297382bc4c44fb5dd1a92449ba81a316a56b4ff88ce992b155",
+          "source_response_path": "archive/source_responses/2be3e81c8ff7b4a89fafa1ce61050940c77f82cb31c8a82a898617892fa93258.html.gz",
+          "decoded_utf8_sha256": "2be3e81c8ff7b4a89fafa1ce61050940c77f82cb31c8a82a898617892fa93258",
+          "bytes": 2011,
+          "node_index": 3,
+          "displayed_label": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회)"
+        },
+        {
+          "source_manifest": "archive/source_responses/manifests/4e050a1ddc307c358a00ca7681721c9f2d70e44e8ed032137098b2e7800afd64.json",
+          "manifest_sha256": "4e050a1ddc307c358a00ca7681721c9f2d70e44e8ed032137098b2e7800afd64",
+          "source_response_path": "archive/source_responses/23f7365d534075b1156ac9774982da7cda9f64a2c00e40a10779e2a22a2d1ffc.html.gz",
+          "decoded_utf8_sha256": "23f7365d534075b1156ac9774982da7cda9f64a2c00e40a10779e2a22a2d1ffc",
+          "bytes": 2011,
+          "node_index": 3,
+          "displayed_label": "제1대 의회(2014. 07. 01 ~ 2018. 06. 30 : 제001회 ~ 제034회)"
+        }
+      ]
+    },
+    {
+      "council_scope": "cheongju_integrated",
+      "term": 2,
+      "half": "whole",
+      "start_date": "2018-07-01",
+      "end_date": "2022-06-30",
+      "period_precision": "exact_date",
+      "source_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsTreeGnrtn.php",
+      "record_ref": "official-root-tree:cheongju_integrated:term-2:whole",
+      "period_kind": "officially_displayed_full_term_not_elapsed_service",
+      "source_evidence": [
+        {
+          "source_manifest": "archive/source_responses/manifests/31c0e073487975297382bc4c44fb5dd1a92449ba81a316a56b4ff88ce992b155.json",
+          "manifest_sha256": "31c0e073487975297382bc4c44fb5dd1a92449ba81a316a56b4ff88ce992b155",
+          "source_response_path": "archive/source_responses/2be3e81c8ff7b4a89fafa1ce61050940c77f82cb31c8a82a898617892fa93258.html.gz",
+          "decoded_utf8_sha256": "2be3e81c8ff7b4a89fafa1ce61050940c77f82cb31c8a82a898617892fa93258",
+          "bytes": 2011,
+          "node_index": 2,
+          "displayed_label": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회)"
+        },
+        {
+          "source_manifest": "archive/source_responses/manifests/4e050a1ddc307c358a00ca7681721c9f2d70e44e8ed032137098b2e7800afd64.json",
+          "manifest_sha256": "4e050a1ddc307c358a00ca7681721c9f2d70e44e8ed032137098b2e7800afd64",
+          "source_response_path": "archive/source_responses/23f7365d534075b1156ac9774982da7cda9f64a2c00e40a10779e2a22a2d1ffc.html.gz",
+          "decoded_utf8_sha256": "23f7365d534075b1156ac9774982da7cda9f64a2c00e40a10779e2a22a2d1ffc",
+          "bytes": 2011,
+          "node_index": 2,
+          "displayed_label": "제2대 의회(2018. 07. 01 ~ 2022. 06. 30 : 제035회 ~ 제070회)"
+        }
+      ]
+    },
+    {
+      "council_scope": "cheongju_integrated",
+      "term": 3,
+      "half": "whole",
+      "start_date": "2022-07-01",
+      "end_date": "2026-06-30",
+      "period_precision": "exact_date",
+      "source_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsTreeGnrtn.php",
+      "record_ref": "official-root-tree:cheongju_integrated:term-3:whole",
+      "period_kind": "officially_displayed_full_term_not_elapsed_service",
+      "source_evidence": [
+        {
+          "source_manifest": "archive/source_responses/manifests/31c0e073487975297382bc4c44fb5dd1a92449ba81a316a56b4ff88ce992b155.json",
+          "manifest_sha256": "31c0e073487975297382bc4c44fb5dd1a92449ba81a316a56b4ff88ce992b155",
+          "source_response_path": "archive/source_responses/2be3e81c8ff7b4a89fafa1ce61050940c77f82cb31c8a82a898617892fa93258.html.gz",
+          "decoded_utf8_sha256": "2be3e81c8ff7b4a89fafa1ce61050940c77f82cb31c8a82a898617892fa93258",
+          "bytes": 2011,
+          "node_index": 1,
+          "displayed_label": "제3대 의회(2022. 07. 01 ~ 2026. 06. 30 : 제071회 ~ 제102회)"
+        },
+        {
+          "source_manifest": "archive/source_responses/manifests/4e050a1ddc307c358a00ca7681721c9f2d70e44e8ed032137098b2e7800afd64.json",
+          "manifest_sha256": "4e050a1ddc307c358a00ca7681721c9f2d70e44e8ed032137098b2e7800afd64",
+          "source_response_path": "archive/source_responses/23f7365d534075b1156ac9774982da7cda9f64a2c00e40a10779e2a22a2d1ffc.html.gz",
+          "decoded_utf8_sha256": "23f7365d534075b1156ac9774982da7cda9f64a2c00e40a10779e2a22a2d1ffc",
+          "bytes": 2011,
+          "node_index": 1,
+          "displayed_label": "제3대 의회(2022. 07. 01 ~ 2026. 06. 30 : 제071회 ~ 제102회)"
+        }
+      ]
+    },
+    {
+      "council_scope": "cheongju_integrated",
+      "term": 4,
+      "half": "whole",
+      "start_date": "2026-07-01",
+      "end_date": "2030-06-30",
+      "period_precision": "exact_date",
+      "source_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsTreeGnrtn.php",
+      "record_ref": "official-root-tree:cheongju_integrated:term-4:whole",
+      "period_kind": "officially_displayed_full_term_not_elapsed_service",
+      "source_evidence": [
+        {
+          "source_manifest": "archive/source_responses/manifests/31c0e073487975297382bc4c44fb5dd1a92449ba81a316a56b4ff88ce992b155.json",
+          "manifest_sha256": "31c0e073487975297382bc4c44fb5dd1a92449ba81a316a56b4ff88ce992b155",
+          "source_response_path": "archive/source_responses/2be3e81c8ff7b4a89fafa1ce61050940c77f82cb31c8a82a898617892fa93258.html.gz",
+          "decoded_utf8_sha256": "2be3e81c8ff7b4a89fafa1ce61050940c77f82cb31c8a82a898617892fa93258",
+          "bytes": 2011,
+          "node_index": 0,
+          "displayed_label": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회)"
+        },
+        {
+          "source_manifest": "archive/source_responses/manifests/4e050a1ddc307c358a00ca7681721c9f2d70e44e8ed032137098b2e7800afd64.json",
+          "manifest_sha256": "4e050a1ddc307c358a00ca7681721c9f2d70e44e8ed032137098b2e7800afd64",
+          "source_response_path": "archive/source_responses/23f7365d534075b1156ac9774982da7cda9f64a2c00e40a10779e2a22a2d1ffc.html.gz",
+          "decoded_utf8_sha256": "23f7365d534075b1156ac9774982da7cda9f64a2c00e40a10779e2a22a2d1ffc",
+          "bytes": 2011,
+          "node_index": 0,
+          "displayed_label": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회)"
+        }
+      ]
+    }
+  ],
+  "status": "whole_integrated_terms_verified_halves_awaiting_evidence",
+  "note": "Whole terms reproduce explicit preserved official root-tree labels. Half boundaries remain held. Full advertised term includes future dates and is not elapsed personal service."
 }

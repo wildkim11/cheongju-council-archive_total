@@ -1,10 +1,6 @@
 name: Capture official council period sources on macOS
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths:
-      - scripts/collect_council_period_sources.py
-      - .github/workflows/collect-council-period-sources-once.yml
+  # Initial bounded capture completed; subsequent source queries are manual.
   workflow_dispatch:
 permissions:
   contents: write
@@ -26,12 +22,15 @@ jobs:
       - run: python -m unittest discover -s tests -p test_council_period_sources.py -v
       - name: Capture at most three observed navigation pages without retries
         run: python -u scripts/collect_council_period_sources.py
+      - name: Verify captured response hashes and extract review-only mentions
+        if: always()
+        run: python -u scripts/audit_council_period_sources.py
       - name: Preserve captured sources and diagnostic only
         if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add archive/source_responses reports/council-period-source-collection-latest.json
+          git add archive/source_responses reports/council-period-source-collection-latest.json reports/council-period-source-evidence-latest.json
           if ! git diff --cached --quiet; then
             git commit -m 'data: preserve official council period pages for offline review'
             git fetch origin feature/archive-foundation
@@ -42,4 +41,6 @@ jobs:
         if: always()
         with:
           name: council-period-source-evidence
-          path: reports/council-period-source-collection-latest.json
+          path: |
+            reports/council-period-source-collection-latest.json
+            reports/council-period-source-evidence-latest.json
