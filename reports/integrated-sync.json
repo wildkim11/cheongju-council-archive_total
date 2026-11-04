@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T17:56:14.168079+09:00",
+  "checked_at": "2026-11-04T14:48:25.156787+09:00",
   "mode": "incremental",
   "council_scope": "cheongju_integrated",
   "listed": 2353,
@@ -11,44 +11,31 @@
     "3": 855,
     "4": 64
   },
-  "new": [
+  "new": [],
+  "changed": [
     "cheongju_integrated:minutes-4024",
     "cheongju_integrated:minutes-4025",
-    "cheongju_integrated:minutes-4026",
-    "cheongju_integrated:minutes-4027",
-    "cheongju_integrated:minutes-4030",
-    "cheongju_integrated:minutes-4031",
-    "cheongju_integrated:minutes-4032",
-    "cheongju_integrated:minutes-4033",
-    "cheongju_integrated:minutes-4034",
-    "cheongju_integrated:minutes-4035",
-    "cheongju_integrated:minutes-4037",
-    "cheongju_integrated:minutes-4038",
-    "cheongju_integrated:minutes-4039",
-    "cheongju_integrated:minutes-4040"
+    "cheongju_integrated:minutes-4039"
   ],
-  "changed": [],
   "superseded": {},
   "bodies_checked": 28,
   "forced_body_checks": [
-    "cheongju_integrated:minutes-1988",
-    "cheongju_integrated:minutes-1989",
-    "cheongju_integrated:minutes-199",
-    "cheongju_integrated:minutes-1990",
-    "cheongju_integrated:minutes-1995",
-    "cheongju_integrated:minutes-1996",
-    "cheongju_integrated:minutes-1997",
-    "cheongju_integrated:minutes-1998"
+    "cheongju_integrated:minutes-20",
+    "cheongju_integrated:minutes-200",
+    "cheongju_integrated:minutes-2002",
+    "cheongju_integrated:minutes-2003",
+    "cheongju_integrated:minutes-2004",
+    "cheongju_integrated:minutes-2005",
+    "cheongju_integrated:minutes-2006",
+    "cheongju_integrated:minutes-2007"
   ],
   "history_rows": 0,
-  "revision_rows": 5,
+  "revision_rows": 8,
   "migrated_old_paths": [],
   "revised": [
-    "cheongju_integrated:minutes-4018",
-    "cheongju_integrated:minutes-4019",
-    "cheongju_integrated:minutes-4020",
-    "cheongju_integrated:minutes-4021",
-    "cheongju_integrated:minutes-4022"
+    "cheongju_integrated:minutes-4024",
+    "cheongju_integrated:minutes-4025",
+    "cheongju_integrated:minutes-4039"
   ],
   "inventory_qa": {
     "term_inventory_count": 2353,

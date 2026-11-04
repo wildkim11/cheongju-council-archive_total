@@ -3,18 +3,18 @@
   "cursor": 1,
   "families": {
     "minutes": {
-      "attempts": 2,
+      "attempts": 3,
       "consecutive_failures": 0,
-      "last_success_at": "2026-11-03T08:56:11.914609+00:00"
+      "last_success_at": "2026-11-04T05:48:16.956828+00:00"
     }
   },
   "last_run": {
     "family": "minutes",
-    "started_at": "2026-11-03T08:56:11.914609+00:00",
+    "started_at": "2026-11-04T05:48:16.956828+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
-      "checked_at": "2026-11-03T17:56:14.168079+09:00",
+      "checked_at": "2026-11-04T14:48:25.156787+09:00",
       "mode": "incremental",
       "council_scope": "cheongju_integrated",
       "listed": 2353,
@@ -26,44 +26,31 @@
         "3": 855,
         "4": 64
       },
-      "new": [
+      "new": [],
+      "changed": [
         "cheongju_integrated:minutes-4024",
         "cheongju_integrated:minutes-4025",
-        "cheongju_integrated:minutes-4026",
-        "cheongju_integrated:minutes-4027",
-        "cheongju_integrated:minutes-4030",
-        "cheongju_integrated:minutes-4031",
-        "cheongju_integrated:minutes-4032",
-        "cheongju_integrated:minutes-4033",
-        "cheongju_integrated:minutes-4034",
-        "cheongju_integrated:minutes-4035",
-        "cheongju_integrated:minutes-4037",
-        "cheongju_integrated:minutes-4038",
-        "cheongju_integrated:minutes-4039",
-        "cheongju_integrated:minutes-4040"
+        "cheongju_integrated:minutes-4039"
       ],
-      "changed": [],
       "superseded": {},
       "bodies_checked": 28,
       "forced_body_checks": [
-        "cheongju_integrated:minutes-1988",
-        "cheongju_integrated:minutes-1989",
-        "cheongju_integrated:minutes-199",
-        "cheongju_integrated:minutes-1990",
-        "cheongju_integrated:minutes-1995",
-        "cheongju_integrated:minutes-1996",
-        "cheongju_integrated:minutes-1997",
-        "cheongju_integrated:minutes-1998"
+        "cheongju_integrated:minutes-20",
+        "cheongju_integrated:minutes-200",
+        "cheongju_integrated:minutes-2002",
+        "cheongju_integrated:minutes-2003",
+        "cheongju_integrated:minutes-2004",
+        "cheongju_integrated:minutes-2005",
+        "cheongju_integrated:minutes-2006",
+        "cheongju_integrated:minutes-2007"
       ],
       "history_rows": 0,
-      "revision_rows": 5,
+      "revision_rows": 8,
       "migrated_old_paths": [],
       "revised": [
-        "cheongju_integrated:minutes-4018",
-        "cheongju_integrated:minutes-4019",
-        "cheongju_integrated:minutes-4020",
-        "cheongju_integrated:minutes-4021",
-        "cheongju_integrated:minutes-4022"
+        "cheongju_integrated:minutes-4024",
+        "cheongju_integrated:minutes-4025",
+        "cheongju_integrated:minutes-4039"
       ],
       "inventory_qa": {
         "term_inventory_count": 2353,
@@ -89,11 +76,11 @@
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-03T09:03:46.219722+00:00",
+      "checked_at_utc": "2026-11-04T05:56:49.638996+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
-      "source_file_bytes_checked": 222605800,
+      "source_file_bytes_checked": 222605722,
       "sha256_file_verified": 2353,
       "sha256_content_verified": 2353,
       "export_rows_checked": 2353,
@@ -101,7 +88,7 @@
       "published": 2333,
       "provisional": 20,
       "superseded": 0,
-      "revisions_verified": 5,
+      "revisions_verified": 8,
       "by_term": {
         "1": 663,
         "2": 771,
@@ -217,11 +204,429 @@
       "errors": [],
       "warnings": [],
       "error_count": 0,
-      "warning_count": 0
+      "warning_count": 0,
+      "activity_spacing_linking": {
+        "status": "PASS",
+        "method": "entire_activity_body_exact_spacing_compacted_digit_boundaries",
+        "added_links": 129,
+        "diagnosis_counts": {
+          "different_body_or_punctuation": 498,
+          "resolved_unique_complete_spacing_match": 129,
+          "no_same_date_meeting": 2
+        },
+        "source_linked_rows": 159,
+        "unassigned_rows": 516,
+        "official_site_requests": 0,
+        "unassigned_written_questions_requiring_attachment_evidence": 16
+      },
+      "question_answer_parts": {
+        "schema": "cheongju-question-answer-parts/1",
+        "status": "PASS",
+        "source_dataset_sha256": "a7e8f95c7c5ec3a4ac2adf687bee3882e126801dd29dc20d2cd414dba1239035",
+        "source_index_sha256": "0c5bc269043ae774fe0e8f67ed11ad356ba1774f9bd96e4535822c4d5dd9b2f2",
+        "reviewed_records": 85,
+        "split_records": 13,
+        "ambiguous_records": 0,
+        "unverified_records": 72,
+        "identity_promotions": 0,
+        "date_changes": 0,
+        "official_site_requests": 0,
+        "script_sha256": "44118e089e05aa9c06eb3c481908e3c35f072b8b27b64d61fe0c4dec709a6fd4"
+      },
+      "question_identity_evidence": {
+        "schema": "cheongju-question-identity-evidence-review/1",
+        "status": "PASS",
+        "review_rows": 13,
+        "source_term_candidate_confirmed": 13,
+        "multiple_existing_candidates_narrowed": 9,
+        "identity_promotions": 0,
+        "date_changes": 0,
+        "official_site_requests": 0,
+        "source_roles_sha256": "bded06ccae383915596828475e2254f168be1811109af74a82342e1f96629e46",
+        "source_question_parts_sha256": "c36a5f847ff0b23f4b8f9d8e8b9d5deb7ec263daed6fa06f89b01e86629bc65c",
+        "script_sha256": "2777d1947df1c29de6f5d97b03430d069c213b5fcf6700f08f88f27d7d84834f"
+      },
+      "question_answer_linking": {
+        "schema": "cheongju-question-answer-links/1",
+        "status": "PASS",
+        "method": "complete_question_prefix_and_verified_executive_answer_tail",
+        "added_links": 13,
+        "added_activity_ids": [
+          "city_questions:18:speaker",
+          "city_questions:21:speaker",
+          "city_questions:26:speaker",
+          "city_questions:27:speaker",
+          "city_questions:30:speaker",
+          "city_questions:33:speaker",
+          "city_questions:34:speaker",
+          "city_questions:62:speaker",
+          "city_questions:60:speaker",
+          "city_questions:63:speaker",
+          "city_questions:66:speaker",
+          "city_questions:67:speaker",
+          "city_questions:68:speaker"
+        ],
+        "held_activity_ids": [],
+        "exact_tenure_intervals_added": 0,
+        "date_changes": 0,
+        "official_site_requests": 0
+      },
+      "processing": {
+        "status": "PASS",
+        "segments": 664179,
+        "paragraphs": 872589,
+        "meetings": 2353,
+        "activity_role_rows": 12084,
+        "exact_body_links_verified": 172,
+        "verified_originals": 2353,
+        "official_site_requests": 0,
+        "analysis_classification_complete": false
+      },
+      "activity_date_review": {
+        "status": "PASS",
+        "schema": "cheongju-activity-date-review/1",
+        "source_role_sha256": "872fa9f8be915fd93e800632ed174a03033b2bcaca658bd424a5bda7f66d33e5",
+        "source_index_sha256": "0c5bc269043ae774fe0e8f67ed11ad356ba1774f9bd96e4535822c4d5dd9b2f2",
+        "review_rows": 2,
+        "diagnosis_counts": {
+          "unique_cross_date_complete_body_match_review": 2
+        },
+        "date_changes": 0,
+        "identity_promotions": 0,
+        "official_site_requests": 0
+      },
+      "single_activity_differences": {
+        "schema": "cheongju-single-activity-difference-review/1",
+        "status": "PASS",
+        "review_rows": 36,
+        "classification_counts": {
+          "word_or_particle_difference": 24,
+          "recording_stage_note": 2,
+          "percentage_notation": 1,
+          "redacted_person_name": 1,
+          "parenthesized_latin_annotation": 5,
+          "symbol_or_middle_dot": 2,
+          "numeric_whitespace_boundary": 1
+        },
+        "source_roles_sha256": "872fa9f8be915fd93e800632ed174a03033b2bcaca658bd424a5bda7f66d33e5",
+        "source_index_sha256": "0c5bc269043ae774fe0e8f67ed11ad356ba1774f9bd96e4535822c4d5dd9b2f2",
+        "script_sha256": "8ec4d78039c829e9de59a64d782fab925592f471b78be4f9960d3cb7a472b4db",
+        "identity_promotions": 0,
+        "date_changes": 0,
+        "official_site_requests": 0
+      },
+      "minutes_text": {
+        "schema": "cheongju-meeting-text-packs/1",
+        "source_index_sha256": "0c5bc269043ae774fe0e8f67ed11ad356ba1774f9bd96e4535822c4d5dd9b2f2",
+        "rows": 2353,
+        "parts": [
+          {
+            "term": 1,
+            "file": "term-1.jsonl.gz",
+            "rows": 663,
+            "bytes": 12931300,
+            "sha256": "3317fbf373ad61db9323b5ff693363233174d1c42c11c16420195fb93975af11"
+          },
+          {
+            "term": 2,
+            "file": "term-2.jsonl.gz",
+            "rows": 771,
+            "bytes": 21838055,
+            "sha256": "be888d9ee8eab112f5b66443ed6117529943e46a8ab7960d081150db79486ba1"
+          },
+          {
+            "term": 3,
+            "file": "term-3.jsonl.gz",
+            "rows": 855,
+            "bytes": 22485554,
+            "sha256": "294990bb922354566b621fc3ae8ac695490a23bf77d5ac1ca3334ea6aef20fbf"
+          },
+          {
+            "term": 4,
+            "file": "term-4.jsonl.gz",
+            "rows": 64,
+            "bytes": 1682623,
+            "sha256": "95ea3745c10f4392e2041980826ad202241927b724ad9177f2cd6110d30fa831"
+          }
+        ],
+        "text_bytes": 219522214,
+        "compressed_bytes": 58937532
+      },
+      "temporal_context": {
+        "status": "PASS",
+        "scope": "archived_explicit_dates_only_not_full_history_verification",
+        "activity_rows": 12084,
+        "temporal_conflict_rows": 3,
+        "review_cases": [
+          {
+            "activity_id": "bill:3:2362:person-candidate-df96cce61e8e0128:co_proposer",
+            "person_id": "person-candidate-df96cce61e8e0128",
+            "person_name": "한병수",
+            "date": "2023-04-26",
+            "term": 3,
+            "activity_source_ref": "bill_proposers_member_only:7624",
+            "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2362&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+            "tenure_evidence": [
+              {
+                "row_ref": "tenures:158",
+                "start_date": "2022-07-01",
+                "end_date": "2023-02-01",
+                "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
+                "record_sha256": "f8745ecb042242a238e4b773dfd6efff171a7c694753a4f8165660744fe499ec"
+              }
+            ],
+            "status": "archived_date_conflict_review_required"
+          },
+          {
+            "activity_id": "bill:3:2383:person-candidate-df96cce61e8e0128:co_proposer",
+            "person_id": "person-candidate-df96cce61e8e0128",
+            "person_name": "한병수",
+            "date": "2023-05-22",
+            "term": 3,
+            "activity_source_ref": "bill_proposers_member_only:7729",
+            "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2383&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+            "tenure_evidence": [
+              {
+                "row_ref": "tenures:158",
+                "start_date": "2022-07-01",
+                "end_date": "2023-02-01",
+                "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
+                "record_sha256": "f8745ecb042242a238e4b773dfd6efff171a7c694753a4f8165660744fe499ec"
+              }
+            ],
+            "status": "archived_date_conflict_review_required"
+          },
+          {
+            "activity_id": "bill:3:2449:person-candidate-df96cce61e8e0128:co_proposer",
+            "person_id": "person-candidate-df96cce61e8e0128",
+            "person_name": "한병수",
+            "date": "2023-09-07",
+            "term": 3,
+            "activity_source_ref": "bill_proposers_member_only:7972",
+            "official_url": "https://councilrec.cheongju.go.kr/content/minutes/iframe_bill_view1.html?number=2449&np=1&daesu=3&hugi=&proposer=&committee=&result=&title=&com_code=&man=&m_gubun=&totalrec=1141",
+            "tenure_evidence": [
+              {
+                "row_ref": "tenures:158",
+                "start_date": "2022-07-01",
+                "end_date": "2023-02-01",
+                "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
+                "record_sha256": "f8745ecb042242a238e4b773dfd6efff171a7c694753a4f8165660744fe499ec"
+              }
+            ],
+            "status": "archived_date_conflict_review_required"
+          }
+        ],
+        "group_comparison_ready": 0,
+        "committee_opportunity_ready": 0,
+        "contexts": {
+          "tenures": {
+            "missing_identity_term_or_date": 503,
+            "incomplete_interval": 10950,
+            "archived_explicit_interval": 628,
+            "outside_recorded_intervals": 3
+          },
+          "committee_memberships": {
+            "missing_identity_term_or_date": 503,
+            "no_history_records": 7349,
+            "incomplete_interval": 3351,
+            "partial_interval_evidence": 731,
+            "archived_explicit_interval": 38,
+            "outside_recorded_intervals": 112
+          },
+          "party_memberships": {
+            "missing_identity_term_or_date": 503,
+            "no_history_records": 11058,
+            "incomplete_interval": 523
+          },
+          "district_memberships": {
+            "missing_identity_term_or_date": 503,
+            "incomplete_interval": 10950,
+            "archived_explicit_interval": 621,
+            "no_history_records": 10
+          }
+        },
+        "source_rows": {
+          "tenures": 435,
+          "committee_memberships": 207,
+          "party_memberships": 44,
+          "district_memberships": 167
+        },
+        "official_site_requests": 0
+      },
+      "analysis_activity_gate": {
+        "status": "PASS",
+        "scope": "source_attributed_counts_not_historical_group_or_interest_scores",
+        "source_rows": 12084,
+        "eligible_rows": 11578,
+        "held_rows": 506,
+        "hold_reasons": {
+          "missing_council_scope_or_term": 503,
+          "unresolved_person_id": 503,
+          "outside_recorded_tenure": 3
+        },
+        "kinds": {
+          "five_minute_speech": {
+            "source_rows": 606,
+            "eligible_rows": 188,
+            "held_rows": 418
+          },
+          "city_question": {
+            "source_rows": 85,
+            "eligible_rows": 16,
+            "held_rows": 69
+          },
+          "written_question": {
+            "source_rows": 16,
+            "eligible_rows": 0,
+            "held_rows": 16
+          },
+          "bill": {
+            "source_rows": 11377,
+            "eligible_rows": 11374,
+            "held_rows": 3
+          }
+        },
+        "historical_group_rows": 0,
+        "committee_adjustment_rows": 0,
+        "incomplete_bill_events": {
+          "3:2362": {
+            "source_participant_rows": 43,
+            "eligible_participant_rows": 42,
+            "held_activity_ids": [
+              "bill:3:2362:person-candidate-df96cce61e8e0128:co_proposer"
+            ]
+          },
+          "3:2383": {
+            "source_participant_rows": 43,
+            "eligible_participant_rows": 42,
+            "held_activity_ids": [
+              "bill:3:2383:person-candidate-df96cce61e8e0128:co_proposer"
+            ]
+          },
+          "3:2449": {
+            "source_participant_rows": 42,
+            "eligible_participant_rows": 41,
+            "held_activity_ids": [
+              "bill:3:2449:person-candidate-df96cce61e8e0128:co_proposer"
+            ]
+          }
+        },
+        "official_site_requests": 0
+      },
+      "member_activity_counts": {
+        "status": "PASS",
+        "profile_ids_not_unique_humans": 167,
+        "source_rows": 12084,
+        "eligible_rows": 11578,
+        "held_rows": 506,
+        "unassigned_held_rows": 503,
+        "unique_eligible_bill_events": 886,
+        "eligible_bill_participation_rows": 11374,
+        "official_site_requests": 0
+      },
+      "member_text_inputs": {
+        "schema": "cheongju-member-text-inputs/1",
+        "status": "PASS",
+        "source_records": 691,
+        "eligible_text_records": 188,
+        "held_text_records": 503,
+        "datasets": {
+          "five_minute_speeches": {
+            "records": 606,
+            "eligible": 175,
+            "held": 431
+          },
+          "city_questions": {
+            "records": 85,
+            "eligible": 13,
+            "held": 72
+          }
+        },
+        "hold_reasons": {
+          "member_text_boundary_unverified": 503,
+          "missing_council_scope_or_term": 487,
+          "unresolved_person_id": 487
+        },
+        "identity_promotions": 0,
+        "date_changes": 0,
+        "official_site_requests": 0,
+        "interest_scores_computed": 0
+      },
+      "topic_review_materials": {
+        "schema": "cheongju-topic-review-preparation/1",
+        "status": "PASS",
+        "codebook_version": "cj-topics-0.1",
+        "topic_definitions": 18,
+        "eligible_source_records": 188,
+        "development_sample_records": 40,
+        "reserve_unannotated_records": 148,
+        "sample_strata": [
+          {
+            "term": 1,
+            "source_dataset": "city_questions",
+            "records": 7
+          },
+          {
+            "term": 1,
+            "source_dataset": "five_minute_speeches",
+            "records": 7
+          },
+          {
+            "term": 2,
+            "source_dataset": "city_questions",
+            "records": 3
+          },
+          {
+            "term": 2,
+            "source_dataset": "five_minute_speeches",
+            "records": 7
+          },
+          {
+            "term": 3,
+            "source_dataset": "city_questions",
+            "records": 3
+          },
+          {
+            "term": 3,
+            "source_dataset": "five_minute_speeches",
+            "records": 7
+          },
+          {
+            "term": 4,
+            "source_dataset": "five_minute_speeches",
+            "records": 6
+          }
+        ],
+        "sampling_seed": "cheongju-topic-development-20261104-v1",
+        "sample_purpose": "development_not_unbiased_accuracy_estimation",
+        "completed_human_reviews": 0,
+        "topic_assignments_computed": 0,
+        "interest_scores_computed": 0,
+        "official_site_requests": 0
+      },
+      "topic_review_drafts": {
+        "schema": "cheongju-topic-draft-review/1",
+        "status": "PASS",
+        "archived_draft_records": 40,
+        "source_integrity_valid_drafts": 40,
+        "held_drafts": 0,
+        "evidence_spans_verified": 66,
+        "human_reviews_completed": 0,
+        "confirmed_topic_assignments": 0,
+        "semantic_validation_complete": false,
+        "accuracy_computed": false,
+        "interest_scores_computed": 0,
+        "official_site_requests": 0,
+        "reading_scope": "selected_policy_passages_with_context; full independent human review still required"
+      },
+      "topic_review_ui": {
+        "file": "exports/topic-review/review.html",
+        "human_reviews_created": 0
+      }
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 2073
+      "changed_files": 1069
     }
   }
 }

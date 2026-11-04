@@ -333,5 +333,206 @@
       "superseded_by": null
     },
     "original_source_preserved": true
+  },
+  {
+    "schema": "integrated-meeting-source-revision/1",
+    "meeting_id": "cheongju_integrated:minutes-4025",
+    "source_id": "4025",
+    "recorded_at": "2026-11-04T14:48:25.156787+09:00",
+    "revision_path": "archive/meetings/cheongju_integrated/_revisions/minutes-4025/caeddca2b0bf4cb167e9b781a9489b229efe01e4184e3304c13ca17d013a273c.md",
+    "prior_path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4025.md",
+    "prior_sha256": "caeddca2b0bf4cb167e9b781a9489b229efe01e4184e3304c13ca17d013a273c",
+    "next_sha256": "c4d7523835d728403f26652ef077514f7cad07441795c6f0f35159065f1c56f2",
+    "changed_source_fields": [
+      "content_sha256",
+      "sha256"
+    ],
+    "prior_source_record": {
+      "meeting_id": "cheongju_integrated:minutes-4025",
+      "legacy_minutes_id": "minutes-4025",
+      "council_scope": "cheongju_integrated",
+      "term": 4,
+      "title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 23) 의회운영위원회 제1호(2026.10.12 월요일)",
+      "date": "2026-10-12",
+      "year": 2026,
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "publication_status": "provisional",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4025",
+      "source_id": "4025",
+      "inventory_sources": [
+        "term",
+        "year"
+      ],
+      "path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4025.md",
+      "content_sha256": "56a6503293a26f9cec67d6170dfaa5fa93b0047cacbb5438c55fd192592f3eba",
+      "sha256": "caeddca2b0bf4cb167e9b781a9489b229efe01e4184e3304c13ca17d013a273c",
+      "bytes": 31718,
+      "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
+      "last_checked_at": "2026-11-03T17:56:14.168079+09:00",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "next_source_record": {
+      "meeting_id": "cheongju_integrated:minutes-4025",
+      "legacy_minutes_id": "minutes-4025",
+      "council_scope": "cheongju_integrated",
+      "term": 4,
+      "title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 23) 의회운영위원회 제1호(2026.10.12 월요일)",
+      "date": "2026-10-12",
+      "year": 2026,
+      "committee_code": "C101",
+      "meeting_type": "committee",
+      "publication_status": "provisional",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4025",
+      "source_id": "4025",
+      "inventory_sources": [
+        "term",
+        "year"
+      ],
+      "path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4025.md",
+      "content_sha256": "7f232a6fa829569de5c919bc9ae81b2971555e20053a7f37f9607f7abb3e18e4",
+      "sha256": "c4d7523835d728403f26652ef077514f7cad07441795c6f0f35159065f1c56f2",
+      "bytes": 31670,
+      "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
+      "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "original_source_preserved": true
+  },
+  {
+    "schema": "integrated-meeting-source-revision/1",
+    "meeting_id": "cheongju_integrated:minutes-4024",
+    "source_id": "4024",
+    "recorded_at": "2026-11-04T14:48:25.156787+09:00",
+    "revision_path": "archive/meetings/cheongju_integrated/_revisions/minutes-4024/3b98474cd9111e2b86d601313e6f1132500d37922aad89007646cd9274955594.md",
+    "prior_path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4024.md",
+    "prior_sha256": "3b98474cd9111e2b86d601313e6f1132500d37922aad89007646cd9274955594",
+    "next_sha256": "966d0dc09987348eab67ea3210319cfb128326062a79598049282959af9c2ad2",
+    "changed_source_fields": [
+      "content_sha256",
+      "sha256"
+    ],
+    "prior_source_record": {
+      "meeting_id": "cheongju_integrated:minutes-4024",
+      "legacy_minutes_id": "minutes-4024",
+      "council_scope": "cheongju_integrated",
+      "term": 4,
+      "title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 23) 도시건설위원회 제1호(2026.10.14 수요일)",
+      "date": "2026-10-14",
+      "year": 2026,
+      "committee_code": "C601",
+      "meeting_type": "committee",
+      "publication_status": "provisional",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4024",
+      "source_id": "4024",
+      "inventory_sources": [
+        "term",
+        "year"
+      ],
+      "path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4024.md",
+      "content_sha256": "818fa74efdb62b563d5ba4ce8c23a47e5c9811113e0b3e493f82fe3ee5b6545d",
+      "sha256": "3b98474cd9111e2b86d601313e6f1132500d37922aad89007646cd9274955594",
+      "bytes": 190309,
+      "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
+      "last_checked_at": "2026-11-03T17:56:14.168079+09:00",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "next_source_record": {
+      "meeting_id": "cheongju_integrated:minutes-4024",
+      "legacy_minutes_id": "minutes-4024",
+      "council_scope": "cheongju_integrated",
+      "term": 4,
+      "title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 23) 도시건설위원회 제1호(2026.10.14 수요일)",
+      "date": "2026-10-14",
+      "year": 2026,
+      "committee_code": "C601",
+      "meeting_type": "committee",
+      "publication_status": "provisional",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4024",
+      "source_id": "4024",
+      "inventory_sources": [
+        "term",
+        "year"
+      ],
+      "path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4024.md",
+      "content_sha256": "0bdc8a547f81aa83216b25ad91d8c9b86ffd2bc762e9be4946f52ad5954483ea",
+      "sha256": "966d0dc09987348eab67ea3210319cfb128326062a79598049282959af9c2ad2",
+      "bytes": 190301,
+      "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
+      "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "original_source_preserved": true
+  },
+  {
+    "schema": "integrated-meeting-source-revision/1",
+    "meeting_id": "cheongju_integrated:minutes-4039",
+    "source_id": "4039",
+    "recorded_at": "2026-11-04T14:48:25.156787+09:00",
+    "revision_path": "archive/meetings/cheongju_integrated/_revisions/minutes-4039/bf52b0f7e08201bf4eec9eb0c1d7c8a7dfc910b440221afd6978f3e5e94e11e1.md",
+    "prior_path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4039.md",
+    "prior_sha256": "bf52b0f7e08201bf4eec9eb0c1d7c8a7dfc910b440221afd6978f3e5e94e11e1",
+    "next_sha256": "1ef8bc052306fa694bcdd0a434f78b51818d4a17df1e48fd991a059f0f511311",
+    "changed_source_fields": [
+      "content_sha256",
+      "sha256"
+    ],
+    "prior_source_record": {
+      "meeting_id": "cheongju_integrated:minutes-4039",
+      "legacy_minutes_id": "minutes-4039",
+      "council_scope": "cheongju_integrated",
+      "term": 4,
+      "title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 23) 본회의 제2호(2026.10.23 금요일)",
+      "date": "2026-10-23",
+      "year": 2026,
+      "committee_code": "A010",
+      "meeting_type": "plenary",
+      "publication_status": "provisional",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4039",
+      "source_id": "4039",
+      "inventory_sources": [
+        "term",
+        "year"
+      ],
+      "path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4039.md",
+      "content_sha256": "eda6c8ad4b1d3642f46aae92e069be5836669a98d5ccd2cc1a43bf2d8324c0e0",
+      "sha256": "bf52b0f7e08201bf4eec9eb0c1d7c8a7dfc910b440221afd6978f3e5e94e11e1",
+      "bytes": 156823,
+      "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
+      "last_checked_at": "2026-11-03T17:56:14.168079+09:00",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "next_source_record": {
+      "meeting_id": "cheongju_integrated:minutes-4039",
+      "legacy_minutes_id": "minutes-4039",
+      "council_scope": "cheongju_integrated",
+      "term": 4,
+      "title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 23) 본회의 제2호(2026.10.23 금요일)",
+      "date": "2026-10-23",
+      "year": 2026,
+      "committee_code": "A010",
+      "meeting_type": "plenary",
+      "publication_status": "provisional",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4039",
+      "source_id": "4039",
+      "inventory_sources": [
+        "term",
+        "year"
+      ],
+      "path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4039.md",
+      "content_sha256": "aaa059d85656c4c30480bf5c1984049f817856e5d3987f5402189102b8b2d7c2",
+      "sha256": "1ef8bc052306fa694bcdd0a434f78b51818d4a17df1e48fd991a059f0f511311",
+      "bytes": 156801,
+      "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
+      "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "original_source_preserved": true
   }
 ]
