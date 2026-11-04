@@ -193,6 +193,8 @@ def validate_candidate(stage,oldroot):
     qa['temporal_context']=build_activity_temporal_context.build(stage)
     import build_analysis_activity_gate
     qa['analysis_activity_gate']=build_analysis_activity_gate.build(stage)
+    import build_member_activity_counts
+    qa['member_activity_counts']=build_member_activity_counts.build(stage)
     return qa
 
 def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retry_now=False,retry_attempt=False):
