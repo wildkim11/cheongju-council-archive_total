@@ -195,6 +195,9 @@ def validate_candidate(stage,oldroot):
     import audit_written_question_links
     qa['written_question_links']=audit_written_question_links.build(stage)
     if qa['written_question_links']['status']!='PASS':raise ValueError('written question link provenance audit failed')
+    import audit_attachment_downloads
+    qa['attachment_downloads']=audit_attachment_downloads.build(stage)
+    if qa['attachment_downloads']['status']=='INTEGRITY_ERROR':raise ValueError('attachment download integrity audit failed')
     # Offline processing consumes only this verified candidate, before publication.
     import process_meeting_segments,verify_processing
     process_meeting_segments.process(stage)

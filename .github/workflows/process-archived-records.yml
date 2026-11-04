@@ -3,6 +3,8 @@ on:
   push:
     branches: [feature/archive-foundation]
     paths:
+      - scripts/audit_attachment_downloads.py
+      - tests/test_attachment_download_audit.py
       - scripts/audit_written_question_links.py
       - tests/test_audit_written_question_links.py
       - scripts/process_meeting_segments.py
@@ -67,6 +69,8 @@ jobs:
           python -m unittest discover -s tests
           python scripts/validate_archive.py
           python scripts/audit_stage_c.py --output /tmp/processing-source-qa.json
+      - name: Verify attachment queue and preserved downloaded bytes
+        run: python scripts/audit_attachment_downloads.py --strict
       - name: Verify written question links against preserved official responses
         run: python scripts/audit_written_question_links.py --strict
       - name: Generate source-coordinate segments and activity roles
@@ -106,7 +110,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add reports/written-question-link-audit.json reports/topic-draft-review-latest.json exports/topic-review reports/topic-review-materials-latest.json reports/question-answer-links-latest.json reports/question-identity-evidence-review.json reports/member-text-inputs-latest.json reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
+          git add reports/attachment-download-audit.json reports/written-question-link-audit.json reports/topic-draft-review-latest.json exports/topic-review reports/topic-review-materials-latest.json reports/question-answer-links-latest.json reports/question-identity-evidence-review.json reports/member-text-inputs-latest.json reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "data: verified speech segments and source-backed activity roles"
             bash scripts/push_collected_snapshot.sh

@@ -154,3 +154,20 @@ and attachments only. A local PASS or a diagnostic artifact is not remote
 publication success.
 
 GitHub marks a continue-on-error collection step successful in its job API even when the command failed. Interrupted-cycle detection also accepts the explicit `Surface collection failure after preserving retry state` failure step, together with an entered collection step and durable partial checkpoints. An unrelated artifact-upload failure alone does not qualify.
+
+
+## Attachment download coverage and integrity (2026-11-04)
+
+`scripts/audit_attachment_downloads.py` audits the saved attachment queue without
+network requests. Missing queue means NOT_COLLECTED; an empty queue is not full
+coverage. Downloaded URL count, distinct content files, pending and failed URLs
+are separate. Saved file paths, SHA-256, byte sizes and PDF/ZIP/OLE headers are
+checked. A missing, altered or unexpected file is an integrity error, blocking
+candidate publication. The audit is deterministic for the saved snapshot.
+
+A valid queue with remaining pending/failed files can pass snapshot integrity,
+but `download_queue_complete` stays false. Container header/hash validation is
+not text extraction or semantic/content verification. The existing 20-attempt
+and 8-MiB-per-file limits remain unchanged; source-family success must not be
+presented as all historical attachments downloaded. Only the macOS collector
+fetches official attachments; this audit reads preserved local bytes only.
