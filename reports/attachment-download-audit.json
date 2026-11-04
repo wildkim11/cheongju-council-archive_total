@@ -4,6 +4,7 @@
   "download_queue_complete": false,
   "held": [],
   "held_records": 0,
+  "image_decoding_verified": false,
   "note": "Checks archived bytes and container headers only. A successful queue snapshot is not full download coverage or document-content validation.",
   "official_site_requests": 0,
   "queue_present": true,
@@ -13,6 +14,7 @@
   "source_queue_sha256": "a28d9da291acdcb45c664f38453147f2bc3cbed91ab22522f9b4157aa3b5f15f",
   "status": "PASS",
   "status_counts": {
+    "blocked": 0,
     "downloaded": 4,
     "failed": 16,
     "pending": 1871
