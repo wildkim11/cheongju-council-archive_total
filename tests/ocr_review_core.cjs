@@ -1,0 +1,15 @@
+const assert=require('assert'),api=require('../web/ocr_review_core.js');
+const packet='a'.repeat(64),r={key:'record-1',task:{source_sha256:'b'.repeat(64)},raster:{pixel_sha256:'c'.repeat(64)},ocr_document_sha256:'d'.repeat(64),ocr_text:'원래 OCR'};
+let x=api.blank(r,packet);assert.equal(x.status,'unreviewed');assert.equal(x.analysis_usable,false);
+assert.throws(()=>api.mark(x,'checked_transcription',r,packet),/검토자/);
+x=api.edit(x,'reviewer','test reviewer');x=api.edit(x,'source_checked',true);x=api.mark(x,'checked_transcription',r,packet);assert.equal(x.semantic_verified,false);
+const edited=api.edit(x,'corrected_text','수정문');assert.equal(edited.status,'draft');assert.equal(edited.source_checked,false);
+assert.throws(()=>api.mark(api.blank(r,packet),'held',r,packet),/사유/);
+assert.throws(()=>api.validate({...x,analysis_usable:true},r,packet),/승인/);
+assert.throws(()=>api.importRows(JSON.stringify({...x,packet_sha256:'e'.repeat(64)}),[r],{},packet),/다른/);
+assert.throws(()=>api.importRows(JSON.stringify(x)+'\n'+JSON.stringify(x),[r,r],{},packet),/중복/);
+const backup=JSON.stringify({schema:'cheongju-ocr-review-backup/1',packet_sha256:packet,records:[x]});assert.equal(api.importRows(backup,[r],{},packet)[r.key].status,'checked_transcription');
+assert.throws(()=>api.validate({...x,source_sha256:'f'.repeat(64)},r,packet),/다른/);
+const old={[r.key]:api.blank(r,packet)},r2={...r,key:'record-2'};assert.throws(()=>api.importRows(JSON.stringify(x)+'\n'+JSON.stringify({...x,key:r2.key,source_sha256:'bad'}),[r,r2],old,packet));assert.equal(old[r.key].status,'unreviewed');
+assert.throws(()=>api.validate({...x,status:'approved'},r,packet),/형식/);
+console.log('12 OCR review-state checks passed');
