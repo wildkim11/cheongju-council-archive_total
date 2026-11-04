@@ -29,9 +29,8 @@ def sample(records,target=40,question_cap=13):
   used={r['activity_id']for r in chosen};chosen+=balanced([r for r in records if r['activity_id']not in used],target-len(chosen))
  return chosen
 
-def validate_annotation(a,record,book,book_hash):
+def validate_topic_evidence(a,record,book,book_hash):
  if a.get('activity_id')!=record['activity_id']or a.get('member_text_sha256')!=record['member_text_sha256']or a.get('codebook_sha256')!=book_hash:raise ValueError('annotation source/codebook version mismatch')
- if a.get('status')!='completed'or a.get('review_origin')!='human'or not isinstance(a.get('reviewer_id'),str)or not a['reviewer_id'].strip():raise ValueError('human review not completed')
  allowed={t['id']for t in book['topics']};labels=a.get('topic_ids');decision=a.get('decision')
  if not isinstance(labels,list)or len(labels)!=len(set(labels))or not set(labels)<=allowed:raise ValueError('invalid topic labels')
  if decision not in {'coded','no_policy','ambiguous'}or(decision=='coded')!=bool(labels):raise ValueError('annotation decision/labels mismatch')
@@ -42,6 +41,11 @@ def validate_annotation(a,record,book,book_hash):
   if e.get('topic_id')not in labels or type(start)is not int or type(end)is not int or not 0<=start<end<=len(text)or e.get('quote')!=text[start:end]:raise ValueError('annotation evidence not exact source text')
   support.add(e['topic_id'])
  if support!=set(labels):raise ValueError('annotation label lacks source evidence')
+ return True
+
+def validate_annotation(a,record,book,book_hash):
+ validate_topic_evidence(a,record,book,book_hash)
+ if a.get('status')!='completed'or a.get('review_origin')!='human'or not isinstance(a.get('reviewer_id'),str)or not a['reviewer_id'].strip():raise ValueError('human review not completed')
  return True
 
 def build(root=ROOT,codebook_path=None):
