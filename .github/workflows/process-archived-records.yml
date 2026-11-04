@@ -38,6 +38,10 @@ on:
       - config/council_half_boundaries.json
       - tests/test_council_half_periods.py
       - scripts/build_current_career_evidence.py
+      - scripts/build_career_roster_crosswalk.py
+      - tests/test_career_roster_crosswalk.py
+      - scripts/audit_nec_election_samples.py
+      - tests/test_nec_election_sample_audit.py
       - scripts/collect_current_members.py
       - tests/test_current_career_evidence.py
       - scripts/build_profile_history_evidence.py
@@ -117,6 +121,10 @@ jobs:
         run: python -u scripts/audit_council_period_sources.py
       - name: Reparse current profile careers without identity or seniority inference
         run: python -u scripts/build_current_career_evidence.py
+      - name: Cross-check explicit career mentions with preserved rosters without merging identities
+        run: python -u scripts/build_career_roster_crosswalk.py
+      - name: Verify NEC election samples while separating homonyms and candidate/winner tabs
+        run: python -u scripts/audit_nec_election_samples.py
       - name: Partition source-attributed activity inputs and preserve held records
         run: python -u scripts/build_analysis_activity_gate.py
       - name: Aggregate member counts with row-level evidence
@@ -139,6 +147,8 @@ jobs:
           git add exports/profile-history reports/profile-history-evidence-latest.json
           git add reports/council-period-source-evidence-latest.json
           git add reports/current-career-evidence-latest.json
+          git add reports/career-roster-crosswalk-latest.json
+          git add reports/nec-election-sample-audit-latest.json
           git add reports/analysis-period-readiness-latest.json reports/attachment-download-audit.json reports/written-question-link-audit.json reports/topic-draft-review-latest.json exports/topic-review reports/topic-review-materials-latest.json reports/question-answer-links-latest.json reports/question-identity-evidence-review.json reports/member-text-inputs-latest.json reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "data: verified speech segments and source-backed activity roles"
@@ -165,6 +175,8 @@ jobs:
             reports/profile-history-evidence-latest.json
             reports/council-period-source-evidence-latest.json
             reports/current-career-evidence-latest.json
+            reports/career-roster-crosswalk-latest.json
+            reports/nec-election-sample-audit-latest.json
             reports/temporal-context-latest.json
             reports/analysis-activity-gate-latest.json
             reports/member-activity-counts-latest.json

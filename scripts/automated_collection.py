@@ -232,11 +232,15 @@ def validate_candidate(stage,oldroot):
     import build_activity_temporal_context
     qa['temporal_context']=build_activity_temporal_context.build(stage)
     import build_profile_history_evidence
-    qa['profile_history_evidence']=build_profile_history_evidence.build(stage)
+    qa['profile_history_evidence']=build_profile_history_evidence.build(stage,periods_root=oldroot)
     import audit_council_period_sources
     qa['council_period_source_evidence']=audit_council_period_sources.audit(stage)
     import build_current_career_evidence
     qa['current_career_evidence']=build_current_career_evidence.build(stage)
+    import build_career_roster_crosswalk
+    qa['career_roster_crosswalk']=build_career_roster_crosswalk.build(stage)
+    import audit_nec_election_samples
+    qa['nec_election_sample_audit']=audit_nec_election_samples.build(stage)
     import build_analysis_activity_gate
     qa['analysis_activity_gate']=build_analysis_activity_gate.build(stage)
     import build_member_activity_counts

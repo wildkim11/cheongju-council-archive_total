@@ -1,8 +1,6 @@
 name: Capture three public NEC election history samples on macOS
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths: [scripts/collect_nec_election_samples.py]
+  # Initial three-name sample completed; additional public queries are manual.
   workflow_dispatch:
 permissions:
   contents: write

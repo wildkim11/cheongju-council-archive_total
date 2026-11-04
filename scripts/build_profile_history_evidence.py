@@ -188,7 +188,7 @@ def derive(root, people, tenures):
     return ledger, groups
 
 
-def build(root=ROOT, *, write=True):
+def build(root=ROOT, *, write=True, periods_root=None):
     root = Path(root).resolve()
     manifest = json.loads((root / 'exports/analyzer/manifest.json').read_text(encoding='utf-8'))
     data = {n: load_export(root, n, manifest) for n in ('people', 'tenures')}
@@ -218,6 +218,9 @@ def build(root=ROOT, *, write=True):
         if not group['all_profiles_roster_response_backed']:
             group['hold_reasons'].append('preserved_roster_response_missing')
             group['status'] = 'HELD'
+    from verified_council_periods import load_verified
+    period_basis = Path(periods_root).resolve() if periods_root is not None else root
+    period_rows = len(load_verified(period_basis)) if (period_basis / 'config/analysis_periods.json').exists() else None
     report = {'schema': 'cheongju-profile-history-evidence/1', 'official_site_requests': 0,
               'status': 'REVIEW_EVIDENCE_NOT_IDENTITY_APPROVAL',
               'analyzer_inputs': {n: manifest['datasets'][n] for n in data},
@@ -226,12 +229,12 @@ def build(root=ROOT, *, write=True):
               'candidate_groups': len(groups), 'group_statuses': dict(Counter(g['status'] for g in groups)),
               'candidate_profiles': len({p for g in groups for p in g['profile_ids']}),
               'canonical_identity_merges': 0, 'seniority_decisions': 0,
-              'official_term_half_registry_rows': 0, 'analysis_identity_usable': False,
+              'official_term_half_registry_rows': period_rows, 'analysis_identity_usable': False,
               'preserved_roster_audit': source_audit,
               'roster_response_backed_profiles': len(backed_profiles),
               'roster_response_backed_personal_intervals': backed_intervals,
               'next_evidence': ['official_roster_response_alignment_for_other_scopes_and_current_profiles',
-                                'official_council_term_and_half_dates_not_committee_dates',
+                                'remaining_term4_half_and_legacy_council_dates_not_committee_dates',
                                 'independent_cross_namespace_profile_identity_links',
                                 'complete_scoped_election_history_including_preintegration']}
     outputs = {'profiles.jsonl': b''.join(encoded(r) for r in ledger),

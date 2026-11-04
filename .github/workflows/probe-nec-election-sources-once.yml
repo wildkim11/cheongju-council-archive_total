@@ -1,8 +1,6 @@
 name: Inspect public NEC election search sources on macOS
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths: [scripts/probe_nec_election_sources.py]
+  # Completed bounded transport inspection; additional source requests are manual.
   workflow_dispatch:
 permissions:
   contents: write

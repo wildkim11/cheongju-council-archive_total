@@ -136,7 +136,7 @@ class HistoryTests(unittest.TestCase):
         self.assertEqual(report['profile_rows'], report['analyzer_inputs']['people']['rows'])
         self.assertEqual(report['canonical_identity_merges'], 0)
         self.assertEqual(report['seniority_decisions'], 0)
-        self.assertEqual(report['official_term_half_registry_rows'], 0)
+        self.assertEqual(report['official_term_half_registry_rows'], 10)
         self.assertEqual(report['official_site_requests'], 0)
 
     def test_preserved_roster_reparse_hashes_and_term_labels(self):
