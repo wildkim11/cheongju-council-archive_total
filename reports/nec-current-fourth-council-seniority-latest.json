@@ -1,17 +1,18 @@
 {
   "schema": "cheongju-current-fourth-council-seniority/1",
-  "input_commit": "28e67775bf50f2d750c9e485e1dab90a3ab3b0f7",
+  "input_commit": "66c5de9c865a0cf0e6ab23aad5e6ca5dbd50ca2d",
   "inputs": [
     "reports/nec-current-profile-links-latest.json",
     "reports/nec-reviewed-seniority-roster-crosswalk-latest.json",
     "reports/nec-four-term-election-comparison-latest.json",
-    "reports/nec-current-roster-audit-latest.json"
+    "reports/nec-current-roster-audit-latest.json",
+    "reports/current-career-evidence-latest.json"
   ],
   "counts": {
-    "최소 1선": 36,
-    "최소 2선": 5,
+    "최소 1선": 27,
+    "최소 2선": 12,
     "최소 4선": 2,
-    "최소 3선": 1
+    "최소 3선": 3
   },
   "rows": [
     {
@@ -75,15 +76,16 @@
     {
       "name": "김은숙",
       "current_profile_id": "person-fcode-1170",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_explicit_prior_council_career",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-46ceb77991a1becd41942aaa"
+        "nec-event-46ceb77991a1becd41942aaa",
+        "nec-event-e8c61f673a7d5d3d2d4b87a3"
       ],
       "current_election_anchor": {
         "district": "차선거구",
@@ -110,10 +112,18 @@
           "event_id": "nec-event-e8c61f673a7d5d3d2d4b87a3",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시차선거구)/ 4,663표 (18.15%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
-          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7"
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7",
+          "council_corroboration": {
+            "term": 3,
+            "quotes": [
+              "전) 제3대 청주시의회 부의장(전반기)"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1170",
+            "source_sha256": "6290ff0020b7b0928b45c23b579b4716e3f62aa2d0e57412f1c890491a1faf5c"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "partially_corroborated"
     },
     {
       "name": "김재년",
@@ -258,15 +268,17 @@
     {
       "name": "박노학",
       "current_profile_id": "person-fcode-1130",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 3,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 3선",
+      "basis": "current_election_and_explicit_prior_council_career",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-c3bcd842a9c2e6c897121cb1"
+        "nec-event-c3bcd842a9c2e6c897121cb1",
+        "nec-event-81b3a7648cddd29f170a7ba7",
+        "nec-event-ea1ceda40bc79011fa20f22e"
       ],
       "current_election_anchor": {
         "district": "사선거구",
@@ -286,17 +298,34 @@
           "event_id": "nec-event-81b3a7648cddd29f170a7ba7",
           "heading": "[2018.06.13] 제7회 전국동시지방선거 자유한국당/ 구·시·군의회의원선거/ 충청북도(청주시자선거구)/ 6,248표 (17.51%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
-          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90"
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90",
+          "council_corroboration": {
+            "term": 2,
+            "quotes": [
+              "전) 제2대, 3대 청주시의회 농업정책위원장"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1130",
+            "source_sha256": "026c3b0e8bd93ead40ef977e54830906afd2ad7460986b181ea1ef64a27fae82"
+          }
         },
         {
           "election_date": "2022-06-01",
           "event_id": "nec-event-ea1ceda40bc79011fa20f22e",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시사선거구)/ 7,205표 (31.23%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
-          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90"
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90",
+          "council_corroboration": {
+            "term": 3,
+            "quotes": [
+              "전) 제2대, 3대 청주시의회 농업정책위원장",
+              "전) 제3대 청주시의회 국민의힘 원내대표"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1130",
+            "source_sha256": "026c3b0e8bd93ead40ef977e54830906afd2ad7460986b181ea1ef64a27fae82"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "partially_corroborated"
     },
     {
       "name": "박병만",
@@ -334,15 +363,16 @@
     {
       "name": "박승찬",
       "current_profile_id": "person-fcode-10170",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_explicit_prior_council_career",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-5faed43ef036c867dcdecd3d"
+        "nec-event-5faed43ef036c867dcdecd3d",
+        "nec-event-1d87e2200e51e1938d2cf257"
       ],
       "current_election_anchor": {
         "district": "라선거구",
@@ -355,10 +385,19 @@
           "event_id": "nec-event-1d87e2200e51e1938d2cf257",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 기초의원비례대표선거/ 충청북도(청주시)당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%8A%B9%EC%B0%AC",
-          "source_sha256": "5f21baed287eee19589813616450c14503c1a7b859f92ce54c52b59fc319dfb3"
+          "source_sha256": "5f21baed287eee19589813616450c14503c1a7b859f92ce54c52b59fc319dfb3",
+          "council_corroboration": {
+            "term": 3,
+            "quotes": [
+              "전) 제3대 청주시의회 보건환경위원회 위원",
+              "전) 제3대 청주시의회 예산결산특별위원회 부위원장"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=10170",
+            "source_sha256": "539118ce9ef1a744cf4208dd92c5fb5bf5d6b6bbf036203d169e65c24e0c2fbe"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "배성철",
@@ -375,15 +414,16 @@
     {
       "name": "변은영",
       "current_profile_id": "person-fcode-2140",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_explicit_prior_council_career",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-89809f11232d14f40c6c4ce5"
+        "nec-event-89809f11232d14f40c6c4ce5",
+        "nec-event-dc2a4a217bdd679e0749b864"
       ],
       "current_election_anchor": {
         "district": "하선거구",
@@ -403,23 +443,32 @@
           "event_id": "nec-event-dc2a4a217bdd679e0749b864",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시하선거구)/ 7,867표 (43.58%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B3%80%EC%9D%80%EC%98%81",
-          "source_sha256": "c6ba2ead23a7fa6cc58ee2bb9b1e04dfc95d93cb074eded1ce9ce84f70441f35"
+          "source_sha256": "c6ba2ead23a7fa6cc58ee2bb9b1e04dfc95d93cb074eded1ce9ce84f70441f35",
+          "council_corroboration": {
+            "term": 3,
+            "quotes": [
+              "전) 제3대 청주시의회 보건환경위원회 위원장"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=2140",
+            "source_sha256": "e64097252f6e73c6a8d4733e417f2baba163112498f660f30ef9e5bd77609c4e"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "partially_corroborated"
     },
     {
       "name": "송병호",
       "current_profile_id": "person-fcode-10160",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_explicit_prior_council_career",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-60981cef127aee2787bd646a"
+        "nec-event-60981cef127aee2787bd646a",
+        "nec-event-645e6f105d694bc8a30349fd"
       ],
       "current_election_anchor": {
         "district": "타선거구",
@@ -432,10 +481,19 @@
           "event_id": "nec-event-645e6f105d694bc8a30349fd",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 기초의원비례대표선거/ 충청북도(청주시)당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%86%A1%EB%B3%91%ED%98%B8",
-          "source_sha256": "f3d12dd0e392cfc6495b9e76024bfc8b7cd96f0625f0815aa553aae78a103c23"
+          "source_sha256": "f3d12dd0e392cfc6495b9e76024bfc8b7cd96f0625f0815aa553aae78a103c23",
+          "council_corroboration": {
+            "term": 3,
+            "quotes": [
+              "전) 제3대 청주시의회 복지교육위원회 위원",
+              "전) 제3대 청주시의회 의회운영위원회 부위원장"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=10160",
+            "source_sha256": "1aa8641946fadb1f90c2631d21ed96de9f328bec1b832be1a76d421756e405c2"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "신민수",
@@ -569,15 +627,17 @@
     {
       "name": "임은성",
       "current_profile_id": "person-fcode-2060",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 3,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 3선",
+      "basis": "current_election_and_explicit_prior_council_career",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-790f17d0658803ead4ebfa44"
+        "nec-event-790f17d0658803ead4ebfa44",
+        "nec-event-6b449c1e1d016829ec73021a",
+        "nec-event-5eb9aa029017bfb08118ff50"
       ],
       "current_election_anchor": {
         "district": "라선거구",
@@ -590,17 +650,34 @@
           "event_id": "nec-event-6b449c1e1d016829ec73021a",
           "heading": "[2018.06.13] 제7회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시마선거구)/ 11,092표 (31.50%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9E%84%EC%9D%80%EC%84%B1",
-          "source_sha256": "e70eac5650016f8f16d2a9db6228ab079b42f103e0fccba2625709fcb607da36"
+          "source_sha256": "e70eac5650016f8f16d2a9db6228ab079b42f103e0fccba2625709fcb607da36",
+          "council_corroboration": {
+            "term": 2,
+            "quotes": [
+              "전) 제2대 청주시의회 윤리특별위원회 위원장"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=2060",
+            "source_sha256": "9e0758b2b21bc819f7aef07a490dd79d97cd50d76855ece7ec37c9f7ed9331cd"
+          }
         },
         {
           "election_date": "2022-06-01",
           "event_id": "nec-event-5eb9aa029017bfb08118ff50",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시라선거구)/ 8,279표 (31.95%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9E%84%EC%9D%80%EC%84%B1",
-          "source_sha256": "e70eac5650016f8f16d2a9db6228ab079b42f103e0fccba2625709fcb607da36"
+          "source_sha256": "e70eac5650016f8f16d2a9db6228ab079b42f103e0fccba2625709fcb607da36",
+          "council_corroboration": {
+            "term": 3,
+            "quotes": [
+              "전) 제3대 청주시의회 후반기 더불어민주당 원내대표",
+              "전) 제3대 청주시의회 전반기 복지교육위원회 위원장"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=2060",
+            "source_sha256": "9e0758b2b21bc819f7aef07a490dd79d97cd50d76855ece7ec37c9f7ed9331cd"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "정무신",
@@ -639,15 +716,16 @@
     {
       "name": "정영석",
       "current_profile_id": "person-fcode-10130",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_explicit_prior_council_career",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-58641afe9abd5cf49de9d820"
+        "nec-event-58641afe9abd5cf49de9d820",
+        "nec-event-20062ff2530ccdc03b510e8c"
       ],
       "current_election_anchor": {
         "district": "카선거구",
@@ -660,10 +738,19 @@
           "event_id": "nec-event-20062ff2530ccdc03b510e8c",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시카선거구)/ 5,964표 (36.99%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%EC%98%81%EC%84%9D",
-          "source_sha256": "0c788b39c1ae7d111be3e3415c90f8a326c1218b35272eecf35692f37e224a81"
+          "source_sha256": "0c788b39c1ae7d111be3e3415c90f8a326c1218b35272eecf35692f37e224a81",
+          "council_corroboration": {
+            "term": 3,
+            "quotes": [
+              "전) 제3대 청주시의회 예산결산특별위원장(제1,3기)",
+              "전) 제3대 청주시의회 행정문화위원회 위원"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=10130",
+            "source_sha256": "e698cc3f6e235ad8633adffeed687fdb9af619513e174276300fde85b48cb963"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "정태훈",
@@ -765,15 +852,16 @@
     {
       "name": "한동순",
       "current_profile_id": "person-fcode-10080",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_explicit_prior_council_career",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-0ff746b97a2f24de78f2655d"
+        "nec-event-0ff746b97a2f24de78f2655d",
+        "nec-event-2f16aaf5a7919ef31f2ab38e"
       ],
       "current_election_anchor": {
         "district": "아선거구",
@@ -786,10 +874,18 @@
           "event_id": "nec-event-2f16aaf5a7919ef31f2ab38e",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시아선거구)/ 6,435표 (27.03%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%95%9C%EB%8F%99%EC%88%9C",
-          "source_sha256": "c0b5ac7605a6b7309eee6cf24ed15c6ae551524d3bfa88526a1d17c5774f16b2"
+          "source_sha256": "c0b5ac7605a6b7309eee6cf24ed15c6ae551524d3bfa88526a1d17c5774f16b2",
+          "council_corroboration": {
+            "term": 3,
+            "quotes": [
+              "전) 제3대 청주시의회 복지교육위원회 부위원장"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=10080",
+            "source_sha256": "d7b675414e022a0970660fe7ceb70bddbc9321dc04b5c407a5e14fa013073e0e"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "한용진",
@@ -862,15 +958,16 @@
     {
       "name": "홍순철",
       "current_profile_id": "person-fcode-10110",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_explicit_prior_council_career",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-4a36f0371f74356b9705d8e1"
+        "nec-event-4a36f0371f74356b9705d8e1",
+        "nec-event-c4897f2bd7e8b7ffc9c33c7d"
       ],
       "current_election_anchor": {
         "district": "차선거구",
@@ -883,10 +980,19 @@
           "event_id": "nec-event-c4897f2bd7e8b7ffc9c33c7d",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시차선거구)/ 9,887표 (38.48%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%99%8D%EC%88%9C%EC%B2%A0",
-          "source_sha256": "47bc7d4c13f1f0edb500689a9716927db5061461e0094f2c76e742c3769dc1d9"
+          "source_sha256": "47bc7d4c13f1f0edb500689a9716927db5061461e0094f2c76e742c3769dc1d9",
+          "council_corroboration": {
+            "term": 3,
+            "quotes": [
+              "전) 제3대 청주시의회 보건환경위원회 부위원장",
+              "전) 제3대 청주시의회 윤리특별위원회 부위원장"
+            ],
+            "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=10110",
+            "source_sha256": "69b7ee5afdad0ccd155efb78cba33a6336848321a209c3d896f8ab3141426abc"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "홍혜진",
@@ -904,6 +1010,7 @@
   "prior_win_review": {
     "scanned": 23,
     "with_candidates": 12,
-    "candidate_events": 18
+    "candidate_events": 18,
+    "corroborated_events": 11
   }
 }
