@@ -1,8 +1,6 @@
 name: Capture preintegration council rosters
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths: [scripts/legacy_roster_sources.py]
+  # Initial capture completed. Further source queries are manual.
   workflow_dispatch:
 permissions:
   contents: write
