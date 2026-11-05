@@ -30,7 +30,7 @@ def table_rows(text):
     return tables[0], list(find(tables[0], lambda n: n['tag'] == 'tr'))
 
 
-def facilities(text):
+def facilities(text, *, committee='청주시상당구'):
     table, rows = table_rows(text)
     expected = ['구시군명', '읍면동명', '사전투표소명', '설치장소(건물명)', '소재지', '장애인 편의시설', '임시기표소 설치대상']
     if [visible(c) for c in cells(rows[0])] != expected: raise ValueError('early-voting facility headers changed')
@@ -40,7 +40,7 @@ def facilities(text):
         if len(cs) != 7 or any(c['tag'] != 'td' or c['attrs'].get('rowspan', '1') != '1' or c['attrs'].get('colspan', '1') != '1' for c in cs):
             raise ValueError('unsupported facility table row')
         labels = [visible(c) for c in cs]
-        if labels[0] != '청주시상당구' or not all(labels[i] for i in (1,2,3,4)):
+        if labels[0] != committee or not all(labels[i] for i in (1,2,3,4)):
             raise ValueError('missing or unexpected facility scope')
         result.append({'election_id': '0020260603', 'committee_displayed': labels[0],
             'ward_displayed': labels[1], 'polling_place_name': labels[2],
@@ -53,7 +53,7 @@ def facilities(text):
     return result, evidence(text, table)
 
 
-def candidates(text):
+def candidates(text, *, district='청주시나선거구'):
     table, rows = table_rows(text)
     header = [visible(c) for c in cells(rows[0])]
     if header != ['선거구명', '사진', '기호', '소속 정당명', '성명 (한자)', '성별', '생년월일 (연령)', '주소', '직업', '학력', '경력']:
@@ -63,7 +63,7 @@ def candidates(text):
         cs = cells(tr)
         if len(cs) != 11 or any(c['tag'] != 'td' for c in cs): raise ValueError('unsupported candidate row')
         name = re.fullmatch(r'([가-힣]+)\s*\([^()]+\)', visible(cs[4]))
-        if visible(cs[0]) != '청주시나선거구' or not name: raise ValueError('candidate district/name shape changed')
+        if visible(cs[0]) != district or not name: raise ValueError('candidate district/name shape changed')
         result.append({'district_displayed': visible(cs[0]), 'ballot_label': visible(cs[2]),
             'party_at_election': visible(cs[3]), 'name': name[1], 'current_profile_id': None,
             'source_row': evidence(text, tr), 'selected_cell_evidence': {

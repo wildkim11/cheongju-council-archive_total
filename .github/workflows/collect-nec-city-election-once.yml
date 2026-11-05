@@ -1,0 +1,39 @@
+name: Capture 2026 Cheongju four-committee election originals on macOS
+on:
+  push:
+    branches: [feature/archive-foundation]
+    paths:
+      - scripts/collect_nec_city_election.py
+      - .github/workflows/collect-nec-city-election-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cheongju-nec-source-inspection
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: macos-14
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p test_nec_city_collection.py
+      - run: python -u scripts/collect_nec_city_election.py
+      - name: Preserve bounded city sources and separate incomplete targets
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive/elections/nec reports/nec-city-election-collection-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: preserve 2026 Cheongju four-committee election snapshot'
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
