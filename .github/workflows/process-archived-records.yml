@@ -44,6 +44,8 @@ on:
       - tests/test_nec_election_sample_audit.py
       - scripts/link_nec_current_profiles.py
       - scripts/build_nec_election_ledger.py
+      - scripts/audit_nec_report_tables.py
+      - tests/test_nec_report_table_audit.py
       - tests/test_nec_election_ledger.py
       - tests/test_nec_current_profile_links.py
       - tests/test_nec_current_roster_collection.py
@@ -136,6 +138,8 @@ jobs:
           python -u scripts/link_nec_current_profiles.py
       - name: Preserve displayed election metrics and held identity review without district inference
         run: python -u scripts/build_nec_election_ledger.py
+      - name: Verify preserved early-voting facility and count-unit sample tables
+        run: python -u scripts/audit_nec_report_tables.py
       - name: Partition source-attributed activity inputs and preserve held records
         run: python -u scripts/build_analysis_activity_gate.py
       - name: Aggregate member counts with row-level evidence
@@ -160,7 +164,7 @@ jobs:
           git add reports/current-career-evidence-latest.json
           git add reports/career-roster-crosswalk-latest.json
           git add reports/nec-election-sample-audit-latest.json
-          git add reports/nec-election-observations-latest.json
+          git add reports/nec-election-observations-latest.json reports/nec-report-table-audit-latest.json
           git add reports/nec-current-roster-audit-latest.json reports/nec-current-profile-links-latest.json
           git add reports/analysis-period-readiness-latest.json reports/attachment-download-audit.json reports/written-question-link-audit.json reports/topic-draft-review-latest.json exports/topic-review reports/topic-review-materials-latest.json reports/question-answer-links-latest.json reports/question-identity-evidence-review.json reports/member-text-inputs-latest.json reports/activity-single-differences.json reports/question-answer-parts-latest.json reports/activity-date-discrepancies.json reports/activity-spacing-link-review.json exports/processing exports/minutes-text reports/member-activity-counts-latest.json reports/analysis-activity-gate-latest.json reports/temporal-context-latest.json reports/processing-latest.json reports/processing-qa-latest.json
           if ! git diff --cached --quiet; then
@@ -193,6 +197,7 @@ jobs:
             reports/nec-current-roster-audit-latest.json
             reports/nec-current-profile-links-latest.json
             reports/nec-election-observations-latest.json
+            reports/nec-report-table-audit-latest.json
             reports/temporal-context-latest.json
             reports/analysis-activity-gate-latest.json
             reports/member-activity-counts-latest.json

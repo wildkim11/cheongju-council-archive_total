@@ -49,3 +49,7 @@ Register public-source discovery and original election pledge collection by memb
 ## Preserved NEC election observations — 2026-11-05
 
 Offline ledger: 83 target events, 67 displayed vote/share observations, 16 absent; 30 linked events across the existing 19 corroborated profiles (26 winner displays, 4 candidacies without confirmed result). Review evidence for the remaining 25 profiles is preserved without promotion. Literal detail-menu contracts retained; live transport and full district result completeness remain unverified. No ranks/margins or exact seniority calculated. See `NEC_ELECTION_LEDGER_20261105.md`.
+
+## Early-voting and count-unit sample originals — 2026-11-05
+
+Captured six selection pages and three observed read-only report POSTs on macOS. Offline table ledger verifies 13 Sangdang early-voting facilities, four Cheongju-na candidates, and 19 counting-unit rows with ward/district arithmetic conservation. Official correction-row abstentions -49 preserved in that field only. Whole-city coverage, official seats/winners, member identities and physical polling-place vote links are not promoted. See `EARLY_VOTING_SOURCES_PLAN_20261105.md`.

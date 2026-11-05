@@ -1,10 +1,6 @@
 name: Capture three NEC read-only report form samples on macOS
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths:
-      - scripts/collect_nec_report_samples.py
-      - .github/workflows/collect-nec-report-samples-once.yml
+  # Three initial report samples captured; additional reports are manual.
   workflow_dispatch:
 permissions:
   contents: write
