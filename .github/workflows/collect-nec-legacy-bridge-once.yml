@@ -1,0 +1,36 @@
+name: Capture NEC queries for legacy council career cases
+on:
+  push:
+    branches: [feature/archive-foundation]
+    paths: [scripts/collect_nec_legacy_bridge.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cheongju-nec-source-inspection
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: macos-14
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -u scripts/collect_nec_legacy_bridge.py
+      - name: Preserve isolated election source samples only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive/elections/nec reports/nec-legacy-bridge-collection-latest.json reports/nec-legacy-bridge-audit-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: preserve legacy council NEC election queries'
+            git fetch origin feature/archive-foundation
+            git rebase origin/feature/archive-foundation
+            git push origin HEAD:feature/archive-foundation
+          fi
