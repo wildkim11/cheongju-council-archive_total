@@ -175,3 +175,12 @@ jobs:
       - name: Surface collection failure after preserving retry state
         if: steps.collection.outcome == 'failure'
         run: exit 1
+
+  process_attachment_text:
+    needs: collect
+    if: ${{ !cancelled() && needs.collect.result != 'skipped' }}
+    permissions:
+      contents: write
+    uses: ./.github/workflows/process-attachment-text.yml
+    with:
+      caller_holds_collection_lock: true

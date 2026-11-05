@@ -20,10 +20,15 @@ on:
       - web/ocr_review_core.js
       - .github/workflows/process-attachment-text.yml
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      caller_holds_collection_lock:
+        type: boolean
+        default: false
 permissions:
   contents: write
 concurrency:
-  group: cheongju-source-collection
+  group: ${{ inputs.caller_holds_collection_lock && format('cheongju-attachment-text-{0}', github.run_id) || 'cheongju-source-collection' }}
   cancel-in-progress: false
 jobs:
   extract:
