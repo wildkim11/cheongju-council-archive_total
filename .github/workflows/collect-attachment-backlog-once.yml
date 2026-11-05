@@ -1,4 +1,4 @@
-name: Resume archived attachment backlog
+name: Resume archived attachment backlog with size-hold recovery
 on:
   push:
     branches: [feature/archive-foundation]
