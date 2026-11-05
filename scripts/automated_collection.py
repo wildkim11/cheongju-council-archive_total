@@ -6,6 +6,7 @@ No identity candidate promotion, political judgments, or HTML generation.
 """
 from __future__ import annotations
 import argparse,contextlib,datetime as dt,gzip,hashlib,importlib,json,shutil,tempfile,threading,time,urllib.parse,urllib.request
+from functools import partial
 from pathlib import Path
 from unittest.mock import patch
 from archive_common import save_json
@@ -114,7 +115,7 @@ def preserve_response_manifest(root,family,started_at,rows):
 
 class AttachmentSizeLimitError(ValueError):pass
 
-def download_attachments(root,limit=20,max_bytes=8*1024*1024,retry_only=False):
+def download_attachments(root,limit=20,max_bytes=8*1024*1024,retry_only=False,*,oversize_only=False):
     from attachment_formats import signature
     queue=load(root/'reports/automatic/attachments.json',{})
     for item in queue.values():
@@ -139,10 +140,16 @@ def download_attachments(root,limit=20,max_bytes=8*1024*1024,retry_only=False):
             return super().redirect_request(req,fp,code,msg,headers,newurl)
     opener=urllib.request.build_opener(OfficialRedirect())
     for url,item in sorted(queue.items(),key=lambda kv:(kv[1].get('attempts',0),kv[0])):
-        if retry_only and item['status']!='failed':continue
-        if item['status']in {'downloaded','blocked'} or item.get('next_retry_at','')>now:continue
+        if oversize_only:
+            previous_cap=item.get('max_bytes')
+            if (item['status']!='blocked' or item.get('hold_reason')!='size_limit_exceeded'
+                    or type(previous_cap) is not int or not 0<previous_cap<max_bytes):continue
+        else:
+            if retry_only and item['status']!='failed':continue
+            if item['status']in {'downloaded','blocked'} or item.get('next_retry_at','')>now:continue
         if attempted>=limit:break
         attempted+=1;item['attempts']+=1
+        item.pop('hold_reason',None);item.pop('max_bytes',None)
         try:
             time.sleep(.3)
             with opener.open(urllib.request.Request(url,headers={'User-Agent':'CheongjuCouncilArchive/0.2'}),timeout=40) as response:
@@ -158,7 +165,7 @@ def download_attachments(root,limit=20,max_bytes=8*1024*1024,retry_only=False):
     save_json(root/'reports/automatic/attachments.json',queue)
     return {'queued':len(queue),'attempted':attempted,'downloaded_total':sum(x['status']=='downloaded' for x in queue.values()),'failed_total':sum(x['status']=='failed' for x in queue.values()),'blocked_total':sum(x['status']=='blocked'for x in queue.values()),'pending_total':sum(x['status']=='pending'for x in queue.values())}
 
-def execute(family,root,ordinal,retry_only=False):
+def execute(family,root,ordinal,retry_only=False,*,attachment_oversize_only=False):
     if family=='minutes':
         import collect_integrated_minutes as c
         old=load(root/'indexes/integrated/meetings.json',[]);published=sorted([x for x in old if x['publication_status']=='published'],key=lambda x:x['meeting_id']);i=(ordinal*8)%max(1,len(published));forced={x['meeting_id'] for x in (published+published)[i:i+min(8,len(published))]}
@@ -190,7 +197,11 @@ def execute(family,root,ordinal,retry_only=False):
     if family=='media':
         import collect_board_activities as b,collect_photo_activity as p
         out={k:refresh_board(root,b,k,ordinal=ordinal) for k in b.CONFIG if k!='photo'};old=load(root/'archive/activities/photo_activity.json',[]);out['photo']=p.collect(root);save_json(root/'archive/activities/photo_activity.json',preserved_merge(old,load(root/'archive/activities/photo_activity.json',[]),'source_id'));return out
-    if family=='attachments':return download_attachments(root,retry_only=retry_only)
+    if family=='attachments':
+        if attachment_oversize_only:
+            from attachment_formats import MAX_ATTACHMENT_SOURCE_BYTES
+            return download_attachments(root,max_bytes=MAX_ATTACHMENT_SOURCE_BYTES,oversize_only=True)
+        return download_attachments(root,retry_only=retry_only)
     raise ValueError('unknown collection family')
 
 def validate_candidate(stage,oldroot):
@@ -307,5 +318,9 @@ def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retr
     return report
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--retry-attempt',action='store_true');p.add_argument('--retry-now',action='store_true',help='Explicit retry after a code fix; normal schedule honors backoff');p.add_argument('--family',choices=('auto',)+FAMILIES,default='auto');a=p.parse_args();result=run(family=a.family,retry_now=a.retry_now,retry_attempt=a.retry_attempt);print(json.dumps({k:v for k,v in result.items() if k!='qa'},ensure_ascii=False,indent=2));raise SystemExit(0 if result['status'] in ('PASS','DEFERRED') else 1)
+    p=argparse.ArgumentParser();p.add_argument('--retry-attempt',action='store_true');p.add_argument('--retry-now',action='store_true',help='Explicit retry after a code fix; normal schedule honors backoff');p.add_argument('--family',choices=('auto',)+FAMILIES,default='auto')
+    p.add_argument('--attachment-oversize-only',action='store_true',help='Retry size holds once under a 16 MiB ceiling');a=p.parse_args()
+    if a.attachment_oversize_only and (a.family!='attachments' or a.retry_attempt):p.error('oversize recovery requires --family attachments without --retry-attempt')
+    runner=partial(execute,attachment_oversize_only=True) if a.attachment_oversize_only else execute
+    result=run(family=a.family,runner=runner,retry_now=a.retry_now,retry_attempt=a.retry_attempt);print(json.dumps({k:v for k,v in result.items() if k!='qa'},ensure_ascii=False,indent=2));raise SystemExit(0 if result['status'] in ('PASS','DEFERRED') else 1)
 if __name__=='__main__':main()

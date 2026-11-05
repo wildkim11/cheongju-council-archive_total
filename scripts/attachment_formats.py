@@ -1,4 +1,7 @@
 """Container/header identification only; never semantic document/image validation."""
+MAX_ATTACHMENT_SOURCE_BYTES = 16 * 1024 * 1024
+
+
 def signature(raw):
  if raw.startswith(b'%PDF'):return 'pdf_header'
  if raw.startswith(b'PK\x03\x04'):return 'zip_container_header'

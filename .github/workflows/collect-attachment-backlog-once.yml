@@ -34,8 +34,9 @@ jobs:
           COLLECTION_FAMILY: attachments
         run: |
           set -euo pipefail
-          for batch in 1 2; do
-            echo "Starting attachment batch $batch of 2"
+          EXPLICIT_RETRY=--attachment-oversize-only bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
+          for batch in 1 2 3; do
+            echo "Starting attachment batch $batch of 3"
             bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
           done
       - name: Persist validated snapshot and retry state

@@ -2,7 +2,7 @@
 from __future__ import annotations
 import argparse,collections,gzip,hashlib,json,re,shutil,subprocess,tempfile,time
 from pathlib import Path
-from attachment_formats import signature
+from attachment_formats import MAX_ATTACHMENT_SOURCE_BYTES, signature
 ROOT=Path(__file__).resolve().parents[1]
 MAX_BYTES=8*1024*1024
 MAX_PAGES=500
@@ -72,7 +72,7 @@ def stored_path(root,item):
  path=root/rel
  if path.is_symlink()or not path.resolve().is_relative_to((root/'archive/attachments').resolve()):raise ValueError('attachment escapes archive directory')
  raw=path.read_bytes()
- if not 0<len(raw)<=MAX_BYTES or item.get('bytes')!=len(raw)or item.get('sha256')!=sha(raw)or not signature(raw):raise ValueError('preserved attachment hash/size/header mismatch')
+ if not 0<len(raw)<=MAX_ATTACHMENT_SOURCE_BYTES or item.get('bytes')!=len(raw)or item.get('sha256')!=sha(raw)or not signature(raw):raise ValueError('preserved attachment hash/size/header mismatch')
  return path,raw
 def build(root=ROOT,extractor=None,versions=None,retry_errors=False):
  root=Path(root);out=root/'exports/attachment-text';queue_raw=(root/'reports/automatic/attachments.json').read_bytes();queue=json.loads(queue_raw)
