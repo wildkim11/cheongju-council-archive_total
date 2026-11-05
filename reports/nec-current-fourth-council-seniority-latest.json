@@ -1,18 +1,20 @@
 {
   "schema": "cheongju-current-fourth-council-seniority/1",
-  "input_commit": "e400caab70ef4da1ec0e5ccb7cba005b4cac9da6",
+  "input_commit": "a3b336b55060e9062553f1f4bfa0ca7272f692b0",
   "inputs": [
     "reports/nec-current-profile-links-latest.json",
     "reports/nec-reviewed-seniority-roster-crosswalk-latest.json",
     "reports/nec-four-term-election-comparison-latest.json",
     "reports/nec-current-roster-audit-latest.json",
-    "reports/current-career-evidence-latest.json"
+    "reports/current-career-evidence-latest.json",
+    "reports/cross-scope-identity-review-latest.json",
+    "exports/analyzer/district_memberships.jsonl"
   ],
   "counts": {
-    "최소 1선": 25,
-    "최소 2선": 14,
-    "최소 4선": 2,
-    "최소 3선": 3
+    "최소 1선": 24,
+    "최소 2선": 13,
+    "최소 4선": 3,
+    "최소 3선": 4
   },
   "rows": [
     {
@@ -76,16 +78,18 @@
     {
       "name": "김은숙",
       "current_profile_id": "person-fcode-1170",
-      "verified_wins_lower_bound": 2,
+      "verified_wins_lower_bound": 4,
       "exact_seniority": null,
-      "display": "최소 2선",
-      "basis": "current_election_and_explicit_prior_council_career",
+      "display": "최소 4선",
+      "basis": "current_election_and_prior_council_records",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
         "nec-event-46ceb77991a1becd41942aaa",
-        "nec-event-e8c61f673a7d5d3d2d4b87a3"
+        "nec-event-e8c61f673a7d5d3d2d4b87a3",
+        "nec-event-f12d0de112af20ddaf0b9085",
+        "nec-event-5534ddb548de35b79e4dd2f6"
       ],
       "current_election_anchor": {
         "district": "차선거구",
@@ -98,14 +102,46 @@
           "event_id": "nec-event-f12d0de112af20ddaf0b9085",
           "heading": "[2014.06.04] 제6회 전국동시지방선거 새정치민주연합/ 기초의원비례대표선거/ 충청북도(청주시)당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
-          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7"
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7",
+          "council_corroboration": {
+            "term": 1,
+            "historical_profile_id": "person-candidate-7f3dff60d5a5309b",
+            "profile_url": "https://council.cheongju.go.kr/include/memberProfile.html?daesu=1&mcode=1170",
+            "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
+            "roster_district": "비례대표",
+            "roster_response_evidence": [
+              {
+                "decoded_utf8_sha256": "bffb2031a1c82e55e195c878ebf0184aaf4138bc39dd1586f3be075fa04719c7",
+                "parsed_row_sha256": "106987259539b68cd3628dac0fa3bd2d817123c88001a1ffa00487afccaf2b61",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/bffb2031a1c82e55e195c878ebf0184aaf4138bc39dd1586f3be075fa04719c7.html.gz"
+              }
+            ],
+            "kind": "matching_historical_roster_district_and_profile_code"
+          }
         },
         {
           "election_date": "2018-06-13",
           "event_id": "nec-event-5534ddb548de35b79e4dd2f6",
           "heading": "[2018.06.13] 제7회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시아선거구)/ 13,768표 (36.94%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
-          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7"
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7",
+          "council_corroboration": {
+            "term": 2,
+            "historical_profile_id": "person-candidate-7182f3cabb3b7bbb",
+            "profile_url": "https://council.cheongju.go.kr/include/memberProfile.html?daesu=2&mcode=1170",
+            "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
+            "roster_district": "아 선거구",
+            "roster_response_evidence": [
+              {
+                "decoded_utf8_sha256": "72892d1371303bd6551e09630ceafb4df6bad53a7d104515f3f9db2d143a82bc",
+                "parsed_row_sha256": "a458f4566ba2b889a44bdb9b7bacd5e23d8dcad3b0c4882e7caddadf6ba736f8",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/72892d1371303bd6551e09630ceafb4df6bad53a7d104515f3f9db2d143a82bc.html.gz"
+              }
+            ],
+            "kind": "matching_historical_roster_district_and_profile_code"
+          }
         },
         {
           "election_date": "2022-06-01",
@@ -123,7 +159,7 @@
           }
         }
       ],
-      "prior_win_review_status": "partially_corroborated"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "김재년",
@@ -298,7 +334,23 @@
           "event_id": "nec-event-aefe4c81f326b226256d81c2",
           "heading": "[2014.06.04] 제6회 전국동시지방선거 새누리당/ 구·시·군의회의원선거/ 충청북도(청주시카선거구)/ 3,471표 (16.92%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
-          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90"
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90",
+          "council_review": {
+            "term": 1,
+            "historical_profile_id": "person-candidate-79141bf6cbabbff8",
+            "profile_url": "https://council.cheongju.go.kr/include/memberProfile.html?daesu=1&mcode=1130",
+            "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
+            "roster_district": "마 선거구",
+            "roster_response_evidence": [
+              {
+                "decoded_utf8_sha256": "bffb2031a1c82e55e195c878ebf0184aaf4138bc39dd1586f3be075fa04719c7",
+                "parsed_row_sha256": "f33076f7c96d8dc036482166014e3c791e6ce61182f49f7b33eed935e91df640",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/bffb2031a1c82e55e195c878ebf0184aaf4138bc39dd1586f3be075fa04719c7.html.gz"
+              }
+            ],
+            "status": "district_label_conflict"
+          }
         },
         {
           "election_date": "2018-06-13",
@@ -421,16 +473,17 @@
     {
       "name": "변은영",
       "current_profile_id": "person-fcode-2140",
-      "verified_wins_lower_bound": 2,
+      "verified_wins_lower_bound": 3,
       "exact_seniority": null,
-      "display": "최소 2선",
-      "basis": "current_election_and_explicit_prior_council_career",
+      "display": "최소 3선",
+      "basis": "current_election_and_prior_council_records",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
         "nec-event-89809f11232d14f40c6c4ce5",
-        "nec-event-dc2a4a217bdd679e0749b864"
+        "nec-event-dc2a4a217bdd679e0749b864",
+        "nec-event-2f69d4bef9ddf23ed9f936a9"
       ],
       "current_election_anchor": {
         "district": "하선거구",
@@ -443,7 +496,23 @@
           "event_id": "nec-event-2f69d4bef9ddf23ed9f936a9",
           "heading": "[2018.06.13] 제7회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시차선거구)/ 13,060표 (34.80%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B3%80%EC%9D%80%EC%98%81",
-          "source_sha256": "c6ba2ead23a7fa6cc58ee2bb9b1e04dfc95d93cb074eded1ce9ce84f70441f35"
+          "source_sha256": "c6ba2ead23a7fa6cc58ee2bb9b1e04dfc95d93cb074eded1ce9ce84f70441f35",
+          "council_corroboration": {
+            "term": 2,
+            "historical_profile_id": "person-candidate-bdfb14620250f4e1",
+            "profile_url": "https://council.cheongju.go.kr/include/memberProfile.html?daesu=2&mcode=2140",
+            "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
+            "roster_district": "차 선거구",
+            "roster_response_evidence": [
+              {
+                "decoded_utf8_sha256": "72892d1371303bd6551e09630ceafb4df6bad53a7d104515f3f9db2d143a82bc",
+                "parsed_row_sha256": "3d49c462342eb5cdc3f22b2346cd65a3a0145fc0e0bbe298746484e38ebf2613",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/72892d1371303bd6551e09630ceafb4df6bad53a7d104515f3f9db2d143a82bc.html.gz"
+              }
+            ],
+            "kind": "matching_historical_roster_district_and_profile_code"
+          }
         },
         {
           "election_date": "2022-06-01",
@@ -461,7 +530,7 @@
           }
         }
       ],
-      "prior_win_review_status": "partially_corroborated"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "송병호",
@@ -612,15 +681,16 @@
     {
       "name": "이한국",
       "current_profile_id": "person-fcode-10150",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_prior_council_records",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-e222e1375a7705b5caa7d704"
+        "nec-event-e222e1375a7705b5caa7d704",
+        "nec-event-c347f505d5abc7d64b221d34"
       ],
       "current_election_anchor": {
         "district": "하선거구",
@@ -633,10 +703,86 @@
           "event_id": "nec-event-c347f505d5abc7d64b221d34",
           "heading": "[2022.06.01] 제8회 전국동시지방선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시하선거구)/ 8,029표 (44.48%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%ED%95%9C%EA%B5%AD",
-          "source_sha256": "0c4b05f4fcda3db0f6507212e450ca25504f796776bef3bf87eb231924b45f6b"
+          "source_sha256": "0c4b05f4fcda3db0f6507212e450ca25504f796776bef3bf87eb231924b45f6b",
+          "council_corroboration": {
+            "term": 3,
+            "historical_profile_id": "person-candidate-fafbc64655b184a6",
+            "profile_url": "https://council.cheongju.go.kr/include/memberProfile.html?daesu=3&mcode=10150",
+            "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html",
+            "roster_district": "하 선거구",
+            "roster_response_evidence": [
+              {
+                "decoded_utf8_sha256": "ad02c98dbe88166f8f7e9ff6fcbd948b27320ba15903389a2457aee000daa3e6",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/ad02c98dbe88166f8f7e9ff6fcbd948b27320ba15903389a2457aee000daa3e6.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "6271725f8fe5d8e66b4c2149d4a1bc15e76af7f247cd570f34cd2856298c735a",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/6271725f8fe5d8e66b4c2149d4a1bc15e76af7f247cd570f34cd2856298c735a.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "42d132b1c0ae2c472b93f6e1b9f529da193b801ddb0b5736ceecde93e96ea00f",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/42d132b1c0ae2c472b93f6e1b9f529da193b801ddb0b5736ceecde93e96ea00f.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "1c06e7b19932347a47f700b331a34b1959c52334beb57b1360749d7d42ff7ab3",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/1c06e7b19932347a47f700b331a34b1959c52334beb57b1360749d7d42ff7ab3.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "6ceecfa3d0cf7235ed80dec650e45b2cd52075779e6cd197d5c52facc10f6967",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/6ceecfa3d0cf7235ed80dec650e45b2cd52075779e6cd197d5c52facc10f6967.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "9f65f98cac1b6514ebcfaeb1d940cb32e82535b64ffb9e1adf618809b407cbba",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/34c2dbfbe6125306083e470e4bfd995684918af4d2233ae5c53bcbd8454bb7cb.json",
+                "source_response_path": "archive/source_responses/9f65f98cac1b6514ebcfaeb1d940cb32e82535b64ffb9e1adf618809b407cbba.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "94b2ecbc78286f386a6835bbf0dc613f858a77d0bf27594d266b0f4762e33efd",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/93c5975728dc7c739b366df0e532c6fe4c874dedb99c5a7a70b8af70bdbbdbc6.json",
+                "source_response_path": "archive/source_responses/94b2ecbc78286f386a6835bbf0dc613f858a77d0bf27594d266b0f4762e33efd.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "895216cbdfb2b648026bde13093383ba819ca0a342c1502cb5cd5bc47fa0c48c",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/93c5975728dc7c739b366df0e532c6fe4c874dedb99c5a7a70b8af70bdbbdbc6.json",
+                "source_response_path": "archive/source_responses/895216cbdfb2b648026bde13093383ba819ca0a342c1502cb5cd5bc47fa0c48c.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "2da4f213dea31ea52a7334ed8cf3dd2762813256123cd97ab93d4d04a3c18d8d",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/93c5975728dc7c739b366df0e532c6fe4c874dedb99c5a7a70b8af70bdbbdbc6.json",
+                "source_response_path": "archive/source_responses/2da4f213dea31ea52a7334ed8cf3dd2762813256123cd97ab93d4d04a3c18d8d.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "a94b7b0d5f7cee77e86b45beeb109419ddb74f3802ee24062e0fade3bf412ca6",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/93c5975728dc7c739b366df0e532c6fe4c874dedb99c5a7a70b8af70bdbbdbc6.json",
+                "source_response_path": "archive/source_responses/a94b7b0d5f7cee77e86b45beeb109419ddb74f3802ee24062e0fade3bf412ca6.html.gz"
+              },
+              {
+                "decoded_utf8_sha256": "f3f36f9c4cc0b9286b2603597eec36cbfabb3fbf5aa4b8f151020541b4f23222",
+                "parsed_row_sha256": "5d990d3d0c045ae50648b174fdea2abdd567e1b88a6cf2d7804d599ff310321e",
+                "source_manifest": "archive/source_responses/manifests/93c5975728dc7c739b366df0e532c6fe4c874dedb99c5a7a70b8af70bdbbdbc6.json",
+                "source_response_path": "archive/source_responses/f3f36f9c4cc0b9286b2603597eec36cbfabb3fbf5aa4b8f151020541b4f23222.html.gz"
+              }
+            ],
+            "kind": "matching_historical_roster_district_and_profile_code"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "임은성",
@@ -1025,6 +1171,6 @@
     "scanned": 23,
     "with_candidates": 12,
     "candidate_events": 18,
-    "corroborated_events": 13
+    "corroborated_events": 17
   }
 }
