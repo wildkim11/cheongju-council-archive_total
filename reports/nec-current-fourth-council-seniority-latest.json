@@ -1,6 +1,6 @@
 {
   "schema": "cheongju-current-fourth-council-seniority/1",
-  "input_commit": "a3b336b55060e9062553f1f4bfa0ca7272f692b0",
+  "input_commit": "fc7d4acd5b7f499bc30dee79c7392bbd897ec18e",
   "inputs": [
     "reports/nec-current-profile-links-latest.json",
     "reports/nec-reviewed-seniority-roster-crosswalk-latest.json",
@@ -13,8 +13,8 @@
   "counts": {
     "최소 1선": 24,
     "최소 2선": 13,
-    "최소 4선": 3,
-    "최소 3선": 4
+    "최소 4선": 4,
+    "최소 3선": 3
   },
   "rows": [
     {
@@ -311,17 +311,18 @@
     {
       "name": "박노학",
       "current_profile_id": "person-fcode-1130",
-      "verified_wins_lower_bound": 3,
+      "verified_wins_lower_bound": 4,
       "exact_seniority": null,
-      "display": "최소 3선",
-      "basis": "current_election_and_explicit_prior_council_career",
+      "display": "최소 4선",
+      "basis": "current_election_and_prior_council_records",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
         "nec-event-c3bcd842a9c2e6c897121cb1",
         "nec-event-81b3a7648cddd29f170a7ba7",
-        "nec-event-ea1ceda40bc79011fa20f22e"
+        "nec-event-ea1ceda40bc79011fa20f22e",
+        "nec-event-aefe4c81f326b226256d81c2"
       ],
       "current_election_anchor": {
         "district": "사선거구",
@@ -350,6 +351,13 @@
               }
             ],
             "status": "district_label_conflict"
+          },
+          "council_corroboration": {
+            "term": 1,
+            "kind": "historical_profile_code_and_contemporaneous_council_minutes",
+            "source_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=111",
+            "meeting_date": "2014-11-25",
+            "district_discrepancy_resolved": false
           }
         },
         {
@@ -384,7 +392,7 @@
           }
         }
       ],
-      "prior_win_review_status": "partially_corroborated"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "박병만",
@@ -1171,6 +1179,6 @@
     "scanned": 23,
     "with_candidates": 12,
     "candidate_events": 18,
-    "corroborated_events": 17
+    "corroborated_events": 18
   }
 }
