@@ -1,4 +1,4 @@
-name: Resume archived attachment backlog with size-hold recovery
+name: Continue four attachment backlog batches
 on:
   push:
     branches: [feature/archive-foundation]
@@ -34,9 +34,8 @@ jobs:
           COLLECTION_FAMILY: attachments
         run: |
           set -euo pipefail
-          EXPLICIT_RETRY=--attachment-oversize-only bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
-          for batch in 1 2 3; do
-            echo "Starting attachment batch $batch of 3"
+          for batch in 1 2 3 4; do
+            echo "Starting attachment batch $batch of 4"
             bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
           done
       - name: Persist validated snapshot and retry state
