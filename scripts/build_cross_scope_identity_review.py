@@ -14,6 +14,7 @@ from analysis_periods import SCOPES, exact_range
 from build_profile_history_evidence import portrait_evidence, profile_code, preserved_rosters
 from build_career_roster_crosswalk import current_rosters
 from build_current_career_evidence import build as career_evidence
+from legacy_roster_sources import preserved_legacy_rosters
 from process_meeting_segments import encoded, load_export, sha, write_json
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -23,8 +24,9 @@ def name_key(value):
     return re.sub(r'\s+','',unicodedata.normalize('NFKC',value or ''))
 
 
-def assemble(root, people, tenures, historical=None, current=None, careers=None):
+def assemble(root, people, tenures, historical=None, current=None, careers=None, legacy=None):
     root=Path(root); historical=historical or {}; current=current or {}; careers=careers or {'rows':[]}
+    legacy = legacy or {}
     profiles={p['person_id']:(i,p) for i,p in enumerate(people,1)}
     if len(profiles)!=len(people):raise ValueError('duplicate scoped profile ID')
     by_profile=defaultdict(list)
@@ -42,6 +44,9 @@ def assemble(root, people, tenures, historical=None, current=None, careers=None)
             if scope=='cheongju_integrated':
                 back=[{k:v for k,v in r.items() if k!='parsed_row'} for r in historical.get((term,p.get('official_profile_url'),p['name']),[])]
                 if term==4:back+=current.get((p['name'],p.get('official_profile_url')),[])
+            else:
+                portrait_url = (p.get('portrait') or {}).get('source_url')
+                back = legacy.get((scope, term, p.get('source_url'), p['name'], portrait_url), [])
             try:
                 start,end=exact_range(t); explicit={'start_date':start,'end_date':end}
             except ValueError:explicit=None
@@ -101,7 +106,8 @@ def build(root=ROOT,*,write=True):
     root=Path(root); manifest=json.loads((root/'exports/analyzer/manifest.json').read_text())
     people=load_export(root,'people',manifest);tenures=load_export(root,'tenures',manifest)
     historical,source_audit=preserved_rosters(root)
-    groups=assemble(root,people,tenures,historical,current_rosters(root),career_evidence(root,write=False))
+    legacy = preserved_legacy_rosters(root)
+    groups=assemble(root,people,tenures,historical,current_rosters(root),career_evidence(root,write=False),legacy)
     report={'schema':'cheongju-cross-scope-identity-review/1','status':'REVIEW_BUCKETS_NOT_CANONICAL_PEOPLE',
         'official_site_requests':0,'analyzer_inputs':{k:manifest['datasets'][k] for k in ('people','tenures')},
         'profile_rows':len(people),'tenure_rows':len(tenures),'name_review_groups':len(groups),
@@ -112,8 +118,14 @@ def build(root=ROOT,*,write=True):
         'scope_occurrence_counts':dict(Counter(t['council_scope'] for t in tenures)),
         'historical_roster_responses_verified':source_audit['response_count'],
         'canonical_identity_merges':0,'seniority_decisions':0,'html_identity_filter_connected':False,
+        'legacy_roster_rows_reparsed': len(legacy),
+        'legacy_review_occurrences_source_backed': sum(
+            occurrence['roster_response_reparsed']
+            for group in groups for profile in group['profiles'] for occurrence in profile['occurrences']
+            if occurrence['council_scope'] != 'cheongju_integrated'
+        ),
         'groups':groups,
-        'interpretation':'Primary-name review buckets only, including homonyms. Separate council scope/term lanes; gaps are unknown. Matching codes, portraits or term presence never approve identity or continuous tenure. Legacy roster responses require additional independent reparsing; aliases and name changes remain outside this candidate rule.'}
+        'interpretation':'Primary-name review buckets only, including homonyms. Separate council scope/term lanes; gaps are unknown. Matching codes, portraits or term presence never approve identity or continuous tenure. Legacy backing requires exact scope, term, source URL, name and portrait URL; aliases and name changes remain outside this candidate rule.'}
     if write:write_json(root/'reports/cross-scope-identity-review-latest.json',report)
     return report
 
