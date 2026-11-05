@@ -1,0 +1,836 @@
+{
+  "schema": "cheongju-nec-reviewed-seniority-lower-bounds/1",
+  "scope": "Reviewed NEC person groups only. No council profile joins. Gaps do not reset observed wins. Counts include proportional and uncontested wins. A zero observed count does not establish absence.",
+  "inputs": [
+    "reports/nec-legacy-bridge-audit-latest.json",
+    "reports/nec-four-term-election-comparison-latest.json"
+  ],
+  "rows": [
+    {
+      "name": "김기동",
+      "nec_person_group_id": "nec-person-group-64591dea3238533fc6c5cda3",
+      "events": [
+        {
+          "event_id": "nec-event-b73b322081a24be9586b9109",
+          "election_date": "2006-05-31",
+          "council": "legacy_cheongju",
+          "source_sha256": "f7e238f55c5e4c7b9546975685bfc7c6a4405d386dba82b7781e0c021c4aabb3",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EA%B8%B0%EB%8F%99"
+        },
+        {
+          "event_id": "nec-event-c99294bfa5d2715279994dad",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "f7e238f55c5e4c7b9546975685bfc7c6a4405d386dba82b7781e0c021c4aabb3",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EA%B8%B0%EB%8F%99"
+        },
+        {
+          "event_id": "nec-event-eff90a6f88b9f9dcb1730697",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "f7e238f55c5e4c7b9546975685bfc7c6a4405d386dba82b7781e0c021c4aabb3",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EA%B8%B0%EB%8F%99"
+        },
+        {
+          "event_id": "nec-event-8a567758c8d1e5eaa182dde5",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "f7e238f55c5e4c7b9546975685bfc7c6a4405d386dba82b7781e0c021c4aabb3",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EA%B8%B0%EB%8F%99"
+        },
+        {
+          "event_id": "nec-event-8abd11f351b10cb174044503",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "f7e238f55c5e4c7b9546975685bfc7c6a4405d386dba82b7781e0c021c4aabb3",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EA%B8%B0%EB%8F%99"
+        }
+      ],
+      "verified_preintegration_wins": 2,
+      "verified_integrated_wins": 3,
+      "verified_wins_lower_bound": 5,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "김성택",
+      "nec_person_group_id": "nec-person-group-80fe8984903d5f7b5ea0a072",
+      "events": [
+        {
+          "event_id": "nec-event-9931b9ef28a16ff29cc29464",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "aa39359598267f9fbeb43a7e3e69b9ecfc15f49432ae4f0ee60e9d24c5d2ee0f",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%84%B1%ED%83%9D"
+        },
+        {
+          "event_id": "nec-event-8149184bcd4ec3706b928e34",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "aa39359598267f9fbeb43a7e3e69b9ecfc15f49432ae4f0ee60e9d24c5d2ee0f",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%84%B1%ED%83%9D"
+        },
+        {
+          "event_id": "nec-event-bef251a0e5183b9c0d452998",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "aa39359598267f9fbeb43a7e3e69b9ecfc15f49432ae4f0ee60e9d24c5d2ee0f",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%84%B1%ED%83%9D"
+        },
+        {
+          "event_id": "nec-event-15542661948453618f0cd04f",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "aa39359598267f9fbeb43a7e3e69b9ecfc15f49432ae4f0ee60e9d24c5d2ee0f",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%84%B1%ED%83%9D"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 3,
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "김은숙",
+      "nec_person_group_id": "nec-person-group-4c70e4ebf4c526f39e0879d2",
+      "events": [
+        {
+          "event_id": "nec-event-f12d0de112af20ddaf0b9085",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
+          "personal_vote_status": "proportional"
+        },
+        {
+          "event_id": "nec-event-5534ddb548de35b79e4dd2f6",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-e8c61f673a7d5d3d2d4b87a3",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-46ceb77991a1becd41942aaa",
+          "election_date": "2026-06-03",
+          "council": "integrated_cheongju",
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
+          "personal_vote_status": "displayed"
+        }
+      ],
+      "verified_preintegration_wins": 0,
+      "verified_integrated_wins": 4,
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "김현기",
+      "nec_person_group_id": "nec-person-group-66340f1bfef4a019a04d2681",
+      "events": [
+        {
+          "event_id": "nec-event-994e40d9b37ddc57aa561d2a",
+          "election_date": "2006-05-31",
+          "council": "legacy_cheongju",
+          "source_sha256": "133b536002cec6234e11c4c1fc8ec61647848d8582936986480838c9d35ae420",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%ED%98%84%EA%B8%B0"
+        },
+        {
+          "event_id": "nec-event-75086d4ad744dbf88efd7c84",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "133b536002cec6234e11c4c1fc8ec61647848d8582936986480838c9d35ae420",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%ED%98%84%EA%B8%B0"
+        },
+        {
+          "event_id": "nec-event-aff16ff0252f45f46cf36f31",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "133b536002cec6234e11c4c1fc8ec61647848d8582936986480838c9d35ae420",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%ED%98%84%EA%B8%B0"
+        },
+        {
+          "event_id": "nec-event-68b24c864137d0d04834fb3c",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "133b536002cec6234e11c4c1fc8ec61647848d8582936986480838c9d35ae420",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%ED%98%84%EA%B8%B0"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 3,
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "남일현",
+      "nec_person_group_id": "nec-person-group-5ec1008b2121c1b7744d7c0d",
+      "events": [
+        {
+          "event_id": "nec-event-6b93572bccd8ac470ed63185",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "1a75cffbc9fbe9482a54ac3404f420dd3c0764c41968ac8954cd5caefa94719d",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%82%A8%EC%9D%BC%ED%98%84",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-b1e49ba18332d0b68b5fba35",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "1a75cffbc9fbe9482a54ac3404f420dd3c0764c41968ac8954cd5caefa94719d",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%82%A8%EC%9D%BC%ED%98%84",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-11f97547a103c5714d3f82d7",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "1a75cffbc9fbe9482a54ac3404f420dd3c0764c41968ac8954cd5caefa94719d",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%82%A8%EC%9D%BC%ED%98%84",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-75f8b1cee0257450d1916a55",
+          "election_date": "2026-06-03",
+          "council": "integrated_cheongju",
+          "source_sha256": "1a75cffbc9fbe9482a54ac3404f420dd3c0764c41968ac8954cd5caefa94719d",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%82%A8%EC%9D%BC%ED%98%84",
+          "personal_vote_status": "displayed"
+        }
+      ],
+      "verified_preintegration_wins": 0,
+      "verified_integrated_wins": 4,
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "박노학",
+      "nec_person_group_id": "nec-person-group-0047a47177b37d3f371a6eec",
+      "events": [
+        {
+          "event_id": "nec-event-aefe4c81f326b226256d81c2",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-81b3a7648cddd29f170a7ba7",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-ea1ceda40bc79011fa20f22e",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-c3bcd842a9c2e6c897121cb1",
+          "election_date": "2026-06-03",
+          "council": "integrated_cheongju",
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
+          "personal_vote_status": "displayed"
+        }
+      ],
+      "verified_preintegration_wins": 0,
+      "verified_integrated_wins": 4,
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "박정희",
+      "nec_person_group_id": "nec-person-group-e58ea75ecd5973d4d1ade5c0",
+      "events": [
+        {
+          "event_id": "nec-event-14d93763f82cdce0d42370df",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongwon",
+          "source_sha256": "612c196263728c3bd0368a9bf5f3749db2a2ca935930a6c0e713525905b0b2e4",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%A0%95%ED%9D%AC"
+        },
+        {
+          "event_id": "nec-event-0fb99f0389a1faa834ca934a",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "612c196263728c3bd0368a9bf5f3749db2a2ca935930a6c0e713525905b0b2e4",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%A0%95%ED%9D%AC"
+        },
+        {
+          "event_id": "nec-event-0763d091b665d7b96d39957f",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "612c196263728c3bd0368a9bf5f3749db2a2ca935930a6c0e713525905b0b2e4",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%A0%95%ED%9D%AC"
+        },
+        {
+          "event_id": "nec-event-76a86f4c4c2028c7918fdb66",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "612c196263728c3bd0368a9bf5f3749db2a2ca935930a6c0e713525905b0b2e4",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%A0%95%ED%9D%AC"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 3,
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "이완복",
+      "nec_person_group_id": "nec-person-group-3af94530f6079107cec74502",
+      "events": [
+        {
+          "event_id": "nec-event-dec499452b9e7875f3897dfd",
+          "election_date": "2006-05-31",
+          "council": "legacy_cheongju",
+          "source_sha256": "890bbd4ccc9ee7d8e67aa5378fe5ffcf9db1ebd335bf0225ee960ce8afcae389",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%99%84%EB%B3%B5"
+        },
+        {
+          "event_id": "nec-event-ef1b3a2a045ecc4797ff59ff",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "890bbd4ccc9ee7d8e67aa5378fe5ffcf9db1ebd335bf0225ee960ce8afcae389",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%99%84%EB%B3%B5"
+        },
+        {
+          "event_id": "nec-event-68bcadd03a764ab4c3791cbe",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "890bbd4ccc9ee7d8e67aa5378fe5ffcf9db1ebd335bf0225ee960ce8afcae389",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%99%84%EB%B3%B5"
+        },
+        {
+          "event_id": "nec-event-50139355b906bbca672fe060",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "890bbd4ccc9ee7d8e67aa5378fe5ffcf9db1ebd335bf0225ee960ce8afcae389",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%99%84%EB%B3%B5"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 3,
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "정태훈",
+      "nec_person_group_id": "nec-person-group-def10388634de3ab019c1f1e",
+      "events": [
+        {
+          "event_id": "nec-event-45815cd780a4adbdb1ef2392",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "bac0758a4bd79aa747cd33497880a0ddd9a91bfd1a4e95b98e8da5f94f8a0afa",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%ED%83%9C%ED%9B%88",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-608bef11b7058a31cc42789b",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "bac0758a4bd79aa747cd33497880a0ddd9a91bfd1a4e95b98e8da5f94f8a0afa",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%ED%83%9C%ED%9B%88",
+          "personal_vote_status": "displayed"
+        },
+        {
+          "event_id": "nec-event-602997228ae0f0ebf3e49ed7",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "bac0758a4bd79aa747cd33497880a0ddd9a91bfd1a4e95b98e8da5f94f8a0afa",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%ED%83%9C%ED%9B%88",
+          "personal_vote_status": "uncontested"
+        },
+        {
+          "event_id": "nec-event-cf397f4f1fe16449aac3bef3",
+          "election_date": "2026-06-03",
+          "council": "integrated_cheongju",
+          "source_sha256": "bac0758a4bd79aa747cd33497880a0ddd9a91bfd1a4e95b98e8da5f94f8a0afa",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%ED%83%9C%ED%9B%88",
+          "personal_vote_status": "displayed"
+        }
+      ],
+      "verified_preintegration_wins": 0,
+      "verified_integrated_wins": 4,
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "하재성",
+      "nec_person_group_id": "nec-person-group-a987740336beed92a0083245",
+      "events": [
+        {
+          "event_id": "nec-event-11df16fc2601bbae8af98d7c",
+          "election_date": "2006-05-31",
+          "council": "legacy_cheongwon",
+          "source_sha256": "b95d9d25b0b2d91f1f0591e4a5bbd6df4d195e66be2b197187fe64edfbe42352",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%95%98%EC%9E%AC%EC%84%B1"
+        },
+        {
+          "event_id": "nec-event-16b7c9afc478b299ad22754b",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongwon",
+          "source_sha256": "b95d9d25b0b2d91f1f0591e4a5bbd6df4d195e66be2b197187fe64edfbe42352",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%95%98%EC%9E%AC%EC%84%B1"
+        },
+        {
+          "event_id": "nec-event-bcc53a34a62b1280f6d9f16e",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "b95d9d25b0b2d91f1f0591e4a5bbd6df4d195e66be2b197187fe64edfbe42352",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%95%98%EC%9E%AC%EC%84%B1"
+        },
+        {
+          "event_id": "nec-event-483b1522d515f850a143f460",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "b95d9d25b0b2d91f1f0591e4a5bbd6df4d195e66be2b197187fe64edfbe42352",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%95%98%EC%9E%AC%EC%84%B1"
+        }
+      ],
+      "verified_preintegration_wins": 2,
+      "verified_integrated_wins": 2,
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "김병국",
+      "nec_person_group_id": "nec-person-group-8879203b6e5eeaa8aab2b144",
+      "events": [
+        {
+          "event_id": "nec-event-6d69910f6c80f3b3efccff7d",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "a348e5a13761b9cdac6b26471e2ba9f01d2a9ce14f2136b1035b26ea04d8b07c",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EB%B3%91%EA%B5%AD"
+        },
+        {
+          "event_id": "nec-event-8d6623498538f330bdc56d46",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "a348e5a13761b9cdac6b26471e2ba9f01d2a9ce14f2136b1035b26ea04d8b07c",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EB%B3%91%EA%B5%AD"
+        },
+        {
+          "event_id": "nec-event-45f221fcee12698113e297fd",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "a348e5a13761b9cdac6b26471e2ba9f01d2a9ce14f2136b1035b26ea04d8b07c",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EB%B3%91%EA%B5%AD"
+        }
+      ],
+      "verified_preintegration_wins": 0,
+      "verified_integrated_wins": 3,
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "preintegration_note": "2014년 선관위 공개 경력에 청원군의회 1~3대 재임 명시. 개별 당선 원문 미확보."
+    },
+    {
+      "name": "김영근",
+      "nec_person_group_id": "nec-person-group-b6a45911c861c911b9324cb8",
+      "events": [
+        {
+          "event_id": "nec-event-25201d8a168c0332a985f113",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "746d98cc31fb6d799787f480be192cfb073c424c26b68e90c8b800294b32f63c",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%98%81%EA%B7%BC"
+        },
+        {
+          "event_id": "nec-event-f24b1a7e08603eb2d86436f1",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "746d98cc31fb6d799787f480be192cfb073c424c26b68e90c8b800294b32f63c",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%98%81%EA%B7%BC"
+        },
+        {
+          "event_id": "nec-event-c346fff7238b98fe8120f54e",
+          "election_date": "2022-06-01",
+          "council": "integrated_cheongju",
+          "source_sha256": "746d98cc31fb6d799787f480be192cfb073c424c26b68e90c8b800294b32f63c",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%98%81%EA%B7%BC"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 2,
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "맹순자",
+      "nec_person_group_id": "nec-person-group-ec3da6a83099f5accc52535d",
+      "events": [
+        {
+          "event_id": "nec-event-c41889f3e6d82d503dc2bd42",
+          "election_date": "2006-05-31",
+          "council": "legacy_cheongwon",
+          "source_sha256": "e81d8ffda04a5a1097cccb4ebb11880c2d22061d3ad0b4577cef22da018821d2",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%A7%B9%EC%88%9C%EC%9E%90"
+        },
+        {
+          "event_id": "nec-event-a07d6aa931fb6252cd1e21fa",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongwon",
+          "source_sha256": "e81d8ffda04a5a1097cccb4ebb11880c2d22061d3ad0b4577cef22da018821d2",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%A7%B9%EC%88%9C%EC%9E%90"
+        },
+        {
+          "event_id": "nec-event-a3a76afe78a80a735ce580b4",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "e81d8ffda04a5a1097cccb4ebb11880c2d22061d3ad0b4577cef22da018821d2",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%A7%B9%EC%88%9C%EC%9E%90"
+        }
+      ],
+      "verified_preintegration_wins": 2,
+      "verified_integrated_wins": 1,
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "신언식",
+      "nec_person_group_id": "nec-person-group-4dbc5ffe816f5d82ca3c35db",
+      "events": [
+        {
+          "event_id": "nec-event-87565f74246fbf1166245f6e",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongwon",
+          "source_sha256": "389dd4e7aef76ca3ae54a947f3d5c8146ab62743446e975e0cb58aeebdea096a",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%8B%A0%EC%96%B8%EC%8B%9D"
+        },
+        {
+          "event_id": "nec-event-ab763575ee28caaa27e4caeb",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "389dd4e7aef76ca3ae54a947f3d5c8146ab62743446e975e0cb58aeebdea096a",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%8B%A0%EC%96%B8%EC%8B%9D"
+        },
+        {
+          "event_id": "nec-event-52e3b72892ec2ffbe32e50c4",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "389dd4e7aef76ca3ae54a947f3d5c8146ab62743446e975e0cb58aeebdea096a",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%8B%A0%EC%96%B8%EC%8B%9D"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 2,
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "이재길",
+      "nec_person_group_id": "nec-person-group-e3ea243f6292f6e0588d1a2a",
+      "events": [
+        {
+          "event_id": "nec-event-476bcb4a9e8a38f02f20dc68",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "8517c4db059df79cc267de2b4b0106689d2e1bac8063322d7d0372dfb2b7df4c",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%9E%AC%EA%B8%B8"
+        },
+        {
+          "event_id": "nec-event-219403d8c1c926a80e67ff26",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "8517c4db059df79cc267de2b4b0106689d2e1bac8063322d7d0372dfb2b7df4c",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%9E%AC%EA%B8%B8"
+        },
+        {
+          "event_id": "nec-event-eb4ee5e0b5419cfebe4cf195",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "8517c4db059df79cc267de2b4b0106689d2e1bac8063322d7d0372dfb2b7df4c",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%9E%AC%EA%B8%B8"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 2,
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "임기중",
+      "nec_person_group_id": "nec-person-group-9b4ebf7a9e41dfb6a05f1bf6",
+      "events": [
+        {
+          "event_id": "nec-event-10cf91e42b1d82258c9fb80b",
+          "election_date": "2006-05-31",
+          "council": "legacy_cheongju",
+          "source_sha256": "5e31c88907d7bdf7e1351ab79e631f0294f1e157e78e76fc5da2462c1c15b961",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9E%84%EA%B8%B0%EC%A4%91"
+        },
+        {
+          "event_id": "nec-event-bbab663ad50d11b67f77e71a",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "5e31c88907d7bdf7e1351ab79e631f0294f1e157e78e76fc5da2462c1c15b961",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9E%84%EA%B8%B0%EC%A4%91"
+        },
+        {
+          "event_id": "nec-event-20d3c8903c647073f33b1558",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "5e31c88907d7bdf7e1351ab79e631f0294f1e157e78e76fc5da2462c1c15b961",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9E%84%EA%B8%B0%EC%A4%91"
+        }
+      ],
+      "verified_preintegration_wins": 2,
+      "verified_integrated_wins": 1,
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "최진현",
+      "nec_person_group_id": "nec-person-group-e9d5763a377b75ca5dbd2257",
+      "events": [
+        {
+          "event_id": "nec-event-65a5149b2644dcac3e56baa9",
+          "election_date": "2006-05-31",
+          "council": "legacy_cheongju",
+          "source_sha256": "2e1a8aedbea845fa5f5078b6a88594a28541a24f9f18c1d28086f18595608191",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%B5%9C%EC%A7%84%ED%98%84"
+        },
+        {
+          "event_id": "nec-event-689af5699b86542133020a90",
+          "election_date": "2012-04-11",
+          "council": "legacy_cheongju",
+          "source_sha256": "2e1a8aedbea845fa5f5078b6a88594a28541a24f9f18c1d28086f18595608191",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%B5%9C%EC%A7%84%ED%98%84"
+        },
+        {
+          "event_id": "nec-event-81b76799ec066338a98f28b4",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "2e1a8aedbea845fa5f5078b6a88594a28541a24f9f18c1d28086f18595608191",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%B5%9C%EC%A7%84%ED%98%84"
+        }
+      ],
+      "verified_preintegration_wins": 2,
+      "verified_integrated_wins": 1,
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "최충진",
+      "nec_person_group_id": "nec-person-group-ba5466defa1c89d32a24f8ed",
+      "events": [
+        {
+          "event_id": "nec-event-29238e9b13e9e69f0fbd863b",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "c0604ba5bf7eb191e0e7cf64b61c80c3b662ccce0aa54a8b68900bad5d4a72a2",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%B5%9C%EC%B6%A9%EC%A7%84"
+        },
+        {
+          "event_id": "nec-event-22e58841a373206f0ec65a0b",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "c0604ba5bf7eb191e0e7cf64b61c80c3b662ccce0aa54a8b68900bad5d4a72a2",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%B5%9C%EC%B6%A9%EC%A7%84"
+        },
+        {
+          "event_id": "nec-event-8f5270951b3c186008ff0857",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "c0604ba5bf7eb191e0e7cf64b61c80c3b662ccce0aa54a8b68900bad5d4a72a2",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%B5%9C%EC%B6%A9%EC%A7%84"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 2,
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "황영호",
+      "nec_person_group_id": "nec-person-group-97f4a57b5d5b0d4f55f474ca",
+      "events": [
+        {
+          "event_id": "nec-event-6d0e2ab56a4508f78f285641",
+          "election_date": "2006-05-31",
+          "council": "legacy_cheongju",
+          "source_sha256": "899f2fa07c2c76c389870ef782c8a30c87680e787b1de163123a34c9b87786fa",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%99%A9%EC%98%81%ED%98%B8"
+        },
+        {
+          "event_id": "nec-event-68519ed0de557853704d9683",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "899f2fa07c2c76c389870ef782c8a30c87680e787b1de163123a34c9b87786fa",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%99%A9%EC%98%81%ED%98%B8"
+        },
+        {
+          "event_id": "nec-event-693642c3f75136d1c6438f64",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "899f2fa07c2c76c389870ef782c8a30c87680e787b1de163123a34c9b87786fa",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%99%A9%EC%98%81%ED%98%B8"
+        }
+      ],
+      "verified_preintegration_wins": 2,
+      "verified_integrated_wins": 1,
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "박상돈",
+      "nec_person_group_id": "nec-person-group-c06c51112a8fd443f46b29b2",
+      "events": [
+        {
+          "event_id": "nec-event-97792e5e34d0f27177b1a21a",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "26c1ffdf97861679be3bc6c0ef59d0ff386574807a74f1335627b75722310a11",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%83%81%EB%8F%88"
+        },
+        {
+          "event_id": "nec-event-ed0d9c12196c6d7a96992825",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "26c1ffdf97861679be3bc6c0ef59d0ff386574807a74f1335627b75722310a11",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%83%81%EB%8F%88"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 1,
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "박용현",
+      "nec_person_group_id": "nec-person-group-2823abf8d7641ffc6a4e0b81",
+      "events": [
+        {
+          "event_id": "nec-event-41eae18ceac22e590a17ec9a",
+          "election_date": "2006-05-31",
+          "council": "legacy_cheongju",
+          "source_sha256": "0ee4d8636a161450145704055a5a9cdb8445ad7ac1b6467bf6175b9abe7d49be",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%9A%A9%ED%98%84"
+        },
+        {
+          "event_id": "nec-event-426d8b63c3d4e02663b1a366",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "0ee4d8636a161450145704055a5a9cdb8445ad7ac1b6467bf6175b9abe7d49be",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%9A%A9%ED%98%84"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 1,
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "서지한",
+      "nec_person_group_id": "nec-person-group-57c72eef77cc0e87a2dc4e4d",
+      "events": [
+        {
+          "event_id": "nec-event-4bf1848f530a06497e8e9760",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "840cea1d99538cf28382363140b07dbc76af741d8d0c479d6f87aab38a4543d7",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%84%9C%EC%A7%80%ED%95%9C"
+        },
+        {
+          "event_id": "nec-event-4965a39f228289e5c7cb9be5",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "840cea1d99538cf28382363140b07dbc76af741d8d0c479d6f87aab38a4543d7",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%84%9C%EC%A7%80%ED%95%9C"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 1,
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "육미선",
+      "nec_person_group_id": "nec-person-group-365c5cd86e49d80647b0b69d",
+      "events": [
+        {
+          "event_id": "nec-event-229169c8f4ac09ff6eb5bc44",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "6fe65dfb017a79295f7f9bca023a2d2787558ea6e4bf6a47cf0b831aeb76c559",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9C%A1%EB%AF%B8%EC%84%A0"
+        },
+        {
+          "event_id": "nec-event-5b82a9aeb764bd878d858f2c",
+          "election_date": "2014-06-04",
+          "council": "integrated_cheongju",
+          "source_sha256": "6fe65dfb017a79295f7f9bca023a2d2787558ea6e4bf6a47cf0b831aeb76c559",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9C%A1%EB%AF%B8%EC%84%A0"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 1,
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "preintegration_note": null
+    },
+    {
+      "name": "정우철",
+      "nec_person_group_id": "nec-person-group-0ca6524d9a4ff39bced51bd3",
+      "events": [
+        {
+          "event_id": "nec-event-abe762ac031737a6949946da",
+          "election_date": "2010-06-02",
+          "council": "legacy_cheongju",
+          "source_sha256": "b1fbfdbeb760ec3785791b69eb1981b149e4ff37dd6749b0a479ebd4831944f5",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%EC%9A%B0%EC%B2%A0"
+        },
+        {
+          "event_id": "nec-event-b8d9fee463f9acc7d181d54f",
+          "election_date": "2018-06-13",
+          "council": "integrated_cheongju",
+          "source_sha256": "b1fbfdbeb760ec3785791b69eb1981b149e4ff37dd6749b0a479ebd4831944f5",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%EC%9A%B0%EC%B2%A0"
+        }
+      ],
+      "verified_preintegration_wins": 1,
+      "verified_integrated_wins": 1,
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "preintegration_note": null
+    }
+  ]
+}
