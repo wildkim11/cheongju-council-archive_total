@@ -4,7 +4,8 @@
   "inputs": [
     "reports/nec-reviewed-seniority-lower-bounds-latest.json",
     "reports/cross-scope-identity-review-latest.json",
-    "reports/nec-current-profile-links-latest.json"
+    "reports/nec-current-profile-links-latest.json",
+    "reports/current-career-evidence-latest.json"
   ],
   "review_rows": 24,
   "source_corroborated_current_links": 0,
@@ -190,7 +191,22 @@
       ],
       "current_profile_hold_reasons": [
         "no_independent_career_match"
-      ]
+      ],
+      "council_profile_career_evidence": {
+        "name": "김은숙",
+        "profile_id": "person-fcode-1170",
+        "explicit_career_terms": [
+          3,
+          4
+        ],
+        "career_mentions": [
+          "현) 제4대 청주시의회 의원",
+          "전) 제3대 청주시의회 부의장(전반기)"
+        ],
+        "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1170",
+        "source_path": "archive/source_responses/6290ff0020b7b0928b45c23b579b4716e3f62aa2d0e57412f1c890491a1faf5c.html.gz",
+        "source_sha256": "6290ff0020b7b0928b45c23b579b4716e3f62aa2d0e57412f1c890491a1faf5c"
+      }
     },
     {
       "name": "김현기",
@@ -304,7 +320,29 @@
       ],
       "current_profile_hold_reasons": [
         "no_independent_career_match"
-      ]
+      ],
+      "council_profile_career_evidence": {
+        "name": "남일현",
+        "profile_id": "person-fcode-1120",
+        "explicit_career_terms": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "career_mentions": [
+          "현) 제4대 청주시의회 행정안전위원회 위원",
+          "현) 제4대 청주시의회 예산결산특별위원회 위원장",
+          "전) 제3대 청주시의회 농업정책위원회 위원",
+          "전) 제2대 청주시의회 도시건설위원회 위원",
+          "전) 제2대 청주시의회 전반기 행정문화위원회 위원장",
+          "전) 제1대 청주시의회 후반기 행정문화위원회 부위원장",
+          "전) 제1대 청주시의회 제2기 예산결산특별위원회 부위원장"
+        ],
+        "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1120",
+        "source_path": "archive/source_responses/3081181af1e9b569b6b027f8132e3b03ac09fa3c62075d6b21d1672963499e55.html.gz",
+        "source_sha256": "3081181af1e9b569b6b027f8132e3b03ac09fa3c62075d6b21d1672963499e55"
+      }
     },
     {
       "name": "박노학",
@@ -362,7 +400,24 @@
       ],
       "current_profile_hold_reasons": [
         "no_independent_career_match"
-      ]
+      ],
+      "council_profile_career_evidence": {
+        "name": "박노학",
+        "profile_id": "person-fcode-1130",
+        "explicit_career_terms": [
+          2,
+          3,
+          4
+        ],
+        "career_mentions": [
+          "현) 제4대 청주시의회 의원",
+          "전) 제2대, 3대 청주시의회 농업정책위원장",
+          "전) 제3대 청주시의회 국민의힘 원내대표"
+        ],
+        "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1130",
+        "source_path": "archive/source_responses/026c3b0e8bd93ead40ef977e54830906afd2ad7460986b181ea1ef64a27fae82.html.gz",
+        "source_sha256": "026c3b0e8bd93ead40ef977e54830906afd2ad7460986b181ea1ef64a27fae82"
+      }
     },
     {
       "name": "박정희",
@@ -543,7 +598,26 @@
       ],
       "current_profile_hold_reasons": [
         "no_independent_career_match"
-      ]
+      ],
+      "council_profile_career_evidence": {
+        "name": "정태훈",
+        "profile_id": "person-fcode-1010",
+        "explicit_career_terms": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "career_mentions": [
+          "현) 제4대 청주시의회 부의장",
+          "전) 제3대 청주시의회 의원",
+          "전) 제2대 청주시의회 의원",
+          "전) 제1대 청주시의회 의원"
+        ],
+        "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1010",
+        "source_path": "archive/source_responses/a74ba197170cc1b2731433f561d98ad9da8532772ae3c3875a08b1515a28d796.html.gz",
+        "source_sha256": "a74ba197170cc1b2731433f561d98ad9da8532772ae3c3875a08b1515a28d796"
+      }
     },
     {
       "name": "하재성",
@@ -1242,5 +1316,6 @@
       ],
       "current_profile_hold_reasons": []
     }
-  ]
+  ],
+  "council_profile_career_evidence_rows": 4
 }
