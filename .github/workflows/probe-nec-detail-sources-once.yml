@@ -1,10 +1,6 @@
 name: Inspect NEC district and early-voting detail pages on macOS
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths:
-      - scripts/probe_nec_detail_sources.py
-      - .github/workflows/probe-nec-detail-sources-once.yml
+  # Six initial detail responses captured; further probes are manual.
   workflow_dispatch:
 permissions:
   contents: write
