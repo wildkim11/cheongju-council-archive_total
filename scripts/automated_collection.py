@@ -239,6 +239,8 @@ def validate_candidate(stage,oldroot):
     qa['current_career_evidence']=build_current_career_evidence.build(stage)
     import build_career_roster_crosswalk
     qa['career_roster_crosswalk']=build_career_roster_crosswalk.build(stage)
+    import build_cross_scope_identity_review
+    qa['cross_scope_identity_review']=build_cross_scope_identity_review.build(stage)
     import audit_nec_election_samples
     qa['nec_election_sample_audit']=audit_nec_election_samples.build(stage)
     qa['nec_current_roster_audit']=audit_nec_election_samples.build_current(stage)

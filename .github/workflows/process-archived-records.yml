@@ -54,6 +54,8 @@ on:
       - scripts/collect_current_members.py
       - tests/test_current_career_evidence.py
       - scripts/build_profile_history_evidence.py
+      - scripts/build_cross_scope_identity_review.py
+      - tests/test_cross_scope_identity_review.py
       - tests/test_profile_history_evidence.py
       - scripts/audit_analysis_period_readiness.py
       - tests/test_analysis_periods.py
@@ -132,6 +134,8 @@ jobs:
         run: python -u scripts/build_current_career_evidence.py
       - name: Cross-check explicit career mentions with preserved rosters without merging identities
         run: python -u scripts/build_career_roster_crosswalk.py
+      - name: Preserve integrated and preintegration identity review without merging profiles
+        run: python -u scripts/build_cross_scope_identity_review.py
       - name: Verify NEC election samples while separating homonyms and candidate/winner tabs
         run: python -u scripts/audit_nec_election_samples.py
       - name: Verify current-roster NEC sources and source-corroborated profile links
@@ -166,7 +170,7 @@ jobs:
           git add exports/profile-history reports/profile-history-evidence-latest.json
           git add reports/council-period-source-evidence-latest.json
           git add reports/current-career-evidence-latest.json
-          git add reports/career-roster-crosswalk-latest.json
+          git add reports/career-roster-crosswalk-latest.json reports/cross-scope-identity-review-latest.json
           git add reports/nec-election-sample-audit-latest.json
           git add reports/nec-election-observations-latest.json reports/nec-report-table-audit-latest.json reports/nec-city-election-audit-latest.json
           git add reports/nec-current-roster-audit-latest.json reports/nec-current-profile-links-latest.json
@@ -197,6 +201,7 @@ jobs:
             reports/council-period-source-evidence-latest.json
             reports/current-career-evidence-latest.json
             reports/career-roster-crosswalk-latest.json
+            reports/cross-scope-identity-review-latest.json
             reports/nec-election-sample-audit-latest.json
             reports/nec-current-roster-audit-latest.json
             reports/nec-current-profile-links-latest.json

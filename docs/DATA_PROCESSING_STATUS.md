@@ -57,3 +57,7 @@ Captured six selection pages and three observed read-only report POSTs on macOS.
 ## 2026 Cheongju four-committee election snapshot — 2026-11-05
 
 Official district selectors reconcile to 14 observed districts. Snapshot includes 43 early-voting facilities across four committees, 64 regional candidates, 12 count reports/156 count rows with arithmetic conservation, and two explicit report-body uncontested statements. Actual new requests32/reused4/errors0. Source-backed regional table coverage is distinct from proportional/historical/seat/winner/seniority completeness. See `NEC_CITY_ELECTION_20261105.md`.
+
+## 통합 전후 동일인 경력 연결 — 2026-11-05 사용자 확인
+
+1~4대 및 통합 전 청주시/청원군에서 이어지는 동일인 경력을 지원한다. 의회별 대수 번호 초기화를 인물/선수 초기화로 취급하지 않는다. 프로필과 실제 인물을 분리하고 승인 근거를 별도로 보존하며, 연속·비연속 경력과 미확인을 구분한다. 새 검토 원장은435프로필의115동명묶음/259프로필쌍·통합전후20묶음/통합1~4대등장4묶음을 미승인 상태로 관리한다. 상세 `CROSS_SCOPE_IDENTITY_CONTINUITY_20261105.md`.
