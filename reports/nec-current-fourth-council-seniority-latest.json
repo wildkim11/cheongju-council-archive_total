@@ -1,10 +1,11 @@
 {
   "schema": "cheongju-current-fourth-council-seniority/1",
-  "input_commit": "2b14c1b873f124dd19523c298a8f6e65dc85fb4e",
+  "input_commit": "28e67775bf50f2d750c9e485e1dab90a3ab3b0f7",
   "inputs": [
     "reports/nec-current-profile-links-latest.json",
     "reports/nec-reviewed-seniority-roster-crosswalk-latest.json",
-    "reports/nec-four-term-election-comparison-latest.json"
+    "reports/nec-four-term-election-comparison-latest.json",
+    "reports/nec-current-roster-audit-latest.json"
   ],
   "counts": {
     "최소 1선": 36,
@@ -42,7 +43,9 @@
         "district": "타선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%84%B1%EC%88%98",
         "source_sha256": "923ee289f6ccb7e320dd691a7f204acea201bc2f9d16b91769e7928ebc2aa45c"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "김완식",
@@ -86,7 +89,31 @@
         "district": "차선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
         "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2014-06-04",
+          "event_id": "nec-event-f12d0de112af20ddaf0b9085",
+          "heading": "[2014.06.04] 제6회 전국동시지방선거 새정치민주연합/ 기초의원비례대표선거/ 충청북도(청주시)당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7"
+        },
+        {
+          "election_date": "2018-06-13",
+          "event_id": "nec-event-5534ddb548de35b79e4dd2f6",
+          "heading": "[2018.06.13] 제7회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시아선거구)/ 13,768표 (36.94%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7"
+        },
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-e8c61f673a7d5d3d2d4b87a3",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시차선거구)/ 4,663표 (18.15%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9D%80%EC%88%99",
+          "source_sha256": "d9d638df20a254de300368974725bf570bbd8221d3a45088b95a84196f1ee4d7"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "김재년",
@@ -105,7 +132,9 @@
         "district": "라선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%9E%AC%EB%85%84",
         "source_sha256": "6dc7ed68c0c3dc74edfd6c8216b48ef1e582148dd4b40834101db65fd6c0775f"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "김종식",
@@ -124,7 +153,9 @@
         "district": "사선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%A2%85%EC%8B%9D",
         "source_sha256": "edc53b1a9f4b4e64520e7989b8a24fb60dee4db619735a2853a2d5a96902737a"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "김준석",
@@ -143,7 +174,17 @@
         "district": "자선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%A4%80%EC%84%9D",
         "source_sha256": "3394dd6950cba02813a7d9fef85d5c7ab3eff5d1187042c661b14e79bfc1eaf2"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2024-04-10",
+          "event_id": "nec-event-ab4a33e8e176bc3762fd72a3",
+          "heading": "[2024.04.10] 재·보궐선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시자선거구)/ 12,720표 (46.61%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%A4%80%EC%84%9D",
+          "source_sha256": "3394dd6950cba02813a7d9fef85d5c7ab3eff5d1187042c661b14e79bfc1eaf2"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "김진석",
@@ -189,7 +230,9 @@
         "district": "자선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%85%B8%EC%88%9C%EC%98%A5",
         "source_sha256": "e235e11a2e5c2be363971b7864ec841a8c7f15f65807a697500e6a13dce44726"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "마재광",
@@ -208,7 +251,9 @@
         "district": "비례대표",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%A7%88%EC%9E%AC%EA%B4%91",
         "source_sha256": "8312abc8a0d06e6a8ec0097552d1bb73146bdc14efb4f789c0c7d6ac75cc01ba"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "박노학",
@@ -227,7 +272,31 @@
         "district": "사선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
         "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2014-06-04",
+          "event_id": "nec-event-aefe4c81f326b226256d81c2",
+          "heading": "[2014.06.04] 제6회 전국동시지방선거 새누리당/ 구·시·군의회의원선거/ 충청북도(청주시카선거구)/ 3,471표 (16.92%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90"
+        },
+        {
+          "election_date": "2018-06-13",
+          "event_id": "nec-event-81b3a7648cddd29f170a7ba7",
+          "heading": "[2018.06.13] 제7회 전국동시지방선거 자유한국당/ 구·시·군의회의원선거/ 충청북도(청주시자선거구)/ 6,248표 (17.51%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90"
+        },
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-ea1ceda40bc79011fa20f22e",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시사선거구)/ 7,205표 (31.23%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EB%85%B8%ED%95%99",
+          "source_sha256": "c05aabc684afa2f0460bc80f751081a0d5c7c0aeb61d86c3299e930bd077bd90"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "박병만",
@@ -258,7 +327,9 @@
         "district": "자선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%88%98%EB%AF%BC",
         "source_sha256": "190923072b93fefed299d05a77eb3b95e64d7d7d8d7a99011d6a3338de1f77ed"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "박승찬",
@@ -277,7 +348,17 @@
         "district": "라선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%8A%B9%EC%B0%AC",
         "source_sha256": "5f21baed287eee19589813616450c14503c1a7b859f92ce54c52b59fc319dfb3"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-1d87e2200e51e1938d2cf257",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 기초의원비례대표선거/ 충청북도(청주시)당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B0%95%EC%8A%B9%EC%B0%AC",
+          "source_sha256": "5f21baed287eee19589813616450c14503c1a7b859f92ce54c52b59fc319dfb3"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "배성철",
@@ -308,7 +389,24 @@
         "district": "하선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B3%80%EC%9D%80%EC%98%81",
         "source_sha256": "c6ba2ead23a7fa6cc58ee2bb9b1e04dfc95d93cb074eded1ce9ce84f70441f35"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2018-06-13",
+          "event_id": "nec-event-2f69d4bef9ddf23ed9f936a9",
+          "heading": "[2018.06.13] 제7회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시차선거구)/ 13,060표 (34.80%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B3%80%EC%9D%80%EC%98%81",
+          "source_sha256": "c6ba2ead23a7fa6cc58ee2bb9b1e04dfc95d93cb074eded1ce9ce84f70441f35"
+        },
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-dc2a4a217bdd679e0749b864",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시하선거구)/ 7,867표 (43.58%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EB%B3%80%EC%9D%80%EC%98%81",
+          "source_sha256": "c6ba2ead23a7fa6cc58ee2bb9b1e04dfc95d93cb074eded1ce9ce84f70441f35"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "송병호",
@@ -327,7 +425,17 @@
         "district": "타선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%86%A1%EB%B3%91%ED%98%B8",
         "source_sha256": "f3d12dd0e392cfc6495b9e76024bfc8b7cd96f0625f0815aa553aae78a103c23"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-645e6f105d694bc8a30349fd",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 기초의원비례대표선거/ 충청북도(청주시)당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%86%A1%EB%B3%91%ED%98%B8",
+          "source_sha256": "f3d12dd0e392cfc6495b9e76024bfc8b7cd96f0625f0815aa553aae78a103c23"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "신민수",
@@ -371,7 +479,9 @@
         "district": "비례대표",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EB%AF%BC%EC%98%81",
         "source_sha256": "d117deb1b69dffd6ecb6d358e085495b2d7b813388deaa7da50e002420f89584"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "이상조",
@@ -390,7 +500,17 @@
         "district": "나선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%83%81%EC%A1%B0",
         "source_sha256": "289121c7cac8ee87839c42837f086da70a189f360f387804bc3066f0a1fdb1c7"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2023-04-05",
+          "event_id": "nec-event-bb1eaefd7c498e97c58960be",
+          "heading": "[2023.04.05] 재·보궐선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시나선거구)/ 5,851표 (48.38%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%83%81%EC%A1%B0",
+          "source_sha256": "289121c7cac8ee87839c42837f086da70a189f360f387804bc3066f0a1fdb1c7"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "이연숙",
@@ -434,7 +554,17 @@
         "district": "하선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%ED%95%9C%EA%B5%AD",
         "source_sha256": "0c4b05f4fcda3db0f6507212e450ca25504f796776bef3bf87eb231924b45f6b"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-c347f505d5abc7d64b221d34",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시하선거구)/ 8,029표 (44.48%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%ED%95%9C%EA%B5%AD",
+          "source_sha256": "0c4b05f4fcda3db0f6507212e450ca25504f796776bef3bf87eb231924b45f6b"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "임은성",
@@ -453,7 +583,24 @@
         "district": "라선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9E%84%EC%9D%80%EC%84%B1",
         "source_sha256": "e70eac5650016f8f16d2a9db6228ab079b42f103e0fccba2625709fcb607da36"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2018-06-13",
+          "event_id": "nec-event-6b449c1e1d016829ec73021a",
+          "heading": "[2018.06.13] 제7회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시마선거구)/ 11,092표 (31.50%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9E%84%EC%9D%80%EC%84%B1",
+          "source_sha256": "e70eac5650016f8f16d2a9db6228ab079b42f103e0fccba2625709fcb607da36"
+        },
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-5eb9aa029017bfb08118ff50",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시라선거구)/ 8,279표 (31.95%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9E%84%EC%9D%80%EC%84%B1",
+          "source_sha256": "e70eac5650016f8f16d2a9db6228ab079b42f103e0fccba2625709fcb607da36"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "정무신",
@@ -472,7 +619,9 @@
         "district": "나선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%EB%AC%B4%EC%8B%A0",
         "source_sha256": "33d757a032b76fb70f82a39280d2e341b3f15e1f0f374c9d5c221447c1a28beb"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "정연숙",
@@ -504,7 +653,17 @@
         "district": "카선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%EC%98%81%EC%84%9D",
         "source_sha256": "0c788b39c1ae7d111be3e3415c90f8a326c1218b35272eecf35692f37e224a81"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-20062ff2530ccdc03b510e8c",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시카선거구)/ 5,964표 (36.99%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%A0%95%EC%98%81%EC%84%9D",
+          "source_sha256": "0c788b39c1ae7d111be3e3415c90f8a326c1218b35272eecf35692f37e224a81"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "정태훈",
@@ -575,7 +734,9 @@
         "district": "아선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%B5%9C%EC%84%9C%EC%A7%84",
         "source_sha256": "71678c68a99f8933b825cb789796e7924c03bf95ab91ebe9558049b551b94426"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "최익수",
@@ -618,7 +779,17 @@
         "district": "아선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%95%9C%EB%8F%99%EC%88%9C",
         "source_sha256": "c0b5ac7605a6b7309eee6cf24ed15c6ae551524d3bfa88526a1d17c5774f16b2"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-2f16aaf5a7919ef31f2ab38e",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 더불어민주당/ 구·시·군의회의원선거/ 충청북도(청주시아선거구)/ 6,435표 (27.03%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%95%9C%EB%8F%99%EC%88%9C",
+          "source_sha256": "c0b5ac7605a6b7309eee6cf24ed15c6ae551524d3bfa88526a1d17c5774f16b2"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "한용진",
@@ -649,7 +820,9 @@
         "district": "아선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%97%88%EC%84%A0",
         "source_sha256": "f8d7ee5e18cc524a83bab5a1a6b6aa229396ea026086aaa071fae796d4347f21"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "허희",
@@ -668,7 +841,9 @@
         "district": "타선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%97%88%ED%9D%AC",
         "source_sha256": "0c670bf1220516b3bb496f520d795909d5b86622919918a2898c892fe7589c05"
-      }
+      },
+      "prior_win_candidates": [],
+      "prior_win_review_status": "none_in_matched_nec_group"
     },
     {
       "name": "홍성각",
@@ -701,7 +876,17 @@
         "district": "차선거구",
         "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%99%8D%EC%88%9C%EC%B2%A0",
         "source_sha256": "47bc7d4c13f1f0edb500689a9716927db5061461e0094f2c76e742c3769dc1d9"
-      }
+      },
+      "prior_win_candidates": [
+        {
+          "election_date": "2022-06-01",
+          "event_id": "nec-event-c4897f2bd7e8b7ffc9c33c7d",
+          "heading": "[2022.06.01] 제8회 전국동시지방선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시차선거구)/ 9,887표 (38.48%) 당선",
+          "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%ED%99%8D%EC%88%9C%EC%B2%A0",
+          "source_sha256": "47bc7d4c13f1f0edb500689a9716927db5061461e0094f2c76e742c3769dc1d9"
+        }
+      ],
+      "prior_win_review_status": "council_identity_corroboration_pending"
     },
     {
       "name": "홍혜진",
@@ -715,5 +900,10 @@
         "nec-event-14bc8021a87d73bec2299723"
       ]
     }
-  ]
+  ],
+  "prior_win_review": {
+    "scanned": 23,
+    "with_candidates": 12,
+    "candidate_events": 18
+  }
 }
