@@ -1,11 +1,39 @@
 """Verify the bounded city snapshot, keeping unsupported result tables held."""
 import json
+from collections import defaultdict
 from pathlib import Path
 
 from audit_nec_report_tables import facilities, candidates, counts, table_rows, cells, evidence
 from audit_nec_election_samples import visible
 from collect_nec_city_election import ROOT, REPORT, initial_plan, verified_catalog, report_plan, read_source, request_key
 from process_meeting_segments import write_json
+
+
+def vote_summary(units, roster):
+    """Summarize reconciled rows without counting ward subtotals twice."""
+    total = next(row for row in units if row['row_kind'] == 'district_total')
+    channels = defaultdict(list)
+    for row in units:
+        if row['row_kind'].endswith('_leaf'):
+            channels[row['category_displayed'] or row['area_displayed']].append(row)
+    return {
+        'district_total_source_row': total['source_row'],
+        'valid_votes': total['valid_votes'],
+        'ballots': total['ballots'],
+        'invalid_votes': total['invalid_votes'],
+        'candidates': [
+            {'ballot_label': candidate['ballot_label'], 'name': candidate['name'],
+             'party_at_election': candidate['party_at_election'], 'votes': votes}
+            for candidate, votes in zip(roster, total['candidate_votes'], strict=True)
+        ],
+        'channels': [
+            {'channel': channel, 'valid_votes': sum(row['valid_votes'] for row in rows),
+             'ballots': sum(row['ballots'] for row in rows),
+             'candidate_votes_in_ballot_order': [sum(votes) for votes in zip(*(row['candidate_votes'] for row in rows), strict=True)],
+             'source_rows': [row['source_row'] for row in rows]}
+            for channel, rows in sorted(channels.items())
+        ],
+    }
 
 
 def uncontested_statement(text):
@@ -91,7 +119,8 @@ def build(root=ROOT, *, write=True, periods_root=None):
                                    uncontested_evidence=statement,count_metrics_status='NOT_APPLICABLE_UNCONTESTED')
                     else:
                         units, checks, span = counts(text,roster)
-                        row.update(count_status='SOURCE_TABLE_AND_ARITHMETIC_VERIFIED',count_units=units,checks=checks,count_table_span=span)
+                        row.update(count_status='SOURCE_TABLE_AND_ARITHMETIC_VERIFIED',count_units=units,checks=checks,
+                                   count_table_span=span,vote_summary=vote_summary(units,roster))
                 except ValueError as exc:
                     row['count_hold_reason']=str(exc)
                 district_rows.append(row)

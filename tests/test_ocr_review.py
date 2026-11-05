@@ -6,7 +6,15 @@ import extract_attachment_text as base
 import ocr_attachment_pages as ocr
 import build_ocr_review_assets as assets
 import build_ocr_review_packet as packet
+import validate_ocr_review_intake as intake
 class OCRReviewCoreTests(unittest.TestCase):
+ def test_packet_parts_use_utf8_bytes_and_preserve_order(self):
+  rows=[{'key':'청주'}, {'key':'상당'}, {'key':'서원'}]
+  size=len(packet.encode(rows[0]).encode('utf-8'))
+  self.assertEqual(list(packet.packet_parts(rows,10,10+size*2+1)),[rows[:2],rows[2:]])
+  with self.assertRaisesRegex(ValueError,'individual OCR review record'):
+   list(packet.packet_parts(rows,10,10+size-1))
+
  @unittest.skipUnless(shutil.which('node'),'Node required')
  def test_review_state_and_atomic_restore(self):
   r=subprocess.run(['node',str(ROOT/'tests/ocr_review_core.cjs')],capture_output=True,text=True);self.assertEqual(r.returncode,0,r.stdout+r.stderr)
@@ -37,6 +45,13 @@ class OCRReviewPacketTests(unittest.TestCase):
  def test_packet_requires_committed_snapshot(self):
   self.build_assets();commit=self.commit();self.put('exports/attachment-ocr-review/manifest.json',b'{}')
   with self.assertRaisesRegex(ValueError,'snapshot'):packet.build(self.root,self.root/'review.html',commit)
+ def test_split_packet_keeps_source_validation(self):
+  self.build_assets();commit=self.commit();out=self.root/'review.html'
+  result=packet.build(self.root,out,commit,split=True)
+  self.assertEqual(result['records'],1);self.assertFalse(out.exists())
+  part=result['parts'][0];path=self.root/part['file']
+  self.assertEqual(path.stat().st_size,part['bytes'])
+  self.assertEqual(len(intake.load_packet(path,self.root,commit)['records']),1)
  def test_png_tamper_is_rejected(self):
   self.build_assets();commit=self.commit();m=json.loads((self.root/'exports/attachment-ocr-review/manifest.json').read_text());self.put('exports/attachment-ocr-review/'+m['records'][0]['image_file'],b'not a PNG')
   with self.assertRaisesRegex(ValueError,'hash mismatch'):packet.build(self.root,self.root/'review.html',commit)

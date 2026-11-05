@@ -52,6 +52,21 @@ class CityAuditTests(unittest.TestCase):
         text=c.read_source(c.ROOT,self.by[key]).decode('utf-8-sig')
         self.assertIsNone(a.uncontested_statement('<nav>무투표선거구입니다.</nav>'+text))
 
+    def test_candidate_and_voting_channel_totals_reconcile_without_subtotals(self):
+        for district in self.report['districts']:
+            if district['count_status'] == 'SOURCE_DECLARED_UNCONTESTED':
+                self.assertNotIn('vote_summary', district)
+                continue
+            summary = district['vote_summary']
+            channels = summary['channels']
+            self.assertEqual([c['ballot_label'] for c in summary['candidates']],
+                             [c['ballot_label'] for c in district['candidates']])
+            self.assertEqual([sum(v) for v in zip(*(c['candidate_votes_in_ballot_order'] for c in channels))],
+                             [c['votes'] for c in summary['candidates']])
+            self.assertEqual(sum(c['ballots'] for c in channels), summary['ballots'])
+            self.assertEqual(sum(c['valid_votes'] for c in channels), summary['valid_votes'])
+            self.assertEqual(sum(len(c['source_rows']) for c in channels), district['checks']['leaf_count'])
+
     def test_uncontested_statement_evidence_is_exact_and_changed_layout_rejected(self):
         d=next(d for d in self.report['districts'] if d['count_status']=='SOURCE_DECLARED_UNCONTESTED')
         text=c.read_source(c.ROOT,self.by[d['count_source_target_id']]).decode('utf-8-sig')

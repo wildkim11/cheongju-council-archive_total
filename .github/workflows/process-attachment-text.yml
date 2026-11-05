@@ -71,16 +71,22 @@ jobs:
             bash scripts/push_collected_snapshot.sh
           fi
       - name: Export a source-bound offline OCR review packet
-        run: python scripts/build_ocr_review_packet.py --source-commit "$(git rev-parse HEAD)" --output "$RUNNER_TEMP/OCR_review.html"
+        run: |
+          mkdir -p "$RUNNER_TEMP/ocr-review"
+          python scripts/build_ocr_review_packet.py --split --source-commit "$(git rev-parse HEAD)" \
+            --output "$RUNNER_TEMP/ocr-review/OCR_review.html" | tee "$RUNNER_TEMP/ocr-review/manifest.json"
       - name: Verify exported packet without inventing user review records
-        run: python scripts/validate_ocr_review_intake.py --packet "$RUNNER_TEMP/OCR_review.html" --output "$RUNNER_TEMP/ocr-intake-no-user.json"
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for packet in "$RUNNER_TEMP"/ocr-review/OCR_review-*.html; do
+            python scripts/validate_ocr_review_intake.py --packet "$packet" --output "${packet%.html}-intake.json"
+          done
       - name: Preserve offline OCR review packet
         uses: actions/upload-artifact@v4
         with:
           name: ocr-review-packet
-          path: |
-            ${{ runner.temp }}/OCR_review.html
-            ${{ runner.temp }}/ocr-intake-no-user.json
+          path: ${{ runner.temp }}/ocr-review/
       - name: Preserve extraction summary
         if: always()
         uses: actions/upload-artifact@v4

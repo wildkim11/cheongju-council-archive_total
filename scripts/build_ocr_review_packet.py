@@ -5,7 +5,30 @@ import extract_attachment_text as base
 import ocr_attachment_pages as ocr
 from urllib.parse import urlsplit
 ROOT=Path(__file__).resolve().parents[1]
-def build(root,output,source_commit):
+REVIEW_PART_BYTES = 64 * 1024 * 1024
+
+
+def encode(value):
+ return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).replace('<','\\u003c')
+
+
+def packet_parts(records, overhead, limit):
+ part=[]
+ size=overhead
+ for record in records:
+  record_size=len(encode(record).encode('utf-8'))
+  if overhead+record_size>limit:
+   raise ValueError('individual OCR review record exceeds packet part limit')
+  if part and (size+1+record_size>limit or len(part)==1000):
+   yield part
+   part=[]
+   size=overhead
+  size+=record_size+bool(part)
+  part.append(record)
+ if part:yield part
+
+
+def build(root,output,source_commit,*,split=False):
  from PIL import Image
  root=Path(root);output=Path(output)
  if not re.fullmatch('[a-f0-9]{40}',source_commit):raise ValueError('review packet needs a fixed source commit')
@@ -42,12 +65,29 @@ def build(root,output,source_commit):
   if base.sha(r['ocr_text'].encode())!=r['ocr_text_sha256']:raise ValueError('review OCR text hash mismatch')
   r['source_commit']=source_commit;r['image_uri']='data:image/png;base64,'+base64.b64encode(png).decode();r['title']=next((ref['title']for link in r['task']['source_links']for ref in link['source_refs']if ref.get('title')),'보존 첨부 '+key[:10]);records.append(r)
  packet={'schema':'cheongju-ocr-review-packet/1','source_commit':source_commit,'assets_manifest_sha256':base.sha(raw),'source_ocr_manifest_sha256':mf['source_ocr_manifest_sha256'],'engine':mf['engine'],'records':records,'human_reviewed_pages':0,'semantic_verified':False,'analysis_usable':False}
- data=json.dumps(packet,ensure_ascii=False,sort_keys=True,separators=(',',':')).replace('<','\\u003c');digest=base.sha(data.encode());template=(root/'web/ocr_review.html').read_text();core=(root/'web/ocr_review_core.js').read_text()
+ template=(root/'web/ocr_review.html').read_text();core=(root/'web/ocr_review_core.js').read_text()
  for marker in ['__OCR_PACKET__','__OCR_PACKET_SHA__','__OCR_CORE__']:
   if template.count(marker)!=1:raise ValueError('ambiguous OCR review template marker')
  if '</script'in core.lower():raise ValueError('unsafe review core script')
- replacements={'__OCR_PACKET__':data,'__OCR_PACKET_SHA__':digest,'__OCR_CORE__':core}
- html=re.sub('__OCR_PACKET__|__OCR_PACKET_SHA__|__OCR_CORE__',lambda m:replacements[m[0]],template);output.parent.mkdir(parents=True,exist_ok=True);output.write_text(html)
- return {'schema':'cheongju-ocr-review-packet-summary/1','status':'PASS','records':len(records),'source_commit':source_commit,'packet_sha256':digest,'bytes':output.stat().st_size,'human_reviewed_pages':0,'analysis_usable':False}
+ def render(rows,start=None):
+  payload={**packet,'records':rows}
+  if start is not None:payload['record_start']=start
+  data=encode(payload);digest=base.sha(data.encode('utf-8'))
+  replacements={'__OCR_PACKET__':data,'__OCR_PACKET_SHA__':digest,'__OCR_CORE__':core}
+  html=re.sub('__OCR_PACKET__|__OCR_PACKET_SHA__|__OCR_CORE__',lambda m:replacements[m[0]],template)
+  return html.encode('utf-8'),digest
+ def save(path,rows,start=None):
+  html,digest=render(rows,start)
+  path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(html)
+  return {'schema':'cheongju-ocr-review-packet-summary/1','status':'PASS','records':len(rows),'source_commit':source_commit,'packet_sha256':digest,'bytes':len(html),'human_reviewed_pages':0,'analysis_usable':False}
+ if not split:return save(output,records)
+ parts=list(packet_parts(records,len(render([],len(records))[0]),REVIEW_PART_BYTES))
+ summaries=[]
+ start=0
+ for number,part in enumerate(parts,1):
+  path=output.with_name(f'{output.stem}-{number:03d}{output.suffix}')
+  summaries.append({'file':path.name,**save(path,part,start)})
+  start+=len(part)
+ return {'records':len(records),'parts':summaries}
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--output',type=Path,required=True);p.add_argument('--source-commit',required=True);a=p.parse_args();print(json.dumps(build(a.root,a.output,a.source_commit),ensure_ascii=False,indent=2))
+ p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--output',type=Path,required=True);p.add_argument('--source-commit',required=True);p.add_argument('--split',action='store_true');a=p.parse_args();print(json.dumps(build(a.root,a.output,a.source_commit,split=a.split),ensure_ascii=False,indent=2))

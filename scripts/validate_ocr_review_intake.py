@@ -23,7 +23,14 @@ def load_packet(path,root,current_commit=None):
  ocr_raw=git_bytes(root,commit,'exports/attachment-ocr/manifest.json');require(digest(ocr_raw)==p.get('source_ocr_manifest_sha256')==assets.get('source_ocr_manifest_sha256'),'packet OCR snapshot mismatch')
  ocr_mf=json.loads(ocr_raw);require(ocr_mf.get('schema')=='cheongju-attachment-ocr-release/1'and ocr_mf.get('analysis_usable')is False and ocr_mf.get('semantic_verified')is False and ocr_mf.get('engine')==assets.get('engine'),'packet OCR source contract mismatch');ocr_by={x['task']['key']:x for x in ocr_mf['items']}
  require(p.get('engine')==assets.get('engine'),'packet OCR engine mismatch');rows=p.get('records');require(isinstance(rows,list)and 0<len(rows)<=1000,'invalid packet records')
- by={r['key']:r for r in assets['records']};require(len(by)==len(assets['records'])==len(rows),'packet source record count mismatch');seen=set()
+ source_rows=assets['records'];by={r['key']:r for r in source_rows}
+ require(len(by)==len(source_rows),'duplicate source record')
+ if 'record_start' in p:
+  start=p['record_start']
+  require(type(start) is int and 0<=start<=len(source_rows)-len(rows),'invalid packet part range')
+  require([r.get('key') for r in rows]==[r['key'] for r in source_rows[start:start+len(rows)]],'packet part source order mismatch')
+ else:require(len(by)==len(rows),'packet source record count mismatch')
+ seen=set()
  for r in rows:
   key=r.get('key');require(key in by and key not in seen,'unknown/duplicate packet record');seen.add(key);a=by[key]
   require(all(r.get(k)==v for k,v in a.items())and r.get('source_commit')==commit,'packet record/source proof mismatch')
