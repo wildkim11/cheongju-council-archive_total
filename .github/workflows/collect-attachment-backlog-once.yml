@@ -1,4 +1,4 @@
-name: Continue four attachment backlog batches
+name: Drain outstanding attachment queue
 on:
   push:
     branches: [feature/archive-foundation]
@@ -13,7 +13,7 @@ jobs:
     permissions:
       contents: write
     runs-on: macos-latest
-    timeout-minutes: 180
+    timeout-minutes: 340
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,9 +34,12 @@ jobs:
           COLLECTION_FAMILY: attachments
         run: |
           set -euo pipefail
-          for batch in 1 2 3 4; do
-            echo "Starting attachment batch $batch of 4"
-            bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
+          for batch in $(seq 1 45); do
+            echo "Starting attachment checkpoint $batch"
+            EXPLICIT_RETRY='--attachment-batch-size 60' bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
+            if python -c 'import json; r=json.load(open("reports/automatic-collection-latest.json")); c=r.get("collection", {}); raise SystemExit(not (c.get("pending_total")==0 or c.get("attempted", 0)==0))'; then
+              break
+            fi
           done
       - name: Persist validated snapshot and retry state
         if: always() && steps.collection.outcome != 'skipped'

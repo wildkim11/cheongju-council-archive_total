@@ -165,7 +165,7 @@ def download_attachments(root,limit=20,max_bytes=8*1024*1024,retry_only=False,*,
     save_json(root/'reports/automatic/attachments.json',queue)
     return {'queued':len(queue),'attempted':attempted,'downloaded_total':sum(x['status']=='downloaded' for x in queue.values()),'failed_total':sum(x['status']=='failed' for x in queue.values()),'blocked_total':sum(x['status']=='blocked'for x in queue.values()),'pending_total':sum(x['status']=='pending'for x in queue.values())}
 
-def execute(family,root,ordinal,retry_only=False,*,attachment_oversize_only=False):
+def execute(family,root,ordinal,retry_only=False,*,attachment_oversize_only=False,attachment_batch_size=20):
     if family=='minutes':
         import collect_integrated_minutes as c
         old=load(root/'indexes/integrated/meetings.json',[]);published=sorted([x for x in old if x['publication_status']=='published'],key=lambda x:x['meeting_id']);i=(ordinal*8)%max(1,len(published));forced={x['meeting_id'] for x in (published+published)[i:i+min(8,len(published))]}
@@ -201,7 +201,7 @@ def execute(family,root,ordinal,retry_only=False,*,attachment_oversize_only=Fals
         if attachment_oversize_only:
             from attachment_formats import MAX_ATTACHMENT_SOURCE_BYTES
             return download_attachments(root,max_bytes=MAX_ATTACHMENT_SOURCE_BYTES,oversize_only=True)
-        return download_attachments(root,retry_only=retry_only)
+        return download_attachments(root,limit=attachment_batch_size,retry_only=retry_only)
     raise ValueError('unknown collection family')
 
 def validate_candidate(stage,oldroot):
@@ -320,8 +320,10 @@ def run(root=ROOT,family='auto',runner=execute,validator=validate_candidate,retr
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--retry-attempt',action='store_true');p.add_argument('--retry-now',action='store_true',help='Explicit retry after a code fix; normal schedule honors backoff');p.add_argument('--family',choices=('auto',)+FAMILIES,default='auto')
-    p.add_argument('--attachment-oversize-only',action='store_true',help='Retry size holds once under a 16 MiB ceiling');a=p.parse_args()
+    p.add_argument('--attachment-oversize-only',action='store_true',help='Retry size holds once under a 16 MiB ceiling')
+    p.add_argument('--attachment-batch-size',type=int,choices=range(20,61),default=20);a=p.parse_args()
     if a.attachment_oversize_only and (a.family!='attachments' or a.retry_attempt):p.error('oversize recovery requires --family attachments without --retry-attempt')
-    runner=partial(execute,attachment_oversize_only=True) if a.attachment_oversize_only else execute
+    if a.attachment_batch_size!=20 and (a.family!='attachments' or a.retry_attempt or a.attachment_oversize_only):p.error('custom batch size requires normal attachment collection')
+    runner=partial(execute,attachment_oversize_only=a.attachment_oversize_only,attachment_batch_size=a.attachment_batch_size) if a.attachment_oversize_only or a.attachment_batch_size!=20 else execute
     result=run(family=a.family,runner=runner,retry_now=a.retry_now,retry_attempt=a.retry_attempt);print(json.dumps({k:v for k,v in result.items() if k!='qa'},ensure_ascii=False,indent=2));raise SystemExit(0 if result['status'] in ('PASS','DEFERRED') else 1)
 if __name__=='__main__':main()
