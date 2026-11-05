@@ -1,0 +1,63 @@
+name: Resume archived attachment backlog
+on:
+  push:
+    branches: [feature/archive-foundation]
+    paths: [.github/workflows/collect-attachment-backlog-once.yml]
+permissions:
+  contents: read
+concurrency:
+  group: cheongju-source-collection
+  cancel-in-progress: false
+jobs:
+  collect:
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        batch: [1, 2]
+    permissions:
+      contents: write
+    runs-on: macos-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/archive-foundation
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate code and saved archive
+        run: |
+          python -m unittest discover -s tests
+          python scripts/validate_archive.py
+          python scripts/audit_stage_c.py --output /tmp/before-collection.json
+      - name: Collect into isolated candidate and publish only after validation
+        id: collection
+        continue-on-error: true
+        env:
+          COLLECTION_FAMILY: attachments
+        run: bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
+      - name: Persist validated snapshot and retry state
+        if: always() && steps.collection.outcome != 'skipped'
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive indexes exports reports
+          if ! git diff --cached --quiet; then
+            git commit -m "data: automatic official collection and durable retry state"
+            bash scripts/push_collected_snapshot.sh
+          fi
+      - name: Preserve collection report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: attachment-batch-${{ matrix.batch }}
+          path: |
+            reports/automatic-collection-latest.json
+            reports/automatic/collection_state.json
+          if-no-files-found: warn
+      - name: Surface collection failure after preserving retry state
+        if: steps.collection.outcome == 'failure'
+        run: exit 1
