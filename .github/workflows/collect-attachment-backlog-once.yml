@@ -10,11 +10,6 @@ concurrency:
   cancel-in-progress: false
 jobs:
   collect:
-    strategy:
-      fail-fast: true
-      max-parallel: 1
-      matrix:
-        batch: [1, 2, 3]
     permissions:
       contents: write
     runs-on: macos-latest
@@ -37,7 +32,12 @@ jobs:
         continue-on-error: true
         env:
           COLLECTION_FAMILY: attachments
-        run: bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
+        run: |
+          set -euo pipefail
+          for batch in 1 2; do
+            echo "Starting attachment batch $batch of 2"
+            bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
+          done
       - name: Persist validated snapshot and retry state
         if: always() && steps.collection.outcome != 'skipped'
         run: |
@@ -53,7 +53,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: attachment-batch-${{ matrix.batch }}
+          name: attachment-collection-checkpoints
           path: |
             reports/automatic-collection-latest.json
             reports/automatic/collection_state.json
@@ -67,63 +67,6 @@ jobs:
     if: ${{ !cancelled() }}
     permissions:
       contents: write
-    runs-on: ubuntu-latest
-    timeout-minutes: 40
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: feature/archive-foundation
-          fetch-depth: 1
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Ensure offline PDF and Korean OCR dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-kor tesseract-ocr-eng
-          python -m pip install 'Pillow>=10,<14'
-      - name: Test extraction and verify preserved inputs
-        run: |
-          python scripts/audit_attachment_downloads.py --strict
-      - name: Extract page-addressed text without council-site requests
-        run: python -u scripts/extract_attachment_text.py
-      - name: Verify text and source snapshot together
-        env:
-          REQUIRE_CURRENT_ATTACHMENT_TEXT: '1'
-        run: python -m unittest discover -s tests
-      - name: OCR preserved images and empty PDF text pages without promotion
-        run: python -u scripts/ocr_attachment_pages.py
-      - name: Build pixel-verified OCR review rasters
-        run: python -u scripts/build_ocr_review_assets.py
-      - name: Save derived attachment text only
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add exports/attachment-text exports/attachment-ocr exports/attachment-ocr-review reports/ocr-review-assets-latest.json reports/attachment-text-latest.json reports/attachment-ocr-latest.json reports/attachment-download-audit.json
-          if ! git diff --cached --quiet; then
-            git commit -m "data: page-addressed attachment text with unreviewed status"
-            bash scripts/push_collected_snapshot.sh
-          fi
-      - name: Export a source-bound offline OCR review packet
-        run: python scripts/build_ocr_review_packet.py --source-commit "$(git rev-parse HEAD)" --output "$RUNNER_TEMP/OCR_review.html"
-      - name: Verify exported packet without inventing user review records
-        run: python scripts/validate_ocr_review_intake.py --packet "$RUNNER_TEMP/OCR_review.html" --output "$RUNNER_TEMP/ocr-intake-no-user.json"
-      - name: Preserve offline OCR review packet
-        uses: actions/upload-artifact@v4
-        with:
-          name: ocr-review-packet
-          path: |
-            ${{ runner.temp }}/OCR_review.html
-            ${{ runner.temp }}/ocr-intake-no-user.json
-      - name: Preserve extraction summary
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: attachment-text-qa
-          path: |
-            reports/attachment-text-latest.json
-            reports/attachment-download-audit.json
-            reports/attachment-ocr-latest.json
-            reports/ocr-review-assets-latest.json
-          if-no-files-found: warn
+    uses: ./.github/workflows/process-attachment-text.yml
+    with:
+      caller_holds_collection_lock: true
