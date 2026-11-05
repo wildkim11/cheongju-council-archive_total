@@ -41,3 +41,7 @@ These are fact extraction and integrity operations. They do not mean that all po
 - Distribution bundles/text packs and offline-HTML updates after repository-side collection and processing are verified.
 
 `export_minutes_text.py` is a tested producer for URL/hash-preserving compressed meeting text. Speech segmentation and the shared source activity-role ledger now run before collection publication and in a separate no-official-HTTP GitHub job. Binary-document text extraction, higher-level analysis and HTML embedding remain incomplete. See MEETING_PROCESSING.md.
+
+## User-approved pledge plan — 2026-11-05
+
+Register public-source discovery and original election pledge collection by member/term/election; provenance-preserving extraction, search, user-defined sorting/filtering and comparisons; joins to election results and legislative/budget/execution evidence. Separate original pledges, self-reported fulfillment and verified facts; missing evidence is not non-fulfillment. Full collection and fulfillment evaluation/UI remain unimplemented. See `PLEDGE_COLLECTION_PLAN_20261105.md`.
