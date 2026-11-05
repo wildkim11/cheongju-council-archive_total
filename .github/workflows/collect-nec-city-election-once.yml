@@ -1,10 +1,6 @@
 name: Capture 2026 Cheongju four-committee election originals on macOS
 on:
-  push:
-    branches: [feature/archive-foundation]
-    paths:
-      - scripts/collect_nec_city_election.py
-      - .github/workflows/collect-nec-city-election-once.yml
+  # Initial city snapshot captured; additional official queries are manual.
   workflow_dispatch:
 permissions:
   contents: write

@@ -53,3 +53,7 @@ Offline ledger: 83 target events, 67 displayed vote/share observations, 16 absen
 ## Early-voting and count-unit sample originals — 2026-11-05
 
 Captured six selection pages and three observed read-only report POSTs on macOS. Offline table ledger verifies 13 Sangdang early-voting facilities, four Cheongju-na candidates, and 19 counting-unit rows with ward/district arithmetic conservation. Official correction-row abstentions -49 preserved in that field only. Whole-city coverage, official seats/winners, member identities and physical polling-place vote links are not promoted. See `EARLY_VOTING_SOURCES_PLAN_20261105.md`.
+
+## 2026 Cheongju four-committee election snapshot — 2026-11-05
+
+Official district selectors reconcile to 14 observed districts. Snapshot includes 43 early-voting facilities across four committees, 64 regional candidates, 12 count reports/156 count rows with arithmetic conservation, and two explicit report-body uncontested statements. Actual new requests32/reused4/errors0. Source-backed regional table coverage is distinct from proportional/historical/seat/winner/seniority completeness. See `NEC_CITY_ELECTION_20261105.md`.

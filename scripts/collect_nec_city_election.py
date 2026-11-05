@@ -42,7 +42,7 @@ def select_options(text, name):
              'char_start': o['start'], 'char_end': o['end'], 'span_sha256': sha(text[o['start']:o['end']].encode())} for o in options]
 
 
-def initial_plan(root):
+def initial_plan(root, *, periods_root=None):
     root = Path(root)
     base = json.loads((root / 'reports/nec-detail-source-probe-latest.json').read_text())
     candidate_source = next(s for s in base['sources'] if s['menu_id'] == 'CPRI03')
@@ -50,7 +50,7 @@ def initial_plan(root):
     committees = {o['value']: o['label'] for o in options if o['label'] in COMMITTEES}
     if set(committees.values()) != COMMITTEES or len(committees) != 4:
         raise ValueError('official selector does not enumerate four Cheongju committees')
-    evidence = ledger(root, write=False)
+    evidence = ledger(root, write=False, periods_root=periods_root)
     districts, menus = {}, {}
     for r in evidence['rows']:
         if r['election_date'] != '2026-06-03' or r['codes']['election-code'] != '6': continue
