@@ -1,6 +1,6 @@
 {
   "schema": "cheongju-current-fourth-council-seniority/1",
-  "input_commit": "66c5de9c865a0cf0e6ab23aad5e6ca5dbd50ca2d",
+  "input_commit": "e400caab70ef4da1ec0e5ccb7cba005b4cac9da6",
   "inputs": [
     "reports/nec-current-profile-links-latest.json",
     "reports/nec-reviewed-seniority-roster-crosswalk-latest.json",
@@ -9,8 +9,8 @@
     "reports/current-career-evidence-latest.json"
   ],
   "counts": {
-    "최소 1선": 27,
-    "최소 2선": 12,
+    "최소 1선": 25,
+    "최소 2선": 14,
     "최소 4선": 2,
     "최소 3선": 3
   },
@@ -170,15 +170,16 @@
     {
       "name": "김준석",
       "current_profile_id": "person-fcode-10250",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_prior_council_oath",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-ef5b32022c53b4f21adaf032"
+        "nec-event-ef5b32022c53b4f21adaf032",
+        "nec-event-ab4a33e8e176bc3762fd72a3"
       ],
       "current_election_anchor": {
         "district": "자선거구",
@@ -191,10 +192,16 @@
           "event_id": "nec-event-ab4a33e8e176bc3762fd72a3",
           "heading": "[2024.04.10] 재·보궐선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시자선거구)/ 12,720표 (46.61%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EA%B9%80%EC%A4%80%EC%84%9D",
-          "source_sha256": "3394dd6950cba02813a7d9fef85d5c7ab3eff5d1187042c661b14e79bfc1eaf2"
+          "source_sha256": "3394dd6950cba02813a7d9fef85d5c7ab3eff5d1187042c661b14e79bfc1eaf2",
+          "council_corroboration": {
+            "term": 3,
+            "meeting_date": "2024-04-22",
+            "source_url": "https://councilrec.cheongju.go.kr/caster/xc_realdoc.xdo?m_chasu=1&m_code=A010&m_ymd=2024-04-22",
+            "kind": "council_oath_minutes"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "김진석",
@@ -544,15 +551,16 @@
     {
       "name": "이상조",
       "current_profile_id": "person-fcode-10230",
-      "verified_wins_lower_bound": 1,
+      "verified_wins_lower_bound": 2,
       "exact_seniority": null,
-      "display": "최소 1선",
-      "basis": "current_election_unique_name_district_anchor_only",
+      "display": "최소 2선",
+      "basis": "current_election_and_prior_council_oath",
       "hold_reasons": [
         "no_independent_career_match"
       ],
       "event_ids": [
-        "nec-event-86d9f9b3eba7a85a9513f883"
+        "nec-event-86d9f9b3eba7a85a9513f883",
+        "nec-event-bb1eaefd7c498e97c58960be"
       ],
       "current_election_anchor": {
         "district": "나선거구",
@@ -565,10 +573,16 @@
           "event_id": "nec-event-bb1eaefd7c498e97c58960be",
           "heading": "[2023.04.05] 재·보궐선거 국민의힘/ 구·시·군의회의원선거/ 충청북도(청주시나선거구)/ 5,851표 (48.38%) 당선",
           "source_url": "https://info.nec.go.kr/search/searchCandidate.xhtml?searchKeyword=%EC%9D%B4%EC%83%81%EC%A1%B0",
-          "source_sha256": "289121c7cac8ee87839c42837f086da70a189f360f387804bc3066f0a1fdb1c7"
+          "source_sha256": "289121c7cac8ee87839c42837f086da70a189f360f387804bc3066f0a1fdb1c7",
+          "council_corroboration": {
+            "term": 3,
+            "meeting_date": "2023-04-17",
+            "source_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?mode=spkr1&schSn=3090&spkrCd=PV10210",
+            "kind": "council_oath_minutes"
+          }
         }
       ],
-      "prior_win_review_status": "council_identity_corroboration_pending"
+      "prior_win_review_status": "corroborated"
     },
     {
       "name": "이연숙",
@@ -1011,6 +1025,6 @@
     "scanned": 23,
     "with_candidates": 12,
     "candidate_events": 18,
-    "corroborated_events": 11
+    "corroborated_events": 13
   }
 }
