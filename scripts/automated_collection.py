@@ -244,6 +244,8 @@ def validate_candidate(stage,oldroot):
     qa['nec_current_roster_audit']=audit_nec_election_samples.build_current(stage)
     import link_nec_current_profiles
     qa['nec_current_profile_links']=link_nec_current_profiles.build(stage,periods_root=oldroot)
+    import build_nec_election_ledger
+    qa['nec_election_observations']=build_nec_election_ledger.build(stage,periods_root=oldroot)
     import build_analysis_activity_gate
     qa['analysis_activity_gate']=build_analysis_activity_gate.build(stage)
     import build_member_activity_counts

@@ -45,3 +45,7 @@ These are fact extraction and integrity operations. They do not mean that all po
 ## User-approved pledge plan — 2026-11-05
 
 Register public-source discovery and original election pledge collection by member/term/election; provenance-preserving extraction, search, user-defined sorting/filtering and comparisons; joins to election results and legislative/budget/execution evidence. Separate original pledges, self-reported fulfillment and verified facts; missing evidence is not non-fulfillment. Full collection and fulfillment evaluation/UI remain unimplemented. See `PLEDGE_COLLECTION_PLAN_20261105.md`.
+
+## Preserved NEC election observations — 2026-11-05
+
+Offline ledger: 83 target events, 67 displayed vote/share observations, 16 absent; 30 linked events across the existing 19 corroborated profiles (26 winner displays, 4 candidacies without confirmed result). Review evidence for the remaining 25 profiles is preserved without promotion. Literal detail-menu contracts retained; live transport and full district result completeness remain unverified. No ranks/margins or exact seniority calculated. See `NEC_ELECTION_LEDGER_20261105.md`.
