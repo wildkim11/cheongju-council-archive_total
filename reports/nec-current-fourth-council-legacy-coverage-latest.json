@@ -1,0 +1,17 @@
+{
+  "schema": "cheongju-current-fourth-council-legacy-coverage/1",
+  "input_commit": "4516c061d4eaf5e5cf0cc3177e1658d71de93969",
+  "inputs": [
+    "reports/nec-current-fourth-council-seniority-latest.json",
+    "reports/nec-reviewed-seniority-lower-bounds-latest.json",
+    "reports/nec-current-profile-links-latest.json",
+    "reports/cross-scope-identity-review-latest.json",
+    "reports/nec-current-roster-audit-latest.json"
+  ],
+  "current_profiles_checked": 44,
+  "legacy_roster_name_candidates": [],
+  "reviewed_legacy_winner_group_matches": [],
+  "current_name_query_preintegration_winner_events": 0,
+  "exact_seniority_confirmed": 0,
+  "interpretation": "Coverage check only. No observed hit does not establish no preintegration service or wins. Earlier elections, name variants and records outside preserved sources require separate verification."
+}
