@@ -1,6 +1,8 @@
 name: Capture NEC queries for legacy council career cases
 on:
-  # Initial capture completed. Additional queries are manual.
+  push:
+    branches: [feature/archive-foundation]
+    paths: [scripts/collect_nec_legacy_bridge.py]
   workflow_dispatch:
 permissions:
   contents: write
