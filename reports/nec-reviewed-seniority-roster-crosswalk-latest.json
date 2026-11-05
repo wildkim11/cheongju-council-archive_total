@@ -1,0 +1,1246 @@
+{
+  "schema": "cheongju-reviewed-seniority-roster-crosswalk/1",
+  "input_commit": "0fcad44fd666124882a3ecc6f8175ab56c63007f",
+  "inputs": [
+    "reports/nec-reviewed-seniority-lower-bounds-latest.json",
+    "reports/cross-scope-identity-review-latest.json",
+    "reports/nec-current-profile-links-latest.json"
+  ],
+  "review_rows": 24,
+  "source_corroborated_current_links": 0,
+  "held_rows": 24,
+  "canonical_identity_merges": 0,
+  "rows": [
+    {
+      "name": "김기동",
+      "nec_person_group_id": "nec-person-group-64591dea3238533fc6c5cda3",
+      "verified_wins_lower_bound": 5,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-4c0b53e74849c12ea3a1dea0",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-0b32a8040696b752",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 8,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member8.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-72ad3b502d3961ce",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-895a306fb390d92c",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-9fe05c658843a4bd",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-e1ac63e16278aab0",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "김성택",
+      "nec_person_group_id": "nec-person-group-80fe8984903d5f7b5ea0a072",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-60d799b78a88ec8625e50d6c",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-08676de6f51786f6",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-447f7579a28f59f1",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-6f98e9a4d25a1706",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-acce2e3876b54ebb",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "김은숙",
+      "nec_person_group_id": "nec-person-group-4c70e4ebf4c526f39e0879d2",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-c3584f6f74df0e3a6418631c",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-6eeed03eb64273ee",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-7182f3cabb3b7bbb",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-7f3dff60d5a5309b",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-fcode-1170",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 4,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1170"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": [
+        "no_independent_career_match"
+      ]
+    },
+    {
+      "name": "김현기",
+      "nec_person_group_id": "nec-person-group-66340f1bfef4a019a04d2681",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-c6b72d8dd5d91e32c79ebb26",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-41c5f8538de8b6d1",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-621708c764103d8d",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-c4a9342ab552c41c",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-c781c5d4ff630ff5",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 8,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member8.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "남일현",
+      "nec_person_group_id": "nec-person-group-5ec1008b2121c1b7744d7c0d",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-69a6c18fcb56df574666ea99",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-41945751f713423b",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-94ba7b6fc57d77c6",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-ba5a6e084b661e4e",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-fcode-1120",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 4,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1120"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": [
+        "no_independent_career_match"
+      ]
+    },
+    {
+      "name": "박노학",
+      "nec_person_group_id": "nec-person-group-0047a47177b37d3f371a6eec",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-c5ced9f9e0949b44da10c1ad",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-04801b2280caec8b",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-79141bf6cbabbff8",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-b54ddd97d7b07ff0",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-fcode-1130",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 4,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1130"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": [
+        "no_independent_career_match"
+      ]
+    },
+    {
+      "name": "박정희",
+      "nec_person_group_id": "nec-person-group-e58ea75ecd5973d4d1ade5c0",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-9996fa946a8248d660c5e7c2",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-13f309f6b0503752",
+          "occurrences": [
+            {
+              "council_scope": "cheongwon_old_county",
+              "term": 6,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-2a3c796c10839827",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-89d2e7511ba4ba71",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-f370ef88199ba982",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "이완복",
+      "nec_person_group_id": "nec-person-group-3af94530f6079107cec74502",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-4bb948cd554a8c09e6d6aa09",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-435c43c0ac94c3b8",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 8,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member8.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-49ff7ffb63ef19ff",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-4b1f2b11c8a03af5",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-9c9fd6eb3c67fb7e",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-c8311e68f56d986a",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 7,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member7.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "정태훈",
+      "nec_person_group_id": "nec-person-group-def10388634de3ab019c1f1e",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-242c5d4984fa0f90cd5aaf5e",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-1f5618fb88096aa2",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-cbed3d6c46b216ea",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-e3adb1c5162116ad",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-fcode-1010",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 4,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/memberHome/content/profile.html?f_code=1010"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": [
+        "no_independent_career_match"
+      ]
+    },
+    {
+      "name": "하재성",
+      "nec_person_group_id": "nec-person-group-a987740336beed92a0083245",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-0e9c93a174e4e08029b3c13a",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-43b82e2702e32f3f",
+          "occurrences": [
+            {
+              "council_scope": "cheongwon_old_county",
+              "term": 5,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-9d72775747fd34b8",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-b11a447246641c0e",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-c6cbf9cc340b9ace",
+          "occurrences": [
+            {
+              "council_scope": "cheongwon_old_county",
+              "term": 6,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "김병국",
+      "nec_person_group_id": "nec-person-group-8879203b6e5eeaa8aab2b144",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-9dfab976930ac00e10e9873a",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-69ac526c8146ae13",
+          "occurrences": [
+            {
+              "council_scope": "cheongwon_old_county",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldgun/content/member5.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-780e5c4e14eaefd0",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-903137c4f9358652",
+          "occurrences": [
+            {
+              "council_scope": "cheongwon_old_county",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldgun/content/member6.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-b0ffd2d26c506a21",
+          "occurrences": [
+            {
+              "council_scope": "cheongwon_old_county",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldgun/content/member4.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-bbaaf242d07f790e",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-ed903376d6a03cd4",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "김영근",
+      "nec_person_group_id": "nec-person-group-b6a45911c861c911b9324cb8",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-2de01dda1d0400a2d6b57565",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-61a20b2ec860877c",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-6b7f52811951b088",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 3,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-781ac09498794a8f",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 6,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member6.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-b5da647e7232403d",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 7,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member7.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-bb6d82add0248433",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "맹순자",
+      "nec_person_group_id": "nec-person-group-ec3da6a83099f5accc52535d",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-a6dd1f72ce60326b5b97f68e",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-754e3eaf82fbc910",
+          "occurrences": [
+            {
+              "council_scope": "cheongwon_old_county",
+              "term": 5,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldgun/content/member8.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-aa6ca1b49966171e",
+          "occurrences": [
+            {
+              "council_scope": "cheongwon_old_county",
+              "term": 6,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-cc48904d5ff411d9",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "신언식",
+      "nec_person_group_id": "nec-person-group-4dbc5ffe816f5d82ca3c35db",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-943bbd85b8bc271c898d8306",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-1f468c92bb3822ba",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-3f6f8742f17eb545",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-aadbc5468b95f3c1",
+          "occurrences": [
+            {
+              "council_scope": "cheongwon_old_county",
+              "term": 6,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldgun/content/member9.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "이재길",
+      "nec_person_group_id": "nec-person-group-e3ea243f6292f6e0588d1a2a",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-25768a7f2984a8fd34e29f8d",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-0f023fd25aeda745",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-4586040886a9ba20",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-4a48cb640c7d23a0",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "임기중",
+      "nec_person_group_id": "nec-person-group-9b4ebf7a9e41dfb6a05f1bf6",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-259eda3122e013ea22825800",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-0177cc3d1b9b2911",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-4b13319a2106d562",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 7,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member7.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-73d6c7dc0c5d9b58",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-752962b42c5056ff",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 8,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member8.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "최진현",
+      "nec_person_group_id": "nec-person-group-e9d5763a377b75ca5dbd2257",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-cf5b81eda1171a8d6c84aeda",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-2bbd4dfc42434232",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-705b0a07bbb109e5",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 8,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member8.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-d77f10f8b7bb281d",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "최충진",
+      "nec_person_group_id": "nec-person-group-ba5466defa1c89d32a24f8ed",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-1bb239157445a62ddef50926",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-278e681982854138",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-c3795b38a2966cc6",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-f23c181f2f90f8ba",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "황영호",
+      "nec_person_group_id": "nec-person-group-97f4a57b5d5b0d4f55f474ca",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-285ad2dea2ab55882a2f0193",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-38035159e62ed87a",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-87b88d2dc65e3abe",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 8,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member8.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-fe6dc2ad752012c8",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "박상돈",
+      "nec_person_group_id": "nec-person-group-c06c51112a8fd443f46b29b2",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-619ea445408a3ad8a2e38fec",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-801e49341bb9777e",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-f44017c49bb82474",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "박용현",
+      "nec_person_group_id": "nec-person-group-2823abf8d7641ffc6a4e0b81",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-b9be3895b734800607517929",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-03c748661d8176d0",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-e203af0d9220a235",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 8,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member8.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "서지한",
+      "nec_person_group_id": "nec-person-group-57c72eef77cc0e87a2dc4e4d",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-e92b508e98518ed4dc409e74",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-684879073ee5c53a",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-c22f3e157e434052",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "육미선",
+      "nec_person_group_id": "nec-person-group-365c5cd86e49d80647b0b69d",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-30dc2ff30f97d92824ba3752",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-53881ec49e5786a4",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-948d29b1456d722f",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 1,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    },
+    {
+      "name": "정우철",
+      "nec_person_group_id": "nec-person-group-0ca6524d9a4ff39bced51bd3",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "current_profile_id": null,
+      "status": "held_for_identity_review",
+      "roster_review_group_id": "cross-scope-name-07b97895cb65898ba70524da",
+      "roster_candidates": [
+        {
+          "profile_id": "person-candidate-6825ae231b68410c",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_integrated",
+              "term": 2,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+            }
+          ]
+        },
+        {
+          "profile_id": "person-candidate-a778635b67a66ec2",
+          "occurrences": [
+            {
+              "council_scope": "cheongju_old_city",
+              "term": 9,
+              "roster_response_reparsed": true,
+              "source_url": "https://council.cheongju.go.kr/oldcity/content/member9.html"
+            }
+          ]
+        }
+      ],
+      "current_profile_hold_reasons": []
+    }
+  ]
+}
