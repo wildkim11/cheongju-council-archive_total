@@ -217,6 +217,7 @@ def validate_candidate(stage,oldroot):
     import audit_attachment_downloads
     qa['attachment_downloads']=audit_attachment_downloads.build(stage)
     if qa['attachment_downloads']['status']=='INTEGRITY_ERROR':raise ValueError('attachment download integrity audit failed')
+    qa['attachment_original_urls_retained']=audit_attachment_downloads.verify_retained_originals(oldroot,stage,qa['attachment_downloads'])
     # Offline processing consumes only this verified candidate, before publication.
     import process_meeting_segments,verify_processing
     process_meeting_segments.process(stage)

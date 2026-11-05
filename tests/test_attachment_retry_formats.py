@@ -43,4 +43,14 @@ class AttachmentRetryFormatTests(unittest.TestCase):
  def test_blocked_queue_is_not_full_coverage(self):
   with tempfile.TemporaryDirectory()as td:
    root=Path(td);self.fixture(root,{'status':'blocked','attempts':1,'hold_reason':'size_limit_exceeded'});r=audit.build(root);self.assertEqual(r['status'],'PASS');self.assertEqual(r['status_counts']['blocked'],1);self.assertFalse(r['download_queue_complete']);self.assertEqual(r['remaining_unverified_urls'],1)
+ def test_candidate_cannot_drop_previously_downloaded_url(self):
+  with tempfile.TemporaryDirectory() as old, tempfile.TemporaryDirectory() as new:
+   old,new=Path(old),Path(new)
+   for root in (old,new):
+    self.fixture(root);self.download(root,b'%PDF retained original')
+   self.assertEqual(audit.verify_retained_originals(old,new,audit.build(new)),1)
+   self.fixture(new)
+   self.assertEqual(audit.build(new)['status'],'PASS')
+   with self.assertRaisesRegex(ValueError,'Previously archived attachment'):
+    audit.verify_retained_originals(old,new,audit.build(new))
 if __name__=='__main__':unittest.main()

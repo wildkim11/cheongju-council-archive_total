@@ -6,6 +6,24 @@ ROOT=Path(__file__).resolve().parents[1]
 HOSTS={'council.cheongju.go.kr','councilrec.cheongju.go.kr'}
 def digest(b):return hashlib.sha256(b).hexdigest()
 from attachment_formats import signature
+
+def verify_retained_originals(previous_root, candidate_root, candidate_audit):
+ previous_path=Path(previous_root)/'reports/automatic/attachments.json'
+ if not previous_path.is_file():return 0
+ previous=json.loads(previous_path.read_bytes())
+ candidate_path=Path(candidate_root)/'reports/automatic/attachments.json'
+ candidate=json.loads(candidate_path.read_bytes()) if candidate_path.is_file() else {}
+ retained=0
+ for url,item in previous.items():
+  if item.get('status')!='downloaded':continue
+  current=candidate.get(url,{})
+  if (current.get('status')!='downloaded'
+      or any(current.get(field)!=item.get(field) for field in ('sha256','bytes','path'))
+      or item.get('sha256') not in candidate_audit['unique_file_containers']):
+   raise ValueError(f'Previously archived attachment missing or changed: {url}')
+  retained+=1
+ return retained
+
 def build(root=ROOT):
  root=Path(root);path=root/'reports/automatic/attachments.json';counts={'downloaded':0,'failed':0,'pending':0,'blocked':0};verified=0;held=[];unique={};raw=path.read_bytes()if path.exists()else None;queue=json.loads(raw)if raw is not None else{}
  if not isinstance(queue,dict):raise ValueError('attachment queue must be an object')
