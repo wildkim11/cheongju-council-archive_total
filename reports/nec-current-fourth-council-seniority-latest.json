@@ -1,0 +1,559 @@
+{
+  "schema": "cheongju-current-fourth-council-seniority/1",
+  "input_commit": "d899554e238174e13fff55fd5c1c56195951d54a",
+  "inputs": [
+    "reports/nec-current-profile-links-latest.json",
+    "reports/nec-reviewed-seniority-roster-crosswalk-latest.json",
+    "reports/nec-four-term-election-comparison-latest.json"
+  ],
+  "counts": {
+    "최소 1선": 13,
+    "확인 중": 23,
+    "최소 2선": 5,
+    "최소 4선": 2,
+    "최소 3선": 1
+  },
+  "rows": [
+    {
+      "name": "곽현희",
+      "current_profile_id": "person-fcode-4010",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-52f2e0c0dd6ddc0dbfba7335"
+      ]
+    },
+    {
+      "name": "김성수",
+      "current_profile_id": "person-fcode-4020",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "김완식",
+      "current_profile_id": "person-fcode-10040",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "display": "최소 2선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-788f3c7f03861ea4be81de03",
+        "nec-event-f779de0265715b65d377b7f2"
+      ]
+    },
+    {
+      "name": "김은교",
+      "current_profile_id": "person-fcode-4040",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-97d4b49b91d9b4b2a55e62b2"
+      ]
+    },
+    {
+      "name": "김은숙",
+      "current_profile_id": "person-fcode-1170",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "김재년",
+      "current_profile_id": "person-fcode-4050",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "김종식",
+      "current_profile_id": "person-fcode-4060",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "김준석",
+      "current_profile_id": "person-fcode-10250",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "김진석",
+      "current_profile_id": "person-fcode-4070",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-2d7c8ba93273ffd50eacc2f7"
+      ]
+    },
+    {
+      "name": "남일현",
+      "current_profile_id": "person-fcode-1120",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "display": "최소 4선",
+      "basis": "official_career_terms_and_nec_wins",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-6b93572bccd8ac470ed63185",
+        "nec-event-b1e49ba18332d0b68b5fba35",
+        "nec-event-11f97547a103c5714d3f82d7",
+        "nec-event-75f8b1cee0257450d1916a55"
+      ]
+    },
+    {
+      "name": "노순옥",
+      "current_profile_id": "person-fcode-4080",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "마재광",
+      "current_profile_id": "person-fcode-4090",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "박노학",
+      "current_profile_id": "person-fcode-1130",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "박병만",
+      "current_profile_id": "person-fcode-4100",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-cc6a790530edc9e67979ddb1"
+      ]
+    },
+    {
+      "name": "박수민",
+      "current_profile_id": "person-fcode-4110",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "박승찬",
+      "current_profile_id": "person-fcode-10170",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "배성철",
+      "current_profile_id": "person-fcode-4120",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-994ed5b7b13d6b5b6cfbfc30"
+      ]
+    },
+    {
+      "name": "변은영",
+      "current_profile_id": "person-fcode-2140",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "송병호",
+      "current_profile_id": "person-fcode-10160",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "신민수",
+      "current_profile_id": "person-fcode-10050",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "display": "최소 2선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-7901b9884113eca7c70b097c",
+        "nec-event-b3a31ae0520938137fcb9ccb"
+      ]
+    },
+    {
+      "name": "안광수",
+      "current_profile_id": "person-fcode-4130",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-1937d8eaf0d102aee4af8f97"
+      ]
+    },
+    {
+      "name": "이민영",
+      "current_profile_id": "person-fcode-4140",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "이상조",
+      "current_profile_id": "person-fcode-10230",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "이연숙",
+      "current_profile_id": "person-fcode-4150",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-80ff265dd35db3210ce3c5f5"
+      ]
+    },
+    {
+      "name": "이재숙",
+      "current_profile_id": "person-fcode-2170",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "display": "최소 2선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-6a82bea5018eb2845899ac59",
+        "nec-event-00c25bd747e61733ded05141"
+      ]
+    },
+    {
+      "name": "이한국",
+      "current_profile_id": "person-fcode-10150",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "임은성",
+      "current_profile_id": "person-fcode-2060",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "정무신",
+      "current_profile_id": "person-fcode-4160",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "정연숙",
+      "current_profile_id": "person-fcode-10220",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "display": "최소 2선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-d87776188ccbd9c787cd0eec",
+        "nec-event-4de23b8a74ebe55fe5300b6b"
+      ]
+    },
+    {
+      "name": "정영석",
+      "current_profile_id": "person-fcode-10130",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "정태훈",
+      "current_profile_id": "person-fcode-1010",
+      "verified_wins_lower_bound": 4,
+      "exact_seniority": null,
+      "display": "최소 4선",
+      "basis": "official_career_terms_and_nec_wins",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-45815cd780a4adbdb1ef2392",
+        "nec-event-608bef11b7058a31cc42789b",
+        "nec-event-602997228ae0f0ebf3e49ed7",
+        "nec-event-cf397f4f1fe16449aac3bef3"
+      ]
+    },
+    {
+      "name": "주베라",
+      "current_profile_id": "person-fcode-4170",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-fcfb884bfadd83f3ae4a3fbb"
+      ]
+    },
+    {
+      "name": "차순애",
+      "current_profile_id": "person-fcode-4180",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-2583ae31de3a46e4967ff565"
+      ]
+    },
+    {
+      "name": "최동식",
+      "current_profile_id": "person-fcode-2130",
+      "verified_wins_lower_bound": 2,
+      "exact_seniority": null,
+      "display": "최소 2선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-5af88b1f7b34ad76bd47255c",
+        "nec-event-e2e48a60ea5d17d71d523181"
+      ]
+    },
+    {
+      "name": "최서진",
+      "current_profile_id": "person-fcode-4190",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "최익수",
+      "current_profile_id": "person-fcode-4210",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-51530bc50c81545d95ae4dca"
+      ]
+    },
+    {
+      "name": "최진아",
+      "current_profile_id": "person-fcode-4220",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-99a43b2103bb0330fa9b1151"
+      ]
+    },
+    {
+      "name": "한동순",
+      "current_profile_id": "person-fcode-10080",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "한용진",
+      "current_profile_id": "person-fcode-4230",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-9403243c8eebb84f1febc49f"
+      ]
+    },
+    {
+      "name": "허선",
+      "current_profile_id": "person-fcode-4240",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "허희",
+      "current_profile_id": "person-fcode-4250",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "홍성각",
+      "current_profile_id": "person-fcode-2090",
+      "verified_wins_lower_bound": 3,
+      "exact_seniority": null,
+      "display": "최소 3선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-599b620e12196899acaa20e9",
+        "nec-event-75a0fe2c6f83c5438a79dd1e",
+        "nec-event-54c1e1f50e5abf5df8c749a1"
+      ]
+    },
+    {
+      "name": "홍순철",
+      "current_profile_id": "person-fcode-10110",
+      "verified_wins_lower_bound": null,
+      "exact_seniority": null,
+      "display": "확인 중",
+      "basis": "held",
+      "hold_reasons": [
+        "no_independent_career_match"
+      ],
+      "event_ids": []
+    },
+    {
+      "name": "홍혜진",
+      "current_profile_id": "person-fcode-4260",
+      "verified_wins_lower_bound": 1,
+      "exact_seniority": null,
+      "display": "최소 1선",
+      "basis": "existing_corroborated_link",
+      "hold_reasons": [],
+      "event_ids": [
+        "nec-event-14bc8021a87d73bec2299723"
+      ]
+    }
+  ]
+}
