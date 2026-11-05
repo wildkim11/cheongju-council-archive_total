@@ -1,19 +1,19 @@
 {
   "family": "attachments",
-  "started_at": "2026-11-05T22:26:53.607786+00:00",
+  "started_at": "2026-11-05T22:56:33.317493+00:00",
   "status": "PASS",
   "published": true,
   "collection": {
     "queued": 1891,
-    "attempted": 20,
-    "downloaded_total": 88,
+    "attempted": 12,
+    "downloaded_total": 99,
     "failed_total": 0,
-    "blocked_total": 12,
+    "blocked_total": 1,
     "pending_total": 1791
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-05T22:30:59.158541+00:00",
+    "checked_at_utc": "2026-11-05T23:01:18.647020+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
@@ -307,18 +307,18 @@
       "schema": "cheongju-attachment-download-audit/1",
       "status": "PASS",
       "queue_present": true,
-      "source_queue_sha256": "7b2d32d7df57d44c88343ea914bc5b4de5d224107f5fdd1b1cb9ebc386d64242",
+      "source_queue_sha256": "f965d82396c3589fddcdbfaac98ed246ec9bc074b5cb0e17aa65a9eb6ba01403",
       "queued_urls": 1891,
       "status_counts": {
-        "downloaded": 88,
+        "downloaded": 99,
         "failed": 0,
         "pending": 1791,
-        "blocked": 12
+        "blocked": 1
       },
-      "verified_downloaded_urls": 88,
-      "unique_verified_files": 85,
-      "unique_verified_bytes": 229321881,
-      "remaining_unverified_urls": 1803,
+      "verified_downloaded_urls": 99,
+      "unique_verified_files": 95,
+      "unique_verified_bytes": 320918233,
+      "remaining_unverified_urls": 1792,
       "download_queue_complete": false,
       "held_records": 0,
       "held": [],
@@ -362,6 +362,11 @@
           "bytes": 1012983,
           "container_header": "pdf_header",
           "path": "archive/attachments/eb8f6bf920fc9cea6a8cbca0610e52a2bfbc36166eccde731eb2fa565547d5f7.bin"
+        },
+        "56627f7c2e36f7e8019a215516f6813b81275d2c9680159d782eb77324dc5386": {
+          "bytes": 9200985,
+          "container_header": "pdf_header",
+          "path": "archive/attachments/56627f7c2e36f7e8019a215516f6813b81275d2c9680159d782eb77324dc5386.bin"
         },
         "930990153b44c75b009ef70cc9ade068763e515d5ff13734369b76d64d0ba971": {
           "bytes": 8197443,
@@ -462,6 +467,11 @@
           "bytes": 6044306,
           "container_header": "jpeg_header",
           "path": "archive/attachments/dda69ef1e01968ab466a550da3971ed3a2e32eee8d171ffcbc960c4ed699ea63.bin"
+        },
+        "fa94c661b1ab016e1692aa7eaa2bd28b01f06e8968cfe012f6c9f24d3db631d6": {
+          "bytes": 9050464,
+          "container_header": "jpeg_header",
+          "path": "archive/attachments/fa94c661b1ab016e1692aa7eaa2bd28b01f06e8968cfe012f6c9f24d3db631d6.bin"
         },
         "c89a701472d6d19c7a125a47e1ca194f81ebad892188b0160da0453b9f3df850": {
           "bytes": 103424,
@@ -623,6 +633,11 @@
           "container_header": "jpeg_header",
           "path": "archive/attachments/8bf34d819442c42954b88a464889748fdeec067029a15a38d85a821457806b4e.bin"
         },
+        "a171d3c334665470de3e80958bb022906eff9bf42990792928180cf4c7a388a9": {
+          "bytes": 9326627,
+          "container_header": "jpeg_header",
+          "path": "archive/attachments/a171d3c334665470de3e80958bb022906eff9bf42990792928180cf4c7a388a9.bin"
+        },
         "f7c230e0bfaad6aabeb9869187ce2e53626b7d2b2b2f7330982c7291f196ae4e": {
           "bytes": 8038700,
           "container_header": "jpeg_header",
@@ -653,6 +668,21 @@
           "container_header": "ole_container_header",
           "path": "archive/attachments/bb952d855a6df31d12c18d991f6cc7df3ba595fbc986a08ef24315c874850628.bin"
         },
+        "9ccab1330b3641e60752b71d31fb683fff79d127b9c002c2aa2553d625380505": {
+          "bytes": 8741083,
+          "container_header": "jpeg_header",
+          "path": "archive/attachments/9ccab1330b3641e60752b71d31fb683fff79d127b9c002c2aa2553d625380505.bin"
+        },
+        "b3a09e7f98ce5ffbc9854fe6aa2cecd9642f531723c350c1073b49c073b108a4": {
+          "bytes": 9530835,
+          "container_header": "jpeg_header",
+          "path": "archive/attachments/b3a09e7f98ce5ffbc9854fe6aa2cecd9642f531723c350c1073b49c073b108a4.bin"
+        },
+        "6b23853740b36b34d39361439e7ee4842a4abcaa508f14beb8f72e17cd24a8b6": {
+          "bytes": 9862726,
+          "container_header": "jpeg_header",
+          "path": "archive/attachments/6b23853740b36b34d39361439e7ee4842a4abcaa508f14beb8f72e17cd24a8b6.bin"
+        },
         "dcbf027e4e996bbf7229ed093bb09820995210a20108365e9504d8b2a6f3b60c": {
           "bytes": 116224,
           "container_header": "ole_container_header",
@@ -672,6 +702,11 @@
           "bytes": 93696,
           "container_header": "ole_container_header",
           "path": "archive/attachments/c0cf73d3b9255d8f95d1c7ba5e7b8cac61103d4c1bea8a73bc748cbdae85735e.bin"
+        },
+        "f8425cb39149df81d8a5816b1ac3a607ea5ebd5c2e8fb387206b27b68209f5e8": {
+          "bytes": 8443438,
+          "container_header": "jpeg_header",
+          "path": "archive/attachments/f8425cb39149df81d8a5816b1ac3a607ea5ebd5c2e8fb387206b27b68209f5e8.bin"
         },
         "41fe4c4c1043453803e0b806f268259fab099827e6ae90739eb3e9e944683b42": {
           "bytes": 164352,
@@ -703,6 +738,16 @@
           "container_header": "jpeg_header",
           "path": "archive/attachments/5065119a7084643a3db4fb9a9263bb54bc48b055c7f7d85e8509b0d421c480ba.bin"
         },
+        "b9a0c0784995fafa8705946ed6d3f6733aef016d12cccf5d82f8528dc6bc0012": {
+          "bytes": 9631613,
+          "container_header": "jpeg_header",
+          "path": "archive/attachments/b9a0c0784995fafa8705946ed6d3f6733aef016d12cccf5d82f8528dc6bc0012.bin"
+        },
+        "f52c38bc774bdb1ff55a54d5f6027be24550c349b59480c5218ba9c3949fb13b": {
+          "bytes": 8571469,
+          "container_header": "jpeg_header",
+          "path": "archive/attachments/f52c38bc774bdb1ff55a54d5f6027be24550c349b59480c5218ba9c3949fb13b.bin"
+        },
         "012a432e862f469152ebcf84afaaa702526c960f3908e8164f8d018cb0e7497d": {
           "bytes": 94720,
           "container_header": "ole_container_header",
@@ -712,6 +757,11 @@
           "bytes": 105984,
           "container_header": "ole_container_header",
           "path": "archive/attachments/2832e3d17b4a95b1a57aebaa5c2c0b1631bb42794561cc5103eb3826ffa2f65f.bin"
+        },
+        "b2ddeadd9b8954cb210083b32208ff94c21db44ec844fdc63e429db620bb553e": {
+          "bytes": 9237112,
+          "container_header": "jpeg_header",
+          "path": "archive/attachments/b2ddeadd9b8954cb210083b32208ff94c21db44ec844fdc63e429db620bb553e.bin"
         },
         "58ab82a851425722119002e2d3808b546c80d2b3bfef7684171766cba64251ed": {
           "bytes": 5954808,
@@ -251389,6 +251439,195 @@
             "char_start": 31908,
             "char_end": 44574,
             "span_sha256": "88eb9c1973f69def2d031f950413131010c5f98c32804f3b0b06bf5517de23f5"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32691,
+              "char_end": 33232,
+              "span_sha256": "3e9de5cec7e3a8212691d0a088c0cbc80428e12bf5f6b9be70e50623e871f036"
+            },
+            "valid_votes": 31693,
+            "ballots": 33428,
+            "invalid_votes": 1735,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "박병만",
+                "party_at_election": "더불어민주당",
+                "votes": 9982
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "남일현",
+                "party_at_election": "더불어민주당",
+                "votes": 7346
+              },
+              {
+                "ballot_label": "2-가",
+                "name": "이연숙",
+                "party_at_election": "국민의힘",
+                "votes": 8207
+              },
+              {
+                "ballot_label": "2-나",
+                "name": "김정일",
+                "party_at_election": "국민의힘",
+                "votes": 4678
+              },
+              {
+                "ballot_label": "3",
+                "name": "배상철",
+                "party_at_election": "조국혁신당",
+                "votes": 1480
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 74,
+                "ballots": 77,
+                "candidate_votes_in_ballot_order": [
+                  21,
+                  11,
+                  23,
+                  14,
+                  5
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33245,
+                    "char_end": 33751,
+                    "span_sha256": "51e9e0c7d426fe3e36cec438eff7872f09acc4e9c0746557b47ebd14d53f49df"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 7889,
+                "ballots": 8324,
+                "candidate_votes_in_ballot_order": [
+                  2875,
+                  2302,
+                  1493,
+                  800,
+                  419
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 34840,
+                    "char_end": 35359,
+                    "span_sha256": "4809b9371b474ba6b699aac39a334007cdefa08e40d93acede53b47778295377"
+                  },
+                  {
+                    "char_start": 36446,
+                    "char_end": 36969,
+                    "span_sha256": "b1eb6de1b58fc6464cb642835634322a4f930f98fadbf8e1bfc89574d6abc573"
+                  },
+                  {
+                    "char_start": 38063,
+                    "char_end": 38582,
+                    "span_sha256": "714dcf5466c5f7901507e0183bfe7f5f8b43093960c5a8e87ac7e1502c36dda0"
+                  },
+                  {
+                    "char_start": 39676,
+                    "char_end": 40202,
+                    "span_sha256": "f14b99a2988d8c299298d76170c7aab9de42de8147d16c08aa9e0e8670abd5c8"
+                  },
+                  {
+                    "char_start": 41297,
+                    "char_end": 41816,
+                    "span_sha256": "bfe40d07fcee779a286b8bfdeb673e53e8a2fc151ae61fe03e94ea0c5bdf9348"
+                  },
+                  {
+                    "char_start": 42925,
+                    "char_end": 43457,
+                    "span_sha256": "f369439705dc448f0df731a8aedc0260eafb011250f550e7c2138bde2a0d411d"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 3924,
+                "ballots": 4118,
+                "candidate_votes_in_ballot_order": [
+                  1605,
+                  889,
+                  720,
+                  503,
+                  207
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33764,
+                    "char_end": 34291,
+                    "span_sha256": "2ff03af2ab5298048278a56f3e6d93188e236a92c2e80d873c5eda2857c8d2de"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 19806,
+                "ballots": 20908,
+                "candidate_votes_in_ballot_order": [
+                  5481,
+                  4144,
+                  5971,
+                  3361,
+                  849
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35372,
+                    "char_end": 35894,
+                    "span_sha256": "b863de2edabfcb68a16f3e214711956528d3a5021b885ad481661599a6c1310f"
+                  },
+                  {
+                    "char_start": 36982,
+                    "char_end": 37511,
+                    "span_sha256": "556c3742564dc078a027b29c83cb2a4cab6d82237039d78215f3f9d13b3122d0"
+                  },
+                  {
+                    "char_start": 38595,
+                    "char_end": 39124,
+                    "span_sha256": "f7e87f44888405b34c827bce4593ee47e1ce1d39711ab54f0ed28ac85d63a02e"
+                  },
+                  {
+                    "char_start": 40215,
+                    "char_end": 40745,
+                    "span_sha256": "003560ce9aa35fb42252b780be3f33c69859fa635402064f977ecea9fcee54d3"
+                  },
+                  {
+                    "char_start": 41829,
+                    "char_end": 42358,
+                    "span_sha256": "5e11999276d0c7555134b7af6756426e3a94b0c8f2884efd1df4ca63a9e1e342"
+                  },
+                  {
+                    "char_start": 43470,
+                    "char_end": 44015,
+                    "span_sha256": "75c1d85339a1c334a84aac59d0d65f9d7989ea41a38b0ef300275aa309f0e795"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 0,
+                "ballots": 1,
+                "candidate_votes_in_ballot_order": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 44028,
+                    "char_end": 44537,
+                    "span_sha256": "2497183c0bdca1cd74527b121afe40fdc00645a5f422d1d418adc70624120e30"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -251998,6 +252237,174 @@
             "char_start": 31908,
             "char_end": 42224,
             "span_sha256": "4394fa398df70f605ceb6cd796b4b30a42d97fb0261d6228eef08031efc0a081"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32655,
+              "char_end": 33153,
+              "span_sha256": "d91000aa008d91ee3848c8af601769ab3a40f292d4e57a685cf8c24f2141499f"
+            },
+            "valid_votes": 30317,
+            "ballots": 32458,
+            "invalid_votes": 2141,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "정무신",
+                "party_at_election": "더불어민주당",
+                "votes": 9251
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "이재숙",
+                "party_at_election": "더불어민주당",
+                "votes": 7313
+              },
+              {
+                "ballot_label": "2-가",
+                "name": "이상조",
+                "party_at_election": "국민의힘",
+                "votes": 9347
+              },
+              {
+                "ballot_label": "2-나",
+                "name": "박봉규",
+                "party_at_election": "국민의힘",
+                "votes": 4406
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 62,
+                "ballots": 70,
+                "candidate_votes_in_ballot_order": [
+                  19,
+                  12,
+                  22,
+                  9
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33166,
+                    "char_end": 33632,
+                    "span_sha256": "34b0d7592f3d98c049a42c2a14f1f5a78687ea6e3df3b082b0e8dc4ad1ee841c"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 8408,
+                "ballots": 8845,
+                "candidate_votes_in_ballot_order": [
+                  3168,
+                  2534,
+                  1691,
+                  1015
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 34645,
+                    "char_end": 35124,
+                    "span_sha256": "867a558d2830c30b7e2bb61a1a6ead8d34470fd0d7500bd1860f059114db9860"
+                  },
+                  {
+                    "char_start": 36141,
+                    "char_end": 36627,
+                    "span_sha256": "fd1ec6155d6bcdac1696503540a6b827708745479cf26966bd4eaf9aa9eaffd6"
+                  },
+                  {
+                    "char_start": 37648,
+                    "char_end": 38138,
+                    "span_sha256": "e4070101196a21faa7a6799d1b50649002fda8b74ec6dbb4c2b0f4934e221edc"
+                  },
+                  {
+                    "char_start": 39169,
+                    "char_end": 39658,
+                    "span_sha256": "04a5c7d667b3063ad19c31473954c62ef542cbc67987409b72375e84ed0a90d4"
+                  },
+                  {
+                    "char_start": 40695,
+                    "char_end": 41188,
+                    "span_sha256": "d09bf7901674e173a673e9b76b59369107f6e12acdc0edf8634abe61b80d3326"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 2849,
+                "ballots": 3057,
+                "candidate_votes_in_ballot_order": [
+                  1075,
+                  868,
+                  680,
+                  226
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33645,
+                    "char_end": 34131,
+                    "span_sha256": "20cb2a7230ac58f499e01d4b4759c67599820aeb89b765fcd582019f3a4c9d10"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 18953,
+                "ballots": 20437,
+                "candidate_votes_in_ballot_order": [
+                  4972,
+                  3888,
+                  6946,
+                  3147
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35137,
+                    "char_end": 35627,
+                    "span_sha256": "f9eb404b182d6a27300ac7290b2034d84154f344792913827b58dad67e9cb13b"
+                  },
+                  {
+                    "char_start": 36640,
+                    "char_end": 37130,
+                    "span_sha256": "0f47a86e8b1e7a18f7f44ef45b20f76c577e7f21a012fbf3debb8db3cc55cb87"
+                  },
+                  {
+                    "char_start": 38151,
+                    "char_end": 38645,
+                    "span_sha256": "d1d764489bef232b0f58080da7570ac633a9b4893e2e33708fe00869cf5bb7f8"
+                  },
+                  {
+                    "char_start": 39671,
+                    "char_end": 40171,
+                    "span_sha256": "c54e7d410bc2153f9d6a6fa5690e85b700bed5d9ecb3a5e04cf9b979c5bfae7b"
+                  },
+                  {
+                    "char_start": 41201,
+                    "char_end": 41699,
+                    "span_sha256": "e6facd7fca8456544dbff4f18c850cbcf781dcc922d01fcad6fb12c97e54a44a"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 45,
+                "ballots": 49,
+                "candidate_votes_in_ballot_order": [
+                  17,
+                  11,
+                  8,
+                  9
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 41712,
+                    "char_end": 42187,
+                    "span_sha256": "b2bfc4cdd22ecf7de94c9101e0248c3938d5f219c2a649c6cd7b6b54497b34ad"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -252400,6 +252807,144 @@
             "char_start": 31908,
             "char_end": 37701,
             "span_sha256": "a78d70f14507dd4d52f6b5d8a807683fbecf6b5473615503d4b451a9d91383a4"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32655,
+              "char_end": 33154,
+              "span_sha256": "acbd39b0693a4d9f51a185676a5ff9243f9d8bd0f0824a863da98cbadd35395b"
+            },
+            "valid_votes": 29053,
+            "ballots": 31167,
+            "invalid_votes": 2114,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "곽현희",
+                "party_at_election": "더불어민주당",
+                "votes": 12125
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "안광수",
+                "party_at_election": "더불어민주당",
+                "votes": 5958
+              },
+              {
+                "ballot_label": "2-가",
+                "name": "김완식",
+                "party_at_election": "국민의힘",
+                "votes": 8607
+              },
+              {
+                "ballot_label": "2-나",
+                "name": "김미자",
+                "party_at_election": "국민의힘",
+                "votes": 2363
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 61,
+                "ballots": 68,
+                "candidate_votes_in_ballot_order": [
+                  23,
+                  13,
+                  22,
+                  3
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33167,
+                    "char_end": 33633,
+                    "span_sha256": "2e1a151056f02f367d0c5d0e80f4bb568b01cc824de27a40fe832ce4f218dbba"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 5522,
+                "ballots": 5907,
+                "candidate_votes_in_ballot_order": [
+                  2835,
+                  1175,
+                  1175,
+                  337
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 34648,
+                    "char_end": 35134,
+                    "span_sha256": "b2fa04bb0d7acf98b1266990694c069aa2b370d53eb74a3ef4df6566b55e16b8"
+                  },
+                  {
+                    "char_start": 36167,
+                    "char_end": 36658,
+                    "span_sha256": "16d01a405568f704bb4be151a2f7751ba1f748f2f1d767efe378e3cd6a9d6e3d"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 4388,
+                "ballots": 4691,
+                "candidate_votes_in_ballot_order": [
+                  2213,
+                  982,
+                  954,
+                  239
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33646,
+                    "char_end": 34132,
+                    "span_sha256": "4597657872f1c415311670fa768325e71588cfc3caabdf65cc01fba8ac406148"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 19062,
+                "ballots": 20480,
+                "candidate_votes_in_ballot_order": [
+                  7042,
+                  3787,
+                  6452,
+                  1781
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35147,
+                    "char_end": 35639,
+                    "span_sha256": "a42a3df02457783e8dbb13f40fc02d6f2f8d8b6cd3ed3707a5687b39484ad510"
+                  },
+                  {
+                    "char_start": 36671,
+                    "char_end": 37177,
+                    "span_sha256": "a9324a0e2ef33b61bf4d2b8093af80714aa6f9e452ff3c59fc50be850eb90c79"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 20,
+                "ballots": 21,
+                "candidate_votes_in_ballot_order": [
+                  12,
+                  1,
+                  4,
+                  3
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 37190,
+                    "char_end": 37664,
+                    "span_sha256": "4f22c7cdf77699b94b768dc726a11e7fc38ea9b5a78fb5743041fb0595af8e45"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -252918,6 +253463,165 @@
             "char_start": 31966,
             "char_end": 39850,
             "span_sha256": "a5f0c04828b1ef2fc6a409a98f584e8f1ae0297c385bb346d57e411f7aee33bc"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32750,
+              "char_end": 33292,
+              "span_sha256": "44a15838e75a1aa42d992e13dd0bad24dbe4017c32cc79a5d47a9ef893320e0c"
+            },
+            "valid_votes": 40966,
+            "ballots": 42933,
+            "invalid_votes": 1967,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "김은교",
+                "party_at_election": "더불어민주당",
+                "votes": 13335
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "김병년",
+                "party_at_election": "더불어민주당",
+                "votes": 5633
+              },
+              {
+                "ballot_label": "1-다",
+                "name": "최동식",
+                "party_at_election": "더불어민주당",
+                "votes": 5997
+              },
+              {
+                "ballot_label": "2-가",
+                "name": "김종식",
+                "party_at_election": "국민의힘",
+                "votes": 9593
+              },
+              {
+                "ballot_label": "2-나",
+                "name": "박노학",
+                "party_at_election": "국민의힘",
+                "votes": 6408
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 57,
+                "ballots": 62,
+                "candidate_votes_in_ballot_order": [
+                  8,
+                  12,
+                  7,
+                  21,
+                  9
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33305,
+                    "char_end": 33809,
+                    "span_sha256": "4424ba3fd8e421786bbc45d8781f6e00ba94eb613e3e74542247077d18ce3c22"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 9665,
+                "ballots": 9998,
+                "candidate_votes_in_ballot_order": [
+                  3858,
+                  1582,
+                  1655,
+                  1360,
+                  1210
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 34918,
+                    "char_end": 35448,
+                    "span_sha256": "5aa30650a73f572170cfe6fac5737fde12651fecdb249ca9a311f6bd4b15b53f"
+                  },
+                  {
+                    "char_start": 36563,
+                    "char_end": 37090,
+                    "span_sha256": "c74af403e8950419e5f60d714b1c968e15d9f181eec753608fd23ae97cdb4fba"
+                  },
+                  {
+                    "char_start": 38203,
+                    "char_end": 38734,
+                    "span_sha256": "20f8ea70e91145d94669c76938e6fe9fcf5ba8c420a7b685ce0983c6339909c4"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 5026,
+                "ballots": 5277,
+                "candidate_votes_in_ballot_order": [
+                  2101,
+                  677,
+                  777,
+                  1024,
+                  447
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33822,
+                    "char_end": 34351,
+                    "span_sha256": "12a8b6ba2aa6b6523835cd968935474eb334a615108113e8b2db2be2c8286dfb"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 26207,
+                "ballots": 27585,
+                "candidate_votes_in_ballot_order": [
+                  7364,
+                  3358,
+                  3557,
+                  7187,
+                  4741
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35461,
+                    "char_end": 36006,
+                    "span_sha256": "89315edbe360297dc534f8158fdc10661309ffb5b0bbbff8e298a6fe603c4d55"
+                  },
+                  {
+                    "char_start": 37103,
+                    "char_end": 37634,
+                    "span_sha256": "9d660dbe4212753e85dbb3e03e4c555ed6deb99052058ed627b6e2ffa5817805"
+                  },
+                  {
+                    "char_start": 38747,
+                    "char_end": 39288,
+                    "span_sha256": "d7f5da7ae7dd3ba7c50a6f78524cfc070a40978325d8c77b5aad0384c22b1fcf"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 11,
+                "ballots": 11,
+                "candidate_votes_in_ballot_order": [
+                  4,
+                  4,
+                  1,
+                  1,
+                  1
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 39301,
+                    "char_end": 39813,
+                    "span_sha256": "f34d84a0768b8ba23d69e73160d684f276b5ee50d64eb67080af6da29a7820e0"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -253458,6 +254162,164 @@
             "char_start": 31966,
             "char_end": 40806,
             "span_sha256": "97c0ae95271c2dbe9f9113f6618c6f423204cac5ee2a4f1d2c1148c33d74c930"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32712,
+              "char_end": 33211,
+              "span_sha256": "88756539a5fcbf257052977f2a6eee4d41cda8f334a35a9e77940261ea0ca007"
+            },
+            "valid_votes": 29838,
+            "ballots": 32340,
+            "invalid_votes": 2502,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "한동순",
+                "party_at_election": "더불어민주당",
+                "votes": 11951
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "허선",
+                "party_at_election": "더불어민주당",
+                "votes": 5222
+              },
+              {
+                "ballot_label": "2-가",
+                "name": "최서진",
+                "party_at_election": "국민의힘",
+                "votes": 7813
+              },
+              {
+                "ballot_label": "2-나",
+                "name": "이우균",
+                "party_at_election": "국민의힘",
+                "votes": 4852
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 56,
+                "ballots": 60,
+                "candidate_votes_in_ballot_order": [
+                  18,
+                  9,
+                  13,
+                  16
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33224,
+                    "char_end": 33690,
+                    "span_sha256": "d06aba8840d1e83b591846005a25aba4fca60db998d64dee6d78734c7d6edd02"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 8070,
+                "ballots": 8646,
+                "candidate_votes_in_ballot_order": [
+                  4015,
+                  1770,
+                  1235,
+                  1050
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 34710,
+                    "char_end": 35197,
+                    "span_sha256": "ebd4bb5fc4c0261c086db175ff12d249f5786ff75d1ccb5e0e1dd26c848811f7"
+                  },
+                  {
+                    "char_start": 36227,
+                    "char_end": 36716,
+                    "span_sha256": "e53987718865a79345f5583853da8d2061f0ee6047e3391883883c65090faedd"
+                  },
+                  {
+                    "char_start": 37753,
+                    "char_end": 38247,
+                    "span_sha256": "c04a3f78a7b7d7aede51c5c36c3838c082d76e27c0509239ca0b2fa2f6b15c0b"
+                  },
+                  {
+                    "char_start": 39282,
+                    "char_end": 39773,
+                    "span_sha256": "883b8b81b4057f163389550393fa8658794bec073c9b0c65ddf1f2dbe85130c4"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 2851,
+                "ballots": 3039,
+                "candidate_votes_in_ballot_order": [
+                  1402,
+                  472,
+                  690,
+                  287
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33703,
+                    "char_end": 34189,
+                    "span_sha256": "7b6712a0832fb09fc3474dc1100914b1f026b4d6bada5d197222d9700dd8f346"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 18845,
+                "ballots": 20575,
+                "candidate_votes_in_ballot_order": [
+                  6513,
+                  2969,
+                  5869,
+                  3494
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35210,
+                    "char_end": 35707,
+                    "span_sha256": "21b4f56cba9053916dcca82e5ecb58a53e78a6d9b8c0fdb90fb3d310f03f6424"
+                  },
+                  {
+                    "char_start": 36729,
+                    "char_end": 37226,
+                    "span_sha256": "70167e2d925e4f53334ae2f1992003cc46ee00131fd1a1bcc2712659cca1d402"
+                  },
+                  {
+                    "char_start": 38260,
+                    "char_end": 38761,
+                    "span_sha256": "7688a728346ebfbfdf9149f14ce20d3e802e6a089961c47e63b7de49f01723f1"
+                  },
+                  {
+                    "char_start": 39786,
+                    "char_end": 40283,
+                    "span_sha256": "8df55de1e359aebd3d9932e08f76d6a00ef8d569c738b521277127096c59ae63"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 16,
+                "ballots": 20,
+                "candidate_votes_in_ballot_order": [
+                  3,
+                  2,
+                  6,
+                  5
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 40296,
+                    "char_end": 40769,
+                    "span_sha256": "fa557fcc5e80f49050199317b37b8321a4e65422a57517a903b8900660763dd0"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -253860,6 +254722,144 @@
             "char_start": 31966,
             "char_end": 37769,
             "span_sha256": "7d032154fb5a3ab7498cc0f34b4794564c2f715a94d24f6f9d8c435c011d1838"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32713,
+              "char_end": 33212,
+              "span_sha256": "25406f4edcb2899f12e4361d4d7c9b3554d4ebed10f81320a4ca40972e443e02"
+            },
+            "valid_votes": 26090,
+            "ballots": 27883,
+            "invalid_votes": 1793,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "박수민",
+                "party_at_election": "더불어민주당",
+                "votes": 10666
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "노순옥",
+                "party_at_election": "더불어민주당",
+                "votes": 4122
+              },
+              {
+                "ballot_label": "2-가",
+                "name": "김준석",
+                "party_at_election": "국민의힘",
+                "votes": 7785
+              },
+              {
+                "ballot_label": "2-나",
+                "name": "유광욱",
+                "party_at_election": "국민의힘",
+                "votes": 3517
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 51,
+                "ballots": 55,
+                "candidate_votes_in_ballot_order": [
+                  19,
+                  3,
+                  21,
+                  8
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33225,
+                    "char_end": 33690,
+                    "span_sha256": "aeb1da493264fd570f0e5731f2e0495baef046a4753ea7396692d19a22b7e39f"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 5935,
+                "ballots": 6267,
+                "candidate_votes_in_ballot_order": [
+                  2968,
+                  1262,
+                  1066,
+                  639
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 34717,
+                    "char_end": 35210,
+                    "span_sha256": "6dd3a4c233d0d692669e965d4380da311a190a9e31275a1ea71168c784b35153"
+                  },
+                  {
+                    "char_start": 36248,
+                    "char_end": 36736,
+                    "span_sha256": "61701e5eb1995e83eaaa602d75b900c327ad397b4793f45392d1111fb20deee8"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 2675,
+                "ballots": 2820,
+                "candidate_votes_in_ballot_order": [
+                  1383,
+                  383,
+                  666,
+                  243
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33703,
+                    "char_end": 34189,
+                    "span_sha256": "3eab2a80b7832649de7c43377b81900eab59a3cb91e77caf4e581c13cc4cbabe"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 17412,
+                "ballots": 18721,
+                "candidate_votes_in_ballot_order": [
+                  6285,
+                  2473,
+                  6028,
+                  2626
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35223,
+                    "char_end": 35729,
+                    "span_sha256": "1b0566644cdf76b5d579279a7f0d2a585246d47f07a88b8f4e78e35683c8cdeb"
+                  },
+                  {
+                    "char_start": 36749,
+                    "char_end": 37245,
+                    "span_sha256": "b954113e79985e9a3f56e7f3123a0a2a1fb312daaf8d0839388ee3a360c2887f"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 17,
+                "ballots": 20,
+                "candidate_votes_in_ballot_order": [
+                  11,
+                  1,
+                  4,
+                  1
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 37258,
+                    "char_end": 37732,
+                    "span_sha256": "085878ce238252ef1aff0bbd37457f9c6a9b7d2014bc09457eab2bb84bee8aac"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -254350,6 +255350,166 @@
             "char_start": 31966,
             "char_end": 38641,
             "span_sha256": "7842b74b3ee7a4b9206bb0bcae0ae3720c7aa2b6c0bdcfa782a40fc15588c48a"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32782,
+              "char_end": 33363,
+              "span_sha256": "6f2441c96dedce2bc477b9ef55cac7515b83df22b5f883d5b31f9d6bed9008af"
+            },
+            "valid_votes": 31098,
+            "ballots": 32832,
+            "invalid_votes": 1734,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "정연숙",
+                "party_at_election": "더불어민주당",
+                "votes": 11186
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "김은숙",
+                "party_at_election": "더불어민주당",
+                "votes": 5879
+              },
+              {
+                "ballot_label": "2-가",
+                "name": "홍순철",
+                "party_at_election": "국민의힘",
+                "votes": 9148
+              },
+              {
+                "ballot_label": "2-나",
+                "name": "민춘기",
+                "party_at_election": "국민의힘",
+                "votes": 3329
+              },
+              {
+                "ballot_label": "4",
+                "name": "황은재",
+                "party_at_election": "개혁신당",
+                "votes": 951
+              },
+              {
+                "ballot_label": "5",
+                "name": "길한샘",
+                "party_at_election": "정의당",
+                "votes": 605
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 60,
+                "ballots": 64,
+                "candidate_votes_in_ballot_order": [
+                  22,
+                  11,
+                  16,
+                  5,
+                  3,
+                  3
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33376,
+                    "char_end": 33920,
+                    "span_sha256": "ebfc82bb2208940f58fbe2c74d5b884cb0ab0cd964d2a9097f3b8a61b453ba3f"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 6173,
+                "ballots": 6487,
+                "candidate_votes_in_ballot_order": [
+                  2911,
+                  1358,
+                  1163,
+                  491,
+                  135,
+                  115
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35105,
+                    "char_end": 35673,
+                    "span_sha256": "ec52c67d3ffdc9528e860d614cbd03980368c1fd5d72a9005bfb9d750869f81d"
+                  },
+                  {
+                    "char_start": 36872,
+                    "char_end": 37443,
+                    "span_sha256": "e494a85a5deb2380ab9ee32ef09d1078f3fc89b93eaea536a56b4a61eb081e66"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 4340,
+                "ballots": 4539,
+                "candidate_votes_in_ballot_order": [
+                  1847,
+                  1027,
+                  895,
+                  260,
+                  195,
+                  116
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33933,
+                    "char_end": 34504,
+                    "span_sha256": "ec23a5e950cbbc38ef6470ba0514432906bd7d6efb102fb954b36a707db472a9"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 20508,
+                "ballots": 21725,
+                "candidate_votes_in_ballot_order": [
+                  6399,
+                  3478,
+                  7074,
+                  2571,
+                  615,
+                  371
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35686,
+                    "char_end": 36264,
+                    "span_sha256": "19d28f4bec955ebaaa7ada477dc9f0758f1cb7b7d105b9224315e3ff3e11ec8f"
+                  },
+                  {
+                    "char_start": 37456,
+                    "char_end": 38040,
+                    "span_sha256": "7ea00887f6610d2eddeb5b0e093d0142972fc24cf505d600c0c239d390317ff6"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 17,
+                "ballots": 17,
+                "candidate_votes_in_ballot_order": [
+                  7,
+                  5,
+                  0,
+                  2,
+                  3,
+                  0
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 38053,
+                    "char_end": 38604,
+                    "span_sha256": "fd95670e3f699378f8ae9657bf8682019bbf530e0f7a769e957f10e46a3e339c"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -254870,6 +256030,156 @@
             "char_start": 31966,
             "char_end": 36878,
             "span_sha256": "af68979c6801c6f11b4305a4cbcfff0ff3d5c48e24725f1a8e020b3f94c6d6ba"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32782,
+              "char_end": 33362,
+              "span_sha256": "b30a454892372b817df59e296a37b7d4a08a718bc476b1b90f841c4ae07b6ad8"
+            },
+            "valid_votes": 28956,
+            "ballots": 29759,
+            "invalid_votes": 803,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "허희",
+                "party_at_election": "더불어민주당",
+                "votes": 8393
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "이예숙",
+                "party_at_election": "더불어민주당",
+                "votes": 4407
+              },
+              {
+                "ballot_label": "1-다",
+                "name": "송병호",
+                "party_at_election": "더불어민주당",
+                "votes": 5427
+              },
+              {
+                "ballot_label": "2",
+                "name": "김성수",
+                "party_at_election": "국민의힘",
+                "votes": 8532
+              },
+              {
+                "ballot_label": "5",
+                "name": "이상용",
+                "party_at_election": "무소속",
+                "votes": 584
+              },
+              {
+                "ballot_label": "6",
+                "name": "상병남",
+                "party_at_election": "무소속",
+                "votes": 1613
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 67,
+                "ballots": 69,
+                "candidate_votes_in_ballot_order": [
+                  14,
+                  10,
+                  12,
+                  26,
+                  2,
+                  3
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33375,
+                    "char_end": 33920,
+                    "span_sha256": "4ff7c491e4e9741ca07b71fba223c7e7e2c8d566429667ad6c5a8f231dfd4109"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 4905,
+                "ballots": 5041,
+                "candidate_votes_in_ballot_order": [
+                  1697,
+                  958,
+                  996,
+                  941,
+                  87,
+                  226
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35108,
+                    "char_end": 35678,
+                    "span_sha256": "1862df9936ff8fdb22047b1983580f08208e6caa83b962294fcc4f6b58598653"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 2985,
+                "ballots": 3105,
+                "candidate_votes_in_ballot_order": [
+                  1021,
+                  454,
+                  585,
+                  724,
+                  67,
+                  134
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33933,
+                    "char_end": 34500,
+                    "span_sha256": "944fbf2ecf8850d50c68bbc1acf1f4756c45f449f7291ebd91acf94e1909e5c9"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 20989,
+                "ballots": 21533,
+                "candidate_votes_in_ballot_order": [
+                  5659,
+                  2983,
+                  3830,
+                  6839,
+                  428,
+                  1250
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35691,
+                    "char_end": 36277,
+                    "span_sha256": "95bdf79bcc8112c727b80fe4fc819be99eb4aafc2b24afdb967976a718a0a943"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 10,
+                "ballots": 11,
+                "candidate_votes_in_ballot_order": [
+                  2,
+                  2,
+                  4,
+                  2,
+                  0,
+                  0
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 36290,
+                    "char_end": 36841,
+                    "span_sha256": "c1b226e5f2b9e16be3c5641c72e1e431aa46262fbfddc8ee807c99c06ecf9c07"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -255435,6 +256745,176 @@
             "char_start": 31966,
             "char_end": 40342,
             "span_sha256": "b80e40e4cad7d30b732de8583dd483181272b30b9a0e06af67dd5657e8c027f9"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32779,
+              "char_end": 33355,
+              "span_sha256": "a21eb7308ecb79e250d6fd9f756b38028fb8fd7a7e10069db05a2a9385549e9c"
+            },
+            "valid_votes": 15895,
+            "ballots": 16298,
+            "invalid_votes": 403,
+            "candidates": [
+              {
+                "ballot_label": "1",
+                "name": "한용진",
+                "party_at_election": "더불어민주당",
+                "votes": 6352
+              },
+              {
+                "ballot_label": "2",
+                "name": "정태훈",
+                "party_at_election": "국민의힘",
+                "votes": 6998
+              },
+              {
+                "ballot_label": "3",
+                "name": "임정수",
+                "party_at_election": "조국혁신당",
+                "votes": 863
+              },
+              {
+                "ballot_label": "5",
+                "name": "이병주",
+                "party_at_election": "정의당",
+                "votes": 191
+              },
+              {
+                "ballot_label": "6",
+                "name": "최혜림",
+                "party_at_election": "무소속",
+                "votes": 1059
+              },
+              {
+                "ballot_label": "7",
+                "name": "김광복",
+                "party_at_election": "무소속",
+                "votes": 432
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 30,
+                "ballots": 31,
+                "candidate_votes_in_ballot_order": [
+                  12,
+                  12,
+                  2,
+                  2,
+                  2,
+                  0
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33368,
+                    "char_end": 33911,
+                    "span_sha256": "51e65fe55500432869b6d5ba673a2e4b02482aef4e2191c878bbbf3688dd0130"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 4502,
+                "ballots": 4577,
+                "candidate_votes_in_ballot_order": [
+                  2295,
+                  1409,
+                  326,
+                  53,
+                  290,
+                  129
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35083,
+                    "char_end": 35647,
+                    "span_sha256": "8e0c72bd3397c68e88b783fd60d1b2fbac57eee3ee2200d45ea1c6699e4b4701"
+                  },
+                  {
+                    "char_start": 36833,
+                    "char_end": 37399,
+                    "span_sha256": "a0cb5afd02e862544b1c77dfd3d9a76cc3b75f31e2569821ecdbbaeacf0108c2"
+                  },
+                  {
+                    "char_start": 38584,
+                    "char_end": 39152,
+                    "span_sha256": "9faa9f19cbd5ee9b535e4879c35bea95458255788faa14f5aafe699b9a054a5e"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 1521,
+                "ballots": 1554,
+                "candidate_votes_in_ballot_order": [
+                  850,
+                  456,
+                  68,
+                  26,
+                  87,
+                  34
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33924,
+                    "char_end": 34485,
+                    "span_sha256": "d506bda21b46298117aba59eaf846447d1d9b11296adaebe183398eceb5464d1"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 9827,
+                "ballots": 10119,
+                "candidate_votes_in_ballot_order": [
+                  3186,
+                  5118,
+                  466,
+                  110,
+                  678,
+                  269
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35660,
+                    "char_end": 36235,
+                    "span_sha256": "a944f05abd94d9abab2d0b26476967dcdc32ec79310a03f96ee10c16b3cf907d"
+                  },
+                  {
+                    "char_start": 37412,
+                    "char_end": 37985,
+                    "span_sha256": "fad14c36db926181621bea6358b443cc237c7d712f94acbda73507d38b693108"
+                  },
+                  {
+                    "char_start": 39165,
+                    "char_end": 39741,
+                    "span_sha256": "59efc47225b93ae312beaf2bdf8be0c92250eaee2e9ce543bded223238c8e436"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 15,
+                "ballots": 17,
+                "candidate_votes_in_ballot_order": [
+                  9,
+                  3,
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 39754,
+                    "char_end": 40305,
+                    "span_sha256": "2958f4bf9faa19c9eb9b71c552675f7b9427b56c571ff445ef39fe29ed902295"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -255768,6 +257248,134 @@
             "char_start": 31966,
             "char_end": 36231,
             "span_sha256": "4694767186906920f3c1425114fbd0c5de6b8db4aba5c97f30ac731399fb84f7"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32710,
+              "char_end": 33203,
+              "span_sha256": "ed3c945f645b0a042e31c50c3cca307143f47be3d9766d8a134cdbc01bde8f28"
+            },
+            "valid_votes": 21963,
+            "ballots": 22725,
+            "invalid_votes": 762,
+            "candidates": [
+              {
+                "ballot_label": "1",
+                "name": "변은영",
+                "party_at_election": "더불어민주당",
+                "votes": 11069
+              },
+              {
+                "ballot_label": "2",
+                "name": "이한국",
+                "party_at_election": "국민의힘",
+                "votes": 9218
+              },
+              {
+                "ballot_label": "4",
+                "name": "이인숙",
+                "party_at_election": "개혁신당",
+                "votes": 786
+              },
+              {
+                "ballot_label": "5",
+                "name": "안기원",
+                "party_at_election": "진보당",
+                "votes": 890
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 53,
+                "ballots": 56,
+                "candidate_votes_in_ballot_order": [
+                  30,
+                  18,
+                  4,
+                  1
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33216,
+                    "char_end": 33681,
+                    "span_sha256": "2a636fc103191ece23c517c1d4e7bd1fd894b8be03224d049edbd8e805205e38"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 4025,
+                "ballots": 4072,
+                "candidate_votes_in_ballot_order": [
+                  2544,
+                  1163,
+                  147,
+                  171
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 34701,
+                    "char_end": 35194,
+                    "span_sha256": "c476763ab5ba9a8e87b16c68aa449adbae7d7b4a06863d732489f2ae37792357"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 2764,
+                "ballots": 2818,
+                "candidate_votes_in_ballot_order": [
+                  1734,
+                  826,
+                  112,
+                  92
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33694,
+                    "char_end": 34178,
+                    "span_sha256": "2cab3d571b3e46278976d1c3f51ba647ba2eaf20c080a4bf548b7ac00a4cd2b3"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 15108,
+                "ballots": 15759,
+                "candidate_votes_in_ballot_order": [
+                  6756,
+                  7206,
+                  522,
+                  624
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35207,
+                    "char_end": 35708,
+                    "span_sha256": "fda921e0a2c4a7548b02eea53f0747162ea41edc25fa0c4db6ba85369d1d48e4"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 13,
+                "ballots": 20,
+                "candidate_votes_in_ballot_order": [
+                  5,
+                  5,
+                  1,
+                  2
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35721,
+                    "char_end": 36194,
+                    "span_sha256": "e1a4bed6c03f04c35c05a839dced5f4458297e192ac837526031022a0bb3d8c2"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -256622,6 +258230,196 @@
             "char_start": 31908,
             "char_end": 43813,
             "span_sha256": "5d98b55611a6ff1209309fe3787d6cb550c7f6e52d95d2fbeaa5be0998b0bf04"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32724,
+              "char_end": 33306,
+              "span_sha256": "10c355213b533b16bebfb3a4ce2fc9f97cc5f359c417efc2702052d2814cf8a6"
+            },
+            "valid_votes": 30921,
+            "ballots": 32777,
+            "invalid_votes": 1856,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "차순애",
+                "party_at_election": "더불어민주당",
+                "votes": 8949
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "김진석",
+                "party_at_election": "더불어민주당",
+                "votes": 6992
+              },
+              {
+                "ballot_label": "2-가",
+                "name": "홍혜진",
+                "party_at_election": "국민의힘",
+                "votes": 9125
+              },
+              {
+                "ballot_label": "2-나",
+                "name": "김태순",
+                "party_at_election": "국민의힘",
+                "votes": 4057
+              },
+              {
+                "ballot_label": "4",
+                "name": "이완복",
+                "party_at_election": "개혁신당",
+                "votes": 1309
+              },
+              {
+                "ballot_label": "5",
+                "name": "유진영",
+                "party_at_election": "노동당",
+                "votes": 489
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 64,
+                "ballots": 69,
+                "candidate_votes_in_ballot_order": [
+                  17,
+                  16,
+                  14,
+                  14,
+                  3,
+                  0
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33319,
+                    "char_end": 33864,
+                    "span_sha256": "911570e0aa766cd69c78d94c09f1984ef194d60f741c70decddb92478beacb41"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 6515,
+                "ballots": 6867,
+                "candidate_votes_in_ballot_order": [
+                  2452,
+                  1839,
+                  1353,
+                  494,
+                  253,
+                  124
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35040,
+                    "char_end": 35599,
+                    "span_sha256": "89a736f7966128b846ec6891d7a4e7e41dcb7b6bdd73dacb09c1b9e1be521760"
+                  },
+                  {
+                    "char_start": 36784,
+                    "char_end": 37345,
+                    "span_sha256": "1540bcb28cc9ec66f595c8225b5cb34d15c91aa08c6fb16558cec2d58306b639"
+                  },
+                  {
+                    "char_start": 38536,
+                    "char_end": 39102,
+                    "span_sha256": "fb7f363788db072d0ae6cfaa8fbfd22ebc183fd9d22571a348d7203195910932"
+                  },
+                  {
+                    "char_start": 40293,
+                    "char_end": 40860,
+                    "span_sha256": "03078bf64e6ba7f622d9a15e0e539c5b8314474fd73e183644423c27a164be38"
+                  },
+                  {
+                    "char_start": 42051,
+                    "char_end": 42620,
+                    "span_sha256": "73a539604d877db2c59434375e8077fb9cf47e37fccf659e7ccf5cb9f7f6b7a7"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 3794,
+                "ballots": 3984,
+                "candidate_votes_in_ballot_order": [
+                  1297,
+                  1158,
+                  685,
+                  398,
+                  177,
+                  79
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33877,
+                    "char_end": 34446,
+                    "span_sha256": "042c74404ca7cde35fa08134829ca33d4ab9cd49bf22f18f76d4087fbef4b8d8"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 20522,
+                "ballots": 21825,
+                "candidate_votes_in_ballot_order": [
+                  5172,
+                  3970,
+                  7073,
+                  3145,
+                  876,
+                  286
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35612,
+                    "char_end": 36183,
+                    "span_sha256": "02aa5a64f5e482bea8ab3c9e294b4673d7469c32856b5d2a6a1a1e8bd2ebf935"
+                  },
+                  {
+                    "char_start": 37358,
+                    "char_end": 37933,
+                    "span_sha256": "e598dd3673003e98e3d3bef5237f57fe45a7baec3e4329d2dca576841891790a"
+                  },
+                  {
+                    "char_start": 39115,
+                    "char_end": 39693,
+                    "span_sha256": "9369f59054db39d6cc4192bd3fa2f9cd26b60afc7aca1d8af7931cfb41641982"
+                  },
+                  {
+                    "char_start": 40873,
+                    "char_end": 41448,
+                    "span_sha256": "cca459a46ea401c5c099b5687515efa7ede7d0063ad053e8b1b3e81b15d49964"
+                  },
+                  {
+                    "char_start": 42633,
+                    "char_end": 43211,
+                    "span_sha256": "f77759bb6ea6a811a3e1f5ce24798b9edc7b6d71496fbaf385c9a8d506359bd7"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 26,
+                "ballots": 32,
+                "candidate_votes_in_ballot_order": [
+                  11,
+                  9,
+                  0,
+                  6,
+                  0,
+                  0
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 43224,
+                    "char_end": 43776,
+                    "span_sha256": "d8c88ddfe9a6ff48e8fe87f33133490fd6d9282adbf6181d4a7d079418724abe"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -257068,6 +258866,155 @@
             "char_start": 31908,
             "char_end": 38157,
             "span_sha256": "c13d579541a97231183ba2ef47969fd5b752aadf27ca594a024e2f8039596099"
+          },
+          "vote_summary": {
+            "district_total_source_row": {
+              "char_start": 32689,
+              "char_end": 33231,
+              "span_sha256": "789a99af773164a8bbf8867817deb52803d14609d8956adc08ddde191d2b3571"
+            },
+            "valid_votes": 28145,
+            "ballots": 29725,
+            "invalid_votes": 1580,
+            "candidates": [
+              {
+                "ballot_label": "1-가",
+                "name": "신민수",
+                "party_at_election": "더불어민주당",
+                "votes": 10646
+              },
+              {
+                "ballot_label": "1-나",
+                "name": "박대용",
+                "party_at_election": "더불어민주당",
+                "votes": 4449
+              },
+              {
+                "ballot_label": "2-가",
+                "name": "최영중",
+                "party_at_election": "국민의힘",
+                "votes": 5728
+              },
+              {
+                "ballot_label": "2-나",
+                "name": "홍성각",
+                "party_at_election": "국민의힘",
+                "votes": 6283
+              },
+              {
+                "ballot_label": "5",
+                "name": "이복규",
+                "party_at_election": "진보당",
+                "votes": 1039
+              }
+            ],
+            "channels": [
+              {
+                "channel": "거소투표",
+                "valid_votes": 65,
+                "ballots": 72,
+                "candidate_votes_in_ballot_order": [
+                  21,
+                  8,
+                  22,
+                  12,
+                  2
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33244,
+                    "char_end": 33749,
+                    "span_sha256": "84d1436d1879e47534ccb31bbf7293480835dba20f7290ee22bc4daddc0a27ef"
+                  }
+                ]
+              },
+              {
+                "channel": "관내사전투표",
+                "valid_votes": 6741,
+                "ballots": 7085,
+                "candidate_votes_in_ballot_order": [
+                  3129,
+                  1304,
+                  885,
+                  1131,
+                  292
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 34849,
+                    "char_end": 35376,
+                    "span_sha256": "aad21510264eddfda254814faf615376dcae36699b0a2c822a946e774ab83593"
+                  },
+                  {
+                    "char_start": 36497,
+                    "char_end": 37033,
+                    "span_sha256": "99573177574ae181fff4e5ca1486c71cdcf28609c887ea5a810b3fec47254eb4"
+                  }
+                ]
+              },
+              {
+                "channel": "관외사전투표",
+                "valid_votes": 3567,
+                "ballots": 3754,
+                "candidate_votes_in_ballot_order": [
+                  1679,
+                  653,
+                  578,
+                  499,
+                  158
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 33762,
+                    "char_end": 34289,
+                    "span_sha256": "ee60fde9a7dcc3cd60418c8eb9cdc6332ef1715d866b96a02c3ac826b923b918"
+                  }
+                ]
+              },
+              {
+                "channel": "선거일투표",
+                "valid_votes": 17761,
+                "ballots": 18802,
+                "candidate_votes_in_ballot_order": [
+                  5813,
+                  2481,
+                  4242,
+                  4638,
+                  587
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 35389,
+                    "char_end": 35924,
+                    "span_sha256": "0e0e662f8e9c09d3eaedb6c66b00fe71419cdb2b51d5ad5c8656289de9a59f05"
+                  },
+                  {
+                    "char_start": 37046,
+                    "char_end": 37595,
+                    "span_sha256": "73be923e1e31dbd47eb1433769f9ec65bf5e377bd7713e9987ca5f62418db2a1"
+                  }
+                ]
+              },
+              {
+                "channel": "잘못 투입·구분된 투표지",
+                "valid_votes": 11,
+                "ballots": 12,
+                "candidate_votes_in_ballot_order": [
+                  4,
+                  3,
+                  1,
+                  3,
+                  0
+                ],
+                "source_rows": [
+                  {
+                    "char_start": 37608,
+                    "char_end": 38120,
+                    "span_sha256": "9b46fab840fc62ec33d39fbe0134fd8879adf8df586248228f0a81d23a4edb92"
+                  }
+                ]
+              }
+            ]
           }
         }
       ],
@@ -257542,6 +259489,6 @@
   },
   "transaction": {
     "status": "committed",
-    "changed_files": 21
+    "changed_files": 15
   }
 }
