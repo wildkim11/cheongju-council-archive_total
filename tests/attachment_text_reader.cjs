@@ -2,6 +2,17 @@ const fs=require('fs'),path=require('path'),zlib=require('zlib'),assert=require(
 const root=path.resolve(__dirname,'..'),hash=b=>crypto.createHash('sha256').update(b).digest('hex'),commit='a'.repeat(40),file='exports/attachment-text/manifest.json';
 function fixture(mutate=()=>{}){const changes=new Map(),m=JSON.parse(fs.readFileSync(path.join(root,file)));mutate(m,changes);const b=Buffer.from(JSON.stringify(m));changes.set(file,b);const config={schema:'cheongju-attachment-view/1',commit,manifest_sha256:hash(b)},reader=api.create({hash:async b=>hash(b),read:async url=>{const p=url.split('/'+commit+'/')[1];assert(p,'Unexpected fixture URL');return changes.has(p)?changes.get(p):fs.readFileSync(path.join(root,p));}});return {m,config,reader,changes};}
 async function run(){
+ const {m: saved}=fixture();
+ const currentHash=p=>hash(fs.readFileSync(path.join(root,p)));
+ const queueMatches=currentHash('reports/automatic/attachments.json')===saved.source_queue_sha256;
+ const ledgerMatches=currentHash('exports/analyzer/manifest.json')===saved.source_analyzer_manifest_sha256;
+ if(!queueMatches||!ledgerMatches){
+  assert.notEqual(process.env.REQUIRE_CURRENT_ATTACHMENT_TEXT,'1','Attachment text must match the current source snapshot');
+  const {reader,config}=fixture();
+  await assert.rejects(reader.manifest(config),queueMatches?/첨부 원장 기준 불일치/:/첨부 큐 기준 불일치/);
+  console.log('Reader rejected stale attachment text');
+  return;
+ }
  let f=fixture(),m=await f.reader.manifest(f.config),pages=0;const sha=Object.keys(m.files).find(k=>m.files[k].file);for(const [key,meta]of Object.entries(m.files))if(meta.file){const d=await f.reader.document(f.config,m,key);pages+=d.pages.length;const txt=api.text(f.config,m,key,d,1);assert(txt.includes(m.urls.find(u=>u.source_sha256===key).url));assert(txt.includes(d.pages[0].text_sha256));}assert.equal(pages,m.summary.extracted_pdf_pages);
  await assert.rejects(f.reader.prepare(f.config,m,commit,{status:'behind'}),/이전/);
  f=fixture(m=>{m.urls.pop();});await assert.rejects(f.reader.manifest(f.config),/요약/);

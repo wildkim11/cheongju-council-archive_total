@@ -44,10 +44,13 @@ jobs:
           python -m pip install 'Pillow>=10,<14'
       - name: Test extraction and verify preserved inputs
         run: |
-          python -m unittest discover -s tests
           python scripts/audit_attachment_downloads.py --strict
       - name: Extract page-addressed text without council-site requests
         run: python -u scripts/extract_attachment_text.py
+      - name: Verify text and source snapshot together
+        env:
+          REQUIRE_CURRENT_ATTACHMENT_TEXT: '1'
+        run: python -m unittest discover -s tests
       - name: OCR preserved images and empty PDF text pages without promotion
         run: python -u scripts/ocr_attachment_pages.py
       - name: Build pixel-verified OCR review rasters
