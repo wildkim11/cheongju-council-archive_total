@@ -1,11 +1,11 @@
 {
   "family": "attachments",
-  "started_at": "2026-11-06T10:21:27.547353+00:00",
+  "started_at": "2026-11-06T10:23:54.586649+00:00",
   "status": "PASS",
   "published": true,
   "collection": {
     "queued": 1891,
-    "attempted": 1,
+    "attempted": 0,
     "downloaded_total": 1715,
     "failed_total": 1,
     "blocked_total": 175,
@@ -13,7 +13,7 @@
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-06T10:21:46.209927+00:00",
+    "checked_at_utc": "2026-11-06T10:24:11.231475+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
@@ -267545,6 +267545,6 @@
   },
   "transaction": {
     "status": "committed",
-    "changed_files": 5
+    "changed_files": 3
   }
 }
