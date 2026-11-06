@@ -8,8 +8,8 @@
       "last_success_at": "2026-11-06T21:40:18.185056+00:00"
     },
     "bills": {
-      "attempts": 1,
-      "last_success_at": "2026-11-04T05:58:12.724537+00:00",
+      "attempts": 2,
+      "last_success_at": "2026-11-06T21:51:47.352776+00:00",
       "consecutive_failures": 0
     },
     "activities": {
@@ -45,70 +45,18 @@
     }
   },
   "last_run": {
-    "family": "minutes",
-    "started_at": "2026-11-06T21:40:18.185056+00:00",
+    "family": "bills",
+    "started_at": "2026-11-06T21:51:47.352776+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
-      "checked_at": "2026-11-07T06:40:34.165363+09:00",
-      "mode": "incremental",
-      "council_scope": "cheongju_integrated",
-      "listed": 2353,
-      "published": 2333,
-      "provisional": 20,
-      "by_term": {
-        "1": 663,
-        "2": 771,
-        "3": 855,
-        "4": 64
-      },
-      "new": [],
-      "changed": [
-        "cheongju_integrated:minutes-4027"
-      ],
-      "superseded": {},
-      "bodies_checked": 28,
-      "forced_body_checks": [
-        "cheongju_integrated:minutes-2016",
-        "cheongju_integrated:minutes-2018",
-        "cheongju_integrated:minutes-2019",
-        "cheongju_integrated:minutes-202",
-        "cheongju_integrated:minutes-2021",
-        "cheongju_integrated:minutes-2023",
-        "cheongju_integrated:minutes-2025",
-        "cheongju_integrated:minutes-2026"
-      ],
-      "history_rows": 0,
-      "revision_rows": 9,
-      "migrated_old_paths": [],
-      "revised": [
-        "cheongju_integrated:minutes-4027"
-      ],
-      "inventory_qa": {
-        "term_inventory_count": 2353,
-        "year_inventory_count": 2340,
-        "shared_count": 2340,
-        "only_term": [
-          "1212",
-          "1573",
-          "180",
-          "1848",
-          "1900",
-          "2257",
-          "2258",
-          "2659",
-          "2951",
-          "3315",
-          "3652",
-          "508",
-          "896"
-        ],
-        "only_year": []
-      }
+      "listed": 3394,
+      "details_checked": 40,
+      "roster_changes_for_review": 0
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-06T21:49:59.541151+00:00",
+      "checked_at_utc": "2026-11-06T21:56:58.448821+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
@@ -267640,7 +267588,7 @@
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 1050
+      "changed_files": 383
     }
   }
 }
