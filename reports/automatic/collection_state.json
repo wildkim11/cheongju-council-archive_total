@@ -33,10 +33,10 @@
       "consecutive_failures": 0
     },
     "attachments": {
-      "attempts": 45,
+      "attempts": 46,
       "failed_documents": 1,
       "pending_attachment_retry_at": "2026-11-06T14:21:45.627277+00:00",
-      "last_success_at": "2026-11-06T10:23:54.586649+00:00",
+      "last_success_at": "2026-11-06T10:26:21.014648+00:00",
       "consecutive_failures": 0,
       "retry_attempts_day": "2026-11-04",
       "retry_attempts_today": 1,
@@ -46,7 +46,7 @@
   },
   "last_run": {
     "family": "attachments",
-    "started_at": "2026-11-06T10:23:54.586649+00:00",
+    "started_at": "2026-11-06T10:26:21.014648+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
@@ -59,7 +59,7 @@
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-06T10:24:11.231475+00:00",
+      "checked_at_utc": "2026-11-06T10:26:37.583244+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
