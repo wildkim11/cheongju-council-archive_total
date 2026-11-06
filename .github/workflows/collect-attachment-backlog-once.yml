@@ -34,6 +34,7 @@ jobs:
           COLLECTION_FAMILY: attachments
         run: |
           set -euo pipefail
+          # Each batch validates and pushes its checkpoint before the next batch starts.
           for batch in $(seq 1 45); do
             echo "Starting attachment checkpoint $batch"
             EXPLICIT_RETRY='--attachment-batch-size 60' bash scripts/collect_and_checkpoint.sh "$COLLECTION_FAMILY"
