@@ -1,23 +1,72 @@
 {
-  "family": "attachments",
-  "started_at": "2026-11-06T10:26:21.014648+00:00",
+  "family": "minutes",
+  "started_at": "2026-11-06T21:40:18.185056+00:00",
   "status": "PASS",
   "published": true,
   "collection": {
-    "queued": 1891,
-    "attempted": 0,
-    "downloaded_total": 1715,
-    "failed_total": 1,
-    "blocked_total": 175,
-    "pending_total": 0
+    "checked_at": "2026-11-07T06:40:34.165363+09:00",
+    "mode": "incremental",
+    "council_scope": "cheongju_integrated",
+    "listed": 2353,
+    "published": 2333,
+    "provisional": 20,
+    "by_term": {
+      "1": 663,
+      "2": 771,
+      "3": 855,
+      "4": 64
+    },
+    "new": [],
+    "changed": [
+      "cheongju_integrated:minutes-4027"
+    ],
+    "superseded": {},
+    "bodies_checked": 28,
+    "forced_body_checks": [
+      "cheongju_integrated:minutes-2016",
+      "cheongju_integrated:minutes-2018",
+      "cheongju_integrated:minutes-2019",
+      "cheongju_integrated:minutes-202",
+      "cheongju_integrated:minutes-2021",
+      "cheongju_integrated:minutes-2023",
+      "cheongju_integrated:minutes-2025",
+      "cheongju_integrated:minutes-2026"
+    ],
+    "history_rows": 0,
+    "revision_rows": 9,
+    "migrated_old_paths": [],
+    "revised": [
+      "cheongju_integrated:minutes-4027"
+    ],
+    "inventory_qa": {
+      "term_inventory_count": 2353,
+      "year_inventory_count": 2340,
+      "shared_count": 2340,
+      "only_term": [
+        "1212",
+        "1573",
+        "180",
+        "1848",
+        "1900",
+        "2257",
+        "2258",
+        "2659",
+        "2951",
+        "3315",
+        "3652",
+        "508",
+        "896"
+      ],
+      "only_year": []
+    }
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-06T10:26:37.583244+00:00",
+    "checked_at_utc": "2026-11-06T21:49:59.541151+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
-    "source_file_bytes_checked": 222605722,
+    "source_file_bytes_checked": 222605897,
     "sha256_file_verified": 2353,
     "sha256_content_verified": 2353,
     "export_rows_checked": 2353,
@@ -25,7 +74,7 @@
     "published": 2333,
     "provisional": 20,
     "superseded": 0,
-    "revisions_verified": 8,
+    "revisions_verified": 9,
     "by_term": {
       "1": 663,
       "2": 771,
@@ -8879,7 +8928,7 @@
       "schema": "cheongju-question-answer-parts/1",
       "status": "PASS",
       "source_dataset_sha256": "ad361eb954f6d4842e02d3cd5baa6928da7c6cddae770aec33c930de642faf4e",
-      "source_index_sha256": "0c5bc269043ae774fe0e8f67ed11ad356ba1774f9bd96e4535822c4d5dd9b2f2",
+      "source_index_sha256": "c4280c22a9a1248f819b5bde47fa3d67a54f8ed353bde6785ffe9e228305939a",
       "reviewed_records": 85,
       "split_records": 13,
       "ambiguous_records": 0,
@@ -8899,7 +8948,7 @@
       "date_changes": 0,
       "official_site_requests": 0,
       "source_roles_sha256": "7e5d06bf814750f2752fe33b9f7c417f305349a49bfcae02a26b751b93dbd054",
-      "source_question_parts_sha256": "ceaf8531643a301cc1e684ebc5ad0ba6d18570c93c0389ae30a645bc616ce8c4",
+      "source_question_parts_sha256": "12be7d30532bb59caebe4a6817f74d23ddfbb173451bd0461c49246e6b675da4",
       "script_sha256": "2777d1947df1c29de6f5d97b03430d069c213b5fcf6700f08f88f27d7d84834f"
     },
     "question_answer_linking": {
@@ -8942,7 +8991,7 @@
       "status": "PASS",
       "schema": "cheongju-activity-date-review/1",
       "source_role_sha256": "7c1f66b27aa37664040c35f7013eeb52d17dd7982fe918ef4da992c475f4b503",
-      "source_index_sha256": "0c5bc269043ae774fe0e8f67ed11ad356ba1774f9bd96e4535822c4d5dd9b2f2",
+      "source_index_sha256": "c4280c22a9a1248f819b5bde47fa3d67a54f8ed353bde6785ffe9e228305939a",
       "review_rows": 2,
       "diagnosis_counts": {
         "unique_cross_date_complete_body_match_review": 2
@@ -8965,7 +9014,7 @@
         "numeric_whitespace_boundary": 1
       },
       "source_roles_sha256": "7c1f66b27aa37664040c35f7013eeb52d17dd7982fe918ef4da992c475f4b503",
-      "source_index_sha256": "0c5bc269043ae774fe0e8f67ed11ad356ba1774f9bd96e4535822c4d5dd9b2f2",
+      "source_index_sha256": "c4280c22a9a1248f819b5bde47fa3d67a54f8ed353bde6785ffe9e228305939a",
       "script_sha256": "8ec4d78039c829e9de59a64d782fab925592f471b78be4f9960d3cb7a472b4db",
       "identity_promotions": 0,
       "date_changes": 0,
@@ -8973,7 +9022,7 @@
     },
     "minutes_text": {
       "schema": "cheongju-meeting-text-packs/1",
-      "source_index_sha256": "0c5bc269043ae774fe0e8f67ed11ad356ba1774f9bd96e4535822c4d5dd9b2f2",
+      "source_index_sha256": "c4280c22a9a1248f819b5bde47fa3d67a54f8ed353bde6785ffe9e228305939a",
       "rows": 2353,
       "parts": [
         {
@@ -9001,12 +9050,12 @@
           "term": 4,
           "file": "term-4.jsonl.gz",
           "rows": 64,
-          "bytes": 1682623,
-          "sha256": "95ea3745c10f4392e2041980826ad202241927b724ad9177f2cd6110d30fa831"
+          "bytes": 1682697,
+          "sha256": "c19035846375325252494cc32a40f23ed960c79a0c280eb2423287a145a8b98a"
         }
       ],
-      "text_bytes": 219522214,
-      "compressed_bytes": 58937532
+      "text_bytes": 219522389,
+      "compressed_bytes": 58937606
     },
     "temporal_context": {
       "status": "PASS",
@@ -267545,6 +267594,6 @@
   },
   "transaction": {
     "status": "committed",
-    "changed_files": 3
+    "changed_files": 1050
   }
 }

@@ -21,7 +21,7 @@
     "sha256": "9cc5d192d8c1ae67cfdfed81844996e4bb6131e1fc02ec48932aed6052a03bd3",
     "bytes": 27418,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -47,7 +47,7 @@
     "sha256": "96ebed62fe2812d4620eb172623a1e8f36592b9187556d417a3b80ac86fb9c7f",
     "bytes": 5243,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -73,7 +73,7 @@
     "sha256": "57a090be3363af96be49f6b88cbd8eff8cd74fbc221965d23f36b84c20f4d00c",
     "bytes": 8645,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -99,7 +99,7 @@
     "sha256": "351d32afe2b0caf9e02627dd1c7cfe77fb619a10da1a531eecac43f517f82d2f",
     "bytes": 11518,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -125,7 +125,7 @@
     "sha256": "65a3224cdd6644187390f9f960d6c642017169aa1be03484399f2150a7374f49",
     "bytes": 7881,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -151,7 +151,7 @@
     "sha256": "9d1af6baec84bae7cbd8aa6889200387e241764b8f841ae730987517a9ed0cb1",
     "bytes": 4951,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -177,7 +177,7 @@
     "sha256": "63fc767089c6cfcfd2120eb827be49792b8050f3ab530592e5752c42e4e76b0d",
     "bytes": 8135,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -203,7 +203,7 @@
     "sha256": "b01285fbfeb7ab0f4f4841334256a249f713e218cbf3383b34595a286bce2897",
     "bytes": 10691,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -229,7 +229,7 @@
     "sha256": "1a3d1de4e1a4069e63c384443b8bb3832f98d251f00553a483928723a610426b",
     "bytes": 50412,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -255,7 +255,7 @@
     "sha256": "2d4606d039ceb70cf22be4bb907e14c5fd1f1a11866085c8bc139337a8ab7317",
     "bytes": 7906,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -281,7 +281,7 @@
     "sha256": "647c6d668e174fe32c8fdf00b5f0d7ced190d38c449cef8a1268cddafc825f68",
     "bytes": 4862,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -307,7 +307,7 @@
     "sha256": "a1be512c51125d30e4d5216268914e2d006c365105235ccd4db4734e475629cd",
     "bytes": 4492,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -333,7 +333,7 @@
     "sha256": "b1a5ab441f17ad682f6a03544dc53397cea2ca0e1d74184c7cfe047a48b5af85",
     "bytes": 15007,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -359,7 +359,7 @@
     "sha256": "d3ce0b21a923278bbb8d8e8ae61663dae3f30b316d64da03aeb513f4c5a61c84",
     "bytes": 32198,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -385,7 +385,7 @@
     "sha256": "612a8ecaeb424caeee67c44ac2fb42c02bd1a043ea65790b648879a8f68e675c",
     "bytes": 3541,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -411,7 +411,7 @@
     "sha256": "8fbe288a64d7e27e8cacb13874af2398a8557e60f05f9a8d4e75a7ded6f88f5e",
     "bytes": 5436,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -437,7 +437,7 @@
     "sha256": "b1b856ff11e83e4cfb20f04341df0bd03c7c35b6b619eb69d045e07d069d7492",
     "bytes": 50873,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -463,7 +463,7 @@
     "sha256": "da312b0788393d7e5841e543fae88e36cc582305fabf47ca9f5ea5cde9e3805a",
     "bytes": 9828,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -489,7 +489,7 @@
     "sha256": "03117a08a3e71b36bf323c9ca96cdc42040bad8631f5848b3f66eedd417061e2",
     "bytes": 8782,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -515,7 +515,7 @@
     "sha256": "2708dca7b2cabce650c9927202d587b2c47d1ccf5cc14dd143d0be051fa80f95",
     "bytes": 97695,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -541,7 +541,7 @@
     "sha256": "9cc95b546ea2ee1d3ff7415605e39cb8965ed11ed6714daa5b9c5dad34d695c8",
     "bytes": 119018,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -567,7 +567,7 @@
     "sha256": "92bf5c4f78c38c3786038b069956330f3fe0b8b412df743395d8f4163d8608df",
     "bytes": 229795,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -593,7 +593,7 @@
     "sha256": "fabb4e5b24c69d011d3e23232c998170af430999c6bf581c74072eb26abd290e",
     "bytes": 208336,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -619,7 +619,7 @@
     "sha256": "4bc951edbf5c33e625235465d8efb72c1712e2a6905e7c0b406c6ad927dde159",
     "bytes": 167299,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -645,7 +645,7 @@
     "sha256": "0e46cc75c9ce88525a582f5966b3936a3a1fbcef4c3fd7fd45c58ec0a54a32bc",
     "bytes": 257817,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -671,7 +671,7 @@
     "sha256": "37d48422bf791b313361fe0bff90be2c49a098e400a328809d60ac6cdc49fad1",
     "bytes": 161010,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -697,7 +697,7 @@
     "sha256": "f2f5d7c07da1a7e7ac80d1f44f5e2a22fbe0876bede9db33508febf2871e7d28",
     "bytes": 65170,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -723,7 +723,7 @@
     "sha256": "8b5a4551acaa3aef9d70166d8436577aadcdaf4be1fa54240dda8bfb148312dc",
     "bytes": 162413,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -749,7 +749,7 @@
     "sha256": "4a66d865332387ad0dfc9a046fd0d0afa9c89f6b46a70ba81c1a06988f802884",
     "bytes": 94684,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -775,7 +775,7 @@
     "sha256": "8c901e7114827deb01831ba99e785ce75b806413c47de6b6edc43a43d5e33059",
     "bytes": 218890,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -801,7 +801,7 @@
     "sha256": "25b6e3dbde805d16e8107ad13c85ce8b2b036f9e35c6e608344141fb91c52d2c",
     "bytes": 190237,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -827,7 +827,7 @@
     "sha256": "7cfb9177247664744a3177469b7e3e53ec51347e6406ba8eb2058697a046cf46",
     "bytes": 115472,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -853,7 +853,7 @@
     "sha256": "64f704e9c1ee5c12a433da7fc15e8b2289cc6297b3974a313bffa93bdb8785da",
     "bytes": 273770,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -879,7 +879,7 @@
     "sha256": "03580306b6a3a87f3eebcdb4aaba9470b3ce17d31a2393ce30aa01418efb2d9e",
     "bytes": 50948,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -905,7 +905,7 @@
     "sha256": "d8b40069b29abf5579957b40b00f372a738fdb34b6ddd5fa19bf9bd47a123d7b",
     "bytes": 40231,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -931,7 +931,7 @@
     "sha256": "498dc97b4607cd672605bf0b89f013992682feb29139ecb120be8951cb857a56",
     "bytes": 120933,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -957,7 +957,7 @@
     "sha256": "879ac0ed60a6cb0e16d4c5eaaaec6e878eb0f4b5f1fdc16f03ba100bf5948c82",
     "bytes": 124303,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -983,7 +983,7 @@
     "sha256": "def1119d547e6ae13820091f245a4bd01cab3420d3045c151f9c800ce057edb0",
     "bytes": 118173,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1009,7 +1009,7 @@
     "sha256": "0bf5378a8d24063511da6253b459478403ad325827ab2ab02c4e8c88c0c15b41",
     "bytes": 248523,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1035,7 +1035,7 @@
     "sha256": "3181fcf45b7d214e3ccbc0a8e708978eabe597158e162ebc94d0de349db58692",
     "bytes": 208667,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1061,7 +1061,7 @@
     "sha256": "df07329bda8eba141fe56aac995ac7080047bfc75417b4dd84a6821b1889dc44",
     "bytes": 177298,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1087,7 +1087,7 @@
     "sha256": "466d6181a83e34a402afdb7efd392f56f83e73e46c4fd145ac8d16008c294708",
     "bytes": 330168,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1113,7 +1113,7 @@
     "sha256": "6d8c4a65dc76928e63d4912ba5f620ead9ca5261331eb8ee959f188affb6a4e1",
     "bytes": 166265,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1139,7 +1139,7 @@
     "sha256": "364cbe65cd7f768e09d4bc6b4b944d8bd646c56a893490785af83c0315969c21",
     "bytes": 136765,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1165,7 +1165,7 @@
     "sha256": "ee45527a07dbab2e10e983c55587db8c413c347792cad5523487dc6832a1b90d",
     "bytes": 3872,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1191,7 +1191,7 @@
     "sha256": "6a68650569e632d377acf679c6a0955761a5af27132f63ba9f887bb2ecf724ec",
     "bytes": 6286,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1217,7 +1217,7 @@
     "sha256": "4d5fe658daf9b45f6d94d1c59038e3e4f4bec93238f96a2118bd604a1a036968",
     "bytes": 36012,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1243,7 +1243,7 @@
     "sha256": "c4d7523835d728403f26652ef077514f7cad07441795c6f0f35159065f1c56f2",
     "bytes": 31670,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1269,7 +1269,7 @@
     "sha256": "abdbb0b026ae2395c8d39831a57b9adf169cff2e6f6369a4acde91f835588ee0",
     "bytes": 117061,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1295,7 +1295,7 @@
     "sha256": "3c7ecf76869a5cc97f452cf0b913995c1e1fcbbd889efa9668d28f05a95457c6",
     "bytes": 175424,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1321,7 +1321,7 @@
     "sha256": "e524207852ebbb85f9b44aab68e817625476ffdbda676a1a974105d8f94fd80d",
     "bytes": 169369,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1347,7 +1347,7 @@
     "sha256": "d82a259516682f212c7dfbccadf0083ea3335a41f0d42552d518e1972d8835b3",
     "bytes": 86151,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1373,7 +1373,7 @@
     "sha256": "51d22406dbf0ce437be351f520e7aff58917de6865d11bd040e9ea8e49ddaa57",
     "bytes": 160547,
     "first_seen_at": "2026-11-02T01:54:49.271400+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1399,7 +1399,7 @@
     "sha256": "966d0dc09987348eab67ea3210319cfb128326062a79598049282959af9c2ad2",
     "bytes": 190301,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1425,7 +1425,7 @@
     "sha256": "3d6dea6ce9c93fc4ef72cae660f6be1d7f567005c6abd2ef0505606635a6c466",
     "bytes": 87277,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1451,7 +1451,7 @@
     "sha256": "a5702e161eedec624bf5ec46b6bf5509140305e1098c863cfd7b0ba4521c4523",
     "bytes": 203016,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1477,7 +1477,7 @@
     "sha256": "ce2f7c9813ddf36e97da94db0e63f0f1c84a4c19d12c0fa098141b572b360ffc",
     "bytes": 12414,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1503,7 +1503,7 @@
     "sha256": "3828ea044ac6715747ec3d6c66697df610b8978f40461281cd68102b5b226c4d",
     "bytes": 172515,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1525,11 +1525,11 @@
       "year"
     ],
     "path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4027.md",
-    "content_sha256": "8cea6e0d3920e4e08998352f986843173ea9b68ef5ae4262f0f9a28c7c377f61",
-    "sha256": "8f62959f5291882af4d517d2a38d1f111719416aee3c12671788cbc15b17955a",
-    "bytes": 222956,
+    "content_sha256": "67e555541a438f1011f0b65d10b19cc3aea156dbd5a44b6a745903f4b083bf80",
+    "sha256": "0fbdf954b0156ba97b074968e9a3b44f685a695012a02354f6a783fa7e3937d5",
+    "bytes": 223131,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1555,7 +1555,7 @@
     "sha256": "efb83f4a854c99b952cff6b43ae00aa1e1d4a29fc561e0d134021116fd0e354e",
     "bytes": 80579,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1581,7 +1581,7 @@
     "sha256": "27f714e18d66c907cb98a56eea61a7522c4331d50a84a73a150fc4cb129e32e5",
     "bytes": 2750,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1607,7 +1607,7 @@
     "sha256": "c28008bd145c070887a0cd3546bca02bbac86f14c15d6a5d817f29351c338a3a",
     "bytes": 138449,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1633,7 +1633,7 @@
     "sha256": "e715b12b4412d4042a4c1150030a94ceaef50e55f4ce2cd36dd4ea3dc6cc2047",
     "bytes": 13350,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   },
@@ -1659,7 +1659,7 @@
     "sha256": "1ef8bc052306fa694bcdd0a434f78b51818d4a17df1e48fd991a059f0f511311",
     "bytes": 156801,
     "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
-    "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+    "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
     "supersedes": null,
     "superseded_by": null
   }

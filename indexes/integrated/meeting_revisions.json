@@ -534,5 +534,72 @@
       "superseded_by": null
     },
     "original_source_preserved": true
+  },
+  {
+    "schema": "integrated-meeting-source-revision/1",
+    "meeting_id": "cheongju_integrated:minutes-4027",
+    "source_id": "4027",
+    "recorded_at": "2026-11-07T06:40:34.165363+09:00",
+    "revision_path": "archive/meetings/cheongju_integrated/_revisions/minutes-4027/8f62959f5291882af4d517d2a38d1f111719416aee3c12671788cbc15b17955a.md",
+    "prior_path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4027.md",
+    "prior_sha256": "8f62959f5291882af4d517d2a38d1f111719416aee3c12671788cbc15b17955a",
+    "next_sha256": "0fbdf954b0156ba97b074968e9a3b44f685a695012a02354f6a783fa7e3937d5",
+    "changed_source_fields": [
+      "content_sha256",
+      "sha256"
+    ],
+    "prior_source_record": {
+      "meeting_id": "cheongju_integrated:minutes-4027",
+      "legacy_minutes_id": "minutes-4027",
+      "council_scope": "cheongju_integrated",
+      "term": 4,
+      "title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 23) 복지교육위원회 제2호(2026.10.20 화요일)",
+      "date": "2026-10-20",
+      "year": 2026,
+      "committee_code": "C403",
+      "meeting_type": "committee",
+      "publication_status": "provisional",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4027",
+      "source_id": "4027",
+      "inventory_sources": [
+        "term",
+        "year"
+      ],
+      "path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4027.md",
+      "content_sha256": "8cea6e0d3920e4e08998352f986843173ea9b68ef5ae4262f0f9a28c7c377f61",
+      "sha256": "8f62959f5291882af4d517d2a38d1f111719416aee3c12671788cbc15b17955a",
+      "bytes": 222956,
+      "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
+      "last_checked_at": "2026-11-04T14:48:25.156787+09:00",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "next_source_record": {
+      "meeting_id": "cheongju_integrated:minutes-4027",
+      "legacy_minutes_id": "minutes-4027",
+      "council_scope": "cheongju_integrated",
+      "term": 4,
+      "title": "제4대 의회(2026. 07. 01 ~ 2030. 06. 30 : 제103회 ~ 제105회) 제106회[제1차정례회](2026. 10. 12 ~ 2026. 10. 23) 복지교육위원회 제2호(2026.10.20 화요일)",
+      "date": "2026-10-20",
+      "year": 2026,
+      "committee_code": "C403",
+      "meeting_type": "committee",
+      "publication_status": "provisional",
+      "official_url": "https://councilrec.cheongju.go.kr/minutes/svc/web/cms/mnts/SvcMntsViewer.php?schSn=4027",
+      "source_id": "4027",
+      "inventory_sources": [
+        "term",
+        "year"
+      ],
+      "path": "archive/meetings/cheongju_integrated/term-4/2026/minutes-4027.md",
+      "content_sha256": "67e555541a438f1011f0b65d10b19cc3aea156dbd5a44b6a745903f4b083bf80",
+      "sha256": "0fbdf954b0156ba97b074968e9a3b44f685a695012a02354f6a783fa7e3937d5",
+      "bytes": 223131,
+      "first_seen_at": "2026-11-03T17:56:14.168079+09:00",
+      "last_checked_at": "2026-11-07T06:40:34.165363+09:00",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "original_source_preserved": true
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T14:48:25.156787+09:00",
+  "checked_at": "2026-11-07T06:40:34.165363+09:00",
   "mode": "incremental",
   "council_scope": "cheongju_integrated",
   "listed": 2353,
@@ -13,29 +13,25 @@
   },
   "new": [],
   "changed": [
-    "cheongju_integrated:minutes-4024",
-    "cheongju_integrated:minutes-4025",
-    "cheongju_integrated:minutes-4039"
+    "cheongju_integrated:minutes-4027"
   ],
   "superseded": {},
   "bodies_checked": 28,
   "forced_body_checks": [
-    "cheongju_integrated:minutes-20",
-    "cheongju_integrated:minutes-200",
-    "cheongju_integrated:minutes-2002",
-    "cheongju_integrated:minutes-2003",
-    "cheongju_integrated:minutes-2004",
-    "cheongju_integrated:minutes-2005",
-    "cheongju_integrated:minutes-2006",
-    "cheongju_integrated:minutes-2007"
+    "cheongju_integrated:minutes-2016",
+    "cheongju_integrated:minutes-2018",
+    "cheongju_integrated:minutes-2019",
+    "cheongju_integrated:minutes-202",
+    "cheongju_integrated:minutes-2021",
+    "cheongju_integrated:minutes-2023",
+    "cheongju_integrated:minutes-2025",
+    "cheongju_integrated:minutes-2026"
   ],
   "history_rows": 0,
-  "revision_rows": 8,
+  "revision_rows": 9,
   "migrated_old_paths": [],
   "revised": [
-    "cheongju_integrated:minutes-4024",
-    "cheongju_integrated:minutes-4025",
-    "cheongju_integrated:minutes-4039"
+    "cheongju_integrated:minutes-4027"
   ],
   "inventory_qa": {
     "term_inventory_count": 2353,
