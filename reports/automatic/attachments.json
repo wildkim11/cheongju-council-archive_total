@@ -3925,244 +3925,542 @@
     "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=11993": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "8358d598c14b59784747f60171009df483235dad0de8fb15af9480451bb6b7c5",
+    "bytes": 92672,
+    "path": "archive/attachments/8358d598c14b59784747f60171009df483235dad0de8fb15af9480451bb6b7c5.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=11994": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "a89ba7ea93f5330b3fa1156e53289dc355a60da4e6debd25bd8a9f8e8adf2c25",
+    "bytes": 500418,
+    "path": "archive/attachments/a89ba7ea93f5330b3fa1156e53289dc355a60da4e6debd25bd8a9f8e8adf2c25.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=11995": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "dce5870142e58a09b48a8253de553bead77696734c517c8378db005978ac2528",
+    "bytes": 684234,
+    "path": "archive/attachments/dce5870142e58a09b48a8253de553bead77696734c517c8378db005978ac2528.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=11997": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "f344b9a923fe5c2ad201db1fa9139aec37646a01aa43390b2c1c304ded0303f3",
+    "bytes": 115712,
+    "path": "archive/attachments/f344b9a923fe5c2ad201db1fa9139aec37646a01aa43390b2c1c304ded0303f3.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=11998": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "3e7937863d074d212c05c31f1335903e09fa2661ebf77e25d6f6b70f46e8e1aa",
+    "bytes": 362066,
+    "path": "archive/attachments/3e7937863d074d212c05c31f1335903e09fa2661ebf77e25d6f6b70f46e8e1aa.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=11999": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "f4db403a8c5830949099d244160b892ef9d75651e12722852ae352607df69b5d",
+    "bytes": 428896,
+    "path": "archive/attachments/f4db403a8c5830949099d244160b892ef9d75651e12722852ae352607df69b5d.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12000": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "81ba81ce021d43548b50ef927842c44a455b67811e127e1fb0d799028908d4d3",
+    "bytes": 456592,
+    "path": "archive/attachments/81ba81ce021d43548b50ef927842c44a455b67811e127e1fb0d799028908d4d3.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12001": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "cb5ea875b68873ff3945918ab2c68fe9ec3eb1ed7417480e19611dd0f466c651",
+    "bytes": 100864,
+    "path": "archive/attachments/cb5ea875b68873ff3945918ab2c68fe9ec3eb1ed7417480e19611dd0f466c651.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12002": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "230a859c8023e01ba8d9f4491742ff9347957f3af87a91873f877bbb652054fe",
+    "bytes": 3626263,
+    "path": "archive/attachments/230a859c8023e01ba8d9f4491742ff9347957f3af87a91873f877bbb652054fe.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12003": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "c8b43c566cf341eb082130f53f1436b5822609e08732596623f6a51ac74ade75",
+    "bytes": 94720,
+    "path": "archive/attachments/c8b43c566cf341eb082130f53f1436b5822609e08732596623f6a51ac74ade75.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12004": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "f409e11f8c6a7627fd8ff23efeeb8fdb84f3b0788e788776563743880f4bf76e",
+    "bytes": 6156814,
+    "path": "archive/attachments/f409e11f8c6a7627fd8ff23efeeb8fdb84f3b0788e788776563743880f4bf76e.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12005": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "a45ac49db9fadaad5d03899db150c3fcd3f930dc01cccaf74d776494fb59fcc2",
+    "bytes": 107520,
+    "path": "archive/attachments/a45ac49db9fadaad5d03899db150c3fcd3f930dc01cccaf74d776494fb59fcc2.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12009": {
-    "status": "pending",
-    "attempts": 0
+    "status": "blocked",
+    "attempts": 1,
+    "hold_reason": "size_limit_exceeded",
+    "max_bytes": 8388608,
+    "error": "attachment exceeds per-file archive limit"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12010": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "9e634fe979b2207a418deb1994b5241ca994ee37138012b4b57a66747081eb8b",
+    "bytes": 7751102,
+    "path": "archive/attachments/9e634fe979b2207a418deb1994b5241ca994ee37138012b4b57a66747081eb8b.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12011": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "efe976831f40d0bfa6e39a028a73bc6fd512b61d1bb67d15d147dae1478517d1",
+    "bytes": 75264,
+    "path": "archive/attachments/efe976831f40d0bfa6e39a028a73bc6fd512b61d1bb67d15d147dae1478517d1.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12012": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "111cd0466ba7654e7db71453be99e0143d86080cda342ce63fcb96ab623aa6e8",
+    "bytes": 3016579,
+    "path": "archive/attachments/111cd0466ba7654e7db71453be99e0143d86080cda342ce63fcb96ab623aa6e8.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12013": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "2f8e84c5b9ca3ec238ad8d7f1c3ec5bd25bd37ab11068eca6df28895bce0ca92",
+    "bytes": 78848,
+    "path": "archive/attachments/2f8e84c5b9ca3ec238ad8d7f1c3ec5bd25bd37ab11068eca6df28895bce0ca92.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12014": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "27d9560f34a1f58ba1eb465fb0485c2de7d6b0cb54bdf981055310ebb2c9b997",
+    "bytes": 731161,
+    "path": "archive/attachments/27d9560f34a1f58ba1eb465fb0485c2de7d6b0cb54bdf981055310ebb2c9b997.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12026": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "4910d0285343fc01a7612da35d9e8c4b2907fb9e2a2a7a5490d3c16d97c03d7e",
+    "bytes": 197120,
+    "path": "archive/attachments/4910d0285343fc01a7612da35d9e8c4b2907fb9e2a2a7a5490d3c16d97c03d7e.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12027": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "608ebcdafa823971e63a18c51ff11f00ef78fab6ae981b8d8ef157603c0e0acd",
+    "bytes": 3274034,
+    "path": "archive/attachments/608ebcdafa823971e63a18c51ff11f00ef78fab6ae981b8d8ef157603c0e0acd.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12028": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "53a37cb64c914eee7e85181e9bd64ef3d6113a40a8e0ce85464f65672af9f45b",
+    "bytes": 89088,
+    "path": "archive/attachments/53a37cb64c914eee7e85181e9bd64ef3d6113a40a8e0ce85464f65672af9f45b.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12029": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "8059c13b328932fd6a2dce0c7340d640a85d875e8a668e761bd1fb1429973ea9",
+    "bytes": 7204446,
+    "path": "archive/attachments/8059c13b328932fd6a2dce0c7340d640a85d875e8a668e761bd1fb1429973ea9.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12030": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "014537fbb238c703a61aee0a1436230e7db8cdf4b868b1a845c6ef0ba183b0ba",
+    "bytes": 3981287,
+    "path": "archive/attachments/014537fbb238c703a61aee0a1436230e7db8cdf4b868b1a845c6ef0ba183b0ba.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12031": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "3f4d5c4e506629764644871f8223e98d14fc5bdeb56eb06e84fc43a274d539ea",
+    "bytes": 6056216,
+    "path": "archive/attachments/3f4d5c4e506629764644871f8223e98d14fc5bdeb56eb06e84fc43a274d539ea.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12032": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "8bff951e2895d7bab2ce6371268358f55cdab7ff08e61c6392155fad44df2037",
+    "bytes": 5643566,
+    "path": "archive/attachments/8bff951e2895d7bab2ce6371268358f55cdab7ff08e61c6392155fad44df2037.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12035": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "e8c8524bf900551a3c4bd1f3df6b644af7948e976cf17067b5ba349167a1d6f2",
+    "bytes": 212992,
+    "path": "archive/attachments/e8c8524bf900551a3c4bd1f3df6b644af7948e976cf17067b5ba349167a1d6f2.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12036": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "65f1607203ab943b7dfd92cdf6b9c7d23715bb0dde4ebcd854698a17860eee00",
+    "bytes": 365914,
+    "path": "archive/attachments/65f1607203ab943b7dfd92cdf6b9c7d23715bb0dde4ebcd854698a17860eee00.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12038": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "67b27d9ace79a66e01cb46bf77cb6f0059a9ed41f48ebdaf37cfadb8939873e8",
+    "bytes": 168960,
+    "path": "archive/attachments/67b27d9ace79a66e01cb46bf77cb6f0059a9ed41f48ebdaf37cfadb8939873e8.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12045": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "a5549b8452c6cf290a4dca6ea216e0f82906ab7e0075975d6ec3a667a1f6794f",
+    "bytes": 96768,
+    "path": "archive/attachments/a5549b8452c6cf290a4dca6ea216e0f82906ab7e0075975d6ec3a667a1f6794f.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12046": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "109053c7c51788c72635356ed8248f27c296e77b0e0c7fc5454986defb45bdd1",
+    "bytes": 5835839,
+    "path": "archive/attachments/109053c7c51788c72635356ed8248f27c296e77b0e0c7fc5454986defb45bdd1.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12047": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "ba7682c17c18c4c43b91e9855044a8e751e16474810b3fa6ad785b94f234b642",
+    "bytes": 107008,
+    "path": "archive/attachments/ba7682c17c18c4c43b91e9855044a8e751e16474810b3fa6ad785b94f234b642.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12048": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "c7e56a99a164a534ca649f5f4717f538713d17f97581c0dfb4321eb5228eac9a",
+    "bytes": 5410422,
+    "path": "archive/attachments/c7e56a99a164a534ca649f5f4717f538713d17f97581c0dfb4321eb5228eac9a.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12049": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "5636ddd60b21da55f307360fdc200370535166e09eba74f226c37187eb76561e",
+    "bytes": 134656,
+    "path": "archive/attachments/5636ddd60b21da55f307360fdc200370535166e09eba74f226c37187eb76561e.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12050": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "b98b07c844d827459e6f3b1dc3f9dbd3953f8d27bc7e44163b932f896943f73e",
+    "bytes": 159621,
+    "path": "archive/attachments/b98b07c844d827459e6f3b1dc3f9dbd3953f8d27bc7e44163b932f896943f73e.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12051": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "b7ff1a6a3079c5484271ff75ec75dbe02ba7e89e712b712f45a196a2350305ea",
+    "bytes": 90624,
+    "path": "archive/attachments/b7ff1a6a3079c5484271ff75ec75dbe02ba7e89e712b712f45a196a2350305ea.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12052": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "d4e87314de390e6f9f25f29153ccddcc80e4719d8af510d925cd0370afe0d113",
+    "bytes": 6473793,
+    "path": "archive/attachments/d4e87314de390e6f9f25f29153ccddcc80e4719d8af510d925cd0370afe0d113.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12053": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "060d1dd0f3225bdf6fd50cf5f441da12b151eb00e55261a258f1e1f59645499d",
+    "bytes": 5047617,
+    "path": "archive/attachments/060d1dd0f3225bdf6fd50cf5f441da12b151eb00e55261a258f1e1f59645499d.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12054": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "ce2e508a3a960ee749e0622ea64b4a3a763ab71bb842f45f9960a31e637e12ae",
+    "bytes": 104960,
+    "path": "archive/attachments/ce2e508a3a960ee749e0622ea64b4a3a763ab71bb842f45f9960a31e637e12ae.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12055": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "00acfa1376b413186da3f924614bf215e3cb52861326896f9cccd05b7b1e1433",
+    "bytes": 5847298,
+    "path": "archive/attachments/00acfa1376b413186da3f924614bf215e3cb52861326896f9cccd05b7b1e1433.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12056": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "633023189a9e6a15493d94af035394c734e2d81c659023971050c156f3947b4d",
+    "bytes": 163840,
+    "path": "archive/attachments/633023189a9e6a15493d94af035394c734e2d81c659023971050c156f3947b4d.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12057": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "d921b9662373dc3932d0815f235fe2cb6ad58fa9f3cea2713a05653a02c67872",
+    "bytes": 5693342,
+    "path": "archive/attachments/d921b9662373dc3932d0815f235fe2cb6ad58fa9f3cea2713a05653a02c67872.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12058": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "bfaaa9153f630a49f19c6e448628034fd5e88159a4a696ec6e0c4282fedfa8ea",
+    "bytes": 7552993,
+    "path": "archive/attachments/bfaaa9153f630a49f19c6e448628034fd5e88159a4a696ec6e0c4282fedfa8ea.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12060": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "cbfec6fbd4713514000ce9f528c45a234dab37c3248fea9e689664a6f1042c3c",
+    "bytes": 159744,
+    "path": "archive/attachments/cbfec6fbd4713514000ce9f528c45a234dab37c3248fea9e689664a6f1042c3c.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12061": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "62b06b946bc7bc1305de5c8dd7742416685f3a21322e3d7dfc1eb67460f8d0a6",
+    "bytes": 3928965,
+    "path": "archive/attachments/62b06b946bc7bc1305de5c8dd7742416685f3a21322e3d7dfc1eb67460f8d0a6.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12062": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "ddc5b19d16b0bbd847d518429de693b17a0491a705c1fee1326d3bcb0b872519",
+    "bytes": 4989440,
+    "path": "archive/attachments/ddc5b19d16b0bbd847d518429de693b17a0491a705c1fee1326d3bcb0b872519.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12063": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "46ce2b4653890f343f50bb40953740319370edaee1c23937a877578edadba02b",
+    "bytes": 4409401,
+    "path": "archive/attachments/46ce2b4653890f343f50bb40953740319370edaee1c23937a877578edadba02b.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12064": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "4244097ae587c394cdbf5e4f93d567bdddbb31d450a381d19c044af86bfcc481",
+    "bytes": 6091505,
+    "path": "archive/attachments/4244097ae587c394cdbf5e4f93d567bdddbb31d450a381d19c044af86bfcc481.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12065": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "b4325a5be9e3e30693dd3d17f574f0339d6d0aadba8bbb03ffc02984b37256f1",
+    "bytes": 97280,
+    "path": "archive/attachments/b4325a5be9e3e30693dd3d17f574f0339d6d0aadba8bbb03ffc02984b37256f1.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12066": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "d62741a7862f00d4983abdcc20e10b59e240fffc75dc0780689da5d42e0a0ef1",
+    "bytes": 529803,
+    "path": "archive/attachments/d62741a7862f00d4983abdcc20e10b59e240fffc75dc0780689da5d42e0a0ef1.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12067": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "48f001302ee986abc1f5ec5e82e8cdc877ca3c8bd019f3e23e46bac1b9b7937f",
+    "bytes": 719934,
+    "path": "archive/attachments/48f001302ee986abc1f5ec5e82e8cdc877ca3c8bd019f3e23e46bac1b9b7937f.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12069": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "ccd9ba749fe5d121953b9adfffb18bd50318b789d2ad2a51551d75d48b8c5294",
+    "bytes": 109056,
+    "path": "archive/attachments/ccd9ba749fe5d121953b9adfffb18bd50318b789d2ad2a51551d75d48b8c5294.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12070": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "419bc4802aee5cd646a95edaeb6fea04356ed3f6ae05087d8899e4ff4aeeb568",
+    "bytes": 99840,
+    "path": "archive/attachments/419bc4802aee5cd646a95edaeb6fea04356ed3f6ae05087d8899e4ff4aeeb568.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12071": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "4fc78f9abeb9d5abed2302a6c578b8b362fc89dd98401138f65849e47321ef6d",
+    "bytes": 119808,
+    "path": "archive/attachments/4fc78f9abeb9d5abed2302a6c578b8b362fc89dd98401138f65849e47321ef6d.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12072": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "310f0651fbdfc51239491d666636e93d363a052cb54b42df62a5ffd1f0280dd1",
+    "bytes": 6796151,
+    "path": "archive/attachments/310f0651fbdfc51239491d666636e93d363a052cb54b42df62a5ffd1f0280dd1.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12073": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "bab7755e7f5922776f94dad2ad8e53d6c1b44102eb8dd34213b0d973e4a57233",
+    "bytes": 6917558,
+    "path": "archive/attachments/bab7755e7f5922776f94dad2ad8e53d6c1b44102eb8dd34213b0d973e4a57233.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12074": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "353bd1b63a60b379bf9a321885589cd27f6a6a4a32622824b6d3f5dfd5d4f383",
+    "bytes": 105984,
+    "path": "archive/attachments/353bd1b63a60b379bf9a321885589cd27f6a6a4a32622824b6d3f5dfd5d4f383.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12075": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "3d0ef692778ce0cc68c719ec81b7bb949ba2ea6ff8e10d42a1e9dab125f51a6f",
+    "bytes": 4692573,
+    "path": "archive/attachments/3d0ef692778ce0cc68c719ec81b7bb949ba2ea6ff8e10d42a1e9dab125f51a6f.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12076": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "881d7af58696d8ac9942caec6f349b2222d87bd91301409003721d11ddbde173",
+    "bytes": 107008,
+    "path": "archive/attachments/881d7af58696d8ac9942caec6f349b2222d87bd91301409003721d11ddbde173.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12077": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "db645eb2e36716eed08d497c95118ed5866624aa5c79b6a330380798804501fb",
+    "bytes": 7494106,
+    "path": "archive/attachments/db645eb2e36716eed08d497c95118ed5866624aa5c79b6a330380798804501fb.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "jpeg_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12078": {
-    "status": "pending",
-    "attempts": 0
+    "status": "downloaded",
+    "attempts": 1,
+    "sha256": "51497f749ae8c52a7a50b8bc8ace6207e81b38afc57110ae6e4519b493ad9bdc",
+    "bytes": 198656,
+    "path": "archive/attachments/51497f749ae8c52a7a50b8bc8ace6207e81b38afc57110ae6e4519b493ad9bdc.bin",
+    "checked_at": "2026-11-06T01:26:26.060410+00:00",
+    "container_header": "ole_container_header"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=12079": {
     "status": "pending",
