@@ -1529,9 +1529,9 @@
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=9934": {
     "status": "failed",
-    "attempts": 1,
+    "attempts": 2,
     "error": "unexpected attachment signature; not counted as downloaded",
-    "next_retry_at": "2026-11-06T08:35:21.689730+00:00"
+    "next_retry_at": "2026-11-06T14:21:45.627277+00:00"
   },
   "https://council.cheongju.go.kr/gtb_download.php?gtid=notice&fid=9935": {
     "status": "downloaded",

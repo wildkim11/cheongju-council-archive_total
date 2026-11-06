@@ -1,11 +1,11 @@
 {
   "family": "attachments",
-  "started_at": "2026-11-06T10:05:17.818857+00:00",
+  "started_at": "2026-11-06T10:21:27.547353+00:00",
   "status": "PASS",
   "published": true,
   "collection": {
     "queued": 1891,
-    "attempted": 20,
+    "attempted": 1,
     "downloaded_total": 1715,
     "failed_total": 1,
     "blocked_total": 175,
@@ -13,7 +13,7 @@
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-06T10:14:28.548204+00:00",
+    "checked_at_utc": "2026-11-06T10:21:46.209927+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
@@ -307,7 +307,7 @@
       "schema": "cheongju-attachment-download-audit/1",
       "status": "PASS",
       "queue_present": true,
-      "source_queue_sha256": "d4af211d2d773fe2db9152d24f5abb497b22ad18c8a4f0e510293da9e9bd9c20",
+      "source_queue_sha256": "0eb5cbc277f2d4d327c86f2ce5e1f20e89cf6707962be36b5ee82cbb5b61074a",
       "queued_urls": 1891,
       "status_counts": {
         "downloaded": 1715,
@@ -8860,7 +8860,7 @@
       "document_semantics_verified": false,
       "note": "Checks archived bytes and container headers only. A successful queue snapshot is not full download coverage or document-content validation."
     },
-    "attachment_original_urls_retained": 1695,
+    "attachment_original_urls_retained": 1715,
     "activity_spacing_linking": {
       "status": "PASS",
       "method": "entire_activity_body_exact_spacing_compacted_digit_boundaries",
@@ -267545,6 +267545,6 @@
   },
   "transaction": {
     "status": "committed",
-    "changed_files": 25
+    "changed_files": 5
   }
 }
