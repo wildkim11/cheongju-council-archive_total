@@ -1,19 +1,64 @@
 {
-  "family": "attachments",
-  "started_at": "2026-11-07T07:24:49.610465+00:00",
+  "family": "minutes",
+  "started_at": "2026-11-07T21:36:12.370726+00:00",
   "status": "PASS",
   "published": true,
   "collection": {
-    "queued": 1891,
-    "attempted": 1,
-    "downloaded_total": 1715,
-    "failed_total": 1,
-    "blocked_total": 175,
-    "pending_total": 0
+    "checked_at": "2026-11-08T06:36:37.018061+09:00",
+    "mode": "incremental",
+    "council_scope": "cheongju_integrated",
+    "listed": 2353,
+    "published": 2333,
+    "provisional": 20,
+    "by_term": {
+      "1": 663,
+      "2": 771,
+      "3": 855,
+      "4": 64
+    },
+    "new": [],
+    "changed": [],
+    "superseded": {},
+    "bodies_checked": 28,
+    "forced_body_checks": [
+      "cheongju_integrated:minutes-2027",
+      "cheongju_integrated:minutes-2029",
+      "cheongju_integrated:minutes-203",
+      "cheongju_integrated:minutes-2031",
+      "cheongju_integrated:minutes-2032",
+      "cheongju_integrated:minutes-2033",
+      "cheongju_integrated:minutes-2034",
+      "cheongju_integrated:minutes-2035"
+    ],
+    "history_rows": 0,
+    "revision_rows": 9,
+    "migrated_old_paths": [],
+    "revised": [],
+    "inventory_qa": {
+      "term_inventory_count": 2353,
+      "year_inventory_count": 2340,
+      "shared_count": 2340,
+      "only_term": [
+        "1212",
+        "1573",
+        "180",
+        "1848",
+        "1900",
+        "2257",
+        "2258",
+        "2659",
+        "2951",
+        "3315",
+        "3652",
+        "508",
+        "896"
+      ],
+      "only_year": []
+    }
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-07T07:25:15.123020+00:00",
+    "checked_at_utc": "2026-11-07T21:45:25.084073+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
@@ -8879,7 +8924,7 @@
       "schema": "cheongju-question-answer-parts/1",
       "status": "PASS",
       "source_dataset_sha256": "9a7f47beb444a394973efa90d16748154fe9150f71907ca518f7b340b3cd30c1",
-      "source_index_sha256": "c4280c22a9a1248f819b5bde47fa3d67a54f8ed353bde6785ffe9e228305939a",
+      "source_index_sha256": "a443c5c68b349bcb4b185f821045c76c527c07dc77ed5ac29341010fb8e8ece8",
       "reviewed_records": 85,
       "split_records": 13,
       "ambiguous_records": 0,
@@ -8899,7 +8944,7 @@
       "date_changes": 0,
       "official_site_requests": 0,
       "source_roles_sha256": "7e5d06bf814750f2752fe33b9f7c417f305349a49bfcae02a26b751b93dbd054",
-      "source_question_parts_sha256": "3019fb62021a5df112dc1f705252d4eb26af6b946a7fde3389f077b699a2b18d",
+      "source_question_parts_sha256": "c4b1bc619d665aa7c379be80291c4a78fdd0ced7825069a8f948f9df8beef9b1",
       "script_sha256": "2777d1947df1c29de6f5d97b03430d069c213b5fcf6700f08f88f27d7d84834f"
     },
     "question_answer_linking": {
@@ -8942,7 +8987,7 @@
       "status": "PASS",
       "schema": "cheongju-activity-date-review/1",
       "source_role_sha256": "7c1f66b27aa37664040c35f7013eeb52d17dd7982fe918ef4da992c475f4b503",
-      "source_index_sha256": "c4280c22a9a1248f819b5bde47fa3d67a54f8ed353bde6785ffe9e228305939a",
+      "source_index_sha256": "a443c5c68b349bcb4b185f821045c76c527c07dc77ed5ac29341010fb8e8ece8",
       "review_rows": 2,
       "diagnosis_counts": {
         "unique_cross_date_complete_body_match_review": 2
@@ -8965,7 +9010,7 @@
         "numeric_whitespace_boundary": 1
       },
       "source_roles_sha256": "7c1f66b27aa37664040c35f7013eeb52d17dd7982fe918ef4da992c475f4b503",
-      "source_index_sha256": "c4280c22a9a1248f819b5bde47fa3d67a54f8ed353bde6785ffe9e228305939a",
+      "source_index_sha256": "a443c5c68b349bcb4b185f821045c76c527c07dc77ed5ac29341010fb8e8ece8",
       "script_sha256": "8ec4d78039c829e9de59a64d782fab925592f471b78be4f9960d3cb7a472b4db",
       "identity_promotions": 0,
       "date_changes": 0,
@@ -8973,7 +9018,7 @@
     },
     "minutes_text": {
       "schema": "cheongju-meeting-text-packs/1",
-      "source_index_sha256": "c4280c22a9a1248f819b5bde47fa3d67a54f8ed353bde6785ffe9e228305939a",
+      "source_index_sha256": "a443c5c68b349bcb4b185f821045c76c527c07dc77ed5ac29341010fb8e8ece8",
       "rows": 2353,
       "parts": [
         {
@@ -281963,6 +282008,6 @@
   },
   "transaction": {
     "status": "committed",
-    "changed_files": 5
+    "changed_files": 1043
   }
 }
