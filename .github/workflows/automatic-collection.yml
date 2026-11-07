@@ -232,13 +232,27 @@ jobs:
             "$source_commit" "$RUNNER_TEMP/stage47-candidate.json" --sequence "$((1000000 + GITHUB_RUN_NUMBER))"
           node pipeline/scripts/package_stage47_release.cjs "$master" \
             "$RUNNER_TEMP/stage47-candidate.json" "$RUNNER_TEMP/stage47-release"
+      - name: Check public distribution approval
+        id: approval
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          payload = Path(os.environ['RUNNER_TEMP']) / 'stage47-release' / 'council_bundle.json'
+          approved = json.loads(payload.read_text(encoding='utf-8')).get('production_approved') is True
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as out:
+              print(f'public={str(approved).lower()}', file=out)
+          if not approved:
+              print('::notice::Candidate verified. Public upload blocked by baseline approval flag.')
+          PY
       - uses: actions/upload-artifact@v4
+        if: steps.approval.outputs.public == 'true'
         with:
           name: stage47-verified-distribution-candidate
           path: ${{ runner.temp }}/stage47-release/
           if-no-files-found: error
       - name: Publish verified browser update
-        if: vars.STAGE47_PUBLISH == 'true'
+        if: vars.STAGE47_PUBLISH == 'true' && steps.approval.outputs.public == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
