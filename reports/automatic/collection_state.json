@@ -33,12 +33,12 @@
       "consecutive_failures": 0
     },
     "attachments": {
-      "attempts": 47,
+      "attempts": 48,
       "failed_documents": 1,
-      "pending_attachment_retry_at": "2026-11-07T06:28:25.646366+00:00",
-      "last_success_at": "2026-11-06T22:28:12.443204+00:00",
+      "pending_attachment_retry_at": "2026-11-07T23:25:14.349159+00:00",
+      "last_success_at": "2026-11-07T07:24:49.610465+00:00",
       "consecutive_failures": 0,
-      "retry_attempts_day": "2026-11-04",
+      "retry_attempts_day": "2026-11-07",
       "retry_attempts_today": 1,
       "blocked_documents": 175,
       "pending_documents": 0
@@ -46,7 +46,7 @@
   },
   "last_run": {
     "family": "attachments",
-    "started_at": "2026-11-06T22:28:12.443204+00:00",
+    "started_at": "2026-11-07T07:24:49.610465+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
@@ -59,7 +59,7 @@
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-06T22:28:26.121874+00:00",
+      "checked_at_utc": "2026-11-07T07:25:15.123020+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
@@ -353,7 +353,7 @@
         "schema": "cheongju-attachment-download-audit/1",
         "status": "PASS",
         "queue_present": true,
-        "source_queue_sha256": "d010807da53b14e476f16e4eb1d6dd543a78869f175f1ed4cf3ca4c64182cd1e",
+        "source_queue_sha256": "03a823a83dd2b9dc72ded5201135b7189719e17337a36cccba5e11e13cc687c2",
         "queued_urls": 1891,
         "status_counts": {
           "downloaded": 1715,
@@ -282009,7 +282009,7 @@
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 6
+      "changed_files": 5
     }
   }
 }
