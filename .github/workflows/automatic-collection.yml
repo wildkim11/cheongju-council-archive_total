@@ -145,6 +145,8 @@ jobs:
       contents: write
     runs-on: macos-latest
     timeout-minutes: 180
+    outputs:
+      archive_sha: ${{ steps.snapshot.outputs.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -187,3 +189,51 @@ jobs:
       - name: Surface collection failure after preserving retry state
         if: steps.collection.outcome == 'failure'
         run: exit 1
+      - name: Record persisted source commit
+        id: snapshot
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+  stage47:
+    name: Verify Stage47 distribution candidate
+    needs: collect
+    if: vars.STAGE47_MASTER_PATH != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: pipeline
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.collect.outputs.archive_sha }}
+          path: archive-source
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Build and verify distribution candidate
+        env:
+          MASTER_PATH: ${{ vars.STAGE47_MASTER_PATH }}
+          MASTER_SHA256: ${{ vars.STAGE47_MASTER_SHA256 }}
+        run: |
+          set -euo pipefail
+          master="$(realpath "archive-source/$MASTER_PATH")"
+          [[ "$master" == "$GITHUB_WORKSPACE/archive-source/"* ]]
+          [[ "$MASTER_SHA256" =~ ^[a-f0-9]{64}$ ]]
+          actual="$(sha256sum "$master" | cut -d ' ' -f 1)"
+          [[ "$actual" == "$MASTER_SHA256" ]]
+          source_commit="$(git -C archive-source rev-parse HEAD)"
+          python pipeline/scripts/build_stage47_candidate.py "$master" archive-source/exports/analyzer \
+            "$source_commit" "$RUNNER_TEMP/stage47-candidate.json" --sequence "$((1000000 + GITHUB_RUN_NUMBER))"
+          node pipeline/scripts/package_stage47_release.cjs "$master" \
+            "$RUNNER_TEMP/stage47-candidate.json" "$RUNNER_TEMP/stage47-release"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage47-verified-distribution-candidate
+          path: ${{ runner.temp }}/stage47-release/
+          if-no-files-found: error
