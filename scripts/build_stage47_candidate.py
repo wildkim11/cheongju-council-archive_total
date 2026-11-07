@@ -1,5 +1,6 @@
 """Append verified analyzer exports to a reviewed Stage47 baseline."""
 import argparse
+from collections import defaultdict
 import hashlib
 import json
 from pathlib import Path
@@ -64,17 +65,68 @@ def build(master, exports, commit, sequence=None):
     model["activity_coverage"].update(source_rows=len(activities), identity_resolved=linked,
                                       identity_unresolved=len(activities)-linked,
                                       meeting_index_rows=len(meetings))
+    def bill_key(row):
+        return row["term"], str(row.get("internal_number") or row.get("id"))
+
+    occupied = {bill_key(row) for name in ("events", "review", "unlinked", "qa_cases")
+                for row in model[name]}
+    people = {row["person_id"]: row for row in model["people"]}
+    links = defaultdict(list)
+    for row in rows("bill_proposers_member_only"):
+        if row.get("council_scope") == "cheongju_integrated":
+            links[bill_key(row)].append(row)
+    cutoff = bundle["source"]["manifest_generated_at"][:10]
+    added_bills = 0
     bills = {}
     for row in rows("bills"):
         if row.get("council_scope") != "cheongju_integrated":
             continue
-        key = (row["term"], str(row["internal_number"]))
+        key = bill_key(row)
         if key in bills:
             raise ValueError(f"Duplicate source bill: {key}")
         bills[key] = {field: row.get(field) for field in (
             "term", "internal_number", "title", "proposal_date", "bill_type",
             "official_url", "proposer_type", "proposer_type_list",
         )}
+        # Historical omissions stay in the inventory. Existing reviews retain precedence.
+        date = row.get("proposal_date") or ""
+        if key in occupied or date <= cutoff or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+            continue
+        if not row.get("detail_text_checked"):
+            continue
+        declared = {
+            "representative": row.get("representative_proposers") or [],
+            "co_proposer": row.get("co_proposers") or [],
+        }
+        expected = [(role, name) for role, names in declared.items() for name in names]
+        roster = links[key]
+        actual = [(link["proposer_role"], link["person_name"]) for link in roster]
+        if (not declared["representative"] or len(expected) < 2
+                or sorted(actual) != sorted(expected)
+                or len({name for _, name in expected}) != len(expected)):
+            continue
+        roles = {link["person_id"]: link["proposer_role"] for link in roster}
+        if len(roles) != len(roster) or any(
+            link["resolution_status"] != "resolved_exact_term"
+            or people.get(link["person_id"], {}).get("term") != key[0]
+            or people[link["person_id"]]["name"] != link["person_name"]
+            or people[link["person_id"]].get("scope") != "cheongju_integrated"
+            for link in roster
+        ):
+            continue
+        model["events"].append({
+            "term": key[0], "internal_number": key[1], "title": row["title"],
+            "date": date, "bill_type": row.get("bill_type"), "official_url": row["official_url"],
+            "member_ids": list(roles), "roles": roles, "member_count": len(roles),
+            "representative_count": len(declared["representative"]),
+            "roster_names": [name for _, name in expected],
+            "representative_names": declared["representative"],
+            "stage38_status": "archive_exact_term_and_roster",
+        })
+        added_bills += 1
+    model["summary"].update(events=len(model["events"]),
+                            sum_members=sum(row["member_count"] for row in model["events"]))
+    counts["bills_linked"] = added_bills
     attachments = {}
     for row in rows("research_attachments"):
         url = row["official_url"]
