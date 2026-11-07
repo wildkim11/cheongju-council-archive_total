@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 
 
-def build(master, exports, commit):
+def build(master, exports, commit, sequence=None):
     baseline = re.search(r'<script id="release-bundle" type="application/json">(.*?)</script>', master, re.S)
     if not baseline or not re.fullmatch(r"[a-f0-9]{40}", commit):
         raise ValueError("Invalid master HTML or archive commit")
@@ -64,7 +64,33 @@ def build(master, exports, commit):
     model["activity_coverage"].update(source_rows=len(activities), identity_resolved=linked,
                                       identity_unresolved=len(activities)-linked,
                                       meeting_index_rows=len(meetings))
-    bundle["sequence"] += 1
+    bills = {}
+    for row in rows("bills"):
+        if row.get("council_scope") != "cheongju_integrated":
+            continue
+        key = (row["term"], str(row["internal_number"]))
+        if key in bills:
+            raise ValueError(f"Duplicate source bill: {key}")
+        bills[key] = {field: row.get(field) for field in (
+            "term", "internal_number", "title", "proposal_date", "bill_type",
+            "official_url", "proposer_type", "proposer_type_list",
+        )}
+    attachments = {}
+    for row in rows("research_attachments"):
+        url = row["official_url"]
+        if not re.match(r"^https://council(?:rec)?\.cheongju\.go\.kr/", url):
+            raise ValueError(f"Unexpected attachment origin: {url}")
+        key = (row["parent_type"], row["parent_id"], url)
+        attachments[key] = {field: row.get(field) for field in (
+            "parent_type", "parent_id", "title", "official_url", "file_type",
+        )}
+    bundle["source"]["incremental_inventory"] = {
+        "bills": list(bills.values()), "research_attachments": list(attachments.values()),
+    }
+    counts.update(bill_inventory=len(bills), research_attachment_inventory=len(attachments))
+    if sequence is not None and sequence <= bundle["sequence"]:
+        raise ValueError("Release sequence must exceed baseline")
+    bundle["sequence"] = sequence if sequence is not None else bundle["sequence"] + 1
     bundle["release_id"] = f"stage47-{bundle['sequence']}-{commit[:12]}"
     bundle["source"]["incremental_archive_commit"] = commit
     return bundle, counts
@@ -76,8 +102,9 @@ if __name__ == "__main__":
     parser.add_argument("exports", type=Path)
     parser.add_argument("archive_commit")
     parser.add_argument("candidate", type=Path)
+    parser.add_argument("--sequence", type=int)
     args = parser.parse_args()
-    bundle, counts = build(args.master.read_text(encoding="utf-8"), args.exports, args.archive_commit)
+    bundle, counts = build(args.master.read_text(encoding="utf-8"), args.exports, args.archive_commit, args.sequence)
     with args.candidate.open("x", encoding="utf-8") as out:
         json.dump(bundle, out, ensure_ascii=False, separators=(",", ":"))
     print(json.dumps(counts))
