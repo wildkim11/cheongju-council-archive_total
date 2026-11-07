@@ -199,7 +199,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -237,3 +237,38 @@ jobs:
           name: stage47-verified-distribution-candidate
           path: ${{ runner.temp }}/stage47-release/
           if-no-files-found: error
+      - name: Publish verified browser update
+        if: vars.STAGE47_PUBLISH == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch=stage47-release
+          repo="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
+          release="$RUNNER_TEMP/stage47-release"
+          publish="$RUNNER_TEMP/stage47-publish"
+          export GIT_CONFIG_COUNT=1
+          export GIT_CONFIG_KEY_0=credential.helper
+          export GIT_CONFIG_VALUE_0='!gh auth git-credential'
+          git init -q "$publish"
+          git -C "$publish" remote add origin "$repo"
+          if git -C "$publish" ls-remote --exit-code --heads origin "$branch"; then
+            git -C "$publish" fetch --depth=1 origin "$branch"
+            git -C "$publish" checkout -q -b "$branch" FETCH_HEAD
+            python - "$publish/manifest.json" "$release/manifest.json" <<'PY'
+          import json, sys
+          with open(sys.argv[1], encoding="utf-8") as old, open(sys.argv[2], encoding="utf-8") as new:
+              if json.load(old)["sequence"] >= json.load(new)["sequence"]:
+                  raise SystemExit("Refusing to replace a newer or equal release")
+          PY
+          else
+            status=$?
+            [[ "$status" == 2 ]]
+            git -C "$publish" checkout -q --orphan "$branch"
+          fi
+          cp "$release/manifest.json" "$release/council_bundle.json" "$publish/"
+          git -C "$publish" add manifest.json council_bundle.json
+          git -C "$publish" -c user.name='github-actions[bot]' \
+            -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -m "Publish verified Stage47 browser update"
+          git -C "$publish" push origin "HEAD:refs/heads/$branch"
