@@ -81,6 +81,8 @@ async function main() {
   // Keep master-wide source inventories in separate distribution files.
   const inventory = candidate.source.incremental_inventory;
   delete candidate.source.incremental_inventory;
+  candidate.update_manifest_url = null;
+  candidate.production_approved = false;
   const input = serialize(candidate);
   const bundle = await accept(manifest(candidate, input), input, baseline);
   const payload = serialize(bundle);
