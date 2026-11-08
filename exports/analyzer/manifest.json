@@ -1,26 +1,26 @@
 {
   "schema": "cheongju-council-archive-analyzer-export/0.1",
-  "generated_at": "2026-11-09T06:55:18.130477+09:00",
+  "generated_at": "2026-11-09T07:02:47.111384+09:00",
   "datasets": {
     "people": {
       "rows": 435,
       "path": "exports/analyzer/people.jsonl",
-      "sha256": "cb3617d2dafa0b054a07bf5f788033fb8a15070c6f6c5df016851a63302b84ea"
+      "sha256": "18606757b87e1d218785572a3ccb666f0fa13718ad2c1ebe69ef131424a79267"
     },
     "tenures": {
       "rows": 435,
       "path": "exports/analyzer/tenures.jsonl",
-      "sha256": "eacfd3131fa5a69de5a21404b538bfd931ec0f37bed6f27710f2fc4451ea9b05"
+      "sha256": "0d4a6f6300ce1dd3b96ec21159d69c412855b6fce62641272feb89fc9527c28b"
     },
     "party_memberships": {
       "rows": 44,
       "path": "exports/analyzer/party_memberships.jsonl",
-      "sha256": "c2584f06a97760e21f4b769017666d0f872fc31e10f0d6da57d33a45393e1e89"
+      "sha256": "daf5904aca704dbd520f615cda39f73c247b558feb7c7e2a32c6728d5f06a2aa"
     },
     "district_memberships": {
       "rows": 167,
       "path": "exports/analyzer/district_memberships.jsonl",
-      "sha256": "1416767e9c49d72f3afd7ba26162ed2249e8aacb76a9e7cb4cd61edba52e5432"
+      "sha256": "d68a89f2b314dec087c467a90606214a5f5260b3286e250fa565e3ff360231cc"
     },
     "represented_areas": {
       "rows": 187,
@@ -110,7 +110,7 @@
     "identity_candidates": {
       "rows": 115,
       "path": "exports/analyzer/identity_candidates.jsonl",
-      "sha256": "9777f9a5cd40e0fa4cfccf3d68526aab32975682d64931617971bcbc18d69b50"
+      "sha256": "764599a2dacf1e17da5925754ab755ec310d3c705a5e80c5f0b8821b0a9ec12d"
     },
     "bill_proposers_member_only": {
       "rows": 11377,
