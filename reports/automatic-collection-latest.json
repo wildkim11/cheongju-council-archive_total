@@ -1,19 +1,16 @@
 {
-  "family": "attachments",
-  "started_at": "2026-11-09T01:42:43.882511+00:00",
+  "family": "bills",
+  "started_at": "2026-11-09T03:08:44.664176+00:00",
   "status": "PASS",
   "published": true,
   "collection": {
-    "queued": 1891,
-    "attempted": 1,
-    "downloaded_total": 1715,
-    "failed_total": 1,
-    "blocked_total": 175,
-    "pending_total": 0
+    "listed": 3394,
+    "details_checked": 40,
+    "roster_changes_for_review": 0
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-09T01:43:05.376579+00:00",
+    "checked_at_utc": "2026-11-09T03:14:20.822874+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
@@ -310799,6 +310796,6 @@
   },
   "transaction": {
     "status": "committed",
-    "changed_files": 5
+    "changed_files": 383
   }
 }
