@@ -1,0 +1,385 @@
+{
+  "collection_started_at": "2026-11-09T22:20:21.030973+00:00",
+  "family": "groups",
+  "responses": [
+    {
+      "bytes": 157887,
+      "decoded_utf8_sha256": "1270c424920cc2fb433b5c4b284a84bb57334d288c97971077757be9aab386c3",
+      "path": "archive/source_responses/1270c424920cc2fb433b5c4b284a84bb57334d288c97971077757be9aab386c3.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/member.html"
+    },
+    {
+      "bytes": 157887,
+      "decoded_utf8_sha256": "1270c424920cc2fb433b5c4b284a84bb57334d288c97971077757be9aab386c3",
+      "path": "archive/source_responses/1270c424920cc2fb433b5c4b284a84bb57334d288c97971077757be9aab386c3.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/member.html"
+    },
+    {
+      "bytes": 108751,
+      "decoded_utf8_sha256": "ce6fa84333335578374b623e2c1278c9bf82d7b711272dc1f90a8fc31e3833b8",
+      "path": "archive/source_responses/ce6fa84333335578374b623e2c1278c9bf82d7b711272dc1f90a8fc31e3833b8.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/"
+    },
+    {
+      "bytes": 108751,
+      "decoded_utf8_sha256": "ce6fa84333335578374b623e2c1278c9bf82d7b711272dc1f90a8fc31e3833b8",
+      "path": "archive/source_responses/ce6fa84333335578374b623e2c1278c9bf82d7b711272dc1f90a8fc31e3833b8.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/"
+    },
+    {
+      "bytes": 68995,
+      "decoded_utf8_sha256": "d1522ed035f2c9900d214050d4eec415ade9493b5506d7d6aa262fa997f544d8",
+      "path": "archive/source_responses/d1522ed035f2c9900d214050d4eec415ade9493b5506d7d6aa262fa997f544d8.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C306.html"
+    },
+    {
+      "bytes": 68995,
+      "decoded_utf8_sha256": "d1522ed035f2c9900d214050d4eec415ade9493b5506d7d6aa262fa997f544d8",
+      "path": "archive/source_responses/d1522ed035f2c9900d214050d4eec415ade9493b5506d7d6aa262fa997f544d8.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C306.html"
+    },
+    {
+      "bytes": 68610,
+      "decoded_utf8_sha256": "dbc45e701181f0bdf20f5182f03716d3c35c6fc20237b1eb0e7a20978b54d70d",
+      "path": "archive/source_responses/dbc45e701181f0bdf20f5182f03716d3c35c6fc20237b1eb0e7a20978b54d70d.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C501.html"
+    },
+    {
+      "bytes": 68610,
+      "decoded_utf8_sha256": "dbc45e701181f0bdf20f5182f03716d3c35c6fc20237b1eb0e7a20978b54d70d",
+      "path": "archive/source_responses/dbc45e701181f0bdf20f5182f03716d3c35c6fc20237b1eb0e7a20978b54d70d.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C501.html"
+    },
+    {
+      "bytes": 68458,
+      "decoded_utf8_sha256": "8a710b5da57ed0d270c47660125ee011cf6d33bc7b10e1a0f96aaf9b6eda9657",
+      "path": "archive/source_responses/8a710b5da57ed0d270c47660125ee011cf6d33bc7b10e1a0f96aaf9b6eda9657.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C601.html"
+    },
+    {
+      "bytes": 68458,
+      "decoded_utf8_sha256": "8a710b5da57ed0d270c47660125ee011cf6d33bc7b10e1a0f96aaf9b6eda9657",
+      "path": "archive/source_responses/8a710b5da57ed0d270c47660125ee011cf6d33bc7b10e1a0f96aaf9b6eda9657.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C601.html"
+    },
+    {
+      "bytes": 68899,
+      "decoded_utf8_sha256": "1131ca2adf1920e51823f34051bcfb6438f50cab75fa88a702b4b5715fd4f479",
+      "path": "archive/source_responses/1131ca2adf1920e51823f34051bcfb6438f50cab75fa88a702b4b5715fd4f479.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C703.html"
+    },
+    {
+      "bytes": 68899,
+      "decoded_utf8_sha256": "1131ca2adf1920e51823f34051bcfb6438f50cab75fa88a702b4b5715fd4f479",
+      "path": "archive/source_responses/1131ca2adf1920e51823f34051bcfb6438f50cab75fa88a702b4b5715fd4f479.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C703.html"
+    },
+    {
+      "bytes": 68659,
+      "decoded_utf8_sha256": "4e58396edfb2a07be284749aa1876b9d885280b5cd945c7a526e5b6448cc8204",
+      "path": "archive/source_responses/4e58396edfb2a07be284749aa1876b9d885280b5cd945c7a526e5b6448cc8204.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C403.html"
+    },
+    {
+      "bytes": 68659,
+      "decoded_utf8_sha256": "4e58396edfb2a07be284749aa1876b9d885280b5cd945c7a526e5b6448cc8204",
+      "path": "archive/source_responses/4e58396edfb2a07be284749aa1876b9d885280b5cd945c7a526e5b6448cc8204.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C403.html"
+    },
+    {
+      "bytes": 70421,
+      "decoded_utf8_sha256": "62cdfb3bb16a99903efc38a7b659652dacd486a62a249de59b9bc32ee75df772",
+      "path": "archive/source_responses/62cdfb3bb16a99903efc38a7b659652dacd486a62a249de59b9bc32ee75df772.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_G100.html"
+    },
+    {
+      "bytes": 70421,
+      "decoded_utf8_sha256": "62cdfb3bb16a99903efc38a7b659652dacd486a62a249de59b9bc32ee75df772",
+      "path": "archive/source_responses/62cdfb3bb16a99903efc38a7b659652dacd486a62a249de59b9bc32ee75df772.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_G100.html"
+    },
+    {
+      "bytes": 67807,
+      "decoded_utf8_sha256": "d47e09e306457455a63f464371cd8d6d66b9ac29a8f3cd58a57cd53206cf47d6",
+      "path": "archive/source_responses/d47e09e306457455a63f464371cd8d6d66b9ac29a8f3cd58a57cd53206cf47d6.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_G140.html"
+    },
+    {
+      "bytes": 67807,
+      "decoded_utf8_sha256": "d47e09e306457455a63f464371cd8d6d66b9ac29a8f3cd58a57cd53206cf47d6",
+      "path": "archive/source_responses/d47e09e306457455a63f464371cd8d6d66b9ac29a8f3cd58a57cd53206cf47d6.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_G140.html"
+    },
+    {
+      "bytes": 68922,
+      "decoded_utf8_sha256": "b63594c97a9931cfc62bb09a08467335227d2c2d660a0801698ce08eac3210f5",
+      "path": "archive/source_responses/b63594c97a9931cfc62bb09a08467335227d2c2d660a0801698ce08eac3210f5.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C101.html"
+    },
+    {
+      "bytes": 68922,
+      "decoded_utf8_sha256": "b63594c97a9931cfc62bb09a08467335227d2c2d660a0801698ce08eac3210f5",
+      "path": "archive/source_responses/b63594c97a9931cfc62bb09a08467335227d2c2d660a0801698ce08eac3210f5.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C101.html"
+    },
+    {
+      "bytes": 68140,
+      "decoded_utf8_sha256": "cf24563dac7e3c8120dc80a6aa2d0ac7fc8a65e40835eda587c7b25f89c6f00c",
+      "path": "archive/source_responses/cf24563dac7e3c8120dc80a6aa2d0ac7fc8a65e40835eda587c7b25f89c6f00c.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_G250.html"
+    },
+    {
+      "bytes": 68140,
+      "decoded_utf8_sha256": "cf24563dac7e3c8120dc80a6aa2d0ac7fc8a65e40835eda587c7b25f89c6f00c",
+      "path": "archive/source_responses/cf24563dac7e3c8120dc80a6aa2d0ac7fc8a65e40835eda587c7b25f89c6f00c.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_G250.html"
+    },
+    {
+      "bytes": 68857,
+      "decoded_utf8_sha256": "3d715a195d08e44993b86a5c025f3b900350c0013a7fdd09256ac97d3f18cb66",
+      "path": "archive/source_responses/3d715a195d08e44993b86a5c025f3b900350c0013a7fdd09256ac97d3f18cb66.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C206.html"
+    },
+    {
+      "bytes": 68857,
+      "decoded_utf8_sha256": "3d715a195d08e44993b86a5c025f3b900350c0013a7fdd09256ac97d3f18cb66",
+      "path": "archive/source_responses/3d715a195d08e44993b86a5c025f3b900350c0013a7fdd09256ac97d3f18cb66.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/committee/coIntroduce_C206.html"
+    },
+    {
+      "bytes": 276011,
+      "decoded_utf8_sha256": "203fa9a5a6b52abe8e3a1c4dafafd3e073abdd1e8766ba7a1108fff923f91d81",
+      "path": "archive/source_responses/203fa9a5a6b52abe8e3a1c4dafafd3e073abdd1e8766ba7a1108fff923f91d81.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=14287"
+    },
+    {
+      "bytes": 276011,
+      "decoded_utf8_sha256": "203fa9a5a6b52abe8e3a1c4dafafd3e073abdd1e8766ba7a1108fff923f91d81",
+      "path": "archive/source_responses/203fa9a5a6b52abe8e3a1c4dafafd3e073abdd1e8766ba7a1108fff923f91d81.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=14287"
+    },
+    {
+      "bytes": 87524,
+      "decoded_utf8_sha256": "49f64cb47ffe00b40ab90f2e5c3b7cf2d326d7440fe0a5f966cc42adcc8f33fa",
+      "path": "archive/source_responses/49f64cb47ffe00b40ab90f2e5c3b7cf2d326d7440fe0a5f966cc42adcc8f33fa.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+    },
+    {
+      "bytes": 87524,
+      "decoded_utf8_sha256": "6aaf27a343eba8b3deb3cf89430ab95128ab5ee24cce00fa563537df8ea724d4",
+      "path": "archive/source_responses/6aaf27a343eba8b3deb3cf89430ab95128ab5ee24cce00fa563537df8ea724d4.html.gz",
+      "request_parameters_sha256": "ab872d8c3fd75e2f1ff115ea4aa24e3d0ea98697286a394703c52b6365c76664",
+      "url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+    },
+    {
+      "bytes": 121767,
+      "decoded_utf8_sha256": "1f6e997d3301530a200c6ff60fbe13192c20bc880436d298590f868f5d826e81",
+      "path": "archive/source_responses/1f6e997d3301530a200c6ff60fbe13192c20bc880436d298590f868f5d826e81.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=18665"
+    },
+    {
+      "bytes": 121767,
+      "decoded_utf8_sha256": "1f6e997d3301530a200c6ff60fbe13192c20bc880436d298590f868f5d826e81",
+      "path": "archive/source_responses/1f6e997d3301530a200c6ff60fbe13192c20bc880436d298590f868f5d826e81.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=18665"
+    },
+    {
+      "bytes": 87524,
+      "decoded_utf8_sha256": "b903259011372ca5cbc3c060b56465127f71152a1bde3503ea64c89fae74d55b",
+      "path": "archive/source_responses/b903259011372ca5cbc3c060b56465127f71152a1bde3503ea64c89fae74d55b.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+    },
+    {
+      "bytes": 87524,
+      "decoded_utf8_sha256": "f37aa0908302310a8f32de9bf60805a7892c75858a3704868977283627953c45",
+      "path": "archive/source_responses/f37aa0908302310a8f32de9bf60805a7892c75858a3704868977283627953c45.html.gz",
+      "request_parameters_sha256": "0d78d4e96de71ac7d42a16750e0e010212750a3a6680765519707ae63800601c",
+      "url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+    },
+    {
+      "bytes": 224185,
+      "decoded_utf8_sha256": "0b353db013d1ddb2915a699ba90abdccd7c93a7f0336a3d03a571bc7eff28f14",
+      "path": "archive/source_responses/0b353db013d1ddb2915a699ba90abdccd7c93a7f0336a3d03a571bc7eff28f14.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=21043"
+    },
+    {
+      "bytes": 224185,
+      "decoded_utf8_sha256": "0b353db013d1ddb2915a699ba90abdccd7c93a7f0336a3d03a571bc7eff28f14",
+      "path": "archive/source_responses/0b353db013d1ddb2915a699ba90abdccd7c93a7f0336a3d03a571bc7eff28f14.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/bodo.html?fidx=21043"
+    },
+    {
+      "bytes": 87524,
+      "decoded_utf8_sha256": "e741f9063da24f5ffe7459a62e71ab8f90bdb9176bf0b56a9747beb9a08ad35e",
+      "path": "archive/source_responses/e741f9063da24f5ffe7459a62e71ab8f90bdb9176bf0b56a9747beb9a08ad35e.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+    },
+    {
+      "bytes": 64338,
+      "decoded_utf8_sha256": "b8ccc2529210d33aa31e9f8fc3af6b7cc2f00d9a5695b83bf256d1dd48650e57",
+      "path": "archive/source_responses/b8ccc2529210d33aa31e9f8fc3af6b7cc2f00d9a5695b83bf256d1dd48650e57.html.gz",
+      "request_parameters_sha256": "6a00cdc9d40559a114c0ecc0adc76f8c7dd2e3a98a21863ebcca05332eb2513e",
+      "url": "https://council.cheongju.go.kr/content/member/integrationCheongju.html"
+    },
+    {
+      "bytes": 157887,
+      "decoded_utf8_sha256": "ea3a8e07148736095fbce22c97ba1ab5940dc0fa3e857dacb368408fd565e192",
+      "path": "archive/source_responses/ea3a8e07148736095fbce22c97ba1ab5940dc0fa3e857dacb368408fd565e192.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/member.html"
+    },
+    {
+      "bytes": 157887,
+      "decoded_utf8_sha256": "ea3a8e07148736095fbce22c97ba1ab5940dc0fa3e857dacb368408fd565e192",
+      "path": "archive/source_responses/ea3a8e07148736095fbce22c97ba1ab5940dc0fa3e857dacb368408fd565e192.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/member.html"
+    },
+    {
+      "bytes": 67857,
+      "decoded_utf8_sha256": "a680f64804b3ede1d6628848645ff41c7887611931fc66c518eea1ab8edfb318",
+      "path": "archive/source_responses/a680f64804b3ede1d6628848645ff41c7887611931fc66c518eea1ab8edfb318.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/activity/researchActivities.html"
+    },
+    {
+      "bytes": 67857,
+      "decoded_utf8_sha256": "a680f64804b3ede1d6628848645ff41c7887611931fc66c518eea1ab8edfb318",
+      "path": "archive/source_responses/a680f64804b3ede1d6628848645ff41c7887611931fc66c518eea1ab8edfb318.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/activity/researchActivities.html"
+    },
+    {
+      "bytes": 157887,
+      "decoded_utf8_sha256": "c5a947a07c75cff839102676274175b5dc608ba9f5bca69721946ae1b203be37",
+      "path": "archive/source_responses/c5a947a07c75cff839102676274175b5dc608ba9f5bca69721946ae1b203be37.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/member.html"
+    },
+    {
+      "bytes": 157887,
+      "decoded_utf8_sha256": "c5a947a07c75cff839102676274175b5dc608ba9f5bca69721946ae1b203be37",
+      "path": "archive/source_responses/c5a947a07c75cff839102676274175b5dc608ba9f5bca69721946ae1b203be37.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/member/member.html"
+    },
+    {
+      "bytes": 86647,
+      "decoded_utf8_sha256": "ffd854dad556899c6a0faabb8fbd8147c0b15f7459b6bbc7131847f1781ca8c9",
+      "path": "archive/source_responses/ffd854dad556899c6a0faabb8fbd8147c0b15f7459b6bbc7131847f1781ca8c9.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/notice.html?fidx=14438&pg=vv&sid=1000&page=11&opt=&sword="
+    },
+    {
+      "bytes": 86647,
+      "decoded_utf8_sha256": "ffd854dad556899c6a0faabb8fbd8147c0b15f7459b6bbc7131847f1781ca8c9",
+      "path": "archive/source_responses/ffd854dad556899c6a0faabb8fbd8147c0b15f7459b6bbc7131847f1781ca8c9.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/notice.html?fidx=14438&pg=vv&sid=1000&page=11&opt=&sword="
+    },
+    {
+      "bytes": 77908,
+      "decoded_utf8_sha256": "561c51caaa4b218dac692541ffa6a1bf5a85ae7283c696dfe66d38c28bab73bf",
+      "path": "archive/source_responses/561c51caaa4b218dac692541ffa6a1bf5a85ae7283c696dfe66d38c28bab73bf.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/notice.html?fidx=15672&pg=vv&sid=1000&page=9&opt=&sword="
+    },
+    {
+      "bytes": 77908,
+      "decoded_utf8_sha256": "561c51caaa4b218dac692541ffa6a1bf5a85ae7283c696dfe66d38c28bab73bf",
+      "path": "archive/source_responses/561c51caaa4b218dac692541ffa6a1bf5a85ae7283c696dfe66d38c28bab73bf.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/notice.html?fidx=15672&pg=vv&sid=1000&page=9&opt=&sword="
+    },
+    {
+      "bytes": 74623,
+      "decoded_utf8_sha256": "44d14f40330cbc8fb1f40a7a30c69d7a42defec562565aafff5781fd44b4e184",
+      "path": "archive/source_responses/44d14f40330cbc8fb1f40a7a30c69d7a42defec562565aafff5781fd44b4e184.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/activity/researchReport.html?fidx=17240&pg=vv&sid=1000&page=1&opt=&sword="
+    },
+    {
+      "bytes": 74623,
+      "decoded_utf8_sha256": "44d14f40330cbc8fb1f40a7a30c69d7a42defec562565aafff5781fd44b4e184",
+      "path": "archive/source_responses/44d14f40330cbc8fb1f40a7a30c69d7a42defec562565aafff5781fd44b4e184.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/activity/researchReport.html?fidx=17240&pg=vv&sid=1000&page=1&opt=&sword="
+    },
+    {
+      "bytes": 98972,
+      "decoded_utf8_sha256": "2d74c82b77ffc47a1a568d8343bc77dcb6d8505a262993a0f46a39d437bba4b4",
+      "path": "archive/source_responses/2d74c82b77ffc47a1a568d8343bc77dcb6d8505a262993a0f46a39d437bba4b4.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/notice.html?fidx=17189&pg=vv&sid=1000&page=7&opt=&sword="
+    },
+    {
+      "bytes": 98972,
+      "decoded_utf8_sha256": "2d74c82b77ffc47a1a568d8343bc77dcb6d8505a262993a0f46a39d437bba4b4",
+      "path": "archive/source_responses/2d74c82b77ffc47a1a568d8343bc77dcb6d8505a262993a0f46a39d437bba4b4.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/news/notice.html?fidx=17189&pg=vv&sid=1000&page=7&opt=&sword="
+    },
+    {
+      "bytes": 75815,
+      "decoded_utf8_sha256": "e3f1fb83837da460f87f3f09527c43d62f2ad50127b541d943cf4050f58cedc0",
+      "path": "archive/source_responses/e3f1fb83837da460f87f3f09527c43d62f2ad50127b541d943cf4050f58cedc0.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/activity/researchReport.html?fidx=19753&pg=vv&sid=1000&page=1&opt=&sword="
+    },
+    {
+      "bytes": 75815,
+      "decoded_utf8_sha256": "e3f1fb83837da460f87f3f09527c43d62f2ad50127b541d943cf4050f58cedc0",
+      "path": "archive/source_responses/e3f1fb83837da460f87f3f09527c43d62f2ad50127b541d943cf4050f58cedc0.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/activity/researchReport.html?fidx=19753&pg=vv&sid=1000&page=1&opt=&sword="
+    },
+    {
+      "bytes": 77941,
+      "decoded_utf8_sha256": "f7f180a7747bf8da401ea7c8029624f90e948bbfc2298c19e34675a3ffe115fb",
+      "path": "archive/source_responses/f7f180a7747bf8da401ea7c8029624f90e948bbfc2298c19e34675a3ffe115fb.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/activity/researchReport.html?fidx=20871&pg=vv&sid=1000&page=1&opt=&sword="
+    },
+    {
+      "bytes": 77941,
+      "decoded_utf8_sha256": "f7f180a7747bf8da401ea7c8029624f90e948bbfc2298c19e34675a3ffe115fb",
+      "path": "archive/source_responses/f7f180a7747bf8da401ea7c8029624f90e948bbfc2298c19e34675a3ffe115fb.html.gz",
+      "request_parameters_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "url": "https://council.cheongju.go.kr/content/activity/researchReport.html?fidx=20871&pg=vv&sid=1000&page=1&opt=&sword="
+    }
+  ],
+  "schema": "cheongju-source-responses/1"
+}
