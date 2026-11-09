@@ -1,41 +1,19 @@
 {
-  "family": "media",
-  "started_at": "2026-11-09T22:24:28.835780+00:00",
+  "family": "attachments",
+  "started_at": "2026-11-09T22:39:59.393442+00:00",
   "status": "PASS",
   "published": true,
   "collection": {
-    "suggestion_resolution": {
-      "listed": 72,
-      "details_checked": 28,
-      "saved": 72,
-      "review_priority_ids": [],
-      "missing_saved_ids_retained": []
-    },
-    "press": {
-      "listed": 914,
-      "details_checked": 40,
-      "saved": 914,
-      "review_priority_ids": [],
-      "missing_saved_ids_retained": []
-    },
-    "debate": {
-      "listed": 20,
-      "details_checked": 20,
-      "saved": 20,
-      "review_priority_ids": [],
-      "missing_saved_ids_retained": []
-    },
-    "photo": {
-      "checked_at": "2026-11-10T07:27:18.495632+09:00",
-      "records": 6619,
-      "min_date": "2014-07-01",
-      "max_date": "2026-11-09",
-      "binary_files_mirrored": 0
-    }
+    "queued": 1891,
+    "attempted": 0,
+    "downloaded_total": 1715,
+    "failed_total": 1,
+    "blocked_total": 175,
+    "pending_total": 0
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-09T22:36:50.565517+00:00",
+    "checked_at_utc": "2026-11-09T22:40:32.306126+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
@@ -339657,6 +339635,6 @@
   },
   "transaction": {
     "status": "committed",
-    "changed_files": 1039
+    "changed_files": 4
   }
 }
