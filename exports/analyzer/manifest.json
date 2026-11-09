@@ -1,6 +1,6 @@
 {
   "schema": "cheongju-council-archive-analyzer-export/0.1",
-  "generated_at": "2026-11-10T07:21:17.596490+09:00",
+  "generated_at": "2026-11-10T07:36:50.050276+09:00",
   "datasets": {
     "people": {
       "rows": 435,
@@ -75,22 +75,22 @@
     "suggestions_resolutions": {
       "rows": 72,
       "path": "exports/analyzer/suggestions_resolutions.jsonl",
-      "sha256": "8f3f1e5c1ee438b463a1e3634e5c98a76b4d5f46cb38a08c2c0d751fa1e46fe4"
+      "sha256": "84419f617f6c0e0cb398d44da7f847b1e43cdfcabc13175d588da994831b28c6"
     },
     "press": {
       "rows": 914,
       "path": "exports/analyzer/press.jsonl",
-      "sha256": "95a81917716f7f6560d24710c29f192251695079e78cea9a56ecedb4d9a32756"
+      "sha256": "1640580b18fec8ebcfbf414f05bc41efa8f1a56f425029652471fa533ee8fbbb"
     },
     "debates": {
       "rows": 20,
       "path": "exports/analyzer/debates.jsonl",
-      "sha256": "f763f72670d6cd4e3e1e264c1117baef9bb4ce7124c609a14088dcd049ffeba9"
+      "sha256": "efe9b37aae33d4b776f6656b7e6dcbe4e89343634144497b47c2ac6027145d15"
     },
     "photo_activity": {
-      "rows": 6616,
+      "rows": 6619,
       "path": "exports/analyzer/photo_activity.jsonl",
-      "sha256": "198966375b2841913a4eaf4d2c62d948676d1d5f4c9400c26bd396d7f21bf5ef"
+      "sha256": "c50efda8df5c272c9d2ea4122009382d10f54fac6474f968c6a1d77fd4c84b61"
     },
     "bills": {
       "rows": 3394,
