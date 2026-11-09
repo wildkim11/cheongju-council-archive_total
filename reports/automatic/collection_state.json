@@ -32,8 +32,8 @@
       "consecutive_failures": 0
     },
     "media": {
-      "attempts": 4,
-      "last_success_at": "2026-11-08T22:08:21.619432+00:00",
+      "attempts": 5,
+      "last_success_at": "2026-11-09T03:35:15.319304+00:00",
       "consecutive_failures": 0
     },
     "attachments": {
@@ -49,92 +49,43 @@
     }
   },
   "last_run": {
-    "family": "groups",
-    "started_at": "2026-11-09T03:31:24.917469+00:00",
+    "family": "media",
+    "started_at": "2026-11-09T03:35:15.319304+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
-      "collect_current_committees": {
-        "checked_at": "2026-11-09T12:31:50.798473+09:00",
-        "committee_count": 10,
-        "membership_rows": 81,
-        "by_type": {
-          "other_committee": 1,
-          "special_committee": 2,
-          "standing_committee": 7
-        },
-        "period_conflict_codes": [],
-        "unresolved_members": 0
+      "suggestion_resolution": {
+        "listed": 72,
+        "details_checked": 28,
+        "saved": 72,
+        "review_priority_ids": [],
+        "missing_saved_ids_retained": []
       },
-      "collect_historical_committees": {
-        "checked_at": "2026-11-09T12:32:01.768454+09:00",
-        "promoted_sources": 3,
-        "committee_states": 16,
-        "membership_rows": 126,
-        "skipped_sources": [
-          {
-            "source_id": "committee-standing-t1-latter-20160705",
-            "source_status": "registered_needs_live_table_verification",
-            "reason": "not_promotable_full_roster"
-          },
-          {
-            "source_id": "committee-budget-t3-final-20250630",
-            "source_status": "registered_partial_text_needs_full_roster_source",
-            "reason": "not_promotable_full_roster"
-          }
-        ],
-        "by_term": {
-          "3": 9,
-          "4": 7
-        }
+      "press": {
+        "listed": 914,
+        "details_checked": 40,
+        "saved": 914,
+        "review_priority_ids": [],
+        "missing_saved_ids_retained": []
       },
-      "collect_current_research_groups": {
-        "checked_at": "2026-11-09T12:32:15.637477+09:00",
-        "year": 2026,
-        "group_count": 5,
-        "membership_rows": 65,
-        "representative_rows": 5,
-        "unresolved_members": 0,
-        "groups": [
-          {
-            "group_name": "청주시 강호축 미래전략 연구회",
-            "member_count": 22
-          },
-          {
-            "group_name": "도서관을 사랑하는 의원 모임",
-            "member_count": 13
-          },
-          {
-            "group_name": "미래 정책 연구 포럼",
-            "member_count": 7
-          },
-          {
-            "group_name": "청주공항 비상을 바라는 모임",
-            "member_count": 12
-          },
-          {
-            "group_name": "청주시의회 문화·예술 연구회",
-            "member_count": 11
-          }
-        ]
+      "debate": {
+        "listed": 20,
+        "details_checked": 20,
+        "saved": 20,
+        "review_priority_ids": [],
+        "missing_saved_ids_retained": []
       },
-      "collect_historical_research_metadata": {
-        "checked_at": "2026-11-09T12:32:17.338891+09:00",
-        "source_pages": 6,
-        "attachments": 26,
-        "pages_with_html_full_roster": 0,
-        "attachment_verification_required": 6,
-        "by_year": {
-          "2022": 1,
-          "2023": 2,
-          "2024": 2,
-          "2025": 1
-        }
+      "photo": {
+        "checked_at": "2026-11-09T12:38:07.864763+09:00",
+        "records": 6616,
+        "min_date": "2014-07-01",
+        "max_date": "2026-11-07",
+        "binary_files_mirrored": 0
       }
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-09T03:32:23.338793+00:00",
+      "checked_at_utc": "2026-11-09T03:48:15.790993+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
@@ -325338,7 +325289,7 @@
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 56
+      "changed_files": 1038
     }
   }
 }
