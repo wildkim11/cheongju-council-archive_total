@@ -1,6 +1,6 @@
 {
   "family": "minutes",
-  "started_at": "2026-11-08T22:56:05.906205+00:00",
+  "started_at": "2026-11-09T01:33:17.776813+00:00",
   "status": "FAILED",
   "published": false,
   "error": "ValueError: Provisional disappearance needs manual review: cheongju_integrated:minutes-4018; replacement candidates=[]",

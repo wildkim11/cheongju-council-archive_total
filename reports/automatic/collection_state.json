@@ -3,13 +3,13 @@
   "cursor": 1,
   "families": {
     "minutes": {
-      "attempts": 7,
-      "consecutive_failures": 2,
+      "attempts": 8,
+      "consecutive_failures": 3,
       "last_success_at": "2026-11-07T21:36:12.370726+00:00",
       "last_error": "ValueError: Provisional disappearance needs manual review: cheongju_integrated:minutes-4018; replacement candidates=[]",
-      "next_retry_at": "2026-11-09T00:56:05.906205+00:00",
+      "next_retry_at": "2026-11-09T05:33:17.776813+00:00",
       "retry_attempts_day": "2026-11-09",
-      "retry_attempts_today": 1
+      "retry_attempts_today": 2
     },
     "bills": {
       "attempts": 4,
@@ -50,7 +50,7 @@
   },
   "last_run": {
     "family": "minutes",
-    "started_at": "2026-11-08T22:56:05.906205+00:00",
+    "started_at": "2026-11-09T01:33:17.776813+00:00",
     "status": "FAILED",
     "published": false,
     "error": "ValueError: Provisional disappearance needs manual review: cheongju_integrated:minutes-4018; replacement candidates=[]",
