@@ -50,10 +50,8 @@
   },
   "last_run": {
     "family": "minutes",
-    "started_at": "2026-11-10T20:16:54.257580+00:00",
-    "status": "FAILED",
-    "published": false,
-    "error": "ValueError: Provisional disappearance needs manual review: cheongju_integrated:minutes-4018; replacement candidates=[]",
-    "failed_requests": []
+    "started_at": "2026-11-10T21:38:13.557047+00:00",
+    "status": "DEFERRED",
+    "published": false
   }
 }
