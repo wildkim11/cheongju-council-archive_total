@@ -1,6 +1,6 @@
 {
   "schema": "cheongju-council-archive-analyzer-export/0.1",
-  "generated_at": "2026-11-11T06:56:20.663943+09:00",
+  "generated_at": "2026-11-11T07:00:16.504511+09:00",
   "datasets": {
     "people": {
       "rows": 435,
@@ -30,32 +30,32 @@
     "committee_memberships": {
       "rows": 207,
       "path": "exports/analyzer/committee_memberships.jsonl",
-      "sha256": "91eef5f03aaf4fd5ad363a5192beba235552fbdb00ecb125bd5bda9bd31f03dc"
+      "sha256": "555bd6eaecfcca35e1097aaf5930734396b867bfb655734977366c04e248907d"
     },
     "committee_states": {
       "rows": 26,
       "path": "exports/analyzer/committee_states.jsonl",
-      "sha256": "0de909e780b1ab0f9cda8674c8bd9acf476743f688ff70d130ac247265429f54"
+      "sha256": "de711b3f6cda9fae72f34d053cf563eb6d02e45761ee649cfeb00adfac5cd009"
     },
     "research_groups": {
       "rows": 5,
       "path": "exports/analyzer/research_groups.jsonl",
-      "sha256": "fb33f2c33d47ea9405eb2ed14f40e0f912470b10ab3c61710ee57f6731e7668a"
+      "sha256": "c9870dd07bd51328479f278176217be2e5c986eb69e419868a74d0ac0d1dff69"
     },
     "research_group_memberships": {
       "rows": 65,
       "path": "exports/analyzer/research_group_memberships.jsonl",
-      "sha256": "fa4a3975bc30f7a4998a4aee9458a0ba1613edafd8cbd6ab5815262ecb8fb1c7"
+      "sha256": "7092d2d8ecbf039d1a2f0fe983ad5025b857f836d56f24994cfe81ba1b922ade"
     },
     "research_source_pages": {
       "rows": 6,
       "path": "exports/analyzer/research_source_pages.jsonl",
-      "sha256": "fdacbb74c64901c01cef1c99bc8dbded1293c37e597248aa40b3accec34f2449"
+      "sha256": "83fc1f78a124067e893f0c26b1b107b967d0bc5860fa3900ef5d172506639e08"
     },
     "research_attachments": {
       "rows": 26,
       "path": "exports/analyzer/research_attachments.jsonl",
-      "sha256": "ade8edaeff5611923482331e090de425313c77013805709bace8ab0a860cb46e"
+      "sha256": "863b0ded2cfcf0090282cdf1a70a1082fef480da983b1b547b6db7e2ff0c1ce2"
     },
     "five_minute_speeches": {
       "rows": 606,
