@@ -37,10 +37,10 @@
       "consecutive_failures": 0
     },
     "attachments": {
-      "attempts": 56,
+      "attempts": 57,
       "failed_documents": 1,
       "pending_attachment_retry_at": "2026-11-12T03:06:16.759546+00:00",
-      "last_success_at": "2026-11-11T03:05:58.161578+00:00",
+      "last_success_at": "2026-11-11T22:48:38.825406+00:00",
       "consecutive_failures": 0,
       "retry_attempts_day": "2026-11-11",
       "retry_attempts_today": 1,
@@ -49,43 +49,21 @@
     }
   },
   "last_run": {
-    "family": "media",
-    "started_at": "2026-11-11T22:33:34.276766+00:00",
+    "family": "attachments",
+    "started_at": "2026-11-11T22:48:38.825406+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
-      "suggestion_resolution": {
-        "listed": 72,
-        "details_checked": 40,
-        "saved": 72,
-        "review_priority_ids": [],
-        "missing_saved_ids_retained": []
-      },
-      "press": {
-        "listed": 914,
-        "details_checked": 40,
-        "saved": 914,
-        "review_priority_ids": [],
-        "missing_saved_ids_retained": []
-      },
-      "debate": {
-        "listed": 20,
-        "details_checked": 20,
-        "saved": 20,
-        "review_priority_ids": [],
-        "missing_saved_ids_retained": []
-      },
-      "photo": {
-        "checked_at": "2026-11-12T07:36:35.085709+09:00",
-        "records": 6630,
-        "min_date": "2014-07-01",
-        "max_date": "2026-11-11",
-        "binary_files_mirrored": 0
-      }
+      "queued": 1891,
+      "attempted": 0,
+      "downloaded_total": 1715,
+      "failed_total": 1,
+      "blocked_total": 175,
+      "pending_total": 0
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-11T22:45:31.303629+00:00",
+      "checked_at_utc": "2026-11-11T22:49:12.470743+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
@@ -368543,7 +368521,7 @@
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 1052
+      "changed_files": 4
     }
   }
 }
