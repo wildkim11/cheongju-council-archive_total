@@ -1,11 +1,11 @@
 {
   "family": "attachments",
-  "started_at": "2026-11-10T22:18:32.944645+00:00",
+  "started_at": "2026-11-11T03:05:58.161578+00:00",
   "status": "PASS",
   "published": true,
   "collection": {
     "queued": 1891,
-    "attempted": 0,
+    "attempted": 1,
     "downloaded_total": 1715,
     "failed_total": 1,
     "blocked_total": 175,
@@ -13,7 +13,7 @@
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-10T22:19:06.353482+00:00",
+    "checked_at_utc": "2026-11-11T03:06:17.253331+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
@@ -307,7 +307,7 @@
       "schema": "cheongju-attachment-download-audit/1",
       "status": "PASS",
       "queue_present": true,
-      "source_queue_sha256": "4aa36f9a19b4d51ab6acfd4d6033e6d87b368db00819f8ecf6855b3f887911b4",
+      "source_queue_sha256": "f5af89dda4a6b7243378aa2010f2b262cd4c6ac4b84e016b26331023258f4065",
       "queued_urls": 1891,
       "status_counts": {
         "downloaded": 1715,
@@ -354053,6 +354053,6 @@
   },
   "transaction": {
     "status": "committed",
-    "changed_files": 4
+    "changed_files": 5
   }
 }
