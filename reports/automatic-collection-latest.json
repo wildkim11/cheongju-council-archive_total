@@ -1,16 +1,38 @@
 {
-  "family": "bills",
-  "started_at": "2026-11-11T22:08:31.747377+00:00",
+  "family": "activities",
+  "started_at": "2026-11-11T22:16:15.059179+00:00",
   "status": "PASS",
   "published": true,
   "collection": {
-    "listed": 3394,
-    "details_checked": 40,
-    "roster_changes_for_review": 0
+    "five_minute": {
+      "listed": 606,
+      "details_checked": 42,
+      "saved": 606,
+      "review_priority_ids": [
+        "331",
+        "332"
+      ],
+      "missing_saved_ids_retained": []
+    },
+    "city_question": {
+      "listed": 85,
+      "details_checked": 40,
+      "saved": 85,
+      "review_priority_ids": [],
+      "missing_saved_ids_retained": []
+    },
+    "written": {
+      "checked_at": "2026-11-12T07:18:36.135253+09:00",
+      "records": 16,
+      "min_date": "2014-12-26",
+      "max_date": "2026-03-12",
+      "question_files": 16,
+      "answer_files": 16
+    }
   },
   "qa": {
     "scope": "offline stored snapshot (not a fresh official-site inventory)",
-    "checked_at_utc": "2026-11-11T22:13:33.274164+00:00",
+    "checked_at_utc": "2026-11-11T22:18:48.035592+00:00",
     "status": "PASS",
     "source_rows": 2353,
     "source_files_checked": 2353,
@@ -145,10 +167,10 @@
       "source_records": 16,
       "verified_records": 16,
       "held_records": 0,
-      "source_dataset_sha256": "f2d65765db2ddd4faa97ff84d1e1de6fdb73d22628b03286d99afea2e13cb0c7",
-      "source_manifest": "archive/source_responses/manifests/7814e0c7e1382c365cde69daa51956a93c088401aefed237f0d3bd1aefaa28c2.json",
-      "source_manifest_sha256": "7814e0c7e1382c365cde69daa51956a93c088401aefed237f0d3bd1aefaa28c2",
-      "collection_started_at": "2026-11-10T21:46:20.969031+00:00",
+      "source_dataset_sha256": "720612cda81cf25d0faca22f0b90694187b1276d73a2477c02d207de873be853",
+      "source_manifest": "archive/source_responses/manifests/8db85f445b4da33d3cb0579c40ce4dafb6283c57b8648c6a776a01be9f93bde6.json",
+      "source_manifest_sha256": "8db85f445b4da33d3cb0579c40ce4dafb6283c57b8648c6a776a01be9f93bde6",
+      "collection_started_at": "2026-11-11T22:16:15.059179+00:00",
       "rows": [
         {
           "source_id": "14",
@@ -156,8 +178,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=14&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=14&gb=ans",
-          "source_response_path": "archive/source_responses/ca451b504af5fe929337cb6c0b23aa243b578b87fa8e129307cab753ffc886b5.html.gz",
-          "source_response_sha256": "ca451b504af5fe929337cb6c0b23aa243b578b87fa8e129307cab753ffc886b5"
+          "source_response_path": "archive/source_responses/c3dea191ba63fc277914be361462ad3e6e4ac8208eef6e285c8856bacb9e193f.html.gz",
+          "source_response_sha256": "c3dea191ba63fc277914be361462ad3e6e4ac8208eef6e285c8856bacb9e193f"
         },
         {
           "source_id": "15",
@@ -165,8 +187,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=15&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=15&gb=ans",
-          "source_response_path": "archive/source_responses/1c1dcef2c5587e820425cc93abb954558623443e6b7e448ec90c4c0b8d3519da.html.gz",
-          "source_response_sha256": "1c1dcef2c5587e820425cc93abb954558623443e6b7e448ec90c4c0b8d3519da"
+          "source_response_path": "archive/source_responses/a70c0adfef2533a74a4fcf695aa464cddbded24baae66d098b7bb787853f170e.html.gz",
+          "source_response_sha256": "a70c0adfef2533a74a4fcf695aa464cddbded24baae66d098b7bb787853f170e"
         },
         {
           "source_id": "16",
@@ -174,8 +196,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=16&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=16&gb=ans",
-          "source_response_path": "archive/source_responses/755fdc606cc9cd5a4eeb28d7fce3cb91d659636b88f322c89fea9ff1948f8a57.html.gz",
-          "source_response_sha256": "755fdc606cc9cd5a4eeb28d7fce3cb91d659636b88f322c89fea9ff1948f8a57"
+          "source_response_path": "archive/source_responses/63238fb609040f5ec112f1f0e87ef60fea04dbde7b55c940be9de808d0c68947.html.gz",
+          "source_response_sha256": "63238fb609040f5ec112f1f0e87ef60fea04dbde7b55c940be9de808d0c68947"
         },
         {
           "source_id": "17",
@@ -183,8 +205,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=17&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=17&gb=ans",
-          "source_response_path": "archive/source_responses/8b6b8d50ac04ba88b08e45490c5f149ce84092c2ddc62c95619ef591e3e1a288.html.gz",
-          "source_response_sha256": "8b6b8d50ac04ba88b08e45490c5f149ce84092c2ddc62c95619ef591e3e1a288"
+          "source_response_path": "archive/source_responses/af61580eb7bef838fb18736b12b512eb9aa81bf1ef8c65e6574e68fae2d7a052.html.gz",
+          "source_response_sha256": "af61580eb7bef838fb18736b12b512eb9aa81bf1ef8c65e6574e68fae2d7a052"
         },
         {
           "source_id": "18",
@@ -192,8 +214,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=18&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=18&gb=ans",
-          "source_response_path": "archive/source_responses/0a9ff19f8e73a1255c22631268459984390f9ef182ae888a55a534b23b3d8618.html.gz",
-          "source_response_sha256": "0a9ff19f8e73a1255c22631268459984390f9ef182ae888a55a534b23b3d8618"
+          "source_response_path": "archive/source_responses/9cdfa66090faf988de560379fb0f87bd821833ab0b89b54b88a5cdedbb82f54a.html.gz",
+          "source_response_sha256": "9cdfa66090faf988de560379fb0f87bd821833ab0b89b54b88a5cdedbb82f54a"
         },
         {
           "source_id": "19",
@@ -201,8 +223,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=19&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=19&gb=ans",
-          "source_response_path": "archive/source_responses/5c0bf39adea8f6bbe6ea5e7b7f93c12d1207e5f624e0695c7600686a3c463407.html.gz",
-          "source_response_sha256": "5c0bf39adea8f6bbe6ea5e7b7f93c12d1207e5f624e0695c7600686a3c463407"
+          "source_response_path": "archive/source_responses/40b8efdc1da08f09ddb5f5a0a8d91d028db89e93e1e1901d3eb08291877b3208.html.gz",
+          "source_response_sha256": "40b8efdc1da08f09ddb5f5a0a8d91d028db89e93e1e1901d3eb08291877b3208"
         },
         {
           "source_id": "20",
@@ -210,8 +232,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=20&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=20&gb=ans",
-          "source_response_path": "archive/source_responses/a6b6af754b0333c4c6ba2a59865a6873f2187542db885f132e2b1e651c298e6c.html.gz",
-          "source_response_sha256": "a6b6af754b0333c4c6ba2a59865a6873f2187542db885f132e2b1e651c298e6c"
+          "source_response_path": "archive/source_responses/ec3da079aff8790cd6b40aa8345fd32d315741d6462f3a56b822fb315249c18a.html.gz",
+          "source_response_sha256": "ec3da079aff8790cd6b40aa8345fd32d315741d6462f3a56b822fb315249c18a"
         },
         {
           "source_id": "21",
@@ -219,8 +241,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=21&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=21&gb=ans",
-          "source_response_path": "archive/source_responses/5b504bef01149aed9be0460f83e2ff829463a03c9007f27ee1ccbf478690a2af.html.gz",
-          "source_response_sha256": "5b504bef01149aed9be0460f83e2ff829463a03c9007f27ee1ccbf478690a2af"
+          "source_response_path": "archive/source_responses/d10a10f1ed360684d64228e087808fff3c62797119dc0a71afd4710f0493a37b.html.gz",
+          "source_response_sha256": "d10a10f1ed360684d64228e087808fff3c62797119dc0a71afd4710f0493a37b"
         },
         {
           "source_id": "22",
@@ -228,8 +250,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=22&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=22&gb=ans",
-          "source_response_path": "archive/source_responses/136ed24a1daa2b6d1448c0ed29aecdccbc342cfc0fc4970c43a340a58f9a0ce8.html.gz",
-          "source_response_sha256": "136ed24a1daa2b6d1448c0ed29aecdccbc342cfc0fc4970c43a340a58f9a0ce8"
+          "source_response_path": "archive/source_responses/a83b0cd124e19858e4cafcc85909c629c257a541d5d59d072ab5ff8686a4606c.html.gz",
+          "source_response_sha256": "a83b0cd124e19858e4cafcc85909c629c257a541d5d59d072ab5ff8686a4606c"
         },
         {
           "source_id": "23",
@@ -237,8 +259,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=23&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=23&gb=ans",
-          "source_response_path": "archive/source_responses/f7759a480250f7b8352505ff30865a4d8ceca3fa8ce1762dfa9d8c30d67a9a00.html.gz",
-          "source_response_sha256": "f7759a480250f7b8352505ff30865a4d8ceca3fa8ce1762dfa9d8c30d67a9a00"
+          "source_response_path": "archive/source_responses/81eeb7345a57498556eeb2bff481623e539923a64bda84c462da71202c7afe38.html.gz",
+          "source_response_sha256": "81eeb7345a57498556eeb2bff481623e539923a64bda84c462da71202c7afe38"
         },
         {
           "source_id": "24",
@@ -246,8 +268,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=24&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=24&gb=ans",
-          "source_response_path": "archive/source_responses/7f2342cb9c7a25a32b7f2b038fb13efb286f63cb5935ebbc242d340fe0bf6bd1.html.gz",
-          "source_response_sha256": "7f2342cb9c7a25a32b7f2b038fb13efb286f63cb5935ebbc242d340fe0bf6bd1"
+          "source_response_path": "archive/source_responses/8025f9be0ebd42fbef191da728d7a039d4216fa253376225ae477244d13c769a.html.gz",
+          "source_response_sha256": "8025f9be0ebd42fbef191da728d7a039d4216fa253376225ae477244d13c769a"
         },
         {
           "source_id": "25",
@@ -255,8 +277,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=25&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=25&gb=ans",
-          "source_response_path": "archive/source_responses/d8a6ca591c8781fbf00213496d5eead71f309b7b0463d2f30ee6fe5726e3e5e9.html.gz",
-          "source_response_sha256": "d8a6ca591c8781fbf00213496d5eead71f309b7b0463d2f30ee6fe5726e3e5e9"
+          "source_response_path": "archive/source_responses/95cec00d09182baa17b1f60c3b2335443c94f2df8a3a8bfb7007290a5a199417.html.gz",
+          "source_response_sha256": "95cec00d09182baa17b1f60c3b2335443c94f2df8a3a8bfb7007290a5a199417"
         },
         {
           "source_id": "26",
@@ -264,8 +286,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=26&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=26&gb=ans",
-          "source_response_path": "archive/source_responses/9afc5b085cd29cbfc4f1a1c8c99e795bca360884d32bbd8fcbb9d490964d4d33.html.gz",
-          "source_response_sha256": "9afc5b085cd29cbfc4f1a1c8c99e795bca360884d32bbd8fcbb9d490964d4d33"
+          "source_response_path": "archive/source_responses/36d7527a645f7ef372689e11e898120b22fbda9491b26d2fa9eeebc7958992b4.html.gz",
+          "source_response_sha256": "36d7527a645f7ef372689e11e898120b22fbda9491b26d2fa9eeebc7958992b4"
         },
         {
           "source_id": "27",
@@ -273,8 +295,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=27&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=27&gb=ans",
-          "source_response_path": "archive/source_responses/7e0cb5e4ec02861d5429275c3bcc88614e13346ef6e733572cbf70f6c5bb46db.html.gz",
-          "source_response_sha256": "7e0cb5e4ec02861d5429275c3bcc88614e13346ef6e733572cbf70f6c5bb46db"
+          "source_response_path": "archive/source_responses/350cb0684db747d83198e843dc4c2d19c3a05e3086f27fbf557052e815981818.html.gz",
+          "source_response_sha256": "350cb0684db747d83198e843dc4c2d19c3a05e3086f27fbf557052e815981818"
         },
         {
           "source_id": "28",
@@ -282,8 +304,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=28&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=28&gb=ans",
-          "source_response_path": "archive/source_responses/ab6e79575019ad3b8db26a168262f2e1e1aa7271599ab7b2739716eaec22e2c6.html.gz",
-          "source_response_sha256": "ab6e79575019ad3b8db26a168262f2e1e1aa7271599ab7b2739716eaec22e2c6"
+          "source_response_path": "archive/source_responses/b93675f50fa604df3318432e832825de853aa70004624c4803d66aaa6b187788.html.gz",
+          "source_response_sha256": "b93675f50fa604df3318432e832825de853aa70004624c4803d66aaa6b187788"
         },
         {
           "source_id": "29",
@@ -291,8 +313,8 @@
           "status": "verified",
           "question_file_url": "https://council.cheongju.go.kr/paper_down.html?number=29&gb=qna",
           "answer_file_url": "https://council.cheongju.go.kr/paper_down.html?number=29&gb=ans",
-          "source_response_path": "archive/source_responses/e9526d5eea207454028d5ce1bbaf5f8f29ed4a0eccc5b424f8199cb1521ba600.html.gz",
-          "source_response_sha256": "e9526d5eea207454028d5ce1bbaf5f8f29ed4a0eccc5b424f8199cb1521ba600"
+          "source_response_path": "archive/source_responses/ad13307d1d8f2793481a63020f8e765e539939d22cffd683f9d31b3363c61b52.html.gz",
+          "source_response_sha256": "ad13307d1d8f2793481a63020f8e765e539939d22cffd683f9d31b3363c61b52"
         }
       ],
       "official_site_requests": 0,
@@ -8875,7 +8897,7 @@
     "question_answer_parts": {
       "schema": "cheongju-question-answer-parts/1",
       "status": "PASS",
-      "source_dataset_sha256": "f7c3f4ac11723a42de2c8c83d9b2851ba6780557df614ee9d59bd80c70d3e7af",
+      "source_dataset_sha256": "01653778a272106c3510e818e3193bc00dec56f57f10c1cef102cc8afaca41f1",
       "source_index_sha256": "a443c5c68b349bcb4b185f821045c76c527c07dc77ed5ac29341010fb8e8ece8",
       "reviewed_records": 85,
       "split_records": 13,
@@ -8896,7 +8918,7 @@
       "date_changes": 0,
       "official_site_requests": 0,
       "source_roles_sha256": "7e5d06bf814750f2752fe33b9f7c417f305349a49bfcae02a26b751b93dbd054",
-      "source_question_parts_sha256": "337eec0d3e5826eb93ed8e16f536008220e1ccd6b03d70cdc897d5c8f073afc7",
+      "source_question_parts_sha256": "edbd4931298c876ae74a73c5a5f42d094ef3aac5851b0ce5a53af2c6b1e4add5",
       "script_sha256": "2777d1947df1c29de6f5d97b03430d069c213b5fcf6700f08f88f27d7d84834f"
     },
     "question_answer_linking": {
@@ -354050,6 +354072,6 @@
   },
   "transaction": {
     "status": "committed",
-    "changed_files": 383
+    "changed_files": 198
   }
 }
