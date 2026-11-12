@@ -1,6 +1,6 @@
 {
   "schema": "cheongju-council-archive-analyzer-export/0.1",
-  "generated_at": "2026-11-13T07:07:09.833945+09:00",
+  "generated_at": "2026-11-13T07:11:55.120990+09:00",
   "datasets": {
     "people": {
       "rows": 435,
@@ -60,17 +60,17 @@
     "five_minute_speeches": {
       "rows": 606,
       "path": "exports/analyzer/five_minute_speeches.jsonl",
-      "sha256": "3b0a5c1b2009876f71f613c6dd2d34fc4ca75e6feb8f7b033045a554d1afc821"
+      "sha256": "fee93bbeeb9a301cddd60fda78caf562fc9ccb74677e50cab19995fd7f98d07c"
     },
     "city_questions": {
       "rows": 85,
       "path": "exports/analyzer/city_questions.jsonl",
-      "sha256": "01653778a272106c3510e818e3193bc00dec56f57f10c1cef102cc8afaca41f1"
+      "sha256": "5d7f6bd2a1de534e00c93de01c4294f5115c1878b561f3e86008f4054aaaf1b2"
     },
     "written_questions": {
       "rows": 16,
       "path": "exports/analyzer/written_questions.jsonl",
-      "sha256": "362f3f7cdb0c9b6e615f94d3273e3215825da6504a98aa61d6a56a96b9f0b0a6"
+      "sha256": "c678e8c0c59242bbf0c154b177733b682a32d2694d2c0575deacb69d8fc6bcd6"
     },
     "suggestions_resolutions": {
       "rows": 72,
