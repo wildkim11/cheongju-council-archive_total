@@ -1,3 +1,4 @@
+# Resume preserved attachment checkpoints after run 42141294779 attempt 50 startup failure.
 name: Extract preserved attachment text (offline)
 on:
   push:
