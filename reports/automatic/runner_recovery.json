@@ -1,13 +1,10 @@
 {
-  "attempt_day": "2026-11-14",
-  "last_reserved_at": "2026-11-14T07:17:56.977383+00:00",
-  "next_retry_at": "2026-11-14T08:17:56.977383+00:00",
+  "attempt_day": "2026-11-15",
+  "last_reserved_at": "2026-11-14T22:49:50.207065+00:00",
+  "next_retry_at": "2026-11-14T23:49:50.207065+00:00",
   "pending_targets": [
     "bills",
-    "activities",
-    "people",
-    "groups",
-    "media"
+    "activities"
   ],
   "reservations": [
     {
@@ -94,6 +91,17 @@
         "people",
         "groups",
         "media"
+      ]
+    },
+    {
+      "failed_cycle_started_at": "2026-11-14T21:49:58+00:00",
+      "recovery_kind": "partial_cycle_interrupted",
+      "reserved_at": "2026-11-14T22:49:50.207065+00:00",
+      "source_run_attempt": 1,
+      "source_run_id": 43644877900,
+      "targets": [
+        "bills",
+        "activities"
       ]
     }
   ],
