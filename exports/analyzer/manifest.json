@@ -1,6 +1,6 @@
 {
   "schema": "cheongju-council-archive-analyzer-export/0.1",
-  "generated_at": "2026-11-15T07:24:52.258143+09:00",
+  "generated_at": "2026-11-15T08:08:35.800662+09:00",
   "datasets": {
     "people": {
       "rows": 435,
@@ -95,12 +95,12 @@
     "bills": {
       "rows": 3394,
       "path": "exports/analyzer/bills.jsonl",
-      "sha256": "0f15d4ea8cdfed9c12f3a4c9ca11ca5623a982752c926418a043d35fc0071c7f"
+      "sha256": "e1c39b8738e939cbf8ada475ac6f221852a4abb3652457222d203c040ddcd34b"
     },
     "bill_proposers": {
       "rows": 11421,
       "path": "exports/analyzer/bill_proposers.jsonl",
-      "sha256": "aedc86a933edf2c4246043f3b70c44c998c951f46361bb0686b0a7764a721878"
+      "sha256": "3ad41b7097f08731bd871a81b0ef9c6cf0c03097d5f63a52996db6a9bd51c503"
     },
     "meetings": {
       "rows": 2353,
@@ -115,12 +115,12 @@
     "bill_proposers_member_only": {
       "rows": 11377,
       "path": "exports/analyzer/bill_proposers_member_only.jsonl",
-      "sha256": "4603dcbb3ed62ad676d70562f8006b2f22da11a6096d632974e8adc434aa40a0"
+      "sha256": "ef48463c513893940a85ac7a1b28483b487a69ec8c611925952b5cca0474e8c6"
     },
     "bill_proposers_institutional_type_quarantine": {
       "rows": 44,
       "path": "exports/analyzer/bill_proposers_institutional_type_quarantine.jsonl",
-      "sha256": "aa62ba945e602a058c4abcdc0e3c8d8826805b23b7e7e273bf425af1da3d2b7a"
+      "sha256": "a77f207105a5e05c236d34b62c8ed59d13185b45d1b4c5950b064c134513b3bb"
     }
   },
   "principles": {
