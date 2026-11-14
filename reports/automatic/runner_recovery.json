@@ -1,7 +1,7 @@
 {
-  "attempt_day": "2026-11-09",
-  "last_reserved_at": "2026-11-09T02:59:44.958467+00:00",
-  "next_retry_at": "2026-11-09T03:59:44.958467+00:00",
+  "attempt_day": "2026-11-14",
+  "last_reserved_at": "2026-11-14T07:17:56.977383+00:00",
+  "next_retry_at": "2026-11-14T08:17:56.977383+00:00",
   "pending_targets": [
     "bills",
     "activities",
@@ -74,6 +74,20 @@
       "reserved_at": "2026-11-09T02:59:44.958467+00:00",
       "source_run_attempt": 1,
       "source_run_id": 42545469141,
+      "targets": [
+        "bills",
+        "activities",
+        "people",
+        "groups",
+        "media"
+      ]
+    },
+    {
+      "failed_cycle_started_at": "2026-11-13T21:57:14+00:00",
+      "recovery_kind": "partial_cycle_interrupted",
+      "reserved_at": "2026-11-14T07:17:56.977383+00:00",
+      "source_run_attempt": 1,
+      "source_run_id": 43515173940,
       "targets": [
         "bills",
         "activities",
