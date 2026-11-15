@@ -37,52 +37,33 @@
       "consecutive_failures": 0
     },
     "attachments": {
-      "attempts": 62,
+      "attempts": 63,
       "failed_documents": 1,
-      "pending_attachment_retry_at": "2026-11-15T06:23:38.157322+00:00",
-      "last_success_at": "2026-11-14T22:24:09.176778+00:00",
+      "pending_attachment_retry_at": "2026-11-16T07:31:47.850353+00:00",
+      "last_success_at": "2026-11-15T07:30:54.906576+00:00",
       "consecutive_failures": 0,
-      "retry_attempts_day": "2026-11-14",
+      "retry_attempts_day": "2026-11-15",
       "retry_attempts_today": 1,
       "blocked_documents": 175,
       "pending_documents": 0
     }
   },
   "last_run": {
-    "family": "activities",
-    "started_at": "2026-11-14T23:11:50.941117+00:00",
+    "family": "attachments",
+    "started_at": "2026-11-15T07:30:54.906576+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
-      "five_minute": {
-        "listed": 606,
-        "details_checked": 42,
-        "saved": 606,
-        "review_priority_ids": [
-          "331",
-          "332"
-        ],
-        "missing_saved_ids_retained": []
-      },
-      "city_question": {
-        "listed": 85,
-        "details_checked": 40,
-        "saved": 85,
-        "review_priority_ids": [],
-        "missing_saved_ids_retained": []
-      },
-      "written": {
-        "checked_at": "2026-11-15T08:14:38.593235+09:00",
-        "records": 16,
-        "min_date": "2014-12-26",
-        "max_date": "2026-03-12",
-        "question_files": 16,
-        "answer_files": 16
-      }
+      "queued": 1891,
+      "attempted": 1,
+      "downloaded_total": 1715,
+      "failed_total": 1,
+      "blocked_total": 175,
+      "pending_total": 0
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-14T23:14:52.120205+00:00",
+      "checked_at_utc": "2026-11-15T07:31:48.570547+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
@@ -376,7 +357,7 @@
         "schema": "cheongju-attachment-download-audit/1",
         "status": "PASS",
         "queue_present": true,
-        "source_queue_sha256": "59f2e9089def30f80b9b8089ec51f701e6c59e9e02bb066b8d3119057561bf65",
+        "source_queue_sha256": "6084a9397d54436c82134f099b79ef33b97933eb4de6ae865aff6452a11a6767",
         "queued_urls": 1891,
         "status_counts": {
           "downloaded": 1715,
@@ -411794,7 +411775,7 @@
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 198
+      "changed_files": 6
     }
   }
 }
