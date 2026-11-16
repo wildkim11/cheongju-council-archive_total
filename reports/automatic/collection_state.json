@@ -12,8 +12,8 @@
       "retry_attempts_today": 1
     },
     "bills": {
-      "attempts": 13,
-      "last_success_at": "2026-11-15T21:38:07.318337+00:00",
+      "attempts": 14,
+      "last_success_at": "2026-11-16T11:50:32.445924+00:00",
       "consecutive_failures": 0
     },
     "activities": {
@@ -49,21 +49,18 @@
     }
   },
   "last_run": {
-    "family": "attachments",
-    "started_at": "2026-11-16T09:58:39.811831+00:00",
+    "family": "bills",
+    "started_at": "2026-11-16T11:50:32.445924+00:00",
     "status": "PASS",
     "published": true,
     "collection": {
-      "queued": 1891,
-      "attempted": 1,
-      "downloaded_total": 1715,
-      "failed_total": 1,
-      "blocked_total": 175,
-      "pending_total": 0
+      "listed": 3395,
+      "details_checked": 40,
+      "roster_changes_for_review": 0
     },
     "qa": {
       "scope": "offline stored snapshot (not a fresh official-site inventory)",
-      "checked_at_utc": "2026-11-16T09:59:12.106741+00:00",
+      "checked_at_utc": "2026-11-16T11:55:41.935640+00:00",
       "status": "PASS",
       "source_rows": 2353,
       "source_files_checked": 2353,
@@ -8948,7 +8945,7 @@
         "identity_promotions": 0,
         "date_changes": 0,
         "official_site_requests": 0,
-        "source_roles_sha256": "7e5d06bf814750f2752fe33b9f7c417f305349a49bfcae02a26b751b93dbd054",
+        "source_roles_sha256": "06edc51446adc0a69fd2516a5c13ec8dd40aa3e3e2d5c667bafbcb482fff940a",
         "source_question_parts_sha256": "8ca94c86248f10f54640656d5f7417fd519638e51be5f35d891e8b7888649e53",
         "script_sha256": "2777d1947df1c29de6f5d97b03430d069c213b5fcf6700f08f88f27d7d84834f"
       },
@@ -8991,7 +8988,7 @@
       "activity_date_review": {
         "status": "PASS",
         "schema": "cheongju-activity-date-review/1",
-        "source_role_sha256": "7c1f66b27aa37664040c35f7013eeb52d17dd7982fe918ef4da992c475f4b503",
+        "source_role_sha256": "bc24418677c02400046e329137ab5ab035a19b6e83d54544c859a78bd9b97083",
         "source_index_sha256": "a443c5c68b349bcb4b185f821045c76c527c07dc77ed5ac29341010fb8e8ece8",
         "review_rows": 2,
         "diagnosis_counts": {
@@ -9014,7 +9011,7 @@
           "symbol_or_middle_dot": 2,
           "numeric_whitespace_boundary": 1
         },
-        "source_roles_sha256": "7c1f66b27aa37664040c35f7013eeb52d17dd7982fe918ef4da992c475f4b503",
+        "source_roles_sha256": "bc24418677c02400046e329137ab5ab035a19b6e83d54544c859a78bd9b97083",
         "source_index_sha256": "a443c5c68b349bcb4b185f821045c76c527c07dc77ed5ac29341010fb8e8ece8",
         "script_sha256": "8ec4d78039c829e9de59a64d782fab925592f471b78be4f9960d3cb7a472b4db",
         "identity_promotions": 0,
@@ -426193,7 +426190,7 @@
     },
     "transaction": {
       "status": "committed",
-      "changed_files": 5
+      "changed_files": 400
     }
   }
 }
